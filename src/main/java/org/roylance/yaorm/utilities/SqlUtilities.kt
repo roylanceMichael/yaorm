@@ -147,7 +147,7 @@ public object SqlUtilities {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    public fun <T,K> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, K>): Optional<String> {
+    public fun <T,K> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, K>, operator:String=Equals): Optional<String> {
 
         val tableName = classModel.simpleName
         val andItems = ArrayList<String>()
@@ -155,7 +155,7 @@ public object SqlUtilities {
         for (columnName in values.keySet()) {
             val stringValue = SqlDataTypeUtilities.getFormattedString(values.get(columnName))
 
-            andItems.add(columnName + Equals + stringValue)
+            andItems.add(columnName + operator + stringValue)
         }
 
         val whereSql = java.lang.String.format(

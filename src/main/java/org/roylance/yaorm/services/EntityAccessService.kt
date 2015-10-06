@@ -110,9 +110,9 @@ public class EntityAccessService(
         return returnItems
     }
 
-    override fun <T> where(classModel: Class<T>, whereClause: Map<String, Any>): List<T> {
+    override fun <T> where(classModel: Class<T>, whereClause: Map<String, Any>, operator: String): List<T> {
         val whereSql =
-                SqlUtilities.buildWhereClauseAnd(classModel, whereClause)
+                SqlUtilities.buildWhereClauseAnd(classModel, whereClause, operator)
 
         if (!whereSql.isPresent) {
             return arrayListOf()
