@@ -35,7 +35,7 @@ public class JDBCCursor<T> (
                 label, resultSet -> resultSet.getInt(label) == 1 })
             put(
                     SqlUtilities.JavaLongName,
-                    { label, resultSet -> resultSet.getLong(label)})
+                    { label, resultSet -> resultSet.getLong(label) })
         }
     }
 
