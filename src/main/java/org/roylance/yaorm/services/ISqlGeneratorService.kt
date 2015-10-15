@@ -9,6 +9,7 @@ import org.roylance.yaorm.models.IEntity
 public interface ISqlGeneratorService {
     public val javaIdName: String
     public val javaTypeToSqlType: Map<String, String>
+    public val bulkInsertSize:Int
 
     public fun <K, T: IEntity<K>> buildDropTable(classType: Class<T>): String
     public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): Optional<String>

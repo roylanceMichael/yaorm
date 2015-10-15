@@ -22,7 +22,7 @@ artifactory {
         repository {
             repoKey = 'libs-snapshot-local'
             username = 'admin'
-            password = ''
+            password = 'password'
             maven = true
         }
 
@@ -62,6 +62,9 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'com.google.guava:guava:18.0'
     compile 'org.xerial:sqlite-jdbc:3.8.10.1'
+    compile 'org.apache.hadoop:hadoop-client:2.3.0'
+    compile 'org.apache.hive:hive-jdbc:1.2.1'
+    compile 'org.apache.hive:hive-common:1.2.1'
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

@@ -9,7 +9,10 @@ public class EntityAccessService(
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityAccessService {
 
-    private val maxTempListSize = 100
+    override fun <K, T : IEntity<K>> drop(classModel: Class<T>): Boolean {
+        val sql = this.sqlGeneratorService.buildDropTable(classModel)
+        return this.granularDatabaseService.executeUpdateQuery(sql)
+    }
 
     override fun <K, T: IEntity<K>> deleteAll(classModel: Class<T>): Boolean {
         val sql = this.sqlGeneratorService.buildDeleteAll(classModel)
@@ -28,7 +31,13 @@ public class EntityAccessService(
     }
 
     override fun <K, T: IEntity<K>> update(classModel: Class<T>, entity: T): Boolean {
-        throw UnsupportedOperationException()
+        // update
+        val updateSql = this.sqlGeneratorService.buildUpdateTable(classModel, entity)
+        if (!updateSql.isPresent) {
+            return false
+        }
+
+        return this.granularDatabaseService.executeUpdateQuery(updateSql.get())
     }
 
     override fun <K, T: IEntity<K>> bulkInsert(classModel: Class<T>, instances: List<T>): Boolean {
@@ -40,7 +49,7 @@ public class EntityAccessService(
                 .forEach {
                     temporaryList.add(it)
 
-                    if (temporaryList.size() >= maxTempListSize) {
+                    if (temporaryList.size() >= this.sqlGeneratorService.bulkInsertSize) {
                         val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(classModel, temporaryList)
                         val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
                         results.add(result)
@@ -59,25 +68,10 @@ public class EntityAccessService(
 
     override fun <K, T: IEntity<K>> createOrUpdate(classModel: Class<T>, entity: T): Boolean {
         val foundItemInDatabase = this.get(classModel, entity.id)
-
         if (foundItemInDatabase.isPresent) {
-            // update
-            val updateSql = this.sqlGeneratorService.buildUpdateTable(classModel, entity)
-            if (!updateSql.isPresent) {
-                return false
-            }
-
-            return this.granularDatabaseService.executeUpdateQuery(updateSql.get())
+            return this.update(classModel, entity)
         }
-
-        // create
-        val insertSql = this.sqlGeneratorService.buildInsertIntoTable(classModel, entity)
-
-        if (!insertSql.isPresent) {
-            return false
-        }
-
-        return this.granularDatabaseService.executeUpdateQuery(insertSql.get())
+        return this.create(classModel, entity)
     }
 
     override fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): Optional<T> {

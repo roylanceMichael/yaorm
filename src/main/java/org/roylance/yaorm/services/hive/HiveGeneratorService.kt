@@ -11,7 +11,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
     private val constJavaIdName = "id"
 
     private val CreateInitialTableTemplate = "create table %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
-    private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s)"
+    private val InsertIntoTableSingleTemplate = "insert into %s values (%s)"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s"
     private val DeleteTableTemplate = "delete from %s where id=%s"
     private val WhereClauseTemplate = "select * from %s where %s"
@@ -25,8 +25,15 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
     override val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
         init {
-            put(CommonSqlDataTypeUtilities.JavaObjectName, HiveString)
             put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName, HiveString)
+            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName, HiveInt)
+            put(CommonSqlDataTypeUtilities.JavaAltBooleanName, HiveInt)
+            put(CommonSqlDataTypeUtilities.JavaAltIntegerName, HiveInt)
+            put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName, HiveInt)
+            put(CommonSqlDataTypeUtilities.JavaAltLongName, HiveInt)
+            put(CommonSqlDataTypeUtilities.JavaAlt1LongName, HiveInt)
+            put(CommonSqlDataTypeUtilities.JavaAltDoubleName, HiveDouble)
+            put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName, HiveDouble)
             put(CommonSqlDataTypeUtilities.JavaStringName, HiveString)
             put(CommonSqlDataTypeUtilities.JavaByteName, HiveString)
             put(CommonSqlDataTypeUtilities.JavaIntegerName, HiveInt)
@@ -35,6 +42,8 @@ public class HiveGeneratorService : ISqlGeneratorService {
             put(CommonSqlDataTypeUtilities.JavaLongName, HiveInt)
         }
     }
+
+    override val bulkInsertSize: Int = 100000
 
     override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
         return "drop table ${classType.simpleName}"
@@ -54,6 +63,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
         classModel
                 .methods
+                .sortedBy { it.name }
                 .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
                 .forEach {
                     val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
@@ -65,8 +75,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
                     }
                 }
 
-        val commaSeparatedColumnNames = columnNames.join(CommonSqlDataTypeUtilities.Comma)
-        val initialStatement = "insert into $tableName ($commaSeparatedColumnNames) "
+        val initialStatement = "insert into table $tableName \nselect * from\n"
         val selectStatements = ArrayList<String>()
 
         items
@@ -75,32 +84,27 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
                     classModel
                             .methods
-                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                            .sortedBy { it.name }
+                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                                    !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
                             .forEach {
-                                val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                                val actualName = CommonSqlDataTypeUtilities
+                                        .lowercaseFirstChar(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
-                                if (nameTypeMap.containsKey(actualName) &&
-                                        !javaIdName.equals(actualName)) {
-
+                                if (nameTypeMap.containsKey(actualName)) {
                                     val instanceValue = it.invoke(instance)
                                     val cleansedValue = CommonSqlDataTypeUtilities.getFormattedString(instanceValue)
 
-                                    if (valueColumnPairs.isEmpty()) {
-                                        valueColumnPairs.add("select $cleansedValue as $actualName")
-                                    }
-                                    else {
-                                        valueColumnPairs.add("$cleansedValue as $actualName")
-                                    }
+                                    valueColumnPairs.add(cleansedValue)
                                 }
                             }
 
                     selectStatements.add(valueColumnPairs.join(CommonSqlDataTypeUtilities.Comma))
                 }
 
-        val unionSeparatedStatements = selectStatements.join(CommonSqlDataTypeUtilities.SpacedUnion)
+        val carriageReturnSeparatedRows = selectStatements.join("${CommonSqlDataTypeUtilities.Comma}${CommonSqlDataTypeUtilities.CarriageReturn}")
 
-        return "$initialStatement $unionSeparatedStatements${CommonSqlDataTypeUtilities.SemiColon}"
+        return "$initialStatement(\nselect stack(\n ${selectStatements.size()},\n $carriageReturnSeparatedRows)) s"
     }
 
     override fun <K, T : IEntity<K>> buildSelectAll(classModel: Class<T>): String {
@@ -151,6 +155,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
             classModel
                     .methods
+                    .sortedBy { it.name }
                     .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
@@ -191,20 +196,18 @@ public class HiveGeneratorService : ISqlGeneratorService {
             this.getNameTypes(classModel)
                     .forEach { nameTypeMap.put(it.first, it) }
 
-            val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                    .sortedBy { it.name }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
-                        if (nameTypeMap.containsKey(actualName) &&
-                                !javaIdName.equals(actualName)) {
-                            columnNames.add(actualName)
-
+                        if (nameTypeMap.containsKey(actualName)) {
                             val instanceValue = it.invoke(newInsertModel)
                             values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
                         }
@@ -213,7 +216,6 @@ public class HiveGeneratorService : ISqlGeneratorService {
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     classModel.simpleName,
-                    columnNames.join(CommonSqlDataTypeUtilities.Comma),
                     values.join(CommonSqlDataTypeUtilities.Comma))
 
             return Optional.of(insertSql)
@@ -233,19 +235,27 @@ public class HiveGeneratorService : ISqlGeneratorService {
         val workspace = StringBuilder()
 
         for (nameType in getNameTypes(classType)) {
-            workspace
-                    .append(CommonSqlDataTypeUtilities.Comma)
-                    .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.first)
-                    .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.third)
+            if (workspace.length() == 0) {
+                workspace
+                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(nameType.first)
+                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(nameType.third)
+            }
+            else {
+                workspace
+                        .append(CommonSqlDataTypeUtilities.Comma)
+                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(nameType.first)
+                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(nameType.third)
+            }
         }
 
         val createTableSql = java.lang.String.format(
                 CreateInitialTableTemplate,
                 classType.simpleName,
                 workspace.toString(),
-                this.javaIdName,
                 10)
 
         return Optional.of<String>(createTableSql)
@@ -264,9 +274,11 @@ public class HiveGeneratorService : ISqlGeneratorService {
         // let's handle the types now
         classModel
                 .methods
+                .sortedBy { it.name }
                 .filter {
                     it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName)
                 }
                 .forEach {
                     val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)

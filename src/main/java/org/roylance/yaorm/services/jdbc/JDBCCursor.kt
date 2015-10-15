@@ -21,18 +21,30 @@ public class JDBCCursor<T> (
                         val foundObject = resultSet.getObject(label)
 
                         if(foundObject is Int) {
-                            foundObject as Int
+                            foundObject
                         }
                         else if (foundObject is Long) {
-                            foundObject as Long
+                            foundObject
                         }
                         else if (foundObject is Double) {
-                            foundObject as Double
+                            foundObject
                         }
                         else {
                             foundObject as String
                         }
                     })
+            put(
+                    CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
+                    { label, resultSet -> resultSet.getDouble(label) })
+            put(
+                    CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
+                    { label, resultSet -> resultSet.getInt(label) })
+            put(
+                    CommonSqlDataTypeUtilities.JavaAlt1LongName,
+                    { label, resultSet -> resultSet.getLong(label) })
+            put(
+                    CommonSqlDataTypeUtilities.JavaAlt1BooleanName,
+                    { label, resultSet -> resultSet.getBoolean(label) })
             put(
                     CommonSqlDataTypeUtilities.JavaAltDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
@@ -59,6 +71,12 @@ public class JDBCCursor<T> (
                     { label, resultSet -> resultSet.getBlob(label) })
             put(
                     CommonSqlDataTypeUtilities.JavaBooleanName, {
+                label, resultSet -> resultSet.getInt(label) == 1 })
+            put(
+                    CommonSqlDataTypeUtilities.JavaAltBooleanName, {
+                label, resultSet -> resultSet.getInt(label) == 1 })
+            put(
+                    CommonSqlDataTypeUtilities.JavaAlt1BooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
             put(
                     CommonSqlDataTypeUtilities.JavaLongName,

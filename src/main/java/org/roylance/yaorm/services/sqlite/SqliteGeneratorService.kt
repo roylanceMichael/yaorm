@@ -29,10 +29,13 @@ public class SqliteGeneratorService : ISqlGeneratorService {
     override public val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
         init {
             put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName, SqlTextName)
+            put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaAlt1LongName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName, SqlRealName)
             put(CommonSqlDataTypeUtilities.JavaAltIntegerName, SqlIntegerName)
             put(CommonSqlDataTypeUtilities.JavaAltLongName, SqlBlobName)
             put(CommonSqlDataTypeUtilities.JavaAltDoubleName, SqlRealName)
-            put(CommonSqlDataTypeUtilities.JavaObjectName, SqlIntegerName)
             put(CommonSqlDataTypeUtilities.JavaStringName, SqlTextName)
             put(CommonSqlDataTypeUtilities.JavaByteName, SqlBlobName)
             put(CommonSqlDataTypeUtilities.JavaIntegerName, SqlIntegerName)
@@ -41,6 +44,8 @@ public class SqliteGeneratorService : ISqlGeneratorService {
             put(CommonSqlDataTypeUtilities.JavaLongName, SqlIntegerName)
         }
     }
+
+    override val bulkInsertSize: Int = 500
 
     override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
         return "drop table ${classType.simpleName}"
@@ -82,7 +87,8 @@ public class SqliteGeneratorService : ISqlGeneratorService {
 
                     classModel
                             .methods
-                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                                    !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
                             .forEach {
                                 val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                         it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
@@ -163,7 +169,8 @@ public class SqliteGeneratorService : ISqlGeneratorService {
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
@@ -209,7 +216,8 @@ public class SqliteGeneratorService : ISqlGeneratorService {
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
@@ -288,7 +296,8 @@ public class SqliteGeneratorService : ISqlGeneratorService {
                 .methods
                 .filter {
                     it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName)
                 }
                 .forEach {
                     val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
