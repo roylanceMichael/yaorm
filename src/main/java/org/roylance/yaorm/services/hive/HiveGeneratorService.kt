@@ -8,11 +8,13 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
 public class HiveGeneratorService : ISqlGeneratorService {
+
     private val constJavaIdName = "id"
 
     private val CreateInitialTableTemplate = "create table %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
     private val InsertIntoTableSingleTemplate = "insert into %s values (%s)"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s"
+    private val UpdateTableMultipleTemplate = "update %s set %s where %s"
     private val DeleteTableTemplate = "delete from %s where id=%s"
     private val WhereClauseTemplate = "select * from %s where %s"
     private val SelectAllTemplate = "select * from %s"
@@ -44,6 +46,56 @@ public class HiveGeneratorService : ISqlGeneratorService {
     }
 
     override val bulkInsertSize: Int = 100000
+
+    override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
+            classModel: Class<T>,
+            newValues: Map<String, Any>,
+            criteria: Map<String, Any>): Optional<String> {
+        try {
+            val nameTypeMap = HashMap<String, Tuple<String>>()
+            getNameTypes(classModel)
+                    .forEach { nameTypeMap.put(it.first, it) }
+
+            if (nameTypeMap.size() == 0) {
+                return Optional.absent()
+            }
+
+            val tableName = classModel.simpleName
+            val criteriaList = criteria
+                    .map { kvp ->
+                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(kvp.value)
+                        "${kvp.key}${CommonSqlDataTypeUtilities.Equals}$stringValue"
+                    }
+
+            var criteriaString: String = criteriaList.join(CommonSqlDataTypeUtilities.SpacedAnd)
+
+            val updateKvp = ArrayList<String>()
+
+            newValues
+                    .forEach {
+                        val actualName = it.getKey()
+                        val actualValue = it.getValue()
+                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
+                        updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
+                    }
+
+            // nope, not updating entire table
+            if (criteriaString.length() == 0) {
+                return Optional.absent()
+            }
+
+            val updateSql = java.lang.String.format(
+                    UpdateTableMultipleTemplate,
+                    tableName,
+                    updateKvp.join(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
+                    criteriaString)
+
+            return Optional.of(updateSql)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Optional.absent<String>()
+        }
+    }
 
     override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
         return "drop table ${classType.simpleName}"
@@ -156,7 +208,8 @@ public class HiveGeneratorService : ISqlGeneratorService {
             classModel
                     .methods
                     .sortedBy { it.name }
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))

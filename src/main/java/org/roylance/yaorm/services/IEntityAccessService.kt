@@ -13,6 +13,7 @@ public interface IEntityAccessService : Closeable {
     public fun <K, T: IEntity<K>> createOrUpdate(classModel: Class<T>, entity: T): Boolean
     public fun <K, T: IEntity<K>> create(classModel: Class<T>, entity: T): Boolean
     public fun <K, T: IEntity<K>> update(classModel: Class<T>, entity: T): Boolean
+    public fun <K, T: IEntity<K>> updateWithCriteria(classModel: Class<T>, newValues: Map<String, Any>, criteria: Map<String, Any>): Boolean
 
     public fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): Optional<T>
     public fun <K, T: IEntity<K>> getAll(classModel: Class<T>): List<T>

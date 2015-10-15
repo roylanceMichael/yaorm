@@ -12,6 +12,7 @@ public class SqliteGeneratorService : ISqlGeneratorService {
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
+    private val UpdateTableMultipleTemplate = "update %s set %s where %s;"
     private val DeleteTableTemplate = "delete from %s where id=%s;"
     private val WhereClauseTemplate = "select * from %s where %s;"
     private val SelectAllTemplate = "select * from %s;"
@@ -46,6 +47,56 @@ public class SqliteGeneratorService : ISqlGeneratorService {
     }
 
     override val bulkInsertSize: Int = 500
+
+    override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
+            classModel: Class<T>,
+            newValues: Map<String, Any>,
+            criteria: Map<String, Any>): Optional<String> {
+        try {
+            val nameTypeMap = HashMap<String, Tuple<String>>()
+            getNameTypes(classModel)
+                    .forEach { nameTypeMap.put(it.first, it) }
+
+            if (nameTypeMap.size() == 0) {
+                return Optional.absent()
+            }
+
+            val tableName = classModel.simpleName
+            val criteriaList = criteria
+                .map { kvp ->
+                    val stringValue = CommonSqlDataTypeUtilities.getFormattedString(kvp.value)
+                    "${kvp.key}${CommonSqlDataTypeUtilities.Equals}$stringValue"
+                }
+
+            var criteriaString: String = criteriaList.join(CommonSqlDataTypeUtilities.SpacedAnd)
+            val updateKvp = ArrayList<String>()
+
+            newValues
+                    .forEach {
+                        val actualName = it.getKey()
+
+                        val actualValue = it.getValue()
+                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
+                        updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
+                    }
+
+            // nope, not updating entire table
+            if (criteriaString.length() == 0) {
+                return Optional.absent()
+            }
+
+            val updateSql = java.lang.String.format(
+                    UpdateTableMultipleTemplate,
+                    tableName,
+                    updateKvp.join(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
+                    criteriaString)
+
+            return Optional.of(updateSql)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Optional.absent<String>()
+        }
+    }
 
     override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
         return "drop table ${classType.simpleName}"
@@ -201,7 +252,6 @@ public class SqliteGeneratorService : ISqlGeneratorService {
             e.printStackTrace()
             return Optional.absent<String>()
         }
-
     }
 
     override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String> {

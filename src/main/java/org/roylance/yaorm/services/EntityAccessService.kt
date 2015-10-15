@@ -8,6 +8,16 @@ import java.util.*
 public class EntityAccessService(
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityAccessService {
+    override fun <K, T : IEntity<K>> updateWithCriteria(
+            classModel: Class<T>,
+            newValues: Map<String, Any>,
+            criteria: Map<String, Any>): Boolean {
+        val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(classModel, newValues, criteria)
+        if (!updateSql.isPresent) {
+            return false
+        }
+        return this.granularDatabaseService.executeUpdateQuery(updateSql.get())
+    }
 
     override fun <K, T : IEntity<K>> drop(classModel: Class<T>): Boolean {
         val sql = this.sqlGeneratorService.buildDropTable(classModel)

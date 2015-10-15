@@ -154,6 +154,61 @@ public class EntityAccessServiceTest {
         Assert.assertEquals(cachedName, foundBeacon.cachedName)
     }
 
+    @Test
+    public fun simpleCreateUpdateHiveTest() {
+        // arrange
+        val beaconId = "test"
+        val majorId = 1
+        val minorId = 2
+        val isActive = true
+        val cachedName = "mike"
+
+        val hiveGeneratorService = HiveGeneratorService()
+        val sourceConnection = HiveConnectionSourceFactory("dev-sherlock-hadoop1.local", "10000", "default")
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
+        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+
+        val newBeacon = BeaconBroadcastModel(
+                beaconId = beaconId,
+                majorId = majorId,
+                minorId = minorId,
+                isActive = isActive,
+                cachedName = cachedName,
+                lastSeen = 0)
+
+        entityService.drop(BeaconBroadcastModel::class.java)
+        entityService.instantiate(BeaconBroadcastModel::class.java)
+        entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+
+        val newBeaconId = "test1"
+        val newMajorId = 2
+        val newMinorId = 3
+
+        val newValues = HashMap<String, Any>()
+        newValues.put(BeaconBroadcastModel.BeaconIdName, newBeaconId)
+        newValues.put(BeaconBroadcastModel.MajorIdName, newMajorId)
+        newValues.put(BeaconBroadcastModel.MinorIdName, newMinorId)
+
+        val criteria = HashMap<String, Any>()
+        criteria.put(BeaconBroadcastModel.CachedNameName, cachedName)
+
+        // act
+        entityService.updateWithCriteria(BeaconBroadcastModel::class.java, newValues, criteria)
+
+        // assert
+        val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+
+        Assert.assertEquals(1, allBeacons.size())
+
+        val foundBeacon = allBeacons.first()
+        Assert.assertEquals(0, foundBeacon.id)
+        Assert.assertEquals(foundBeacon.beaconId, newBeaconId)
+        Assert.assertEquals(foundBeacon.majorId, newMajorId)
+        Assert.assertEquals(foundBeacon.minorId, newMinorId)
+        Assert.assertEquals(foundBeacon.isActive, foundBeacon.isActive)
+        Assert.assertEquals(foundBeacon.cachedName, foundBeacon.cachedName)
+    }
+
     // @Test
     public fun simpleBulkInsertHiveTest() {
         // arrange
