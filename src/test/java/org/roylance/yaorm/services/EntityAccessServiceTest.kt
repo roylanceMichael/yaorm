@@ -100,7 +100,7 @@ public class EntityAccessServiceTest {
         Assert.assertEquals(cachedName, foundBeacon.cachedName)
     }
 
-    @Test
+    // @Test
     public fun simpleBulkInsertHiveTest() {
         // arrange
         val isActive = true
