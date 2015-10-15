@@ -8,7 +8,7 @@ Welcome to the readme/faq for yaorm.
 
 ## What is this?
 
-This is **y**et **a**nother **o**bject **r**elational **m**apping library. 
+This is **Y**et **A**nother **O**bject **R**elational **M**apping library. 
 
 
 ***
@@ -99,57 +99,57 @@ There are a few service dependencies needed to save this to a data store. Here i
 
 ```java
 // arrange
-        // create a unique file
-        final File databaseFile = new File(UUID.randomUUID().toString());
-        try  {
-            // it shouldn't exist, but delete if it does, for some reason...
-            if (databaseFile.exists()) {
-                databaseFile.delete();
-            }
+// create a unique file
+final File databaseFile = new File(UUID.randomUUID().toString());
+try  {
+    // it shouldn't exist, but delete if it does, for some reason...
+    if (databaseFile.exists()) {
+        databaseFile.delete();
+    }
 
-            final String testName = "NameToTest";
+    final String testName = "NameToTest";
 
-            // this is the factory for the SQLite connection. Note, on Android, you can implement this interface and hook it in
-            final IConnectionSourceFactory sourceConnection = new SqliteConnectionSourceFactory(databaseFile.getAbsolutePath());
+    // this is the factory for the SQLite connection. Note, on Android, you can implement this interface and hook it in
+    final IConnectionSourceFactory sourceConnection = new SqliteConnectionSourceFactory(databaseFile.getAbsolutePath());
 
-            // this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
-            final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(sourceConnection.getConnectionSource());
+    // this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
+    final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(sourceConnection.getConnectionSource());
 
-            // this is the service that generates the sql for SQLite.
-            final ISqlGeneratorService sqlGeneratorService = new SqliteGeneratorService();
+    // this is the service that generates the sql for SQLite.
+    final ISqlGeneratorService sqlGeneratorService = new SqliteGeneratorService();
 
-            // this entity access service uses the previous dependencies to do common CRUD operations against the data store
-            final IEntityAccessService entityAccessService = new EntityAccessService(granularDatabaseService, sqlGeneratorService);
+    // this entity access service uses the previous dependencies to do common CRUD operations against the data store
+    final IEntityAccessService entityAccessService = new EntityAccessService(granularDatabaseService, sqlGeneratorService);
 
-            // create a new model to test
-            final TestModel newModel = new TestModel()
-                    .setName(testName);
+    // create a new model to test
+    final TestModel newModel = new TestModel()
+            .setName(testName);
 
-            // act
-            // create the sqlite table, we know it doesn't exist yet
-            entityAccessService.instantiate(TestModel.class);
+    // act
+    // create the sqlite table, we know it doesn't exist yet
+    entityAccessService.instantiate(TestModel.class);
 
-            // create the entity in the data store
-            entityAccessService.create(TestModel.class, newModel);
+    // create the entity in the data store
+    entityAccessService.create(TestModel.class, newModel);
 
-            // assert
-            // let's get them all, be careful with this, obviously. there is also a filtering method
-            final List<TestModel> foundTestModels = entityAccessService.getAll(TestModel.class);
+    // assert
+    // let's get them all, be careful with this, obviously. there is also a filtering method
+    final List<TestModel> foundTestModels = entityAccessService.getAll(TestModel.class);
 
-            // verify we're greater than 0
-            assert foundTestModels.size() > 0;
+    // verify we're greater than 0
+    assert foundTestModels.size() > 0;
 
-            final TestModel foundTestModel = foundTestModels.get(0);
+    final TestModel foundTestModel = foundTestModels.get(0);
 
-            // verify that we incremented the id
-            assert foundTestModel.getId() > 0;
-            // verify that the name is the same one we are expecting
-            assert testName.equals(foundTestModel.getName());
-        }
-        finally {
-            // clean up after ourselves
-            databaseFile.delete();
-        }
+    // verify that we incremented the id
+    assert foundTestModel.getId() > 0;
+    // verify that the name is the same one we are expecting
+    assert testName.equals(foundTestModel.getName());
+}
+finally {
+    // clean up after ourselves
+    databaseFile.delete();
+}
 ```
 
 
