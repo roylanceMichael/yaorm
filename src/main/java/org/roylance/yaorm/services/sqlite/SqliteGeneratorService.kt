@@ -1,89 +1,56 @@
-package org.roylance.yaorm.utilities
+package org.roylance.yaorm.services.sqlite
 
 import com.google.common.base.Optional
+import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.services.ISqlGeneratorService
+import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
-public object SqlUtilities {
+public class SqliteGeneratorService : ISqlGeneratorService {
+
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
-
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
-
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
-
     private val DeleteTableTemplate = "delete from %s where id=%s;"
-
     private val WhereClauseTemplate = "select * from %s where %s;"
-
     private val SelectAllTemplate = "select * from %s;"
-
     private val PrimaryKey = "primary key"
 
     private val AutoIncrement = "autoincrement"
 
-    private val Space = " "
-
-    private val Comma = ","
-
-    private val Equals = "="
-
-    private val SemiColon = ";"
-
-    private val CarriageReturn = '\n'
-
-    private val SpacedUnion =  CarriageReturn + "union "
-
-    private val SpacedAnd = " and "
-
     private val SqlIntegerName = "integer"
-
     private val SqlTextName = "text"
-
     private val SqlRealName = "real"
-
     private val SqlBlobName = "blob"
 
-    public  val Get:String = "get"
+    override public val javaIdName: String = "id"
 
-    public  val Set:String = "set"
-
-    public val JavaGetIdName:String = "getId"
-
-    public val JavaIdName: String = "id"
-
-    public val JavaFullyQualifiedStringName: String = "String"
-
-    public val JavaStringName: String = "java.lang.String"
-
-    public val JavaDoubleName: String = "double"
-
-    public val JavaIntegerName: String = "int"
-
-    public val JavaLongName: String = "long"
-
-    public val JavaByteName: String = "byte"
-
-    public val JavaBooleanName: String = "boolean"
-
-    private val GetSetLength = Get.length()
-
-    public val JavaTypeToSqliteType: Map<String, String> = object : HashMap<String, String>() {
+    override public val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
         init {
-            put(JavaFullyQualifiedStringName, SqlTextName)
-            put(JavaStringName, SqlTextName)
-            put(JavaByteName, SqlBlobName)
-            put(JavaIntegerName, SqlIntegerName)
-            put(JavaDoubleName, SqlRealName)
-            put(JavaBooleanName, SqlIntegerName)
-            put(JavaLongName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName, SqlTextName)
+            put(CommonSqlDataTypeUtilities.JavaAltIntegerName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaAltLongName, SqlBlobName)
+            put(CommonSqlDataTypeUtilities.JavaAltDoubleName, SqlRealName)
+            put(CommonSqlDataTypeUtilities.JavaObjectName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaStringName, SqlTextName)
+            put(CommonSqlDataTypeUtilities.JavaByteName, SqlBlobName)
+            put(CommonSqlDataTypeUtilities.JavaIntegerName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaDoubleName, SqlRealName)
+            put(CommonSqlDataTypeUtilities.JavaBooleanName, SqlIntegerName)
+            put(CommonSqlDataTypeUtilities.JavaLongName, SqlIntegerName)
         }
     }
 
-    public fun <T> buildDeleteAll(classModel: Class<T>) : String {
+    override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
+        return "drop table ${classType.simpleName}"
+    }
+
+    override public fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
         return "delete from ${classModel.simpleName}"
     }
 
-    public fun <T> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
+    override public fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
 
         val tableName = classModel.simpleName
         val nameTypeMap = HashMap<String, Tuple<String>>()
@@ -94,18 +61,18 @@ public object SqlUtilities {
 
         classModel
                 .methods
-                .filter { it.name.startsWith(Set) }
+                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
                 .forEach {
-                    val actualName = SqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(GetSetLength))
+                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
                     if (nameTypeMap.containsKey(actualName) &&
-                            !JavaIdName.equals(actualName)) {
+                            !javaIdName.equals(actualName)) {
                         columnNames.add(actualName)
                     }
                 }
 
-        val commaSeparatedColumnNames = columnNames.join(Comma)
+        val commaSeparatedColumnNames = columnNames.join(CommonSqlDataTypeUtilities.Comma)
         val initialStatement = "insert into $tableName ($commaSeparatedColumnNames) "
         val selectStatements = ArrayList<String>()
 
@@ -115,16 +82,16 @@ public object SqlUtilities {
 
                     classModel
                             .methods
-                            .filter { it.name.startsWith(Get) }
+                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                             .forEach {
-                                val actualName = SqlDataTypeUtilities.lowercaseFirstChar(
-                                        it.name.substring(GetSetLength))
+                                val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
                                 if (nameTypeMap.containsKey(actualName) &&
-                                        !JavaIdName.equals(actualName)) {
+                                        !javaIdName.equals(actualName)) {
 
                                     val instanceValue = it.invoke(instance)
-                                    val cleansedValue = SqlDataTypeUtilities.getFormattedString(instanceValue)
+                                    val cleansedValue = CommonSqlDataTypeUtilities.getFormattedString(instanceValue)
 
                                     if (valueColumnPairs.isEmpty()) {
                                         valueColumnPairs.add("select $cleansedValue as $actualName")
@@ -135,25 +102,25 @@ public object SqlUtilities {
                                 }
                             }
 
-                    selectStatements.add(valueColumnPairs.join(Comma))
+                    selectStatements.add(valueColumnPairs.join(CommonSqlDataTypeUtilities.Comma))
                 }
 
-        val unionSeparatedStatements = selectStatements.join(SpacedUnion)
+        val unionSeparatedStatements = selectStatements.join(CommonSqlDataTypeUtilities.SpacedUnion)
 
-        return "$initialStatement $unionSeparatedStatements$SemiColon"
+        return "$initialStatement $unionSeparatedStatements${CommonSqlDataTypeUtilities.SemiColon}"
     }
 
-    public fun <T> buildSelectAll(classModel: Class<T>): String {
+    override public fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    public fun <T,K> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, K>, operator:String=Equals): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, Any>, operator:String): Optional<String> {
 
         val tableName = classModel.simpleName
         val andItems = ArrayList<String>()
 
         for (columnName in values.keySet()) {
-            val stringValue = SqlDataTypeUtilities.getFormattedString(values.get(columnName))
+            val stringValue = CommonSqlDataTypeUtilities.getFormattedString(values.get(columnName))
 
             andItems.add(columnName + operator + stringValue)
         }
@@ -161,24 +128,24 @@ public object SqlUtilities {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 tableName,
-                andItems.join(SpacedAnd))
+                andItems.join(CommonSqlDataTypeUtilities.SpacedAnd))
 
         return Optional.of<String>(whereSql)
     }
 
-    public fun <T,K> buildDeleteTable(classModel: Class<T>, primaryKey: K): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): Optional<String> {
 
         val tableName = classModel.simpleName
 
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 tableName,
-                SqlDataTypeUtilities.getFormattedString(primaryKey))
+                CommonSqlDataTypeUtilities.getFormattedString(primaryKey))
 
         return Optional.of<String>(deleteSql)
     }
 
-    public fun <T> buildUpdateTable(classModel: Class<T>, updateModel: T): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): Optional<String> {
         try {
 
             val nameTypeMap = HashMap<String, Tuple<String>>()
@@ -196,19 +163,19 @@ public object SqlUtilities {
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(Get) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
-                        val actualName = SqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(GetSetLength))
+                        val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
                         val actualValue = it.invoke(updateModel)
-                        val stringValue = SqlDataTypeUtilities.getFormattedString(actualValue)
+                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
 
-                        if (JavaIdName.equals(actualName)) {
+                        if (javaIdName.equals(actualName)) {
                             stringId = stringValue
                         }
                         else if (nameTypeMap.containsKey(actualName)) {
-                            updateKvp.add(actualName + Equals + stringValue)
+                            updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
                         }
                     }
 
@@ -219,7 +186,7 @@ public object SqlUtilities {
             val updateSql = java.lang.String.format(
                     UpdateTableSingleTemplate,
                     tableName,
-                    updateKvp.join(Comma + Space),
+                    updateKvp.join(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     stringId!!)
 
             return Optional.of(updateSql)
@@ -230,7 +197,7 @@ public object SqlUtilities {
 
     }
 
-    public fun <T> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String> {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
 
@@ -242,25 +209,25 @@ public object SqlUtilities {
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(Get) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
-                        val actualName = SqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(GetSetLength))
+                        val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
                         if (nameTypeMap.containsKey(actualName) &&
-                                !JavaIdName.equals(actualName)) {
+                                !javaIdName.equals(actualName)) {
                             columnNames.add(actualName)
 
                             val instanceValue = it.invoke(newInsertModel)
-                            values.add(SqlDataTypeUtilities.getFormattedString(instanceValue))
+                            values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
                         }
                     }
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     classModel.simpleName,
-                    columnNames.join(Comma),
-                    values.join(Comma))
+                    columnNames.join(CommonSqlDataTypeUtilities.Comma),
+                    values.join(CommonSqlDataTypeUtilities.Comma))
 
             return Optional.of(insertSql)
         } catch (e: Exception) {
@@ -269,7 +236,7 @@ public object SqlUtilities {
         }
     }
 
-    public fun <T> buildInitialTableCreate(classType: Class<T>): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): Optional<String> {
 
         val nameTypes = this.getNameTypes(classType)
 
@@ -279,21 +246,21 @@ public object SqlUtilities {
 
         val workspace = StringBuilder()
 
-        workspace.append(JavaIdName)
-                .append(Space)
+        workspace.append(javaIdName)
+                .append(CommonSqlDataTypeUtilities.Space)
                 .append(SqlIntegerName)
-                .append(Space)
+                .append(CommonSqlDataTypeUtilities.Space)
                 .append(PrimaryKey)
-                .append(Space)
+                .append(CommonSqlDataTypeUtilities.Space)
                 .append(AutoIncrement)
 
         for (nameType in getNameTypes(classType)) {
-            if (!JavaIdName.equals(nameType.first)) {
+            if (!javaIdName.equals(nameType.first)) {
                 workspace
-                        .append(Comma)
-                        .append(Space)
+                        .append(CommonSqlDataTypeUtilities.Comma)
+                        .append(CommonSqlDataTypeUtilities.Space)
                         .append(nameType.first)
-                        .append(Space)
+                        .append(CommonSqlDataTypeUtilities.Space)
                         .append(nameType.third)
             }
         }
@@ -306,36 +273,36 @@ public object SqlUtilities {
         return Optional.of<String>(createTableSql)
     }
 
-    private fun <T> getNameTypes(classModel: Class<T>): List<Tuple<String>> {
+    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<Tuple<String>> {
         val nameTypes = ArrayList<Tuple<String>>()
         var foundIdColumnName = false
 
         val propertyNames = classModel
                 .methods
-                .filter { it.name.startsWith(Set) }
-                .map { it.name.substring(GetSetLength) }
+                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
+                .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
                 .toHashSet()
 
         // let's handle the types now
         classModel
                 .methods
                 .filter {
-                    it.name.startsWith(Get) &&
-                            propertyNames.contains(it.name.substring(GetSetLength))
+                    it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
                 }
                 .forEach {
-                    val columnName = it.name.substring(GetSetLength)
+                    val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
                     val javaType = it.returnType.name
 
-                    if (JavaTypeToSqliteType.containsKey(javaType)) {
-                        val sqlColumnName = SqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(GetSetLength)
+                    if (this.javaTypeToSqlType.containsKey(javaType)) {
+                        val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
                         )
 
                         val javaColumnName = columnName
-                        val dataType = JavaTypeToSqliteType.get(javaType)
+                        val dataType = this.javaTypeToSqlType.get(javaType)
 
-                        if (JavaIdName.equals(sqlColumnName)) {
+                        if (javaIdName.equals(sqlColumnName)) {
                             foundIdColumnName = true
                         }
 

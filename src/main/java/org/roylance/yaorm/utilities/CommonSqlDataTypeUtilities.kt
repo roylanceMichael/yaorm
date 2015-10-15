@@ -1,13 +1,35 @@
 package org.roylance.yaorm.utilities
 
-public object SqlDataTypeUtilities {
-    private val Set = "set"
-
+public object CommonSqlDataTypeUtilities {
     private val Null = "null"
-
     private val SingleQuote = "'"
-
     private val DoubleSingleQuote = "''"
+
+    public val Space = " "
+    public val Comma = ","
+    public val Equals = "="
+    public val SemiColon = ";"
+    public val CarriageReturn = '\n'
+    public val SpacedUnion = "${CarriageReturn}union "
+    public val SpacedAnd = " and "
+
+
+    public val JavaFullyQualifiedStringName: String = "String"
+    public val JavaObjectName: String = "java.lang.Object"
+    public val JavaStringName: String = "java.lang.String"
+    public val JavaDoubleName: String = "double"
+    public val JavaAltDoubleName: String = "double"
+    public val JavaIntegerName: String = "int"
+    public val JavaAltIntegerName: String = "Integer"
+    public val JavaLongName: String = "long"
+    public val JavaAltLongName: String = "Long"
+    public val JavaByteName: String = "byte"
+    public val JavaBooleanName: String = "boolean"
+    public val JavaAltBooleanName: String = "Boolean"
+
+    public val Get:String = "get"
+    public val Set:String = "set"
+    public val GetSetLength = Get.length()
 
     public fun getFormattedString(value: Any?): String {
         if (value == null) {

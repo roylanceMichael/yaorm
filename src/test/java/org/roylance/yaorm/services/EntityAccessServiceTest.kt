@@ -4,6 +4,7 @@ import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.sqlite.SqliteConnectionSourceFactory
+import org.roylance.yaorm.services.sqlite.SqliteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.io.File
 
@@ -27,7 +28,8 @@ public class EntityAccessServiceTest {
 
         val sourceConnection = SqliteConnectionSourceFactory(database.absolutePath)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
-        val entityService = EntityAccessService(granularDatabaseService)
+        val sqliteGeneratorService = SqliteGeneratorService()
+        val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
         val newBeacon = BeaconBroadcastModel(
                 beaconId = beaconId,
