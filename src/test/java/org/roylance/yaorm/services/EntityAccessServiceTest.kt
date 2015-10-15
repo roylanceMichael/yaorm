@@ -16,47 +16,101 @@ import java.util.*
  */
 public class EntityAccessServiceTest {
     @Test
-    public fun simpleCreateTest() {
+    public fun readmeTest() {
         // arrange
-        val database = File("testDatabase.db")
-        if (database.exists()) {
+        val database = File(UUID.randomUUID().toString())
+        try {
+            if (database.exists()) {
+                database.delete()
+            }
+
+            val beaconId = "test"
+            val majorId = 1
+            val minorId = 2
+            val isActive = true
+            val cachedName = "mike"
+
+            val sourceConnection = SqliteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
+            val sqliteGeneratorService = SqliteGeneratorService()
+            val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
+
+            val newBeacon = BeaconBroadcastModel(
+                    beaconId = beaconId,
+                    majorId = majorId,
+                    minorId = minorId,
+                    isActive = isActive,
+                    cachedName = cachedName)
+
+            // act
+            entityService.instantiate(BeaconBroadcastModel::class.java)
+            entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+
+            // assert
+            val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+
+            Assert.assertEquals(1, allBeacons.size())
+
+            val foundBeacon = allBeacons.first()
+            Assert.assertEquals(1, foundBeacon.id)
+            Assert.assertEquals(beaconId, foundBeacon.beaconId)
+            Assert.assertEquals(majorId, foundBeacon.majorId)
+            Assert.assertEquals(minorId, foundBeacon.minorId)
+            Assert.assertEquals(isActive, foundBeacon.isActive)
+            Assert.assertEquals(cachedName, foundBeacon.cachedName)
+        }
+        finally {
             database.delete()
         }
+    }
 
-        val beaconId = "test"
-        val majorId = 1
-        val minorId = 2
-        val isActive = true
-        val cachedName = "mike"
+    @Test
+    public fun simpleCreateTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString())
+        try {
+            if (database.exists()) {
+                database.delete()
+            }
 
-        val sourceConnection = SqliteConnectionSourceFactory(database.absolutePath)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
-        val sqliteGeneratorService = SqliteGeneratorService()
-        val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
+            val beaconId = "test"
+            val majorId = 1
+            val minorId = 2
+            val isActive = true
+            val cachedName = "mike"
 
-        val newBeacon = BeaconBroadcastModel(
-                beaconId = beaconId,
-                majorId = majorId,
-                minorId = minorId,
-                isActive = isActive,
-                cachedName = cachedName)
+            val sourceConnection = SqliteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
+            val sqliteGeneratorService = SqliteGeneratorService()
+            val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
-        // act
-        entityService.instantiate(BeaconBroadcastModel::class.java)
-        entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+            val newBeacon = BeaconBroadcastModel(
+                    beaconId = beaconId,
+                    majorId = majorId,
+                    minorId = minorId,
+                    isActive = isActive,
+                    cachedName = cachedName)
 
-        // assert
-        val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+            // act
+            entityService.instantiate(BeaconBroadcastModel::class.java)
+            entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
 
-        Assert.assertEquals(1, allBeacons.size())
+            // assert
+            val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
 
-        val foundBeacon = allBeacons.first()
-        Assert.assertEquals(1, foundBeacon.id)
-        Assert.assertEquals(beaconId, foundBeacon.beaconId)
-        Assert.assertEquals(majorId, foundBeacon.majorId)
-        Assert.assertEquals(minorId, foundBeacon.minorId)
-        Assert.assertEquals(isActive, foundBeacon.isActive)
-        Assert.assertEquals(cachedName, foundBeacon.cachedName)
+            Assert.assertEquals(1, allBeacons.size())
+
+            val foundBeacon = allBeacons.first()
+            Assert.assertEquals(1, foundBeacon.id)
+            Assert.assertEquals(beaconId, foundBeacon.beaconId)
+            Assert.assertEquals(majorId, foundBeacon.majorId)
+            Assert.assertEquals(minorId, foundBeacon.minorId)
+            Assert.assertEquals(isActive, foundBeacon.isActive)
+            Assert.assertEquals(cachedName, foundBeacon.cachedName)
+        }
+        finally {
+            database.delete()
+        }
     }
 
     // @Test
