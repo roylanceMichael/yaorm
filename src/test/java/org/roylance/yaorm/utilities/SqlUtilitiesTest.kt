@@ -72,8 +72,10 @@ public class SqlUtilitiesTest {
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "select * from BeaconBroadcastModel where cachedName='mike';"
 
-        val whereClause = ArrayList<WhereClauseItem>()
-        whereClause.add(WhereClauseItem(BeaconBroadcastModel.CachedNameName, WhereClauseItem.Equals, "mike"))
+        val whereClause = WhereClauseItem(
+                BeaconBroadcastModel.CachedNameName,
+                WhereClauseItem.Equals,
+                "mike")
 
         // act
         val whereSql = sqliteGeneratorService.buildWhereClause(BeaconBroadcastModel::class.java, whereClause)

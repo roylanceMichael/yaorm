@@ -12,6 +12,8 @@ public object CommonSqlDataTypeUtilities {
     public val CarriageReturn = '\n'
     public val SpacedUnion = "${CarriageReturn}union "
     public val SpacedAnd = " and "
+    public val And = "and"
+    public val Or = "or"
 
 
     public val JavaFullyQualifiedStringName: String = "String"

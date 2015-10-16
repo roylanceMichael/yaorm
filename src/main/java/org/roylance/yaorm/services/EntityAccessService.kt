@@ -12,8 +12,8 @@ public class EntityAccessService(
     override fun <K, T : IEntity<K>> updateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
-            criteria: Map<String, Any>): Boolean {
-        val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(classModel, newValues, criteria)
+            whereClauseItem: WhereClauseItem): Boolean {
+        val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(classModel, newValues, whereClauseItem)
         if (!updateSql.isPresent) {
             return false
         }
@@ -86,9 +86,7 @@ public class EntityAccessService(
     }
 
     override fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): Optional<T> {
-        val whereClause = ArrayList<WhereClauseItem>()
-        whereClause.add(WhereClauseItem(this.sqlGeneratorService.javaIdName, SqlOperators.Equals, id as Any))
-
+        val whereClause = WhereClauseItem(this.sqlGeneratorService.javaIdName, SqlOperators.Equals, id as Any)
         val whereSql = this.sqlGeneratorService.buildWhereClause(classModel, whereClause)
 
         if (!whereSql.isPresent) {
@@ -122,7 +120,7 @@ public class EntityAccessService(
         return returnItems
     }
 
-    override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClause: List<WhereClauseItem>): List<T> {
+    override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClause: WhereClauseItem): List<T> {
         val whereSql =
                 this.sqlGeneratorService.buildWhereClause(
                         classModel,

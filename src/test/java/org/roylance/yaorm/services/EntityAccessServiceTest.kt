@@ -2,6 +2,7 @@ package org.roylance.yaorm.services
 
 import org.junit.Assert
 import org.junit.Test
+import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.hive.HiveConnectionSourceFactory
 import org.roylance.yaorm.services.hive.HiveGeneratorService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
@@ -187,8 +188,7 @@ public class EntityAccessServiceTest {
         newValues.put(BeaconBroadcastModel.MajorIdName, newMajorId)
         newValues.put(BeaconBroadcastModel.MinorIdName, newMinorId)
 
-        val criteria = HashMap<String, Any>()
-        criteria.put(BeaconBroadcastModel.CachedNameName, cachedName)
+        val criteria = WhereClauseItem(BeaconBroadcastModel.CachedNameName, WhereClauseItem.Equals, cachedName)
 
         // act
         entityService.updateWithCriteria(BeaconBroadcastModel::class.java, newValues, criteria)

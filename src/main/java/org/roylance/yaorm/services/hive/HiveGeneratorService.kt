@@ -51,7 +51,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
-            criteria: Map<String, Any>): Optional<String> {
+            whereClauseItem: WhereClauseItem): Optional<String> {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
             getNameTypes(classModel)
@@ -61,15 +61,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
                 return Optional.absent()
             }
 
-            val tableName = classModel.simpleName
-            val criteriaList = criteria
-                    .map { kvp ->
-                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(kvp.value)
-                        "${kvp.key}${CommonSqlDataTypeUtilities.Equals}$stringValue"
-                    }
-
-            var criteriaString: String = criteriaList.join(CommonSqlDataTypeUtilities.SpacedAnd)
-
+            var criteriaString: String = this.buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 
             newValues
@@ -87,7 +79,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
             val updateSql = java.lang.String.format(
                     UpdateTableMultipleTemplate,
-                    tableName,
+                    classModel.simpleName,
                     updateKvp.join(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     criteriaString)
 
@@ -164,17 +156,13 @@ public class HiveGeneratorService : ISqlGeneratorService {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override fun <K, T : IEntity<K>> buildWhereClause(classModel: Class<T>, values: List<WhereClauseItem>): Optional<String> {
-        val andItems = values
-            .map {
-                val stringValue = CommonSqlDataTypeUtilities.getFormattedString(it.rightSide)
-                it.leftSide + it.operator + stringValue
-            }
+    override fun <K, T : IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): Optional<String> {
+        val whereClauseItems = this.buildWhereClause(whereClauseItem)
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
-                andItems.join(CommonSqlDataTypeUtilities.SpacedAnd))
+                whereClauseItems)
 
         return Optional.of<String>(whereSql)
     }
@@ -312,6 +300,24 @@ public class HiveGeneratorService : ISqlGeneratorService {
                 10)
 
         return Optional.of<String>(createTableSql)
+    }
+
+    private fun buildWhereClause(whereClauseItem: WhereClauseItem):String {
+        val filterItems = StringBuilder()
+        var currentWhereClauseItem:WhereClauseItem? = whereClauseItem
+
+        while (currentWhereClauseItem != null) {
+            val stringValue = CommonSqlDataTypeUtilities.getFormattedString(currentWhereClauseItem.rightSide)
+            filterItems.append(currentWhereClauseItem.leftSide + currentWhereClauseItem.operator + stringValue + CommonSqlDataTypeUtilities.Space)
+
+            if (currentWhereClauseItem.connectingAndOr != null) {
+                filterItems.append(currentWhereClauseItem.connectingAndOr)
+            }
+
+            currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
+        }
+
+        return filterItems.toString()
     }
 
     private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<Tuple<String>> {

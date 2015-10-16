@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.5-SNAPSHOT'
+version '0.6-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -25,7 +25,6 @@ artifactory {
             password = ''
             maven = true
         }
-
         defaults {
             publications('mavenJava')
             publishBuildInfo = true
