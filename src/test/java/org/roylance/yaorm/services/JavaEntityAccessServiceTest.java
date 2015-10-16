@@ -2,8 +2,8 @@ package org.roylance.yaorm.services;
 
 import org.junit.Test;
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService;
-import org.roylance.yaorm.services.sqlite.SqliteConnectionSourceFactory;
-import org.roylance.yaorm.services.sqlite.SqliteGeneratorService;
+import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory;
+import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService;
 import org.roylance.yaorm.testmodels.TestModel;
 
 import java.io.File;
@@ -29,13 +29,13 @@ public class JavaEntityAccessServiceTest {
             final String testName = "NameToTest";
 
             // this is the factory for the SQLite connection. Note, on Android, you can implement this interface and hook it in
-            final IConnectionSourceFactory sourceConnection = new SqliteConnectionSourceFactory(databaseFile.getAbsolutePath());
+            final IConnectionSourceFactory sourceConnection = new SQLiteConnectionSourceFactory(databaseFile.getAbsolutePath());
 
             // this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
             final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(sourceConnection.getConnectionSource());
 
             // this is the service that generates the sql for SQLite.
-            final ISqlGeneratorService sqlGeneratorService = new SqliteGeneratorService();
+            final ISqlGeneratorService sqlGeneratorService = new SQLiteGeneratorService();
 
             // this entity access service uses the previous dependencies to do common CRUD operations against the data store
             final IEntityAccessService entityAccessService = new EntityAccessService(granularDatabaseService, sqlGeneratorService);
@@ -62,6 +62,7 @@ public class JavaEntityAccessServiceTest {
 
             // verify that we incremented the id
             assert foundTestModel.getId() > 0;
+
             // verify that the name is the same one we are expecting
             assert testName.equals(foundTestModel.getName());
         }

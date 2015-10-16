@@ -5,8 +5,8 @@ import org.junit.Test
 import org.roylance.yaorm.services.hive.HiveConnectionSourceFactory
 import org.roylance.yaorm.services.hive.HiveGeneratorService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.services.sqlite.SqliteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SqliteGeneratorService
+import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
+import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.io.File
 import java.util.*
@@ -30,9 +30,9 @@ public class EntityAccessServiceTest {
             val isActive = true
             val cachedName = "mike"
 
-            val sourceConnection = SqliteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
-            val sqliteGeneratorService = SqliteGeneratorService()
+            val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
             val newBeacon = BeaconBroadcastModel(
@@ -79,9 +79,9 @@ public class EntityAccessServiceTest {
             val isActive = true
             val cachedName = "mike"
 
-            val sourceConnection = SqliteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
-            val sqliteGeneratorService = SqliteGeneratorService()
+            val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
             val newBeacon = BeaconBroadcastModel(
@@ -154,7 +154,7 @@ public class EntityAccessServiceTest {
         Assert.assertEquals(cachedName, foundBeacon.cachedName)
     }
 
-    @Test
+    // @Test
     public fun simpleCreateUpdateHiveTest() {
         // arrange
         val beaconId = "test"

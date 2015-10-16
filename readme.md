@@ -110,13 +110,13 @@ try  {
     final String testName = "NameToTest";
 
     // this is the factory for the SQLite connection. Note, on Android, you can implement this interface and hook it in
-    final IConnectionSourceFactory sourceConnection = new SqliteConnectionSourceFactory(databaseFile.getAbsolutePath());
+    final IConnectionSourceFactory sourceConnection = new SQLiteConnectionSourceFactory(databaseFile.getAbsolutePath());
 
     // this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
     final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(sourceConnection.getConnectionSource());
 
     // this is the service that generates the sql for SQLite.
-    final ISqlGeneratorService sqlGeneratorService = new SqliteGeneratorService();
+    final ISqlGeneratorService sqlGeneratorService = new SQLiteGeneratorService();
 
     // this entity access service uses the previous dependencies to do common CRUD operations against the data store
     final IEntityAccessService entityAccessService = new EntityAccessService(granularDatabaseService, sqlGeneratorService);
@@ -143,6 +143,7 @@ try  {
 
     // verify that we incremented the id
     assert foundTestModel.getId() > 0;
+
     // verify that the name is the same one we are expecting
     assert testName.equals(foundTestModel.getName());
 }
@@ -158,6 +159,10 @@ finally {
 ### Anything else you can tell me?
 
 I currently have SQlite and Hive implemented, as those are both backends that I currently use. I'll do more as I need them.
+
+For Hive, make sure that you have ACID compliance turned on. This will not work otherwise.
+
+For Android, I implemented the IGranularDatabaseService and ICursor with Android specific libraries (they do things outside of JDBC).
 
 This isn't even alpha yet, but I am using this code in my libraries (and there are tests). So use with caution. Pull requests welcome, I will review. 
 

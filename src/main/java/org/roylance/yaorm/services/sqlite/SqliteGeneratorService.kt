@@ -7,7 +7,7 @@ import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
-public class SqliteGeneratorService : ISqlGeneratorService {
+public class SQLiteGeneratorService : ISqlGeneratorService {
 
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"

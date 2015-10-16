@@ -7,14 +7,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SqliteConnectionSourceFactory
+public class SQLiteConnectionSourceFactory
         implements IConnectionSourceFactory {
 
     private static final String SqliteJdbcDbTemplate = "jdbc:sqlite:%1$s";
     private final Connection commonConnection;
     private boolean isClosed;
 
-    public SqliteConnectionSourceFactory(
+    public SQLiteConnectionSourceFactory(
             @NotNull String dbPath) throws SQLException {
         this.commonConnection = DriverManager.getConnection(
                 String.format(SqliteJdbcDbTemplate, dbPath));
