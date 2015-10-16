@@ -7,11 +7,11 @@ import org.roylance.yaorm.utilities.SqlOperators
  * Created by mikeroylance on 10/16/15.
  */
 public class WhereClauseItem (
-        public val leftSide:String,
-        public val operator:String,
-        public val rightSide:Any,
-        public val connectingAndOr:String?=null,
-        public val connectingWhereClause:WhereClauseItem?=null) {
+        public var leftSide:String,
+        public var operator:String,
+        public var rightSide:Any,
+        public var connectingAndOr:String?=null,
+        public var connectingWhereClause:WhereClauseItem?=null) {
     companion object {
         public val Equals:String = SqlOperators.Equals
         public val GreaterThan:String = SqlOperators.GreaterThan
