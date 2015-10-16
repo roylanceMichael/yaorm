@@ -18,13 +18,13 @@ public class TestModel implements IEntity<Integer> {
         return this.name;
     }
 
-    public TestModel setId(int value) {
-        this.id = value;
-        return this;
-    }
-
     public TestModel setName(String value) {
         this.name = value;
         return this;
+    }
+
+    @Override
+    public void setId(Integer value) {
+        this.id = value;
     }
 }

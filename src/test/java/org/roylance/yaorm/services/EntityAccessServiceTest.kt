@@ -20,10 +20,6 @@ public class EntityAccessServiceTest {
         // arrange
         val database = File(UUID.randomUUID().toString())
         try {
-            if (database.exists()) {
-                database.delete()
-            }
-
             val beaconId = "test"
             val majorId = 1
             val minorId = 2
@@ -58,9 +54,12 @@ public class EntityAccessServiceTest {
             Assert.assertEquals(minorId, foundBeacon.minorId)
             Assert.assertEquals(isActive, foundBeacon.isActive)
             Assert.assertEquals(cachedName, foundBeacon.cachedName)
+            database.deleteOnExit()
         }
         finally {
-            database.delete()
+            if (database.exists()) {
+                database.delete()
+            }
         }
     }
 
@@ -69,10 +68,6 @@ public class EntityAccessServiceTest {
         // arrange
         val database = File(UUID.randomUUID().toString())
         try {
-            if (database.exists()) {
-                database.delete()
-            }
-
             val beaconId = "test"
             val majorId = 1
             val minorId = 2
@@ -107,9 +102,12 @@ public class EntityAccessServiceTest {
             Assert.assertEquals(minorId, foundBeacon.minorId)
             Assert.assertEquals(isActive, foundBeacon.isActive)
             Assert.assertEquals(cachedName, foundBeacon.cachedName)
+            database.delete()
         }
         finally {
-            database.delete()
+            if (database.exists()) {
+                database.delete()
+            }
         }
     }
 
