@@ -2,6 +2,7 @@ package org.roylance.yaorm.services
 
 import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
+import org.roylance.yaorm.models.WhereClauseItem
 
 /**
  * Created by mikeroylance on 10/15/15.
@@ -24,6 +25,6 @@ public interface ISqlGeneratorService {
     public fun <K, T: IEntity<K>> buildUpdateWithCriteria(classModel: Class<T>, newValues: Map<String, Any>, criteria: Map<String, Any>): Optional<String>
 
     public fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String
-    public fun <K, T: IEntity<K>> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, Any>, operator:String): Optional<String>
+    public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, values: List<WhereClauseItem>): Optional<String>
 
 }

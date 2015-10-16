@@ -2,6 +2,7 @@ package org.roylance.yaorm.services
 
 import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
+import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
@@ -85,10 +86,10 @@ public class EntityAccessService(
     }
 
     override fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): Optional<T> {
-        val whereClause = HashMap<String, Any>()
-        whereClause.put(this.sqlGeneratorService.javaIdName, id as Any)
+        val whereClause = ArrayList<WhereClauseItem>()
+        whereClause.add(WhereClauseItem(this.sqlGeneratorService.javaIdName, SqlOperators.Equals, id as Any))
 
-        val whereSql = this.sqlGeneratorService.buildWhereClauseAnd(classModel, whereClause, SqlOperators.Equals)
+        val whereSql = this.sqlGeneratorService.buildWhereClause(classModel, whereClause)
 
         if (!whereSql.isPresent) {
             return Optional.absent()
@@ -121,12 +122,11 @@ public class EntityAccessService(
         return returnItems
     }
 
-    override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClause: Map<String, Any>, operator: String): List<T> {
+    override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClause: List<WhereClauseItem>): List<T> {
         val whereSql =
-                this.sqlGeneratorService.buildWhereClauseAnd(
+                this.sqlGeneratorService.buildWhereClause(
                         classModel,
-                        whereClause,
-                        operator)
+                        whereClause)
 
         if (!whereSql.isPresent) {
             return arrayListOf()

@@ -2,6 +2,7 @@ package org.roylance.yaorm.utilities
 
 import org.junit.Assert
 import org.junit.Test
+import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*
@@ -71,11 +72,11 @@ public class SqlUtilitiesTest {
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "select * from BeaconBroadcastModel where cachedName='mike';"
 
-        val whereClause = HashMap<String, Any>()
-        whereClause.put(BeaconBroadcastModel.CachedNameName, "mike")
+        val whereClause = ArrayList<WhereClauseItem>()
+        whereClause.add(WhereClauseItem(BeaconBroadcastModel.CachedNameName, WhereClauseItem.Equals, "mike"))
 
         // act
-        val whereSql = sqliteGeneratorService.buildWhereClauseAnd(BeaconBroadcastModel::class.java, whereClause, CommonSqlDataTypeUtilities.Equals)
+        val whereSql = sqliteGeneratorService.buildWhereClause(BeaconBroadcastModel::class.java, whereClause)
 
         // assert
         assert(whereSql.isPresent)

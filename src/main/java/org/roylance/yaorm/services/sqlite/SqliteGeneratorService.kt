@@ -3,6 +3,7 @@ package org.roylance.yaorm.services.sqlite
 import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
@@ -171,21 +172,19 @@ public class SQLiteGeneratorService : ISqlGeneratorService {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override public fun <K, T: IEntity<K>> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, Any>, operator:String): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, values: List<WhereClauseItem>): Optional<String> {
 
         val tableName = classModel.simpleName
-        val andItems = ArrayList<String>()
-
-        for (columnName in values.keySet()) {
-            val stringValue = CommonSqlDataTypeUtilities.getFormattedString(values.get(columnName))
-
-            andItems.add(columnName + operator + stringValue)
-        }
+        val filterItems = values
+            .map {
+                val stringValue = CommonSqlDataTypeUtilities.getFormattedString(it.rightSide)
+                it.leftSide + it.operator + stringValue
+            }
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 tableName,
-                andItems.join(CommonSqlDataTypeUtilities.SpacedAnd))
+                filterItems.join(CommonSqlDataTypeUtilities.SpacedAnd))
 
         return Optional.of<String>(whereSql)
     }

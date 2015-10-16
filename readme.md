@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile(group: 'org.roylance', name: 'yaorm', version: '0.2-20151015.213416-1')
+    compile(group: 'org.roylance', name: 'yaorm', version: '0.5-SNAPSHOT')
 }
 ```
 
@@ -54,7 +54,7 @@ Maven:
     <dependency>
         <groupId>org.roylance</groupId>
         <artifactId>yaorm</artifactId>
-        <version>0.2-20151015.213416-1</version>
+        <version>0.5-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
@@ -81,6 +81,7 @@ public class TestModel implements IEntity<Integer> {
         return this.name;
     }
 
+    @Override
     public TestModel setId(int value) {
         this.id = value;
         return this;

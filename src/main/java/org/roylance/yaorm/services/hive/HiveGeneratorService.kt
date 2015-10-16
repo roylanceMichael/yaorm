@@ -3,6 +3,7 @@ package org.roylance.yaorm.services.hive
 import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
@@ -163,13 +164,12 @@ public class HiveGeneratorService : ISqlGeneratorService {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override fun <K, T : IEntity<K>> buildWhereClauseAnd(classModel: Class<T>, values: Map<String, Any>, operator: String): Optional<String> {
-        val andItems = ArrayList<String>()
-
-        for (columnName in values.keySet()) {
-            val stringValue = CommonSqlDataTypeUtilities.getFormattedString(values.get(columnName))
-            andItems.add(columnName + operator + stringValue)
-        }
+    override fun <K, T : IEntity<K>> buildWhereClause(classModel: Class<T>, values: List<WhereClauseItem>): Optional<String> {
+        val andItems = values
+            .map {
+                val stringValue = CommonSqlDataTypeUtilities.getFormattedString(it.rightSide)
+                it.leftSide + it.operator + stringValue
+            }
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
