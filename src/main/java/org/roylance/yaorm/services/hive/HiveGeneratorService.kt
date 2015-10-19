@@ -12,7 +12,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
     private val constJavaIdName = "id"
 
-    private val CreateInitialTableTemplate = "create table %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
+    private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
     private val InsertIntoTableSingleTemplate = "insert into %s values (%s)"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s"
     private val UpdateTableMultipleTemplate = "update %s set %s where %s"
@@ -46,7 +46,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
         }
     }
 
-    override val bulkInsertSize: Int = 100000
+    override val bulkInsertSize: Int = 10000
 
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
@@ -96,6 +96,13 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
     override fun <K, T : IEntity<K>> buildDeleteAll(classModel: Class<T>): String {
         return "delete from ${classModel.simpleName}"
+    }
+
+    override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
+            classModel: Class<T>,
+            whereClauseItem: WhereClauseItem): String {
+        val whereClause = this.buildWhereClause(whereClauseItem)
+        return "delete from ${classModel.simpleName} where $whereClause"
     }
 
     override fun <K, T : IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>): String {

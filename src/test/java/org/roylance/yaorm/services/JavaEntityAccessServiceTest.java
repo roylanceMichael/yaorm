@@ -19,7 +19,7 @@ public class JavaEntityAccessServiceTest {
     public void readmeTest() throws SQLException {
         // arrange
         // create a unique file
-        final File databaseFile = new File(UUID.randomUUID().toString());
+        final File databaseFile = new File(UUID.randomUUID().toString().replace("-", ""));
         try  {
             // it shouldn't exist, but delete if it does, for some reason...
             if (databaseFile.exists()) {

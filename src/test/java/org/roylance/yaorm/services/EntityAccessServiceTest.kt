@@ -19,7 +19,7 @@ public class EntityAccessServiceTest {
     @Test
     public fun readmeTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString())
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val beaconId = "test"
             val majorId = 1
@@ -67,7 +67,8 @@ public class EntityAccessServiceTest {
     @Test
     public fun simpleCreateTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString())
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+
         try {
             val beaconId = "test"
             val majorId = 1
@@ -223,6 +224,7 @@ public class EntityAccessServiceTest {
         var i = 0
         val totalInsertValue = 2000
 
+        System.out.println("creating objects in memory")
         while (i < totalInsertValue) {
             val randomString = UUID.randomUUID().toString()
             beaconsToInsert.add(BeaconBroadcastModel(
@@ -238,11 +240,15 @@ public class EntityAccessServiceTest {
         }
 
         // act
+        System.out.println("dropping table")
         entityService.drop(BeaconBroadcastModel::class.java)
+        System.out.println("creating table")
         entityService.instantiate(BeaconBroadcastModel::class.java)
+        System.out.println("bulk inserting")
         entityService.bulkInsert(BeaconBroadcastModel::class.java, beaconsToInsert)
 
         // assert
+        System.out.println("verifying size...")
         val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
         Assert.assertEquals(totalInsertValue, allBeacons.size())
     }

@@ -49,6 +49,13 @@ public class SQLiteGeneratorService : ISqlGeneratorService {
 
     override val bulkInsertSize: Int = 500
 
+    override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
+            classModel: Class<T>,
+            whereClauseItem: WhereClauseItem): String {
+        val whereClause = this.buildWhereClause(whereClauseItem)
+        return "delete from ${classModel.simpleName} where $whereClause"
+    }
+
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
@@ -331,7 +338,7 @@ public class SQLiteGeneratorService : ISqlGeneratorService {
             currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
         }
 
-        return filterItems.toString()
+        return filterItems.toString().trim()
     }
 
     private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<Tuple<String>> {

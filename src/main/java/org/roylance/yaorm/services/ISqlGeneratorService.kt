@@ -17,6 +17,7 @@ public interface ISqlGeneratorService {
 
     public fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String
     public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): Optional<String>
+    public fun <K, T: IEntity<K>> buildDeleteWithCriteria(classModel: Class<T>, whereClauseItem: WhereClauseItem): String
 
     public fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String
     public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String>
