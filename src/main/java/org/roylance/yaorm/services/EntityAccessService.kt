@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
+import java.util.logging.Logger
 
 public class EntityAccessService(
         private val granularDatabaseService: IGranularDatabaseService,
@@ -61,16 +62,20 @@ public class EntityAccessService(
                     temporaryList.add(it)
 
                     if (temporaryList.size() >= this.sqlGeneratorService.bulkInsertSize) {
+                        logger.info { "inserting ${temporaryList.size()}" }
                         val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(classModel, temporaryList)
                         val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
+                        logger.info { "inserted ${temporaryList.size()}: result" }
                         results.add(result)
                         temporaryList.clear()
                     }
                 }
 
         if (!temporaryList.isEmpty()) {
+            logger.info { "inserting ${temporaryList.size()}" }
             val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(classModel, temporaryList)
             val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
+            logger.info { "inserted ${temporaryList.size()}: $result" }
             results.add(result)
         }
 
@@ -162,5 +167,9 @@ public class EntityAccessService(
 
     // for now, do nothing
     override fun close() {
+    }
+
+    companion object {
+        val logger = Logger.getLogger(EntityAccessService::class.java.simpleName)
     }
 }

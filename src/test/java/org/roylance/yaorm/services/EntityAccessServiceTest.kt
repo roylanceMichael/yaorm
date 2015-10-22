@@ -215,7 +215,7 @@ public class EntityAccessServiceTest {
         val cachedName = "mike"
 
         val hiveGeneratorService = HiveGeneratorService()
-        val sourceConnection = HiveConnectionSourceFactory("dev-sherlock-hadoop1.local", "10000", "default")
+        val sourceConnection = HiveConnectionSourceFactory("dev-sherlock-hadoop2.local", "10000", "default")
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 

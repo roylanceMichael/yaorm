@@ -46,7 +46,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
         }
     }
 
-    override val bulkInsertSize: Int = 10000
+    override val bulkInsertSize: Int = 100000
 
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,

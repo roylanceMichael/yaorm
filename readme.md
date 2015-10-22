@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile(group: 'org.roylance', name: 'yaorm', version: '0.5-SNAPSHOT')
+    compile(group: 'org.roylance', name: 'yaorm', version: '0.10-SNAPSHOT')
 }
 ```
 
@@ -54,7 +54,7 @@ Maven:
     <dependency>
         <groupId>org.roylance</groupId>
         <artifactId>yaorm</artifactId>
-        <version>0.5-SNAPSHOT</version>
+        <version>0.10-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
