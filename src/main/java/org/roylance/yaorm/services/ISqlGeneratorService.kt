@@ -4,9 +4,6 @@ import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 
-/**
- * Created by mikeroylance on 10/15/15.
- */
 public interface ISqlGeneratorService {
     public val javaIdName: String
     public val javaTypeToSqlType: Map<String, String>

@@ -105,8 +105,8 @@ public class SqlUtilitiesTest {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = """insert into BeaconBroadcastModel (beaconId,majorId,minorId,active,cachedName,lastSeen)  select 'test1' as beaconId,0 as majorId,0 as minorId,0 as active,'test1' as cachedName,0 as lastSeen
-union select 'test2' as beaconId,0 as majorId,1 as minorId,0 as isActive,'test2' as cachedName,0 as lastSeen
-union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as isActive,'test3' as cachedName,0 as lastSeen;""".trim()
+union select 'test2' as beaconId,0 as majorId,1 as minorId,0 as active,'test2' as cachedName,0 as lastSeen
+union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as active,'test3' as cachedName,0 as lastSeen;""".trim()
 
         val broadcastModels = ArrayList<BeaconBroadcastModel>()
         val firstModel = BeaconBroadcastModel(beaconId = "test1", majorId = 0, minorId = 0, cachedName = "test1")

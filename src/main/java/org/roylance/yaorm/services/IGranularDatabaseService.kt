@@ -4,5 +4,5 @@ import org.roylance.yaorm.models.IEntity
 
 public interface IGranularDatabaseService {
     public fun executeUpdateQuery(query:String):Boolean
-    public fun executeSelectQuery<K, T: IEntity<K>>(classModel:Class<T>, query:String): ICursor<T>
+    public fun <K, T: IEntity<K>> executeSelectQuery(classModel:Class<T>, query:String): ICursor<T>
 }

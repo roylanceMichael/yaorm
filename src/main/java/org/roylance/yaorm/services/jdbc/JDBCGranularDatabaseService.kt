@@ -12,7 +12,7 @@ public class JDBCGranularDatabaseService(
         return statement.executeUpdate(query) > 0
     }
 
-    override fun executeSelectQuery<K, T: IEntity<K>>(classModel:Class<T>, query: String): ICursor<T> {
+    override fun <K, T: IEntity<K>> executeSelectQuery(classModel:Class<T>, query: String): ICursor<T> {
         val statement = this.connection.createStatement()
         val resultSet = statement.executeQuery(query)
         return JDBCCursor(classModel, resultSet)

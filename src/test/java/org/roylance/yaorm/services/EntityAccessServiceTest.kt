@@ -46,7 +46,7 @@ public class EntityAccessServiceTest {
             // assert
             val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
 
-            Assert.assertEquals(1, allBeacons.size())
+            Assert.assertEquals(1, allBeacons.size)
 
             val foundBeacon = allBeacons.first()
             Assert.assertEquals(1, foundBeacon.id)
@@ -95,7 +95,7 @@ public class EntityAccessServiceTest {
             // assert
             val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
 
-            Assert.assertEquals(1, allBeacons.size())
+            Assert.assertEquals(1, allBeacons.size)
 
             val foundBeacon = allBeacons.first()
             Assert.assertEquals(1, foundBeacon.id)
@@ -143,7 +143,7 @@ public class EntityAccessServiceTest {
         // assert
         val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
 
-        Assert.assertEquals(1, allBeacons.size())
+        Assert.assertEquals(1, allBeacons.size)
 
         val foundBeacon = allBeacons.first()
         Assert.assertEquals(0, foundBeacon.id)
@@ -197,7 +197,7 @@ public class EntityAccessServiceTest {
         // assert
         val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
 
-        Assert.assertEquals(1, allBeacons.size())
+        Assert.assertEquals(1, allBeacons.size)
 
         val foundBeacon = allBeacons.first()
         Assert.assertEquals(0, foundBeacon.id)
@@ -250,6 +250,6 @@ public class EntityAccessServiceTest {
         // assert
         System.out.println("verifying size...")
         val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
-        Assert.assertEquals(totalInsertValue, allBeacons.size())
+        Assert.assertEquals(totalInsertValue, allBeacons.size)
     }
 }

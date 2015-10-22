@@ -35,7 +35,7 @@ public object CommonSqlDataTypeUtilities {
 
     public val Get:String = "get"
     public val Set:String = "set"
-    public val GetSetLength = Get.length()
+    public val GetSetLength = Get.length
 
     public fun getFormattedString(value: Any?): String {
         if (value == null) {
@@ -58,11 +58,11 @@ public object CommonSqlDataTypeUtilities {
     }
 
     public fun lowercaseFirstChar(input:String):String {
-        if (input.length() == 0) {
+        if (input.length == 0) {
             return input
         }
 
-        if (input.length() == 1) {
+        if (input.length == 1) {
             return input.toLowerCase()
         }
 

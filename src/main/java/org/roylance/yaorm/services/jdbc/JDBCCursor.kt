@@ -97,7 +97,7 @@ public class JDBCCursor<T> (
                     .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(CommonSqlDataTypeUtilities.Get.length()))
+                                it.name.substring(CommonSqlDataTypeUtilities.Get.length))
                         this.cachedGetMethods.put(actualName, it)
                     }
         }
@@ -108,19 +108,17 @@ public class JDBCCursor<T> (
                 .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
                 .forEach {
                     val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.Set.length()))
+                            it.name.substring(CommonSqlDataTypeUtilities.Set.length))
 
                     if (this.cachedGetMethods.containsKey(actualName) &&
                             this.resultSet.findColumn(actualName) >= 0) {
-                        val javaType = this.cachedGetMethods
-                                .get(actualName)!!
+                        val javaType = this.cachedGetMethods[actualName]!!
                                 .returnType
                                 .simpleName
 
                         if (this.typeToAction.containsKey(javaType)) {
                             val newValue = this
-                                    .typeToAction
-                                    .get(javaType)!!(actualName, this.resultSet)
+                                    .typeToAction[javaType]!!(actualName, this.resultSet)
 
                             it.invoke(newInstance, newValue)
                         }

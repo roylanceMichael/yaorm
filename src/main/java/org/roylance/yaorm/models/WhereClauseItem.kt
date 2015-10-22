@@ -3,9 +3,6 @@ package org.roylance.yaorm.models
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.SqlOperators
 
-/**
- * Created by mikeroylance on 10/16/15.
- */
 public class WhereClauseItem (
         public var leftSide:String,
         public var operator:String,

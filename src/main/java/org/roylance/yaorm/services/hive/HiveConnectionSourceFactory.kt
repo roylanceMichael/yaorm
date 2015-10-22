@@ -5,9 +5,6 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 
-/**
- * Created by mikeroylance on 10/15/15.
- */
 public class HiveConnectionSourceFactory(
         private val host:String,
         private val port:String,
@@ -29,9 +26,5 @@ public class HiveConnectionSourceFactory(
             throw SQLException("already closed...")
         }
         return this.connection
-    }
-
-    companion object {
-        private val template = ""
     }
 }

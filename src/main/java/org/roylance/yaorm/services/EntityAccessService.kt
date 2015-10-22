@@ -61,21 +61,21 @@ public class EntityAccessService(
                 .forEach {
                     temporaryList.add(it)
 
-                    if (temporaryList.size() >= this.sqlGeneratorService.bulkInsertSize) {
-                        logger.info { "inserting ${temporaryList.size()}" }
+                    if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
+                        logger.info { "inserting ${temporaryList.size}" }
                         val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(classModel, temporaryList)
                         val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
-                        logger.info { "inserted ${temporaryList.size()}: result" }
+                        logger.info { "inserted ${temporaryList.size}: result" }
                         results.add(result)
                         temporaryList.clear()
                     }
                 }
 
         if (!temporaryList.isEmpty()) {
-            logger.info { "inserting ${temporaryList.size()}" }
+            logger.info { "inserting ${temporaryList.size}" }
             val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(classModel, temporaryList)
             val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
-            logger.info { "inserted ${temporaryList.size()}: $result" }
+            logger.info { "inserted ${temporaryList.size}: $result" }
             results.add(result)
         }
 
@@ -125,11 +125,11 @@ public class EntityAccessService(
         return returnItems
     }
 
-    override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClause: WhereClauseItem): List<T> {
+    override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClauseItem: WhereClauseItem): List<T> {
         val whereSql =
                 this.sqlGeneratorService.buildWhereClause(
                         classModel,
-                        whereClause)
+                        whereClauseItem)
 
         if (!whereSql.isPresent) {
             return arrayListOf()

@@ -8,7 +8,9 @@ import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
-public class HiveGeneratorService : ISqlGeneratorService {
+public class HiveGeneratorService(
+        public override val bulkInsertSize: Int = 100
+) : ISqlGeneratorService {
 
     private val constJavaIdName = "id"
 
@@ -46,8 +48,6 @@ public class HiveGeneratorService : ISqlGeneratorService {
         }
     }
 
-    override val bulkInsertSize: Int = 100000
-
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
@@ -57,7 +57,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
             getNameTypes(classModel)
                     .forEach { nameTypeMap.put(it.first, it) }
 
-            if (nameTypeMap.size() == 0) {
+            if (nameTypeMap.size == 0) {
                 return Optional.absent()
             }
 
@@ -66,21 +66,21 @@ public class HiveGeneratorService : ISqlGeneratorService {
 
             newValues
                     .forEach {
-                        val actualName = it.getKey()
-                        val actualValue = it.getValue()
+                        val actualName = it.key
+                        val actualValue = it.value
                         val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
                         updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
                     }
 
             // nope, not updating entire table
-            if (criteriaString.length() == 0) {
+            if (criteriaString.length == 0) {
                 return Optional.absent()
             }
 
             val updateSql = java.lang.String.format(
                     UpdateTableMultipleTemplate,
                     classModel.simpleName,
-                    updateKvp.join(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
+                    updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     criteriaString)
 
             return Optional.of(updateSql)
@@ -151,12 +151,12 @@ public class HiveGeneratorService : ISqlGeneratorService {
                                 }
                             }
 
-                    selectStatements.add(valueColumnPairs.join(CommonSqlDataTypeUtilities.Comma))
+                    selectStatements.add(valueColumnPairs.joinToString(CommonSqlDataTypeUtilities.Comma))
                 }
 
-        val carriageReturnSeparatedRows = selectStatements.join("${CommonSqlDataTypeUtilities.Comma}${CommonSqlDataTypeUtilities.CarriageReturn}")
+        val carriageReturnSeparatedRows = selectStatements.joinToString("${CommonSqlDataTypeUtilities.Comma}${CommonSqlDataTypeUtilities.CarriageReturn}")
 
-        return "$initialStatement(\nselect stack(\n ${selectStatements.size()},\n $carriageReturnSeparatedRows)) s"
+        return "$initialStatement(\nselect stack(\n ${selectStatements.size},\n $carriageReturnSeparatedRows)) s"
     }
 
     override fun <K, T : IEntity<K>> buildSelectAll(classModel: Class<T>): String {
@@ -191,7 +191,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
             getNameTypes(classModel)
                     .forEach { nameTypeMap.put(it.first, it) }
 
-            if (nameTypeMap.size() == 0) {
+            if (nameTypeMap.size == 0) {
                 return Optional.absent()
             }
 
@@ -227,7 +227,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
             val updateSql = java.lang.String.format(
                     UpdateTableSingleTemplate,
                     tableName,
-                    updateKvp.join(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
+                    updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     stringId!!)
 
             return Optional.of(updateSql)
@@ -264,7 +264,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     classModel.simpleName,
-                    values.join(CommonSqlDataTypeUtilities.Comma))
+                    values.joinToString(CommonSqlDataTypeUtilities.Comma))
 
             return Optional.of(insertSql)
         } catch (e: Exception) {
@@ -276,14 +276,14 @@ public class HiveGeneratorService : ISqlGeneratorService {
     override fun <K, T : IEntity<K>> buildInitialTableCreate(classType: Class<T>): Optional<String> {
         val nameTypes = this.getNameTypes(classType)
 
-        if (nameTypes.size() == 0) {
+        if (nameTypes.size == 0) {
             return Optional.absent()
         }
 
         val workspace = StringBuilder()
 
         for (nameType in getNameTypes(classType)) {
-            if (workspace.length() == 0) {
+            if (workspace.length == 0) {
                 workspace
                         .append(CommonSqlDataTypeUtilities.Space)
                         .append(nameType.first)
@@ -356,7 +356,7 @@ public class HiveGeneratorService : ISqlGeneratorService {
                         )
 
                         val javaColumnName = columnName
-                        val dataType = this.javaTypeToSqlType.get(javaType)
+                        val dataType = this.javaTypeToSqlType[javaType]
 
                         if (javaIdName.equals(sqlColumnName)) {
                             foundIdColumnName = true
