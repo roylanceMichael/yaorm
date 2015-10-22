@@ -96,6 +96,8 @@ public class TestModel implements IEntity<Integer> {
 
 implements the IEntity<Integer> interface, and adds a new property as well. 
 
+Make sure that your names are nouns, not verbs like "get" or "is".
+
 There are a few service dependencies needed to save this to a data store. Here is a simple test to show them all in action:
 
 ```java

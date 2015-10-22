@@ -7,7 +7,7 @@ public class BeaconBroadcastModel(
         public var beaconId: String = "",
         public var majorId: Int = 0,
         public var minorId: Int = 0,
-        public var isActive: Boolean = false,
+        public var active: Boolean = false,
         public var cachedName: String = "",
         public var lastSeen: Long = 0) : IEntity<Int> {
 
@@ -17,7 +17,7 @@ public class BeaconBroadcastModel(
         public val BeaconIdName: String = "beaconId"
         public val MajorIdName: String = "majorId"
         public val MinorIdName: String = "minorId"
-        public val IsActiveName: String = "isActive"
+        public val ActiveName: String = "active"
         public val CachedNameName: String = "cachedName"
     }
 }

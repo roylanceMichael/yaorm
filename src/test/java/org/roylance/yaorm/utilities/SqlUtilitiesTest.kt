@@ -13,7 +13,7 @@ public class SqlUtilitiesTest {
     public fun createTableTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "create table if not exists BeaconBroadcastModel (id integer primary key autoincrement, beaconId text, majorId integer, minorId integer, isActive integer, cachedName text, lastSeen integer);"
+        val expectedSql = "create table if not exists BeaconBroadcastModel (id integer primary key autoincrement, beaconId text, majorId integer, minorId integer, active integer, cachedName text, lastSeen integer);"
 
         // act
         val createTableSql = sqliteGeneratorService.buildInitialTableCreate(BeaconBroadcastModel::class.java)
@@ -26,7 +26,7 @@ public class SqlUtilitiesTest {
     public fun insertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "insert into BeaconBroadcastModel (beaconId,majorId,minorId,isActive,cachedName,lastSeen) values ('cool test',1,1,1,'what is this',0);"
+        val expectedSql = "insert into BeaconBroadcastModel (beaconId,majorId,minorId,active,cachedName,lastSeen) values ('cool test',1,1,1,'what is this',0);"
         val newInsertModel = BeaconBroadcastModel(0, "cool test", 1, 1, true, "what is this",0)
 
         // act
@@ -34,6 +34,8 @@ public class SqlUtilitiesTest {
 
         // assert
         assert(insertSql.isPresent)
+        System.out.println(expectedSql)
+        System.out.println(insertSql.get())
         assert(expectedSql == insertSql.get())
     }
 
@@ -41,7 +43,7 @@ public class SqlUtilitiesTest {
     public fun updateTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "update BeaconBroadcastModel set beaconId='cool test', majorId=1, minorId=1, isActive=1, cachedName='what is this', lastSeen=0 where id=1;"
+        val expectedSql = "update BeaconBroadcastModel set beaconId='cool test', majorId=1, minorId=1, active=1, cachedName='what is this', lastSeen=0 where id=1;"
         val newUpdateModel = BeaconBroadcastModel(1, "cool test", 1, 1, true, "what is this")
 
         // act
@@ -102,7 +104,7 @@ public class SqlUtilitiesTest {
     public fun bulkInsertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = """insert into BeaconBroadcastModel (beaconId,majorId,minorId,isActive,cachedName,lastSeen)  select 'test1' as beaconId,0 as majorId,0 as minorId,0 as isActive,'test1' as cachedName,0 as lastSeen
+        val expectedSql = """insert into BeaconBroadcastModel (beaconId,majorId,minorId,active,cachedName,lastSeen)  select 'test1' as beaconId,0 as majorId,0 as minorId,0 as active,'test1' as cachedName,0 as lastSeen
 union select 'test2' as beaconId,0 as majorId,1 as minorId,0 as isActive,'test2' as cachedName,0 as lastSeen
 union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as isActive,'test3' as cachedName,0 as lastSeen;""".trim()
 
@@ -118,6 +120,8 @@ union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as isActive,'test3'
         val actualSql = sqliteGeneratorService.buildBulkInsert(BeaconBroadcastModel::class.java, broadcastModels)
 
         // assert
+        System.out.println(expectedSql)
+        System.out.println(actualSql)
         assert(expectedSql.equals(actualSql))
     }
 }

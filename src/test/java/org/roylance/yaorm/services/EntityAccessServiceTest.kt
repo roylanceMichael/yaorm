@@ -36,7 +36,7 @@ public class EntityAccessServiceTest {
                     beaconId = beaconId,
                     majorId = majorId,
                     minorId = minorId,
-                    isActive = isActive,
+                    active = isActive,
                     cachedName = cachedName)
 
             // act
@@ -53,7 +53,7 @@ public class EntityAccessServiceTest {
             Assert.assertEquals(beaconId, foundBeacon.beaconId)
             Assert.assertEquals(majorId, foundBeacon.majorId)
             Assert.assertEquals(minorId, foundBeacon.minorId)
-            Assert.assertEquals(isActive, foundBeacon.isActive)
+            Assert.assertEquals(isActive, foundBeacon.active)
             Assert.assertEquals(cachedName, foundBeacon.cachedName)
             database.deleteOnExit()
         }
@@ -85,7 +85,7 @@ public class EntityAccessServiceTest {
                     beaconId = beaconId,
                     majorId = majorId,
                     minorId = minorId,
-                    isActive = isActive,
+                    active = isActive,
                     cachedName = cachedName)
 
             // act
@@ -102,7 +102,7 @@ public class EntityAccessServiceTest {
             Assert.assertEquals(beaconId, foundBeacon.beaconId)
             Assert.assertEquals(majorId, foundBeacon.majorId)
             Assert.assertEquals(minorId, foundBeacon.minorId)
-            Assert.assertEquals(isActive, foundBeacon.isActive)
+            Assert.assertEquals(isActive, foundBeacon.active)
             Assert.assertEquals(cachedName, foundBeacon.cachedName)
             database.delete()
         }
@@ -131,7 +131,7 @@ public class EntityAccessServiceTest {
                 beaconId = beaconId,
                 majorId = majorId,
                 minorId = minorId,
-                isActive = isActive,
+                active = isActive,
                 cachedName = cachedName,
                 lastSeen = 0)
 
@@ -150,7 +150,7 @@ public class EntityAccessServiceTest {
         Assert.assertEquals(beaconId, foundBeacon.beaconId)
         Assert.assertEquals(majorId, foundBeacon.majorId)
         Assert.assertEquals(minorId, foundBeacon.minorId)
-        Assert.assertEquals(isActive, foundBeacon.isActive)
+        Assert.assertEquals(isActive, foundBeacon.active)
         Assert.assertEquals(cachedName, foundBeacon.cachedName)
     }
 
@@ -172,7 +172,7 @@ public class EntityAccessServiceTest {
                 beaconId = beaconId,
                 majorId = majorId,
                 minorId = minorId,
-                isActive = isActive,
+                active = isActive,
                 cachedName = cachedName,
                 lastSeen = 0)
 
@@ -204,7 +204,7 @@ public class EntityAccessServiceTest {
         Assert.assertEquals(foundBeacon.beaconId, newBeaconId)
         Assert.assertEquals(foundBeacon.majorId, newMajorId)
         Assert.assertEquals(foundBeacon.minorId, newMinorId)
-        Assert.assertEquals(foundBeacon.isActive, foundBeacon.isActive)
+        Assert.assertEquals(foundBeacon.active, foundBeacon.active)
         Assert.assertEquals(foundBeacon.cachedName, foundBeacon.cachedName)
     }
 
@@ -232,7 +232,7 @@ public class EntityAccessServiceTest {
                     beaconId = randomString,
                     majorId = i,
                     minorId = i,
-                    isActive = isActive,
+                    active = isActive,
                     cachedName = cachedName,
                     lastSeen = 0))
 
