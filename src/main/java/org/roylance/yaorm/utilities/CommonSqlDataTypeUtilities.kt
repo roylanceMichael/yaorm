@@ -76,6 +76,6 @@ public object CommonSqlDataTypeUtilities {
     }
 
     public fun buildIndexName(columnNames:List<String>) : String {
-        return "${columnNames.sortedBy { it }.joinToString { Underscore }}${Underscore}idx"
+        return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
     }
 }

@@ -9,4 +9,9 @@ public class AnotherTestModel (
     public override var id:String="",
     public var description:String="",
     public var gram:String="") : IEntity<String> {
+    companion object {
+        public val IdName = "id"
+        public val DescriptionName = "description"
+        public val GramName = "gram"
+    }
 }

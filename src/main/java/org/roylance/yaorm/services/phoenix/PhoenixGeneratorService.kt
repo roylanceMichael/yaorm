@@ -20,8 +20,6 @@ public class PhoenixGeneratorService (
     private val DeleteTableTemplate = "delete from %s where id=%s"
     private val WhereClauseTemplate = "select * from %s where %s"
     private val SelectAllTemplate = "select * from %s"
-    private val ConstraintTemplate = "constraint"
-    private val PKTemplate = "PK"
     private val PrimaryKey = "primary key"
     private val NotNull = "not null"
 
@@ -59,7 +57,7 @@ public class PhoenixGeneratorService (
 
     override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
-        val joinedColumnNames = columns.joinToString { CommonSqlDataTypeUtilities.Comma }
+        val joinedColumnNames = columns.joinToString(CommonSqlDataTypeUtilities.Comma)
 
         return Optional.of("create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)")
     }

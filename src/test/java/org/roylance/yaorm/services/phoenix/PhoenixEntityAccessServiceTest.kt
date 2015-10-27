@@ -6,6 +6,7 @@ import org.roylance.yaorm.services.EntityAccessService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel
+import java.util.*
 
 
 public class PhoenixEntityAccessServiceTest {
@@ -73,6 +74,33 @@ public class PhoenixEntityAccessServiceTest {
 
             // act
             entityService.delete(AnotherTestModel::class.java, id)
+
+            // assert
+            Assert.assertEquals(0, entityService.getAll(AnotherTestModel::class.java).size)
+        }
+        finally {
+            granularDatabaseService.close()
+        }
+    }
+
+    // @Test
+    public fun anotherSimpleIndexPhoenixTest() {
+        // arrange
+        val hiveGeneratorService = PhoenixGeneratorService()
+        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
+        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+
+        try {
+            entityService.drop(AnotherTestModel::class.java)
+            entityService.instantiate(AnotherTestModel::class.java)
+
+            val columnNames = ArrayList<String>()
+            columnNames.add(AnotherTestModel.DescriptionName)
+            columnNames.add(AnotherTestModel.GramName)
+
+            // act
+            entityService.createIndex(AnotherTestModel::class.java, columnNames)
 
             // assert
             Assert.assertEquals(0, entityService.getAll(AnotherTestModel::class.java).size)
