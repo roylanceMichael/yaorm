@@ -51,6 +51,19 @@ public class PhoenixGeneratorService (
         }
     }
 
+    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
+
+        return Optional.of("drop index if exists $indexName on ${classType.simpleName}")
+    }
+
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
+        val joinedColumnNames = columns.joinToString { CommonSqlDataTypeUtilities.Comma }
+
+        return Optional.of("create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)")
+    }
+
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
             classModel: Class<T>,
             whereClauseItem: WhereClauseItem): String {

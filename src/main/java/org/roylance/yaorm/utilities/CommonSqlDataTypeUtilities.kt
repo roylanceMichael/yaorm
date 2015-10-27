@@ -14,7 +14,7 @@ public object CommonSqlDataTypeUtilities {
     public val SpacedAnd = " and "
     public val And = "and"
     public val Or = "or"
-
+    public val Underscore = "_"
 
     public val JavaFullyQualifiedStringName: String = "String"
     public val JavaObjectName: String = "java.lang.Object"
@@ -73,5 +73,9 @@ public object CommonSqlDataTypeUtilities {
     public fun convertPropertyToSetterName(propertyName: String): String {
         val firstChar = propertyName.get(0).toUpperCase()
         return Set + firstChar + propertyName.substring(1)
+    }
+
+    public fun buildIndexName(columnNames:List<String>) : String {
+        return "${columnNames.sortedBy { it }.joinToString { Underscore }}${Underscore}idx"
     }
 }

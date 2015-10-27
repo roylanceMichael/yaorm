@@ -10,6 +10,25 @@ import java.util.logging.Logger
 public class EntityAccessService(
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityAccessService {
+
+    override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>): Boolean {
+        val createIndexSql = this.sqlGeneratorService.buildIndex(classModel, columns)
+        if (createIndexSql.isPresent) {
+            this.granularDatabaseService.executeUpdateQuery(createIndexSql.get())
+            return true
+        }
+        return false
+    }
+
+    override fun <K, T : IEntity<K>> dropIndex(classModel: Class<T>, columns: List<String>): Boolean {
+        val dropIndexSql = this.sqlGeneratorService.buildDropIndex(classModel, columns)
+        if (dropIndexSql.isPresent) {
+            this.granularDatabaseService.executeUpdateQuery(dropIndexSql.get())
+            return true
+        }
+        return false
+    }
+
     override fun <K, T : IEntity<K>> updateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,

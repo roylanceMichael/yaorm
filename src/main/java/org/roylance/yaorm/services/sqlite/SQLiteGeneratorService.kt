@@ -49,6 +49,14 @@ public class SQLiteGeneratorService(
         }
     }
 
+    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+        return Optional.absent()
+    }
+
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+        return Optional.absent()
+    }
+
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
             classModel: Class<T>,
             whereClauseItem: WhereClauseItem): String {

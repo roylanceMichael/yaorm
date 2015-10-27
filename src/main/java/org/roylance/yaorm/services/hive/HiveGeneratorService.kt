@@ -11,7 +11,6 @@ import java.util.*
 public class HiveGeneratorService(
         public override val bulkInsertSize: Int = 100
 ) : ISqlGeneratorService {
-
     private val constJavaIdName = "id"
 
     private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
@@ -46,6 +45,14 @@ public class HiveGeneratorService(
             put(CommonSqlDataTypeUtilities.JavaBooleanName, HiveInt)
             put(CommonSqlDataTypeUtilities.JavaLongName, HiveInt)
         }
+    }
+
+    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+        return Optional.absent()
+    }
+
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+        return Optional.absent()
     }
 
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
