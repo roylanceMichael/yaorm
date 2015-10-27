@@ -11,6 +11,7 @@ public class HiveConnectionSourceFactory(
         private val database:String) : IConnectionSourceFactory {
 
     private val connection:Connection
+    private var isClosed:Boolean=false
 
     init {
         Class.forName("org.apache.hive.jdbc.HiveDriver")
@@ -18,7 +19,10 @@ public class HiveConnectionSourceFactory(
     }
 
     override fun close() {
-        this.connection.close()
+        if (!this.isClosed) {
+            this.connection.close()
+        }
+        this.isClosed = true
     }
 
     override fun getConnectionSource(): Connection {

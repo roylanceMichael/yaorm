@@ -38,7 +38,7 @@ public class SQLiteGeneratorService(
             put(CommonSqlDataTypeUtilities.JavaAlt1LongName, SqlIntegerName)
             put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName, SqlRealName)
             put(CommonSqlDataTypeUtilities.JavaAltIntegerName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaAltLongName, SqlBlobName)
+            put(CommonSqlDataTypeUtilities.JavaAltLongName, SqlIntegerName)
             put(CommonSqlDataTypeUtilities.JavaAltDoubleName, SqlRealName)
             put(CommonSqlDataTypeUtilities.JavaStringName, SqlTextName)
             put(CommonSqlDataTypeUtilities.JavaByteName, SqlBlobName)

@@ -54,7 +54,7 @@ Maven:
     <dependency>
         <groupId>org.roylance</groupId>
         <artifactId>yaorm</artifactId>
-        <version>0.10-SNAPSHOT</version>
+        <version>0.13-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
@@ -161,7 +161,7 @@ finally {
 
 ### Anything else you can tell me?
 
-I currently have SQlite and Hive implemented, as those are both backends that I currently use. I'll do more as I need them.
+I currently have SQlite and Hive implemented, as those are both backends that I currently use. I'll do more as I need them. I also just implemented Phoenix (Apache), but I'm still ironing that out.
 
 For Hive, make sure that you have ACID compliance turned on. This will not work otherwise.
 

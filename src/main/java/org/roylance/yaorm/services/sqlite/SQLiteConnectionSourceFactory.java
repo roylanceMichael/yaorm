@@ -17,7 +17,7 @@ public class SQLiteConnectionSourceFactory
     public SQLiteConnectionSourceFactory(
             @NotNull String dbPath) throws SQLException {
         this.commonConnection = DriverManager.getConnection(
-                String.format(SqliteJdbcDbTemplate, dbPath));
+            String.format(SqliteJdbcDbTemplate, dbPath));
     }
 
     @Override
@@ -31,7 +31,9 @@ public class SQLiteConnectionSourceFactory
 
     @Override
     public void close() throws Exception {
-        this.commonConnection.close();
+        if (!this.isClosed) {
+            this.commonConnection.close();
+        }
         this.isClosed = true;
     }
 }

@@ -53,7 +53,7 @@ public class EntityAccessService(
     }
 
     override fun <K, T: IEntity<K>> bulkInsert(classModel: Class<T>, instances: List<T>): Boolean {
-        // let's split this into items of 100 each... for now
+        // let's split this into items of n each... for now
         val temporaryList = ArrayList<T>()
         val results = ArrayList<Boolean>()
 
