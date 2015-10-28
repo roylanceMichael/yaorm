@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.15-SNAPSHOT'
+version '0.16-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -22,7 +22,7 @@ artifactory {
         repository {
             repoKey = 'libs-snapshot-local'
             username = 'admin'
-            password = ''
+            password = 'password'
             maven = true
         }
         defaults {
@@ -60,10 +60,9 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
-    compile 'org.xerial:sqlite-jdbc:3.8.10.1'
-    compile 'org.apache.hive:hive-jdbc:1.2.1'
-    compile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
+//    compile 'org.xerial:sqlite-jdbc:3.8.10.1'
+//    compile 'org.apache.hive:hive-jdbc:1.2.1'
+//    compile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
 
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

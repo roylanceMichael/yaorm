@@ -1,6 +1,5 @@
 package org.roylance.yaorm.services.sqlite
 
-import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.Tuple
 import org.roylance.yaorm.models.WhereClauseItem
@@ -49,12 +48,12 @@ public class SQLiteGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): Optional<String> {
-        return Optional.absent()
+    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
+        return null
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
-        return Optional.absent()
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): String? {
+        return null
     }
 
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
@@ -67,14 +66,14 @@ public class SQLiteGeneratorService(
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
-            whereClauseItem: WhereClauseItem): Optional<String> {
+            whereClauseItem: WhereClauseItem): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
             getNameTypes(classModel)
                     .forEach { nameTypeMap.put(it.first, it) }
 
             if (nameTypeMap.size == 0) {
-                return Optional.absent()
+                return null
             }
 
             val tableName = classModel.simpleName
@@ -92,7 +91,7 @@ public class SQLiteGeneratorService(
 
             // nope, not updating entire table
             if (criteriaString.length == 0) {
-                return Optional.absent()
+                return null
             }
 
             val updateSql = java.lang.String.format(
@@ -101,10 +100,10 @@ public class SQLiteGeneratorService(
                     updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     criteriaString)
 
-            return Optional.of(updateSql)
+            return updateSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent<String>()
+            return null
         }
     }
 
@@ -181,16 +180,16 @@ public class SQLiteGeneratorService(
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
                 this.buildWhereClause(whereClauseItem))
 
-        return Optional.of<String>(whereSql)
+        return whereSql
     }
 
-    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
 
         val tableName = classModel.simpleName
 
@@ -199,10 +198,10 @@ public class SQLiteGeneratorService(
                 tableName,
                 CommonSqlDataTypeUtilities.getFormattedString(primaryKey))
 
-        return Optional.of<String>(deleteSql)
+        return deleteSql
     }
 
-    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
         try {
 
             val nameTypeMap = HashMap<String, Tuple<String>>()
@@ -210,7 +209,7 @@ public class SQLiteGeneratorService(
                     .forEach { nameTypeMap.put(it.first, it) }
 
             if (nameTypeMap.size == 0) {
-                return Optional.absent()
+                return null
             }
 
             val tableName = classModel.simpleName
@@ -238,7 +237,7 @@ public class SQLiteGeneratorService(
                     }
 
             if (stringId == null) {
-                return Optional.absent()
+                return null
             }
 
             val updateSql = java.lang.String.format(
@@ -247,14 +246,14 @@ public class SQLiteGeneratorService(
                     updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     stringId!!)
 
-            return Optional.of(updateSql)
+            return updateSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent<String>()
+            return null
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
 
@@ -287,19 +286,19 @@ public class SQLiteGeneratorService(
                     columnNames.joinToString(CommonSqlDataTypeUtilities.Comma),
                     values.joinToString(CommonSqlDataTypeUtilities.Comma))
 
-            return Optional.of(insertSql)
+            return insertSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent()
+            return null
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): String? {
 
         val nameTypes = this.getNameTypes(classType)
 
         if (nameTypes.size == 0) {
-            return Optional.absent()
+            return null
         }
 
         val workspace = StringBuilder()
@@ -328,7 +327,7 @@ public class SQLiteGeneratorService(
                 classType.simpleName,
                 workspace.toString())
 
-        return Optional.of<String>(createTableSql)
+        return createTableSql
     }
 
     private fun buildWhereClause(whereClauseItem: WhereClauseItem):String {

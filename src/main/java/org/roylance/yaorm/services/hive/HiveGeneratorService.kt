@@ -1,6 +1,5 @@
 package org.roylance.yaorm.services.hive
 
-import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.Tuple
 import org.roylance.yaorm.models.WhereClauseItem
@@ -47,25 +46,25 @@ public class HiveGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): Optional<String> {
-        return Optional.absent()
+    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
+        return null
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
-        return Optional.absent()
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): String? {
+        return null
     }
 
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
-            whereClauseItem: WhereClauseItem): Optional<String> {
+            whereClauseItem: WhereClauseItem): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
             getNameTypes(classModel)
                     .forEach { nameTypeMap.put(it.first, it) }
 
             if (nameTypeMap.size == 0) {
-                return Optional.absent()
+                return null
             }
 
             var criteriaString: String = this.buildWhereClause(whereClauseItem)
@@ -81,7 +80,7 @@ public class HiveGeneratorService(
 
             // nope, not updating entire table
             if (criteriaString.length == 0) {
-                return Optional.absent()
+                return null
             }
 
             val updateSql = java.lang.String.format(
@@ -90,10 +89,10 @@ public class HiveGeneratorService(
                     updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     criteriaString)
 
-            return Optional.of(updateSql)
+            return updateSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent<String>()
+            return null
         }
     }
 
@@ -170,7 +169,7 @@ public class HiveGeneratorService(
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override fun <K, T : IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): Optional<String> {
+    override fun <K, T : IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
         val whereClauseItems = this.buildWhereClause(whereClauseItem)
 
         val whereSql = java.lang.String.format(
@@ -178,10 +177,10 @@ public class HiveGeneratorService(
                 classModel.simpleName,
                 whereClauseItems)
 
-        return Optional.of<String>(whereSql)
+        return whereSql
     }
 
-    override fun <K, T : IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): Optional<String> {
+    override fun <K, T : IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
         val tableName = classModel.simpleName
 
         val deleteSql = java.lang.String.format(
@@ -189,17 +188,17 @@ public class HiveGeneratorService(
                 tableName,
                 CommonSqlDataTypeUtilities.getFormattedString(primaryKey))
 
-        return Optional.of<String>(deleteSql)
+        return deleteSql
     }
 
-    override fun <K, T : IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): Optional<String> {
+    override fun <K, T : IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
             getNameTypes(classModel)
                     .forEach { nameTypeMap.put(it.first, it) }
 
             if (nameTypeMap.size == 0) {
-                return Optional.absent()
+                return null
             }
 
             val tableName = classModel.simpleName
@@ -228,7 +227,7 @@ public class HiveGeneratorService(
                     }
 
             if (stringId == null) {
-                return Optional.absent()
+                return null
             }
 
             val updateSql = java.lang.String.format(
@@ -237,14 +236,14 @@ public class HiveGeneratorService(
                     updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     stringId!!)
 
-            return Optional.of(updateSql)
+            return updateSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent<String>()
+            return null
         }
     }
 
-    override fun <K, T : IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String> {
+    override fun <K, T : IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
 
@@ -273,18 +272,18 @@ public class HiveGeneratorService(
                     classModel.simpleName,
                     values.joinToString(CommonSqlDataTypeUtilities.Comma))
 
-            return Optional.of(insertSql)
+            return insertSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent()
+            return null
         }
     }
 
-    override fun <K, T : IEntity<K>> buildInitialTableCreate(classType: Class<T>): Optional<String> {
+    override fun <K, T : IEntity<K>> buildInitialTableCreate(classType: Class<T>): String? {
         val nameTypes = this.getNameTypes(classType)
 
         if (nameTypes.size == 0) {
-            return Optional.absent()
+            return null
         }
 
         val workspace = StringBuilder()
@@ -313,7 +312,7 @@ public class HiveGeneratorService(
                 workspace.toString(),
                 10)
 
-        return Optional.of<String>(createTableSql)
+        return createTableSql
     }
 
     private fun buildWhereClause(whereClauseItem: WhereClauseItem):String {

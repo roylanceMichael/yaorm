@@ -19,7 +19,7 @@ public class SqlUtilitiesTest {
         val createTableSql = sqliteGeneratorService.buildInitialTableCreate(BeaconBroadcastModel::class.java)
 
         // assert
-        Assert.assertEquals(expectedSql, createTableSql.get())
+        Assert.assertEquals(expectedSql, createTableSql)
     }
 
     @Test
@@ -33,10 +33,10 @@ public class SqlUtilitiesTest {
         val insertSql = sqliteGeneratorService.buildInsertIntoTable(BeaconBroadcastModel::class.java, newInsertModel)
 
         // assert
-        assert(insertSql.isPresent)
+        assert(insertSql != null)
         System.out.println(expectedSql)
-        System.out.println(insertSql.get())
-        assert(expectedSql == insertSql.get())
+        System.out.println(insertSql)
+        assert(expectedSql.equals(insertSql))
     }
 
     @Test
@@ -50,8 +50,8 @@ public class SqlUtilitiesTest {
         val updateSql = sqliteGeneratorService.buildUpdateTable(BeaconBroadcastModel::class.java, newUpdateModel)
 
         // assert
-        assert(updateSql.isPresent)
-        assert(expectedSql == updateSql.get())
+        assert(updateSql != null)
+        assert(expectedSql.equals(updateSql))
     }
 
     @Test
@@ -64,8 +64,8 @@ public class SqlUtilitiesTest {
         val deleteSql = sqliteGeneratorService.buildDeleteTable(BeaconBroadcastModel::class.java, 1)
 
         // assert
-        assert(deleteSql.isPresent)
-        assert(expectedSql == deleteSql.get())
+        assert(deleteSql != null)
+        assert(expectedSql.equals(deleteSql))
     }
 
     @Test
@@ -83,8 +83,8 @@ public class SqlUtilitiesTest {
         val whereSql = sqliteGeneratorService.buildWhereClause(BeaconBroadcastModel::class.java, whereClause)
 
         // assert
-        assert(whereSql.isPresent)
-        assert(expectedSql == whereSql.get())
+        assert(whereSql != null)
+        assert(expectedSql.equals(whereSql))
     }
 
     @Test
@@ -97,7 +97,7 @@ public class SqlUtilitiesTest {
         val selectAllSql = sqliteGeneratorService.buildSelectAll(BeaconBroadcastModel::class.java)
 
         // assert
-        assert(expectedSql == selectAllSql)
+        assert(expectedSql.equals(selectAllSql))
     }
 
     @Test

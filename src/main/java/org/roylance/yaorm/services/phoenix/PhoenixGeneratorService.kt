@@ -1,6 +1,5 @@
 package org.roylance.yaorm.services.phoenix
 
-import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.Tuple
 import org.roylance.yaorm.models.WhereClauseItem
@@ -49,17 +48,17 @@ public class PhoenixGeneratorService (
         }
     }
 
-    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
 
-        return Optional.of("drop index if exists $indexName on ${classType.simpleName}")
+        return "drop index if exists $indexName on ${classType.simpleName}"
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): Optional<String> {
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): String? {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
         val joinedColumnNames = columns.joinToString(CommonSqlDataTypeUtilities.Comma)
 
-        return Optional.of("create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)")
+        return "create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)"
     }
 
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
@@ -72,8 +71,8 @@ public class PhoenixGeneratorService (
     override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
             classModel: Class<T>,
             newValues: Map<String, Any>,
-            whereClauseItem: WhereClauseItem): Optional<String> {
-        return Optional.absent()
+            whereClauseItem: WhereClauseItem): String? {
+        return null
     }
 
     override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
@@ -93,16 +92,16 @@ public class PhoenixGeneratorService (
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
                 this.buildWhereClause(whereClauseItem))
 
-        return Optional.of<String>(whereSql)
+        return whereSql
     }
 
-    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
         val tableName = classModel.simpleName
 
         val deleteSql = java.lang.String.format(
@@ -110,14 +109,14 @@ public class PhoenixGeneratorService (
                 tableName,
                 CommonSqlDataTypeUtilities.getFormattedString(primaryKey))
 
-        return Optional.of<String>(deleteSql)
+        return deleteSql
     }
 
-    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
         return this.buildInsertIntoTable(classModel, updateModel)
     }
 
-    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
 
@@ -150,23 +149,23 @@ public class PhoenixGeneratorService (
                     columnNames.joinToString(CommonSqlDataTypeUtilities.Comma),
                     values.joinToString(CommonSqlDataTypeUtilities.Comma))
 
-            return Optional.of(insertSql)
+            return insertSql
         } catch (e: Exception) {
             e.printStackTrace()
-            return Optional.absent()
+            return null
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): Optional<String> {
+    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): String? {
         val nameTypes = this.getNameTypes(classType)
 
         if (nameTypes.size == 0) {
-            return Optional.absent()
+            return null
         }
 
         val workspace = StringBuilder()
 
-        val foundId = nameTypes.firstOrNull { javaIdName.equals(it.first) } ?: return Optional.absent()
+        val foundId = nameTypes.firstOrNull { javaIdName.equals(it.first) } ?: return null
 
         workspace.append(javaIdName)
                 .append(CommonSqlDataTypeUtilities.Space)
@@ -190,7 +189,7 @@ public class PhoenixGeneratorService (
                 classType.simpleName,
                 workspace.toString())
 
-        return Optional.of<String>(createTableSql)
+        return createTableSql
     }
 
     private fun buildWhereClause(whereClauseItem: WhereClauseItem):String {

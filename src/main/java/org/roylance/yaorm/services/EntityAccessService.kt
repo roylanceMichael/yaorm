@@ -1,6 +1,5 @@
 package org.roylance.yaorm.services
 
-import com.google.common.base.Optional
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.utilities.SqlOperators
@@ -13,8 +12,8 @@ public class EntityAccessService(
 
     override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>): Boolean {
         val createIndexSql = this.sqlGeneratorService.buildIndex(classModel, columns)
-        if (createIndexSql.isPresent) {
-            this.granularDatabaseService.executeUpdateQuery(createIndexSql.get())
+        if (createIndexSql != null) {
+            this.granularDatabaseService.executeUpdateQuery(createIndexSql)
             return true
         }
         return false
@@ -22,8 +21,8 @@ public class EntityAccessService(
 
     override fun <K, T : IEntity<K>> dropIndex(classModel: Class<T>, columns: List<String>): Boolean {
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(classModel, columns)
-        if (dropIndexSql.isPresent) {
-            this.granularDatabaseService.executeUpdateQuery(dropIndexSql.get())
+        if (dropIndexSql != null) {
+            this.granularDatabaseService.executeUpdateQuery(dropIndexSql)
             return true
         }
         return false
@@ -34,10 +33,10 @@ public class EntityAccessService(
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): Boolean {
         val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(classModel, newValues, whereClauseItem)
-        if (!updateSql.isPresent) {
+        if (updateSql == null) {
             return false
         }
-        return this.granularDatabaseService.executeUpdateQuery(updateSql.get())
+        return this.granularDatabaseService.executeUpdateQuery(updateSql)
     }
 
     override fun <K, T : IEntity<K>> drop(classModel: Class<T>): Boolean {
@@ -52,23 +51,18 @@ public class EntityAccessService(
 
     override fun <K, T: IEntity<K>> create(classModel: Class<T>, entity: T): Boolean {
         // create
-        val insertSql = this.sqlGeneratorService.buildInsertIntoTable(classModel, entity)
+        val insertSql = this.sqlGeneratorService.buildInsertIntoTable(classModel, entity) ?: return false
 
-        if (!insertSql.isPresent) {
-            return false
-        }
-
-        return this.granularDatabaseService.executeUpdateQuery(insertSql.get())
+        return this.granularDatabaseService.executeUpdateQuery(insertSql)
     }
 
     override fun <K, T: IEntity<K>> update(classModel: Class<T>, entity: T): Boolean {
         // update
-        val updateSql = this.sqlGeneratorService.buildUpdateTable(classModel, entity)
-        if (!updateSql.isPresent) {
-            return false
-        }
+        val updateSql = this
+                .sqlGeneratorService
+                .buildUpdateTable(classModel, entity) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(updateSql.get())
+        return this.granularDatabaseService.executeUpdateQuery(updateSql)
     }
 
     override fun <K, T: IEntity<K>> bulkInsert(classModel: Class<T>, instances: List<T>): Boolean {
@@ -103,28 +97,27 @@ public class EntityAccessService(
 
     override fun <K, T: IEntity<K>> createOrUpdate(classModel: Class<T>, entity: T): Boolean {
         val foundItemInDatabase = this.get(classModel, entity.id)
-        if (foundItemInDatabase.isPresent) {
+        if (foundItemInDatabase != null) {
             return this.update(classModel, entity)
         }
         return this.create(classModel, entity)
     }
 
-    override fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): Optional<T> {
+    override fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): T? {
         val whereClause = WhereClauseItem(this.sqlGeneratorService.javaIdName, SqlOperators.Equals, id as Any)
-        val whereSql = this.sqlGeneratorService.buildWhereClause(classModel, whereClause)
-
-        if (!whereSql.isPresent) {
-            return Optional.absent()
-        }
+        val whereSql = this.sqlGeneratorService
+                .buildWhereClause(classModel, whereClause) ?: return null
 
         val resultSet = this.granularDatabaseService.executeSelectQuery(
                 classModel,
-                whereSql.get())
+                whereSql)
 
         if (resultSet.moveNext()) {
-            return Optional.of(resultSet.getRecord())
+            val t:T = resultSet.getRecord()
+            return t
         }
-        return Optional.absent()
+
+        return null
     }
 
     override fun <K, T: IEntity<K>> getAll(classModel: Class<T>): List<T> {
@@ -148,14 +141,12 @@ public class EntityAccessService(
         val whereSql =
                 this.sqlGeneratorService.buildWhereClause(
                         classModel,
-                        whereClauseItem)
+                        whereClauseItem) ?: return arrayListOf()
 
-        if (!whereSql.isPresent) {
-            return arrayListOf()
-        }
         val resultSet = this.granularDatabaseService.executeSelectQuery(
                 classModel,
-                whereSql.get())
+                whereSql)
+
         val returnItems = ArrayList<T>()
         while (resultSet.moveNext()) {
             returnItems.add(resultSet.getRecord())
@@ -165,22 +156,17 @@ public class EntityAccessService(
 
     override fun <K, T: IEntity<K>> delete(classModel: Class<T>, id: K): Boolean {
         val deleteSql =
-                this.sqlGeneratorService.buildDeleteTable(classModel, id)
+                this.sqlGeneratorService
+                        .buildDeleteTable(classModel, id) ?: return false
 
-        if (!deleteSql.isPresent) {
-            return false
-        }
-
-        return this.granularDatabaseService.executeUpdateQuery(deleteSql.get())
+        return this.granularDatabaseService.executeUpdateQuery(deleteSql)
     }
 
     override fun <K, T: IEntity<K>> instantiate(classModel: Class<T>): Boolean {
         val createTableSql =
-                this.sqlGeneratorService.buildInitialTableCreate(classModel)
-        if (!createTableSql.isPresent) {
-            return false
-        }
-        this.granularDatabaseService.executeUpdateQuery(createTableSql.get())
+                this.sqlGeneratorService
+                        .buildInitialTableCreate(classModel) ?: return false
+        this.granularDatabaseService.executeUpdateQuery(createTableSql)
         return true
     }
 
