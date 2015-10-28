@@ -10,6 +10,18 @@ public class EntityAccessService(
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityAccessService {
 
+    override fun <K, T : IEntity<K>> getCustom(classModel: Class<T>, customSql: String): List<T> {
+        val cursor = this.granularDatabaseService.executeSelectQuery(classModel, customSql)
+
+        val returnList = ArrayList<T>()
+
+        while(cursor.moveNext()) {
+            returnList.add(cursor.getRecord())
+        }
+
+        return returnList
+    }
+
     override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>): Boolean {
         val createIndexSql = this.sqlGeneratorService.buildIndex(classModel, columns)
         if (createIndexSql != null) {
@@ -32,10 +44,10 @@ public class EntityAccessService(
             classModel: Class<T>,
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): Boolean {
-        val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(classModel, newValues, whereClauseItem)
-        if (updateSql == null) {
-            return false
-        }
+        val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(
+                classModel,
+                newValues,
+                whereClauseItem) ?: return false
         return this.granularDatabaseService.executeUpdateQuery(updateSql)
     }
 

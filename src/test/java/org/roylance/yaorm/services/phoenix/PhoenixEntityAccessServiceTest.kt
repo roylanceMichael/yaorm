@@ -143,6 +143,47 @@ public class PhoenixEntityAccessServiceTest {
     }
 
     // @Test
+    public fun simpleCustomPhoenixTest() {
+        // arrange
+        val description = "mike"
+
+        val customSql = "select distinct description from AnotherTestModel"
+
+        val hiveGeneratorService = PhoenixGeneratorService()
+        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
+        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+
+        try {
+            entityService.drop(AnotherTestModel::class.java)
+            entityService.instantiate(AnotherTestModel::class.java)
+
+            val firstTestModel = AnotherTestModel()
+            firstTestModel.id = "first"
+            firstTestModel.description = description
+            firstTestModel.gram = "first"
+
+            val secondTestModel = AnotherTestModel()
+            secondTestModel.id = "second"
+            secondTestModel.description = description
+            secondTestModel.gram = "second"
+
+            entityService.create(AnotherTestModel::class.java, firstTestModel)
+            entityService.create(AnotherTestModel::class.java, secondTestModel)
+
+            // act
+            val distinctDescriptions = entityService.getCustom(AnotherTestModel::class.java, customSql)
+
+            // assert
+            Assert.assertEquals(1, distinctDescriptions.size)
+            Assert.assertEquals(description, distinctDescriptions[0].description)
+        }
+        finally {
+            granularDatabaseService.close()
+        }
+    }
+
+    // @Test
     public fun simpleBulkInsertPhoenixTest() {
         // arrange
         val id = 1

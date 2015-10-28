@@ -17,6 +17,7 @@ public interface IEntityAccessService : Closeable {
     public fun <K, T: IEntity<K>> update(classModel: Class<T>, entity: T): Boolean
     public fun <K, T: IEntity<K>> updateWithCriteria(classModel: Class<T>, newValues: Map<String, Any>, whereClauseItem: WhereClauseItem): Boolean
 
+    public fun <K, T: IEntity<K>> getCustom(classModel: Class<T>, customSql: String): List<T>
     public fun <K, T: IEntity<K>> get(classModel: Class<T>, id: K): T?
     public fun <K, T: IEntity<K>> getAll(classModel: Class<T>): List<T>
     public fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClauseItem: WhereClauseItem): List<T>

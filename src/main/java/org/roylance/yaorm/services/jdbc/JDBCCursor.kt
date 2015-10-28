@@ -12,6 +12,7 @@ public class JDBCCursor<T> (
         private val resultSet: ResultSet) : ICursor<T> {
 
     private val cachedGetMethods: HashMap<String, Method> = HashMap()
+    private val columnNamesFromResultSet: HashSet<String> = HashSet()
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any>() {
         init {
@@ -91,14 +92,30 @@ public class JDBCCursor<T> (
     override fun <K, T: IEntity<K>> getRecord(): T {
         val newInstance = this.classModel.newInstance()!! as T
 
-        if (cachedGetMethods.isEmpty()) {
+        if (this.columnNamesFromResultSet.isEmpty()) {
+            val totalColumns = this.resultSet.metaData.columnCount
+
+            var iter = 1
+            while (iter <= totalColumns) {
+                val lowercaseName = this.resultSet.metaData.getColumnName(iter).toLowerCase()
+                this.columnNamesFromResultSet.add(lowercaseName)
+                iter++
+            }
+        }
+
+        if (this.cachedGetMethods.isEmpty()) {
             this.classModel
                     .methods
                     .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.Get.length))
-                        this.cachedGetMethods.put(actualName, it)
+
+                        val lowercaseName = actualName.toLowerCase()
+
+                        if (this.columnNamesFromResultSet.contains(lowercaseName)) {
+                            this.cachedGetMethods.put(actualName, it)
+                        }
                     }
         }
 
@@ -110,8 +127,7 @@ public class JDBCCursor<T> (
                     val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                             it.name.substring(CommonSqlDataTypeUtilities.Set.length))
 
-                    if (this.cachedGetMethods.containsKey(actualName) &&
-                            this.resultSet.findColumn(actualName) >= 0) {
+                    if (this.cachedGetMethods.containsKey(actualName)) {
                         val javaType = this.cachedGetMethods[actualName]!!
                                 .returnType
                                 .simpleName
