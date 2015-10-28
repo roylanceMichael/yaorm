@@ -22,7 +22,7 @@ artifactory {
         repository {
             repoKey = 'libs-snapshot-local'
             username = 'admin'
-            password = 'password'
+            password = ''
             maven = true
         }
         defaults {
