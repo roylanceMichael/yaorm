@@ -22,7 +22,7 @@ public class PhoenixGeneratorService (
     private val PrimaryKey = "primary key"
     private val NotNull = "not null"
 
-    private val PhoenixIntegerName = "integer"
+    private val PhoenixIntegerName = "bigint"
     private val PhoenixTextName = "varchar"
     private val PhoenixRealName = "decimal"
     private val PhoenixBinaryName = "binary"
