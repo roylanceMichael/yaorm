@@ -14,7 +14,7 @@ public class JDBCCursor<T> (
     private val cachedGetMethods: HashMap<String, Method> = HashMap()
     private val columnNamesFromResultSet: HashSet<String> = HashSet()
 
-    private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any>() {
+    private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
             put(
                     CommonSqlDataTypeUtilities.JavaObjectName,
@@ -136,7 +136,9 @@ public class JDBCCursor<T> (
                             val newValue = this
                                     .typeToAction[javaType]!!(actualName, this.resultSet)
 
-                            it.invoke(newInstance, newValue)
+                            if (newValue != null) {
+                                it.invoke(newInstance, newValue)
+                            }
                         }
                     }
                 }
