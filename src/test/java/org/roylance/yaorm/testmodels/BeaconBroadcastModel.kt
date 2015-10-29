@@ -12,7 +12,7 @@ public class BeaconBroadcastModel(
         public var lastSeen: Long = 0) : IEntity<Int> {
 
     companion object {
-        public val TableName: String = "beaconBroadcasts"
+        public val LastSeenName: String = "lastSeen"
         public val IdName: String = "id"
         public val BeaconIdName: String = "beaconId"
         public val MajorIdName: String = "majorId"

@@ -49,11 +49,20 @@ public class SQLiteGeneratorService(
     }
 
     override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
-        return null
+        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
+        return "drop index if exists $indexName on ${classType.simpleName}"
     }
 
     override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
-        return null
+        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
+        val joinedColumnNames = columns.joinToString(CommonSqlDataTypeUtilities.Comma)
+        val sqlStatement = "create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)"
+
+        if (includes.isEmpty()) {
+            return sqlStatement
+        }
+        val joinedIncludeColumnNames = includes.joinToString(CommonSqlDataTypeUtilities.Comma)
+        return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
