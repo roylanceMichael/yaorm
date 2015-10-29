@@ -62,7 +62,7 @@ public class PhoenixGeneratorService (
             return sqlStatement
         }
         val joinedIncludeColumnNames = includes.joinToString(CommonSqlDataTypeUtilities.Comma)
-        return "$sqlStatement include $joinedIncludeColumnNames"
+        return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(

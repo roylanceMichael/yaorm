@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.20-SNAPSHOT'
+version '0.21-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -22,7 +22,7 @@ artifactory {
         repository {
             repoKey = 'libs-snapshot-local'
             username = 'admin'
-            password = 'gi'
+            password = ''
             maven = true
         }
         defaults {
