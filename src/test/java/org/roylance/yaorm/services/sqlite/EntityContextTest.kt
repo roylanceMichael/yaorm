@@ -18,7 +18,7 @@ public class EntityContextTest {
         // arrange
         val contextName = "testContext"
         val database = File(UUID.randomUUID().toString().replace("-", ""))
-        
+
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
