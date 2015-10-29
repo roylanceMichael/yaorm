@@ -8,7 +8,7 @@ public interface ISqlGeneratorService {
     public val javaTypeToSqlType: Map<String, String>
     public val bulkInsertSize:Int
 
-    public fun <K, T: IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): String?
+    public fun <K, T: IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String?
     public fun <K, T: IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String?
 
     public fun <K, T: IEntity<K>> buildDropTable(classType: Class<T>): String

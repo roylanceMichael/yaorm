@@ -22,8 +22,8 @@ public class EntityAccessService(
         return returnList
     }
 
-    override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>): Boolean {
-        val createIndexSql = this.sqlGeneratorService.buildIndex(classModel, columns)
+    override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>, includes: List<String>): Boolean {
+        val createIndexSql = this.sqlGeneratorService.buildIndex(classModel, columns, includes)
         if (createIndexSql != null) {
             this.granularDatabaseService.executeUpdateQuery(createIndexSql)
             return true

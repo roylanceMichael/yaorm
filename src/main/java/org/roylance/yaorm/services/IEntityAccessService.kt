@@ -8,7 +8,7 @@ public interface IEntityAccessService : Closeable {
     public fun <K, T: IEntity<K>> instantiate(classModel: Class<T>): Boolean
     public fun <K, T: IEntity<K>> drop(classModel: Class<T>): Boolean
 
-    public fun <K, T: IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>): Boolean
+    public fun <K, T: IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>, includes: List<String>): Boolean
     public fun <K, T: IEntity<K>> dropIndex(classModel: Class<T>, columns: List<String>): Boolean
 
     public fun <K, T: IEntity<K>> bulkInsert(classModel: Class<T>, instances: List<T>): Boolean

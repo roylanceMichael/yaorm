@@ -52,7 +52,7 @@ public class SQLiteGeneratorService(
         return null
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>): String? {
+    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
         return null
     }
 

@@ -8,7 +8,6 @@ import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel
 import java.util.*
 
-
 public class PhoenixEntityAccessServiceTest {
     // @Test
     public fun simpleCreatePhoenixTest() {
@@ -100,7 +99,7 @@ public class PhoenixEntityAccessServiceTest {
             columnNames.add(AnotherTestModel.GramName)
 
             // act
-            entityService.createIndex(AnotherTestModel::class.java, columnNames)
+            entityService.createIndex(AnotherTestModel::class.java, columnNames, ArrayList())
 
             // assert
             Assert.assertEquals(0, entityService.getAll(AnotherTestModel::class.java).size)
