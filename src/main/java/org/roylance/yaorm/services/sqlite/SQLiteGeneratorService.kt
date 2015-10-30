@@ -170,7 +170,6 @@ public class SQLiteGeneratorService(
                 .forEach {
                     val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                             it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
-
                     if (nameTypeMap.containsKey(actualName) &&
                             !javaIdName.equals(actualName)) {
                         columnNames.add(actualName)
@@ -187,13 +186,15 @@ public class SQLiteGeneratorService(
 
                     classModel
                             .methods
-                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                                    !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+                            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get)}
                             .forEach {
                                 val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                         it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
+                                val javaType = it.returnType.name
+
                                 if (nameTypeMap.containsKey(actualName) &&
+                                        this.javaTypeToSqlType.containsKey(javaType) &&
                                         !javaIdName.equals(actualName)) {
 
                                     val instanceValue = it.invoke(instance)
@@ -259,9 +260,14 @@ public class SQLiteGeneratorService(
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
+                        val javaType = it.returnType.name
+
+                        if (!this.javaTypeToSqlType.containsKey(javaType)) {
+                            return@forEach
+                        }
+
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
@@ -305,13 +311,15 @@ public class SQLiteGeneratorService(
 
             classModel
                     .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
+                        val javaType = it.returnType.name
+
                         if (nameTypeMap.containsKey(actualName) &&
+                                this.javaTypeToSqlType.containsKey(javaType) &&
                                 !javaIdName.equals(actualName)) {
                             columnNames.add(actualName)
 
@@ -403,8 +411,7 @@ public class SQLiteGeneratorService(
                 .methods
                 .filter {
                     it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName)
+                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
                 }
                 .forEach {
                     val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
