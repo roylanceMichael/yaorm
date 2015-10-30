@@ -8,9 +8,6 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*
 
-/**
- * Created by mikeroylance on 10/27/15.
- */
 public class HiveEntityAccessServiceTest {
     // @Test
     public fun simpleCreateHiveTest() {

@@ -23,7 +23,7 @@ public class EntityAccessService(
     }
 
     override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>, includes: List<String>): Boolean {
-        val createIndexSql = this.sqlGeneratorService.buildIndex(classModel, columns, includes)
+        val createIndexSql = this.sqlGeneratorService.buildCreateIndex(classModel, columns, includes)
         if (createIndexSql != null) {
             this.granularDatabaseService.executeUpdateQuery(createIndexSql)
             return true
@@ -177,7 +177,7 @@ public class EntityAccessService(
     override fun <K, T: IEntity<K>> instantiate(classModel: Class<T>): Boolean {
         val createTableSql =
                 this.sqlGeneratorService
-                        .buildInitialTableCreate(classModel) ?: return false
+                        .buildCreateTable(classModel) ?: return false
         this.granularDatabaseService.executeUpdateQuery(createTableSql)
         return true
     }

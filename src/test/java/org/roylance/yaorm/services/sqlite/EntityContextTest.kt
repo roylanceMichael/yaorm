@@ -8,15 +8,17 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import org.roylance.yaorm.testmodels.TestEntityContext
+import org.roylance.yaorm.testmodels.after.AfterSimpleTestContext
+import org.roylance.yaorm.testmodels.before.BeforeSimpleTestContext
+import org.roylance.yaorm.testmodels.before.SimpleTestModel
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.io.File
 import java.util.*
 
 public class EntityContextTest {
-    @Test
-    public fun anotherSimpleCreatePhoenixTest() {
+    // @Test
+    public fun anotherSimpleDropColumnTest() {
         // arrange
-        val contextName = "testContext"
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
         try {
@@ -41,8 +43,7 @@ public class EntityContextTest {
             val testEntityContext = TestEntityContext(
                     anotherTestModelService,
                     beaconBroadcastService,
-                    migrationService,
-                    contextName)
+                    migrationService)
 
             // act
             val definitions = testEntityContext.getDefinitions()
@@ -92,6 +93,108 @@ public class EntityContextTest {
                     }
 
             Assert.assertEquals(null, beaconBroadcastDefinition.indexModel)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    // @Test
+    public fun simpleMigrationColumnTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val anotherTestModelService = EntityService(
+                    AnotherTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val beaconBroadcastService = EntityService(
+                    BeaconBroadcastModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val migrationService = EntityService(
+                    MigrationModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val testEntityContext = TestEntityContext(
+                    anotherTestModelService,
+                    beaconBroadcastService,
+                    migrationService)
+
+            // act
+            testEntityContext.handleMigrations(0)
+
+            //assert
+            var savedModels = testEntityContext.anotherTestModelService.getAll()
+            Assert.assertEquals(0, savedModels.size)
+
+            val testModel = AnotherTestModel(description = "cool description", gram = "cool gram")
+            testEntityContext.anotherTestModelService.create(testModel)
+
+            savedModels = testEntityContext.anotherTestModelService.getAll()
+
+            Assert.assertEquals(1, savedModels.size)
+            val foundTestModel = savedModels[0]
+
+            Assert.assertEquals(testModel.description, foundTestModel.description)
+            Assert.assertEquals(testModel.gram, foundTestModel.gram)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    public fun complexMigrationColumnTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+
+            val migrationService = EntityService(
+                    MigrationModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val beforeService = EntityService(
+                    SimpleTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val beforeContext = BeforeSimpleTestContext(beforeService, migrationService)
+
+            val afterService = EntityService(
+                    org.roylance.yaorm.testmodels.after.SimpleTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val afterContext = AfterSimpleTestContext(afterService, migrationService)
+
+            // act
+            // sanity check
+            Assert.assertEquals(0L, migrationService.getCount())
+
+            // first, let's apply migrations to first context
+            beforeContext.handleMigrations()
+
+            // after uses the same migration table as before
+            Assert.assertEquals(1L, migrationService.getCount())
+
+            // now, apply migrations from after context
+            afterContext.handleMigrations()
+
+            //assert
+            Assert.assertEquals(2L, migrationService.getCount())
         }
         finally {
             database.deleteOnExit()

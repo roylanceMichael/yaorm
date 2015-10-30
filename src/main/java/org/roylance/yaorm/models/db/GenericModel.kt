@@ -5,12 +5,13 @@ import org.roylance.yaorm.models.IEntity
 /**
  * Created by mikeroylance on 10/29/15.
  */
-public class GenericModel<T>(
-        public override var id: T? = null,
-        public var strVal: kotlin.String = "",
-        public var intVal: kotlin.Int = 0,
-        public var doubleVal: kotlin.Double = 0.0,
-        public var boolVal: kotlin.Boolean = false) : IEntity<T?> {
+public class GenericModel(
+        public override var id: String = "",
+        public var strVal: String = "",
+        public var intVal: Int = 0,
+        public var longVal: Long = 0L,
+        public var doubleVal: Double = 0.0,
+        public var boolVal: Boolean = false) : IEntity<String> {
     companion object {
         public val IdName = "id"
         public val StrValName = "strVal"

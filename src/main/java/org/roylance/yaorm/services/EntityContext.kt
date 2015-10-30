@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.models.migration.*
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.DefinitionModelComparisonUtil
 import java.util.*
 
 public abstract class EntityContext(
@@ -12,6 +13,38 @@ public abstract class EntityContext(
     protected val migrationService:IEntityService<Long, MigrationModel>,
     protected val contextName:String,
     private val gson:Gson = Gson()) {
+
+    private val typeToAction = object: HashMap<
+            String,
+            (entityService: IEntityService<*, *>, differenceModel: DifferenceModel) -> Boolean>() {
+        init {
+            put(DifferenceModel.OperationCreate + DifferenceModel.EntityTypeColumn,
+                    { service, model ->  createColumn(service, model) })
+            put(DifferenceModel.OperationCreate + DifferenceModel.EntityTypeIndex,
+                    { service, model ->  createIndex(service, model) })
+            put(DifferenceModel.OperationCreate + DifferenceModel.EntityTypeTable,
+                    { service, model ->  createTable(service) })
+            put(DifferenceModel.OperationDrop + DifferenceModel.EntityTypeColumn,
+                    { service, model ->  dropColumn(service, model) })
+            put(DifferenceModel.OperationDrop + DifferenceModel.EntityTypeIndex,
+                    { service, model ->  dropIndex(service, model) })
+            put(DifferenceModel.OperationDrop + DifferenceModel.EntityTypeTable,
+                    { service, model ->  dropTable(service) })
+        }
+    }
+
+    init {
+        this.migrationService.createTable()
+    }
+
+    public fun handleMigrations(newId:Long=0) {
+        val differenceReport = this.getDifferenceReport()
+
+        if (!differenceReport.migrationExists || differenceReport.differenceExists()) {
+            this.applyMigrations(differenceReport)
+            this.createNewMigration(newId)
+        }
+    }
 
     public fun getLatestMigrationDefinition() : DefinitionModels? {
         val whereItem = WhereClauseItem(
@@ -48,38 +81,66 @@ public abstract class EntityContext(
 
     public fun getDifferenceReport() : DifferenceReportModel {
         val returnModels = ArrayList<DifferenceModel>()
-        val latestMigration = this.getLatestMigrationDefinition() ?:
-                return DifferenceReportModel(false, returnModels)
 
+        val latestMigration = this.getLatestMigrationDefinition()
         val currentModel = this.getDefinitions()
 
-        // TODO: implement in util classes
-//        currentModel
-//            .definitionModels
-//            .forEach { currentDefinition ->
-//                val foundDefinition = latestMigration.definitionModels
-//                    .filter { currentDefinition.name.equals(it.name) }
-//                    .firstOrNull()
-//
-//                if (foundDefinition == null) {
-//                    val differenceModel = DifferenceModel(
-//                            DifferenceModel.EntityTypeTable,
-//                            DifferenceModel.OperationCreate,
-//                            currentDefinition.name,
-//                            definitionModel = currentDefinition)
-//
-//                    returnModels.add(differenceModel)
-//                }
-//                else {
-//
-//                }
-//
-//            }
+        currentModel
+            .definitionModels
+            .forEach { currentDefinition ->
+                if (latestMigration == null) {
+                    DefinitionModelComparisonUtil
+                            .addDifferenceIfDifferent(
+                                    currentDefinition,
+                                    null,
+                                    returnModels)
+                }
+                else {
+                    val foundDefinition = latestMigration.definitionModels
+                            .filter { currentDefinition.name.equals(it.name) }
+                            .firstOrNull()
 
-        return DifferenceReportModel(true, returnModels)
+                    // will look at children as well
+                    DefinitionModelComparisonUtil
+                            .addDifferenceIfDifferent(
+                                    currentDefinition,
+                                    foundDefinition,
+                                    returnModels)
+                }
+            }
+
+        return DifferenceReportModel(
+                latestMigration != null,
+                returnModels)
     }
 
-    public fun getDefinitions() : DefinitionModels {
+    public fun applyMigrations(differenceReportModel: DifferenceReportModel) {
+        if (!differenceReportModel.migrationExists) {
+            this.entityServices
+                .forEach {
+                    it.createTable()
+                }
+            return
+        }
+
+        differenceReportModel
+            .differences
+            .forEach { differenceModel ->
+                val foundEntityService = this.entityServices
+                        .filter {
+                            differenceModel.name.equals(it.entityDefinition.simpleName)
+                        }
+                        .firstOrNull() ?: return@forEach
+
+                val key = "${differenceModel.operation}${differenceModel.entityType}"
+
+                if (this.typeToAction.containsKey(key)) {
+                    this.typeToAction[key]!!.invoke(foundEntityService, differenceModel)
+                }
+            }
+    }
+
+    public fun getDefinitions():DefinitionModels {
         val returnList = ArrayList<DefinitionModel>()
 
         this.entityServices.forEach {
@@ -108,5 +169,41 @@ public abstract class EntityContext(
         }
 
         return DefinitionModels(returnList)
+    }
+
+    private fun createIndex(entityService: IEntityService<*,*>, differenceModel: DifferenceModel):Boolean {
+        if (differenceModel.indexModel != null) {
+            return entityService.createIndex(differenceModel.indexModel)
+        }
+        return false
+    }
+
+    private fun dropIndex(entityService: IEntityService<*, *>, differenceModel: DifferenceModel):Boolean {
+        if (differenceModel.indexModel != null) {
+            return entityService.dropIndex(differenceModel.indexModel)
+        }
+        return false
+    }
+
+    private fun createColumn(entityService: IEntityService<*, *>, differenceModel: DifferenceModel):Boolean {
+        if (differenceModel.propertyDefinition != null) {
+            return entityService.createColumn(differenceModel.propertyDefinition)
+        }
+        return false
+    }
+
+    private fun dropColumn(entityService: IEntityService<*, *>, differenceModel: DifferenceModel):Boolean {
+        if (differenceModel.propertyDefinition != null) {
+            return entityService.dropColumn(differenceModel.propertyDefinition)
+        }
+        return false
+    }
+
+    private fun createTable(entityService: IEntityService<*, *>):Boolean {
+        return entityService.createTable()
+    }
+
+    private fun dropTable(entityService: IEntityService<*, *>):Boolean {
+        return entityService.dropTable()
     }
 }

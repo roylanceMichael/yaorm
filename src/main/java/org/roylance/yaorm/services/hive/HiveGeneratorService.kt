@@ -10,6 +10,7 @@ import java.util.*
 public class HiveGeneratorService(
         public override val bulkInsertSize: Int = 100
 ) : ISqlGeneratorService {
+
     private val constJavaIdName = "id"
 
     private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
@@ -46,11 +47,31 @@ public class HiveGeneratorService(
         }
     }
 
+    override fun <K, T : IEntity<K>> buildCountSql(classType: Class<T>): String {
+        return "select count(1) as longVal from ${classType.simpleName}"
+    }
+
+    override fun <K, T : IEntity<K>> buildCreateColumn(classType: Class<T>, columnName: String, javaType: String): String? {
+        if (!this.javaTypeToSqlType.containsKey(javaType)) {
+            return null
+        }
+        return "alter table ${classType.simpleName} add columns ($columnName, ${this.javaTypeToSqlType[javaType]})"
+    }
+
+    override fun <K, T : IEntity<K>> buildDropColumn(classType: Class<T>, columnName: String): String? {
+        val columnNames = this.getNameTypes(classType)
+                .map {
+                    "${it.first} ${it.third}"
+                }
+                .joinToString(CommonSqlDataTypeUtilities.Comma)
+        return "alter table ${classType.simpleName} replace columns ($columnNames)"
+    }
+
     override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
         return null
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
+    override fun <K, T : IEntity<K>> buildCreateIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
         return null
     }
 
@@ -279,7 +300,7 @@ public class HiveGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildInitialTableCreate(classType: Class<T>): String? {
+    override fun <K, T : IEntity<K>> buildCreateTable(classType: Class<T>): String? {
         val nameTypes = this.getNameTypes(classType)
 
         if (nameTypes.size == 0) {

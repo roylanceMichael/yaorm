@@ -3,10 +3,22 @@ package org.roylance.yaorm.services
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.migration.IndexModel
+import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 
 public interface IEntityService<K, T: IEntity<K>> {
     val entityDefinition:Class<T>
     val indexDefinition: IndexModel?
+
+    fun createTable(): Boolean
+    fun dropTable(): Boolean
+
+    fun createIndex(indexModel: IndexModel): Boolean
+    fun dropIndex(indexModel: IndexModel): Boolean
+
+    fun createColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean
+    fun dropColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean
+
+    fun getCount(): Long
 
     fun getCustom(customSql: String): List<T>
     fun get(id: K): T?

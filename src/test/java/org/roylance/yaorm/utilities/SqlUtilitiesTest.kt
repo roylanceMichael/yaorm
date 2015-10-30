@@ -16,7 +16,7 @@ public class SqlUtilitiesTest {
         val expectedSql = "create table if not exists BeaconBroadcastModel (id integer primary key autoincrement, beaconId text, majorId integer, minorId integer, active integer, cachedName text, lastSeen integer);"
 
         // act
-        val createTableSql = sqliteGeneratorService.buildInitialTableCreate(BeaconBroadcastModel::class.java)
+        val createTableSql = sqliteGeneratorService.buildCreateTable(BeaconBroadcastModel::class.java)
 
         // assert
         Assert.assertEquals(expectedSql, createTableSql)

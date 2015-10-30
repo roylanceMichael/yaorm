@@ -2,7 +2,9 @@ package org.roylance.yaorm.services
 
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.migration.IndexModel
+import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
@@ -12,6 +14,66 @@ public class EntityService<K, T: IEntity<K>>(
         private val sqlGeneratorService: ISqlGeneratorService,
         public override val indexDefinition: IndexModel? = null
 ) : IEntityService<K, T> {
+    override fun getCount(): Long {
+        val countSql = this.sqlGeneratorService.buildCountSql(this.entityDefinition)
+
+        val cursor = this.granularDatabaseService.executeSelectQuery(GenericModel::class.java, countSql)
+
+        cursor.moveNext()
+        val genericModel:GenericModel = cursor.getRecord()
+
+        return genericModel.longVal
+    }
+
+    override fun createTable(): Boolean {
+        val createTableSql = this.sqlGeneratorService
+                .buildCreateTable(this.entityDefinition) ?: return false
+
+        return this.granularDatabaseService.executeUpdateQuery(createTableSql)
+    }
+
+    override fun dropTable(): Boolean {
+        val dropTableSql = this.sqlGeneratorService
+            .buildDropTable(this.entityDefinition)
+
+        return this.granularDatabaseService.executeUpdateQuery(dropTableSql)
+    }
+
+    override fun createIndex(indexModel: IndexModel): Boolean {
+        val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
+                this.entityDefinition,
+                indexModel.columnNames,
+                indexModel.includeNames) ?: return false
+
+        return this.granularDatabaseService.executeUpdateQuery(createIndexSql)
+    }
+
+    override fun dropIndex(indexModel: IndexModel): Boolean {
+        val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
+                this.entityDefinition,
+                indexModel.columnNames) ?: return false
+
+        return this.granularDatabaseService.executeUpdateQuery(dropIndexSql)
+    }
+
+    override fun createColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
+        val addColumnSql = this.sqlGeneratorService.buildCreateColumn(
+                this.entityDefinition,
+                propertyDefinitionModel.name,
+                propertyDefinitionModel.type)
+        if (addColumnSql != null) {
+            return this.granularDatabaseService.executeUpdateQuery(addColumnSql)
+        }
+        return false
+    }
+
+    override fun dropColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
+        val dropTableSqlStatements = this.sqlGeneratorService.buildDropColumn(
+                this.entityDefinition,
+                propertyDefinitionModel.name) ?: return false
+
+        return this.granularDatabaseService.executeUpdateQuery(dropTableSqlStatements)
+    }
 
     override fun getCustom(customSql: String): List<T> {
         val cursor = this.granularDatabaseService.executeSelectQuery(this.entityDefinition, customSql)

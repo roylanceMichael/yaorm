@@ -8,11 +8,16 @@ public interface ISqlGeneratorService {
     public val javaTypeToSqlType: Map<String, String>
     public val bulkInsertSize:Int
 
-    public fun <K, T: IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String?
+    public fun <K, T: IEntity<K>> buildCountSql(classType: Class<T>): String
+
+    public fun <K, T: IEntity<K>> buildCreateColumn(classType: Class<T>, columnName:String, javaType: String): String?
+    public fun <K, T: IEntity<K>> buildDropColumn(classType: Class<T>, columnName:String): String?
+
+    public fun <K, T: IEntity<K>> buildCreateIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String?
     public fun <K, T: IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String?
 
     public fun <K, T: IEntity<K>> buildDropTable(classType: Class<T>): String
-    public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): String?
+    public fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String?
 
     public fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String
     public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String?

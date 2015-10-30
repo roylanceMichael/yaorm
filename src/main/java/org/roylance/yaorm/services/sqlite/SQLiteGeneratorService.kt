@@ -48,12 +48,43 @@ public class SQLiteGeneratorService(
         }
     }
 
+    override fun <K, T : IEntity<K>> buildCountSql(classType: Class<T>): String {
+        return "select count(1) as longVal from ${classType.simpleName}"
+    }
+
+    override fun <K, T : IEntity<K>> buildCreateColumn(classType: Class<T>, columnName: String, javaType: String): String? {
+        if (javaTypeToSqlType.containsKey(javaType)) {
+            return "alter table ${classType.simpleName} add column $columnName ${javaTypeToSqlType[javaType]}"
+        }
+        return null
+    }
+
+    override fun <K, T : IEntity<K>> buildDropColumn(classType: Class<T>, columnName: String): String? {
+        val createTableSql = this.buildCreateTable(classType) ?: return null
+
+        val returnList = ArrayList<String>()
+        returnList.add("drop table if exists temp_${classType.simpleName}")
+        returnList.add("alter table ${classType.simpleName} rename to temp_${classType.simpleName}")
+        returnList.add(createTableSql.replace(CommonSqlDataTypeUtilities.SemiColon, ""))
+
+        val nameTypes = this.getNameTypes(classType)
+        val columnsWithoutId = nameTypes
+                .filter { !javaIdName.equals(it.first) }
+                .map { "${it.first}" }
+                .joinToString(CommonSqlDataTypeUtilities.Comma)
+
+        val selectIntoStatement =
+                "insert into ${classType.simpleName} ($columnsWithoutId) select $columnsWithoutId from temp_${classType.simpleName}"
+        returnList.add(selectIntoStatement)
+        return returnList.joinToString(CommonSqlDataTypeUtilities.SemiColon) + CommonSqlDataTypeUtilities.SemiColon
+    }
+
     override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
         return "drop index if exists $indexName on ${classType.simpleName}"
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
+    override fun <K, T : IEntity<K>> buildCreateIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
         val joinedColumnNames = columns.joinToString(CommonSqlDataTypeUtilities.Comma)
         val sqlStatement = "create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)"
@@ -117,7 +148,7 @@ public class SQLiteGeneratorService(
     }
 
     override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
-        return "drop table ${classType.simpleName}"
+        return "drop table if exists ${classType.simpleName}"
     }
 
     override public fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
@@ -302,7 +333,7 @@ public class SQLiteGeneratorService(
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): String? {
+    override public fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
 
         val nameTypes = this.getNameTypes(classType)
 

@@ -6,11 +6,10 @@ import org.roylance.yaorm.services.IEntityService
 import java.util.*
 
 public class TestEntityContext (
-        public val anotherTestModelService: IEntityService<String, AnotherTestModel>,
-        public val beaconBroadcastService: IEntityService<Int, BeaconBroadcastModel>,
-        migrationService: IEntityService<Long, MigrationModel>,
-        contextName: String
-) : EntityContext(
-        Arrays.asList(anotherTestModelService, beaconBroadcastService),
-        migrationService,
-        contextName)
+    public val anotherTestModelService: IEntityService<String, AnotherTestModel>,
+    public val beaconBroadcastService: IEntityService<Int, BeaconBroadcastModel>,
+    migrationService: IEntityService<Long, MigrationModel>) : EntityContext(
+    Arrays.asList(anotherTestModelService, beaconBroadcastService),
+    migrationService,
+    "TestEntityContext") {
+}

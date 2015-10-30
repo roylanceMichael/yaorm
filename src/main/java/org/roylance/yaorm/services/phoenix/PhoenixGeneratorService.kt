@@ -7,9 +7,6 @@ import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
-/**
- * Created by mikeroylance on 10/26/15.
- */
 public class PhoenixGeneratorService (
         public override val bulkInsertSize: Int = 500
 ) : ISqlGeneratorService {
@@ -48,12 +45,27 @@ public class PhoenixGeneratorService (
         }
     }
 
+    override fun <K, T : IEntity<K>> buildCountSql(classType: Class<T>): String {
+        return "select count(1) as longVal from ${classType.simpleName}"
+    }
+
+    override fun <K, T : IEntity<K>> buildCreateColumn(classType: Class<T>, columnName: String, javaType: String): String? {
+        if (!javaTypeToSqlType.containsKey(javaType)) {
+            return null
+        }
+        return "alter table ${classType.simpleName} add if not exists $columnName ${javaTypeToSqlType[javaType]}"
+    }
+
+    override fun <K, T : IEntity<K>> buildDropColumn(classType: Class<T>, columnName: String): String {
+        return "alter table ${classType.simpleName} drop column if exists $columnName"
+    }
+
     override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
         return "drop index if exists $indexName on ${classType.simpleName}"
     }
 
-    override fun <K, T : IEntity<K>> buildIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
+    override fun <K, T : IEntity<K>> buildCreateIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
         val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
         val joinedColumnNames = columns.joinToString(CommonSqlDataTypeUtilities.Comma)
         val sqlStatement = "create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)"
@@ -160,7 +172,7 @@ public class PhoenixGeneratorService (
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildInitialTableCreate(classType: Class<T>): String? {
+    override public fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
         val nameTypes = this.getNameTypes(classType)
 
         if (nameTypes.size == 0) {
