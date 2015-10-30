@@ -148,20 +148,16 @@ public class EntityService<K, T: IEntity<K>>(
                     temporaryList.add(it)
 
                     if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
-                        EntityAccessService.logger.info { "inserting ${temporaryList.size}" }
                         val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.entityDefinition, temporaryList)
                         val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
-                        EntityAccessService.logger.info { "inserted ${temporaryList.size}: result" }
                         results.add(result)
                         temporaryList.clear()
                     }
                 }
 
         if (!temporaryList.isEmpty()) {
-            EntityAccessService.logger.info { "inserting ${temporaryList.size}" }
             val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.entityDefinition, temporaryList)
             val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
-            EntityAccessService.logger.info { "inserted ${temporaryList.size}: $result" }
             results.add(result)
         }
 

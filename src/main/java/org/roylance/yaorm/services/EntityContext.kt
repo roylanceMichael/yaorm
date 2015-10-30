@@ -154,7 +154,7 @@ public abstract class EntityContext(
                     .methods
                     .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
                             propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.returnType.name) }
                     .map {
                         val name = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                                 it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
