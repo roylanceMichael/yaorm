@@ -16,8 +16,7 @@ public class JDBCCursor<T> (
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
-            put(
-                    CommonSqlDataTypeUtilities.JavaObjectName,
+            put(CommonSqlDataTypeUtilities.JavaObjectName,
                     { label, resultSet ->
                         val foundObject = resultSet.getObject(label)
 
@@ -34,53 +33,37 @@ public class JDBCCursor<T> (
                             foundObject as String
                         }
                     })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
+            put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
+            put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAlt1LongName,
+            put(CommonSqlDataTypeUtilities.JavaAlt1LongName,
                     { label, resultSet -> resultSet.getLong(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAlt1BooleanName,
+            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName,
                     { label, resultSet -> resultSet.getBoolean(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAltDoubleName,
+            put(CommonSqlDataTypeUtilities.JavaAltDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAltLongName,
+            put(CommonSqlDataTypeUtilities.JavaAltLongName,
                     { label, resultSet -> resultSet.getLong(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAltIntegerName,
+            put(CommonSqlDataTypeUtilities.JavaAltIntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaStringName,
+            put(CommonSqlDataTypeUtilities.JavaStringName,
                     { label, resultSet -> resultSet.getString(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
+            put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                     { label, resultSet -> resultSet.getString(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaIntegerName,
+            put(CommonSqlDataTypeUtilities.JavaIntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaDoubleName,
+            put(CommonSqlDataTypeUtilities.JavaDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaByteName,
+            put(CommonSqlDataTypeUtilities.JavaByteName,
                     { label, resultSet -> resultSet.getBlob(label) })
-            put(
-                    CommonSqlDataTypeUtilities.JavaBooleanName, {
+            put(CommonSqlDataTypeUtilities.JavaBooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAltBooleanName, {
+            put(CommonSqlDataTypeUtilities.JavaAltBooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(
-                    CommonSqlDataTypeUtilities.JavaAlt1BooleanName, {
+            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(
-                    CommonSqlDataTypeUtilities.JavaLongName,
+            put(CommonSqlDataTypeUtilities.JavaLongName,
                     { label, resultSet -> resultSet.getLong(label) })
         }
     }
