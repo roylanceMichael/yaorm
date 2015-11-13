@@ -7,8 +7,8 @@ import java.io.File
 import java.util.*
 
 class SQLiteGeneratorServiceTest {
-    // @Test
-    public fun anotherSimpleCreatePhoenixTest() {
+//     @Test
+    public fun anotherSimpleCreateTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -51,8 +51,8 @@ class SQLiteGeneratorServiceTest {
                     org.roylance.yaorm.testmodels.after.SimpleTestModel::class.java,
                     selectAllQuery)
 
-            allItems.moveNext()
-            val foundItem:org.roylance.yaorm.testmodels.after.SimpleTestModel = allItems.getRecord()
+            val allItemsList:List<org.roylance.yaorm.testmodels.after.SimpleTestModel> = allItems.getRecords()
+            val foundItem = allItemsList[0]
             Assert.assertEquals(newModel.fName, foundItem.fName)
             Assert.assertEquals(newModel.lName, foundItem.lName)
         }

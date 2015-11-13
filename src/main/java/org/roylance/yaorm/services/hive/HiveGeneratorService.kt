@@ -8,7 +8,7 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
 public class HiveGeneratorService(
-        public override val bulkInsertSize: Int = 100
+        public override val bulkInsertSize: Int = 2000
 ) : ISqlGeneratorService {
 
     private val constJavaIdName = "id"

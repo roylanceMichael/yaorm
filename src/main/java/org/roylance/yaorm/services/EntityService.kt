@@ -18,11 +18,12 @@ public class EntityService<K, T: IEntity<K>>(
         val countSql = this.sqlGeneratorService.buildCountSql(this.entityDefinition)
 
         val cursor = this.granularDatabaseService.executeSelectQuery(GenericModel::class.java, countSql)
+        val allRecords:List<GenericModel> = cursor.getRecords()
 
-        cursor.moveNext()
-        val genericModel:GenericModel = cursor.getRecord()
-
-        return genericModel.longVal
+        if (allRecords.size > 0) {
+            return allRecords[0].longVal
+        }
+        return -1
     }
 
     override fun createTable(): Boolean {
@@ -76,15 +77,9 @@ public class EntityService<K, T: IEntity<K>>(
     }
 
     override fun getCustom(customSql: String): List<T> {
-        val cursor = this.granularDatabaseService.executeSelectQuery(this.entityDefinition, customSql)
-
-        val returnList = ArrayList<T>()
-
-        while(cursor.moveNext()) {
-            returnList.add(cursor.getRecord())
-        }
-
-        return returnList
+        return this.granularDatabaseService
+                .executeSelectQuery(this.entityDefinition, customSql)
+                .getRecords()
     }
 
     override fun get(id: K): T? {
@@ -96,9 +91,10 @@ public class EntityService<K, T: IEntity<K>>(
                 this.entityDefinition,
                 whereSql)
 
-        if (resultSet.moveNext()) {
-            val t:T = resultSet.getRecord()
-            return t
+        val records:List<T> = resultSet.getRecords()
+
+        if (records.size > 0) {
+            return records[0]
         }
 
         return null
@@ -108,17 +104,10 @@ public class EntityService<K, T: IEntity<K>>(
         val allSql =
                 this.sqlGeneratorService.buildSelectAll(this.entityDefinition)
 
-        val resultSet = this.granularDatabaseService.executeSelectQuery(
+        return this.granularDatabaseService.executeSelectQuery(
                 this.entityDefinition,
                 allSql)
-
-        val returnItems = ArrayList<T>()
-
-        while (resultSet.moveNext()) {
-            returnItems.add(resultSet.getRecord())
-        }
-
-        return returnItems
+                .getRecords()
     }
 
     override fun where(whereClauseItem: WhereClauseItem): List<T> {
@@ -127,15 +116,10 @@ public class EntityService<K, T: IEntity<K>>(
                         this.entityDefinition,
                         whereClauseItem) ?: return arrayListOf()
 
-        val resultSet = this.granularDatabaseService.executeSelectQuery(
+        return this.granularDatabaseService.executeSelectQuery(
                 this.entityDefinition,
                 whereSql)
-
-        val returnItems = ArrayList<T>()
-        while (resultSet.moveNext()) {
-            returnItems.add(resultSet.getRecord())
-        }
-        return returnItems
+                .getRecords()
     }
 
     override fun bulkInsert(instances: List<T>): Boolean {

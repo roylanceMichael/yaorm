@@ -1,5 +1,7 @@
 package org.roylance.yaorm.services.sqlite
 
+import org.junit.After
+import org.junit.AfterClass
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.models.WhereClauseItem
@@ -17,7 +19,7 @@ import java.io.File
 import java.util.*
 
 public class SQLiteEntityAccessServiceTest {
-    // @Test
+//     @Test
     public fun readmeTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -42,7 +44,7 @@ public class SQLiteEntityAccessServiceTest {
 
             // act
             entityService.instantiate(BeaconBroadcastModel::class.java)
-            entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+            entityService.create(BeaconBroadcastModel::class.java, newBeacon)
 
             // assert
             val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
@@ -56,18 +58,13 @@ public class SQLiteEntityAccessServiceTest {
             Assert.assertEquals(minorId, foundBeacon.minorId)
             Assert.assertEquals(isActive, foundBeacon.active)
             Assert.assertEquals(cachedName, foundBeacon.cachedName)
-            database.deleteOnExit()
         }
         finally {
-            granularDatabaseService.close()
-
-            if (database.exists()) {
-                database.delete()
-            }
+            database.deleteOnExit()
         }
     }
 
-    // @Test
+//     @Test
     public fun simpleCreateTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -107,13 +104,9 @@ public class SQLiteEntityAccessServiceTest {
             Assert.assertEquals(minorId, foundBeacon.minorId)
             Assert.assertEquals(isActive, foundBeacon.active)
             Assert.assertEquals(cachedName, foundBeacon.cachedName)
-            database.delete()
         }
         finally {
-            granularDatabaseService.close()
-            if (database.exists()) {
-                database.delete()
-            }
+            database.deleteOnExit()
         }
     }
 }

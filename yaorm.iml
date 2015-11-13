@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="yaorm" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="org.roylance" external.system.module.version="0.26-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="yaorm" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="org.roylance" external.system.module.version="0.27-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/classes/main" />
     <output-test url="file://$MODULE_DIR$/build/classes/test" />
@@ -14,12 +14,43 @@
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.google.code.gson:gson:2.4" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-1103" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-1103" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.xerial:sqlite-jdbc:3.8.10.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.8.10.1/e6023cf20837019283abc6c73957341fb13b5fcc/sqlite-jdbc-3.8.10.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.8.10.1/fe5cd36eeda53ca32c550b8ec3d156a38187a729/sqlite-jdbc-3.8.10.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-1103">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.0-beta-1103/9a1faa02a6053c81c4133d9bb4cefaf87efc4ee/kotlin-stdlib-1.0.0-beta-1103.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.0-beta-1103/641b9f378371f2ce6acdaa6bd21bb2899feb09b0/kotlin-stdlib-1.0.0-beta-1103-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-1103">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/1.0.0-beta-1103/45e49c2a02be2e2cefc527c21b9fb9505481b2ae/kotlin-runtime-1.0.0-beta-1103.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/1.0.0-beta-1103/556d31a37f73ed9994326eab009dc77ee0c0ac75/kotlin-runtime-1.0.0-beta-1103-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

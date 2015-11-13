@@ -12,10 +12,6 @@ public class JDBCGranularDatabaseService(
         private val connection: Connection,
         private val shouldManuallyCommitAfterUpdate: Boolean) : IGranularDatabaseService {
 
-    init {
-        this.connection.autoCommit = !shouldManuallyCommitAfterUpdate
-    }
-
     override fun commit() {
         this.connection.commit()
     }
@@ -35,19 +31,14 @@ public class JDBCGranularDatabaseService(
             if (this.shouldManuallyCommitAfterUpdate) {
                 this.connection.commit()
             }
-            statement.closeOnCompletion()
+            statement.close()
         }
     }
 
     override fun <K, T: IEntity<K>> executeSelectQuery(classModel:Class<T>, query: String): ICursor<T> {
         val statement = this.connection.prepareStatement(query)
-        try {
-            val resultSet = statement.executeQuery()
-            return JDBCCursor(classModel, resultSet)
-        }
-        finally {
-            statement.closeOnCompletion()
-        }
+        val resultSet = statement.executeQuery()
+        return JDBCCursor(classModel, resultSet, statement)
     }
 
     companion object {
