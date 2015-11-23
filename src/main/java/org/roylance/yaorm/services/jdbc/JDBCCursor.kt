@@ -3,13 +3,16 @@ package org.roylance.yaorm.services.jdbc
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.services.ICursor
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.CommonStringUtilities
 import java.lang.reflect.Method
 import java.sql.ResultSet
+import java.sql.Statement
 import java.util.*
 
 public class JDBCCursor<T> (
         private val classModel: Class<T>,
-        private val resultSet: ResultSet) : ICursor<T> {
+        private val resultSet: ResultSet,
+        private val preparedStatement: Statement) : ICursor<T> {
 
     private val cachedGetMethods: HashMap<String, Method> = HashMap()
     private val columnNamesFromResultSet: HashSet<String> = HashSet()
@@ -68,11 +71,11 @@ public class JDBCCursor<T> (
         }
     }
 
-    override fun moveNext(): Boolean {
+    fun moveNext(): Boolean {
         return this.resultSet.next()
     }
 
-    override fun <K, T: IEntity<K>> getRecord(): T {
+    fun <K, T: IEntity<K>> getRecord(): T {
         val newInstance = this.classModel.newInstance()!! as T
 
         if (this.columnNamesFromResultSet.isEmpty()) {
@@ -80,7 +83,12 @@ public class JDBCCursor<T> (
 
             var iter = 1
             while (iter <= totalColumns) {
-                val lowercaseName = this.resultSet.metaData.getColumnName(iter).toLowerCase()
+                // let's make sure we get the last one
+                val lowercaseName = CommonStringUtilities.getLastWord(this.resultSet
+                        .metaData
+                        .getColumnName(iter))
+                        .toLowerCase()
+
                 this.columnNamesFromResultSet.add(lowercaseName)
                 iter++
             }
@@ -127,5 +135,18 @@ public class JDBCCursor<T> (
                 }
 
         return newInstance
+    }
+
+    override fun <K, T : IEntity<K>> getRecords(): List<T> {
+        val returnItems = ArrayList<T>()
+        try {
+            while (this.moveNext()) {
+                returnItems.add(this.getRecord())
+            }
+        }
+        finally {
+            this.preparedStatement.close()
+            return returnItems
+        }
     }
 }

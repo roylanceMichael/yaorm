@@ -8,17 +8,17 @@ import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel
 import java.util.*
 
-public class PhoenixEntityAccessServiceTest {
-    // @Test
-    public fun simpleCreatePhoenixTest() {
+class PhoenixEntityAccessServiceTest {
+//    @Test
+    fun simpleCreatePhoenixTest() {
         // arrange
         val id = 1
         val name = "mike"
 
-        val hiveGeneratorService = PhoenixGeneratorService()
-        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
+        val phoenixGeneratorService = PhoenixGeneratorService()
+        val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
             val testModel = TestModel()
@@ -49,17 +49,17 @@ public class PhoenixEntityAccessServiceTest {
         }
     }
 
-    // @Test
-    public fun anotherSimpleCreatePhoenixTest() {
+//    @Test
+    fun anotherSimpleCreatePhoenixTest() {
         // arrange
         val id = "waefawef"
         val gram = "a"
         val description = "what is this"
 
-        val hiveGeneratorService = PhoenixGeneratorService()
-        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
+        val phoenixGeneratorService = PhoenixGeneratorService()
+        val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
             val testModel = AnotherTestModel(id, description, gram)
@@ -82,13 +82,13 @@ public class PhoenixEntityAccessServiceTest {
         }
     }
 
-    // @Test
+//     @Test
     public fun anotherSimpleIndexPhoenixTest() {
         // arrange
-        val hiveGeneratorService = PhoenixGeneratorService()
-        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
+        val phoenixGeneratorService = PhoenixGeneratorService()
+        val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
             entityService.drop(AnotherTestModel::class.java)
@@ -109,16 +109,16 @@ public class PhoenixEntityAccessServiceTest {
         }
     }
 
-    // @Test
+//     @Test
     public fun simpleDeletePhoenixTest() {
         // arrange
         val id = 1
         val name = "mike"
 
-        val hiveGeneratorService = PhoenixGeneratorService()
-        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
+        val phoenixGeneratorService = PhoenixGeneratorService()
+        val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
             val testModel = TestModel()
@@ -141,17 +141,17 @@ public class PhoenixEntityAccessServiceTest {
         }
     }
 
-    // @Test
+//     @Test
     public fun simpleCustomPhoenixTest() {
         // arrange
         val description = "mike"
 
         val customSql = "select distinct description from AnotherTestModel"
 
-        val hiveGeneratorService = PhoenixGeneratorService()
+        val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
             entityService.drop(AnotherTestModel::class.java)
@@ -182,14 +182,14 @@ public class PhoenixEntityAccessServiceTest {
         }
     }
 
-    // @Test
+//     @Test
     public fun simpleBulkInsertPhoenixTest() {
         // arrange
         val id = 1
         val name = "mike"
 
         val phoenixGeneratorService = PhoenixGeneratorService()
-        val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1,dev-sherlock-hadoop3,dev-sherlock-hadoop4")
+        val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
@@ -220,6 +220,20 @@ public class PhoenixEntityAccessServiceTest {
         }
         finally {
             granularDatabaseService.close()
+        }
+    }
+
+    companion object {
+        var zookeeperQuorum:String?=null
+
+        fun getZookeeperInfo():String {
+            if (zookeeperQuorum == null) {
+                val properties = Properties()
+                val phoenixStream = PhoenixEntityAccessServiceTest::class.java.getResourceAsStream("/phoenix.properties")
+                properties.load(phoenixStream)
+                zookeeperQuorum = properties.getProperty("zookeeperQuorum")
+            }
+            return zookeeperQuorum!!
         }
     }
 }

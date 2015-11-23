@@ -11,15 +11,9 @@ public class EntityAccessService(
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityAccessService {
 
     override fun <K, T : IEntity<K>> getCustom(classModel: Class<T>, customSql: String): List<T> {
-        val cursor = this.granularDatabaseService.executeSelectQuery(classModel, customSql)
-
-        val returnList = ArrayList<T>()
-
-        while(cursor.moveNext()) {
-            returnList.add(cursor.getRecord())
-        }
-
-        return returnList
+        return this.granularDatabaseService
+                .executeSelectQuery(classModel, customSql)
+                .getRecords()
     }
 
     override fun <K, T : IEntity<K>> createIndex(classModel: Class<T>, columns: List<String>, includes: List<String>): Boolean {
@@ -120,15 +114,14 @@ public class EntityAccessService(
         val whereSql = this.sqlGeneratorService
                 .buildWhereClause(classModel, whereClause) ?: return null
 
-        val resultSet = this.granularDatabaseService.executeSelectQuery(
+        val records:List<T> = this.granularDatabaseService.executeSelectQuery(
                 classModel,
                 whereSql)
+                .getRecords()
 
-        if (resultSet.moveNext()) {
-            val t:T = resultSet.getRecord()
-            return t
+        if (records.size > 0) {
+            return records[0]
         }
-
         return null
     }
 
@@ -136,17 +129,10 @@ public class EntityAccessService(
         val allSql =
                 this.sqlGeneratorService.buildSelectAll(classModel)
 
-        val resultSet = this.granularDatabaseService.executeSelectQuery(
+        return this.granularDatabaseService.executeSelectQuery(
                 classModel,
                 allSql)
-
-        val returnItems = ArrayList<T>()
-
-        while (resultSet.moveNext()) {
-            returnItems.add(resultSet.getRecord())
-        }
-
-        return returnItems
+                .getRecords()
     }
 
     override fun <K, T: IEntity<K>> where(classModel: Class<T>, whereClauseItem: WhereClauseItem): List<T> {
@@ -155,15 +141,10 @@ public class EntityAccessService(
                         classModel,
                         whereClauseItem) ?: return arrayListOf()
 
-        val resultSet = this.granularDatabaseService.executeSelectQuery(
+        return this.granularDatabaseService.executeSelectQuery(
                 classModel,
                 whereSql)
-
-        val returnItems = ArrayList<T>()
-        while (resultSet.moveNext()) {
-            returnItems.add(resultSet.getRecord())
-        }
-        return returnItems
+                .getRecords()
     }
 
     override fun <K, T: IEntity<K>> delete(classModel: Class<T>, id: K): Boolean {

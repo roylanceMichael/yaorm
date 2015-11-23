@@ -9,7 +9,7 @@ import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*
 
 public class HiveEntityAccessServiceTest {
-    // @Test
+//     @Test
     public fun simpleCreateHiveTest() {
         // arrange
         val beaconId = "test"
@@ -19,7 +19,8 @@ public class HiveEntityAccessServiceTest {
         val cachedName = "mike"
 
         val hiveGeneratorService = HiveGeneratorService()
-        val sourceConnection = HiveConnectionSourceFactory("dev-sherlock-hadoop3", "10000", "default")
+        getProperties()
+        val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 
@@ -50,7 +51,7 @@ public class HiveEntityAccessServiceTest {
         Assert.assertEquals(cachedName, foundBeacon.cachedName)
     }
 
-    // @Test
+//     @Test
     public fun simpleCreateUpdateHiveTest() {
         // arrange
         val beaconId = "test"
@@ -60,7 +61,8 @@ public class HiveEntityAccessServiceTest {
         val cachedName = "mike"
 
         val hiveGeneratorService = HiveGeneratorService()
-        val sourceConnection = HiveConnectionSourceFactory("dev-sherlock-hadoop3", "10000", "default")
+        getProperties()
+        val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 
@@ -104,14 +106,15 @@ public class HiveEntityAccessServiceTest {
         Assert.assertEquals(foundBeacon.cachedName, foundBeacon.cachedName)
     }
 
-    // @Test
+//     @Test
     public fun simpleBulkInsertHiveTest() {
         // arrange
         val isActive = true
         val cachedName = "mike"
 
         val hiveGeneratorService = HiveGeneratorService()
-        val sourceConnection = HiveConnectionSourceFactory("dev-sherlock-hadoop2.local", "10000", "default")
+        getProperties()
+        val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 
@@ -147,5 +150,19 @@ public class HiveEntityAccessServiceTest {
         System.out.println("verifying size...")
         val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
         Assert.assertEquals(totalInsertValue, allBeacons.size)
+    }
+
+    companion object {
+        var url:String?=null
+        var port:String?=null
+        var db:String?=null
+        fun getProperties() {
+            val properties = Properties()
+            val stream = HiveEntityAccessServiceTest::class.java.getResourceAsStream("/hive.properties")
+            properties.load(stream)
+            url = properties.getProperty("url")
+            port = properties.getProperty("port")
+            db = properties.getProperty("db")
+        }
     }
 }
