@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.Tuple
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.EntityUtils
 import java.util.*
 
 public class SQLiteGeneratorService(
@@ -27,9 +28,9 @@ public class SQLiteGeneratorService(
     private val SqlRealName = "real"
     private val SqlBlobName = "blob"
 
-    override public val javaIdName: String = "id"
+    override val javaIdName: String = "id"
 
-    override public val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
+    override val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
         init {
             put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName, SqlTextName)
             put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName, SqlIntegerName)
@@ -166,6 +167,7 @@ public class SQLiteGeneratorService(
 
         classModel
                 .methods
+                .sortedBy { it.name }
                 .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
                 .forEach {
                     val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
@@ -260,6 +262,7 @@ public class SQLiteGeneratorService(
 
             classModel
                     .methods
+                    .sortedBy { it.name }
                     .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
                         val javaType = it.returnType.name
@@ -311,6 +314,7 @@ public class SQLiteGeneratorService(
 
             classModel
                     .methods
+                    .sortedBy { it.name }
                     .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
                     .forEach {
                         val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
@@ -359,7 +363,7 @@ public class SQLiteGeneratorService(
                 .append(CommonSqlDataTypeUtilities.Space)
                 .append(AutoIncrement)
 
-        for (nameType in getNameTypes(classType)) {
+        for (nameType in this.getNameTypes(classType)) {
             if (!javaIdName.equals(nameType.first)) {
                 workspace
                         .append(CommonSqlDataTypeUtilities.Comma)
@@ -409,6 +413,7 @@ public class SQLiteGeneratorService(
         // let's handle the types now
         classModel
                 .methods
+                .sortedBy { it.name }
                 .filter {
                     it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
                             propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
@@ -419,38 +424,18 @@ public class SQLiteGeneratorService(
 
                     if (this.javaTypeToSqlType.containsKey(javaType)) {
                         val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
-                        )
-
+                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
                         val javaColumnName = columnName
                         val dataType = this.javaTypeToSqlType[javaType]
-
                         if (javaIdName.equals(sqlColumnName)) {
                             foundIdColumnName = true
                         }
-
                         nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
                     }
                     else {
-                        // does this have "getId()" method?
-                        val foundIds = it
-                                .returnType
-                                .methods
-                                .filter { (it.name.equals(CommonSqlDataTypeUtilities.Get + "Id") ||
-                                        it.name.equals(CommonSqlDataTypeUtilities.Set + "Id"))}
-
-                        // get and set for id (override is an object)
-                        if (foundIds.size == 4) {
-                            val returnTypeForGet = foundIds
-                                    .firstOrNull { this.javaTypeToSqlType.containsKey(it.returnType.name) }
-
-                            if (returnTypeForGet != null) {
-                                // so, we need to add on a name for this model
-                                val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) + "Id")
-                                val dataType = this.javaTypeToSqlType[returnTypeForGet.returnType.name]
-                                nameTypes.add(Tuple(sqlColumnName, columnName + "Id", dataType!!))
-                            }
+                        val foundTuple = EntityUtils.getEntityTuple(it, this.javaTypeToSqlType)
+                        if (foundTuple != null) {
+                            nameTypes.add(foundTuple)
                         }
                     }
                 }
