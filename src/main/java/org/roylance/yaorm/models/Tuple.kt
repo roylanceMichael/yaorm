@@ -1,6 +1,6 @@
 package org.roylance.yaorm.models
 
-public class Tuple<T>(
-        public val first: T,
-        public val second: T,
-        public val third: T)
+class Tuple<T>(
+        val first: T,
+        val second: T,
+        val third: T)

@@ -1,43 +1,43 @@
 package org.roylance.yaorm.utilities
 
-public object CommonSqlDataTypeUtilities {
+object CommonSqlDataTypeUtilities {
     private val Null = "null"
     private val SingleQuote = "'"
     private val DoubleSingleQuote = "''"
 
-    public val Space = " "
-    public val Comma = ","
-    public val Equals = "="
-    public val SemiColon = ";"
-    public val CarriageReturn = '\n'
-    public val SpacedUnion = "${CarriageReturn}union "
-    public val SpacedAnd = " and "
-    public val And = "and"
-    public val Or = "or"
-    public val Underscore = "_"
+    val Space = " "
+    val Comma = ","
+    val Equals = "="
+    val SemiColon = ";"
+    val CarriageReturn = '\n'
+    val SpacedUnion = "${CarriageReturn}union "
+    val SpacedAnd = " and "
+    val And = "and"
+    val Or = "or"
+    val Underscore = "_"
 
-    public val JavaFullyQualifiedStringName: String = "String"
-    public val JavaObjectName: String = "java.lang.Object"
-    public val JavaStringName: String = "java.lang.String"
-    public val JavaDoubleName: String = "double"
-    public val JavaAltDoubleName: String = "double"
-    public val JavaAlt1DoubleName: String = "double"
-    public val JavaIntegerName: String = "int"
-    public val JavaAltIntegerName: String = "Integer"
-    public val JavaAlt1IntegerName: String = "java.lang.Integer"
-    public val JavaLongName: String = "long"
-    public val JavaAltLongName: String = "Long"
-    public val JavaAlt1LongName: String = "java.lang.Long"
-    public val JavaByteName: String = "byte"
-    public val JavaBooleanName: String = "boolean"
-    public val JavaAltBooleanName: String = "Boolean"
-    public val JavaAlt1BooleanName: String = "java.lang.Boolean"
+    val JavaFullyQualifiedStringName: String = "String"
+    val JavaObjectName: String = "java.lang.Object"
+    val JavaStringName: String = "java.lang.String"
+    val JavaDoubleName: String = "double"
+    val JavaAltDoubleName: String = "double"
+    val JavaAlt1DoubleName: String = "double"
+    val JavaIntegerName: String = "int"
+    val JavaAltIntegerName: String = "Integer"
+    val JavaAlt1IntegerName: String = "java.lang.Integer"
+    val JavaLongName: String = "long"
+    val JavaAltLongName: String = "Long"
+    val JavaAlt1LongName: String = "java.lang.Long"
+    val JavaByteName: String = "byte"
+    val JavaBooleanName: String = "boolean"
+    val JavaAltBooleanName: String = "Boolean"
+    val JavaAlt1BooleanName: String = "java.lang.Boolean"
 
-    public val Get:String = "get"
-    public val Set:String = "set"
-    public val GetSetLength = Get.length
+    val Get:String = "get"
+    val Set:String = "set"
+    val GetSetLength = Get.length
 
-    public fun getFormattedString(value: Any?): String {
+    fun getFormattedString(value: Any?): String {
         if (value == null) {
             return Null
         }
@@ -57,7 +57,7 @@ public object CommonSqlDataTypeUtilities {
         return Null
     }
 
-    public fun lowercaseFirstChar(input:String):String {
+    fun lowercaseFirstChar(input:String):String {
         if (input.length == 0) {
             return input
         }
@@ -70,12 +70,12 @@ public object CommonSqlDataTypeUtilities {
         return firstChar + input.substring(1)
     }
 
-    public fun convertPropertyToSetterName(propertyName: String): String {
+    fun convertPropertyToSetterName(propertyName: String): String {
         val firstChar = propertyName.get(0).toUpperCase()
         return Set + firstChar + propertyName.substring(1)
     }
 
-    public fun buildIndexName(columnNames:List<String>) : String {
+    fun buildIndexName(columnNames:List<String>) : String {
         return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
     }
 }

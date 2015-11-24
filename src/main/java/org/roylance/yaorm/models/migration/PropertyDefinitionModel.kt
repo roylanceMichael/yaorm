@@ -1,5 +1,5 @@
 package org.roylance.yaorm.models.migration
 
-public class PropertyDefinitionModel(
-        public var name:String,
-        public var type:String)
+class PropertyDefinitionModel(
+        var name:String,
+        var type:String)

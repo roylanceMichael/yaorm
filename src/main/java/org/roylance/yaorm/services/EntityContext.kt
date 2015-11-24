@@ -8,7 +8,7 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.DefinitionModelComparisonUtil
 import java.util.*
 
-public abstract class EntityContext(
+abstract class EntityContext(
     protected val entityServices:List<IEntityService<*,*>>,
     protected val migrationService:IEntityService<Long, MigrationModel>,
     protected val contextName:String,
@@ -37,7 +37,7 @@ public abstract class EntityContext(
         this.migrationService.createTable()
     }
 
-    public fun handleMigrations(newId:Long=0) {
+    fun handleMigrations(newId:Long=0) {
         val differenceReport = this.getDifferenceReport()
 
         if (!differenceReport.migrationExists || differenceReport.differenceExists()) {
@@ -46,7 +46,7 @@ public abstract class EntityContext(
         }
     }
 
-    public fun getLatestMigrationDefinition() : DefinitionModels? {
+    fun getLatestMigrationDefinition() : DefinitionModels? {
         val whereItem = WhereClauseItem(
                 MigrationModel.ContextName,
                 WhereClauseItem.Equals,
@@ -68,7 +68,7 @@ public abstract class EntityContext(
         return null
     }
 
-    public fun createNewMigration(id:Long) {
+    fun createNewMigration(id:Long) {
         val definitionsModels = this.getDefinitions()
 
         val migrationModel = MigrationModel(
@@ -79,7 +79,7 @@ public abstract class EntityContext(
         this.migrationService.create(migrationModel)
     }
 
-    public fun getDifferenceReport() : DifferenceReportModel {
+    fun getDifferenceReport() : DifferenceReportModel {
         val returnModels = ArrayList<DifferenceModel>()
 
         val latestMigration = this.getLatestMigrationDefinition()
@@ -114,7 +114,7 @@ public abstract class EntityContext(
                 returnModels)
     }
 
-    public fun applyMigrations(differenceReportModel: DifferenceReportModel) {
+    fun applyMigrations(differenceReportModel: DifferenceReportModel) {
         if (!differenceReportModel.migrationExists) {
             this.entityServices
                 .forEach {
@@ -140,7 +140,7 @@ public abstract class EntityContext(
             }
     }
 
-    public fun getDefinitions():DefinitionModels {
+    fun getDefinitions():DefinitionModels {
         val returnList = ArrayList<DefinitionModel>()
 
         this.entityServices.forEach {

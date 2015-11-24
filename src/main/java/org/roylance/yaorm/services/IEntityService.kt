@@ -5,7 +5,7 @@ import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 
-public interface IEntityService<K, T: IEntity<K>> {
+interface IEntityService<K, T: IEntity<K>> {
     val entityDefinition:Class<T>
     val indexDefinition: IndexModel?
 

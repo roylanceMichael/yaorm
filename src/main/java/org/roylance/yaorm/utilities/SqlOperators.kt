@@ -1,8 +1,8 @@
 package org.roylance.yaorm.utilities
 
-public object SqlOperators {
-    public val Equals:String = "="
-    public val GreaterThan:String = ">"
-    public val LessThan:String = "<"
-    public val NotEquals:String = "!="
+object SqlOperators {
+    val Equals:String = "="
+    val GreaterThan:String = ">"
+    val LessThan:String = "<"
+    val NotEquals:String = "!="
 }

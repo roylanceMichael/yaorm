@@ -8,7 +8,7 @@ import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
-public class EntityService<K, T: IEntity<K>>(
+class EntityService<K, T: IEntity<K>>(
         public override val entityDefinition:Class<T>,
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService,

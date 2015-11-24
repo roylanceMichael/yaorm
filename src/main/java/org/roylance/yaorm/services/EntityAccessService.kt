@@ -6,7 +6,7 @@ import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 import java.util.logging.Logger
 
-public class EntityAccessService(
+class EntityAccessService(
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityAccessService {
 

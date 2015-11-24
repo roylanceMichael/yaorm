@@ -152,11 +152,11 @@ public class SQLiteGeneratorService(
         return "drop table if exists ${classType.simpleName}"
     }
 
-    override public fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
+    override fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
         return "delete from ${classModel.simpleName}"
     }
 
-    override public fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
+    override fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
 
         val tableName = classModel.simpleName
         val nameTypeMap = HashMap<String, Tuple<String>>()
@@ -219,11 +219,11 @@ public class SQLiteGeneratorService(
         return "$initialStatement $unionSeparatedStatements${CommonSqlDataTypeUtilities.SemiColon}"
     }
 
-    override public fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
+    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
+    override fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
@@ -232,7 +232,7 @@ public class SQLiteGeneratorService(
         return whereSql
     }
 
-    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
+    override fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
 
         val tableName = classModel.simpleName
 
@@ -244,7 +244,7 @@ public class SQLiteGeneratorService(
         return deleteSql
     }
 
-    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
+    override fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
         try {
 
             val nameTypeMap = HashMap<String, Tuple<String>>()
@@ -302,7 +302,7 @@ public class SQLiteGeneratorService(
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
+    override fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
 
@@ -345,7 +345,7 @@ public class SQLiteGeneratorService(
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
+    override fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
 
         val nameTypes = this.getNameTypes(classType)
 
@@ -388,7 +388,11 @@ public class SQLiteGeneratorService(
 
         while (currentWhereClauseItem != null) {
             val stringValue = CommonSqlDataTypeUtilities.getFormattedString(currentWhereClauseItem.rightSide)
-            filterItems.append(currentWhereClauseItem.leftSide + currentWhereClauseItem.operator + stringValue + CommonSqlDataTypeUtilities.Space)
+            filterItems.append(
+                    currentWhereClauseItem.leftSide +
+                            currentWhereClauseItem.operator +
+                            stringValue +
+                            CommonSqlDataTypeUtilities.Space)
 
             if (currentWhereClauseItem.connectingAndOr != null) {
                 filterItems.append(currentWhereClauseItem.connectingAndOr)

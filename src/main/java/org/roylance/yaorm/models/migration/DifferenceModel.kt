@@ -1,18 +1,18 @@
 package org.roylance.yaorm.models.migration
 
 class DifferenceModel(
-        public val entityType: String,
-        public val operation: String,
-        public val name: String,
-        public val indexModel: IndexModel?=null,
-        public val propertyDefinition: PropertyDefinitionModel?=null,
-        public val definitionModel: DefinitionModel?=null) {
+        val entityType: String,
+        val operation: String,
+        val name: String,
+        val indexModel: IndexModel?=null,
+        val propertyDefinition: PropertyDefinitionModel?=null,
+        val definitionModel: DefinitionModel?=null) {
         companion object {
-                public val OperationCreate = "create"
-                public val OperationDrop = "drop"
+                val OperationCreate = "create"
+                val OperationDrop = "drop"
 
-                public val EntityTypeIndex = "index"
-                public val EntityTypeColumn = "column"
-                public val EntityTypeTable = "table"
+                val EntityTypeIndex = "index"
+                val EntityTypeColumn = "column"
+                val EntityTypeTable = "table"
         }
 }

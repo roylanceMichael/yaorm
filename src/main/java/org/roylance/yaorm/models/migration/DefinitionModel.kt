@@ -1,7 +1,7 @@
 package org.roylance.yaorm.models.migration
 
-public class DefinitionModel(
-    public var name:String,
-    public var properties:List<PropertyDefinitionModel>,
-    public var indexModel:IndexModel?)
+class DefinitionModel(
+    var name:String,
+    var properties:List<PropertyDefinitionModel>,
+    var indexModel:IndexModel?)
 

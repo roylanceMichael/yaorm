@@ -95,20 +95,20 @@ public class PhoenixGeneratorService (
         return "drop table if exists ${classType.simpleName}"
     }
 
-    override public fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
+    override fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
         return "delete from ${classModel.simpleName}"
     }
 
-    override public fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
+    override fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
         // do single inserts, then commit
         return ""
     }
 
-    override public fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
+    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override public fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
+    override fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
@@ -117,7 +117,7 @@ public class PhoenixGeneratorService (
         return whereSql
     }
 
-    override public fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
+    override fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
         val tableName = classModel.simpleName
 
         val deleteSql = java.lang.String.format(
@@ -128,11 +128,11 @@ public class PhoenixGeneratorService (
         return deleteSql
     }
 
-    override public fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
+    override fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
         return this.buildInsertIntoTable(classModel, updateModel)
     }
 
-    override public fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
+    override fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, Tuple<String>>()
 
@@ -172,7 +172,7 @@ public class PhoenixGeneratorService (
         }
     }
 
-    override public fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
+    override fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
         val nameTypes = this.getNameTypes(classType)
 
         if (nameTypes.size == 0) {
