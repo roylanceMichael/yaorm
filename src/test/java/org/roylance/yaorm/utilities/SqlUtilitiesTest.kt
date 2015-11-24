@@ -5,6 +5,7 @@ import org.junit.Test
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
+import org.roylance.yaorm.testmodels.ChildTestModel
 import java.util.*
 
 public class SqlUtilitiesTest {
@@ -123,5 +124,18 @@ union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as active,'test3' a
         System.out.println(expectedSql)
         System.out.println(actualSql)
         assert(expectedSql.equals(actualSql))
+    }
+
+    @Test
+    public fun createTableRootChildTest() {
+        // arrange
+        val sqliteGeneratorService = SQLiteGeneratorService()
+        val expectedSql = "create table if not exists ChildTestModel (id integer primary key autoincrement, name text, rootModelId integer);"
+
+        // act
+        val createTableSql = sqliteGeneratorService.buildCreateTable(ChildTestModel::class.java)
+
+        // assert
+        Assert.assertEquals(expectedSql, createTableSql)
     }
 }

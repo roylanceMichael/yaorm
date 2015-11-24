@@ -431,6 +431,28 @@ public class SQLiteGeneratorService(
 
                         nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
                     }
+                    else {
+                        // does this have "getId()" method?
+                        val foundIds = it
+                                .returnType
+                                .methods
+                                .filter { (it.name.equals(CommonSqlDataTypeUtilities.Get + "Id") ||
+                                        it.name.equals(CommonSqlDataTypeUtilities.Set + "Id"))}
+
+                        // get and set for id (override is an object)
+                        if (foundIds.size == 4) {
+                            val returnTypeForGet = foundIds
+                                    .firstOrNull { this.javaTypeToSqlType.containsKey(it.returnType.name) }
+
+                            if (returnTypeForGet != null) {
+                                // so, we need to add on a name for this model
+                                val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) + "Id")
+                                val dataType = this.javaTypeToSqlType[returnTypeForGet.returnType.name]
+                                nameTypes.add(Tuple(sqlColumnName, columnName + "Id", dataType!!))
+                            }
+                        }
+                    }
                 }
 
         if (!foundIdColumnName) {
