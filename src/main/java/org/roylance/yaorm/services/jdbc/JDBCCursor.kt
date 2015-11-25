@@ -15,27 +15,29 @@ public class JDBCCursor<T> (
         private val preparedStatement: Statement) : ICursor<T> {
 
     private val cachedGetMethods: HashMap<String, Method> = HashMap()
+    private val foreignGetMethods: HashMap<String, Method> = HashMap()
+    private val foreignSetMethods: HashMap<String, Method> = HashMap()
     private val columnNamesFromResultSet: HashSet<String> = HashSet()
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
             put(CommonSqlDataTypeUtilities.JavaObjectName,
-                    { label, resultSet ->
-                        val foundObject = resultSet.getObject(label)
+                { label, resultSet ->
+                    val foundObject = resultSet.getObject(label)
 
-                        if(foundObject is Int) {
-                            foundObject
-                        }
-                        else if (foundObject is Long) {
-                            foundObject
-                        }
-                        else if (foundObject is Double) {
-                            foundObject
-                        }
-                        else {
-                            foundObject as String
-                        }
-                    })
+                    if(foundObject is Int) {
+                        foundObject
+                    }
+                    else if (foundObject is Long) {
+                        foundObject
+                    }
+                    else if (foundObject is Double) {
+                        foundObject
+                    }
+                    else {
+                        foundObject as String
+                    }
+                })
             put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
             put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
@@ -96,43 +98,76 @@ public class JDBCCursor<T> (
 
         if (this.cachedGetMethods.isEmpty()) {
             this.classModel
-                    .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
-                    .forEach {
-                        val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(CommonSqlDataTypeUtilities.Get.length))
+                .methods
+                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                .forEach {
+                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                            it.name.substring(CommonSqlDataTypeUtilities.Get.length))
 
-                        val lowercaseName = actualName.toLowerCase()
+                    val lowercaseName = actualName.toLowerCase()
 
-                        if (this.columnNamesFromResultSet.contains(lowercaseName)) {
-                            this.cachedGetMethods.put(actualName, it)
-                        }
+                    if (this.columnNamesFromResultSet.contains(lowercaseName) &&
+                        this.typeToAction.containsKey(it.returnType.simpleName)) {
+                        this.cachedGetMethods.put(actualName, it)
                     }
+                    else if (this.columnNamesFromResultSet.contains(lowercaseName) &&
+                            it.returnType is IEntity<*>) {
+                        this.cachedGetMethods.put(actualName, it)
+                        val foundIdGetter = it.returnType
+                            .methods
+                            .first { "${CommonSqlDataTypeUtilities.Get}Id".equals(it.name) }
+
+                        val foundIdSetter = it.returnType
+                            .methods
+                            .first { "${CommonSqlDataTypeUtilities.Set}Id".equals(it.name) }
+
+                        this.foreignGetMethods[actualName] = foundIdGetter
+                        this.foreignSetMethods[actualName] = foundIdSetter
+                    }
+                }
         }
 
         // set all the properties that we can
         classModel
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
-                .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.Set.length))
+            .methods
+            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
+            .forEach {
+                val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                        it.name.substring(CommonSqlDataTypeUtilities.Set.length))
 
-                    if (this.cachedGetMethods.containsKey(actualName)) {
-                        val javaType = this.cachedGetMethods[actualName]!!
-                                .returnType
-                                .simpleName
+                if (this.cachedGetMethods.containsKey(actualName)) {
+                    val javaType = this.cachedGetMethods[actualName]!!
+                            .returnType
+                            .simpleName
 
-                        if (this.typeToAction.containsKey(javaType)) {
-                            val newValue = this
-                                    .typeToAction[javaType]!!(actualName, this.resultSet)
+                    if (this.typeToAction.containsKey(javaType)) {
+                        val newValue = this
+                                .typeToAction[javaType]!!(actualName, this.resultSet)
 
-                            if (newValue != null) {
-                                it.invoke(newInstance, newValue)
-                            }
+                        if (newValue != null) {
+                            it.invoke(newInstance, newValue)
                         }
                     }
                 }
+                else if (this.cachedGetMethods.containsKey(actualName) &&
+                        this.foreignGetMethods.containsKey(actualName) &&
+                        this.foreignSetMethods.containsKey(actualName)) {
+                    val javaType = this.cachedGetMethods[actualName]!!
+                            .returnType
+                            .simpleName
+
+                    val newForeignInstance = this.cachedGetMethods[actualName]!!
+                            .returnType
+                            .newInstance()
+
+                    val newValue = this.typeToAction[javaType]!!(actualName, this.resultSet)
+
+                    if (newValue != null) {
+                        this.foreignSetMethods[actualName]!!.invoke(newForeignInstance, newValue)
+                        it.invoke(newInstance, newForeignInstance)
+                    }
+                }
+            }
 
         return newInstance
     }

@@ -1,7 +1,7 @@
 package org.roylance.yaorm.services.sqlite
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
@@ -74,8 +74,8 @@ public class SQLiteGeneratorService(
 
         val nameTypes = this.getNameTypes(classType)
         val columnsWithoutId = nameTypes
-                .filter { !javaIdName.equals(it.first) }
-                .map { "${it.first}" }
+                .filter { !javaIdName.equals(it.sqlColumnName) }
+                .map { "${it.sqlColumnName}" }
                 .joinToString(CommonSqlDataTypeUtilities.Comma)
 
         val selectIntoStatement =
@@ -119,9 +119,9 @@ public class SQLiteGeneratorService(
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
                 return null
@@ -169,9 +169,9 @@ public class SQLiteGeneratorService(
             classModel: Class<T>,
             items: List<T>) : String {
         val tableName = classModel.simpleName
-        val nameTypeMap = HashMap<String, Tuple<String>>()
+        val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
         getNameTypes(classModel)
-                .forEach { nameTypeMap.put(it.first, it) }
+                .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
         val columnNames = ArrayList<String>()
 
@@ -287,9 +287,9 @@ public class SQLiteGeneratorService(
             classModel: Class<T>,
             updateModel: T): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
                 return null
@@ -361,10 +361,10 @@ public class SQLiteGeneratorService(
             classModel: Class<T>,
             newInsertModel: T): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
             this.getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
@@ -436,13 +436,13 @@ public class SQLiteGeneratorService(
                 .append(AutoIncrement)
 
         for (nameType in this.getNameTypes(classType)) {
-            if (!javaIdName.equals(nameType.first)) {
+            if (!javaIdName.equals(nameType.sqlColumnName)) {
                 workspace
                         .append(CommonSqlDataTypeUtilities.Comma)
                         .append(CommonSqlDataTypeUtilities.Space)
-                        .append(nameType.first)
+                        .append(nameType.sqlColumnName)
                         .append(CommonSqlDataTypeUtilities.Space)
-                        .append(nameType.third)
+                        .append(nameType.dataType)
             }
         }
 
@@ -477,8 +477,8 @@ public class SQLiteGeneratorService(
         return filterItems.toString().trim()
     }
 
-    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<Tuple<String>> {
-        val nameTypes = ArrayList<Tuple<String>>()
+    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<ColumnNameTuple<String>> {
+        val nameTypes = ArrayList<ColumnNameTuple<String>>()
         var foundIdColumnName = false
 
         val propertyNames = classModel
@@ -508,7 +508,7 @@ public class SQLiteGeneratorService(
                     if (javaIdName.equals(sqlColumnName)) {
                         foundIdColumnName = true
                     }
-                    nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
+                    nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
                 }
                 else {
                     val foundTuple = EntityUtils.getEntityTuple(it, this.javaTypeToSqlType)

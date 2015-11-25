@@ -16,7 +16,7 @@ import java.io.File
 import java.util.*
 
 public class EntityContextTest {
-//     @Test
+//    @Test
     public fun anotherSimpleDropColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))

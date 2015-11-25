@@ -1,7 +1,7 @@
 package org.roylance.yaorm.services.hive
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
@@ -67,7 +67,7 @@ public class HiveGeneratorService(
             columnName: String): String? {
         val columnNames = this.getNameTypes(classType)
                 .map {
-                    "${it.first} ${it.third}"
+                    "${it.sqlColumnName} ${it.dataType}"
                 }
                 .joinToString(CommonSqlDataTypeUtilities.Comma)
         return "alter table ${classType.simpleName} replace columns ($columnNames)"
@@ -91,9 +91,9 @@ public class HiveGeneratorService(
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
                 return null
@@ -145,9 +145,9 @@ public class HiveGeneratorService(
 
     override fun <K, T : IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>): String {
         val tableName = classModel.simpleName
-        val nameTypeMap = HashMap<String, Tuple<String>>()
+        val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
         getNameTypes(classModel)
-                .forEach { nameTypeMap.put(it.first, it) }
+                .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
         val columnNames = ArrayList<String>()
 
@@ -251,9 +251,9 @@ public class HiveGeneratorService(
 
     override fun <K, T : IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
                 return null
@@ -321,10 +321,10 @@ public class HiveGeneratorService(
 
     override fun <K, T : IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
             this.getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val values = ArrayList<String>()
 
@@ -382,17 +382,17 @@ public class HiveGeneratorService(
             if (workspace.length == 0) {
                 workspace
                     .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.first)
+                    .append(nameType.sqlColumnName)
                     .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.third)
+                    .append(nameType.dataType)
             }
             else {
                 workspace
                     .append(CommonSqlDataTypeUtilities.Comma)
                     .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.first)
+                    .append(nameType.sqlColumnName)
                     .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.third)
+                    .append(nameType.dataType)
             }
         }
 
@@ -423,8 +423,8 @@ public class HiveGeneratorService(
         return filterItems.toString()
     }
 
-    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<Tuple<String>> {
-        val nameTypes = ArrayList<Tuple<String>>()
+    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<ColumnNameTuple<String>> {
+        val nameTypes = ArrayList<ColumnNameTuple<String>>()
         var foundIdColumnName = false
 
         val propertyNames = classModel
@@ -458,7 +458,7 @@ public class HiveGeneratorService(
                         foundIdColumnName = true
                     }
 
-                    nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
+                    nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
                 }
                 else {
                     val foundTuple = EntityUtils.getEntityTuple(it, this.javaTypeToSqlType)

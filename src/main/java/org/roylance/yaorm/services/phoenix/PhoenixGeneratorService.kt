@@ -1,7 +1,7 @@
 package org.roylance.yaorm.services.phoenix
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
@@ -137,10 +137,10 @@ public class PhoenixGeneratorService (
 
     override fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
         try {
-            val nameTypeMap = HashMap<String, Tuple<String>>()
+            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
             this.getNameTypes(classModel)
-                    .forEach { nameTypeMap.put(it.first, it) }
+                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
@@ -199,23 +199,23 @@ public class PhoenixGeneratorService (
 
         val workspace = StringBuilder()
 
-        val foundId = nameTypes.firstOrNull { javaIdName.equals(it.first) } ?: return null
+        val foundId = nameTypes.firstOrNull { javaIdName.equals(it.sqlColumnName) } ?: return null
 
         workspace.append(javaIdName)
             .append(CommonSqlDataTypeUtilities.Space)
-            .append(foundId.third)
+            .append(foundId.dataType)
             .append(CommonSqlDataTypeUtilities.Space)
             .append(NotNull)
             .append(CommonSqlDataTypeUtilities.Space)
             .append(PrimaryKey)
 
-        for (nameType in nameTypes.filter { !javaIdName.equals(it.first) }) {
+        for (nameType in nameTypes.filter { !javaIdName.equals(it.sqlColumnName) }) {
             workspace
                 .append(CommonSqlDataTypeUtilities.Comma)
                 .append(CommonSqlDataTypeUtilities.Space)
-                .append(nameType.first)
+                .append(nameType.sqlColumnName)
                 .append(CommonSqlDataTypeUtilities.Space)
-                .append(nameType.third)
+                .append(nameType.dataType)
         }
 
         val createTableSql = java.lang.String.format(
@@ -244,8 +244,8 @@ public class PhoenixGeneratorService (
         return filterItems.toString().trim()
     }
 
-    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<Tuple<String>> {
-        val nameTypes = ArrayList<Tuple<String>>()
+    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<ColumnNameTuple<String>> {
+        val nameTypes = ArrayList<ColumnNameTuple<String>>()
         var foundIdColumnName = false
 
         val propertyNames = classModel
@@ -278,7 +278,7 @@ public class PhoenixGeneratorService (
                         foundIdColumnName = true
                     }
 
-                    nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
+                    nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
                 }
                 else {
                     val foundTuple = EntityUtils.getEntityTuple(it, this.javaTypeToSqlType)

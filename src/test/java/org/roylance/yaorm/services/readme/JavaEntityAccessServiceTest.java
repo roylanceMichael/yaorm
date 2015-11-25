@@ -16,7 +16,7 @@ import java.util.UUID;
  * Created by mikeroylance on 10/15/15.
  */
 public class JavaEntityAccessServiceTest {
-    // @Test
+//     @Test
     public void readmeTest() throws Exception {
         // arrange
         // create a unique file

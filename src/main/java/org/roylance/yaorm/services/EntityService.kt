@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.utilities.EntityUtils
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
@@ -14,10 +15,19 @@ class EntityService<K, T: IEntity<K>>(
         private val sqlGeneratorService: ISqlGeneratorService,
         public override val indexDefinition: IndexModel? = null
 ) : IEntityService<K, T> {
+
+    private val hasForeignObject:Boolean
+
+    init {
+        this.hasForeignObject = EntityUtils
+                .doesEntityHaveForeignObject(this.entityDefinition)
+    }
+
     override fun getCount(): Long {
         val countSql = this.sqlGeneratorService.buildCountSql(this.entityDefinition)
 
-        val cursor = this.granularDatabaseService.executeSelectQuery(GenericModel::class.java, countSql)
+        val cursor = this.granularDatabaseService
+                .executeSelectQuery(GenericModel::class.java, countSql)
         val allRecords:List<GenericModel> = cursor.getRecords()
 
         if (allRecords.size > 0) {

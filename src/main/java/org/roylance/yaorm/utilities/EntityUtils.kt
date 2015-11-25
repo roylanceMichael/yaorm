@@ -1,7 +1,7 @@
 package org.roylance.yaorm.utilities
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.Tuple
+import org.roylance.yaorm.models.ColumnNameTuple
 import java.lang.reflect.Method
 
 object EntityUtils {
@@ -19,7 +19,7 @@ object EntityUtils {
         .any()
     }
 
-    fun getEntityTuple(getMethod: Method, typeDict: Map<String, String>):Tuple<String>? {
+    fun getEntityTuple(getMethod: Method, typeDict: Map<String, String>): ColumnNameTuple<String>? {
         val foundIds = getMethod
                 .returnType
                 .methods
@@ -41,7 +41,7 @@ object EntityUtils {
                 val sqlColumnName = CommonSqlDataTypeUtilities
                         .lowercaseFirstChar(javaColumnName)
                 val dataType = typeDict[filteredId.returnType.name]
-                return Tuple(sqlColumnName, javaColumnName, dataType!!, true)
+                return ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!, true)
             }
         }
         return null
