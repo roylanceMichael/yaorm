@@ -1,10 +1,10 @@
 package org.roylance.yaorm.utilities
 
 object CommonSqlDataTypeUtilities {
-    private val Null = "null"
     private val SingleQuote = "'"
     private val DoubleSingleQuote = "''"
 
+    val Null = "null"
     val Space = " "
     val Comma = ","
     val Equals = "="
@@ -15,6 +15,7 @@ object CommonSqlDataTypeUtilities {
     val And = "and"
     val Or = "or"
     val Underscore = "_"
+    val Is = "is"
 
     val JavaFullyQualifiedStringName: String = "String"
     val JavaObjectName: String = "java.lang.Object"

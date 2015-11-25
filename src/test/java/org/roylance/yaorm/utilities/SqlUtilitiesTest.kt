@@ -9,12 +9,11 @@ import org.roylance.yaorm.testmodels.ChildTestModel
 import java.util.*
 
 public class SqlUtilitiesTest {
-
     @Test
     public fun createTableTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "create table if not exists BeaconBroadcastModel (id integer primary key autoincrement, beaconId text, majorId integer, minorId integer, active integer, cachedName text, lastSeen integer);"
+        val expectedSql = "create table if not exists BeaconBroadcastModel (id integer primary key autoincrement, active integer, beaconId text, cachedName text, lastSeen integer, majorId integer, minorId integer);"
 
         // act
         val createTableSql = sqliteGeneratorService.buildCreateTable(BeaconBroadcastModel::class.java)
@@ -27,8 +26,8 @@ public class SqlUtilitiesTest {
     public fun insertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "insert into BeaconBroadcastModel (beaconId,majorId,minorId,active,cachedName,lastSeen) values ('cool test',1,1,1,'what is this',0);"
         val newInsertModel = BeaconBroadcastModel(0, "cool test", 1, 1, true, "what is this",0)
+        val expectedSql = "insert into BeaconBroadcastModel (active,beaconId,cachedName,lastSeen,majorId,minorId) values (1,'${newInsertModel.beaconId}','${newInsertModel.cachedName}',${newInsertModel.lastSeen},${newInsertModel.majorId},${newInsertModel.minorId});"
 
         // act
         val insertSql = sqliteGeneratorService.buildInsertIntoTable(BeaconBroadcastModel::class.java, newInsertModel)
@@ -44,7 +43,7 @@ public class SqlUtilitiesTest {
     public fun updateTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "update BeaconBroadcastModel set beaconId='cool test', majorId=1, minorId=1, active=1, cachedName='what is this', lastSeen=0 where id=1;"
+        val expectedSql = "update BeaconBroadcastModel set active=1, beaconId='cool test', cachedName='what is this', lastSeen=0, majorId=1, minorId=1 where id=1;"
         val newUpdateModel = BeaconBroadcastModel(1, "cool test", 1, 1, true, "what is this")
 
         // act
@@ -105,9 +104,9 @@ public class SqlUtilitiesTest {
     public fun bulkInsertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = """insert into BeaconBroadcastModel (beaconId,majorId,minorId,active,cachedName,lastSeen)  select 'test1' as beaconId,0 as majorId,0 as minorId,0 as active,'test1' as cachedName,0 as lastSeen
-union select 'test2' as beaconId,0 as majorId,1 as minorId,0 as active,'test2' as cachedName,0 as lastSeen
-union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as active,'test3' as cachedName,0 as lastSeen;""".trim()
+        val expectedSql = """insert into BeaconBroadcastModel (active,beaconId,cachedName,lastSeen,majorId,minorId)  select 0 as active,'test1' as beaconId,'test1' as cachedName,0 as lastSeen,0 as majorId,0 as minorId
+union select 0 as active,'test2' as beaconId,'test2' as cachedName,0 as lastSeen,0 as majorId,1 as minorId
+union select 0 as active,'test3' as beaconId,'test3' as cachedName,0 as lastSeen,0 as majorId,2 as minorId;""".trim()
 
         val broadcastModels = ArrayList<BeaconBroadcastModel>()
         val firstModel = BeaconBroadcastModel(beaconId = "test1", majorId = 0, minorId = 0, cachedName = "test1")
@@ -130,7 +129,7 @@ union select 'test3' as beaconId,0 as majorId,2 as minorId,0 as active,'test3' a
     public fun createTableRootChildTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "create table if not exists ChildTestModel (id integer primary key autoincrement, name text, rootModelId integer);"
+        val expectedSql = "create table if not exists ChildTestModel (id integer primary key autoincrement, name text, rootModel integer);"
 
         // act
         val createTableSql = sqliteGeneratorService.buildCreateTable(ChildTestModel::class.java)

@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.Tuple
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.EntityUtils
 import java.util.*
 
 public class PhoenixGeneratorService (
@@ -108,7 +109,9 @@ public class PhoenixGeneratorService (
         return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
     }
 
-    override fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String? {
+    override fun <K, T: IEntity<K>> buildWhereClause(
+            classModel: Class<T>,
+            whereClauseItem: WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
@@ -143,21 +146,36 @@ public class PhoenixGeneratorService (
             val values = ArrayList<String>()
 
             classModel
-                    .methods
-                    .sortedBy { it.name }
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
-                    .forEach {
-                        val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                .methods
+                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                        !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+                .sortedBy { it.name }
+                .forEach {
+                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
 
-                        if (nameTypeMap.containsKey(actualName)) {
-                            columnNames.add(actualName)
+                    if (nameTypeMap.containsKey(actualName)) {
+                        columnNames.add(actualName)
 
-                            val instanceValue = it.invoke(newInsertModel)
-                            values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
+                        val instanceValue = it.invoke(newInsertModel)
+                        values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
+                    }
+                    else if (nameTypeMap.containsKey(actualName) &&
+                            nameTypeMap[actualName]!!.isForeignKey) {
+                        columnNames.add(actualName)
+                        val actualForeignObject = it.invoke(newInsertModel)
+
+                        if (actualForeignObject != null) {
+                            val instanceValue = (actualForeignObject as IEntity<*>).id
+                            val strValue = CommonSqlDataTypeUtilities
+                                    .getFormattedString(instanceValue)
+                            values.add(strValue)
+                        }
+                        else {
+                            values.add(CommonSqlDataTypeUtilities.Null)
                         }
                     }
+                }
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
@@ -184,20 +202,20 @@ public class PhoenixGeneratorService (
         val foundId = nameTypes.firstOrNull { javaIdName.equals(it.first) } ?: return null
 
         workspace.append(javaIdName)
-                .append(CommonSqlDataTypeUtilities.Space)
-                .append(foundId.third)
-                .append(CommonSqlDataTypeUtilities.Space)
-                .append(NotNull)
-                .append(CommonSqlDataTypeUtilities.Space)
-                .append(PrimaryKey)
+            .append(CommonSqlDataTypeUtilities.Space)
+            .append(foundId.third)
+            .append(CommonSqlDataTypeUtilities.Space)
+            .append(NotNull)
+            .append(CommonSqlDataTypeUtilities.Space)
+            .append(PrimaryKey)
 
         for (nameType in nameTypes.filter { !javaIdName.equals(it.first) }) {
             workspace
-                    .append(CommonSqlDataTypeUtilities.Comma)
-                    .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.first)
-                    .append(CommonSqlDataTypeUtilities.Space)
-                    .append(nameType.third)
+                .append(CommonSqlDataTypeUtilities.Comma)
+                .append(CommonSqlDataTypeUtilities.Space)
+                .append(nameType.first)
+                .append(CommonSqlDataTypeUtilities.Space)
+                .append(nameType.third)
         }
 
         val createTableSql = java.lang.String.format(
@@ -231,38 +249,44 @@ public class PhoenixGeneratorService (
         var foundIdColumnName = false
 
         val propertyNames = classModel
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
-                .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
-                .toHashSet()
+            .methods
+            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
+            .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
+            .toHashSet()
 
         // let's handle the types now
         classModel
-                .methods
-                .filter {
-                    it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName)
+            .methods
+            .filter {
+                it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                    propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
+                    !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName)
+            }
+            .forEach {
+                val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                val javaType = it.returnType.name
+
+                if (this.javaTypeToSqlType.containsKey(javaType)) {
+                    val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                    )
+
+                    val javaColumnName = columnName
+                    val dataType = this.javaTypeToSqlType[javaType]
+
+                    if (javaIdName.equals(sqlColumnName)) {
+                        foundIdColumnName = true
+                    }
+
+                    nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
                 }
-                .forEach {
-                    val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
-                    val javaType = it.returnType.name
-
-                    if (this.javaTypeToSqlType.containsKey(javaType)) {
-                        val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
-                        )
-
-                        val javaColumnName = columnName
-                        val dataType = this.javaTypeToSqlType[javaType]
-
-                        if (javaIdName.equals(sqlColumnName)) {
-                            foundIdColumnName = true
-                        }
-
-                        nameTypes.add(Tuple(sqlColumnName, javaColumnName, dataType!!))
+                else {
+                    val foundTuple = EntityUtils.getEntityTuple(it, this.javaTypeToSqlType)
+                    if (foundTuple != null) {
+                        nameTypes.add(foundTuple)
                     }
                 }
+            }
 
         if (!foundIdColumnName) {
             return ArrayList()
