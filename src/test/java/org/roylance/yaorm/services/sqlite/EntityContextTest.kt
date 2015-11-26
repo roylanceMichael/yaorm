@@ -244,6 +244,7 @@ public class EntityContextTest {
             Assert.assertEquals(1, foundRootModels.size)
             Assert.assertEquals(1, foundTestModels.size)
             Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].rootModel?.id)
+            Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].rootModel?.name)
         }
         finally {
             database.deleteOnExit()

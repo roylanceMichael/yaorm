@@ -43,14 +43,18 @@ class EntityService<K, T: IEntity<K>>(
         val createTableSql = this.sqlGeneratorService
                 .buildCreateTable(this.entityDefinition) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(createTableSql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(createTableSql)
+                .successful
     }
 
     override fun dropTable(): Boolean {
         val dropTableSql = this.sqlGeneratorService
             .buildDropTable(this.entityDefinition)
 
-        return this.granularDatabaseService.executeUpdateQuery(dropTableSql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(dropTableSql)
+                .successful
     }
 
     override fun createIndex(indexModel: IndexModel): Boolean {
@@ -59,7 +63,9 @@ class EntityService<K, T: IEntity<K>>(
                 indexModel.columnNames,
                 indexModel.includeNames) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(createIndexSql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(createIndexSql)
+                .successful
     }
 
     override fun dropIndex(indexModel: IndexModel): Boolean {
@@ -67,7 +73,9 @@ class EntityService<K, T: IEntity<K>>(
                 this.entityDefinition,
                 indexModel.columnNames) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(dropIndexSql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(dropIndexSql)
+                .successful
     }
 
     override fun createColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
@@ -76,7 +84,9 @@ class EntityService<K, T: IEntity<K>>(
                 propertyDefinitionModel.name,
                 propertyDefinitionModel.type)
         if (addColumnSql != null) {
-            return this.granularDatabaseService.executeUpdateQuery(addColumnSql)
+            return this.granularDatabaseService
+                    .executeUpdateQuery<K>(addColumnSql)
+                    .successful
         }
         return false
     }
@@ -86,7 +96,9 @@ class EntityService<K, T: IEntity<K>>(
                 this.entityDefinition,
                 propertyDefinitionModel.name) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(dropTableSqlStatements)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(dropTableSqlStatements)
+                .successful
     }
 
     override fun getCustom(customSql: String): List<T> {
@@ -167,16 +179,17 @@ class EntityService<K, T: IEntity<K>>(
                         val bulkInsertSql = this.sqlGeneratorService
                                 .buildBulkInsert(this.entityDefinition, temporaryList)
                         val result = this.granularDatabaseService
-                                .executeUpdateQuery(bulkInsertSql)
-                        results.add(result)
+                                .executeUpdateQuery<K>(bulkInsertSql)
+                        results.add(result.successful)
                         temporaryList.clear()
                     }
                 }
 
         if (!temporaryList.isEmpty()) {
             val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.entityDefinition, temporaryList)
-            val result = this.granularDatabaseService.executeUpdateQuery(bulkInsertSql)
-            results.add(result)
+            val result = this.granularDatabaseService
+                    .executeUpdateQuery<K>(bulkInsertSql)
+            results.add(result.successful)
         }
 
         return results.all { it }
@@ -197,26 +210,40 @@ class EntityService<K, T: IEntity<K>>(
         // create
         val insertSql = this.sqlGeneratorService
                 .buildInsertIntoTable(this.entityDefinition, entity) ?: return false
-        return this.granularDatabaseService.executeUpdateQuery(insertSql)
+        val result = this.granularDatabaseService
+                .executeUpdateQuery<K>(insertSql)
+
+        if (result.generatedKeys != null &&
+            result.generatedKeys!!.size > 0) {
+            entity.id = result.generatedKeys!![0]
+        }
+        return result.successful
     }
 
     override fun update(entity: T): Boolean {
         this.createOrUpdateForeignObject(entity)
-
         // update
         val updateSql = this
                 .sqlGeneratorService
                 .buildUpdateTable(this.entityDefinition, entity) ?: return false
-        return this.granularDatabaseService.executeUpdateQuery(updateSql)
+
+        val result = this.granularDatabaseService
+                .executeUpdateQuery<K>(updateSql)
+
+        return result.successful
     }
 
-    override fun updateWithCriteria(newValues: Map<String, Any>, whereClauseItem: WhereClauseItem): Boolean {
+    override fun updateWithCriteria(
+            newValues: Map<String, Any>,
+            whereClauseItem: WhereClauseItem): Boolean {
         val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(
                 this.entityDefinition,
                 newValues,
                 whereClauseItem) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(updateSql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(updateSql)
+                .successful
     }
 
     override fun delete(id: K): Boolean {
@@ -224,12 +251,16 @@ class EntityService<K, T: IEntity<K>>(
                 this.sqlGeneratorService
                         .buildDeleteTable(this.entityDefinition, id) ?: return false
 
-        return this.granularDatabaseService.executeUpdateQuery(deleteSql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(deleteSql)
+                .successful
     }
 
     override fun deleteAll(): Boolean {
         val sql = this.sqlGeneratorService.buildDeleteAll(this.entityDefinition)
-        return this.granularDatabaseService.executeUpdateQuery(sql)
+        return this.granularDatabaseService
+                .executeUpdateQuery<K>(sql)
+                .successful
     }
 
     // todo: this needs more love
@@ -242,7 +273,6 @@ class EntityService<K, T: IEntity<K>>(
                             .getForeignService(castToAny)
 
                     val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
-
                     if (foreignObject != null) {
                         foreignService?.createOrUpdate(foreignObject)
                     }
@@ -263,13 +293,11 @@ class EntityService<K, T: IEntity<K>>(
                     val foreignService = this.entityContext
                             ?.getForeignService(castToAny)
 
-
-
                     val builtWhereClause = EntityUtils.buildWhereClauseOnId(foreignObject)
                     val foreignObjects = foreignService?.where(builtWhereClause)
 
                     if (foreignObjects!!.size > 0) {
-                        it.setMethod.invoke(actualObject, foreignObject)
+                        it.setMethod.invoke(actualObject, foreignObjects[0])
                     }
                 }
         }

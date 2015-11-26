@@ -10,7 +10,7 @@ import java.sql.ResultSet
 import java.sql.Statement
 import java.util.*
 
-public class JDBCCursor<T> (
+class JDBCCursor<T> (
         private val classModel: Class<T>,
         private val resultSet: ResultSet,
         private val preparedStatement: Statement) : ICursor<T> {

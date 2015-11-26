@@ -19,11 +19,11 @@ class SQLiteGeneratorServiceTest {
 
             val dropTableSql = sqliteGeneratorService.buildDropTable(
                     org.roylance.yaorm.testmodels.before.SimpleTestModel::class.java)
-            granularDatabaseService.executeUpdateQuery(dropTableSql)
+            granularDatabaseService.executeUpdateQuery<Int>(dropTableSql)
 
             val createTableSql = sqliteGeneratorService.buildCreateTable(
                     org.roylance.yaorm.testmodels.before.SimpleTestModel::class.java)!!
-            granularDatabaseService.executeUpdateQuery(createTableSql)
+            granularDatabaseService.executeUpdateQuery<Int>(createTableSql)
 
             val newModel = org.roylance.yaorm.testmodels.before.SimpleTestModel()
             newModel.fName = "what"
@@ -34,14 +34,14 @@ class SQLiteGeneratorServiceTest {
                     org.roylance.yaorm.testmodels.before.SimpleTestModel::class.java,
                     newModel)!!
 
-            granularDatabaseService.executeUpdateQuery(insertSql)
+            granularDatabaseService.executeUpdateQuery<Int>(insertSql)
 
             // act
             val dropColumnSql = sqliteGeneratorService.buildDropColumn(
                     org.roylance.yaorm.testmodels.after.SimpleTestModel::class.java,
                     org.roylance.yaorm.testmodels.before.SimpleTestModel.MNameName)
 
-            granularDatabaseService.executeUpdateQuery(dropColumnSql!!)
+            granularDatabaseService.executeUpdateQuery<Int>(dropColumnSql!!)
 
             // assert
             val selectAllQuery = sqliteGeneratorService.buildSelectAll(

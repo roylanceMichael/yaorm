@@ -1,6 +1,7 @@
 package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.models.IEntity
+import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.services.ICursor
 import org.roylance.yaorm.services.IGranularDatabaseService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
@@ -8,7 +9,7 @@ import java.sql.Connection
 import java.util.*
 import java.util.logging.Logger
 
-public class JDBCGranularDatabaseService(
+class JDBCGranularDatabaseService(
         private val connection: Connection,
         private val shouldManuallyCommitAfterUpdate: Boolean) : IGranularDatabaseService {
 
@@ -22,10 +23,23 @@ public class JDBCGranularDatabaseService(
         }
     }
 
-    override fun executeUpdateQuery(query: String): Boolean {
+    override fun <K> executeUpdateQuery(query: String): EntityResultModel<K> {
         val statement = this.connection.createStatement()
+        val returnObject = EntityResultModel<K>()
         try {
-            return statement.executeUpdate(query) > 0
+            val result = statement.executeUpdate(query)
+
+            val returnedKeys = ArrayList<K>()
+            val generatedKeys = statement.generatedKeys
+            while (generatedKeys.next() &&
+                    generatedKeys.metaData.columnCount > 0) {
+                returnedKeys.add(generatedKeys.getInt("last_insert_rowid()") as K)
+            }
+
+            returnObject.generatedKeys = returnedKeys
+            returnObject.successful = result > 0
+
+            return returnObject
         }
         finally {
             if (this.shouldManuallyCommitAfterUpdate) {
