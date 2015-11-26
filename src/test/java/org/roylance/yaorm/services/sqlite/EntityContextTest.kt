@@ -5,9 +5,7 @@ import org.junit.Test
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.testmodels.AnotherTestModel
-import org.roylance.yaorm.testmodels.BeaconBroadcastModel
-import org.roylance.yaorm.testmodels.TestEntityContext
+import org.roylance.yaorm.testmodels.*
 import org.roylance.yaorm.testmodels.after.AfterSimpleTestContext
 import org.roylance.yaorm.testmodels.before.BeforeSimpleTestContext
 import org.roylance.yaorm.testmodels.before.SimpleTestModel
@@ -195,6 +193,57 @@ public class EntityContextTest {
 
             //assert
             Assert.assertEquals(2L, migrationService.getCount())
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    public fun foreignObjectResolveTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+
+            val migrationService = EntityService(
+                    MigrationModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val rootTestService = EntityService(
+                    RootTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val childTestService = EntityService(
+                    ChildTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val foreignContext = ForeignEntityContext(
+                    rootTestService,
+                    childTestService,
+                    migrationService)
+
+            foreignContext.handleMigrations()
+
+            val rootModel = RootTestModel(0, "test")
+            val testModel = ChildTestModel(0, "childTest", rootModel)
+
+            // act
+            foreignContext.childTestService.createOrUpdate(testModel)
+
+            // assert
+            val foundRootModels = foreignContext.rootTestService.getAll()
+            val foundTestModels = foreignContext.childTestService.getAll()
+
+            Assert.assertEquals(1, foundRootModels.size)
+            Assert.assertEquals(1, foundTestModels.size)
+            Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].rootModel?.id)
         }
         finally {
             database.deleteOnExit()

@@ -6,6 +6,8 @@ import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 
 interface IEntityService<K, T: IEntity<K>> {
+    var entityContext:EntityContext?
+
     val entityDefinition:Class<T>
     val indexDefinition: IndexModel?
 
@@ -29,7 +31,9 @@ interface IEntityService<K, T: IEntity<K>> {
     fun createOrUpdate(entity: T): Boolean
     fun create(entity: T): Boolean
     fun update(entity: T): Boolean
-    fun updateWithCriteria(newValues: Map<String, Any>, whereClauseItem: WhereClauseItem): Boolean
+    fun updateWithCriteria(
+            newValues: Map<String, Any>,
+            whereClauseItem: WhereClauseItem): Boolean
 
     fun delete(id: K): Boolean
     fun deleteAll(): Boolean

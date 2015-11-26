@@ -4,6 +4,7 @@ import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.services.ICursor
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.CommonStringUtilities
+import org.roylance.yaorm.utilities.EntityUtils
 import java.lang.reflect.Method
 import java.sql.ResultSet
 import java.sql.Statement
@@ -21,23 +22,24 @@ public class JDBCCursor<T> (
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
-            put(CommonSqlDataTypeUtilities.JavaObjectName,
-                { label, resultSet ->
-                    val foundObject = resultSet.getObject(label)
+            val objectFunction = { label:String, resultSet:ResultSet ->
+                val foundObject = resultSet.getObject(label)
 
-                    if(foundObject is Int) {
-                        foundObject
-                    }
-                    else if (foundObject is Long) {
-                        foundObject
-                    }
-                    else if (foundObject is Double) {
-                        foundObject
-                    }
-                    else {
-                        foundObject as String
-                    }
-                })
+                if(foundObject is Int) {
+                    foundObject
+                }
+                else if (foundObject is Long) {
+                    foundObject
+                }
+                else if (foundObject is Double) {
+                    foundObject
+                }
+                else {
+                    foundObject as String
+                }
+            }
+            put(CommonSqlDataTypeUtilities.JavaObjectName, objectFunction)
+            put(CommonSqlDataTypeUtilities.JavaAltObjectName, objectFunction)
             put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
             put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
@@ -111,8 +113,8 @@ public class JDBCCursor<T> (
                         this.cachedGetMethods.put(actualName, it)
                     }
                     else if (this.columnNamesFromResultSet.contains(lowercaseName) &&
-                            it.returnType is IEntity<*>) {
-                        this.cachedGetMethods.put(actualName, it)
+                            EntityUtils.doesClassHaveAMethodGetId(it.returnType)) {
+
                         val foundIdGetter = it.returnType
                             .methods
                             .first { "${CommonSqlDataTypeUtilities.Get}Id".equals(it.name) }
@@ -120,6 +122,8 @@ public class JDBCCursor<T> (
                         val foundIdSetter = it.returnType
                             .methods
                             .first { "${CommonSqlDataTypeUtilities.Set}Id".equals(it.name) }
+
+                        this.cachedGetMethods.put(actualName, it)
 
                         this.foreignGetMethods[actualName] = foundIdGetter
                         this.foreignSetMethods[actualName] = foundIdSetter
@@ -135,32 +139,35 @@ public class JDBCCursor<T> (
                 val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                         it.name.substring(CommonSqlDataTypeUtilities.Set.length))
 
-                if (this.cachedGetMethods.containsKey(actualName)) {
-                    val javaType = this.cachedGetMethods[actualName]!!
-                            .returnType
-                            .simpleName
+                val javaType = this.cachedGetMethods[actualName]!!
+                        .returnType
+                        .simpleName
 
-                    if (this.typeToAction.containsKey(javaType)) {
-                        val newValue = this
-                                .typeToAction[javaType]!!(actualName, this.resultSet)
+                if (this.cachedGetMethods.containsKey(actualName) &&
+                        this.typeToAction.containsKey(javaType)) {
+                    val newValue = this
+                            .typeToAction[javaType]!!(actualName, this.resultSet)
 
-                        if (newValue != null) {
-                            it.invoke(newInstance, newValue)
-                        }
+                    if (newValue != null) {
+                        it.invoke(newInstance, newValue)
                     }
                 }
                 else if (this.cachedGetMethods.containsKey(actualName) &&
                         this.foreignGetMethods.containsKey(actualName) &&
                         this.foreignSetMethods.containsKey(actualName)) {
-                    val javaType = this.cachedGetMethods[actualName]!!
-                            .returnType
-                            .simpleName
 
                     val newForeignInstance = this.cachedGetMethods[actualName]!!
                             .returnType
                             .newInstance()
 
-                    val newValue = this.typeToAction[javaType]!!(actualName, this.resultSet)
+                    val foreignIdJavaType = this.foreignGetMethods[actualName]!!
+                            .returnType.simpleName
+
+                    if (!this.typeToAction.containsKey(foreignIdJavaType)) {
+                        return@forEach
+                    }
+
+                    val newValue = this.typeToAction[foreignIdJavaType]!!(actualName, this.resultSet)
 
                     if (newValue != null) {
                         this.foreignSetMethods[actualName]!!.invoke(newForeignInstance, newValue)

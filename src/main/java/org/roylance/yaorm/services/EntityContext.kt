@@ -1,6 +1,7 @@
 package org.roylance.yaorm.services
 
 import com.google.gson.Gson
+import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.models.migration.*
@@ -35,6 +36,10 @@ abstract class EntityContext(
 
     init {
         this.migrationService.createTable()
+        this.entityServices
+            .forEach {
+                it.entityContext = this
+            }
     }
 
     fun handleMigrations(newId:Long=0) {
@@ -169,6 +174,14 @@ abstract class EntityContext(
         }
 
         return DefinitionModels(returnList)
+    }
+
+    fun <K, T: IEntity<K>> getForeignService(entityType:Class<T>): IEntityService<K, T>? {
+        val foundService = this.entityServices
+            .filter { it.entityDefinition.equals(entityType) }
+            .firstOrNull()
+
+        return foundService as IEntityService<K, T>
     }
 
     private fun createIndex(entityService: IEntityService<*,*>, differenceModel: DifferenceModel):Boolean {

@@ -21,6 +21,7 @@ object CommonSqlDataTypeUtilities {
     val JavaObjectName: String = "java.lang.Object"
     val JavaStringName: String = "java.lang.String"
     val JavaDoubleName: String = "double"
+    val JavaAltObjectName: String = "Object"
     val JavaAltDoubleName: String = "double"
     val JavaAlt1DoubleName: String = "double"
     val JavaIntegerName: String = "int"
