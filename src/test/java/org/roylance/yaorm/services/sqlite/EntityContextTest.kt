@@ -250,4 +250,59 @@ public class EntityContextTest {
             database.deleteOnExit()
         }
     }
+
+    @Test
+    public fun foreignObjectListResolveTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+
+            val migrationService = EntityService(
+                    MigrationModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val rootTestService = EntityService(
+                    RootTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val childTestService = EntityService(
+                    ChildTestModel::class.java,
+                    granularDatabaseService,
+                    sqliteGeneratorService)
+
+            val foreignContext = ForeignEntityContext(
+                    rootTestService,
+                    childTestService,
+                    migrationService)
+
+            foreignContext.handleMigrations()
+
+            val rootModel = RootTestModel(0, "test")
+            val testModel = ChildTestModel(0, "childTest", rootModel)
+            val test1Model = ChildTestModel(0, "child1Test", rootModel)
+            rootModel.childTests.add(testModel)
+            rootModel.childTests.add(test1Model)
+
+            // act
+            foreignContext.rootTestService.createOrUpdate(rootModel)
+
+            // assert
+            val foundRootModels = foreignContext.rootTestService.getAll()
+            val foundTestModels = foreignContext.childTestService.getAll()
+
+            Assert.assertEquals(1, foundRootModels.size)
+            Assert.assertEquals(1, foundTestModels.size)
+            Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].rootModel?.id)
+            Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].rootModel?.name)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
 }

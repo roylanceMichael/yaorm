@@ -178,8 +178,8 @@ abstract class EntityContext(
 
     fun <K, T: IEntity<K>> getForeignService(entityType:Class<T>): IEntityService<K, T>? {
         val foundService = this.entityServices
-            .filter { it.entityDefinition.equals(entityType) }
-            .firstOrNull()
+                .filter { it.entityDefinition.equals(entityType) }
+                .firstOrNull() ?: return null
 
         return foundService as IEntityService<K, T>
     }

@@ -270,11 +270,11 @@ class EntityService<K, T: IEntity<K>>(
                 .forEach {
                     val castToAny = it.entityDefinition as Class<IEntity<Any>>
                     val foreignService = this.entityContext!!
-                            .getForeignService(castToAny)
+                            .getForeignService(castToAny) ?: return@forEach
 
                     val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
                     if (foreignObject != null) {
-                        foreignService?.createOrUpdate(foreignObject)
+                        foreignService.createOrUpdate(foreignObject)
                     }
                 }
         }
@@ -286,14 +286,14 @@ class EntityService<K, T: IEntity<K>>(
         if (this.entityContext != null) {
             this.foreignObjects
                 .forEach {
-                    val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
+                    val foreignObject = it.getMethod.invoke(actualObject)
                             ?: return@forEach
 
                     val castToAny = it.entityDefinition as Class<IEntity<Any>>
                     val foreignService = this.entityContext
                             ?.getForeignService(castToAny)
 
-                    val builtWhereClause = EntityUtils.buildWhereClauseOnId(foreignObject)
+                    val builtWhereClause = EntityUtils.buildWhereClauseOnId((foreignObject as IEntity<*>))
                     val foreignObjects = foreignService?.where(builtWhereClause)
 
                     if (foreignObjects!!.size > 0) {

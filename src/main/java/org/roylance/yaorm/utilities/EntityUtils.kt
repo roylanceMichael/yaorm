@@ -12,6 +12,8 @@ object EntityUtils {
     private val IdNameLowercase = "id"
     private val IdName = "Id"
     private val NumberOfTotalFieldsWithId = 4
+    private val GetEntityDefinitionName = "getEntityDefinition"
+    private val EntityCollectionName = "org.roylance.yaorm.models.EntityCollection"
 
     fun doesClassHaveAMethodGetId(classModel: Class<*>):Boolean {
         return classModel
@@ -19,14 +21,8 @@ object EntityUtils {
             .any { it.name.equals(CommonSqlDataTypeUtilities.Get + IdName) }
     }
 
-    fun <K, T : IEntity<K>> doesEntityHaveForeignObject(classModel: Class<T>):Boolean {
-        return classModel
-            .methods
-            .filter {
-                it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                    it.returnType is IEntity<*>
-            }
-        .any()
+    fun isClassAListAndDoesTypeHaveGetId(classModel: Class<*>):Boolean {
+        return EntityCollectionName.equals(classModel.name)
     }
 
     fun getEntityTuple(getMethod: Method, typeDict: Map<String, String>): ColumnNameTuple<String>? {
@@ -63,13 +59,15 @@ object EntityUtils {
             .methods
             .filter {
                 it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                this.doesClassHaveAMethodGetId(it.returnType) }
+                this.doesClassHaveAMethodGetId(it.returnType) ||
+                this.isClassAListAndDoesTypeHaveGetId(it.returnType)
+            }
             .forEach {
                 val propertyName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
                 getMethodMap[propertyName] = it
             }
 
-        return entityDefinition
+        val singleEntities = entityDefinition
             .methods
             .filter {
                 it.name.startsWith(CommonSqlDataTypeUtilities.Set) &&
@@ -78,12 +76,29 @@ object EntityUtils {
             }
             .map {
                 val propertyName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
-                EntityDefinitionModel(
-                    CommonSqlDataTypeUtilities.lowercaseFirstChar(propertyName),
-                    getMethodMap[propertyName]!!,
-                    it,
-                    getMethodMap[propertyName]!!.returnType)
+
+                if (this
+                        .isClassAListAndDoesTypeHaveGetId(
+                                getMethodMap[propertyName]!!
+                                        .returnType)) {
+                    EntityDefinitionModel(
+                            CommonSqlDataTypeUtilities.lowercaseFirstChar(propertyName),
+                            getMethodMap[propertyName]!!,
+                            it,
+                            getMethodMap[propertyName]!!.returnType,
+                            EntityDefinitionModel.List)
+                }
+                else {
+                    EntityDefinitionModel(
+                            CommonSqlDataTypeUtilities.lowercaseFirstChar(propertyName),
+                            getMethodMap[propertyName]!!,
+                            it,
+                            getMethodMap[propertyName]!!.returnType,
+                            EntityDefinitionModel.Single)
+                }
             }
+
+        return singleEntities
     }
 
     fun buildWhereClauseOnId(entity:IEntity<*>):WhereClauseItem {
