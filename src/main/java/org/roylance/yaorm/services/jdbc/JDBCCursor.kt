@@ -139,6 +139,10 @@ class JDBCCursor<T> (
                 val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                         it.name.substring(CommonSqlDataTypeUtilities.Set.length))
 
+                if (!this.cachedGetMethods.containsKey(actualName)) {
+                    return@forEach
+                }
+
                 val javaType = this.cachedGetMethods[actualName]!!
                         .returnType
                         .simpleName

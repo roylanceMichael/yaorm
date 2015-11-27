@@ -6,4 +6,5 @@ import java.sql.SQLException;
 public interface IConnectionSourceFactory
         extends AutoCloseable {
     Connection getConnectionSource() throws SQLException;
+    String getGeneratedKeysColumnName();
 }

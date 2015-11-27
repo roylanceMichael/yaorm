@@ -11,7 +11,8 @@ import java.util.logging.Logger
 
 class JDBCGranularDatabaseService(
         private val connection: Connection,
-        private val shouldManuallyCommitAfterUpdate: Boolean) : IGranularDatabaseService {
+        private val shouldManuallyCommitAfterUpdate: Boolean,
+        private val generatedKeysColumnName: String) : IGranularDatabaseService {
 
     override fun commit() {
         this.connection.commit()
@@ -31,9 +32,13 @@ class JDBCGranularDatabaseService(
 
             val returnedKeys = ArrayList<K>()
             val generatedKeys = statement.generatedKeys
-            while (generatedKeys.next() &&
-                    generatedKeys.metaData.columnCount > 0) {
-                returnedKeys.add(generatedKeys.getInt("last_insert_rowid()") as K)
+            if (generatedKeys.metaData.columnCount > 0) {
+                while (generatedKeys.next()) {
+                    val foundKey = generatedKeys
+                            .getObject(this.generatedKeysColumnName)
+
+                    returnedKeys.add(foundKey as K)
+                }
             }
 
             returnObject.generatedKeys = returnedKeys

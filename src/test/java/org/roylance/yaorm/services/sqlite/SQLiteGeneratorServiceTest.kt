@@ -14,7 +14,7 @@ class SQLiteGeneratorServiceTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val dropTableSql = sqliteGeneratorService.buildDropTable(

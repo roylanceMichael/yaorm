@@ -21,7 +21,7 @@ public class HiveEntityAccessServiceTest {
         val hiveGeneratorService = HiveGeneratorService()
         getProperties()
         val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 
         val newBeacon = BeaconBroadcastModel(
@@ -63,7 +63,7 @@ public class HiveEntityAccessServiceTest {
         val hiveGeneratorService = HiveGeneratorService()
         getProperties()
         val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 
         val newBeacon = BeaconBroadcastModel(
@@ -115,7 +115,7 @@ public class HiveEntityAccessServiceTest {
         val hiveGeneratorService = HiveGeneratorService()
         getProperties()
         val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
         val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
 
         val beaconsToInsert = ArrayList<BeaconBroadcastModel>()

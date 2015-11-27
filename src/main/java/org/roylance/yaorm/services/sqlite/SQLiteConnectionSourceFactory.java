@@ -30,6 +30,11 @@ public class SQLiteConnectionSourceFactory
     }
 
     @Override
+    public String getGeneratedKeysColumnName() {
+        return "last_insert_rowid()";
+    }
+
+    @Override
     public void close() throws Exception {
         if (!this.isClosed) {
             this.commonConnection.close();

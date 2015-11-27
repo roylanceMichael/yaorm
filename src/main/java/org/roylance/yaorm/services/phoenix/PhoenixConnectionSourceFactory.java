@@ -6,9 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by mikeroylance on 10/26/15.
- */
 public class PhoenixConnectionSourceFactory
     implements IConnectionSourceFactory {
 
@@ -30,6 +27,11 @@ public class PhoenixConnectionSourceFactory
             throw new SQLException("already closed...");
         }
         return this.commonConnection;
+    }
+
+    @Override
+    public String getGeneratedKeysColumnName() {
+        return "id";
     }
 
     @Override

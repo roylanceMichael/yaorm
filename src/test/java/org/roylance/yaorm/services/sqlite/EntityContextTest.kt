@@ -21,7 +21,7 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val anotherTestModelService = EntityService(
                     AnotherTestModel::class.java,
@@ -104,7 +104,7 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val anotherTestModelService = EntityService(
                     AnotherTestModel::class.java,
@@ -156,7 +156,7 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val migrationService = EntityService(
@@ -206,7 +206,7 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val migrationService = EntityService(

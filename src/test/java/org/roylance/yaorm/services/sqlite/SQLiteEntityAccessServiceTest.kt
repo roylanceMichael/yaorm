@@ -30,7 +30,7 @@ public class SQLiteEntityAccessServiceTest {
         val cachedName = "mike"
 
         val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
         val sqliteGeneratorService = SQLiteGeneratorService()
         val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
@@ -76,7 +76,7 @@ public class SQLiteEntityAccessServiceTest {
         val cachedName = "mike"
 
         val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
         val sqliteGeneratorService = SQLiteGeneratorService()
         val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 

@@ -32,7 +32,10 @@ public class JavaEntityAccessServiceTest {
         final IConnectionSourceFactory sourceConnection = new SQLiteConnectionSourceFactory(databaseFile.getAbsolutePath());
 
         // this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
-        final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(sourceConnection.getConnectionSource(), false);
+        final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(
+                sourceConnection.getConnectionSource(),
+                false,
+                sourceConnection.getGeneratedKeysColumnName());
 
         try  {
             // this is the service that generates the sql for SQLite.

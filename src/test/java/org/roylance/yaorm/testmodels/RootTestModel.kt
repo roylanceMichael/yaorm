@@ -4,4 +4,5 @@ import org.roylance.yaorm.models.IEntity
 
 class RootTestModel(
         override var id:Long=0,
-        var name:String="") : IEntity<Long>
+        var name:String="",
+        var childTests:List<ChildTestModel>?=null) : IEntity<Long>
