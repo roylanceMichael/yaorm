@@ -91,11 +91,6 @@ object CommonSqlDataTypeUtilities {
         return returnString.toString()
     }
 
-    fun convertPropertyToSetterName(propertyName: String): String {
-        val firstChar = propertyName.get(0).toUpperCase()
-        return Set + firstChar + propertyName.substring(1)
-    }
-
     fun buildIndexName(columnNames:List<String>) : String {
         return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
     }

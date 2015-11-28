@@ -199,7 +199,7 @@ public class EntityContextTest {
         }
     }
 
-    @Test
+//    @Test
     public fun foreignObjectResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -243,15 +243,15 @@ public class EntityContextTest {
 
             Assert.assertEquals(1, foundRootModels.size)
             Assert.assertEquals(1, foundTestModels.size)
-            Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].rootModel?.id)
-            Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].rootModel?.name)
+            Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].commonRootModel?.id)
+            Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].commonRootModel?.name)
         }
         finally {
             database.deleteOnExit()
         }
     }
 
-    @Test
+//    @Test
     public fun foreignObjectListResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -286,8 +286,8 @@ public class EntityContextTest {
             val rootModel = RootTestModel(0, "test")
             val testModel = ChildTestModel(0, "childTest", rootModel)
             val test1Model = ChildTestModel(0, "child1Test", rootModel)
-            rootModel.childTests.add(testModel)
-            rootModel.childTests.add(test1Model)
+            rootModel.commonChildTests.add(testModel)
+            rootModel.commonChildTests.add(test1Model)
 
             // act
             foreignContext.rootTestService.createOrUpdate(rootModel)
@@ -297,9 +297,10 @@ public class EntityContextTest {
             val foundTestModels = foreignContext.childTestService.getAll()
 
             Assert.assertEquals(1, foundRootModels.size)
-            Assert.assertEquals(1, foundTestModels.size)
-            Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].rootModel?.id)
-            Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].rootModel?.name)
+            Assert.assertEquals(2, foundTestModels.size)
+            Assert.assertEquals(foundRootModels[0].id, foundTestModels[0].commonRootModel?.id)
+            Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].commonRootModel?.name)
+            Assert.assertEquals(2, foundRootModels[0].commonChildTests.size)
         }
         finally {
             database.deleteOnExit()

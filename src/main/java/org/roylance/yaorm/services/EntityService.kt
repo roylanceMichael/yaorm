@@ -21,6 +21,7 @@ class EntityService<K, T: IEntity<K>>(
 
     private val foreignObjects:List<EntityDefinitionModel<*>>
     private val cachedStore: MutableMap<K, T> = HashMap()
+    private val currentlyExecutingItems = HashSet<Int>()
 
     init {
         this.foreignObjects = EntityUtils
@@ -120,8 +121,10 @@ class EntityService<K, T: IEntity<K>>(
                     returnRecords.add(this.cachedStore[it.id]!!)
                 }
                 else {
+                    this.cachedStore[it.id] = it
                     this.updateRecordWithForeignObjects(it)
                     returnRecords.add(it)
+                    this.cachedStore[it.id] = it
                 }
             }
 
@@ -150,6 +153,7 @@ class EntityService<K, T: IEntity<K>>(
         if (records.size > 0) {
             val returnRecord = records[0]
 
+            this.cachedStore[returnRecord.id] = returnRecord
             this.updateRecordWithForeignObjects(returnRecord)
             this.cachedStore[returnRecord.id] = returnRecord
 
@@ -172,8 +176,10 @@ class EntityService<K, T: IEntity<K>>(
         allObjects
             .forEach {
                 if (!this.cachedStore.containsKey(it.id)) {
+                    this.cachedStore[it.id] = it
                     this.updateRecordWithForeignObjects(it)
                     returnObjects.add(it)
+                    this.cachedStore[it.id] = it
                 }
                 else {
                     returnObjects.add(this.cachedStore[it.id]!!)
@@ -201,8 +207,10 @@ class EntityService<K, T: IEntity<K>>(
                     returnRecords.add(this.cachedStore[it.id]!!)
                 }
                 else {
+                    this.cachedStore[it.id] = it
                     this.updateRecordWithForeignObjects(it)
                     returnRecords.add(it)
+                    this.cachedStore[it.id] = it
                 }
             }
 
@@ -248,33 +256,62 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun create(entity: T): Boolean {
-        // handle foreign objects first
-        this.createOrUpdateForeignObject(entity)
-
-        // create
-        val insertSql = this.sqlGeneratorService
-                .buildInsertIntoTable(this.entityDefinition, entity) ?: return false
-        val result = this.granularDatabaseService
-                .executeUpdateQuery<K>(insertSql)
-
-        if (result.generatedKeys != null &&
-            result.generatedKeys!!.size > 0) {
-            entity.id = result.generatedKeys!![0]
+        if (this.currentlyExecutingItems.contains(entity.hashCode())) {
+            return true
         }
-        return result.successful
+
+        this.currentlyExecutingItems.add(entity.hashCode())
+
+        try {
+            // handle foreign objects first
+            this.createOrUpdateForeignObject(entity)
+
+            // create
+            val insertSql = this.sqlGeneratorService
+                    .buildInsertIntoTable(this.entityDefinition, entity) ?: return false
+            val result = this.granularDatabaseService
+                    .executeUpdateQuery<K>(insertSql)
+
+            if (result.generatedKeys != null &&
+                    result.generatedKeys!!.size > 0) {
+                entity.id = result.generatedKeys!![0]
+            }
+
+            this.createOrUpdateForeignObjectCollections(entity)
+            this.cachedStore[entity.id] = entity
+
+            return result.successful
+        }
+        finally {
+            this.currentlyExecutingItems.remove(entity.hashCode())
+        }
     }
 
     override fun update(entity: T): Boolean {
-        this.createOrUpdateForeignObject(entity)
-        // update
-        val updateSql = this
-                .sqlGeneratorService
-                .buildUpdateTable(this.entityDefinition, entity) ?: return false
+        if (this.currentlyExecutingItems.contains(entity.hashCode())) {
+            return true
+        }
 
-        val result = this.granularDatabaseService
-                .executeUpdateQuery<K>(updateSql)
+        this.currentlyExecutingItems.add(entity.hashCode())
 
-        return result.successful
+        try {
+            this.createOrUpdateForeignObject(entity)
+            // update
+            val updateSql = this
+                    .sqlGeneratorService
+                    .buildUpdateTable(this.entityDefinition, entity) ?: return false
+
+            val result = this.granularDatabaseService
+                    .executeUpdateQuery<K>(updateSql)
+
+            this.createOrUpdateForeignObjectCollections(entity)
+            this.cachedStore[entity.id] = entity
+
+            return result.successful
+        }
+        finally {
+            this.currentlyExecutingItems.remove(entity.hashCode())
+        }
     }
 
     override fun updateWithCriteria(
@@ -284,6 +321,8 @@ class EntityService<K, T: IEntity<K>>(
                 this.entityDefinition,
                 newValues,
                 whereClauseItem) ?: return false
+
+        this.cachedStore.clear()
 
         return this.granularDatabaseService
                 .executeUpdateQuery<K>(updateSql)
@@ -312,22 +351,11 @@ class EntityService<K, T: IEntity<K>>(
                 .successful
     }
 
-    // todo: this needs more love
-    private fun createOrUpdateForeignObject(actualObject: T) {
+    private fun createOrUpdateForeignObjectCollections(actualObject: T) {
         if (this.entityContext != null) {
             this.foreignObjects
+                .filter { EntityDefinitionModel.List.equals(it.type) }
                 .forEach {
-                    if (EntityDefinitionModel.Single.equals(it.type)) {
-                        val castToAny = it.entityDefinition as Class<IEntity<Any>>
-                        val foreignService = this.entityContext!!
-                                .getForeignService(castToAny) ?: return@forEach
-
-                        val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
-                        if (foreignObject != null) {
-                            foreignService.createOrUpdate(foreignObject)
-                        }
-                    }
-                    else {
                         // we're dealing with a list
                         val entityCollection = it.getMethod.invoke(actualObject)
                                 as EntityCollection<Any,IEntity<Any>>? ?: return@forEach
@@ -339,10 +367,53 @@ class EntityService<K, T: IEntity<K>>(
 
                         val firstObject = entityCollection.first()
                         val foreignService = this.entityContext!!
-                            .getForeignService(firstObject.javaClass) ?: return@forEach
+                                .getForeignService(firstObject.javaClass) ?: return@forEach
+
+                        // get the setter method for the child
+                        val commonFirstWord = CommonSqlDataTypeUtilities.getFirstWordInProperty(it.propertyName)
+
+                        val foundSetter = firstObject.javaClass
+                                .methods
+                                .filter {
+                                    if(!it.name.startsWith(CommonSqlDataTypeUtilities.Set)) {
+                                        false
+                                    }
+                                    else {
+                                        val nameWithoutSet = it.name.substring(
+                                                CommonSqlDataTypeUtilities.GetSetLength)
+                                        val commonWord = CommonSqlDataTypeUtilities.getFirstWordInProperty(nameWithoutSet)
+                                        if (commonFirstWord.equals(commonWord)) {
+                                            true
+                                        }
+                                        else {
+                                            false
+                                        }
+                                    }
+                                }
+                                .firstOrNull() ?: return@forEach
 
                         entityCollection
-                            .forEach { childItem -> foreignService.createOrUpdate(childItem) }
+                                .forEach { childItem ->
+                                    foundSetter.invoke(childItem, actualObject)
+                                    foreignService.createOrUpdate(childItem)
+                                }
+                }
+        }
+    }
+    // todo: this needs more love
+    private fun createOrUpdateForeignObject(actualObject: T) {
+        if (this.entityContext != null) {
+            this.foreignObjects
+                .filter { EntityDefinitionModel.Single.equals(it.type) }
+                .forEach {
+                    // not going to update single items.. for now
+                    val castToAny = it.entityDefinition as Class<IEntity<Any>>
+                    val foreignService = this.entityContext!!
+                            .getForeignService(castToAny) ?: return@forEach
+
+                    val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
+                    if (foreignObject != null) {
+                        foreignService.createOrUpdate(foreignObject)
                     }
                 }
         }

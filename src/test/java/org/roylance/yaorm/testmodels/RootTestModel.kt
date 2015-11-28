@@ -6,5 +6,5 @@ import org.roylance.yaorm.models.IEntity
 class RootTestModel(
         override var id:Long=0,
         var name:String="",
-        var childTests:EntityCollection<Long, ChildTestModel>
+        var commonChildTests:EntityCollection<Long, ChildTestModel>
             = EntityCollection(ChildTestModel::class.java)) : IEntity<Long>
