@@ -135,7 +135,7 @@ class EntityService<K, T: IEntity<K>>(
 
         if (records.size > 0) {
             val returnRecord = records[0]
-            
+
             this.updateRecordWithForeignObjects(returnRecord)
             this.cachedStore[returnRecord.id] = returnRecord
 
@@ -308,7 +308,7 @@ class EntityService<K, T: IEntity<K>>(
                     val foreignService = this.entityContext
                             ?.getForeignService(castToAny) ?: return@forEach
 
-                    if (foreignObject is EntityCollection<*>) {
+                    if (foreignObject is EntityCollection<*,*>) {
                         // things I need to do:
                         // get the object on the foreign collection
                         var rootWhereClause:WhereClauseItem? = null

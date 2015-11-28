@@ -36,48 +36,37 @@ object EntityUtils {
     }
 
     fun getProperties(item:Any):List<EntityDefinitionModel<*>> {
-        val totalNames = HashMap<String, Int>()
+        val allGetMethods = item
+            .javaClass
+            .methods
+            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+            .map { it }
+            .toMapBy { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
 
-        item
-                .javaClass
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) ||
-                        it.name.startsWith(CommonSqlDataTypeUtilities.Set)
+        return item
+            .javaClass
+            .methods
+            .filter {
+                it.name.startsWith(CommonSqlDataTypeUtilities.Set) &&
+                    allGetMethods.containsKey(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+            }
+            .map {
+                val commonPropertyName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                val getter = allGetMethods[commonPropertyName]!!
+                val setter = it
+                val propertyName = CommonSqlDataTypeUtilities.lowercaseFirstChar(commonPropertyName)
+                var entityType = EntityDefinitionModel.Single
+                if (EntityCollectionName.equals(getter.returnType.name)) {
+                    entityType = EntityDefinitionModel.List
                 }
-                .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
-                .forEach {
-                    if (totalNames.containsKey(it)) {
-                        totalNames[it] = totalNames[it]!! + 1
-                    }
-                    else {
-                        totalNames[it] = 1
-                    }
-                }
-
-        return totalNames
-                .keys
-                .filter { totalNames.containsKey(it) && totalNames[it]!! == 2 }
-                .map {
-                    val getter = item.javaClass.methods
-                            .first { "${CommonSqlDataTypeUtilities.Get}$it".equals(it.name) }
-                    val setter = item.javaClass.methods
-                            .first { "${CommonSqlDataTypeUtilities.Set}$it".equals(it.name) }
-                    val commonPropertyName = it
-                    val propertyName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it)
-                    val entityClass = getter.returnType
-                    var entityType = EntityDefinitionModel.Single
-                    if (EntityCollectionName.equals(getter.returnType.name)) {
-                        entityType = EntityDefinitionModel.List
-                    }
-
-                    EntityDefinitionModel(
-                            commonPropertyName,
-                            propertyName,
-                            setter,
-                            getter,
-                            entityClass,
-                            entityType)
-                }
+                EntityDefinitionModel(
+                        commonPropertyName,
+                        propertyName,
+                        getter,
+                        setter,
+                        item.javaClass,
+                        entityType)
+            }
     }
 
     fun doesClassHaveAMethodGetId(classModel: Class<*>):Boolean {

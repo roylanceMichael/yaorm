@@ -8,9 +8,9 @@ import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import org.roylance.yaorm.testmodels.ChildTestModel
 import java.util.*
 
-public class SqlUtilitiesTest {
+class SqlUtilitiesTest {
     @Test
-    public fun createTableTest() {
+    fun createTableTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "create table if not exists BeaconBroadcastModel (id integer primary key autoincrement, active integer, beaconId text, cachedName text, lastSeen integer, majorId integer, minorId integer);"
@@ -23,7 +23,7 @@ public class SqlUtilitiesTest {
     }
 
     @Test
-    public fun insertTest() {
+    fun insertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val newInsertModel = BeaconBroadcastModel(0, "cool test", 1, 1, true, "what is this",0)
@@ -40,7 +40,7 @@ public class SqlUtilitiesTest {
     }
 
     @Test
-    public fun updateTest() {
+    fun updateTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "update BeaconBroadcastModel set active=1, beaconId='cool test', cachedName='what is this', lastSeen=0, majorId=1, minorId=1 where id=1;"
@@ -55,7 +55,7 @@ public class SqlUtilitiesTest {
     }
 
     @Test
-    public fun deleteTest() {
+    fun deleteTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "delete from BeaconBroadcastModel where id=1;"
@@ -69,7 +69,7 @@ public class SqlUtilitiesTest {
     }
 
     @Test
-    public fun whereTest() {
+    fun whereTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "select * from BeaconBroadcastModel where cachedName='mike';"
@@ -88,7 +88,7 @@ public class SqlUtilitiesTest {
     }
 
     @Test
-    public fun selectAllTest() {
+    fun selectAllTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "select * from BeaconBroadcastModel;"
@@ -101,7 +101,7 @@ public class SqlUtilitiesTest {
     }
 
     @Test
-    public fun bulkInsertTest() {
+    fun bulkInsertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = """insert into BeaconBroadcastModel (active,beaconId,cachedName,lastSeen,majorId,minorId)  select 0 as active,'test1' as beaconId,'test1' as cachedName,0 as lastSeen,0 as majorId,0 as minorId
@@ -126,7 +126,7 @@ union select 0 as active,'test3' as beaconId,'test3' as cachedName,0 as lastSeen
     }
 
     @Test
-    public fun createTableRootChildTest() {
+    fun createTableRootChildTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "create table if not exists ChildTestModel (id integer primary key autoincrement, name text, rootModel integer);"
