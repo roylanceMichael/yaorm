@@ -14,27 +14,6 @@ object EntityUtils {
     private val NumberOfTotalFieldsWithId = 4
     private val EntityCollectionName = "org.roylance.yaorm.models.EntityCollection"
 
-    fun areObjectsDifferent(firstItem:Any?, secondItem:Any?):Boolean {
-        if (firstItem == null && secondItem != null) {
-            return true
-        }
-
-        if (firstItem != null && secondItem == null) {
-            return true
-        }
-
-        if (firstItem == null && secondItem == null) {
-            return false
-        }
-
-        // get all properties
-        if (firstItem!!.javaClass != secondItem!!.javaClass) {
-            return true
-        }
-
-        return false
-    }
-
     fun getProperties(item:Any):List<EntityDefinitionModel<*>> {
         val allGetMethods = item
             .javaClass
@@ -133,8 +112,9 @@ object EntityUtils {
 
                 if (this
                         .isClassAListAndDoesTypeHaveGetId(
-                                getMethodMap[propertyName]!!
-                                        .returnType)) {
+                                getMethodMap[propertyName]!!.returnType)) {
+                    System.out.println(getMethodMap[propertyName]!!.returnType.toGenericString())
+
                     EntityDefinitionModel(
                             propertyName,
                             CommonSqlDataTypeUtilities.lowercaseFirstChar(propertyName),

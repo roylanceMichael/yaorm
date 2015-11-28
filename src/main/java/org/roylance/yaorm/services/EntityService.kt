@@ -109,9 +109,23 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun getCustom(customSql: String): List<T> {
-        return this.granularDatabaseService
+        val foundRecords: List<T> = this.granularDatabaseService
                 .executeSelectQuery(this.entityDefinition, customSql)
                 .getRecords()
+
+        val returnRecords = ArrayList<T>()
+        foundRecords
+            .forEach {
+                if (this.cachedStore.containsKey(it.id)) {
+                    returnRecords.add(this.cachedStore[it.id]!!)
+                }
+                else {
+                    this.updateRecordWithForeignObjects(it)
+                    returnRecords.add(it)
+                }
+            }
+
+        return returnRecords
     }
 
     override fun get(id: K): T? {
@@ -154,11 +168,19 @@ class EntityService<K, T: IEntity<K>>(
                 allSql)
                 .getRecords()
 
-        // todo: optimize
+        val returnObjects = ArrayList<T>()
         allObjects
-            .forEach { this.updateRecordWithForeignObjects(it) }
+            .forEach {
+                if (!this.cachedStore.containsKey(it.id)) {
+                    this.updateRecordWithForeignObjects(it)
+                    returnObjects.add(it)
+                }
+                else {
+                    returnObjects.add(this.cachedStore[it.id]!!)
+                }
+            }
 
-        return allObjects
+        return returnObjects
     }
 
     override fun where(whereClauseItem: WhereClauseItem): List<T> {
@@ -172,9 +194,16 @@ class EntityService<K, T: IEntity<K>>(
                 whereSql)
                 .getRecords()
 
+        val returnRecords = ArrayList<T>()
         allObjects
             .forEach {
-                this.updateRecordWithForeignObjects(it)
+                if (this.cachedStore.containsKey(it.id)) {
+                    returnRecords.add(this.cachedStore[it.id]!!)
+                }
+                else {
+                    this.updateRecordWithForeignObjects(it)
+                    returnRecords.add(it)
+                }
             }
 
         return allObjects
@@ -187,18 +216,18 @@ class EntityService<K, T: IEntity<K>>(
         val results = ArrayList<Boolean>()
 
         instances
-                .forEach {
-                    temporaryList.add(it)
+            .forEach {
+                temporaryList.add(it)
 
-                    if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
-                        val bulkInsertSql = this.sqlGeneratorService
-                                .buildBulkInsert(this.entityDefinition, temporaryList)
-                        val result = this.granularDatabaseService
-                                .executeUpdateQuery<K>(bulkInsertSql)
-                        results.add(result.successful)
-                        temporaryList.clear()
-                    }
+                if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
+                    val bulkInsertSql = this.sqlGeneratorService
+                            .buildBulkInsert(this.entityDefinition, temporaryList)
+                    val result = this.granularDatabaseService
+                            .executeUpdateQuery<K>(bulkInsertSql)
+                    results.add(result.successful)
+                    temporaryList.clear()
                 }
+            }
 
         if (!temporaryList.isEmpty()) {
             val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.entityDefinition, temporaryList)
@@ -262,6 +291,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun delete(id: K): Boolean {
+        if (this.cachedStore.containsKey(id)) {
+            this.cachedStore.remove(id)
+        }
+
         val deleteSql =
                 this.sqlGeneratorService
                         .buildDeleteTable(this.entityDefinition, id) ?: return false
@@ -272,6 +305,7 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun deleteAll(): Boolean {
+        this.cachedStore.clear()
         val sql = this.sqlGeneratorService.buildDeleteAll(this.entityDefinition)
         return this.granularDatabaseService
                 .executeUpdateQuery<K>(sql)
@@ -283,13 +317,32 @@ class EntityService<K, T: IEntity<K>>(
         if (this.entityContext != null) {
             this.foreignObjects
                 .forEach {
-                    val castToAny = it.entityDefinition as Class<IEntity<Any>>
-                    val foreignService = this.entityContext!!
-                            .getForeignService(castToAny) ?: return@forEach
+                    if (EntityDefinitionModel.Single.equals(it.type)) {
+                        val castToAny = it.entityDefinition as Class<IEntity<Any>>
+                        val foreignService = this.entityContext!!
+                                .getForeignService(castToAny) ?: return@forEach
 
-                    val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
-                    if (foreignObject != null) {
-                        foreignService.createOrUpdate(foreignObject)
+                        val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
+                        if (foreignObject != null) {
+                            foreignService.createOrUpdate(foreignObject)
+                        }
+                    }
+                    else {
+                        // we're dealing with a list
+                        val entityCollection = it.getMethod.invoke(actualObject)
+                                as EntityCollection<Any,IEntity<Any>>? ?: return@forEach
+
+                        // get first object
+                        if (entityCollection.size == 0) {
+                            return@forEach
+                        }
+
+                        val firstObject = entityCollection.first()
+                        val foreignService = this.entityContext!!
+                            .getForeignService(firstObject.javaClass) ?: return@forEach
+
+                        entityCollection
+                            .forEach { childItem -> foreignService.createOrUpdate(childItem) }
                     }
                 }
         }
@@ -301,63 +354,66 @@ class EntityService<K, T: IEntity<K>>(
         if (this.entityContext != null) {
             this.foreignObjects
                 .forEach {
-                    val foreignObject = it.getMethod.invoke(actualObject)
-                            ?: return@forEach
+                    if (EntityDefinitionModel.Single.equals(it.type)) {
+                        val foreignObject = it.getMethod.invoke(actualObject)
+                                ?: return@forEach
 
-                    val castToAny = it.entityDefinition as Class<IEntity<Any>>
-                    val foreignService = this.entityContext
-                            ?.getForeignService(castToAny) ?: return@forEach
+                        val castToAny = it.entityDefinition as Class<IEntity<Any>>
+                        val foreignService = this.entityContext
+                                ?.getForeignService(castToAny) ?: return@forEach
 
-                    if (foreignObject is EntityCollection<*,*>) {
-                        // things I need to do:
-                        // get the object on the foreign collection
-                        var rootWhereClause:WhereClauseItem? = null
-                        var cyclingWhereClause:WhereClauseItem? = null
+                        val builtWhereClause = EntityUtils
+                                .buildWhereClauseOnId((foreignObject as IEntity<*>))
+                        val foreignObjects = foreignService.where(builtWhereClause)
 
-                        foreignObject
-                            .entityDefinition
-                            .methods
-                            .filter {
-                                this.entityDefinition.equals(it.returnType)
-                            }
-                            .forEach {
-                                val methodNameWithoutGet = it.name.substring(
-                                        CommonSqlDataTypeUtilities.GetSetLength)
-
-                                val newWhereClause = WhereClauseItem(
-                                        CommonSqlDataTypeUtilities
-                                                .lowercaseFirstChar(methodNameWithoutGet),
-                                        WhereClauseItem.Equals,
-                                        actualObject.id as Any)
-
-                                if (rootWhereClause == null) {
-                                    rootWhereClause = newWhereClause
-                                    cyclingWhereClause = newWhereClause
-                                }
-                                else {
-                                    cyclingWhereClause!!.connectingAndOr = WhereClauseItem.Or
-                                    cyclingWhereClause!!.connectingWhereClause = newWhereClause
-                                    cyclingWhereClause = newWhereClause
-                                }
-                            }
-
-                        if (rootWhereClause == null) {
-                            return@forEach
+                        if (foreignObjects.size > 0) {
+                            it.setMethod.invoke(actualObject, foreignObjects[0])
                         }
-                        // find out which one column has a mapping to this one
-                        // build a where statement and select all
-                        // TODO: in memory store...
-                        val allForeignObjects = foreignService.where(rootWhereClause!!)
-
-                        return@forEach
                     }
+                    else {
+                        val foreignObject = it.getMethod.invoke(actualObject)
+                                as EntityCollection<Any,IEntity<Any>>? ?: return@forEach
+                        // should never be null, but just in case
 
-                    val builtWhereClause = EntityUtils
-                            .buildWhereClauseOnId((foreignObject as IEntity<*>))
-                    val foreignObjects = foreignService.where(builtWhereClause)
+                        val foreignService = this.entityContext
+                                ?.getForeignService(foreignObject.entityDefinition) ?: return@forEach
 
-                    if (foreignObjects.size > 0) {
-                        it.setMethod.invoke(actualObject, foreignObjects[0])
+                        // how does this collection tie to the children?
+                        // the children will have a reference to this id
+                        // but what name...
+                        // let's enforce a common string between then
+                        val propertyToLookFor = CommonSqlDataTypeUtilities
+                                .getFirstWordInProperty(it.propertyName)
+
+                        val foundCorrespondingProperty = foreignObject.entityDefinition
+                                .methods
+                                .filter {
+                                    val containsGet = it.name.startsWith(CommonSqlDataTypeUtilities.Get)
+                                    if (!containsGet) {
+                                        false
+                                    } else {
+                                        val propertyName = it.name
+                                                .substring(CommonSqlDataTypeUtilities.GetSetLength)
+                                        propertyToLookFor.equals(
+                                                CommonSqlDataTypeUtilities
+                                                        .getFirstWordInProperty(propertyName))
+                                    }
+                                }
+                                .firstOrNull() ?: return@forEach
+
+                        val cleansedPropertyName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                foundCorrespondingProperty
+                                .name
+                                .substring(CommonSqlDataTypeUtilities.GetSetLength))
+
+                        // need to get the name of this property
+                        val whereClause = WhereClauseItem(
+                                cleansedPropertyName,
+                                WhereClauseItem.Equals,
+                                actualObject.id as Any)
+
+                        val childObjects = foreignService.where(whereClause)
+                        foreignObject.addAll(childObjects)
                     }
                 }
         }

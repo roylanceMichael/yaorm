@@ -72,6 +72,25 @@ object CommonSqlDataTypeUtilities {
         return firstChar + input.substring(1)
     }
 
+    fun getFirstWordInProperty(input:String):String {
+        // going to lower case, just in case
+        val lowerInput = this.lowercaseFirstChar(input)
+        var returnString = StringBuilder()
+
+        for (newChar in lowerInput) {
+            if (newChar.isLetter()) {
+                if (newChar.isLowerCase()) {
+                    returnString.append(newChar)
+                }
+                else {
+                    break
+                }
+            }
+        }
+
+        return returnString.toString()
+    }
+
     fun convertPropertyToSetterName(propertyName: String): String {
         val firstChar = propertyName.get(0).toUpperCase()
         return Set + firstChar + propertyName.substring(1)
