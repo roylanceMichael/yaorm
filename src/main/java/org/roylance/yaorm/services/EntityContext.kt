@@ -42,6 +42,12 @@ abstract class EntityContext(
             }
     }
 
+    fun clearAllCache() {
+        this.migrationService.clearCache()
+        this.entityServices
+            .forEach { it.clearCache() }
+    }
+
     fun handleMigrations(newId:Long=0) {
         val differenceReport = this.getDifferenceReport()
 

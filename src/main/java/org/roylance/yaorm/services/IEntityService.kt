@@ -37,4 +37,6 @@ interface IEntityService<K, T: IEntity<K>> {
 
     fun delete(id: K): Boolean
     fun deleteAll(): Boolean
+
+    fun clearCache()
 }

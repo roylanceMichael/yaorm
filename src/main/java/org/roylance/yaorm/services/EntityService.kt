@@ -1,11 +1,13 @@
 package org.roylance.yaorm.services
 
+import org.roylance.yaorm.models.EntityCollection
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.EntityUtils
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
@@ -18,6 +20,7 @@ class EntityService<K, T: IEntity<K>>(
 ) : IEntityService<K, T> {
 
     private val foreignObjects:List<EntityDefinitionModel<*>>
+    private val cachedStore: MutableMap<K, T> = HashMap()
 
     init {
         this.foreignObjects = EntityUtils
@@ -25,6 +28,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override var entityContext: EntityContext? = null
+
+    override fun clearCache() {
+        this.cachedStore.clear()
+    }
 
     override fun getCount(): Long {
         val countSql = this.sqlGeneratorService.buildCountSql(this.entityDefinition)
@@ -108,10 +115,15 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun get(id: K): T? {
+        if (this.cachedStore.containsKey(id)) {
+            return this.cachedStore[id]
+        }
+
         val whereClause = WhereClauseItem(
                 this.sqlGeneratorService.javaIdName,
                 SqlOperators.Equals,
                 id as Any)
+
         val whereSql = this.sqlGeneratorService
                 .buildWhereClause(this.entityDefinition, whereClause) ?: return null
 
@@ -123,7 +135,10 @@ class EntityService<K, T: IEntity<K>>(
 
         if (records.size > 0) {
             val returnRecord = records[0]
+            
             this.updateRecordWithForeignObjects(returnRecord)
+            this.cachedStore[returnRecord.id] = returnRecord
+
             return returnRecord
         }
 
@@ -291,12 +306,57 @@ class EntityService<K, T: IEntity<K>>(
 
                     val castToAny = it.entityDefinition as Class<IEntity<Any>>
                     val foreignService = this.entityContext
-                            ?.getForeignService(castToAny)
+                            ?.getForeignService(castToAny) ?: return@forEach
 
-                    val builtWhereClause = EntityUtils.buildWhereClauseOnId((foreignObject as IEntity<*>))
-                    val foreignObjects = foreignService?.where(builtWhereClause)
+                    if (foreignObject is EntityCollection<*>) {
+                        // things I need to do:
+                        // get the object on the foreign collection
+                        var rootWhereClause:WhereClauseItem? = null
+                        var cyclingWhereClause:WhereClauseItem? = null
 
-                    if (foreignObjects!!.size > 0) {
+                        foreignObject
+                            .entityDefinition
+                            .methods
+                            .filter {
+                                this.entityDefinition.equals(it.returnType)
+                            }
+                            .forEach {
+                                val methodNameWithoutGet = it.name.substring(
+                                        CommonSqlDataTypeUtilities.GetSetLength)
+
+                                val newWhereClause = WhereClauseItem(
+                                        CommonSqlDataTypeUtilities
+                                                .lowercaseFirstChar(methodNameWithoutGet),
+                                        WhereClauseItem.Equals,
+                                        actualObject.id as Any)
+
+                                if (rootWhereClause == null) {
+                                    rootWhereClause = newWhereClause
+                                    cyclingWhereClause = newWhereClause
+                                }
+                                else {
+                                    cyclingWhereClause!!.connectingAndOr = WhereClauseItem.Or
+                                    cyclingWhereClause!!.connectingWhereClause = newWhereClause
+                                    cyclingWhereClause = newWhereClause
+                                }
+                            }
+
+                        if (rootWhereClause == null) {
+                            return@forEach
+                        }
+                        // find out which one column has a mapping to this one
+                        // build a where statement and select all
+                        // TODO: in memory store...
+                        val allForeignObjects = foreignService.where(rootWhereClause!!)
+
+                        return@forEach
+                    }
+
+                    val builtWhereClause = EntityUtils
+                            .buildWhereClauseOnId((foreignObject as IEntity<*>))
+                    val foreignObjects = foreignService.where(builtWhereClause)
+
+                    if (foreignObjects.size > 0) {
                         it.setMethod.invoke(actualObject, foreignObjects[0])
                     }
                 }
