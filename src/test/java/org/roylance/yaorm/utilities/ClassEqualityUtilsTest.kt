@@ -68,7 +68,7 @@ class ClassEqualityUtilsTest {
 
         val firstChildEntity = ChildTestModel(1, firstChildName)
         val firstChildEntity1 = ChildTestModel(2, secondChildName)
-        val firstRootModel = RootTestModel(1, rootName)
+        val firstRootModel = RootTestModel(1 , rootName)
         firstChildEntity.commonRootModel = firstRootModel
         firstChildEntity1.commonRootModel = firstRootModel
         firstRootModel.commonChildTests.add(firstChildEntity)

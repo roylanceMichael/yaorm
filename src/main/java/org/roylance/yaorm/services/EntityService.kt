@@ -408,6 +408,7 @@ class EntityService<K, T: IEntity<K>>(
                 .forEach {
                     // not going to update single items.. for now
                     val castToAny = it.entityDefinition as Class<IEntity<Any>>
+
                     val foreignService = this.entityContext!!
                             .getForeignService(castToAny) ?: return@forEach
 

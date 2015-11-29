@@ -129,7 +129,7 @@ union select 0 as active,'test3' as beaconId,'test3' as cachedName,0 as lastSeen
     fun createTableRootChildTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "create table if not exists ChildTestModel (id integer primary key autoincrement, name text, rootModel integer);"
+        val expectedSql = "create table if not exists ChildTestModel (id integer primary key autoincrement, commonRootModel integer, name text);"
 
         // act
         val createTableSql = sqliteGeneratorService.buildCreateTable(ChildTestModel::class.java)
