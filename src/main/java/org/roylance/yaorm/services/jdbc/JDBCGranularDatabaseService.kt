@@ -23,8 +23,8 @@ class JDBCGranularDatabaseService(
 
     override fun <K> executeUpdateQuery(query: String): EntityResultModel<K> {
         val statement = this.connection.createStatement()
-        val returnObject = EntityResultModel<K>()
         try {
+            val returnObject = EntityResultModel<K>()
             val result = statement.executeUpdate(query)
 
             val returnedKeys = ArrayList<K>()
@@ -45,7 +45,12 @@ class JDBCGranularDatabaseService(
             classModel:Class<T>,
             query: String): ICursor<T> {
         val statement = this.connection.prepareStatement(query)
-        val resultSet = statement.executeQuery()
-        return JDBCCursor(classModel, resultSet, statement)
+        try {
+            val resultSet = statement.executeQuery()
+            return JDBCCursor(classModel, resultSet, statement)
+        }
+        finally {
+            // normally close, but wait for service to do it
+        }
     }
 }

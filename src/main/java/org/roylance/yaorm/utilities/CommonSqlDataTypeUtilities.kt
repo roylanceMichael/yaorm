@@ -1,5 +1,10 @@
 package org.roylance.yaorm.utilities
 
+import org.roylance.yaorm.models.ColumnNameTuple
+import org.roylance.yaorm.models.IEntity
+import org.roylance.yaorm.models.WhereClauseItem
+import java.util.*
+
 object CommonSqlDataTypeUtilities {
     private val SingleQuote = "'"
     private val DoubleSingleQuote = "''"
@@ -16,6 +21,8 @@ object CommonSqlDataTypeUtilities {
     val Or = "or"
     val Underscore = "_"
     val Is = "is"
+    val LeftParen = "("
+    val RightParen = ")"
 
     val JavaFullyQualifiedStringName: String = "String"
     val JavaObjectName: String = "java.lang.Object"
@@ -93,5 +100,80 @@ object CommonSqlDataTypeUtilities {
 
     fun buildIndexName(columnNames:List<String>) : String {
         return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
+    }
+
+    fun <K, T: IEntity<K>> getNameTypes(
+            classModel: Class<T>,
+            javaIdName: String,
+            javaTypeToSqlType: Map<String, String>): List<ColumnNameTuple<String>> {
+        val nameTypes = ArrayList<ColumnNameTuple<String>>()
+        var foundIdColumnName = false
+
+        val propertyNames = classModel
+                .methods
+                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
+                .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
+                .toHashSet()
+
+        // let's handle the types now
+        classModel
+                .methods
+                .filter {
+                    it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                            propertyNames.contains(
+                                    it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                }
+                .sortedBy { it.name }
+                .forEach {
+                    val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                    val javaType = it.returnType.name
+
+                    if (javaTypeToSqlType.containsKey(javaType)) {
+                        val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                        val javaColumnName = columnName
+                        val dataType = javaTypeToSqlType[javaType]
+                        if (javaIdName.equals(sqlColumnName)) {
+                            foundIdColumnName = true
+                        }
+                        nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
+                    }
+                    else {
+                        val foundTuple = EntityUtils.getEntityTuple(it, javaTypeToSqlType)
+                        if (foundTuple != null) {
+                            nameTypes.add(foundTuple)
+                        }
+                    }
+                }
+
+        if (!foundIdColumnName) {
+            return ArrayList()
+        }
+
+        return nameTypes
+    }
+
+
+    fun buildWhereClause(whereClauseItem: WhereClauseItem):String {
+        val filterItems = StringBuilder()
+        var currentWhereClauseItem: WhereClauseItem? = whereClauseItem
+
+        while (currentWhereClauseItem != null) {
+            val stringValue = CommonSqlDataTypeUtilities
+                    .getFormattedString(currentWhereClauseItem.rightSide)
+            filterItems.append(
+                    currentWhereClauseItem.leftSide +
+                            currentWhereClauseItem.operator +
+                            stringValue +
+                            CommonSqlDataTypeUtilities.Space)
+
+            if (currentWhereClauseItem.connectingAndOr != null) {
+                filterItems.append(currentWhereClauseItem.connectingAndOr)
+            }
+
+            currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
+        }
+
+        return filterItems.toString().trim()
     }
 }

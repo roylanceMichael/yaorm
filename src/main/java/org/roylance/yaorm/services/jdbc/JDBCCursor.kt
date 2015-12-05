@@ -22,24 +22,6 @@ class JDBCCursor<T> (
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
-            val objectFunction = { label:String, resultSet:ResultSet ->
-                val foundObject = resultSet.getObject(label)
-
-                if(foundObject is Int) {
-                    foundObject
-                }
-                else if (foundObject is Long) {
-                    foundObject
-                }
-                else if (foundObject is Double) {
-                    foundObject
-                }
-                else {
-                    foundObject as String
-                }
-            }
-            put(CommonSqlDataTypeUtilities.JavaObjectName, objectFunction)
-            put(CommonSqlDataTypeUtilities.JavaAltObjectName, objectFunction)
             put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
             put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
@@ -189,10 +171,11 @@ class JDBCCursor<T> (
             while (this.moveNext()) {
                 returnItems.add(this.getRecord())
             }
+            return returnItems
         }
         finally {
-            this.preparedStatement.close()
-            return returnItems
+            // mysql is having problems closing...
+             this.preparedStatement.close()
         }
     }
 }

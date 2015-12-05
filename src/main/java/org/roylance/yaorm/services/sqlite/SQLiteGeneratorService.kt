@@ -1,11 +1,10 @@
 package org.roylance.yaorm.services.sqlite
 
-import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.ColumnNameTuple
+import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
-import org.roylance.yaorm.utilities.EntityUtils
 import java.util.*
 
 public class SQLiteGeneratorService(
@@ -70,7 +69,11 @@ public class SQLiteGeneratorService(
         returnList.add("alter table ${classType.simpleName} rename to temp_${classType.simpleName}")
         returnList.add(createTableSql.replace(CommonSqlDataTypeUtilities.SemiColon, ""))
 
-        val nameTypes = this.getNameTypes(classType)
+        val nameTypes = CommonSqlDataTypeUtilities.getNameTypes(
+                classType,
+                this.javaIdName,
+                this.javaTypeToSqlType)
+
         val columnsWithoutId = nameTypes
                 .filter { !javaIdName.equals(it.sqlColumnName) }
                 .map { "${it.sqlColumnName}" }
@@ -108,7 +111,7 @@ public class SQLiteGeneratorService(
     override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
             classModel: Class<T>,
             whereClauseItem: WhereClauseItem): String {
-        val whereClause = this.buildWhereClause(whereClauseItem)
+        val whereClause = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
         return "delete from ${classModel.simpleName} where $whereClause"
     }
 
@@ -118,7 +121,10 @@ public class SQLiteGeneratorService(
             whereClauseItem: WhereClauseItem): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            getNameTypes(classModel)
+            CommonSqlDataTypeUtilities.getNameTypes(
+                    classModel,
+                    this.javaIdName,
+                    this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
@@ -126,7 +132,7 @@ public class SQLiteGeneratorService(
             }
 
             val tableName = classModel.simpleName
-            var criteriaString: String = this.buildWhereClause(whereClauseItem)
+            var criteriaString: String = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 
             newValues
@@ -168,7 +174,10 @@ public class SQLiteGeneratorService(
             items: List<T>) : String {
         val tableName = classModel.simpleName
         val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-        getNameTypes(classModel)
+        CommonSqlDataTypeUtilities.getNameTypes(
+                classModel,
+                this.javaIdName,
+                this.javaTypeToSqlType)
                 .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
         val columnNames = ArrayList<String>()
@@ -263,7 +272,7 @@ public class SQLiteGeneratorService(
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 classModel.simpleName,
-                this.buildWhereClause(whereClauseItem))
+                CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem))
 
         return whereSql
     }
@@ -283,7 +292,10 @@ public class SQLiteGeneratorService(
             updateModel: T): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            getNameTypes(classModel)
+            CommonSqlDataTypeUtilities.getNameTypes(
+                    classModel,
+                    this.javaIdName,
+                    this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
@@ -358,7 +370,10 @@ public class SQLiteGeneratorService(
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
-            this.getNameTypes(classModel)
+            CommonSqlDataTypeUtilities.getNameTypes(
+                    classModel,
+                    this.javaIdName,
+                    this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val columnNames = ArrayList<String>()
@@ -413,7 +428,10 @@ public class SQLiteGeneratorService(
 
     override fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
 
-        val nameTypes = this.getNameTypes(classType)
+        val nameTypes = CommonSqlDataTypeUtilities.getNameTypes(
+                classType,
+                this.javaIdName,
+                this.javaTypeToSqlType)
 
         if (nameTypes.size == 0) {
             return null
@@ -449,76 +467,5 @@ public class SQLiteGeneratorService(
                 workspace.toString())
 
         return createTableSql
-    }
-
-    private fun buildWhereClause(whereClauseItem: WhereClauseItem):String {
-        val filterItems = StringBuilder()
-        var currentWhereClauseItem:WhereClauseItem? = whereClauseItem
-
-        while (currentWhereClauseItem != null) {
-            val stringValue = CommonSqlDataTypeUtilities
-                    .getFormattedString(currentWhereClauseItem.rightSide)
-            filterItems.append(
-                    currentWhereClauseItem.leftSide +
-                            currentWhereClauseItem.operator +
-                            stringValue +
-                            CommonSqlDataTypeUtilities.Space)
-
-            if (currentWhereClauseItem.connectingAndOr != null) {
-                filterItems.append(currentWhereClauseItem.connectingAndOr)
-            }
-
-            currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
-        }
-
-        return filterItems.toString().trim()
-    }
-
-    private fun <K, T: IEntity<K>> getNameTypes(classModel: Class<T>): List<ColumnNameTuple<String>> {
-        val nameTypes = ArrayList<ColumnNameTuple<String>>()
-        var foundIdColumnName = false
-
-        val propertyNames = classModel
-            .methods
-            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
-            .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
-            .toHashSet()
-
-        // let's handle the types now
-        classModel
-            .methods
-            .filter {
-                it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                        propertyNames.contains(
-                                it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
-            }
-            .sortedBy { it.name }
-            .forEach {
-                val columnName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
-                val javaType = it.returnType.name
-
-                if (this.javaTypeToSqlType.containsKey(javaType)) {
-                    val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
-                    val javaColumnName = columnName
-                    val dataType = this.javaTypeToSqlType[javaType]
-                    if (javaIdName.equals(sqlColumnName)) {
-                        foundIdColumnName = true
-                    }
-                    nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
-                }
-                else {
-                    val foundTuple = EntityUtils.getEntityTuple(it, this.javaTypeToSqlType)
-                    if (foundTuple != null) {
-                        nameTypes.add(foundTuple)
-                    }
-                }
-            }
-
-        if (!foundIdColumnName) {
-            return ArrayList()
-        }
-
-        return nameTypes
     }
 }
