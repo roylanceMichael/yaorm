@@ -17,7 +17,7 @@ class PhoenixEntityAccessServiceTest {
 
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
@@ -58,7 +58,7 @@ class PhoenixEntityAccessServiceTest {
 
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
@@ -87,7 +87,7 @@ class PhoenixEntityAccessServiceTest {
         // arrange
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
@@ -117,7 +117,7 @@ class PhoenixEntityAccessServiceTest {
 
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
@@ -150,7 +150,7 @@ class PhoenixEntityAccessServiceTest {
 
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {
@@ -190,7 +190,7 @@ class PhoenixEntityAccessServiceTest {
 
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
 
         try {

@@ -21,7 +21,9 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val granularDatabaseService = JDBCGranularDatabaseService(
+                    sourceConnection.connectionSource,
+                    false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val anotherTestModelService = EntityService(
                     AnotherTestModel::class.java,
@@ -104,7 +106,10 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val granularDatabaseService = JDBCGranularDatabaseService(
+                    sourceConnection.connectionSource,
+                    false)
+
             val sqliteGeneratorService = SQLiteGeneratorService()
             val anotherTestModelService = EntityService(
                     AnotherTestModel::class.java,
@@ -127,13 +132,16 @@ public class EntityContextTest {
                     migrationService)
 
             // act
-            testEntityContext.handleMigrations(0)
+            testEntityContext.handleMigrations()
 
             //assert
             var savedModels = testEntityContext.anotherTestModelService.getAll()
             Assert.assertEquals(0, savedModels.size)
 
-            val testModel = AnotherTestModel(description = "cool description", gram = "cool gram")
+            val testModel = AnotherTestModel(
+                    id = "what",
+                    description = "cool description",
+                    gram = "cool gram")
             testEntityContext.anotherTestModelService.create(testModel)
 
             savedModels = testEntityContext.anotherTestModelService.getAll()
@@ -156,7 +164,9 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val granularDatabaseService = JDBCGranularDatabaseService(
+                    sourceConnection.connectionSource,
+                    false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val migrationService = EntityService(
@@ -206,7 +216,9 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val granularDatabaseService = JDBCGranularDatabaseService(
+                    sourceConnection.connectionSource,
+                    false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val migrationService = EntityService(
@@ -258,7 +270,7 @@ public class EntityContextTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val migrationService = EntityService(

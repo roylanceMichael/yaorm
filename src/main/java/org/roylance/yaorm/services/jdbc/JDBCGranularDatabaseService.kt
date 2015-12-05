@@ -4,15 +4,12 @@ import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.services.ICursor
 import org.roylance.yaorm.services.IGranularDatabaseService
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.sql.Connection
 import java.util.*
-import java.util.logging.Logger
 
 class JDBCGranularDatabaseService(
         private val connection: Connection,
-        private val shouldManuallyCommitAfterUpdate: Boolean,
-        private val generatedKeysColumnName: String) : IGranularDatabaseService {
+        private val shouldManuallyCommitAfterUpdate: Boolean) : IGranularDatabaseService {
 
     override fun commit() {
         this.connection.commit()
@@ -31,16 +28,6 @@ class JDBCGranularDatabaseService(
             val result = statement.executeUpdate(query)
 
             val returnedKeys = ArrayList<K>()
-            val generatedKeys = statement.generatedKeys
-            if (generatedKeys.metaData.columnCount > 0) {
-                while (generatedKeys.next()) {
-                    val foundKey = generatedKeys
-                            .getObject(this.generatedKeysColumnName)
-
-                    returnedKeys.add(foundKey as K)
-                }
-            }
-
             returnObject.generatedKeys = returnedKeys
             returnObject.successful = result > 0
 
@@ -60,9 +47,5 @@ class JDBCGranularDatabaseService(
         val statement = this.connection.prepareStatement(query)
         val resultSet = statement.executeQuery()
         return JDBCCursor(classModel, resultSet, statement)
-    }
-
-    companion object {
-        val logger = Logger.getLogger(JDBCGranularDatabaseService::class.java.simpleName)
     }
 }

@@ -8,7 +8,7 @@ import java.util.*
 class ForeignEntityContext (
         val rootTestService: IEntityService<Long, RootTestModel>,
         val childTestService: IEntityService<Long, ChildTestModel>,
-        migrationService: IEntityService<Long, MigrationModel>)
+        migrationService: IEntityService<String, MigrationModel>)
 : EntityContext(
         Arrays.asList(rootTestService, childTestService),
         migrationService,

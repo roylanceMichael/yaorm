@@ -12,9 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by mikeroylance on 10/15/15.
- */
 public class JavaEntityAccessServiceTest {
 //     @Test
     public void readmeTest() throws Exception {
@@ -34,8 +31,7 @@ public class JavaEntityAccessServiceTest {
         // this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
         final IGranularDatabaseService granularDatabaseService = new JDBCGranularDatabaseService(
                 sourceConnection.getConnectionSource(),
-                false,
-                sourceConnection.getGeneratedKeysColumnName());
+                false);
 
         try  {
             // this is the service that generates the sql for SQLite.

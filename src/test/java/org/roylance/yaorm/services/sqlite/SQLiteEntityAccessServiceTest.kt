@@ -1,20 +1,9 @@
 package org.roylance.yaorm.services.sqlite
 
-import org.junit.After
-import org.junit.AfterClass
 import org.junit.Assert
-import org.junit.Test
-import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.services.EntityAccessService
-import org.roylance.yaorm.services.hive.HiveConnectionSourceFactory
-import org.roylance.yaorm.services.hive.HiveGeneratorService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.services.phoenix.PhoenixConnectionSourceFactory
-import org.roylance.yaorm.services.phoenix.PhoenixGeneratorService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
-import org.roylance.yaorm.testmodels.TestModel
 import java.io.File
 import java.util.*
 
@@ -30,12 +19,15 @@ public class SQLiteEntityAccessServiceTest {
         val cachedName = "mike"
 
         val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(
+                sourceConnection.connectionSource,
+                false)
         val sqliteGeneratorService = SQLiteGeneratorService()
         val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
         try {
             val newBeacon = BeaconBroadcastModel(
+                    1,
                     beaconId = beaconId,
                     majorId = majorId,
                     minorId = minorId,
@@ -76,12 +68,13 @@ public class SQLiteEntityAccessServiceTest {
         val cachedName = "mike"
 
         val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+        val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val sqliteGeneratorService = SQLiteGeneratorService()
         val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
 
         try {
             val newBeacon = BeaconBroadcastModel(
+                    1,
                     beaconId = beaconId,
                     majorId = majorId,
                     minorId = minorId,

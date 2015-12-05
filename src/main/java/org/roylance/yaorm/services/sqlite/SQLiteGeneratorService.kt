@@ -20,8 +20,6 @@ public class SQLiteGeneratorService(
     private val SelectAllTemplate = "select * from %s;"
     private val PrimaryKey = "primary key"
 
-    private val AutoIncrement = "autoincrement"
-
     private val SqlIntegerName = "integer"
     private val SqlTextName = "text"
     private val SqlRealName = "real"
@@ -183,7 +181,7 @@ public class SQLiteGeneratorService(
                     val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                             it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
                     if (nameTypeMap.containsKey(actualName) &&
-                            !javaIdName.equals(actualName)) {
+                            !columnNames.contains(actualName)) {
                         columnNames.add(actualName)
                     }
                     else if (nameTypeMap.containsKey(actualName) &&
@@ -210,8 +208,7 @@ public class SQLiteGeneratorService(
 
                         val javaType = it.returnType.name
                         if (nameTypeMap.containsKey(actualName) &&
-                                this.javaTypeToSqlType.containsKey(javaType) &&
-                                !javaIdName.equals(actualName)) {
+                                this.javaTypeToSqlType.containsKey(javaType)) {
 
                             val instanceValue = it.invoke(instance)
                             val cleansedValue = CommonSqlDataTypeUtilities
@@ -272,9 +269,7 @@ public class SQLiteGeneratorService(
     }
 
     override fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
-
         val tableName = classModel.simpleName
-
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 tableName,
@@ -380,8 +375,7 @@ public class SQLiteGeneratorService(
                     val javaType = it.returnType.name
 
                     if (nameTypeMap.containsKey(actualName) &&
-                            this.javaTypeToSqlType.containsKey(javaType) &&
-                            !javaIdName.equals(actualName)) {
+                            this.javaTypeToSqlType.containsKey(javaType)) {
                         columnNames.add(actualName)
 
                         val instanceValue = it.invoke(newInsertModel)
@@ -427,15 +421,18 @@ public class SQLiteGeneratorService(
 
         val workspace = StringBuilder()
 
-        workspace.append(javaIdName)
-                .append(CommonSqlDataTypeUtilities.Space)
-                .append(SqlIntegerName)
-                .append(CommonSqlDataTypeUtilities.Space)
-                .append(PrimaryKey)
-                .append(CommonSqlDataTypeUtilities.Space)
-                .append(AutoIncrement)
+        for (nameType in nameTypes) {
+            if (javaIdName.equals(nameType.sqlColumnName)) {
+                workspace
+                        .append(nameType.sqlColumnName)
+                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(nameType.dataType)
+                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(PrimaryKey)
+            }
+        }
 
-        for (nameType in this.getNameTypes(classType)) {
+        for (nameType in nameTypes) {
             if (!javaIdName.equals(nameType.sqlColumnName)) {
                 workspace
                         .append(CommonSqlDataTypeUtilities.Comma)

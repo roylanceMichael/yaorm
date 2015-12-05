@@ -8,7 +8,7 @@ import java.util.*
 public class TestEntityContext (
     public val anotherTestModelService: IEntityService<String, AnotherTestModel>,
     public val beaconBroadcastService: IEntityService<Int, BeaconBroadcastModel>,
-    migrationService: IEntityService<Long, MigrationModel>) : EntityContext(
+    migrationService: IEntityService<String, MigrationModel>) : EntityContext(
     Arrays.asList(anotherTestModelService, beaconBroadcastService),
     migrationService,
     "TestEntityContext") {

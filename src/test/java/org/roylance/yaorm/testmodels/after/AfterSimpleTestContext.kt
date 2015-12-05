@@ -7,5 +7,5 @@ import java.util.*
 
 class AfterSimpleTestContext(
         public val simpleTestService: IEntityService<Int, SimpleTestModel>,
-        migrationService: IEntityService<Long, MigrationModel>
+        migrationService: IEntityService<String, MigrationModel>
 ) : EntityContext(Arrays.asList(simpleTestService), migrationService, "SimpleTest")

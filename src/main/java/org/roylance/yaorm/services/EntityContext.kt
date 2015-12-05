@@ -11,7 +11,7 @@ import java.util.*
 
 abstract class EntityContext(
     protected val entityServices:List<IEntityService<*,*>>,
-    protected val migrationService:IEntityService<Long, MigrationModel>,
+    protected val migrationService:IEntityService<String, MigrationModel>,
     protected val contextName:String,
     private val gson:Gson = Gson()) {
 
@@ -48,7 +48,7 @@ abstract class EntityContext(
             .forEach { it.clearCache() }
     }
 
-    fun handleMigrations(newId:Long=0) {
+    fun handleMigrations(newId:String=UUID.randomUUID().toString()) {
         val differenceReport = this.getDifferenceReport()
 
         if (!differenceReport.migrationExists || differenceReport.differenceExists()) {
@@ -67,7 +67,7 @@ abstract class EntityContext(
 
         if (!migrations.isEmpty()) {
             val lastMigration =  migrations
-                    .sortedByDescending { it.id }
+                    .sortedByDescending { it.insertDate }
                     .first()
 
             return this.gson
@@ -79,7 +79,7 @@ abstract class EntityContext(
         return null
     }
 
-    fun createNewMigration(id:Long) {
+    fun createNewMigration(id:String) {
         val definitionsModels = this.getDefinitions()
 
         val migrationModel = MigrationModel(

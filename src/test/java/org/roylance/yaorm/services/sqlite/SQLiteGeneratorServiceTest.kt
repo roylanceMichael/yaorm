@@ -14,7 +14,7 @@ class SQLiteGeneratorServiceTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false, sourceConnection.generatedKeysColumnName!!)
+            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
             val dropTableSql = sqliteGeneratorService.buildDropTable(
@@ -26,6 +26,7 @@ class SQLiteGeneratorServiceTest {
             granularDatabaseService.executeUpdateQuery<Int>(createTableSql)
 
             val newModel = org.roylance.yaorm.testmodels.before.SimpleTestModel()
+            newModel.id = 1
             newModel.fName = "what"
             newModel.lName = "is"
             newModel.mName = "this"
