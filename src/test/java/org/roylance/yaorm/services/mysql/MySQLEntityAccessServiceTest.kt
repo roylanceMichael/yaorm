@@ -2,13 +2,13 @@ package org.roylance.yaorm.services.mysql
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.services.EntityAccessService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*
 
 class MySQLEntityAccessServiceTest {
-    @Test
+//    @Test
     public fun simpleCreateMySQLTest() {
         // arrange
         getConnectionInfo()
@@ -29,7 +29,8 @@ class MySQLEntityAccessServiceTest {
                 sourceConnection.connectionSource,
                 false)
 
-        val entityService = EntityAccessService(
+        val entityService = EntityService(
+                BeaconBroadcastModel::class.java,
                 granularDatabaseService,
                 mysqlGeneratorService)
 
@@ -42,12 +43,12 @@ class MySQLEntityAccessServiceTest {
                 lastSeen = 0)
 
         // act
-        entityService.drop(BeaconBroadcastModel::class.java)
-        entityService.instantiate(BeaconBroadcastModel::class.java)
-        entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+        entityService.dropTable()
+        entityService.createTable()
+        entityService.createOrUpdate(newBeacon)
 
         // assert
-        val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+        val allBeacons = entityService.getAll()
 
         Assert.assertEquals(1, allBeacons.size)
 
@@ -67,14 +68,14 @@ class MySQLEntityAccessServiceTest {
         private var schema:String? = null
 
         fun getConnectionInfo() {
-            if (MySQLEntityAccessServiceTest.host == null) {
+            if (host == null) {
                 val properties = Properties()
                 val mysqlStream = MySQLEntityAccessServiceTest::class.java.getResourceAsStream("/mysql.properties")
                 properties.load(mysqlStream)
-                MySQLEntityAccessServiceTest.host = properties.getProperty("host")
-                MySQLEntityAccessServiceTest.password = properties.getProperty("password")
-                MySQLEntityAccessServiceTest.userName = properties.getProperty("userName")
-                MySQLEntityAccessServiceTest.schema = properties.getProperty("schema")
+                host = properties.getProperty("host")
+                password = properties.getProperty("password")
+                userName = properties.getProperty("userName")
+                schema = properties.getProperty("schema")
             }
         }
     }

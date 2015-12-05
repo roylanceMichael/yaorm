@@ -2,7 +2,8 @@ package org.roylance.yaorm.services.phoenix
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.services.EntityAccessService
+import org.roylance.yaorm.models.migration.IndexModel
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel
@@ -18,25 +19,28 @@ class PhoenixEntityAccessServiceTest {
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
+        val entityService = EntityService(
+                TestModel::class.java,
+                granularDatabaseService,
+                phoenixGeneratorService)
 
         try {
             val testModel = TestModel()
             testModel.id = id
             testModel.setName(name)
 
-            entityService.drop(TestModel::class.java)
-            entityService.instantiate(TestModel::class.java)
-            entityService.create(TestModel::class.java, testModel)
+            entityService.dropTable()
+            entityService.createTable()
+            entityService.create(testModel)
 
             val newName = "test1"
             testModel.setName(newName)
 
             // act
-            entityService.create(TestModel::class.java, testModel)
+            entityService.create(testModel)
 
             // assert
-            val testModels = entityService.getAll(TestModel::class.java)
+            val testModels = entityService.getAll()
 
             Assert.assertEquals(1, testModels.size)
 
@@ -59,23 +63,26 @@ class PhoenixEntityAccessServiceTest {
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
+        val entityService = EntityService(
+                AnotherTestModel::class.java,
+                granularDatabaseService,
+                phoenixGeneratorService)
 
         try {
             val testModel = AnotherTestModel(id, description, gram)
 
-            entityService.drop(AnotherTestModel::class.java)
-            entityService.instantiate(AnotherTestModel::class.java)
-            entityService.create(AnotherTestModel::class.java, testModel)
+            entityService.dropTable()
+            entityService.createTable()
+            entityService.create(testModel)
 
             // sanity check
-            Assert.assertEquals(1, entityService.getAll(AnotherTestModel::class.java).size)
+            Assert.assertEquals(1, entityService.getAll().size)
 
             // act
-            entityService.delete(AnotherTestModel::class.java, id)
+            entityService.delete(id)
 
             // assert
-            Assert.assertEquals(0, entityService.getAll(AnotherTestModel::class.java).size)
+            Assert.assertEquals(0, entityService.getAll().size)
         }
         finally {
             granularDatabaseService.close()
@@ -88,21 +95,26 @@ class PhoenixEntityAccessServiceTest {
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
+        val entityService = EntityService(
+                AnotherTestModel::class.java,
+                granularDatabaseService,
+                phoenixGeneratorService)
 
         try {
-            entityService.drop(AnotherTestModel::class.java)
-            entityService.instantiate(AnotherTestModel::class.java)
+            entityService.dropTable()
+            entityService.createTable()
 
             val columnNames = ArrayList<String>()
             columnNames.add(AnotherTestModel.DescriptionName)
             columnNames.add(AnotherTestModel.GramName)
 
+            val indexModel = IndexModel(columnNames, ArrayList())
+
             // act
-            entityService.createIndex(AnotherTestModel::class.java, columnNames, ArrayList())
+            entityService.createIndex(indexModel)
 
             // assert
-            Assert.assertEquals(0, entityService.getAll(AnotherTestModel::class.java).size)
+            Assert.assertEquals(0, entityService.getAll().size)
         }
         finally {
             granularDatabaseService.close()
@@ -118,22 +130,25 @@ class PhoenixEntityAccessServiceTest {
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
+        val entityService = EntityService(
+                TestModel::class.java,
+                granularDatabaseService,
+                phoenixGeneratorService)
 
         try {
             val testModel = TestModel()
             testModel.id = id
             testModel.setName(name)
 
-            entityService.drop(TestModel::class.java)
-            entityService.instantiate(TestModel::class.java)
-            entityService.create(TestModel::class.java, testModel)
+            entityService.dropTable()
+            entityService.createTable()
+            entityService.create(testModel)
 
             // act
-            entityService.delete(TestModel::class.java, id)
+            entityService.delete(id)
 
             // assert
-            val testModels = entityService.getAll(TestModel::class.java)
+            val testModels = entityService.getAll()
             Assert.assertEquals(0, testModels.size)
         }
         finally {
@@ -151,11 +166,14 @@ class PhoenixEntityAccessServiceTest {
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory("dev-sherlock-hadoop1")
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, true)
-        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
+        val entityService = EntityService(
+                AnotherTestModel::class.java,
+                granularDatabaseService,
+                phoenixGeneratorService)
 
         try {
-            entityService.drop(AnotherTestModel::class.java)
-            entityService.instantiate(AnotherTestModel::class.java)
+            entityService.dropTable()
+            entityService.createTable()
 
             val firstTestModel = AnotherTestModel()
             firstTestModel.id = "first"
@@ -167,11 +185,11 @@ class PhoenixEntityAccessServiceTest {
             secondTestModel.description = description
             secondTestModel.gram = "second"
 
-            entityService.create(AnotherTestModel::class.java, firstTestModel)
-            entityService.create(AnotherTestModel::class.java, secondTestModel)
+            entityService.create(firstTestModel)
+            entityService.create(secondTestModel)
 
             // act
-            val distinctDescriptions = entityService.getCustom(AnotherTestModel::class.java, customSql)
+            val distinctDescriptions = entityService.getCustom(customSql)
 
             // assert
             Assert.assertEquals(1, distinctDescriptions.size)
@@ -191,16 +209,19 @@ class PhoenixEntityAccessServiceTest {
         val phoenixGeneratorService = PhoenixGeneratorService()
         val sourceConnection = PhoenixConnectionSourceFactory(getZookeeperInfo())
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
-        val entityService = EntityAccessService(granularDatabaseService, phoenixGeneratorService)
+        val entityService = EntityService(
+                TestModel::class.java,
+                granularDatabaseService,
+                phoenixGeneratorService)
 
         try {
             val testModel = TestModel()
             testModel.id = id
             testModel.setName(name)
 
-            entityService.drop(TestModel::class.java)
-            entityService.instantiate(TestModel::class.java)
-            entityService.create(TestModel::class.java, testModel)
+            entityService.dropTable()
+            entityService.createTable()
+            entityService.create(testModel)
 
             granularDatabaseService.commit()
 
@@ -209,12 +230,12 @@ class PhoenixEntityAccessServiceTest {
             while (iter < 1000) {
                 testModel.id = iter
                 testModel.setName("test${iter++}")
-                entityService.create(TestModel::class.java, testModel)
+                entityService.create(testModel)
             }
             granularDatabaseService.commit()
 
             // assert
-            val testModels = entityService.getAll(TestModel::class.java)
+            val testModels = entityService.getAll()
 
             Assert.assertEquals(iter, testModels.size)
         }

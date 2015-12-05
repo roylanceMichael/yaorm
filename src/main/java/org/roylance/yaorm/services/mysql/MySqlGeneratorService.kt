@@ -18,6 +18,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
     private val SqlIntegerName = "bigint"
     // http://dev.mysql.com/doc/refman/5.0/en/char.html - thank you
     private val SqlTextName = "varchar(4000)"
+    private val SqlTextIdName = "varchar(40)"
     private val SqlRealName = "decimal"
     private val SqlBlobName = "blob"
 
@@ -107,10 +108,16 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
         for (nameType in nameTypes) {
             if (javaIdName.equals(nameType.sqlColumnName)) {
+                // if type is string, let's limit it to 40 chars
+                var dataType = nameType.dataType
+                if (SqlTextName.equals(dataType)) {
+                    dataType = SqlTextIdName
+                }
+
                 workspace
                         .append(nameType.sqlColumnName)
                         .append(CommonSqlDataTypeUtilities.Space)
-                        .append(nameType.dataType)
+                        .append(dataType)
                         .append(CommonSqlDataTypeUtilities.Space)
                         .append(PrimaryKey)
             }
@@ -118,24 +125,22 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
         for (nameType in nameTypes) {
             if (!javaIdName.equals(nameType.sqlColumnName)) {
+                var dataType = nameType.dataType
+                if (nameType.isForeignKey &&
+                        SqlTextName.equals(dataType)) {
+                    dataType = SqlTextIdName
+
+                }
                 workspace
                         .append(CommonSqlDataTypeUtilities.Comma)
                         .append(CommonSqlDataTypeUtilities.Space)
                         .append(nameType.sqlColumnName)
                         .append(CommonSqlDataTypeUtilities.Space)
-                        .append(nameType.dataType)
+                        .append(dataType)
             }
         }
 
         // set primary key for javaId, always
-//        workspace.append(CommonSqlDataTypeUtilities.Comma)
-//        workspace.append(CommonSqlDataTypeUtilities.Space)
-//        workspace.append(PrimaryKey)
-//        workspace.append(CommonSqlDataTypeUtilities.Space)
-//        workspace.append(CommonSqlDataTypeUtilities.LeftParen)
-//        workspace.append(this.javaIdName)
-//        workspace.append(CommonSqlDataTypeUtilities.RightParen)
-
         val createTableSql = java.lang.String.format(
                 CreateInitialTableTemplate,
                 classType.simpleName,

@@ -1,7 +1,8 @@
 package org.roylance.yaorm.services.sqlite
 
 import org.junit.Assert
-import org.roylance.yaorm.services.EntityAccessService
+import org.junit.Test
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.io.File
@@ -23,7 +24,10 @@ public class SQLiteEntityAccessServiceTest {
                 sourceConnection.connectionSource,
                 false)
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
+        val entityService = EntityService(
+                BeaconBroadcastModel::class.java,
+                granularDatabaseService,
+                sqliteGeneratorService)
 
         try {
             val newBeacon = BeaconBroadcastModel(
@@ -35,11 +39,11 @@ public class SQLiteEntityAccessServiceTest {
                     cachedName = cachedName)
 
             // act
-            entityService.instantiate(BeaconBroadcastModel::class.java)
-            entityService.create(BeaconBroadcastModel::class.java, newBeacon)
+            entityService.createTable()
+            entityService.create(newBeacon)
 
             // assert
-            val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+            val allBeacons = entityService.getAll()
 
             Assert.assertEquals(1, allBeacons.size)
 
@@ -70,7 +74,10 @@ public class SQLiteEntityAccessServiceTest {
         val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val entityService = EntityAccessService(granularDatabaseService, sqliteGeneratorService)
+        val entityService = EntityService(
+                BeaconBroadcastModel::class.java,
+                granularDatabaseService,
+                sqliteGeneratorService)
 
         try {
             val newBeacon = BeaconBroadcastModel(
@@ -82,11 +89,11 @@ public class SQLiteEntityAccessServiceTest {
                     cachedName = cachedName)
 
             // act
-            entityService.instantiate(BeaconBroadcastModel::class.java)
-            entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+            entityService.createTable()
+            entityService.createOrUpdate(newBeacon)
 
             // assert
-            val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+            val allBeacons = entityService.getAll()
 
             Assert.assertEquals(1, allBeacons.size)
 

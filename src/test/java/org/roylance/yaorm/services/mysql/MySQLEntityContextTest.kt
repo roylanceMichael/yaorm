@@ -1,7 +1,6 @@
-package org.roylance.yaorm.services.sqlite
+package org.roylance.yaorm.services.mysql
 
 import org.junit.Assert
-import org.junit.Test
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
@@ -10,35 +9,39 @@ import org.roylance.yaorm.testmodels.after.AfterSimpleTestContext
 import org.roylance.yaorm.testmodels.before.BeforeSimpleTestContext
 import org.roylance.yaorm.testmodels.before.SimpleTestModel
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
-import java.io.File
+import java.sql.DriverManager
 import java.util.*
 
-public class EntityContextTest {
+class MySQLEntityContextTest {
 //    @Test
     public fun anotherSimpleDropColumnTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
-
+        getConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
             val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val anotherTestModelService = EntityService(
                     AnotherTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mySqlGeneratorService)
 
             val beaconBroadcastService = EntityService(
                     BeaconBroadcastModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mySqlGeneratorService)
 
             val migrationService = EntityService(
                     MigrationModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mySqlGeneratorService)
 
             val testEntityContext = TestEntityContext(
                     anotherTestModelService,
@@ -95,36 +98,39 @@ public class EntityContextTest {
             Assert.assertEquals(null, beaconBroadcastDefinition.indexModel)
         }
         finally {
-            database.deleteOnExit()
+            dropSchema()
         }
     }
 
-//     @Test
+//    @Test
     public fun simpleMigrationColumnTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
-
+        getConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
             val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection.connectionSource,
                     false)
-
-            val sqliteGeneratorService = SQLiteGeneratorService()
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val anotherTestModelService = EntityService(
                     AnotherTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mySqlGeneratorService)
 
             val beaconBroadcastService = EntityService(
                     BeaconBroadcastModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mySqlGeneratorService)
 
             val migrationService = EntityService(
                     MigrationModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mySqlGeneratorService)
 
             val testEntityContext = TestEntityContext(
                     anotherTestModelService,
@@ -153,38 +159,42 @@ public class EntityContextTest {
             Assert.assertEquals(testModel.gram, foundTestModel.gram)
         }
         finally {
-            database.deleteOnExit()
+            dropSchema()
         }
     }
 
-//     @Test
+//    @Test
     public fun complexMigrationColumnTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
-
+        getConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
             val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
+            val mysqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
             val migrationService = EntityService(
                     MigrationModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val beforeService = EntityService(
                     SimpleTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val beforeContext = BeforeSimpleTestContext(beforeService, migrationService)
 
             val afterService = EntityService(
                     org.roylance.yaorm.testmodels.after.SimpleTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val afterContext = AfterSimpleTestContext(afterService, migrationService)
 
@@ -205,36 +215,40 @@ public class EntityContextTest {
             Assert.assertEquals(2L, migrationService.getCount())
         }
         finally {
-            database.deleteOnExit()
+            dropSchema()
         }
     }
 
 //    @Test
     public fun foreignObjectResolveTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
-
+        getConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
             val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
+            val mysqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
             val migrationService = EntityService(
                     MigrationModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val rootTestService = EntityService(
                     RootTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val childTestService = EntityService(
                     ChildTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val foreignContext = ForeignEntityContext(
                     rootTestService,
@@ -259,34 +273,40 @@ public class EntityContextTest {
             Assert.assertEquals(foundRootModels[0].name, foundTestModels[0].commonRootModel?.name)
         }
         finally {
-            database.deleteOnExit()
+            dropSchema()
         }
     }
 
 //    @Test
     public fun foreignObjectListResolveTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
-
+        getConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mysqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
             val migrationService = EntityService(
                     MigrationModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val rootTestService = EntityService(
                     RootTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val childTestService = EntityService(
                     ChildTestModel::class.java,
                     granularDatabaseService,
-                    sqliteGeneratorService)
+                    mysqlGeneratorService)
 
             val foreignContext = ForeignEntityContext(
                     rootTestService,
@@ -297,7 +317,7 @@ public class EntityContextTest {
 
             val rootModel = RootTestModel(0, "test")
             val testModel = ChildTestModel(0, "childTest", rootModel)
-            val test1Model = ChildTestModel(0, "child1Test", rootModel)
+            val test1Model = ChildTestModel(1, "child1Test", rootModel)
             rootModel.commonChildTests.add(testModel)
             rootModel.commonChildTests.add(test1Model)
 
@@ -315,7 +335,35 @@ public class EntityContextTest {
             Assert.assertEquals(2, foundRootModels[0].commonChildTests.size)
         }
         finally {
-            database.deleteOnExit()
+            dropSchema()
+        }
+    }
+
+    companion object {
+        private var host:String? = null
+        private var userName:String? = null
+        private var password:String? = null
+        private var schema:String? = null
+
+        fun dropSchema() {
+            val connection = DriverManager.getConnection(
+                    "jdbc:mysql://$host?user=$userName&password=$password&autoReconnect=true")
+            val statement = connection.prepareStatement("drop database if exists $schema")
+            statement.executeUpdate()
+            statement.close()
+            connection.close()
+        }
+
+        fun getConnectionInfo() {
+            if (host == null) {
+                val properties = Properties()
+                val mysqlStream = MySQLEntityContextTest::class.java.getResourceAsStream("/mysql.properties")
+                properties.load(mysqlStream)
+                host = properties.getProperty("host")
+                password = properties.getProperty("password")
+                userName = properties.getProperty("userName")
+                schema = UUID.randomUUID().toString().replace("-", "")
+            }
         }
     }
 }

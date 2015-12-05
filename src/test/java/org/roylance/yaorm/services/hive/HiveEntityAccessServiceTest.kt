@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.hive
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.models.WhereClauseItem
-import org.roylance.yaorm.services.EntityAccessService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*
@@ -22,7 +22,10 @@ public class HiveEntityAccessServiceTest {
         getProperties()
         val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityService(
+                BeaconBroadcastModel::class.java,
+                granularDatabaseService,
+                hiveGeneratorService)
 
         val newBeacon = BeaconBroadcastModel(
                 beaconId = beaconId,
@@ -33,12 +36,12 @@ public class HiveEntityAccessServiceTest {
                 lastSeen = 0)
 
         // act
-        entityService.drop(BeaconBroadcastModel::class.java)
-        entityService.instantiate(BeaconBroadcastModel::class.java)
-        entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+        entityService.dropTable()
+        entityService.createTable()
+        entityService.createOrUpdate(newBeacon)
 
         // assert
-        val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+        val allBeacons = entityService.getAll()
 
         Assert.assertEquals(1, allBeacons.size)
 
@@ -64,7 +67,10 @@ public class HiveEntityAccessServiceTest {
         getProperties()
         val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityService(
+                BeaconBroadcastModel::class.java,
+                granularDatabaseService,
+                hiveGeneratorService)
 
         val newBeacon = BeaconBroadcastModel(
                 beaconId = beaconId,
@@ -74,9 +80,9 @@ public class HiveEntityAccessServiceTest {
                 cachedName = cachedName,
                 lastSeen = 0)
 
-        entityService.drop(BeaconBroadcastModel::class.java)
-        entityService.instantiate(BeaconBroadcastModel::class.java)
-        entityService.createOrUpdate(BeaconBroadcastModel::class.java, newBeacon)
+        entityService.dropTable()
+        entityService.createTable()
+        entityService.createOrUpdate(newBeacon)
 
         val newBeaconId = "test1"
         val newMajorId = 2
@@ -90,10 +96,10 @@ public class HiveEntityAccessServiceTest {
         val criteria = WhereClauseItem(BeaconBroadcastModel.CachedNameName, WhereClauseItem.Equals, cachedName)
 
         // act
-        entityService.updateWithCriteria(BeaconBroadcastModel::class.java, newValues, criteria)
+        entityService.updateWithCriteria(newValues, criteria)
 
         // assert
-        val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+        val allBeacons = entityService.getAll()
 
         Assert.assertEquals(1, allBeacons.size)
 
@@ -116,7 +122,10 @@ public class HiveEntityAccessServiceTest {
         getProperties()
         val sourceConnection = HiveConnectionSourceFactory(url!!, port!!, db!!)
         val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
-        val entityService = EntityAccessService(granularDatabaseService, hiveGeneratorService)
+        val entityService = EntityService(
+                BeaconBroadcastModel::class.java,
+                granularDatabaseService,
+                hiveGeneratorService)
 
         val beaconsToInsert = ArrayList<BeaconBroadcastModel>()
 
@@ -140,15 +149,15 @@ public class HiveEntityAccessServiceTest {
 
         // act
         System.out.println("dropping table")
-        entityService.drop(BeaconBroadcastModel::class.java)
+        entityService.dropTable()
         System.out.println("creating table")
-        entityService.instantiate(BeaconBroadcastModel::class.java)
+        entityService.createTable()
         System.out.println("bulk inserting")
-        entityService.bulkInsert(BeaconBroadcastModel::class.java, beaconsToInsert)
+        entityService.bulkInsert(beaconsToInsert)
 
         // assert
         System.out.println("verifying size...")
-        val allBeacons = entityService.getAll(BeaconBroadcastModel::class.java)
+        val allBeacons = entityService.getAll()
         Assert.assertEquals(totalInsertValue, allBeacons.size)
     }
 

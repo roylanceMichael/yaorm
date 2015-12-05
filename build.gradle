@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.31-SNAPSHOT'
+version '0.32-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -60,7 +60,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
-    compile 'mysql:mysql-connector-java:5.1.37'
+//    compile 'mysql:mysql-connector-java:5.1.37'
 //    compile 'org.xerial:sqlite-jdbc:3.8.10.1'
 
 //    compile 'org.apache.hadoop:hadoop-client:2.3.0'
