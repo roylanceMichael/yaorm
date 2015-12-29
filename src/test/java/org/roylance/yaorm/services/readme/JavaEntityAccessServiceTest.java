@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class JavaEntityAccessServiceTest {
-    @Test
+//    @Test
     public void readmeTest() throws Exception {
         // arrange
         // create a unique file
@@ -77,7 +77,7 @@ public class JavaEntityAccessServiceTest {
             granularDatabaseService.close();
 
             // clean up after ourselves
-            databaseFile.delete();
+            databaseFile.deleteOnExit();
         }
     }
 }

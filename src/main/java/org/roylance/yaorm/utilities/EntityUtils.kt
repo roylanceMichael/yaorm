@@ -113,7 +113,6 @@ object EntityUtils {
                 if (this
                         .isClassAListAndDoesTypeHaveGetId(
                                 getMethodMap[propertyName]!!.returnType)) {
-                    System.out.println(getMethodMap[propertyName]!!.returnType.toGenericString())
 
                     EntityDefinitionModel(
                             propertyName,
