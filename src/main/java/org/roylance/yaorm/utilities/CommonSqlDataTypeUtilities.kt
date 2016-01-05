@@ -168,7 +168,7 @@ object CommonSqlDataTypeUtilities {
                             CommonSqlDataTypeUtilities.Space)
 
             if (currentWhereClauseItem.connectingAndOr != null) {
-                filterItems.append(currentWhereClauseItem.connectingAndOr)
+                filterItems.append(currentWhereClauseItem.connectingAndOr + CommonSqlDataTypeUtilities.Space)
             }
 
             currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
