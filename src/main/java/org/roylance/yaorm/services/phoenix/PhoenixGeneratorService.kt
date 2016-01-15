@@ -104,8 +104,11 @@ public class PhoenixGeneratorService (
         return ""
     }
 
-    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
-        return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
+    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>, n: Int): String {
+        return java.lang.String.format(
+                SelectAllTemplate,
+                classModel.simpleName,
+                n)
     }
 
     override fun <K, T: IEntity<K>> buildWhereClause(

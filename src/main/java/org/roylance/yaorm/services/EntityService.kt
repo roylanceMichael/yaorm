@@ -30,6 +30,11 @@ class EntityService<K, T: IEntity<K>>(
 
     override var entityContext: EntityContext? = null
 
+    override fun updateCustom(customSql: String): Boolean {
+        this.granularDatabaseService.executeUpdateQuery<Any>(customSql)
+        return true
+    }
+
     override fun clearCache() {
         this.cachedStore.clear()
     }

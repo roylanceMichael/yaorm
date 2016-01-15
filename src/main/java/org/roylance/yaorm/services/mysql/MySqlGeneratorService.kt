@@ -447,8 +447,9 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
         }    }
 
     override fun <K, T : IEntity<K>> buildSelectAll(
-            classModel: Class<T>): String {
-        return "select * from ${this.schemaName}.${classModel.simpleName}"
+            classModel: Class<T>,
+            n: Int): String {
+        return "select * from ${this.schemaName}.${classModel.simpleName} limit $n;"
     }
 
     override fun <K, T : IEntity<K>> buildWhereClause(

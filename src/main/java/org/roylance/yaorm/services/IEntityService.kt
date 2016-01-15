@@ -35,6 +35,8 @@ interface IEntityService<K, T: IEntity<K>> {
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): Boolean
 
+    fun updateCustom(customSql: String): Boolean
+
     fun delete(id: K): Boolean
     fun deleteAll(): Boolean
 

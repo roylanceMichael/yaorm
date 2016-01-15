@@ -19,7 +19,7 @@ public class HiveGeneratorService(
     private val UpdateTableMultipleTemplate = "update %s set %s where %s"
     private val DeleteTableTemplate = "delete from %s where id=%s"
     private val WhereClauseTemplate = "select * from %s where %s"
-    private val SelectAllTemplate = "select * from %s"
+    private val SelectAllTemplate = "select * from %s limit %s"
 
     private val HiveString: String = "string"
     private val HiveDouble: String = "double"
@@ -232,8 +232,8 @@ public class HiveGeneratorService(
         return "$initialStatement(\nselect stack(\n ${selectStatements.size},\n $carriageReturnSeparatedRows)) s"
     }
 
-    override fun <K, T : IEntity<K>> buildSelectAll(classModel: Class<T>): String {
-        return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
+    override fun <K, T : IEntity<K>> buildSelectAll(classModel: Class<T>, n: Int): String {
+        return java.lang.String.format(SelectAllTemplate, classModel.simpleName, n)
     }
 
     override fun <K, T : IEntity<K>> buildWhereClause(

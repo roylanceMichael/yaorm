@@ -10,13 +10,14 @@ import java.util.*
 public class SQLiteGeneratorService(
         public override val bulkInsertSize: Int = 500
 ) : ISqlGeneratorService {
+
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
     private val UpdateTableMultipleTemplate = "update %s set %s where %s;"
     private val DeleteTableTemplate = "delete from %s where id=%s;"
     private val WhereClauseTemplate = "select * from %s where %s;"
-    private val SelectAllTemplate = "select * from %s;"
+    private val SelectAllTemplate = "select * from %s limit %s;"
     private val PrimaryKey = "primary key"
 
     private val SqlIntegerName = "integer"
@@ -262,8 +263,11 @@ public class SQLiteGeneratorService(
         return "$initialStatement $unionSeparatedStatements${CommonSqlDataTypeUtilities.SemiColon}"
     }
 
-    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String {
-        return java.lang.String.format(SelectAllTemplate, classModel.simpleName)
+    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>, n: Int): String {
+        return java.lang.String.format(
+                SelectAllTemplate,
+                classModel.simpleName,
+                n)
     }
 
     override fun <K, T: IEntity<K>> buildWhereClause(

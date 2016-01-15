@@ -91,7 +91,7 @@ class SqlUtilitiesTest {
     fun selectAllTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "select * from BeaconBroadcastModel;"
+        val expectedSql = "select * from BeaconBroadcastModel limit 1000;"
 
         // act
         val selectAllSql = sqliteGeneratorService.buildSelectAll(BeaconBroadcastModel::class.java)

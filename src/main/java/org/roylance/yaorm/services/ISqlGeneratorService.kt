@@ -29,6 +29,6 @@ interface ISqlGeneratorService {
     fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String?
     fun <K, T: IEntity<K>> buildUpdateWithCriteria(classModel: Class<T>, newValues: Map<String, Any>, whereClauseItem: WhereClauseItem): String?
 
-    fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>): String
+    fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>, n: Int = 1000): String
     fun <K, T: IEntity<K>> buildWhereClause(classModel: Class<T>, whereClauseItem: WhereClauseItem): String?
 }
