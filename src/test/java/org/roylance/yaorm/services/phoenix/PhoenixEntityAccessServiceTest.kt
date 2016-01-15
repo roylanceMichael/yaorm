@@ -40,7 +40,7 @@ class PhoenixEntityAccessServiceTest {
             entityService.create(testModel)
 
             // assert
-            val testModels = entityService.getAll()
+            val testModels = entityService.getMany()
 
             Assert.assertEquals(1, testModels.size)
 
@@ -76,13 +76,13 @@ class PhoenixEntityAccessServiceTest {
             entityService.create(testModel)
 
             // sanity check
-            Assert.assertEquals(1, entityService.getAll().size)
+            Assert.assertEquals(1, entityService.getMany().size)
 
             // act
             entityService.delete(id)
 
             // assert
-            Assert.assertEquals(0, entityService.getAll().size)
+            Assert.assertEquals(0, entityService.getMany().size)
         }
         finally {
             granularDatabaseService.close()
@@ -114,7 +114,7 @@ class PhoenixEntityAccessServiceTest {
             entityService.createIndex(indexModel)
 
             // assert
-            Assert.assertEquals(0, entityService.getAll().size)
+            Assert.assertEquals(0, entityService.getMany().size)
         }
         finally {
             granularDatabaseService.close()
@@ -148,7 +148,7 @@ class PhoenixEntityAccessServiceTest {
             entityService.delete(id)
 
             // assert
-            val testModels = entityService.getAll()
+            val testModels = entityService.getMany()
             Assert.assertEquals(0, testModels.size)
         }
         finally {
@@ -235,7 +235,7 @@ class PhoenixEntityAccessServiceTest {
             granularDatabaseService.commit()
 
             // assert
-            val testModels = entityService.getAll()
+            val testModels = entityService.getMany()
 
             Assert.assertEquals(iter, testModels.size)
         }

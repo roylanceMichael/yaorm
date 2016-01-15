@@ -141,7 +141,7 @@ class MySQLEntityContextTest {
             testEntityContext.handleMigrations()
 
             //assert
-            var savedModels = testEntityContext.anotherTestModelService.getAll()
+            var savedModels = testEntityContext.anotherTestModelService.getMany()
             Assert.assertEquals(0, savedModels.size)
 
             val testModel = AnotherTestModel(
@@ -150,7 +150,7 @@ class MySQLEntityContextTest {
                     gram = "cool gram")
             testEntityContext.anotherTestModelService.create(testModel)
 
-            savedModels = testEntityContext.anotherTestModelService.getAll()
+            savedModels = testEntityContext.anotherTestModelService.getMany()
 
             Assert.assertEquals(1, savedModels.size)
             val foundTestModel = savedModels[0]
@@ -264,8 +264,8 @@ class MySQLEntityContextTest {
             foreignContext.childTestService.createOrUpdate(testModel)
 
             // assert
-            val foundRootModels = foreignContext.rootTestService.getAll()
-            val foundTestModels = foreignContext.childTestService.getAll()
+            val foundRootModels = foreignContext.rootTestService.getMany()
+            val foundTestModels = foreignContext.childTestService.getMany()
 
             Assert.assertEquals(1, foundRootModels.size)
             Assert.assertEquals(1, foundTestModels.size)
@@ -325,8 +325,8 @@ class MySQLEntityContextTest {
             foreignContext.rootTestService.createOrUpdate(rootModel)
 
             // assert
-            val foundRootModels = foreignContext.rootTestService.getAll()
-            val foundTestModels = foreignContext.childTestService.getAll()
+            val foundRootModels = foreignContext.rootTestService.getMany()
+            val foundTestModels = foreignContext.childTestService.getMany()
 
             Assert.assertEquals(1, foundRootModels.size)
             Assert.assertEquals(2, foundTestModels.size)

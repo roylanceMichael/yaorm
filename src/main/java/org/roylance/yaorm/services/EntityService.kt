@@ -168,9 +168,9 @@ class EntityService<K, T: IEntity<K>>(
         return null
     }
 
-    override fun getAll(): List<T> {
+    override fun getMany(n: Int): List<T> {
         val allSql =
-                this.sqlGeneratorService.buildSelectAll(this.entityDefinition)
+                this.sqlGeneratorService.buildSelectAll(this.entityDefinition, n)
 
         val allObjects:List<T> = this.granularDatabaseService.executeSelectQuery(
                 this.entityDefinition,

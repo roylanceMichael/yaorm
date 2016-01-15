@@ -1,6 +1,5 @@
 package org.roylance.yaorm.services.readme;
 
-import org.junit.Test;
 import org.roylance.yaorm.services.*;
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService;
 import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory;
@@ -60,7 +59,7 @@ public class JavaEntityAccessServiceTest {
 
             // assert
             // let's get them all, be careful with this, obviously. there is also a filtering method
-            final List<TestModel> foundTestModels = entityAccessService.getAll();
+            final List<TestModel> foundTestModels = entityAccessService.getMany(1000);
 
             // verify we're greater than 0
             assert foundTestModels.size() > 0;

@@ -43,7 +43,7 @@ public class SQLiteEntityAccessServiceTest {
             entityService.create(newBeacon)
 
             // assert
-            val allBeacons = entityService.getAll()
+            val allBeacons = entityService.getMany()
 
             Assert.assertEquals(1, allBeacons.size)
 
@@ -93,7 +93,7 @@ public class SQLiteEntityAccessServiceTest {
             entityService.createOrUpdate(newBeacon)
 
             // assert
-            val allBeacons = entityService.getAll()
+            val allBeacons = entityService.getMany()
 
             Assert.assertEquals(1, allBeacons.size)
 

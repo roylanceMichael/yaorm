@@ -41,7 +41,7 @@ public class HiveEntityAccessServiceTest {
         entityService.createOrUpdate(newBeacon)
 
         // assert
-        val allBeacons = entityService.getAll()
+        val allBeacons = entityService.getMany()
 
         Assert.assertEquals(1, allBeacons.size)
 
@@ -99,7 +99,7 @@ public class HiveEntityAccessServiceTest {
         entityService.updateWithCriteria(newValues, criteria)
 
         // assert
-        val allBeacons = entityService.getAll()
+        val allBeacons = entityService.getMany()
 
         Assert.assertEquals(1, allBeacons.size)
 
@@ -157,7 +157,7 @@ public class HiveEntityAccessServiceTest {
 
         // assert
         System.out.println("verifying size...")
-        val allBeacons = entityService.getAll()
+        val allBeacons = entityService.getMany()
         Assert.assertEquals(totalInsertValue, allBeacons.size)
     }
 

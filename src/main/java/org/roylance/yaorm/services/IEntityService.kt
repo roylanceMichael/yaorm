@@ -24,7 +24,7 @@ interface IEntityService<K, T: IEntity<K>> {
 
     fun getCustom(customSql: String): List<T>
     fun get(id: K): T?
-    fun getAll(): List<T>
+    fun getMany(n: Int=1000): List<T>
     fun where(whereClauseItem: WhereClauseItem): List<T>
 
     fun bulkInsert(instances: List<T>): Boolean

@@ -48,7 +48,7 @@ class MySQLEntityAccessServiceTest {
         entityService.createOrUpdate(newBeacon)
 
         // assert
-        val allBeacons = entityService.getAll()
+        val allBeacons = entityService.getMany()
 
         Assert.assertEquals(1, allBeacons.size)
 
