@@ -11,6 +11,9 @@ interface IEntityService<K, T: IEntity<K>> {
     val entityDefinition:Class<T>
     val indexDefinition: IndexModel?
 
+    fun setToLoadForeignObjects()
+    fun setToUnloadForeignObjects()
+
     fun createTable(): Boolean
     fun dropTable(): Boolean
 

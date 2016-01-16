@@ -22,6 +22,7 @@ class EntityService<K, T: IEntity<K>>(
     private val foreignObjects:List<EntityDefinitionModel<*>>
     private val cachedStore: MutableMap<K, T> = HashMap()
     private val currentlyExecutingItems = HashSet<Int>()
+    private var loadForeignObjects = false
 
     init {
         this.foreignObjects = EntityUtils
@@ -29,6 +30,14 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override var entityContext: EntityContext? = null
+
+    override fun setToLoadForeignObjects() {
+        this.loadForeignObjects = true
+    }
+
+    override fun setToUnloadForeignObjects() {
+        this.loadForeignObjects = false
+    }
 
     override fun updateCustom(customSql: String): Boolean {
         this.granularDatabaseService.executeUpdateQuery<Any>(customSql)
@@ -357,6 +366,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     private fun createOrUpdateForeignObjectCollections(actualObject: T) {
+        if (!this.loadForeignObjects) {
+            return
+        }
+
         if (this.entityContext != null) {
             this.foreignObjects
                 .filter { EntityDefinitionModel.List.equals(it.type) }
@@ -407,6 +420,10 @@ class EntityService<K, T: IEntity<K>>(
     }
     // todo: this needs more love
     private fun createOrUpdateForeignObject(actualObject: T) {
+        if (!this.loadForeignObjects) {
+            return
+        }
+
         if (this.entityContext != null) {
             this.foreignObjects
                 .filter { EntityDefinitionModel.Single.equals(it.type) }
@@ -427,6 +444,10 @@ class EntityService<K, T: IEntity<K>>(
 
     // todo: this needs more love
     private fun updateRecordWithForeignObjects(actualObject:T) {
+        if (!this.loadForeignObjects) {
+            return
+        }
+
         // todo: optimize
         if (this.entityContext != null) {
             this.foreignObjects
