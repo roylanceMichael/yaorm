@@ -10,6 +10,15 @@ import java.util.*
 class JDBCGranularDatabaseService(
         private val connection: Connection,
         private val shouldManuallyCommitAfterUpdate: Boolean) : IGranularDatabaseService {
+    override fun isAvailable(): Boolean {
+        try {
+            return this.connection.isValid(TenSeconds)
+        }
+        catch(e: Exception) {
+            // todo: log better
+            return false
+        }
+    }
 
     override fun commit() {
         this.connection.commit()
@@ -52,5 +61,9 @@ class JDBCGranularDatabaseService(
         finally {
             // normally close, but wait for service to do it
         }
+    }
+
+    companion object {
+        const private val TenSeconds = 10
     }
 }

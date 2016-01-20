@@ -40,6 +40,9 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun updateCustom(customSql: String): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
         this.granularDatabaseService.executeUpdateQuery<Any>(customSql)
         return true
     }
@@ -49,6 +52,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun getCount(): Long {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return 0L
+        }
+
         val countSql = this.sqlGeneratorService.buildCountSql(this.entityDefinition)
 
         val cursor = this.granularDatabaseService
@@ -62,6 +69,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun createTable(): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val createTableSql = this.sqlGeneratorService
                 .buildCreateTable(this.entityDefinition) ?: return false
 
@@ -71,6 +82,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun dropTable(): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val dropTableSql = this.sqlGeneratorService
             .buildDropTable(this.entityDefinition)
 
@@ -80,6 +95,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun createIndex(indexModel: IndexModel): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 this.entityDefinition,
                 indexModel.columnNames,
@@ -91,6 +110,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun dropIndex(indexModel: IndexModel): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 this.entityDefinition,
                 indexModel.columnNames) ?: return false
@@ -101,6 +124,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun createColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val addColumnSql = this.sqlGeneratorService.buildCreateColumn(
                 this.entityDefinition,
                 propertyDefinitionModel.name,
@@ -114,6 +141,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun dropColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val dropTableSqlStatements = this.sqlGeneratorService.buildDropColumn(
                 this.entityDefinition,
                 propertyDefinitionModel.name) ?: return false
@@ -124,6 +155,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun getCustom(customSql: String): List<T> {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return ArrayList()
+        }
+
         val foundRecords: List<T> = this.granularDatabaseService
                 .executeSelectQuery(this.entityDefinition, customSql)
                 .getRecords()
@@ -146,6 +181,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun get(id: K): T? {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return null
+        }
+
         if (this.cachedStore.containsKey(id)) {
             return this.cachedStore[id]
         }
@@ -178,6 +217,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun getMany(n: Int): List<T> {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return ArrayList()
+        }
+
         val allSql =
                 this.sqlGeneratorService.buildSelectAll(this.entityDefinition, n)
 
@@ -204,6 +247,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun where(whereClauseItem: WhereClauseItem): List<T> {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return ArrayList()
+        }
+
         val whereSql =
                 this.sqlGeneratorService.buildWhereClause(
                         this.entityDefinition,
@@ -233,6 +280,10 @@ class EntityService<K, T: IEntity<K>>(
 
     // let's tackle this later
     override fun bulkInsert(instances: List<T>): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         // let's split this into items of n each... for now
         val temporaryList = ArrayList<T>()
         val results = ArrayList<Boolean>()
@@ -262,6 +313,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun createOrUpdate(entity: T): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val foundItemInDatabase = this.get(entity.id)
         if (foundItemInDatabase != null) {
             return this.update(entity)
@@ -270,8 +325,13 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun create(entity: T): Boolean {
+
         if (this.currentlyExecutingItems.contains(entity.hashCode())) {
             return true
+        }
+
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
         }
 
         this.currentlyExecutingItems.add(entity.hashCode())
@@ -306,6 +366,10 @@ class EntityService<K, T: IEntity<K>>(
             return true
         }
 
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         this.currentlyExecutingItems.add(entity.hashCode())
 
         try {
@@ -331,6 +395,10 @@ class EntityService<K, T: IEntity<K>>(
     override fun updateWithCriteria(
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(
                 this.entityDefinition,
                 newValues,
@@ -344,6 +412,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun delete(id: K): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         if (this.cachedStore.containsKey(id)) {
             this.cachedStore.remove(id)
         }
@@ -358,6 +430,10 @@ class EntityService<K, T: IEntity<K>>(
     }
 
     override fun deleteAll(): Boolean {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         this.cachedStore.clear()
         val sql = this.sqlGeneratorService.buildDeleteAll(this.entityDefinition)
         return this.granularDatabaseService
