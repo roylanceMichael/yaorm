@@ -17,7 +17,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     private val SqlIntegerName = "bigint"
     // http://dev.mysql.com/doc/refman/5.0/en/char.html - thank you
-    private val SqlTextName = "varchar(4000)"
+    private val SqlTextName = "text"
     private val SqlTextIdName = "varchar(40)"
     private val SqlRealName = "decimal"
     private val SqlBlobName = "blob"
