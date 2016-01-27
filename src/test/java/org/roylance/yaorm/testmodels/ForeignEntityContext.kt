@@ -6,9 +6,9 @@ import org.roylance.yaorm.services.IEntityService
 import java.util.*
 
 class ForeignEntityContext (
-        val rootTestService: IEntityService<Long, RootTestModel>,
-        val childTestService: IEntityService<Long, ChildTestModel>,
-        migrationService: IEntityService<String, MigrationModel>)
+        val rootTestService: IEntityService<RootTestModel>,
+        val childTestService: IEntityService<ChildTestModel>,
+        migrationService: IEntityService<MigrationModel>)
 : EntityContext(
         Arrays.asList(rootTestService, childTestService),
         migrationService,

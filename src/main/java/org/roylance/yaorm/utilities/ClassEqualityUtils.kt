@@ -6,19 +6,19 @@ import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import java.util.*
 
 object ClassEqualityUtils {
-    fun areBothObjectsEqual(firstObject:IEntity<*>?, secondObject:IEntity<*>?):Boolean {
+    fun areBothObjectsEqual(firstObject:IEntity?, secondObject:IEntity?):Boolean {
         return this.areBothObjectsEqualInternal(firstObject, secondObject, HashSet())
     }
 
     fun areBothCollectionsEqual(
-            firstCollection: EntityCollection<*, *>,
-            secondCollection: EntityCollection<*, *>): Boolean {
+            firstCollection: EntityCollection<*>,
+            secondCollection: EntityCollection<*>): Boolean {
         return this.areBothCollectionsEqualInternal(firstCollection, secondCollection, HashSet())
     }
 
     private fun areBothObjectsEqualInternal(
-            firstObject:IEntity<*>?,
-            secondObject:IEntity<*>?,
+            firstObject:IEntity?,
+            secondObject:IEntity?,
             seenObjects:HashSet<String>):Boolean {
         val firstIsNull = firstObject == null
         val secondIsNull = secondObject == null
@@ -58,8 +58,8 @@ object ClassEqualityUtils {
                 else {
                     // handle case where we're comparing lists...
                     if (this.areBothCollectionsEqualInternal(
-                            firstObjectProperty as EntityCollection<*, *>,
-                            secondObjectProperty as EntityCollection<*, *>,
+                            firstObjectProperty as EntityCollection<*>,
+                            secondObjectProperty as EntityCollection<*>,
                             seenObjects)) {
                         true
                     }
@@ -71,8 +71,8 @@ object ClassEqualityUtils {
     }
 
     private fun areBothCollectionsEqualInternal(
-            firstCollection: EntityCollection<*, *>,
-            secondCollection: EntityCollection<*, *>,
+            firstCollection: EntityCollection<*>,
+            secondCollection: EntityCollection<*>,
             seenObjects: HashSet<String>): Boolean {
         if (firstCollection.entityDefinition != secondCollection.entityDefinition) {
             return false

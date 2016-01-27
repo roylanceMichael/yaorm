@@ -5,7 +5,7 @@ import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 
-interface IEntityService<K, T: IEntity<K>> {
+interface IEntityService<T: IEntity> {
     var entityContext:EntityContext?
 
     val entityDefinition:Class<T>
@@ -26,7 +26,7 @@ interface IEntityService<K, T: IEntity<K>> {
     fun getCount(): Long
 
     fun getCustom(customSql: String): List<T>
-    fun get(id: K): T?
+    fun get(id: String): T?
     fun getMany(n: Int=1000): List<T>
     fun where(whereClauseItem: WhereClauseItem): List<T>
 
@@ -40,7 +40,7 @@ interface IEntityService<K, T: IEntity<K>> {
 
     fun updateCustom(customSql: String): Boolean
 
-    fun delete(id: K): Boolean
+    fun delete(id: String): Boolean
     fun deleteAll(): Boolean
 
     fun clearCache()

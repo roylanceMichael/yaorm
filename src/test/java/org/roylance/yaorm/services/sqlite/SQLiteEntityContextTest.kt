@@ -15,7 +15,7 @@ import java.util.*
 
 public class SQLiteEntityContextTest {
 //    @Test
-    public fun anotherSimpleDropColumnTest() {
+    public fun simpleColumnDefinitionsTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -77,7 +77,7 @@ public class SQLiteEntityContextTest {
                                 (BeaconBroadcastModel.ActiveName.equals(it.name) &&
                                         CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
                                         (BeaconBroadcastModel.IdName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaAlt1IntegerName.equals(it.type)) ||
+                                                CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
                                         (BeaconBroadcastModel.LastSeenName.equals(it.name) &&
                                                 CommonSqlDataTypeUtilities.JavaLongName.equals(it.type)) ||
                                         (BeaconBroadcastModel.BeaconIdName.equals(it.name) &&
@@ -243,10 +243,11 @@ public class SQLiteEntityContextTest {
 
             foreignContext.handleMigrations()
 
-            val rootModel = RootTestModel(0, "test")
-            val testModel = ChildTestModel(0, "childTest", rootModel)
+            val rootModel = RootTestModel("0", "test")
+            val testModel = ChildTestModel("0", "childTest", rootModel)
 
             // act
+            foreignContext.rootTestService.create(rootModel)
             foreignContext.childTestService.createOrUpdate(testModel)
 
             // assert
@@ -295,14 +296,16 @@ public class SQLiteEntityContextTest {
 
             foreignContext.handleMigrations()
 
-            val rootModel = RootTestModel(0, "test")
-            val testModel = ChildTestModel(0, "childTest", rootModel)
-            val test1Model = ChildTestModel(1, "child1Test", rootModel)
+            val rootModel = RootTestModel("0", "test")
+            val testModel = ChildTestModel("0", "childTest", rootModel)
+            val test1Model = ChildTestModel("1", "child1Test", rootModel)
             rootModel.commonChildTests.add(testModel)
             rootModel.commonChildTests.add(test1Model)
 
             // act
             foreignContext.rootTestService.createOrUpdate(rootModel)
+            foreignContext.childTestService.create(testModel)
+            foreignContext.childTestService.create(test1Model)
 
             // assert
             val foundRootModels = foreignContext.rootTestService.getMany()

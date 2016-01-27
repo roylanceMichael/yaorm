@@ -1,5 +1,6 @@
 package org.roylance.yaorm.services.readme;
 
+import org.junit.Test;
 import org.roylance.yaorm.services.*;
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService;
 import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory;
@@ -39,8 +40,8 @@ public class JavaEntityAccessServiceTest {
                     new SQLiteGeneratorService();
 
             // this entity access service uses the previous dependencies to do common CRUD operations against the data store
-            final IEntityService<Integer, TestModel> entityAccessService =
-                    new EntityService<>(
+            final IEntityService<TestModel> entityAccessService =
+                    new EntityService<TestModel>(
                             TestModel.class,
                             granularDatabaseService,
                             sqlGeneratorService,
@@ -49,6 +50,7 @@ public class JavaEntityAccessServiceTest {
             // create a new model to test
             final TestModel newModel = new TestModel()
                     .setName(testName);
+            newModel.setId("test");
 
             // act
             // create the sqlite table, we know it doesn't exist yet
@@ -67,7 +69,7 @@ public class JavaEntityAccessServiceTest {
             final TestModel foundTestModel = foundTestModels.get(0);
 
             // verify that we incremented the id
-            assert foundTestModel.getId() > 0;
+            assert foundTestModel.getId().equals("test");
 
             // verify that the name is the same one we are expecting
             assert testName.equals(foundTestModel.getName());

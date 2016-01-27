@@ -1,5 +1,5 @@
 package org.roylance.yaorm.models.entity
 
-class EntityResultModel<K>(
-        var generatedKeys: List<K>?=null,
+class EntityResultModel(
+        var generatedKeys: List<String>?=null,
         var successful: Boolean=false)

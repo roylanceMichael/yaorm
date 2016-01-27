@@ -6,6 +6,6 @@ import org.roylance.yaorm.services.IEntityService
 import java.util.*
 
 class AfterSimpleTestContext(
-        public val simpleTestService: IEntityService<Int, SimpleTestModel>,
-        migrationService: IEntityService<String, MigrationModel>
+        public val simpleTestService: IEntityService<SimpleTestModel>,
+        migrationService: IEntityService<MigrationModel>
 ) : EntityContext(Arrays.asList(simpleTestService), migrationService, "SimpleTest")

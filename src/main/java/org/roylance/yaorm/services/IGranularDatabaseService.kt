@@ -5,7 +5,7 @@ import org.roylance.yaorm.models.entity.EntityResultModel
 
 interface IGranularDatabaseService : AutoCloseable {
     fun isAvailable(): Boolean
-    fun <K> executeUpdateQuery(query:String): EntityResultModel<K>
-    fun <K, T: IEntity<K>> executeSelectQuery(classModel:Class<T>, query:String): ICursor<T>
+    fun executeUpdateQuery(query:String): EntityResultModel
+    fun <T: IEntity> executeSelectQuery(classModel:Class<T>, query:String): ICursor<T>
     fun commit()
 }

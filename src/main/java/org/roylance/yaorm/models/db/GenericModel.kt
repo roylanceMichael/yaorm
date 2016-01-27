@@ -8,7 +8,7 @@ class GenericModel(
         var intVal: Int = 0,
         var longVal: Long = 0L,
         var doubleVal: Double = 0.0,
-        var boolVal: Boolean = false) : IEntity<String> {
+        var boolVal: Boolean = false) : IEntity {
     companion object {
         val IdName = "id"
         val StrValName = "strVal"

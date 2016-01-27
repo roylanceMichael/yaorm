@@ -10,14 +10,14 @@ import org.roylance.yaorm.utilities.DefinitionModelComparisonUtil
 import java.util.*
 
 abstract class EntityContext(
-    protected val entityServices:List<IEntityService<*,*>>,
-    protected val migrationService:IEntityService<String, MigrationModel>,
+    protected val entityServices:List<IEntityService<*>>,
+    protected val migrationService:IEntityService<MigrationModel>,
     protected val contextName:String,
     private val gson:Gson = Gson()) {
 
     private val typeToAction = object: HashMap<
             String,
-            (entityService: IEntityService<*, *>, differenceModel: DifferenceModel) -> Boolean>() {
+            (entityService: IEntityService<*>, differenceModel: DifferenceModel) -> Boolean>() {
         init {
             put(DifferenceModel.OperationCreate + DifferenceModel.EntityTypeColumn,
                     { service, model ->  createColumn(service, model) })
@@ -182,47 +182,47 @@ abstract class EntityContext(
         return DefinitionModels(returnList)
     }
 
-    fun <K, T: IEntity<K>> getForeignService(entityType:Class<T>): IEntityService<K, T>? {
+    fun <T: IEntity> getForeignService(entityType:Class<T>): IEntityService<T>? {
         val foundService = this.entityServices
                 .filter { it.entityDefinition.equals(entityType) }
                 .firstOrNull() ?: return null
 
-        return foundService as IEntityService<K, T>
+        return foundService as IEntityService<T>
     }
 
-    private fun createIndex(entityService: IEntityService<*,*>, differenceModel: DifferenceModel):Boolean {
+    private fun createIndex(entityService: IEntityService<*>, differenceModel: DifferenceModel):Boolean {
         if (differenceModel.indexModel != null) {
             return entityService.createIndex(differenceModel.indexModel)
         }
         return false
     }
 
-    private fun dropIndex(entityService: IEntityService<*, *>, differenceModel: DifferenceModel):Boolean {
+    private fun dropIndex(entityService: IEntityService<*>, differenceModel: DifferenceModel):Boolean {
         if (differenceModel.indexModel != null) {
             return entityService.dropIndex(differenceModel.indexModel)
         }
         return false
     }
 
-    private fun createColumn(entityService: IEntityService<*, *>, differenceModel: DifferenceModel):Boolean {
+    private fun createColumn(entityService: IEntityService<*>, differenceModel: DifferenceModel):Boolean {
         if (differenceModel.propertyDefinition != null) {
             return entityService.createColumn(differenceModel.propertyDefinition)
         }
         return false
     }
 
-    private fun dropColumn(entityService: IEntityService<*, *>, differenceModel: DifferenceModel):Boolean {
+    private fun dropColumn(entityService: IEntityService<*>, differenceModel: DifferenceModel):Boolean {
         if (differenceModel.propertyDefinition != null) {
             return entityService.dropColumn(differenceModel.propertyDefinition)
         }
         return false
     }
 
-    private fun createTable(entityService: IEntityService<*, *>):Boolean {
+    private fun createTable(entityService: IEntityService<*>):Boolean {
         return entityService.createTable()
     }
 
-    private fun dropTable(entityService: IEntityService<*, *>):Boolean {
+    private fun dropTable(entityService: IEntityService<*>):Boolean {
         return entityService.dropTable()
     }
 }

@@ -61,7 +61,7 @@ class JDBCCursor<T> (
         return this.resultSet.next()
     }
 
-    fun <K, T: IEntity<K>> getRecord(): T {
+    fun <T: IEntity> getRecord(): T {
         val newInstance = this.classModel.newInstance()!! as T
 
         if (this.columnNamesFromResultSet.isEmpty()) {
@@ -165,7 +165,7 @@ class JDBCCursor<T> (
         return newInstance
     }
 
-    override fun <K, T : IEntity<K>> getRecords(): List<T> {
+    override fun <T : IEntity> getRecords(): List<T> {
         val returnItems = ArrayList<T>()
         try {
             while (this.moveNext()) {

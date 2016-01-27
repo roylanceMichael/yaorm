@@ -30,13 +30,13 @@ class JDBCGranularDatabaseService(
         }
     }
 
-    override fun <K> executeUpdateQuery(query: String): EntityResultModel<K> {
+    override fun executeUpdateQuery(query: String): EntityResultModel {
         val statement = this.connection.createStatement()
         try {
-            val returnObject = EntityResultModel<K>()
+            val returnObject = EntityResultModel()
             val result = statement.executeUpdate(query)
 
-            val returnedKeys = ArrayList<K>()
+            val returnedKeys = ArrayList<String>()
             returnObject.generatedKeys = returnedKeys
             returnObject.successful = result > 0
 
@@ -50,7 +50,7 @@ class JDBCGranularDatabaseService(
         }
     }
 
-    override fun <K, T: IEntity<K>> executeSelectQuery(
+    override fun <T: IEntity> executeSelectQuery(
             classModel:Class<T>,
             query: String): ICursor<T> {
         val statement = this.connection.prepareStatement(query)

@@ -6,6 +6,9 @@ import org.roylance.yaorm.testmodels.ChildTestModel
 import org.roylance.yaorm.testmodels.RootTestModel
 
 class ClassEqualityUtilsTest {
+    private val One = "1"
+    private val Two = "2"
+
     @Test
     fun rootModelWithTwoIdenticalChildrenEqualityTest() {
         // arrange
@@ -13,15 +16,15 @@ class ClassEqualityUtilsTest {
         val secondChildName = "secondChild"
         val rootName = "mike"
 
-        val firstChildEntity = ChildTestModel(1, firstChildName)
-        val firstChildEntity1 = ChildTestModel(2, secondChildName)
-        val firstRootModel = RootTestModel(1, rootName)
+        val firstChildEntity = ChildTestModel(One, firstChildName)
+        val firstChildEntity1 = ChildTestModel(Two, secondChildName)
+        val firstRootModel = RootTestModel(One, rootName)
         firstRootModel.commonChildTests.add(firstChildEntity)
         firstRootModel.commonChildTests.add(firstChildEntity1)
 
-        val secondChildEntity = ChildTestModel(1, firstChildName)
-        val secondChildEntity1 = ChildTestModel(2, secondChildName)
-        val secondRootModel = RootTestModel(1, rootName)
+        val secondChildEntity = ChildTestModel(One, firstChildName)
+        val secondChildEntity1 = ChildTestModel(Two, secondChildName)
+        val secondRootModel = RootTestModel(One, rootName)
         secondRootModel.commonChildTests.add(secondChildEntity)
         secondRootModel.commonChildTests.add(secondChildEntity1)
 
@@ -40,15 +43,15 @@ class ClassEqualityUtilsTest {
         val secondChildNameDifferent = "secondChild1"
         val rootName = "mike"
 
-        val firstChildEntity = ChildTestModel(1, firstChildName)
-        val firstChildEntity1 = ChildTestModel(2, secondChildName)
-        val firstRootModel = RootTestModel(1, rootName)
+        val firstChildEntity = ChildTestModel(One, firstChildName)
+        val firstChildEntity1 = ChildTestModel(Two, secondChildName)
+        val firstRootModel = RootTestModel(One, rootName)
         firstRootModel.commonChildTests.add(firstChildEntity)
         firstRootModel.commonChildTests.add(firstChildEntity1)
 
-        val secondChildEntity = ChildTestModel(1, firstChildName)
-        val secondChildEntity1 = ChildTestModel(2, secondChildNameDifferent)
-        val secondRootModel = RootTestModel(1, rootName)
+        val secondChildEntity = ChildTestModel(One, firstChildName)
+        val secondChildEntity1 = ChildTestModel(Two, secondChildNameDifferent)
+        val secondRootModel = RootTestModel(One, rootName)
         secondRootModel.commonChildTests.add(secondChildEntity)
         secondRootModel.commonChildTests.add(secondChildEntity1)
 
@@ -66,17 +69,17 @@ class ClassEqualityUtilsTest {
         val secondChildName = "secondChild"
         val rootName = "mike"
 
-        val firstChildEntity = ChildTestModel(1, firstChildName)
-        val firstChildEntity1 = ChildTestModel(2, secondChildName)
-        val firstRootModel = RootTestModel(1 , rootName)
+        val firstChildEntity = ChildTestModel(One, firstChildName)
+        val firstChildEntity1 = ChildTestModel(Two, secondChildName)
+        val firstRootModel = RootTestModel(One , rootName)
         firstChildEntity.commonRootModel = firstRootModel
         firstChildEntity1.commonRootModel = firstRootModel
         firstRootModel.commonChildTests.add(firstChildEntity)
         firstRootModel.commonChildTests.add(firstChildEntity1)
 
-        val secondChildEntity = ChildTestModel(1, firstChildName)
-        val secondChildEntity1 = ChildTestModel(2, secondChildName)
-        val secondRootModel = RootTestModel(1, rootName)
+        val secondChildEntity = ChildTestModel(One, firstChildName)
+        val secondChildEntity1 = ChildTestModel(Two, secondChildName)
+        val secondRootModel = RootTestModel(One, rootName)
         secondChildEntity.commonRootModel = secondRootModel
         secondChildEntity1.commonRootModel = secondRootModel
         secondRootModel.commonChildTests.add(secondChildEntity)

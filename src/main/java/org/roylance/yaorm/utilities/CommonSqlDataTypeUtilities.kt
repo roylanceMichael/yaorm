@@ -3,6 +3,7 @@ package org.roylance.yaorm.utilities
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.migration.DefinitionModel
 import java.util.*
 
 object CommonSqlDataTypeUtilities {
@@ -102,7 +103,7 @@ object CommonSqlDataTypeUtilities {
         return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
     }
 
-    fun <K, T: IEntity<K>> getNameTypes(
+    fun <T: IEntity> getNameTypes(
             classModel: Class<T>,
             javaIdName: String,
             javaTypeToSqlType: Map<String, String>): List<ColumnNameTuple<String>> {
@@ -153,6 +154,46 @@ object CommonSqlDataTypeUtilities {
         return nameTypes
     }
 
+    fun getNameTypes(
+            definition: DefinitionModel,
+            javaIdName: String,
+            javaIdType: String,
+            javaTypeToSqlType: Map<String, String>): List<ColumnNameTuple<String>> {
+        val nameTypes = ArrayList<ColumnNameTuple<String>>()
+        var foundIdColumnName = false
+
+        // let's handle the types now
+        definition
+                .properties
+                .sortedBy { it.name }
+                .forEach {
+                    val columnName = it.name
+                    val javaType = it.type
+                    val sqlColumnName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
+                    val javaColumnName = columnName
+
+                    if (javaTypeToSqlType.containsKey(javaType)) {
+                        val dataType = javaTypeToSqlType[javaType]
+                        if (javaIdName.equals(sqlColumnName)) {
+                            foundIdColumnName = true
+                        }
+                        nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
+                    }
+                    else if (javaTypeToSqlType.containsKey(javaIdType)) {
+                        nameTypes.add(ColumnNameTuple(
+                                sqlColumnName,
+                                javaColumnName,
+                                javaTypeToSqlType[javaIdType]!!,
+                                true))
+                    }
+                }
+
+        if (!foundIdColumnName) {
+            return ArrayList()
+        }
+
+        return nameTypes
+    }
 
     fun buildWhereClause(whereClauseItem: WhereClauseItem):String {
         val filterItems = StringBuilder()

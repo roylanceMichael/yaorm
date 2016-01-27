@@ -1,6 +1,7 @@
 package org.roylance.yaorm.services.mysql
 
 import org.junit.Assert
+import org.junit.Test
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
@@ -14,7 +15,7 @@ import java.util.*
 
 class MySQLEntityContextTest {
 //    @Test
-    public fun anotherSimpleDropColumnTest() {
+    public fun simpleDefinitionTest() {
         // arrange
         getConnectionInfo()
         try {
@@ -80,7 +81,7 @@ class MySQLEntityContextTest {
                                 (BeaconBroadcastModel.ActiveName.equals(it.name) &&
                                         CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
                                         (BeaconBroadcastModel.IdName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaAlt1IntegerName.equals(it.type)) ||
+                                                CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
                                         (BeaconBroadcastModel.LastSeenName.equals(it.name) &&
                                                 CommonSqlDataTypeUtilities.JavaLongName.equals(it.type)) ||
                                         (BeaconBroadcastModel.BeaconIdName.equals(it.name) &&
@@ -257,10 +258,11 @@ class MySQLEntityContextTest {
 
             foreignContext.handleMigrations()
 
-            val rootModel = RootTestModel(0, "test")
-            val testModel = ChildTestModel(0, "childTest", rootModel)
+            val rootModel = RootTestModel("0", "test")
+            val testModel = ChildTestModel("0", "childTest", rootModel)
 
             // act
+            foreignContext.rootTestService.create(rootModel)
             foreignContext.childTestService.createOrUpdate(testModel)
 
             // assert
@@ -315,14 +317,16 @@ class MySQLEntityContextTest {
 
             foreignContext.handleMigrations()
 
-            val rootModel = RootTestModel(0, "test")
-            val testModel = ChildTestModel(0, "childTest", rootModel)
-            val test1Model = ChildTestModel(1, "child1Test", rootModel)
+            val rootModel = RootTestModel("0", "test")
+            val testModel = ChildTestModel("0", "childTest", rootModel)
+            val test1Model = ChildTestModel("1", "child1Test", rootModel)
             rootModel.commonChildTests.add(testModel)
             rootModel.commonChildTests.add(test1Model)
 
             // act
             foreignContext.rootTestService.createOrUpdate(rootModel)
+            foreignContext.childTestService.create(testModel)
+            foreignContext.childTestService.create(test1Model)
 
             // assert
             val foundRootModels = foreignContext.rootTestService.getMany()

@@ -3,17 +3,19 @@ package org.roylance.yaorm.services.phoenix
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.models.migration.IndexModel
+import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel
+import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
 class PhoenixEntityAccessServiceTest {
 //    @Test
     fun simpleCreatePhoenixTest() {
         // arrange
-        val id = 1
+        val id = "1"
         val name = "mike"
 
         val phoenixGeneratorService = PhoenixGeneratorService()
@@ -104,9 +106,9 @@ class PhoenixEntityAccessServiceTest {
             entityService.dropTable()
             entityService.createTable()
 
-            val columnNames = ArrayList<String>()
-            columnNames.add(AnotherTestModel.DescriptionName)
-            columnNames.add(AnotherTestModel.GramName)
+            val columnNames = ArrayList<PropertyDefinitionModel>()
+            columnNames.add(PropertyDefinitionModel(AnotherTestModel.DescriptionName, CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName))
+            columnNames.add(PropertyDefinitionModel(AnotherTestModel.GramName, CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName))
 
             val indexModel = IndexModel(columnNames, ArrayList())
 
@@ -124,7 +126,7 @@ class PhoenixEntityAccessServiceTest {
 //     @Test
     public fun simpleDeletePhoenixTest() {
         // arrange
-        val id = 1
+        val id = "1"
         val name = "mike"
 
         val phoenixGeneratorService = PhoenixGeneratorService()
@@ -203,7 +205,7 @@ class PhoenixEntityAccessServiceTest {
 //     @Test
     public fun simpleBulkInsertPhoenixTest() {
         // arrange
-        val id = 1
+        val id = "1"
         val name = "mike"
 
         val phoenixGeneratorService = PhoenixGeneratorService()
@@ -228,7 +230,7 @@ class PhoenixEntityAccessServiceTest {
             // act
             var iter = 0
             while (iter < 1000) {
-                testModel.id = iter
+                testModel.id = iter.toString()
                 testModel.setName("test${iter++}")
                 entityService.create(testModel)
             }

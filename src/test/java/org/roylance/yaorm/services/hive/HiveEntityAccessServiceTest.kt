@@ -136,7 +136,7 @@ public class HiveEntityAccessServiceTest {
         while (i < totalInsertValue) {
             val randomString = UUID.randomUUID().toString()
             beaconsToInsert.add(BeaconBroadcastModel(
-                    id = i,
+                    id = i.toString(),
                     beaconId = randomString,
                     majorId = i,
                     minorId = i,

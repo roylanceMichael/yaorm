@@ -2,12 +2,12 @@ package org.roylance.yaorm.testmodels;
 
 import org.roylance.yaorm.models.IEntity;
 
-public class TestModel implements IEntity<Integer> {
-    private int id;
+public class TestModel implements IEntity {
+    private String id;
     private String name;
 
     @Override
-    public Integer getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -21,7 +21,7 @@ public class TestModel implements IEntity<Integer> {
     }
 
     @Override
-    public void setId(Integer value) {
+    public void setId(String value) {
         this.id = value;
     }
 }

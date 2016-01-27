@@ -1,15 +1,16 @@
 package org.roylance.yaorm.testmodels
 
 import org.roylance.yaorm.models.IEntity
+import java.util.*
 
 public class BeaconBroadcastModel(
-        public override var id:Int = 0,
+        public override var id:String = UUID.randomUUID().toString(),
         public var beaconId: String = "",
         public var majorId: Int = 0,
         public var minorId: Int = 0,
         public var active: Boolean = false,
         public var cachedName: String = "",
-        public var lastSeen: Long = 0) : IEntity<Int> {
+        public var lastSeen: Long = 0) : IEntity {
 
     companion object {
         public val LastSeenName: String = "lastSeen"

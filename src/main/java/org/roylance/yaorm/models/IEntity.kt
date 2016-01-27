@@ -1,5 +1,5 @@
 package org.roylance.yaorm.models
 
-interface IEntity<T> {
-    var id:T
+interface IEntity {
+    var id:String
 }

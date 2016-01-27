@@ -31,7 +31,6 @@ public class SQLiteEntityAccessServiceTest {
 
         try {
             val newBeacon = BeaconBroadcastModel(
-                    1,
                     beaconId = beaconId,
                     majorId = majorId,
                     minorId = minorId,
@@ -48,7 +47,7 @@ public class SQLiteEntityAccessServiceTest {
             Assert.assertEquals(1, allBeacons.size)
 
             val foundBeacon = allBeacons.first()
-            Assert.assertEquals(1, foundBeacon.id)
+            Assert.assertEquals(newBeacon.id, foundBeacon.id)
             Assert.assertEquals(beaconId, foundBeacon.beaconId)
             Assert.assertEquals(majorId, foundBeacon.majorId)
             Assert.assertEquals(minorId, foundBeacon.minorId)
@@ -81,7 +80,6 @@ public class SQLiteEntityAccessServiceTest {
 
         try {
             val newBeacon = BeaconBroadcastModel(
-                    1,
                     beaconId = beaconId,
                     majorId = majorId,
                     minorId = minorId,
@@ -98,7 +96,7 @@ public class SQLiteEntityAccessServiceTest {
             Assert.assertEquals(1, allBeacons.size)
 
             val foundBeacon = allBeacons.first()
-            Assert.assertEquals(1, foundBeacon.id)
+            Assert.assertEquals(newBeacon.id, foundBeacon.id)
             Assert.assertEquals(beaconId, foundBeacon.beaconId)
             Assert.assertEquals(majorId, foundBeacon.majorId)
             Assert.assertEquals(minorId, foundBeacon.minorId)

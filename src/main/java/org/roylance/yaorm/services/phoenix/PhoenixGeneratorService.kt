@@ -1,8 +1,9 @@
 package org.roylance.yaorm.services.phoenix
 
 import org.roylance.yaorm.models.ColumnNameTuple
-import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.migration.DefinitionModel
+import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
@@ -45,30 +46,30 @@ public class PhoenixGeneratorService (
         }
     }
 
-    override fun <K, T : IEntity<K>> buildCountSql(classType: Class<T>): String {
-        return "select count(1) as longVal from ${classType.simpleName}"
+    override fun buildCountSql(definition: DefinitionModel): String {
+        return "select count(1) as longVal from ${definition.name}"
     }
 
-    override fun <K, T : IEntity<K>> buildCreateColumn(classType: Class<T>, columnName: String, javaType: String): String? {
-        if (!javaTypeToSqlType.containsKey(javaType)) {
+    override fun buildCreateColumn(definition: DefinitionModel, propertyDefinition: PropertyDefinitionModel): String? {
+        if (!javaTypeToSqlType.containsKey(propertyDefinition.type)) {
             return null
         }
-        return "alter table ${classType.simpleName} add if not exists $columnName ${javaTypeToSqlType[javaType]}"
+        return "alter table ${definition.name} add if not exists ${propertyDefinition.name} ${javaTypeToSqlType[propertyDefinition.type]}"
     }
 
-    override fun <K, T : IEntity<K>> buildDropColumn(classType: Class<T>, columnName: String): String {
-        return "alter table ${classType.simpleName} drop column if exists $columnName"
+    override fun buildDropColumn(definition: DefinitionModel, propertyDefinition: PropertyDefinitionModel): String {
+        return "alter table ${definition.name} drop column if exists ${propertyDefinition.name}"
     }
 
-    override fun <K, T : IEntity<K>> buildDropIndex(classType: Class<T>, columns: List<String>): String? {
-        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
-        return "drop index if exists $indexName on ${classType.simpleName}"
+    override fun buildDropIndex(definition: DefinitionModel, columns: List<PropertyDefinitionModel>): String? {
+        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns.map { it.name })
+        return "drop index if exists $indexName on ${definition.name}"
     }
 
-    override fun <K, T : IEntity<K>> buildCreateIndex(classType: Class<T>, columns: List<String>, includes: List<String>): String? {
-        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns)
-        val joinedColumnNames = columns.joinToString(CommonSqlDataTypeUtilities.Comma)
-        val sqlStatement = "create index if not exists $indexName on ${classType.simpleName} ($joinedColumnNames)"
+    override fun buildCreateIndex(definition: DefinitionModel, properties: List<PropertyDefinitionModel>, includes: List<PropertyDefinitionModel>): String? {
+        val indexName = CommonSqlDataTypeUtilities.buildIndexName(properties.map { it.name })
+        val joinedColumnNames = properties.joinToString(CommonSqlDataTypeUtilities.Comma)
+        val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
 
         if (includes.isEmpty()) {
             return sqlStatement
@@ -77,53 +78,53 @@ public class PhoenixGeneratorService (
         return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
-    override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
-            classModel: Class<T>,
+    override fun buildDeleteWithCriteria(
+            definition: DefinitionModel,
             whereClauseItem: WhereClauseItem): String {
         val whereClause = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
-        return "delete from ${classModel.simpleName} where $whereClause"
+        return "delete from ${definition.name} where $whereClause"
     }
 
-    override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
-            classModel: Class<T>,
+    override fun buildUpdateWithCriteria(
+            definition: DefinitionModel,
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): String? {
         return null
     }
 
-    override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
-        return "drop table if exists ${classType.simpleName}"
+    override fun buildDropTable(definition: DefinitionModel): String {
+        return "drop table if exists ${definition.name}"
     }
 
-    override fun <K, T: IEntity<K>> buildDeleteAll(classModel: Class<T>) : String {
-        return "delete from ${classModel.simpleName}"
+    override fun buildDeleteAll(definition: DefinitionModel) : String {
+        return "delete from ${definition.name}"
     }
 
-    override fun <K, T: IEntity<K>> buildBulkInsert(classModel: Class<T>, items: List<T>) : String {
+    override fun buildBulkInsert(definition: DefinitionModel, items: List<Map<String, Any>>) : String {
         // do single inserts, then commit
         return ""
     }
 
-    override fun <K, T: IEntity<K>> buildSelectAll(classModel: Class<T>, n: Int): String {
+    override fun buildSelectAll(definition: DefinitionModel, n: Int): String {
         return java.lang.String.format(
                 SelectAllTemplate,
-                classModel.simpleName,
+                definition.name,
                 n)
     }
 
-    override fun <K, T: IEntity<K>> buildWhereClause(
-            classModel: Class<T>,
+    override fun buildWhereClause(
+            definition: DefinitionModel,
             whereClauseItem: WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
-                classModel.simpleName,
+                definition.name,
                 CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem))
 
         return whereSql
     }
 
-    override fun <K, T: IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
-        val tableName = classModel.simpleName
+    override fun buildDeleteTable(definition: DefinitionModel, primaryKey: Any): String? {
+        val tableName = definition.name
 
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
@@ -133,58 +134,40 @@ public class PhoenixGeneratorService (
         return deleteSql
     }
 
-    override fun <K, T: IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
-        return this.buildInsertIntoTable(classModel, updateModel)
+    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any>): String? {
+        return this.buildInsertIntoTable(definition, updateModel)
     }
 
-    override fun <K, T: IEntity<K>> buildInsertIntoTable(classModel: Class<T>, newInsertModel: T): String? {
+    override fun buildInsertIntoTable(definition: DefinitionModel, newInsertModel: Map<String, Any>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
             CommonSqlDataTypeUtilities.getNameTypes(
-                    classModel,
+                    definition,
                     this.javaIdName,
+                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                     this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
 
-            classModel
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                        !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+            definition.properties
                 .sortedBy { it.name }
                 .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                    val actualName = it.name
 
-                    if (nameTypeMap.containsKey(actualName)) {
+                    if (nameTypeMap.containsKey(actualName) && newInsertModel.containsKey(actualName)) {
                         columnNames.add(actualName)
 
-                        val instanceValue = it.invoke(newInsertModel)
+                        val instanceValue = newInsertModel[actualName]
                         values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
-                    }
-                    else if (nameTypeMap.containsKey(actualName) &&
-                            nameTypeMap[actualName]!!.isForeignKey) {
-                        columnNames.add(actualName)
-                        val actualForeignObject = it.invoke(newInsertModel)
-
-                        if (actualForeignObject != null) {
-                            val instanceValue = (actualForeignObject as IEntity<*>).id
-                            val strValue = CommonSqlDataTypeUtilities
-                                    .getFormattedString(instanceValue)
-                            values.add(strValue)
-                        }
-                        else {
-                            values.add(CommonSqlDataTypeUtilities.Null)
-                        }
                     }
                 }
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
-                    classModel.simpleName,
+                    definition.name,
                     columnNames.joinToString(CommonSqlDataTypeUtilities.Comma),
                     values.joinToString(CommonSqlDataTypeUtilities.Comma))
 
@@ -195,10 +178,11 @@ public class PhoenixGeneratorService (
         }
     }
 
-    override fun <K, T: IEntity<K>> buildCreateTable(classType: Class<T>): String? {
+    override fun buildCreateTable(definition: DefinitionModel): String? {
         val nameTypes = CommonSqlDataTypeUtilities.getNameTypes(
-                classType,
+                definition,
                 this.javaIdName,
+                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                 this.javaTypeToSqlType)
 
         if (nameTypes.size == 0) {
@@ -228,7 +212,7 @@ public class PhoenixGeneratorService (
 
         val createTableSql = java.lang.String.format(
                 CreateInitialTableTemplate,
-                classType.simpleName,
+                definition.name,
                 workspace.toString())
 
         return createTableSql

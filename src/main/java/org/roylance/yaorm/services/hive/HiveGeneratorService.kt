@@ -1,15 +1,14 @@
 package org.roylance.yaorm.services.hive
 
 import org.roylance.yaorm.models.ColumnNameTuple
-import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.migration.DefinitionModel
+import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
-public class HiveGeneratorService(
-        public override val bulkInsertSize: Int = 2000
-) : ISqlGeneratorService {
+public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000) : ISqlGeneratorService {
 
     private val constJavaIdName = "id"
 
@@ -47,56 +46,57 @@ public class HiveGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildCountSql(classType: Class<T>): String {
-        return "select count(1) as longVal from ${classType.simpleName}"
+    override fun buildCountSql(definition: DefinitionModel): String {
+        return "select count(1) as longVal from ${definition.name}"
     }
 
-    override fun <K, T : IEntity<K>> buildCreateColumn(
-            classType: Class<T>,
-            columnName: String,
-            javaType: String): String? {
-        if (!this.javaTypeToSqlType.containsKey(javaType)) {
+    override fun buildCreateColumn(
+            definition: DefinitionModel,
+            propertyDefinition: PropertyDefinitionModel): String? {
+        if (!this.javaTypeToSqlType.containsKey(propertyDefinition.type)) {
             return null
         }
-        return "alter table ${classType.simpleName} add columns ($columnName, ${this.javaTypeToSqlType[javaType]})"
+        return "alter table ${definition.name} add columns (${propertyDefinition.name}, ${this.javaTypeToSqlType[propertyDefinition.type]})"
     }
 
-    override fun <K, T : IEntity<K>> buildDropColumn(
-            classType: Class<T>,
-            columnName: String): String? {
+    override fun buildDropColumn(
+            definition: DefinitionModel, propertyDefinition: PropertyDefinitionModel): String? {
         val columnNames = CommonSqlDataTypeUtilities.getNameTypes(
-                classType,
+                definition,
                 this.javaIdName,
+                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                 this.javaTypeToSqlType)
                 .map {
                     "${it.sqlColumnName} ${it.dataType}"
                 }
                 .joinToString(CommonSqlDataTypeUtilities.Comma)
-        return "alter table ${classType.simpleName} replace columns ($columnNames)"
+
+        return "alter table ${definition.name} replace columns ($columnNames)"
     }
 
-    override fun <K, T : IEntity<K>> buildDropIndex(
-            classType: Class<T>,
-            columns: List<String>): String? {
+    override fun buildDropIndex(
+            definition: DefinitionModel,
+            columns: List<PropertyDefinitionModel>): String? {
         return null
     }
 
-    override fun <K, T : IEntity<K>> buildCreateIndex(
-            classType: Class<T>,
-            columns: List<String>,
-            includes: List<String>): String? {
+    override fun buildCreateIndex(
+            definition: DefinitionModel,
+            properties: List<PropertyDefinitionModel>,
+            includes: List<PropertyDefinitionModel>): String? {
         return null
     }
 
-    override fun <K, T : IEntity<K>> buildUpdateWithCriteria(
-            classModel: Class<T>,
+    override fun buildUpdateWithCriteria(
+            definition: DefinitionModel,
             newValues: Map<String, Any>,
             whereClauseItem: WhereClauseItem): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonSqlDataTypeUtilities.getNameTypes(
-                    classModel,
+                    definition,
                     this.javaIdName,
+                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                     this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
@@ -123,7 +123,7 @@ public class HiveGeneratorService(
 
             val updateSql = java.lang.String.format(
                     UpdateTableMultipleTemplate,
-                    classModel.simpleName,
+                    definition.name,
                     updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
                     criteriaString)
 
@@ -134,45 +134,42 @@ public class HiveGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildDropTable(classType: Class<T>): String {
-        return "drop table ${classType.simpleName}"
+    override fun buildDropTable(definition: DefinitionModel): String {
+        return "drop table ${definition.name}"
     }
 
-    override fun <K, T : IEntity<K>> buildDeleteAll(classModel: Class<T>): String {
-        return "delete from ${classModel.simpleName}"
+    override fun buildDeleteAll(definition: DefinitionModel): String {
+        return "delete from ${definition.name}"
     }
 
-    override fun <K, T : IEntity<K>> buildDeleteWithCriteria(
-            classModel: Class<T>,
+    override fun buildDeleteWithCriteria(
+            definition: DefinitionModel,
             whereClauseItem: WhereClauseItem): String {
         val whereClause = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
-        return "delete from ${classModel.simpleName} where $whereClause"
+        return "delete from ${definition.name} where $whereClause"
     }
 
-    override fun <K, T : IEntity<K>> buildBulkInsert(
-            classModel: Class<T>,
-            items: List<T>): String {
-        val tableName = classModel.simpleName
+    override fun buildBulkInsert(
+            definition: DefinitionModel,
+            items: List<Map<String, Any>>): String {
+        val tableName = definition.name
         val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
         CommonSqlDataTypeUtilities.getNameTypes(
-                classModel,
+                definition,
                 this.javaIdName,
+                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                 this.javaTypeToSqlType)
                 .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
         val columnNames = ArrayList<String>()
 
-        classModel
-            .methods
+        definition
+            .properties
             .sortedBy { it.name }
-            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
             .forEach {
-                val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
-
-                if (nameTypeMap.containsKey(actualName) &&
-                        !javaIdName.equals(actualName)) {
-                    columnNames.add(actualName)
+                if (nameTypeMap.containsKey(it.name) &&
+                        !javaIdName.equals(it.name)) {
+                    columnNames.add(it.name)
                 }
             }
 
@@ -183,37 +180,29 @@ public class HiveGeneratorService(
             .forEach { instance ->
                 val valueColumnPairs = ArrayList<String>()
 
-                classModel
-                    .methods
-                    .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                            !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+                definition
+                    .properties
                     .sortedBy { it.name }
                     .forEach {
-                        val actualName = CommonSqlDataTypeUtilities
-                                .lowercaseFirstChar(
-                                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                        val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
 
                         if (nameTypeMap.containsKey(actualName) &&
+                                instance.containsKey(actualName) &&
                                 !nameTypeMap[actualName]!!.isForeignKey) {
-                            val instanceValue = it.invoke(instance)
+                            val instanceValue = instance[actualName]
                             val cleansedValue = CommonSqlDataTypeUtilities.getFormattedString(instanceValue)
 
                             valueColumnPairs.add(cleansedValue)
                         }
                         else if (nameTypeMap.containsKey(actualName) &&
+                                instance.containsKey(actualName) &&
                                 nameTypeMap[actualName]!!.isForeignKey) {
 
-                            val foreignObject = it.invoke(instance)
+                            val foreignObject = instance[actualName]
                             var strValue:String?
 
-                            if (foreignObject != null) {
-                                val instanceValue = (foreignObject as IEntity<*>).id
-                                strValue = CommonSqlDataTypeUtilities
-                                        .getFormattedString(instanceValue)
-                            }
-                            else {
-                                strValue = CommonSqlDataTypeUtilities.Null
-                            }
+                            strValue = CommonSqlDataTypeUtilities
+                                    .getFormattedString(foreignObject)
 
                             if (valueColumnPairs.isEmpty()) {
                                 valueColumnPairs.add("select $strValue as $actualName")
@@ -232,25 +221,25 @@ public class HiveGeneratorService(
         return "$initialStatement(\nselect stack(\n ${selectStatements.size},\n $carriageReturnSeparatedRows)) s"
     }
 
-    override fun <K, T : IEntity<K>> buildSelectAll(classModel: Class<T>, n: Int): String {
-        return java.lang.String.format(SelectAllTemplate, classModel.simpleName, n)
+    override fun buildSelectAll(definition: DefinitionModel, n: Int): String {
+        return java.lang.String.format(SelectAllTemplate, definition.name, n)
     }
 
-    override fun <K, T : IEntity<K>> buildWhereClause(
-            classModel: Class<T>,
+    override fun buildWhereClause(
+            definition: DefinitionModel,
             whereClauseItem: WhereClauseItem): String? {
         val whereClauseItems = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
-                classModel.simpleName,
+                definition.name,
                 whereClauseItems)
 
         return whereSql
     }
 
-    override fun <K, T : IEntity<K>> buildDeleteTable(classModel: Class<T>, primaryKey: K): String? {
-        val tableName = classModel.simpleName
+    override fun buildDeleteTable(definition: DefinitionModel, primaryKey: Any): String? {
+        val tableName = definition.name
 
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
@@ -260,12 +249,13 @@ public class HiveGeneratorService(
         return deleteSql
     }
 
-    override fun <K, T : IEntity<K>> buildUpdateTable(classModel: Class<T>, updateModel: T): String? {
+    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonSqlDataTypeUtilities.getNameTypes(
-                    classModel,
+                    definition,
                     this.javaIdName,
+                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                     this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
@@ -273,46 +263,33 @@ public class HiveGeneratorService(
                 return null
             }
 
-            val tableName = classModel.simpleName
+            val tableName = definition.name
             var stringId: String? = null
 
             val updateKvp = ArrayList<String>()
 
-            classModel
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                        !CommonSqlDataTypeUtilities
-                                .JavaObjectName
-                                .equals(it.genericReturnType.typeName)
-                }
+            definition
+                .properties
+                .filter { updateModel.contains(it.name) }
                 .sortedBy { it.name }
                 .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
 
-                    val actualValue = it.invoke(updateModel)
+                    val actualValue = updateModel[it.name]
                     val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
 
                     if (javaIdName.equals(actualName)) {
                         stringId = stringValue
                     }
-                    else if (this.javaTypeToSqlType.containsKey(it.returnType.name)) {
+                    else if (this.javaTypeToSqlType.containsKey(it.type)) {
                         updateKvp.add(
                                 actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
                     }
                     else if(nameTypeMap.containsKey(actualName) &&
                             nameTypeMap[actualName]!!.isForeignKey) {
-                        val foreignObject = it.invoke(updateModel)
-
-                        if (foreignObject != null) {
-                            val instanceValue = (foreignObject as IEntity<*>).id
-                            val strValue = CommonSqlDataTypeUtilities
-                                    .getFormattedString(instanceValue)
-                            updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + strValue)
-                        }
-                        else {
-                            updateKvp.add(actualName + CommonSqlDataTypeUtilities.Is + CommonSqlDataTypeUtilities.Null)
-                        }
+                        val strValue = CommonSqlDataTypeUtilities
+                                .getFormattedString(actualValue)
+                        updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + strValue)
                     }
                 }
 
@@ -333,52 +310,37 @@ public class HiveGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildInsertIntoTable(
-            classModel: Class<T>,
-            newInsertModel: T): String? {
+    override fun buildInsertIntoTable(
+            definition: DefinitionModel,
+            newInsertModel: Map<String, Any>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
             CommonSqlDataTypeUtilities.getNameTypes(
-                    classModel,
+                    definition,
                     this.javaIdName,
+                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                     this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val values = ArrayList<String>()
 
-            classModel
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                        !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.genericReturnType.typeName) }
+            definition
+                .properties
+                .filter { newInsertModel.containsKey(it.name) }
                 .sortedBy { it.name }
                 .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
 
                     if (nameTypeMap.containsKey(actualName)) {
-                        val instanceValue = it.invoke(newInsertModel)
+                        val instanceValue = newInsertModel[it.name]
                         values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
-                    }
-                    else if (nameTypeMap.containsKey(actualName) &&
-                            nameTypeMap[actualName]!!.isForeignKey) {
-                        val actualForeignObject = it.invoke(newInsertModel)
-
-                        if (actualForeignObject != null) {
-                            val instanceValue = (actualForeignObject as IEntity<*>).id
-                            val strValue = CommonSqlDataTypeUtilities
-                                    .getFormattedString(instanceValue)
-                            values.add(strValue)
-                        }
-                        else {
-                            values.add(CommonSqlDataTypeUtilities.Null)
-                        }
                     }
                 }
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
-                    classModel.simpleName,
+                    definition.name,
                     values.joinToString(CommonSqlDataTypeUtilities.Comma))
 
             return insertSql
@@ -388,10 +350,11 @@ public class HiveGeneratorService(
         }
     }
 
-    override fun <K, T : IEntity<K>> buildCreateTable(classType: Class<T>): String? {
+    override fun buildCreateTable(definition: DefinitionModel): String? {
         val nameTypes = CommonSqlDataTypeUtilities.getNameTypes(
-                classType,
+                definition,
                 this.javaIdName,
+                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
                 this.javaTypeToSqlType)
 
         if (nameTypes.size == 0) {
@@ -400,10 +363,7 @@ public class HiveGeneratorService(
 
         val workspace = StringBuilder()
 
-        for (nameType in CommonSqlDataTypeUtilities.getNameTypes(
-                classType,
-                this.javaIdName,
-                this.javaTypeToSqlType)) {
+        for (nameType in nameTypes) {
             if (workspace.length == 0) {
                 workspace
                     .append(CommonSqlDataTypeUtilities.Space)
@@ -423,7 +383,7 @@ public class HiveGeneratorService(
 
         val createTableSql = java.lang.String.format(
             CreateInitialTableTemplate,
-            classType.simpleName,
+            definition.name,
             workspace.toString(),
             10)
 

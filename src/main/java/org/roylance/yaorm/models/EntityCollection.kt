@@ -2,7 +2,7 @@ package org.roylance.yaorm.models
 
 import java.util.*
 
-class EntityCollection<K, T: IEntity<K>> (val entityDefinition: Class<T>) : MutableCollection<T> {
+class EntityCollection<T: IEntity> (val entityDefinition: Class<T>) : MutableCollection<T> {
     private val internalCollection = ArrayList<T>()
     override fun iterator(): MutableIterator<T> {
         return this.internalCollection.iterator()

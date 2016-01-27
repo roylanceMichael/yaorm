@@ -7,7 +7,7 @@ class MigrationModel (
         override var id:String=UUID.randomUUID().toString(),
         var contextName: String="",
         var modelDefinitionJson: String="",
-        var insertDate: Long=Date().time) : IEntity<String> {
+        var insertDate: Long=Date().time) : IEntity {
     companion object {
         val ContextName = "contextName"
     }

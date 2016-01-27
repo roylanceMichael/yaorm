@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
+import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
@@ -12,21 +13,28 @@ import org.roylance.yaorm.utilities.EntityUtils
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
-class EntityService<K, T: IEntity<K>>(
+class EntityService<T: IEntity>(
         public override val entityDefinition: Class<T>,
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService,
         public override val indexDefinition: IndexModel? = null
-) : IEntityService<K, T> {
+) : IEntityService<T> {
 
+    private val definition: DefinitionModel
+    private val currentDefinitions: List<EntityDefinitionModel<*>>
     private val foreignObjects:List<EntityDefinitionModel<*>>
-    private val cachedStore: MutableMap<K, T> = HashMap()
+    private val cachedStore: MutableMap<String, T> = HashMap()
     private val currentlyExecutingItems = HashSet<Int>()
     private var loadForeignObjects = false
 
     init {
+        // get definitions
+        this.currentDefinitions = EntityUtils.getProperties(this.entityDefinition.newInstance())
+
         this.foreignObjects = EntityUtils
                 .getAllForeignObjects(this.entityDefinition)
+
+        this.definition = EntityUtils.getDefinition(this.entityDefinition)
     }
 
     override var entityContext: EntityContext? = null
@@ -43,7 +51,7 @@ class EntityService<K, T: IEntity<K>>(
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
-        this.granularDatabaseService.executeUpdateQuery<Any>(customSql)
+        this.granularDatabaseService.executeUpdateQuery(customSql)
         return true
     }
 
@@ -56,7 +64,7 @@ class EntityService<K, T: IEntity<K>>(
             return 0L
         }
 
-        val countSql = this.sqlGeneratorService.buildCountSql(this.entityDefinition)
+        val countSql = this.sqlGeneratorService.buildCountSql(this.definition)
 
         val cursor = this.granularDatabaseService
                 .executeSelectQuery(GenericModel::class.java, countSql)
@@ -74,10 +82,10 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val createTableSql = this.sqlGeneratorService
-                .buildCreateTable(this.entityDefinition) ?: return false
+                .buildCreateTable(this.definition) ?: return false
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(createTableSql)
+                .executeUpdateQuery(createTableSql)
                 .successful
     }
 
@@ -87,10 +95,10 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val dropTableSql = this.sqlGeneratorService
-            .buildDropTable(this.entityDefinition)
+            .buildDropTable(this.definition)
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(dropTableSql)
+                .executeUpdateQuery(dropTableSql)
                 .successful
     }
 
@@ -100,12 +108,12 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
-                this.entityDefinition,
+                this.definition,
                 indexModel.columnNames,
                 indexModel.includeNames) ?: return false
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(createIndexSql)
+                .executeUpdateQuery(createIndexSql)
                 .successful
     }
 
@@ -115,11 +123,11 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
-                this.entityDefinition,
+                this.definition,
                 indexModel.columnNames) ?: return false
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(dropIndexSql)
+                .executeUpdateQuery(dropIndexSql)
                 .successful
     }
 
@@ -129,15 +137,12 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val addColumnSql = this.sqlGeneratorService.buildCreateColumn(
-                this.entityDefinition,
-                propertyDefinitionModel.name,
-                propertyDefinitionModel.type)
-        if (addColumnSql != null) {
-            return this.granularDatabaseService
-                    .executeUpdateQuery<K>(addColumnSql)
-                    .successful
-        }
-        return false
+                this.definition,
+                propertyDefinitionModel) ?: return false
+
+        return this.granularDatabaseService
+                .executeUpdateQuery(addColumnSql)
+                .successful
     }
 
     override fun dropColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
@@ -146,11 +151,11 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val dropTableSqlStatements = this.sqlGeneratorService.buildDropColumn(
-                this.entityDefinition,
-                propertyDefinitionModel.name) ?: return false
+                this.definition,
+                propertyDefinitionModel) ?: return false
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(dropTableSqlStatements)
+                .executeUpdateQuery(dropTableSqlStatements)
                 .successful
     }
 
@@ -180,7 +185,7 @@ class EntityService<K, T: IEntity<K>>(
         return returnRecords
     }
 
-    override fun get(id: K): T? {
+    override fun get(id: String): T? {
         if (!this.granularDatabaseService.isAvailable()) {
             return null
         }
@@ -195,7 +200,7 @@ class EntityService<K, T: IEntity<K>>(
                 id as Any)
 
         val whereSql = this.sqlGeneratorService
-                .buildWhereClause(this.entityDefinition, whereClause) ?: return null
+                .buildWhereClause(this.definition, whereClause) ?: return null
 
         val resultSet = this.granularDatabaseService.executeSelectQuery(
                 this.entityDefinition,
@@ -222,11 +227,10 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val allSql =
-                this.sqlGeneratorService.buildSelectAll(this.entityDefinition, n)
+                this.sqlGeneratorService.buildSelectAll(this.definition, n)
 
         val allObjects:List<T> = this.granularDatabaseService.executeSelectQuery(
-                this.entityDefinition,
-                allSql)
+                this.entityDefinition, allSql)
                 .getRecords()
 
         val returnObjects = ArrayList<T>()
@@ -253,7 +257,7 @@ class EntityService<K, T: IEntity<K>>(
 
         val whereSql =
                 this.sqlGeneratorService.buildWhereClause(
-                        this.entityDefinition,
+                        this.definition,
                         whereClauseItem) ?: return arrayListOf()
 
         val allObjects:List<T> = this.granularDatabaseService.executeSelectQuery(
@@ -293,19 +297,24 @@ class EntityService<K, T: IEntity<K>>(
                 temporaryList.add(it)
 
                 if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
+                    val mapsFromObjects = EntityUtils.getMapsFromObjects(this.currentDefinitions, temporaryList)
+
                     val bulkInsertSql = this.sqlGeneratorService
-                            .buildBulkInsert(this.entityDefinition, temporaryList)
+                            .buildBulkInsert(this.definition, mapsFromObjects)
+
                     val result = this.granularDatabaseService
-                            .executeUpdateQuery<K>(bulkInsertSql)
+                            .executeUpdateQuery(bulkInsertSql)
                     results.add(result.successful)
                     temporaryList.clear()
                 }
             }
 
         if (!temporaryList.isEmpty()) {
-            val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.entityDefinition, temporaryList)
+            val mapsFromObjects = EntityUtils.getMapsFromObjects(this.currentDefinitions, temporaryList)
+            val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.definition, mapsFromObjects)
+
             val result = this.granularDatabaseService
-                    .executeUpdateQuery<K>(bulkInsertSql)
+                    .executeUpdateQuery(bulkInsertSql)
             results.add(result.successful)
         }
 
@@ -340,11 +349,14 @@ class EntityService<K, T: IEntity<K>>(
             // handle foreign objects first
             this.createOrUpdateForeignObject(entity)
 
+            val mappedObject = EntityUtils.getMapFromObject(this.currentDefinitions, entity)
+
             // create
             val insertSql = this.sqlGeneratorService
-                    .buildInsertIntoTable(this.entityDefinition, entity) ?: return false
+                    .buildInsertIntoTable(this.definition, mappedObject) ?: return false
+
             val result = this.granularDatabaseService
-                    .executeUpdateQuery<K>(insertSql)
+                    .executeUpdateQuery(insertSql)
 
             if (result.generatedKeys != null &&
                     result.generatedKeys!!.size > 0) {
@@ -374,13 +386,16 @@ class EntityService<K, T: IEntity<K>>(
 
         try {
             this.createOrUpdateForeignObject(entity)
+
+            val objectMap = EntityUtils.getMapFromObject(this.currentDefinitions, entity)
+
             // update
             val updateSql = this
                     .sqlGeneratorService
-                    .buildUpdateTable(this.entityDefinition, entity) ?: return false
+                    .buildUpdateTable(this.definition, objectMap) ?: return false
 
             val result = this.granularDatabaseService
-                    .executeUpdateQuery<K>(updateSql)
+                    .executeUpdateQuery(updateSql)
 
             this.createOrUpdateForeignObjectCollections(entity)
             this.cachedStore[entity.id] = entity
@@ -400,18 +415,18 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         val updateSql = this.sqlGeneratorService.buildUpdateWithCriteria(
-                this.entityDefinition,
+                this.definition,
                 newValues,
                 whereClauseItem) ?: return false
 
         this.cachedStore.clear()
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(updateSql)
+                .executeUpdateQuery(updateSql)
                 .successful
     }
 
-    override fun delete(id: K): Boolean {
+    override fun delete(id: String): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -422,10 +437,10 @@ class EntityService<K, T: IEntity<K>>(
 
         val deleteSql =
                 this.sqlGeneratorService
-                        .buildDeleteTable(this.entityDefinition, id) ?: return false
+                        .buildDeleteTable(this.definition, id as Any) ?: return false
 
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(deleteSql)
+                .executeUpdateQuery(deleteSql)
                 .successful
     }
 
@@ -435,9 +450,9 @@ class EntityService<K, T: IEntity<K>>(
         }
 
         this.cachedStore.clear()
-        val sql = this.sqlGeneratorService.buildDeleteAll(this.entityDefinition)
+        val sql = this.sqlGeneratorService.buildDeleteAll(this.definition)
         return this.granularDatabaseService
-                .executeUpdateQuery<K>(sql)
+                .executeUpdateQuery(sql)
                 .successful
     }
 
@@ -451,8 +466,7 @@ class EntityService<K, T: IEntity<K>>(
                 .filter { EntityDefinitionModel.List.equals(it.type) }
                 .forEach {
                         // we're dealing with a list
-                        val entityCollection = it.getMethod.invoke(actualObject)
-                                as EntityCollection<Any,IEntity<Any>>? ?: return@forEach
+                        val entityCollection = it.getMethod.invoke(actualObject) as EntityCollection<IEntity>? ?: return@forEach
 
                         // get first object
                         if (entityCollection.size == 0) {
@@ -505,12 +519,12 @@ class EntityService<K, T: IEntity<K>>(
                 .filter { EntityDefinitionModel.Single.equals(it.type) }
                 .forEach {
                     // not going to update single items.. for now
-                    val castToAny = it.entityDefinition as Class<IEntity<Any>>
+                    val castToAny = it.entityDefinition as Class<IEntity>
 
                     val foreignService = this.entityContext!!
                             .getForeignService(castToAny) ?: return@forEach
 
-                    val foreignObject = it.getMethod.invoke(actualObject) as IEntity<Any>?
+                    val foreignObject = it.getMethod.invoke(actualObject) as IEntity?
                     if (foreignObject != null) {
                         foreignService.createOrUpdate(foreignObject)
                     }
@@ -532,12 +546,12 @@ class EntityService<K, T: IEntity<K>>(
                         val foreignObject = it.getMethod.invoke(actualObject)
                                 ?: return@forEach
 
-                        val castToAny = it.entityDefinition as Class<IEntity<Any>>
+                        val castToAny = it.entityDefinition as Class<IEntity>
                         val foreignService = this.entityContext
                                 ?.getForeignService(castToAny) ?: return@forEach
 
                         val builtWhereClause = EntityUtils
-                                .buildWhereClauseOnId((foreignObject as IEntity<*>))
+                                .buildWhereClauseOnId((foreignObject as IEntity))
                         val foreignObjects = foreignService.where(builtWhereClause)
 
                         if (foreignObjects.size > 0) {
@@ -546,7 +560,7 @@ class EntityService<K, T: IEntity<K>>(
                     }
                     else {
                         val foreignObject = it.getMethod.invoke(actualObject)
-                                as EntityCollection<Any,IEntity<Any>>? ?: return@forEach
+                                as EntityCollection<IEntity>? ?: return@forEach
                         // should never be null, but just in case
 
                         val foreignService = this.entityContext
