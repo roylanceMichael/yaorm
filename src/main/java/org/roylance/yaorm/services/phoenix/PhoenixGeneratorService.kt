@@ -6,6 +6,7 @@ import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.SqlGeneratorUtils
 import java.util.*
 
 public class PhoenixGeneratorService (
@@ -134,11 +135,15 @@ public class PhoenixGeneratorService (
         return deleteSql
     }
 
-    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any>): String? {
+    override fun buildUpdateTable(
+            definition: DefinitionModel,
+            updateModel: Map<String, Any>): String? {
         return this.buildInsertIntoTable(definition, updateModel)
     }
 
-    override fun buildInsertIntoTable(definition: DefinitionModel, newInsertModel: Map<String, Any>): String? {
+    override fun buildInsertIntoTable(
+            definition: DefinitionModel,
+            newInsertModel: Map<String, Any>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
@@ -152,17 +157,15 @@ public class PhoenixGeneratorService (
             val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
 
-            definition.properties
-                .sortedBy { it.name }
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    newInsertModel)
+
+            mapWithCorrectValues
                 .forEach {
-                    val actualName = it.name
-
-                    if (nameTypeMap.containsKey(actualName) && newInsertModel.containsKey(actualName)) {
-                        columnNames.add(actualName)
-
-                        val instanceValue = newInsertModel[actualName]
-                        values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
-                    }
+                    columnNames.add(it.key)
+                    values.add(it.value)
                 }
 
             val insertSql = java.lang.String.format(

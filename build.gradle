@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.42-SNAPSHOT'
+version '0.43-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -41,7 +41,7 @@ artifactory {
 }
 
 buildscript {
-    ext.kotlin_version = '1.0.0-beta-2423'
+    ext.kotlin_version = '1.0.0-beta-4589'
     repositories {
         jcenter()
         mavenCentral()

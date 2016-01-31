@@ -6,6 +6,7 @@ import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.SqlGeneratorUtils
 import java.util.*
 
 public class SQLiteGeneratorService(
@@ -138,13 +139,15 @@ public class SQLiteGeneratorService(
             var criteriaString: String = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 
-            newValues
-                    .forEach {
-                        val actualName = it.key
-                        val actualValue = it.value
-                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
-                        updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
-                    }
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    newValues)
+
+            mapWithCorrectValues
+                .forEach {
+                    updateKvp.add(it.key + CommonSqlDataTypeUtilities.Equals + it.value)
+                }
 
             // nope, not updating entire table
             if (criteriaString.length == 0) {
@@ -194,26 +197,18 @@ public class SQLiteGeneratorService(
             .forEach { instance ->
                 val valueColumnPairs = ArrayList<String>()
 
-                definition
-                    .properties
-                    .sortedBy { it.name }
+                val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                        definition,
+                        nameTypeMap,
+                        instance)
+
+                mapWithCorrectValues
                     .forEach {
-                        val actualName = it.name
-                        val javaType = it.type
-                        if (nameTypeMap.containsKey(actualName) &&
-                                instance.containsKey(actualName) &&
-                                this.javaTypeToSqlType.containsKey(javaType)) {
-
-                            val instanceValue = instance[actualName]
-                            val cleansedValue = CommonSqlDataTypeUtilities
-                                    .getFormattedString(instanceValue)
-
-                            if (valueColumnPairs.isEmpty()) {
-                                valueColumnPairs.add("select $cleansedValue as $actualName")
-                            }
-                            else {
-                                valueColumnPairs.add("$cleansedValue as $actualName")
-                            }
+                        if (valueColumnPairs.isEmpty()) {
+                            valueColumnPairs.add("select ${it.value} as ${it.key}")
+                        }
+                        else {
+                            valueColumnPairs.add("${it.value} as ${it.key}")
                         }
                     }
 
@@ -273,22 +268,18 @@ public class SQLiteGeneratorService(
             var stringId: String? = null
 
             val updateKvp = ArrayList<String>()
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    updateModel)
 
-            definition.properties
-                .sortedBy { it.name }
+            mapWithCorrectValues
                 .forEach {
-                    val actualName = it.name
-                    val javaType = it.type
-                    if (this.javaTypeToSqlType.containsKey(javaType) && updateModel.containsKey(actualName)) {
-                        val actualValue = updateModel[actualName]
-                        val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
-
-                        if (javaIdName.equals(actualName)) {
-                            stringId = stringValue
-                        }
-                        else if (nameTypeMap.containsKey(actualName)) {
-                            updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
-                        }
+                    if (it.key.equals(this.javaIdName)) {
+                        stringId = it.value
+                    }
+                    else {
+                        updateKvp.add(it.key + CommonSqlDataTypeUtilities.Equals + it.value)
                     }
                 }
 
@@ -327,19 +318,15 @@ public class SQLiteGeneratorService(
             val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
 
-            definition.properties
-                .sortedBy { it.name }
-                .forEach {
-                    val actualName = it.name
-                    val javaType = it.type
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    newInsertModel)
 
-                    if (nameTypeMap.containsKey(actualName) &&
-                            this.javaTypeToSqlType.containsKey(javaType) &&
-                            newInsertModel.containsKey(actualName)) {
-                        columnNames.add(actualName)
-                        val instanceValue = newInsertModel[actualName]
-                        values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
-                    }
+            mapWithCorrectValues
+                .forEach {
+                    columnNames.add(it.key)
+                    values.add(it.value)
                 }
 
             val insertSql = java.lang.String.format(

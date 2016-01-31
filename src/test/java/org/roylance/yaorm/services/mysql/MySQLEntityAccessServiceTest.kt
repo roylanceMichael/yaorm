@@ -53,7 +53,7 @@ class MySQLEntityAccessServiceTest {
         Assert.assertEquals(1, allBeacons.size)
 
         val foundBeacon = allBeacons.first()
-        Assert.assertEquals(0, foundBeacon.id)
+        Assert.assertEquals(newBeacon.id, foundBeacon.id)
         Assert.assertEquals(beaconId, foundBeacon.beaconId)
         Assert.assertEquals(majorId, foundBeacon.majorId)
         Assert.assertEquals(minorId, foundBeacon.minorId)

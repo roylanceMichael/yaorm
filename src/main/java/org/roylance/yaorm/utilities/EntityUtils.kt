@@ -52,7 +52,13 @@ object EntityUtils {
                     val name = CommonSqlDataTypeUtilities.lowercaseFirstChar(
                             it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
                     val javaType = it.returnType.name
-                    PropertyDefinitionModel(name, javaType)
+
+                    if (javaType.equals(EntityCollectionName)) {
+                        PropertyDefinitionModel(name, javaType, true)
+                    }
+                    else {
+                        PropertyDefinitionModel(name, javaType)
+                    }
                 }
 
         return DefinitionModel(classType.simpleName,

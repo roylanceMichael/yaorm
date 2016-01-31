@@ -6,6 +6,7 @@ import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.SqlGeneratorUtils
 import java.util.*
 
 public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000) : ISqlGeneratorService {
@@ -108,12 +109,14 @@ public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000
                     .buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 
-            newValues
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    newValues)
+
+            mapWithCorrectValues
                 .forEach {
-                    val actualName = it.key
-                    val actualValue = it.value
-                    val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
-                    updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
+                    updateKvp.add(it.key + CommonSqlDataTypeUtilities.Equals + it.value)
                 }
 
             // nope, not updating entire table
@@ -167,8 +170,7 @@ public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000
             .properties
             .sortedBy { it.name }
             .forEach {
-                if (nameTypeMap.containsKey(it.name) &&
-                        !javaIdName.equals(it.name)) {
+                if (nameTypeMap.containsKey(it.name)) {
                     columnNames.add(it.name)
                 }
             }
@@ -179,37 +181,18 @@ public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000
         items
             .forEach { instance ->
                 val valueColumnPairs = ArrayList<String>()
+                val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                        definition,
+                        nameTypeMap,
+                        instance)
 
-                definition
-                    .properties
-                    .sortedBy { it.name }
+                mapWithCorrectValues
                     .forEach {
-                        val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
-
-                        if (nameTypeMap.containsKey(actualName) &&
-                                instance.containsKey(actualName) &&
-                                !nameTypeMap[actualName]!!.isForeignKey) {
-                            val instanceValue = instance[actualName]
-                            val cleansedValue = CommonSqlDataTypeUtilities.getFormattedString(instanceValue)
-
-                            valueColumnPairs.add(cleansedValue)
+                        if (valueColumnPairs.isEmpty()) {
+                            valueColumnPairs.add("select ${it.value} as ${it.key}")
                         }
-                        else if (nameTypeMap.containsKey(actualName) &&
-                                instance.containsKey(actualName) &&
-                                nameTypeMap[actualName]!!.isForeignKey) {
-
-                            val foreignObject = instance[actualName]
-                            var strValue:String?
-
-                            strValue = CommonSqlDataTypeUtilities
-                                    .getFormattedString(foreignObject)
-
-                            if (valueColumnPairs.isEmpty()) {
-                                valueColumnPairs.add("select $strValue as $actualName")
-                            }
-                            else {
-                                valueColumnPairs.add("$strValue as $actualName")
-                            }
+                        else {
+                            valueColumnPairs.add("${it.value} as ${it.key}")
                         }
                     }
 
@@ -268,28 +251,18 @@ public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000
 
             val updateKvp = ArrayList<String>()
 
-            definition
-                .properties
-                .filter { updateModel.contains(it.name) }
-                .sortedBy { it.name }
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    updateModel)
+
+            mapWithCorrectValues
                 .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
-
-                    val actualValue = updateModel[it.name]
-                    val stringValue = CommonSqlDataTypeUtilities.getFormattedString(actualValue)
-
-                    if (javaIdName.equals(actualName)) {
-                        stringId = stringValue
+                    if (it.key.equals(this.javaIdName)) {
+                        stringId = it.value
                     }
-                    else if (this.javaTypeToSqlType.containsKey(it.type)) {
-                        updateKvp.add(
-                                actualName + CommonSqlDataTypeUtilities.Equals + stringValue)
-                    }
-                    else if(nameTypeMap.containsKey(actualName) &&
-                            nameTypeMap[actualName]!!.isForeignKey) {
-                        val strValue = CommonSqlDataTypeUtilities
-                                .getFormattedString(actualValue)
-                        updateKvp.add(actualName + CommonSqlDataTypeUtilities.Equals + strValue)
+                    else {
+                        updateKvp.add(it.key + CommonSqlDataTypeUtilities.Equals + it.value)
                     }
                 }
 
@@ -324,18 +297,14 @@ public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val values = ArrayList<String>()
+            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
+                    definition,
+                    nameTypeMap,
+                    newInsertModel)
 
-            definition
-                .properties
-                .filter { newInsertModel.containsKey(it.name) }
-                .sortedBy { it.name }
+            mapWithCorrectValues
                 .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(it.name)
-
-                    if (nameTypeMap.containsKey(actualName)) {
-                        val instanceValue = newInsertModel[it.name]
-                        values.add(CommonSqlDataTypeUtilities.getFormattedString(instanceValue))
-                    }
+                    values.add(it.value)
                 }
 
             val insertSql = java.lang.String.format(

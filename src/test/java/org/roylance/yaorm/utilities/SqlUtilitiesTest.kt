@@ -33,7 +33,8 @@ class SqlUtilitiesTest {
         val newInsertModelMap = EntityUtils.getMapFromObject(definitions, newInsertModel)
 
         // act
-        val insertSql = sqliteGeneratorService.buildInsertIntoTable(this.beaconBroadcastDefinition, newInsertModelMap)
+        val insertSql = sqliteGeneratorService
+                .buildInsertIntoTable(this.beaconBroadcastDefinition, newInsertModelMap)
 
         // assert
         assert(insertSql != null)
