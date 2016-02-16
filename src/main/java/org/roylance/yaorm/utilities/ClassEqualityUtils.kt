@@ -78,8 +78,12 @@ object ClassEqualityUtils {
             return false
         }
 
-        val firstMap = firstCollection.toMapBy { it.id }
-        val secondMap = secondCollection.toMapBy { it.id }
+        val firstMap = HashMap<String, IEntity>()
+        firstCollection
+            .forEach { firstMap[it.id] = it }
+        val secondMap = HashMap<String, IEntity>()
+        secondCollection
+            .forEach { secondMap[it.id] = it }
 
         if (firstMap.size != secondMap.size) {
             return false

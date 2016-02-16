@@ -67,12 +67,15 @@ object EntityUtils {
     }
 
     fun getProperties(item:Any):List<EntityDefinitionModel<*>> {
-        val allGetMethods = item
-            .javaClass
-            .methods
-            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
-            .map { it }
-            .toMapBy { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
+        val allGetMethods = HashMap<String, Method>()
+        item
+                .javaClass
+                .methods
+                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                .map { it }
+                .forEach {
+                    allGetMethods[it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)] = it
+                }
 
         return item
             .javaClass
