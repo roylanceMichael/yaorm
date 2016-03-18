@@ -5,9 +5,9 @@ import org.roylance.yaorm.services.EntityContext
 import org.roylance.yaorm.services.IEntityService
 import java.util.*
 
-public class TestEntityContext (
-    public val anotherTestModelService: IEntityService<AnotherTestModel>,
-    public val beaconBroadcastService: IEntityService<BeaconBroadcastModel>,
+class TestEntityContext (
+    val anotherTestModelService: IEntityService<AnotherTestModel>,
+    val beaconBroadcastService: IEntityService<BeaconBroadcastModel>,
     migrationService: IEntityService<MigrationModel>) : EntityContext(
     Arrays.asList(anotherTestModelService, beaconBroadcastService),
     migrationService,

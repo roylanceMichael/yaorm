@@ -62,7 +62,7 @@ class JDBCCursor<T> (
     }
 
     fun <T: IEntity> getRecord(): T {
-        val newInstance = this.classModel.newInstance()!! as T
+        val newInstance = this.classModel.newInstance()
 
         if (this.columnNamesFromResultSet.isEmpty()) {
             val totalColumns = this.resultSet.metaData.columnCount
@@ -162,7 +162,7 @@ class JDBCCursor<T> (
                 }
             }
 
-        return newInstance
+        return newInstance as T
     }
 
     override fun <T : IEntity> getRecords(): List<T> {

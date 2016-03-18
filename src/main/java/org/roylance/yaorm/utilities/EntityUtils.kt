@@ -195,6 +195,6 @@ object EntityUtils {
         return WhereClauseItem(
             IdNameLowercase,
             WhereClauseItem.Equals,
-            entity.id!!)
+                entity.id)
     }
 }

@@ -8,9 +8,9 @@ import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.io.File
 import java.util.*
 
-public class SQLiteEntityAccessServiceTest {
-//     @Test
-    public fun readmeTest() {
+class SQLiteEntityAccessServiceTest {
+    // @Test
+    fun readmeTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         val beaconId = "test"
@@ -60,7 +60,7 @@ public class SQLiteEntityAccessServiceTest {
     }
 
 //     @Test
-    public fun simpleCreateTest() {
+fun simpleCreateTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
