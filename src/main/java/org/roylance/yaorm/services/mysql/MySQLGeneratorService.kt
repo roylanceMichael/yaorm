@@ -109,7 +109,6 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
         for (nameType in nameTypes) {
             if (javaIdName.equals(nameType.sqlColumnName)) {
-                // if type is string, let's limit it to 40 chars
                 var dataType = nameType.dataType
                 if (SqlTextName.equals(dataType)) {
                     dataType = SqlTextIdName
@@ -188,7 +187,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
         val columnNames = definition.properties.sortedBy { it.name }.map { it.name }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonSqlDataTypeUtilities.Comma)
-        val initialStatement = "insert into ${this.schemaName}.$tableName ($commaSeparatedColumnNames) "
+        val initialStatement = "replace into ${this.schemaName}.$tableName ($commaSeparatedColumnNames) "
         val selectStatements = ArrayList<String>()
 
         items
