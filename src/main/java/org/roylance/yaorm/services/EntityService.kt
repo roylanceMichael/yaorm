@@ -14,10 +14,10 @@ import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
 class EntityService<T: IEntity>(
-        public override val entityDefinition: Class<T>,
+        override val entityDefinition: Class<T>,
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService,
-        public override val indexDefinition: IndexModel? = null
+        override val indexDefinition: IndexModel? = null
 ) : IEntityService<T> {
 
     private val definition: DefinitionModel

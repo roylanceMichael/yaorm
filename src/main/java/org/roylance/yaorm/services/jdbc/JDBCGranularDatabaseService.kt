@@ -14,7 +14,12 @@ class JDBCGranularDatabaseService(
         try {
             return this.connection.isValid(TenSeconds)
         }
+        catch(e: UnsupportedOperationException) {
+            e.printStackTrace()
+            return true
+        }
         catch(e: Exception) {
+            e.printStackTrace()
             // todo: log better
             return false
         }

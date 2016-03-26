@@ -5,6 +5,7 @@ import org.roylance.yaorm.models.IEntity;
 public class TestModel implements IEntity {
     private String id;
     private String name;
+    private String date;
 
     @Override
     public String getId() {
@@ -15,9 +16,17 @@ public class TestModel implements IEntity {
         return this.name;
     }
 
+    public String getDate() {
+        return this.date;
+    }
+
     public TestModel setName(String value) {
         this.name = value;
         return this;
+    }
+
+    public void setDate(String value) {
+        this.date = value;
     }
 
     @Override

@@ -2,6 +2,7 @@ package org.roylance.yaorm.services.phoenix
 
 import org.junit.Assert
 import org.junit.Test
+import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.EntityService
@@ -29,20 +30,22 @@ class PhoenixEntityAccessServiceTest {
         try {
             val testModel = TestModel()
             testModel.id = id
-            testModel.setName(name)
+            testModel.name = name
+            testModel.date = "what"
 
             entityService.dropTable()
             entityService.createTable()
             entityService.create(testModel)
 
             val newName = "test1"
-            testModel.setName(newName)
+            testModel.name = newName
 
             // act
             entityService.create(testModel)
 
             // assert
-            val testModels = entityService.getMany()
+            val whereClauseItem = WhereClauseItem("date", WhereClauseItem.Equals, "what")
+            val testModels = entityService.where(whereClauseItem)
 
             Assert.assertEquals(1, testModels.size)
 
@@ -124,7 +127,7 @@ class PhoenixEntityAccessServiceTest {
     }
 
 //     @Test
-    public fun simpleDeletePhoenixTest() {
+    fun simpleDeletePhoenixTest() {
         // arrange
         val id = "1"
         val name = "mike"
@@ -159,7 +162,7 @@ class PhoenixEntityAccessServiceTest {
     }
 
 //     @Test
-    public fun simpleCustomPhoenixTest() {
+    fun simpleCustomPhoenixTest() {
         // arrange
         val description = "mike"
 
@@ -203,7 +206,7 @@ class PhoenixEntityAccessServiceTest {
     }
 
 //     @Test
-    public fun simpleBulkInsertPhoenixTest() {
+    fun simpleBulkInsertPhoenixTest() {
         // arrange
         val id = "1"
         val name = "mike"

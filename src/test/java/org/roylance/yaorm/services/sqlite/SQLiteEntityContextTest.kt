@@ -13,9 +13,9 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.io.File
 import java.util.*
 
-public class SQLiteEntityContextTest {
+class SQLiteEntityContextTest {
 //    @Test
-    public fun simpleColumnDefinitionsTest() {
+    fun simpleColumnDefinitionsTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -100,7 +100,7 @@ public class SQLiteEntityContextTest {
     }
 
 //     @Test
-    public fun simpleMigrationColumnTest() {
+fun simpleMigrationColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -158,7 +158,7 @@ public class SQLiteEntityContextTest {
     }
 
 //     @Test
-    public fun complexMigrationColumnTest() {
+fun complexMigrationColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -210,7 +210,7 @@ public class SQLiteEntityContextTest {
     }
 
 //    @Test
-    public fun foreignObjectResolveTest() {
+fun foreignObjectResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -244,7 +244,7 @@ public class SQLiteEntityContextTest {
             foreignContext.handleMigrations()
 
             val rootModel = RootTestModel("0", "test")
-            val testModel = ChildTestModel("0", "childTest", rootModel)
+            val testModel = ChildTestModel("0", "childTest", rootModel.id, rootModel)
 
             // act
             foreignContext.rootTestService.create(rootModel)
@@ -265,7 +265,7 @@ public class SQLiteEntityContextTest {
     }
 
 //    @Test
-    public fun foreignObjectListResolveTest() {
+fun foreignObjectListResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -297,8 +297,8 @@ public class SQLiteEntityContextTest {
             foreignContext.handleMigrations()
 
             val rootModel = RootTestModel("0", "test")
-            val testModel = ChildTestModel("0", "childTest", rootModel)
-            val test1Model = ChildTestModel("1", "child1Test", rootModel)
+            val testModel = ChildTestModel("0", "childTest", rootModel.id, rootModel)
+            val test1Model = ChildTestModel("1", "child1Test", rootModel.id, rootModel)
             rootModel.commonChildTests.add(testModel)
             rootModel.commonChildTests.add(test1Model)
 

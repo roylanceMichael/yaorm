@@ -11,7 +11,7 @@ import java.util.*
 
 class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorService {
     private val CreateInitialTableTemplate = "create table if not exists %s (%s)"
-    private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
+    private val InsertIntoTableSingleTemplate = "replace into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
     private val UpdateTableMultipleTemplate = "update %s set %s where %s;"
     private val DeleteTableTemplate = "delete from %s where id=%s;"
@@ -20,7 +20,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
     private val SqlIntegerName = "bigint"
     // http://dev.mysql.com/doc/refman/5.0/en/char.html - thank you
     private val SqlTextName = "mediumtext"
-    private val SqlTextIdName = "varchar(40)"
+    private val SqlTextIdName = "varchar(100)"
     private val SqlRealName = "decimal"
     private val SqlBlobName = "blob"
 

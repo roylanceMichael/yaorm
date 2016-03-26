@@ -13,10 +13,9 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.sql.DriverManager
 import java.util.*
 
-
 class MySQLEntityContextNewTest {
 //        @Test
-        public fun simpleDefinitionTest() {
+        fun simpleDefinitionTest() {
             // arrange
             getConnectionInfo()
             try {
@@ -106,7 +105,7 @@ class MySQLEntityContextNewTest {
         }
 
 //        @Test
-        public fun simpleForeignKeyTest() {
+        fun simpleForeignKeyTest() {
             // arrange
             getConnectionInfo()
             try {
@@ -143,9 +142,9 @@ class MySQLEntityContextNewTest {
                 testEntityContext.handleMigrations()
 
                 val root1Model = RootTestModel(name = "what")
-                val child1Model = ChildTestModel(name = "who", commonRootModel = root1Model)
+                val child1Model = ChildTestModel(name = "who", commonRootModel = root1Model, commonRootModelId = root1Model.id)
                 val root2Model = RootTestModel(name = "where")
-                val child2Model = ChildTestModel(name = "why", commonRootModel = root2Model)
+                val child2Model = ChildTestModel(name = "why", commonRootModel = root2Model, commonRootModelId = root2Model.id)
 
                 // act
                 testEntityContext.rootTestService.create(root1Model)
@@ -154,16 +153,15 @@ class MySQLEntityContextNewTest {
                 testEntityContext.childTestService.create(child2Model)
 
                 //assert
+                val rootItems = testEntityContext.rootTestService.getMany()
                 val children = testEntityContext.childTestService.getMany()
 
+                Assert.assertTrue(rootItems.size == 2)
                 Assert.assertTrue(children.size == 2)
-
-                val firstChild = children.first()
-                val lastChild = children.last()
-                Assert.assertTrue(firstChild.commonRootModel != null &&
-                    firstChild.commonRootModel?.id.equals(root1Model.id))
-                Assert.assertTrue(lastChild.commonRootModel != null &&
-                        lastChild.commonRootModel?.id.equals(root2Model.id))
+                Assert.assertTrue(children[0].commonRootModelId.equals(root1Model.id) ||
+                        children[0].commonRootModelId.equals(root2Model.id ))
+                Assert.assertTrue(children[1].commonRootModelId.equals(root1Model.id) ||
+                        children[1].commonRootModelId.equals(root2Model.id ))
             }
             finally {
                 dropSchema()
@@ -171,7 +169,7 @@ class MySQLEntityContextNewTest {
         }
 
 //        @Test
-        public fun simpleMigrationColumnTest() {
+        fun simpleMigrationColumnTest() {
             // arrange
             getConnectionInfo()
             try {
@@ -232,7 +230,7 @@ class MySQLEntityContextNewTest {
         }
 
 //        @Test
-        public fun complexMigrationColumnTest() {
+        fun complexMigrationColumnTest() {
             // arrange
             getConnectionInfo()
             try {
@@ -288,7 +286,7 @@ class MySQLEntityContextNewTest {
         }
 
 //        @Test
-        public fun foreignObjectResolveTest() {
+        fun foreignObjectResolveTest() {
             // arrange
             getConnectionInfo()
             try {
@@ -326,7 +324,7 @@ class MySQLEntityContextNewTest {
                 foreignContext.handleMigrations()
 
                 val rootModel = RootTestModel("0", "test")
-                val testModel = ChildTestModel("0", "childTest", rootModel)
+                val testModel = ChildTestModel("0", "childTest", rootModel.id, rootModel)
 
                 // act
                 foreignContext.rootTestService.create(rootModel)
@@ -347,7 +345,7 @@ class MySQLEntityContextNewTest {
         }
 
 //        @Test
-        public fun foreignObjectListResolveTest() {
+        fun foreignObjectListResolveTest() {
             // arrange
             getConnectionInfo()
             try {
@@ -385,8 +383,8 @@ class MySQLEntityContextNewTest {
                 foreignContext.handleMigrations()
 
                 val rootModel = RootTestModel("0", "test")
-                val testModel = ChildTestModel("0", "childTest", rootModel)
-                val test1Model = ChildTestModel("1", "child1Test", rootModel)
+                val testModel = ChildTestModel("0", "childTest", rootModel.id, rootModel)
+                val test1Model = ChildTestModel("1", "child1Test", rootModel.id, rootModel)
                 rootModel.commonChildTests.add(testModel)
                 rootModel.commonChildTests.add(test1Model)
 
@@ -433,7 +431,7 @@ class MySQLEntityContextNewTest {
                 host = properties.getProperty("host")
                 password = properties.getProperty("password")
                 userName = properties.getProperty("userName")
-                schema = UUID.randomUUID().toString().replace("-", "")
+                schema = "test_$${UUID.randomUUID().toString().replace("-", "")}"
             }
         }
     }

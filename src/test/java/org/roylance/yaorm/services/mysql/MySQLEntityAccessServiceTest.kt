@@ -9,7 +9,7 @@ import java.util.*
 
 class MySQLEntityAccessServiceTest {
 //    @Test
-    public fun simpleCreateMySQLTest() {
+    fun simpleCreateMySQLTest() {
         // arrange
         getConnectionInfo()
 

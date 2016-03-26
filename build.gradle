@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.45-SNAPSHOT'
+version '0.46-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -55,6 +55,7 @@ buildscript {
 
 repositories {
     mavenCentral()
+    maven { url 'http://mikeapps.org:8081/artifactory/ext-release-local' }
 }
 
 dependencies {
@@ -67,6 +68,7 @@ dependencies {
 //    compile 'org.apache.hive:hive-jdbc:1.2.1'
 
 //    compile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
+//    compile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
     compile 'com.google.code.gson:gson:2.4'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

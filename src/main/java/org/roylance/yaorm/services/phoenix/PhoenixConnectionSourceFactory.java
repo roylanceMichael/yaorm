@@ -10,7 +10,7 @@ public class PhoenixConnectionSourceFactory
     implements IConnectionSourceFactory {
 
     private static final String JDBCDriverName = "org.apache.phoenix.jdbc.PhoenixDriver";
-    private static final String JDBCUrl = "jdbc:phoenix:%1$s:/hbase-unsecure";
+     private static final String JDBCUrl = "jdbc:phoenix:%1$s:/hbase-unsecure";
 
     private boolean isClosed;
     private final Connection commonConnection;
