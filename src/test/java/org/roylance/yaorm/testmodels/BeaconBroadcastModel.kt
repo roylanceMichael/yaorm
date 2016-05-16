@@ -13,12 +13,12 @@ class BeaconBroadcastModel(
         var lastSeen: Long = 0) : IEntity {
 
     companion object {
-        val LastSeenName: String = "lastSeen"
-        val IdName: String = "id"
-        val BeaconIdName: String = "beaconId"
-        val MajorIdName: String = "majorId"
-        val MinorIdName: String = "minorId"
-        val ActiveName: String = "active"
-        val CachedNameName: String = "cachedName"
+        const val LastSeenName: String = "lastSeen"
+        const val IdName: String = "id"
+        const val BeaconIdName: String = "beaconId"
+        const val MajorIdName: String = "majorId"
+        const val MinorIdName: String = "minorId"
+        const val ActiveName: String = "active"
+        const val CachedNameName: String = "cachedName"
     }
 }

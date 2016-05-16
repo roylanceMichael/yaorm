@@ -11,10 +11,10 @@ import java.util.*
 
 object EntityUtils {
 
-    private val IdNameLowercase = "id"
-    private val IdName = "Id"
-    private val NumberOfTotalFieldsWithId = 4
-    private val EntityCollectionName = "org.roylance.yaorm.models.EntityCollection"
+    const private val IdNameLowercase = "id"
+    const private val IdName = "Id"
+    const private val NumberOfTotalFieldsWithId = 4
+    const private val EntityCollectionName = "org.roylance.yaorm.models.EntityCollection"
 
     fun getMapsFromObjects(
             entityDefinitions: List<EntityDefinitionModel<*>>,

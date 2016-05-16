@@ -8,11 +8,11 @@ class DifferenceModel(
         val propertyDefinition: PropertyDefinitionModel?=null,
         val definitionModel: DefinitionModel?=null) {
         companion object {
-                val OperationCreate = "create"
-                val OperationDrop = "drop"
+                const val OperationCreate = "create"
+                const val OperationDrop = "drop"
 
-                val EntityTypeIndex = "index"
-                val EntityTypeColumn = "column"
-                val EntityTypeTable = "table"
+                const val EntityTypeIndex = "index"
+                const val EntityTypeColumn = "column"
+                const val EntityTypeTable = "table"
         }
 }

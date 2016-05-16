@@ -1,15 +1,17 @@
 package org.roylance.yaorm.services.jdbc
 
-import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.entity.EntityResultModel
-import org.roylance.yaorm.services.entity.ICursor
-import org.roylance.yaorm.services.entity.IGranularDatabaseService
+import org.roylance.yaorm.models.migration.DefinitionModel
+import org.roylance.yaorm.services.map.IGranularDatabaseMapService
+import org.roylance.yaorm.services.map.IMapCursor
 import java.sql.Connection
 import java.util.*
 
-class JDBCGranularDatabaseService(
+class JDBCGranularDatabaseMapService(
         private val connection: Connection,
-        private val shouldManuallyCommitAfterUpdate: Boolean) : IGranularDatabaseService {
+        private val shouldManuallyCommitAfterUpdate: Boolean
+): IGranularDatabaseMapService {
+
     override fun isAvailable(): Boolean {
         try {
             return this.connection.isValid(TenSeconds)
@@ -22,16 +24,6 @@ class JDBCGranularDatabaseService(
             e.printStackTrace()
             // todo: log better
             return false
-        }
-    }
-
-    override fun commit() {
-        this.connection.commit()
-    }
-
-    override fun close() {
-        if (!this.connection.isClosed) {
-            this.connection.close()
         }
     }
 
@@ -55,16 +47,24 @@ class JDBCGranularDatabaseService(
         }
     }
 
-    override fun <T: IEntity> executeSelectQuery(
-            classModel:Class<T>,
-            query: String): ICursor<T> {
+    override fun executeSelectQuery(definitionModel: DefinitionModel, query: String): IMapCursor {
         val statement = this.connection.prepareStatement(query)
         try {
             val resultSet = statement.executeQuery()
-            return JDBCCursor(classModel, resultSet, statement)
+            return JDBCMapCursor(definitionModel, resultSet, statement)
         }
         finally {
             // normally close, but wait for service to do it
+        }
+    }
+
+    override fun commit() {
+        this.connection.commit()
+    }
+
+    override fun close() {
+        if (!this.connection.isClosed) {
+            this.connection.close()
         }
     }
 

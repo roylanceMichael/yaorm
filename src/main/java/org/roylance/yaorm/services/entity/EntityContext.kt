@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services
+package org.roylance.yaorm.services.entity
 
 import com.google.gson.Gson
 import org.roylance.yaorm.models.IEntity

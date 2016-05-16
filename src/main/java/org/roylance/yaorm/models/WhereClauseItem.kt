@@ -10,12 +10,12 @@ class WhereClauseItem (
         var connectingAndOr:String?=null,
         var connectingWhereClause:WhereClauseItem?=null) {
     companion object {
-        val Equals:String = SqlOperators.Equals
-        val GreaterThan:String = SqlOperators.GreaterThan
-        val LessThan:String = SqlOperators.LessThan
-        val NotEquals:String = SqlOperators.NotEquals
+        const val Equals:String = SqlOperators.Equals
+        const val GreaterThan:String = SqlOperators.GreaterThan
+        const val LessThan:String = SqlOperators.LessThan
+        const val NotEquals:String = SqlOperators.NotEquals
 
-        val And:String = CommonSqlDataTypeUtilities.And
-        val Or:String = CommonSqlDataTypeUtilities.Or
+        const val And:String = CommonSqlDataTypeUtilities.And
+        const val Or:String = CommonSqlDataTypeUtilities.Or
     }
 }

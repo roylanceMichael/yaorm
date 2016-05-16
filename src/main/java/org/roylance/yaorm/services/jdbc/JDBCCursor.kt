@@ -1,7 +1,7 @@
 package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.services.ICursor
+import org.roylance.yaorm.services.entity.ICursor
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.CommonStringUtilities
 import org.roylance.yaorm.utilities.EntityUtils

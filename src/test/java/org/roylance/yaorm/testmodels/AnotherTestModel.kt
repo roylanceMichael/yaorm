@@ -7,8 +7,8 @@ class AnotherTestModel (
     var description:String="",
     var gram:String="") : IEntity {
     companion object {
-        val IdName = "id"
-        val DescriptionName = "description"
-        val GramName = "gram"
+        const val IdName = "id"
+        const val DescriptionName = "description"
+        const val GramName = "gram"
     }
 }

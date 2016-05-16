@@ -11,7 +11,7 @@ import java.util.*
 
 class SQLiteGeneratorServiceTest {
 //     @Test
-    public fun anotherSimpleCreateTest() {
+    fun anotherSimpleCreateTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 

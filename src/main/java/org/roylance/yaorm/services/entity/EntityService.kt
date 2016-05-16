@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services
+package org.roylance.yaorm.services.entity
 
 import org.roylance.yaorm.models.EntityCollection
 import org.roylance.yaorm.models.IEntity
@@ -8,6 +8,7 @@ import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.services.ISqlGeneratorService
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.EntityUtils
 import org.roylance.yaorm.utilities.SqlOperators

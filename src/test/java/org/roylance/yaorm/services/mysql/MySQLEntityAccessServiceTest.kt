@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.mysql
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*

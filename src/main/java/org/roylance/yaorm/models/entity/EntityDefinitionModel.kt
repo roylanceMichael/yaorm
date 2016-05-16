@@ -10,7 +10,7 @@ class EntityDefinitionModel<T>(
         val entityDefinition: Class<T>,
         val type: String) {
     companion object {
-        val Single = "single"
-        val List = "list"
+        const val Single = "single"
+        const val List = "list"
     }
 }

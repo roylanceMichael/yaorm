@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services
+package org.roylance.yaorm.services.entity
 
 import org.roylance.yaorm.models.IEntity
 

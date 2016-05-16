@@ -5,7 +5,7 @@ import org.junit.Test
 import org.roylance.yaorm.models.WhereClauseItem
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
-import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel

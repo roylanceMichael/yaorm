@@ -9,9 +9,7 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.SqlGeneratorUtils
 import java.util.*
 
-public class PhoenixGeneratorService (
-        public override val bulkInsertSize: Int = 500
-) : ISqlGeneratorService {
+class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGeneratorService {
 
     private val CreateInitialTableTemplate = "create table if not exists %s (%s)"
     private val InsertIntoTableSingleTemplate = "upsert into %s (%s) values (%s)"
@@ -26,9 +24,9 @@ public class PhoenixGeneratorService (
     private val PhoenixRealName = "decimal"
     private val PhoenixBinaryName = "binary"
 
-    override public val javaIdName: String = "id"
+    override val javaIdName: String = "id"
 
-    override public val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
+    override val javaTypeToSqlType = object : HashMap<String, String>() {
         init {
             put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName, PhoenixTextName)
             put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName, PhoenixIntegerName)

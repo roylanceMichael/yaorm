@@ -9,7 +9,7 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.SqlGeneratorUtils
 import java.util.*
 
-public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000) : ISqlGeneratorService {
+class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGeneratorService {
 
     private val constJavaIdName = "id"
 
@@ -105,7 +105,7 @@ public class HiveGeneratorService(public override val bulkInsertSize: Int = 2000
                 return null
             }
 
-            var criteriaString: String = CommonSqlDataTypeUtilities
+            val criteriaString: String = CommonSqlDataTypeUtilities
                     .buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 

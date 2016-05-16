@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.sqlite
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.models.db.migration.MigrationModel
-import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.*
 import org.roylance.yaorm.testmodels.after.AfterSimpleTestContext

@@ -9,6 +9,6 @@ class MigrationModel (
         var modelDefinitionJson: String="",
         var insertDate: Long=Date().time) : IEntity {
     companion object {
-        val ContextName = "contextName"
+        const val ContextName = "contextName"
     }
 }

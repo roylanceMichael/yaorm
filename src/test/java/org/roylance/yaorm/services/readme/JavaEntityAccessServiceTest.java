@@ -2,6 +2,9 @@ package org.roylance.yaorm.services.readme;
 
 import org.junit.Test;
 import org.roylance.yaorm.services.*;
+import org.roylance.yaorm.services.entity.EntityService;
+import org.roylance.yaorm.services.entity.IEntityService;
+import org.roylance.yaorm.services.entity.IGranularDatabaseService;
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService;
 import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory;
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService;

@@ -5,7 +5,7 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 
-public class HiveConnectionSourceFactory(
+class HiveConnectionSourceFactory(
         private val host:String,
         private val port:String,
         private val database:String) : IConnectionSourceFactory {

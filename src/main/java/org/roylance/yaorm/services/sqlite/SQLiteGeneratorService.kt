@@ -9,9 +9,7 @@ import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.SqlGeneratorUtils
 import java.util.*
 
-public class SQLiteGeneratorService(
-        public override val bulkInsertSize: Int = 500
-) : ISqlGeneratorService {
+class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGeneratorService {
 
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
@@ -136,7 +134,7 @@ public class SQLiteGeneratorService(
             }
 
             val tableName = definition.name
-            var criteriaString: String = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
+            val criteriaString: String = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 
             val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
