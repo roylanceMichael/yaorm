@@ -27,11 +27,11 @@ interface ISqlGeneratorService {
     fun buildDeleteTable(definition: DefinitionModel, primaryKey: Any): String?
     fun buildDeleteWithCriteria(definition: DefinitionModel, whereClauseItem: WhereClauseItem): String
 
-    fun buildBulkInsert(definition: DefinitionModel, items: List<Map<String, Any>>) : String
-    fun buildInsertIntoTable(definition: DefinitionModel, newInsertModel: Map<String, Any>): String?
+    fun buildBulkInsert(definition: DefinitionModel, items: List<Map<String, Any?>>) : String
+    fun buildInsertIntoTable(definition: DefinitionModel, newInsertModel: Map<String, Any?>): String?
 
-    fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any>): String?
-    fun buildUpdateWithCriteria(definition: DefinitionModel, newValues: Map<String, Any>, whereClauseItem: WhereClauseItem): String?
+    fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any?>): String?
+    fun buildUpdateWithCriteria(definition: DefinitionModel, newValues: Map<String, Any?>, whereClauseItem: WhereClauseItem): String?
 
     fun buildSelectAll(definition: DefinitionModel, n: Int = 1000): String
     fun buildWhereClause(definition: DefinitionModel, whereClauseItem: WhereClauseItem): String?

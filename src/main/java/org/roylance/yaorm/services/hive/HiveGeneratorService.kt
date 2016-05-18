@@ -90,7 +90,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
 
     override fun buildUpdateWithCriteria(
             definition: DefinitionModel,
-            newValues: Map<String, Any>,
+            newValues: Map<String, Any?>,
             whereClauseItem: WhereClauseItem): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
@@ -154,7 +154,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
 
     override fun buildBulkInsert(
             definition: DefinitionModel,
-            items: List<Map<String, Any>>): String {
+            items: List<Map<String, Any?>>): String {
         val tableName = definition.name
         val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
         CommonSqlDataTypeUtilities.getNameTypes(
@@ -232,7 +232,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
         return deleteSql
     }
 
-    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any>): String? {
+    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any?>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonSqlDataTypeUtilities.getNameTypes(
@@ -285,7 +285,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
 
     override fun buildInsertIntoTable(
             definition: DefinitionModel,
-            newInsertModel: Map<String, Any>): String? {
+            newInsertModel: Map<String, Any?>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 

@@ -174,7 +174,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     override fun buildBulkInsert(
             definition: DefinitionModel,
-            items: List<Map<String, Any>>): String {
+            items: List<Map<String, Any?>>): String {
         val tableName = definition.name
         val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
         CommonSqlDataTypeUtilities.getNameTypes(
@@ -219,7 +219,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     override fun buildInsertIntoTable(
             definition: DefinitionModel,
-            newInsertModel: Map<String, Any>): String? {
+            newInsertModel: Map<String, Any?>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
@@ -258,7 +258,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
         }
     }
 
-    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any>): String? {
+    override fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any?>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonSqlDataTypeUtilities.getNameTypes(
@@ -312,7 +312,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     override fun buildUpdateWithCriteria(
             definition: DefinitionModel,
-            newValues: Map<String, Any>,
+            newValues: Map<String, Any?>,
             whereClauseItem: WhereClauseItem): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()

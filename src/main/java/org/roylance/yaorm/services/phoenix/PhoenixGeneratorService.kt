@@ -86,7 +86,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
 
     override fun buildUpdateWithCriteria(
             definition: DefinitionModel,
-            newValues: Map<String, Any>,
+            newValues: Map<String, Any?>,
             whereClauseItem: WhereClauseItem): String? {
         return null
     }
@@ -99,7 +99,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         return "delete from ${definition.name}"
     }
 
-    override fun buildBulkInsert(definition: DefinitionModel, items: List<Map<String, Any>>) : String {
+    override fun buildBulkInsert(definition: DefinitionModel, items: List<Map<String, Any?>>) : String {
         // do single inserts, then commit
         return ""
     }
@@ -135,13 +135,13 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
 
     override fun buildUpdateTable(
             definition: DefinitionModel,
-            updateModel: Map<String, Any>): String? {
+            updateModel: Map<String, Any?>): String? {
         return this.buildInsertIntoTable(definition, updateModel)
     }
 
     override fun buildInsertIntoTable(
             definition: DefinitionModel,
-            newInsertModel: Map<String, Any>): String? {
+            newInsertModel: Map<String, Any?>): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 

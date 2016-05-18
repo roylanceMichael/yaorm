@@ -8,7 +8,7 @@ import java.util.*
 object SqlGeneratorUtils {
     fun buildInsertUpdateValues(definition: DefinitionModel,
                               nameTypeMap: Map<String, ColumnNameTuple<String>>,
-                              model: Map<String, Any>): Map<String, String> {
+                              model: Map<String, Any?>): Map<String, String> {
         val returnMap = TreeMap<String, String>()
         definition.properties
                 .filter { !it.foreignCollection }

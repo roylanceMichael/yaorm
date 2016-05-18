@@ -100,7 +100,7 @@ class SQLiteEntityContextTest {
     }
 
 //     @Test
-fun simpleMigrationColumnTest() {
+    fun simpleMigrationColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -158,7 +158,7 @@ fun simpleMigrationColumnTest() {
     }
 
 //     @Test
-fun complexMigrationColumnTest() {
+    fun complexMigrationColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -210,7 +210,7 @@ fun complexMigrationColumnTest() {
     }
 
 //    @Test
-fun foreignObjectResolveTest() {
+    fun foreignObjectResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 
@@ -265,7 +265,7 @@ fun foreignObjectResolveTest() {
     }
 
 //    @Test
-fun foreignObjectListResolveTest() {
+    fun foreignObjectListResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
 

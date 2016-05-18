@@ -10,7 +10,6 @@ import java.lang.reflect.Method
 import java.util.*
 
 object EntityUtils {
-
     const private val IdNameLowercase = "id"
     const private val IdName = "Id"
     const private val NumberOfTotalFieldsWithId = 4
@@ -18,19 +17,25 @@ object EntityUtils {
 
     fun getMapsFromObjects(
             entityDefinitions: List<EntityDefinitionModel<*>>,
-            objects: List<Any>): List<Map<String, Any>> {
+            objects: List<Any>): List<Map<String, Any?>> {
         return objects
             .map { currentObject ->
                 this.getMapFromObject(entityDefinitions, currentObject)
             }
     }
 
-    fun getMapFromObject(entityDefinitions: List<EntityDefinitionModel<*>>, item: Any) : Map<String, Any> {
-        val returnMap = HashMap<String, Any>()
+    fun getMapFromObject(entityDefinitions: List<EntityDefinitionModel<*>>, item: Any) : Map<String, Any?> {
+        val returnMap = HashMap<String, Any?>()
 
         entityDefinitions
             .forEach {
-                returnMap[it.propertyName] = it.getMethod.invoke(item)
+                val result = it.getMethod.invoke(item)
+                if (result != null) {
+                    returnMap[it.propertyName] = it.getMethod.invoke(item)
+                }
+                else {
+                    returnMap[it.propertyName] = null
+                }
             }
 
         return returnMap
