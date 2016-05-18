@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile(group: 'org.roylance', name: 'yaorm', version: '0.31-SNAPSHOT')
+    compile(group: 'org.roylance', name: 'yaorm', version: '0.48-SNAPSHOT')
 }
 ```
 
@@ -54,7 +54,7 @@ Maven:
     <dependency>
         <groupId>org.roylance</groupId>
         <artifactId>yaorm</artifactId>
-        <version>0.31-SNAPSHOT</version>
+        <version>0.48-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
@@ -68,12 +68,12 @@ Maven:
 First, in your code, implement the IEntity interface for your model. For example, this model
 
 ```java
-public class TestModel implements IEntity<Integer> {
-    private int id;
+public class TestModel implements IEntity {
+    private String id;
     private String name;
 
     @Override
-    public Integer getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -82,7 +82,7 @@ public class TestModel implements IEntity<Integer> {
     }
 
     @Override
-    public TestModel setId(int value) {
+    public TestModel setId(String value) {
         this.id = value;
         return this;
     }
@@ -94,7 +94,7 @@ public class TestModel implements IEntity<Integer> {
 }
 ```
 
-implements the IEntity<Integer> interface, and adds a new property as well. 
+implements the IEntity interface, and adds a new property as well. 
 
 Make sure that your names are nouns, not verbs like "get" or "is".
 
@@ -127,8 +127,8 @@ try  {
             new SQLiteGeneratorService();
 
     // this entity access service uses the previous dependencies to do common CRUD operations against the data store
-    final IEntityService<Integer, TestModel> entityAccessService =
-            new EntityService<>(
+    final IEntityService<TestModel> entityAccessService =
+            new EntityService<TestModel>(
                     TestModel.class,
                     granularDatabaseService,
                     sqlGeneratorService,
@@ -137,6 +137,7 @@ try  {
     // create a new model to test
     final TestModel newModel = new TestModel()
             .setName(testName);
+    newModel.setId("test");
 
     // act
     // create the sqlite table, we know it doesn't exist yet
@@ -147,7 +148,7 @@ try  {
 
     // assert
     // let's get them all, be careful with this, obviously. there is also a filtering method
-    final List<TestModel> foundTestModels = entityAccessService.getAll();
+    final List<TestModel> foundTestModels = entityAccessService.getMany(1000);
 
     // verify we're greater than 0
     assert foundTestModels.size() > 0;
@@ -155,7 +156,7 @@ try  {
     final TestModel foundTestModel = foundTestModels.get(0);
 
     // verify that we incremented the id
-    assert foundTestModel.getId() > 0;
+    assert foundTestModel.getId().equals("test");
 
     // verify that the name is the same one we are expecting
     assert testName.equals(foundTestModel.getName());
@@ -164,7 +165,7 @@ finally {
     granularDatabaseService.close();
 
     // clean up after ourselves
-    databaseFile.delete();
+    databaseFile.deleteOnExit();
 }
 ```
 
