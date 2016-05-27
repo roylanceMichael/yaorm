@@ -6,7 +6,6 @@ import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.models.migration.IndexModel
 import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
@@ -14,6 +13,16 @@ class EntityMapService(
         override val indexDefinition: IndexModel?,
         private val granularDatabaseService: IGranularDatabaseMapService,
         private val sqlGeneratorService: ISqlGeneratorService) : IEntityMapService {
+    override fun getManyStream(n:Int, definition: DefinitionModel, streamer: IMapStreamer) {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return
+        }
+
+        val allSql =
+                this.sqlGeneratorService.buildSelectAll(definition, n)
+
+        this.granularDatabaseService.executeSelectQueryStream(definition, allSql, streamer)
+    }
 
     override fun createTable(definition: DefinitionModel): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {

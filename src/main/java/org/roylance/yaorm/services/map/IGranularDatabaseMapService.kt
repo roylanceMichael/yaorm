@@ -7,5 +7,6 @@ interface IGranularDatabaseMapService : AutoCloseable {
     fun isAvailable(): Boolean
     fun executeUpdateQuery(query:String): EntityResultModel
     fun executeSelectQuery(definitionModel:DefinitionModel, query:String): IMapCursor
+    fun executeSelectQueryStream(definitionModel: DefinitionModel, query:String, streamer: IMapStreamer)
     fun commit()
 }

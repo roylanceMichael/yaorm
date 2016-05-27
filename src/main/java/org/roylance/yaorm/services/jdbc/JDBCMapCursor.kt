@@ -2,6 +2,7 @@ package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.services.map.IMapCursor
+import org.roylance.yaorm.services.map.IMapStreamer
 import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.CommonStringUtilities
 import java.sql.ResultSet
@@ -97,6 +98,18 @@ class JDBCMapCursor(
                 returnItems.add(this.getRecord())
             }
             return returnItems
+        }
+        finally {
+            // mysql is having problems closing...
+            this.preparedStatement.close()
+        }
+    }
+
+    override fun getRecordsStream(streamer: IMapStreamer) {
+        try {
+            while (this.moveNext()) {
+                streamer.streamMap(this.getRecord())
+            }
         }
         finally {
             // mysql is having problems closing...

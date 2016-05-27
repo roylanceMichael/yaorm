@@ -22,6 +22,7 @@ interface IEntityMapService {
     fun getCustom(customSql: String, definition: DefinitionModel): List<Map<String, Any>>
     fun get(id: String, definition: DefinitionModel): Map<String, Any>
     fun getMany(n: Int=1000, definition: DefinitionModel): List<Map<String, Any>>
+    fun getManyStream(n: Int=100000, definition: DefinitionModel, streamer: IMapStreamer)
     fun where(whereClauseItem: WhereClauseItem, definition: DefinitionModel): List<Map<String, Any>>
 
     fun bulkInsert(instances: List<Map<String, Any>>, definition: DefinitionModel): Boolean

@@ -4,6 +4,7 @@ import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.models.migration.DefinitionModel
 import org.roylance.yaorm.services.map.IGranularDatabaseMapService
 import org.roylance.yaorm.services.map.IMapCursor
+import org.roylance.yaorm.services.map.IMapStreamer
 import java.sql.Connection
 import java.util.*
 
@@ -11,6 +12,17 @@ class JDBCGranularDatabaseMapService(
         private val connection: Connection,
         private val shouldManuallyCommitAfterUpdate: Boolean
 ): IGranularDatabaseMapService {
+    override fun executeSelectQueryStream(definitionModel: DefinitionModel, query: String, streamer: IMapStreamer) {
+        val statement = this.connection.prepareStatement(query)
+        try {
+            val resultSet = statement.executeQuery()
+            JDBCMapCursor(definitionModel, resultSet, statement)
+                    .getRecordsStream(streamer)
+        }
+        finally {
+            // normally close, but wait for service to do it
+        }
+    }
 
     override fun isAvailable(): Boolean {
         try {
