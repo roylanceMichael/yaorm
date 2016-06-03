@@ -41,8 +41,9 @@ class JDBCGranularDatabaseMapService(
 
     override fun executeUpdateQuery(query: String): EntityResultModel {
         val statement = this.connection.createStatement()
+        val returnObject = EntityResultModel()
         try {
-            val returnObject = EntityResultModel()
+
             val result = statement.executeUpdate(query)
 
             val returnedKeys = ArrayList<String>()
@@ -50,6 +51,10 @@ class JDBCGranularDatabaseMapService(
             returnObject.successful = result > 0
 
             return returnObject
+        }
+        catch(e:Exception) {
+            returnObject.successful = false
+            throw e
         }
         finally {
             if (this.shouldManuallyCommitAfterUpdate) {
@@ -64,6 +69,9 @@ class JDBCGranularDatabaseMapService(
         try {
             val resultSet = statement.executeQuery()
             return JDBCMapCursor(definitionModel, resultSet, statement)
+        }
+        catch(e:Exception) {
+            throw e
         }
         finally {
             // normally close, but wait for service to do it
