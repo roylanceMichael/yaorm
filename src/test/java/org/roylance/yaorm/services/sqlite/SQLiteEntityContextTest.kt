@@ -2,6 +2,7 @@ package org.roylance.yaorm.services.sqlite
 
 import org.junit.Assert
 import org.junit.Test
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
@@ -9,12 +10,12 @@ import org.roylance.yaorm.testmodels.*
 import org.roylance.yaorm.testmodels.after.AfterSimpleTestContext
 import org.roylance.yaorm.testmodels.before.BeforeSimpleTestContext
 import org.roylance.yaorm.testmodels.before.SimpleTestModel
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.CommonUtils
 import java.io.File
 import java.util.*
 
 class SQLiteEntityContextTest {
-//    @Test
+    @Test
     fun simpleColumnDefinitionsTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -49,57 +50,57 @@ class SQLiteEntityContextTest {
             val definitions = testEntityContext.getDefinitions()
 
             //assert
-            Assert.assertTrue(definitions.definitionModels.size == 2)
+            Assert.assertTrue(definitions.definitionsList.size == 2)
 
-            val anotherTestModelDefinition = definitions.definitionModels[0]
+            val anotherTestModelDefinition = definitions.definitionsList[0]
             Assert.assertEquals(AnotherTestModel::class.java.simpleName, anotherTestModelDefinition.name)
 
             anotherTestModelDefinition
-                    .properties
+                    .propertyDefinitionsList
                     .forEach {
                         Assert.assertTrue(
                                 (AnotherTestModel.DescriptionName.equals(it.name) ||
                                         AnotherTestModel.GramName.equals(it.name) ||
                                         AnotherTestModel.IdName.equals(it.name)) &&
-                                        CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)
+                                        YaormModel.ProtobufType.STRING.equals(it.type)
                         )
                     }
 
-            Assert.assertEquals(null, anotherTestModelDefinition.indexModel)
+            Assert.assertFalse(anotherTestModelDefinition.hasIndex())
 
-            val beaconBroadcastDefinition = definitions.definitionModels[1]
+            val beaconBroadcastDefinition = definitions.definitionsList[1]
             Assert.assertEquals(BeaconBroadcastModel::class.java.simpleName, beaconBroadcastDefinition.name)
 
             beaconBroadcastDefinition
-                    .properties
+                    .propertyDefinitionsList
                     .forEach {
                         Assert.assertTrue(
                                 (BeaconBroadcastModel.ActiveName.equals(it.name) &&
-                                        CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
+                                        CommonUtils.JavaStringName.equals(it.type)) ||
                                         (BeaconBroadcastModel.IdName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
+                                                YaormModel.ProtobufType.STRING.equals(it.type)) ||
                                         (BeaconBroadcastModel.LastSeenName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaLongName.equals(it.type)) ||
+                                                YaormModel.ProtobufType.INT64.equals(it.type)) ||
                                         (BeaconBroadcastModel.BeaconIdName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
+                                                YaormModel.ProtobufType.STRING.equals(it.type)) ||
                                         (BeaconBroadcastModel.ActiveName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaBooleanName.equals(it.type)) ||
+                                                YaormModel.ProtobufType.BOOL.equals(it.type)) ||
                                         (BeaconBroadcastModel.CachedNameName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaStringName.equals(it.type)) ||
+                                                YaormModel.ProtobufType.STRING.equals(it.type)) ||
                                         (BeaconBroadcastModel.MajorIdName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaIntegerName.equals(it.type)) ||
+                                                YaormModel.ProtobufType.INT64.equals(it.type)) ||
                                         (BeaconBroadcastModel.MinorIdName.equals(it.name) &&
-                                                CommonSqlDataTypeUtilities.JavaIntegerName.equals(it.type)))
+                                                YaormModel.ProtobufType.INT64.equals(it.type)))
                     }
 
-            Assert.assertEquals(null, beaconBroadcastDefinition.indexModel)
+            Assert.assertFalse(beaconBroadcastDefinition.hasIndex())
         }
         finally {
             database.deleteOnExit()
         }
     }
 
-//     @Test
+     @Test
     fun simpleMigrationColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -157,7 +158,7 @@ class SQLiteEntityContextTest {
         }
     }
 
-//     @Test
+     @Test
     fun complexMigrationColumnTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -209,7 +210,7 @@ class SQLiteEntityContextTest {
         }
     }
 
-//    @Test
+    @Test
     fun foreignObjectResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -264,7 +265,7 @@ class SQLiteEntityContextTest {
         }
     }
 
-//    @Test
+    @Test
     fun foreignObjectListResolveTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))

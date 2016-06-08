@@ -1,19 +1,15 @@
-package org.roylance.yaorm.services.map
+package org.roylance.yaorm.services.proto
 
-import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.IndexModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
-import org.roylance.yaorm.utilities.SqlOperators
+import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
-class EntityMapService(
-        override val indexDefinition: IndexModel?,
-        private val granularDatabaseService: IGranularDatabaseMapService,
-        private val sqlGeneratorService: ISqlGeneratorService) : IEntityMapService {
-    override fun getManyStream(n:Int, definition: DefinitionModel, streamer: IMapStreamer) {
+class EntityProtoService(override val indexDefinition: YaormModel.Index?,
+                         private val granularDatabaseService: IGranularDatabaseProtoService,
+                         private val sqlGeneratorService: ISqlGeneratorService) : IEntityProtoService {
+    override fun getManyStream(n:Int, definition: YaormModel.Definition, streamer: IProtoStreamer) {
         if (!this.granularDatabaseService.isAvailable()) {
             return
         }
@@ -24,7 +20,7 @@ class EntityMapService(
         this.granularDatabaseService.executeSelectQueryStream(definition, allSql, streamer)
     }
 
-    override fun createTable(definition: DefinitionModel): Boolean {
+    override fun createTable(definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -37,7 +33,7 @@ class EntityMapService(
                 .successful
     }
 
-    override fun dropTable(definition: DefinitionModel): Boolean {
+    override fun dropTable(definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -50,82 +46,86 @@ class EntityMapService(
                 .successful
     }
 
-    override fun createIndex(indexModel: IndexModel, definition: DefinitionModel): Boolean {
+    override fun createIndex(indexModel: YaormModel.Index, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 definition,
-                indexModel.columnNames,
-                indexModel.includeNames) ?: return false
+                indexModel.columnNamesList,
+                indexModel.includeNamesList) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
                 .successful
     }
 
-    override fun dropIndex(indexModel: IndexModel, definition: DefinitionModel): Boolean {
+    override fun dropIndex(indexModel: YaormModel.Index, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 definition,
-                indexModel.columnNames) ?: return false
+                indexModel.columnNamesList) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropIndexSql)
                 .successful
     }
 
-    override fun createColumn(propertyDefinitionModel: PropertyDefinitionModel, definition: DefinitionModel): Boolean {
+    override fun createColumn(propertyDefinition: YaormModel.PropertyDefinition, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val addColumnSql = this.sqlGeneratorService.buildCreateColumn(
                 definition,
-                propertyDefinitionModel) ?: return false
+                propertyDefinition) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(addColumnSql)
                 .successful
     }
 
-    override fun dropColumn(propertyDefinitionModel: PropertyDefinitionModel, definition: DefinitionModel): Boolean {
+    override fun dropColumn(propertyDefinition: YaormModel.PropertyDefinition, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val dropTableSqlStatements = this.sqlGeneratorService.buildDropColumn(
                 definition,
-                propertyDefinitionModel) ?: return false
+                propertyDefinition) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropTableSqlStatements)
                 .successful
     }
 
-    override fun getCount(definition: DefinitionModel): Long {
+    override fun getCount(definition: YaormModel.Definition): Long {
         if (!this.granularDatabaseService.isAvailable()) {
             return 0L
         }
 
         val countSql = this.sqlGeneratorService.buildCountSql(definition)
 
-        val cursor = this.granularDatabaseService.executeSelectQuery(GenericModel.buildDefinitionModel(), countSql)
-        val allRecords:List<Map<String, Any>> = cursor.getRecords()
+        val cursor = this.granularDatabaseService.executeSelectQuery(GenericModel.buildProtoDefinitionModel(), countSql)
+        val allRecords = cursor.getRecords()
 
-        if (allRecords.size > 0) {
-            return allRecords[0][GenericModel.LongValName] as Long
+        if (allRecords.recordsCount > 0) {
+            val foundRecord = allRecords.recordsList[0]
+            val foundColumn = foundRecord.columnsList.firstOrNull { it.propertyDefinition.name.equals(GenericModel.LongValName) }
+            if (foundColumn != null) {
+                return foundColumn.int64Holder
+            }
         }
         return -1
     }
 
-    override fun getCustom(customSql: String, definition: DefinitionModel): List<Map<String, Any>> {
+    override fun getCustom(customSql: String, definition: YaormModel.Definition): YaormModel.Records {
         if (!this.granularDatabaseService.isAvailable()) {
-            return ArrayList()
+            return YaormModel.Records.newBuilder().build()
         }
 
         return this.granularDatabaseService
@@ -133,18 +133,23 @@ class EntityMapService(
                 .getRecords()
     }
 
-    override fun get(id: String, definition: DefinitionModel): Map<String, Any> {
+    override fun get(id: String, definition: YaormModel.Definition): YaormModel.Record {
         if (!this.granularDatabaseService.isAvailable()) {
-            return HashMap()
+            return YaormModel.Record.getDefaultInstance()
         }
 
-        val whereClause = WhereClauseItem(
-                this.sqlGeneratorService.javaIdName,
-                SqlOperators.Equals,
-                id as Any)
+        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+            .setStringHolder(id)
+            .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+            .build()
+
+        val whereClause = YaormModel.WhereClauseItem.newBuilder()
+            .setNameAndProperty(propertyHolder)
+            .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+            .build()
 
         val whereSql = this.sqlGeneratorService
-                .buildWhereClause(definition, whereClause) ?: return HashMap()
+                .buildWhereClause(definition, whereClause) ?: return YaormModel.Record.newBuilder().build()
 
         val resultSet = this.granularDatabaseService.executeSelectQuery(
                 definition,
@@ -152,16 +157,16 @@ class EntityMapService(
 
         val records = resultSet.getRecords()
 
-        if (records.size > 0) {
-            return records.first()
+        if (records.recordsCount > 0) {
+            return records.recordsList.first()
         }
 
-        return HashMap()
+        return YaormModel.Record.getDefaultInstance()
     }
 
-    override fun getMany(n: Int, definition: DefinitionModel): List<Map<String, Any>> {
+    override fun getMany(n: Int, definition: YaormModel.Definition): YaormModel.Records {
         if (!this.granularDatabaseService.isAvailable()) {
-            return ArrayList()
+            return YaormModel.Records.getDefaultInstance()
         }
 
         val allSql =
@@ -170,45 +175,46 @@ class EntityMapService(
         return this.granularDatabaseService.executeSelectQuery(definition, allSql).getRecords()
     }
 
-    override fun where(whereClauseItem: WhereClauseItem, definition: DefinitionModel): List<Map<String, Any>> {
+    override fun where(whereClauseItem: YaormModel.WhereClauseItem, definition: YaormModel.Definition): YaormModel.Records {
         if (!this.granularDatabaseService.isAvailable()) {
-            return ArrayList()
+            return YaormModel.Records.getDefaultInstance()
         }
 
         val whereSql =
                 this.sqlGeneratorService.buildWhereClause(
                         definition,
-                        whereClauseItem) ?: return arrayListOf()
+                        whereClauseItem) ?: return YaormModel.Records.getDefaultInstance()
 
         return this.granularDatabaseService.executeSelectQuery(definition, whereSql).getRecords()
     }
 
-    override fun bulkInsert(instances: List<Map<String, Any>>, definition: DefinitionModel): Boolean {
+    override fun bulkInsert(instances: YaormModel.Records, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         // let's split this into items of n each... for now
-        val temporaryList = ArrayList<Map<String, Any>>()
+        val temporaryList = YaormModel.Records.newBuilder()
         val results = ArrayList<Boolean>()
 
         instances
+                .recordsList
                 .forEach {
-                    temporaryList.add(it)
+                    temporaryList.addRecords(it)
 
-                    if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
+                    if (temporaryList.recordsCount >= this.sqlGeneratorService.bulkInsertSize) {
                         val bulkInsertSql = this.sqlGeneratorService
-                                .buildBulkInsert(definition, temporaryList)
+                                .buildBulkInsert(definition, temporaryList.build())
 
                         val result = this.granularDatabaseService
                                 .executeUpdateQuery(bulkInsertSql)
                         results.add(result.successful)
-                        temporaryList.clear()
+                        temporaryList.clearRecords()
                     }
                 }
 
-        if (!temporaryList.isEmpty()) {
-            val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(definition, temporaryList)
+        if (temporaryList.recordsCount > 0) {
+            val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(definition, temporaryList.build())
 
             val result = this.granularDatabaseService
                     .executeUpdateQuery(bulkInsertSql)
@@ -218,23 +224,25 @@ class EntityMapService(
         return results.all { it }
     }
 
-    override fun createOrUpdate(entity: Map<String, Any>, definition: DefinitionModel): Boolean {
-        if (!this.granularDatabaseService.isAvailable() ||
-            !entity.containsKey(this.sqlGeneratorService.javaIdName)) {
+    override fun createOrUpdate(entity: YaormModel.Record, definition: YaormModel.Definition): Boolean {
+        val idColumn = entity.columnsList.firstOrNull { it.propertyDefinition.name.equals(sqlGeneratorService.javaIdName) }
+        if (!this.granularDatabaseService.isAvailable() || idColumn == null) {
             return false
         }
 
-        val foundItemInDatabase = this.get(entity[this.sqlGeneratorService.javaIdName] as String, definition)
-        if (foundItemInDatabase.size > 0) {
+
+
+        val foundItemInDatabase = this.get(idColumn.stringHolder, definition)
+        if (foundItemInDatabase.columnsCount > 0) {
             return this.update(entity, definition)
         }
 
         return this.create(entity, definition)
     }
 
-    override fun create(entity: Map<String, Any>, definition: DefinitionModel): Boolean {
-        if (!this.granularDatabaseService.isAvailable() ||
-            !entity.containsKey(this.sqlGeneratorService.javaIdName)) {
+    override fun create(entity: YaormModel.Record, definition: YaormModel.Definition): Boolean {
+        val idColumn = entity.columnsList.firstOrNull { it.propertyDefinition.name.equals(sqlGeneratorService.javaIdName) }
+        if (!this.granularDatabaseService.isAvailable() || idColumn == null) {
             return false
         }
         // create
@@ -247,9 +255,9 @@ class EntityMapService(
         return result.successful
     }
 
-    override fun update(entity: Map<String, Any>, definition: DefinitionModel): Boolean {
-        if (!this.granularDatabaseService.isAvailable()||
-            !entity.containsKey(this.sqlGeneratorService.javaIdName)) {
+    override fun update(entity: YaormModel.Record, definition: YaormModel.Definition): Boolean {
+        val idColumn = entity.columnsList.firstOrNull { it.propertyDefinition.name.equals(sqlGeneratorService.javaIdName) }
+        if (!this.granularDatabaseService.isAvailable()|| idColumn == null) {
             return false
         }
 
@@ -264,7 +272,7 @@ class EntityMapService(
         return result.successful
     }
 
-    override fun updateWithCriteria(newValues: Map<String, Any>, whereClauseItem: WhereClauseItem, definition: DefinitionModel): Boolean {
+    override fun updateWithCriteria(newValues: YaormModel.Record, whereClauseItem: YaormModel.WhereClauseItem, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -287,21 +295,26 @@ class EntityMapService(
         return true
     }
 
-    override fun delete(id: String, definition: DefinitionModel): Boolean {
+    override fun delete(id: String, definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
+        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+                .setStringHolder(id)
+                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .build()
+
 
         val deleteSql =
                 this.sqlGeneratorService
-                        .buildDeleteTable(definition, id as Any) ?: return false
+                        .buildDeleteTable(definition, propertyHolder) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(deleteSql)
                 .successful
     }
 
-    override fun deleteAll(definition: DefinitionModel): Boolean {
+    override fun deleteAll(definition: YaormModel.Definition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }

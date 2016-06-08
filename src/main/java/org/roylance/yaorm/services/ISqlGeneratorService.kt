@@ -1,38 +1,36 @@
 package org.roylance.yaorm.services
 
-import org.roylance.yaorm.models.WhereClauseItem
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.models.YaormModel
 
 interface ISqlGeneratorService {
     val javaIdName: String
-    val javaTypeToSqlType: Map<String, String>
+    val javaTypeToSqlType: Map<YaormModel.ProtobufType, String>
     val bulkInsertSize:Int
 
-    fun buildCountSql(definition: DefinitionModel): String
+    fun buildCountSql(definition: YaormModel.Definition): String
 
-    fun buildCreateColumn(definition: DefinitionModel, propertyDefinition: PropertyDefinitionModel): String?
-    fun buildDropColumn(definition: DefinitionModel, propertyDefinition: PropertyDefinitionModel): String?
+    fun buildCreateColumn(definition: YaormModel.Definition, propertyDefinition: YaormModel.PropertyDefinition): String?
+    fun buildDropColumn(definition: YaormModel.Definition, propertyDefinition: YaormModel.PropertyDefinition): String?
 
     fun buildCreateIndex(
-            definition: DefinitionModel,
-            properties: List<PropertyDefinitionModel>,
-            includes: List<PropertyDefinitionModel>): String?
-    fun buildDropIndex(definition: DefinitionModel, columns: List<PropertyDefinitionModel>): String?
+            definition: YaormModel.Definition,
+            properties: List<YaormModel.PropertyDefinition>,
+            includes: List<YaormModel.PropertyDefinition>): String?
+    fun buildDropIndex(definition: YaormModel.Definition, columns: List<YaormModel.PropertyDefinition>): String?
 
-    fun buildDropTable(definition: DefinitionModel): String
-    fun buildCreateTable(definition: DefinitionModel): String?
+    fun buildDropTable(definition: YaormModel.Definition): String
+    fun buildCreateTable(definition: YaormModel.Definition): String?
 
-    fun buildDeleteAll(definition: DefinitionModel) : String
-    fun buildDeleteTable(definition: DefinitionModel, primaryKey: Any): String?
-    fun buildDeleteWithCriteria(definition: DefinitionModel, whereClauseItem: WhereClauseItem): String
+    fun buildDeleteAll(definition: YaormModel.Definition) : String
+    fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.PropertyHolder): String?
+    fun buildDeleteWithCriteria(definition: YaormModel.Definition, whereClauseItem: YaormModel.WhereClauseItem): String
 
-    fun buildBulkInsert(definition: DefinitionModel, items: List<Map<String, Any?>>) : String
-    fun buildInsertIntoTable(definition: DefinitionModel, newInsertModel: Map<String, Any?>): String?
+    fun buildBulkInsert(definition: YaormModel.Definition, records: YaormModel.Records) : String
+    fun buildInsertIntoTable(definition: YaormModel.Definition, record: YaormModel.Record): String?
 
-    fun buildUpdateTable(definition: DefinitionModel, updateModel: Map<String, Any?>): String?
-    fun buildUpdateWithCriteria(definition: DefinitionModel, newValues: Map<String, Any?>, whereClauseItem: WhereClauseItem): String?
+    fun buildUpdateTable(definition: YaormModel.Definition, record: YaormModel.Record): String?
+    fun buildUpdateWithCriteria(definition: YaormModel.Definition, record: YaormModel.Record, whereClauseItem: YaormModel.WhereClauseItem): String?
 
-    fun buildSelectAll(definition: DefinitionModel, n: Int = 1000): String
-    fun buildWhereClause(definition: DefinitionModel, whereClauseItem: WhereClauseItem): String?
+    fun buildSelectAll(definition: YaormModel.Definition, n: Int = 1000): String
+    fun buildWhereClause(definition: YaormModel.Definition, whereClauseItem: YaormModel.WhereClauseItem): String?
 }

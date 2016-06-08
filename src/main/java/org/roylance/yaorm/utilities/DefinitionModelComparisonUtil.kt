@@ -1,45 +1,43 @@
 package org.roylance.yaorm.utilities
 
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.DifferenceModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.models.YaormModel
 import java.util.*
 
 object DefinitionModelComparisonUtil {
     fun addDifferenceIfDifferent(
-            currentDefinitionModel: DefinitionModel,
-            otherDefinitionModel: DefinitionModel?,
-            differenceReports: MutableList<DifferenceModel>) {
+            currentDefinitionModel: YaormModel.Definition,
+            otherDefinitionModel: YaormModel.Definition?,
+            differenceReports: MutableList<YaormModel.Difference>) {
 
         if (otherDefinitionModel == null) {
-            val newDifferenceModel = DifferenceModel(
-                    DifferenceModel.EntityTypeTable,
-                    DifferenceModel.OperationCreate,
-                    currentDefinitionModel.name,
-                    definitionModel = currentDefinitionModel)
+            val newDifferenceModel = YaormModel.Difference.newBuilder()
+                .setEntityType(YaormModel.Difference.EntityType.TABLE)
+                .setOperation(YaormModel.Difference.Operation.CREATE)
+                .setName(currentDefinitionModel.name)
+                .setDefinition(currentDefinitionModel)
 
-            differenceReports.add(newDifferenceModel)
+            differenceReports.add(newDifferenceModel.build())
             return
         }
 
         IndexModelComparisonUtil.addDifferenceIfDifference(
                 currentDefinitionModel.name,
-                currentDefinitionModel.indexModel,
-                otherDefinitionModel.indexModel,
+                currentDefinitionModel.index,
+                otherDefinitionModel.index,
                 differenceReports)
 
         // convert both to dictionaries
-        val currentDictionary = HashMap<String, PropertyDefinitionModel>()
-        val otherDictionary = HashMap<String, PropertyDefinitionModel>()
+        val currentDictionary = HashMap<String, YaormModel.PropertyDefinition>()
+        val otherDictionary = HashMap<String, YaormModel.PropertyDefinition>()
 
         currentDefinitionModel
-            .properties
+            .propertyDefinitionsList
             .forEach {
                 currentDictionary.put(it.name, it)
             }
 
         otherDefinitionModel
-            .properties
+            .propertyDefinitionsList
             .forEach {
                 otherDictionary.put(it.name, it)
             }

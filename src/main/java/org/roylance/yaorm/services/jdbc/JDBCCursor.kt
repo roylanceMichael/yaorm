@@ -2,8 +2,7 @@ package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.services.entity.ICursor
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
-import org.roylance.yaorm.utilities.CommonStringUtilities
+import org.roylance.yaorm.utilities.CommonUtils
 import org.roylance.yaorm.utilities.EntityUtils
 import java.lang.reflect.Method
 import java.sql.ResultSet
@@ -22,37 +21,37 @@ class JDBCCursor<T> (
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
-            put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName,
+            put(CommonUtils.JavaAlt1DoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName,
+            put(CommonUtils.JavaAlt1IntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(CommonSqlDataTypeUtilities.JavaAlt1LongName,
+            put(CommonUtils.JavaAlt1LongName,
                     { label, resultSet -> resultSet.getLong(label) })
-            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName,
+            put(CommonUtils.JavaAlt1BooleanName,
                     { label, resultSet -> resultSet.getBoolean(label) })
-            put(CommonSqlDataTypeUtilities.JavaAltDoubleName,
+            put(CommonUtils.JavaAltDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(CommonSqlDataTypeUtilities.JavaAltLongName,
+            put(CommonUtils.JavaAltLongName,
                     { label, resultSet -> resultSet.getLong(label) })
-            put(CommonSqlDataTypeUtilities.JavaAltIntegerName,
+            put(CommonUtils.JavaAltIntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(CommonSqlDataTypeUtilities.JavaStringName,
+            put(CommonUtils.JavaStringName,
                     { label, resultSet -> resultSet.getString(label) })
-            put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
+            put(CommonUtils.JavaFullyQualifiedStringName,
                     { label, resultSet -> resultSet.getString(label) })
-            put(CommonSqlDataTypeUtilities.JavaIntegerName,
+            put(CommonUtils.JavaIntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(CommonSqlDataTypeUtilities.JavaDoubleName,
+            put(CommonUtils.JavaDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(CommonSqlDataTypeUtilities.JavaByteName,
+            put(CommonUtils.JavaByteName,
                     { label, resultSet -> resultSet.getBlob(label) })
-            put(CommonSqlDataTypeUtilities.JavaBooleanName, {
+            put(CommonUtils.JavaBooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(CommonSqlDataTypeUtilities.JavaAltBooleanName, {
+            put(CommonUtils.JavaAltBooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName, {
+            put(CommonUtils.JavaAlt1BooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(CommonSqlDataTypeUtilities.JavaLongName,
+            put(CommonUtils.JavaLongName,
                     { label, resultSet -> resultSet.getLong(label) })
         }
     }
@@ -70,7 +69,7 @@ class JDBCCursor<T> (
             var iter = 1
             while (iter <= totalColumns) {
                 // let's make sure we get the last one
-                val lowercaseName = CommonStringUtilities.getLastWord(this.resultSet
+                val lowercaseName = CommonUtils.getLastWord(this.resultSet
                         .metaData
                         .getColumnName(iter))
                         .toLowerCase()
@@ -83,10 +82,10 @@ class JDBCCursor<T> (
         if (this.cachedGetMethods.isEmpty()) {
             this.classModel
                 .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                .filter { it.name.startsWith(CommonUtils.Get) }
                 .forEach {
-                    val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.Get.length))
+                    val actualName = CommonUtils.lowercaseFirstChar(
+                            it.name.substring(CommonUtils.Get.length))
 
                     val lowercaseName = actualName.toLowerCase()
 
@@ -99,11 +98,11 @@ class JDBCCursor<T> (
 
                         val foundIdGetter = it.returnType
                             .methods
-                            .first { "${CommonSqlDataTypeUtilities.Get}Id".equals(it.name) }
+                            .first { "${CommonUtils.Get}Id".equals(it.name) }
 
                         val foundIdSetter = it.returnType
                             .methods
-                            .first { "${CommonSqlDataTypeUtilities.Set}Id".equals(it.name) }
+                            .first { "${CommonUtils.Set}Id".equals(it.name) }
 
                         this.cachedGetMethods.put(actualName, it)
 
@@ -116,10 +115,10 @@ class JDBCCursor<T> (
         // set all the properties that we can
         classModel
             .methods
-            .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
+            .filter { it.name.startsWith(CommonUtils.Set) }
             .forEach {
-                val actualName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                        it.name.substring(CommonSqlDataTypeUtilities.Set.length))
+                val actualName = CommonUtils.lowercaseFirstChar(
+                        it.name.substring(CommonUtils.Set.length))
 
                 if (!this.cachedGetMethods.containsKey(actualName)) {
                     return@forEach

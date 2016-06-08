@@ -1,29 +1,15 @@
 package org.roylance.yaorm.services.jdbc
 
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.entity.EntityResultModel
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.services.map.IGranularDatabaseMapService
-import org.roylance.yaorm.services.map.IMapCursor
-import org.roylance.yaorm.services.map.IMapStreamer
+import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
+import org.roylance.yaorm.services.proto.IProtoCursor
+import org.roylance.yaorm.services.proto.IProtoStreamer
 import java.sql.Connection
 import java.util.*
 
-class JDBCGranularDatabaseMapService(
-        private val connection: Connection,
-        private val shouldManuallyCommitAfterUpdate: Boolean
-): IGranularDatabaseMapService {
-    override fun executeSelectQueryStream(definitionModel: DefinitionModel, query: String, streamer: IMapStreamer) {
-        val statement = this.connection.prepareStatement(query)
-        try {
-            val resultSet = statement.executeQuery()
-            JDBCMapCursor(definitionModel, resultSet, statement)
-                    .getRecordsStream(streamer)
-        }
-        finally {
-            // normally close, but wait for service to do it
-        }
-    }
-
+class JDBCGranularDatabaseProtoService(private val connection: Connection,
+                                       private val shouldManuallyCommitAfterUpdate: Boolean):IGranularDatabaseProtoService {
     override fun isAvailable(): Boolean {
         try {
             return this.connection.isValid(TenSeconds)
@@ -64,14 +50,26 @@ class JDBCGranularDatabaseMapService(
         }
     }
 
-    override fun executeSelectQuery(definitionModel: DefinitionModel, query: String): IMapCursor {
+    override fun executeSelectQuery(definition: YaormModel.Definition, query: String): IProtoCursor {
         val statement = this.connection.prepareStatement(query)
         try {
             val resultSet = statement.executeQuery()
-            return JDBCMapCursor(definitionModel, resultSet, statement)
+            return JDBCProtoCursor(definition, resultSet, statement)
         }
         catch(e:Exception) {
             throw e
+        }
+        finally {
+            // normally close, but wait for service to do it
+        }
+    }
+
+    override fun executeSelectQueryStream(definition: YaormModel.Definition, query: String, streamer: IProtoStreamer) {
+        val statement = this.connection.prepareStatement(query)
+        try {
+            val resultSet = statement.executeQuery()
+            JDBCProtoCursor(definition, resultSet, statement)
+                    .getRecordsStream(streamer)
         }
         finally {
             // normally close, but wait for service to do it
@@ -82,11 +80,6 @@ class JDBCGranularDatabaseMapService(
         this.connection.commit()
     }
 
-    override fun close() {
-        if (!this.connection.isClosed) {
-            this.connection.close()
-        }
-    }
 
     companion object {
         const private val TenSeconds = 10

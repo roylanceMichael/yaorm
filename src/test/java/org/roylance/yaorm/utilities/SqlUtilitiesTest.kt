@@ -2,14 +2,14 @@ package org.roylance.yaorm.utilities
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import org.roylance.yaorm.testmodels.ChildTestModel
 import java.util.*
 
 class SqlUtilitiesTest {
-    private val beaconBroadcastDefinition = EntityUtils.getDefinition(BeaconBroadcastModel::class.java)
+    private val beaconBroadcastDefinition = EntityUtils.getDefinitionProto(BeaconBroadcastModel::class.java)
 
     @Test
     fun createTableTest() {
@@ -28,48 +28,48 @@ class SqlUtilitiesTest {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
         val newInsertModel = BeaconBroadcastModel("1", "cool test", 1, 1, true, "what is this",0)
-        val expectedSql = "insert into BeaconBroadcastModel (active,beaconId,cachedName,id,lastSeen,majorId,minorId) values (1,'${newInsertModel.beaconId}','${newInsertModel.cachedName}','${newInsertModel.id}',${newInsertModel.lastSeen},${newInsertModel.majorId},${newInsertModel.minorId});"
+        val expectedSql = "insert into BeaconBroadcastModel (id,beaconId,majorId,minorId,active,cachedName,lastSeen) values ('1','cool test',1,1,1,'what is this',0);"
         val definitions = EntityUtils.getProperties(newInsertModel)
-        val newInsertModelMap = EntityUtils.getMapFromObject(definitions, newInsertModel)
+        val newInsertModelMap = EntityUtils.getRecordFromObject(definitions, newInsertModel)
 
         // act
         val insertSql = sqliteGeneratorService
-                .buildInsertIntoTable(this.beaconBroadcastDefinition, newInsertModelMap)
+                .buildInsertIntoTable(this.beaconBroadcastDefinition, newInsertModelMap)!!
 
         // assert
-        assert(insertSql != null)
-        assert(expectedSql.equals(insertSql))
+        Assert.assertEquals(expectedSql, insertSql, insertSql)
     }
 
     @Test
     fun updateTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "update BeaconBroadcastModel set active=1, beaconId='cool test', cachedName='what is this', lastSeen=0, majorId=1, minorId=1 where id='1';"
+        val expectedSql = "update BeaconBroadcastModel set beaconId='cool test', majorId=1, minorId=1, active=1, cachedName='what is this', lastSeen=0 where id='1';"
         val newUpdateModel = BeaconBroadcastModel("1", "cool test", 1, 1, true, "what is this")
 
         val definitions = EntityUtils.getProperties(newUpdateModel)
-        val updateMap = EntityUtils.getMapFromObject(definitions, newUpdateModel)
+        val updateMap = EntityUtils.getRecordFromObject(definitions, newUpdateModel)
 
         // act
-        val updateSql = sqliteGeneratorService.buildUpdateTable(this.beaconBroadcastDefinition, updateMap)
+        val updateSql = sqliteGeneratorService.buildUpdateTable(this.beaconBroadcastDefinition, updateMap)!!
 
         // assert
-        assert(updateSql != null)
-        assert(expectedSql.equals(updateSql))
+        Assert.assertEquals(expectedSql, updateSql, updateSql)
     }
 
     @Test
     fun deleteTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = "delete from BeaconBroadcastModel where id=1;"
+        val expectedSql = "delete from BeaconBroadcastModel where id='1';"
+
+        val property = YaormModel.PropertyDefinition.newBuilder().setName(CommonUtils.IdName).setType(YaormModel.ProtobufType.STRING)
+        val holder = YaormModel.PropertyHolder.newBuilder().setStringHolder(1.toString()).setPropertyDefinition(property).build()
 
         // act
-        val deleteSql = sqliteGeneratorService.buildDeleteTable(this.beaconBroadcastDefinition, 1)
+        val deleteSql = sqliteGeneratorService.buildDeleteTable(this.beaconBroadcastDefinition, holder)!!
 
         // assert
-        assert(deleteSql != null)
         assert(expectedSql.equals(deleteSql))
     }
 
@@ -79,10 +79,10 @@ class SqlUtilitiesTest {
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "select * from BeaconBroadcastModel where cachedName='mike';"
 
-        val whereClause = WhereClauseItem(
-                BeaconBroadcastModel.CachedNameName,
-                WhereClauseItem.Equals,
-                "mike")
+        val property = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.CachedNameName).setType(YaormModel.ProtobufType.STRING).build()
+        val holder = YaormModel.PropertyHolder.newBuilder().setStringHolder("mike").setPropertyDefinition(property).build()
+        val whereClause = YaormModel.WhereClauseItem.newBuilder().setNameAndProperty(holder).setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS).build()
+
 
         // act
         val whereSql = sqliteGeneratorService.buildWhereClause(this.beaconBroadcastDefinition, whereClause)
@@ -109,9 +109,9 @@ class SqlUtilitiesTest {
     fun bulkInsertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = """insert into BeaconBroadcastModel (active,beaconId,cachedName,id,lastSeen,majorId,minorId)  select 0 as active,'test1' as beaconId,'test1' as cachedName,'0' as id,0 as lastSeen,0 as majorId,0 as minorId
-union select 0 as active,'test2' as beaconId,'test2' as cachedName,'1' as id,0 as lastSeen,0 as majorId,1 as minorId
-union select 0 as active,'test3' as beaconId,'test3' as cachedName,'2' as id,0 as lastSeen,0 as majorId,2 as minorId;""".trim()
+        val expectedSql = """insert into BeaconBroadcastModel (active,beaconId,cachedName,id,lastSeen,majorId,minorId)  select '0' as id,'test1' as beaconId,0 as majorId,0 as minorId,0 as active,'test1' as cachedName,0 as lastSeen
+union select '1' as id,'test2' as beaconId,0 as majorId,1 as minorId,0 as active,'test2' as cachedName,0 as lastSeen
+union select '2' as id,'test3' as beaconId,0 as majorId,2 as minorId,0 as active,'test3' as cachedName,0 as lastSeen;""".trim()
 
         val broadcastModels = ArrayList<BeaconBroadcastModel>()
         val firstModel = BeaconBroadcastModel(id = "0", beaconId = "test1", majorId = 0, minorId = 0, cachedName = "test1")
@@ -122,7 +122,7 @@ union select 0 as active,'test3' as beaconId,'test3' as cachedName,'2' as id,0 a
         broadcastModels.add(thirdModel)
 
         val definitions = EntityUtils.getProperties(firstModel)
-        val modelMaps = EntityUtils.getMapsFromObjects(definitions, broadcastModels)
+        val modelMaps = EntityUtils.getRecordsFromObjects(definitions, broadcastModels)
 
         // act
         val actualSql = sqliteGeneratorService.buildBulkInsert(this.beaconBroadcastDefinition, modelMaps)
@@ -130,7 +130,7 @@ union select 0 as active,'test3' as beaconId,'test3' as cachedName,'2' as id,0 a
         // assert
         System.out.println(expectedSql)
         System.out.println(actualSql)
-        assert(expectedSql.equals(actualSql))
+        Assert.assertEquals(expectedSql, actualSql, actualSql)
     }
 
     @Test
@@ -140,7 +140,7 @@ union select 0 as active,'test3' as beaconId,'test3' as cachedName,'2' as id,0 a
         val expectedSql = "create table if not exists ChildTestModel (id text primary key, commonRootModel text, commonRootModelId text, name text);"
 
         // act
-        val createTableSql = sqliteGeneratorService.buildCreateTable(EntityUtils.getDefinition(ChildTestModel::class.java))
+        val createTableSql = sqliteGeneratorService.buildCreateTable(EntityUtils.getDefinitionProto(ChildTestModel::class.java))
 
         // assert
         Assert.assertEquals(expectedSql, createTableSql)

@@ -2,12 +2,11 @@ package org.roylance.yaorm.services.mysql
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseMapService
-import org.roylance.yaorm.services.map.EntityMapService
+import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
+import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
 class MySQLEntityAccessMapServiceTests {
@@ -16,6 +15,7 @@ class MySQLEntityAccessMapServiceTests {
         // arrange
         getConnectionInfo()
 
+        val newId = UUID.randomUUID().toString()
         val beaconId = "test"
         val majorId = 1L
         val minorId = 2L
@@ -28,53 +28,60 @@ class MySQLEntityAccessMapServiceTests {
                 schema!!,
                 userName!!,
                 password!!)
-        val granularDatabaseService = JDBCGranularDatabaseMapService(
+        val granularDatabaseService = JDBCGranularDatabaseProtoService(
                 sourceConnection.connectionSource,
                 false)
 
-        val entityService = EntityMapService(
+        val entityService = EntityProtoService(
                 indexDefinition = null,
                 granularDatabaseService = granularDatabaseService,
                 sqlGeneratorService = mysqlGeneratorService)
 
-        val newBeaconMap = HashMap<String, Any>()
-        newBeaconMap[BeaconBroadcastModel.IdName] = UUID.randomUUID().toString()
-        newBeaconMap[BeaconBroadcastModel.BeaconIdName] = beaconId
-        newBeaconMap[BeaconBroadcastModel.MajorIdName] = majorId
-        newBeaconMap[BeaconBroadcastModel.MinorIdName] = minorId
-        newBeaconMap[BeaconBroadcastModel.ActiveName] = isActive
-        newBeaconMap[BeaconBroadcastModel.CachedNameName] = cachedName
-        newBeaconMap[BeaconBroadcastModel.LastSeenName] = 0
+        val idProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.IdName).setType(YaormModel.ProtobufType.STRING).setIsKey(true)
+        val beaconIdProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.BeaconIdName).setType(YaormModel.ProtobufType.STRING).setIsKey(false)
+        val majorProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.MajorIdName).setType(YaormModel.ProtobufType.INT64).setIsKey(false)
+        val minorProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.MinorIdName).setType(YaormModel.ProtobufType.INT64).setIsKey(false)
+        val cachedNameProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.CachedNameName).setType(YaormModel.ProtobufType.STRING).setIsKey(false)
+        val isActiveProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.ActiveName).setType(YaormModel.ProtobufType.BOOL).setIsKey(false)
+        val lastSeenProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.LastSeenName).setType(YaormModel.ProtobufType.INT64).setIsKey(false)
+        val definition = YaormModel.Definition.newBuilder()
+                .setName(BeaconBroadcastModel::class.java.simpleName)
+                .addPropertyDefinitions(idProperty)
+                .addPropertyDefinitions(beaconIdProperty)
+                .addPropertyDefinitions(majorProperty)
+                .addPropertyDefinitions(minorProperty)
+                .addPropertyDefinitions(isActiveProperty)
+                .addPropertyDefinitions(cachedNameProperty)
+                .addPropertyDefinitions(lastSeenProperty)
+                .build()
 
-        val definitionModel = DefinitionModel(name = BeaconBroadcastModel::class.java.simpleName,
-                properties = listOf(
-                        PropertyDefinitionModel(BeaconBroadcastModel.IdName, CommonSqlDataTypeUtilities.JavaStringName),
-                        PropertyDefinitionModel(BeaconBroadcastModel.BeaconIdName, CommonSqlDataTypeUtilities.JavaStringName),
-                        PropertyDefinitionModel(BeaconBroadcastModel.MajorIdName, CommonSqlDataTypeUtilities.JavaLongName),
-                        PropertyDefinitionModel(BeaconBroadcastModel.MinorIdName, CommonSqlDataTypeUtilities.JavaLongName),
-                        PropertyDefinitionModel(BeaconBroadcastModel.ActiveName, CommonSqlDataTypeUtilities.JavaBooleanName),
-                        PropertyDefinitionModel(BeaconBroadcastModel.CachedNameName, CommonSqlDataTypeUtilities.JavaStringName),
-                        PropertyDefinitionModel(BeaconBroadcastModel.LastSeenName, CommonSqlDataTypeUtilities.JavaIntegerName)
-                ),
-                indexModel = null)
+        val newBeaconMap = YaormModel.Record.newBuilder()
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(newId, idProperty.build()))
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(beaconId, beaconIdProperty.build()))
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(majorId, majorProperty.build()))
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(minorId, minorProperty.build()))
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(isActive, isActiveProperty.build()))
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(cachedName, cachedNameProperty.build()))
+        newBeaconMap.addColumns(CommonUtils.buildPropertyHolder(0, lastSeenProperty.build()))
 
         // act
-        entityService.dropTable(definitionModel)
-        entityService.createTable(definitionModel)
-        entityService.createOrUpdate(newBeaconMap, definitionModel)
+        entityService.dropTable(definition)
+        entityService.createTable(definition)
+        entityService.createOrUpdate(newBeaconMap.build(), definition)
 
         // assert
-        val allBeacons = entityService.getMany(10, definitionModel)
+        val allBeacons = entityService.getMany(10, definition)
 
-        Assert.assertEquals(1, allBeacons.size)
+        Assert.assertEquals(1, allBeacons.recordsCount)
 
-        val foundBeacon = allBeacons.first()
-        Assert.assertEquals(newBeaconMap[CommonSqlDataTypeUtilities.IdName], foundBeacon[BeaconBroadcastModel.IdName])
+        val foundRecord = allBeacons.recordsList.first()
+        val foundBeacon = CommonUtils.buildMapFromRecord(foundRecord)
+        Assert.assertEquals(newId, foundBeacon[BeaconBroadcastModel.IdName])
         Assert.assertEquals(beaconId, foundBeacon[BeaconBroadcastModel.BeaconIdName])
         Assert.assertEquals(majorId, foundBeacon[BeaconBroadcastModel.MajorIdName])
         Assert.assertEquals(minorId, foundBeacon[BeaconBroadcastModel.MinorIdName])
-        Assert.assertEquals(isActive, foundBeacon[BeaconBroadcastModel.ActiveName])
         Assert.assertEquals(cachedName, foundBeacon[BeaconBroadcastModel.CachedNameName])
+        Assert.assertEquals(isActive, foundBeacon[BeaconBroadcastModel.ActiveName])
     }
 
     companion object {

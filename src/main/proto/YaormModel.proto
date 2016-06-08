@@ -1,0 +1,112 @@
+syntax = "proto3";
+package org.roylance.yaorm.models;
+
+enum ProtobufType {
+    NONE = 0;
+    DOUBLE = 1;
+    FLOAT = 2;
+    INT32 = 3;
+    INT64 = 4;
+    UINT32 = 5;
+    UINT64 = 6;
+    SINT32 = 7;
+    SINT64 = 8;
+    FIXED32 = 9;
+    FIXED64 = 10;
+    SFIXED32 = 11;
+    SFIXED64 = 12;
+    BOOL = 13;
+    STRING = 14;
+    BYTES = 15;
+    PROTO = 16;
+}
+
+message WhereClauseItem {
+    PropertyHolder name_and_property = 1;
+    enum OperatorType {
+        EQUALS = 0;
+        GREATER_THAN = 1;
+        LESS_THAN = 2;
+        NOT_EQUALS = 3;
+    }
+    OperatorType operator_type = 2;
+    enum ConnectingAndOr {
+        NONE = 0;
+        AND = 1;
+        OR = 2;
+    }
+    ConnectingAndOr connecting_and_or = 3;
+    WhereClauseItem connecting_where_clause = 4;
+}
+
+message PropertyDefinition {
+    string name = 1;
+    ProtobufType type = 2;
+    bool foreign_collection = 3;
+    bool is_key = 4;
+}
+
+message Index {
+    repeated PropertyDefinition column_names = 1;
+    repeated PropertyDefinition include_names = 2;
+}
+
+message Difference {
+    enum EntityType {
+        INDEX = 0;
+        COLUMN = 1;
+        TABLE = 2;
+    }
+    EntityType entity_type = 1;
+    enum Operation {
+        CREATE = 0;
+        DROP = 1;
+    }
+    Operation operation = 2;
+    string name = 3;
+    Index index = 4;
+    PropertyDefinition property_definition = 5;
+    Definition definition = 6;
+}
+
+message Definition {
+    string name = 1;
+    repeated PropertyDefinition property_definitions = 2;
+    Index index = 3;
+}
+
+message Definitions {
+    repeated Definition definitions = 3;
+}
+
+message DifferenceReport {
+    bool migration_exists = 1;
+    repeated Difference differences = 2;
+}
+
+message PropertyHolder {
+    PropertyDefinition property_definition = 1;
+    double double_holder = 2;
+    float float_holder = 3;
+    int32 int32_holder = 4;
+    int64 int64_holder = 5;
+    uint32 uint32_holder = 6;
+    uint64 uint64_holder = 7;
+    sint32 sint32_holder = 8;
+    sint64 sint64_holder = 9;
+    fixed32 fixed32_holder = 10;
+    fixed64 fixed64_holder = 11;
+    sfixed32 sfixed32_holder = 12;
+    sfixed64 sfixed64_holder = 13;
+    bool bool_holder = 14;
+    string string_holder = 15;
+    bytes bytes_holder = 16;
+}
+
+message Record {
+    repeated PropertyHolder columns = 1;
+}
+
+message Records {
+    repeated Record records = 1;
+}

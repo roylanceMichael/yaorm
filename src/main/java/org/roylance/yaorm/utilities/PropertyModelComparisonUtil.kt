@@ -1,47 +1,53 @@
 package org.roylance.yaorm.utilities
 
-import org.roylance.yaorm.models.migration.DifferenceModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.models.YaormModel
 
 object PropertyModelComparisonUtil {
     fun addDifferenceIfDifferent(
             name:String,
-            currentProperty: PropertyDefinitionModel?,
-            otherProperty: PropertyDefinitionModel?,
-            differenceReports: MutableList<DifferenceModel>) {
+            currentProperty: YaormModel.PropertyDefinition?,
+            otherProperty: YaormModel.PropertyDefinition?,
+            differenceReports: MutableList<YaormModel.Difference>) {
         if (currentProperty == null && otherProperty != null) {
-            val dropDifference = DifferenceModel(
-                    DifferenceModel.EntityTypeColumn,
-                    DifferenceModel.OperationDrop,
-                    name,
-                    propertyDefinition = otherProperty)
-            differenceReports.add(dropDifference)
+            val difference = YaormModel.Difference.newBuilder()
+                    .setEntityType(YaormModel.Difference.EntityType.COLUMN)
+                    .setOperation(YaormModel.Difference.Operation.DROP)
+                    .setName(name)
+                    .setPropertyDefinition(otherProperty)
+                    .build()
+
+            differenceReports.add(difference)
         }
 
         if (currentProperty != null && otherProperty == null) {
-            val createDifference = DifferenceModel(
-                    DifferenceModel.EntityTypeColumn,
-                    DifferenceModel.OperationCreate,
-                    name,
-                    propertyDefinition = currentProperty)
-            differenceReports.add(createDifference)
+            val difference = YaormModel.Difference.newBuilder()
+                    .setEntityType(YaormModel.Difference.EntityType.COLUMN)
+                    .setOperation(YaormModel.Difference.Operation.CREATE)
+                    .setName(name)
+                    .setPropertyDefinition(currentProperty)
+                    .build()
+
+            differenceReports.add(difference)
         }
 
         if (currentProperty != null && otherProperty != null &&
                 (!currentProperty.name.equals(otherProperty.name) ||
                         !currentProperty.type.equals(otherProperty.type))) {
-            val dropDifference = DifferenceModel(
-                    DifferenceModel.EntityTypeColumn,
-                    DifferenceModel.OperationDrop,
-                    name,
-                    propertyDefinition = otherProperty)
+            val dropDifference = YaormModel.Difference.newBuilder()
+                    .setEntityType(YaormModel.Difference.EntityType.COLUMN)
+                    .setOperation(YaormModel.Difference.Operation.DROP)
+                    .setName(name)
+                    .setPropertyDefinition(otherProperty)
+                    .build()
             differenceReports.add(dropDifference)
 
-            val createDifference = DifferenceModel(
-                    DifferenceModel.EntityTypeColumn,
-                    DifferenceModel.OperationCreate,
-                    name,
-                    propertyDefinition = currentProperty)
+            val createDifference = YaormModel.Difference.newBuilder()
+                    .setEntityType(YaormModel.Difference.EntityType.COLUMN)
+                    .setOperation(YaormModel.Difference.Operation.CREATE)
+                    .setName(name)
+                    .setPropertyDefinition(currentProperty)
+                    .build()
+
             differenceReports.add(createDifference)
         }
     }

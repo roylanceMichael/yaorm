@@ -6,12 +6,11 @@ import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import org.roylance.yaorm.testmodels.ChildTestModel
-import org.roylance.yaorm.testmodels.RootTestModel
 import java.io.File
 import java.util.*
 
 class SQLiteEntityAccessServiceTest {
-//     @Test
+     @Test
     fun readmeTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -61,7 +60,7 @@ class SQLiteEntityAccessServiceTest {
         }
     }
 
-//     @Test
+     @Test
     fun simpleCreateTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))

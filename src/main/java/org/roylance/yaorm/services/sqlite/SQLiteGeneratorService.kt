@@ -1,12 +1,9 @@
 package org.roylance.yaorm.services.sqlite
 
 import org.roylance.yaorm.models.ColumnNameTuple
-import org.roylance.yaorm.models.WhereClauseItem
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.ISqlGeneratorService
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
-import org.roylance.yaorm.utilities.SqlGeneratorUtils
+import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
 class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGeneratorService {
@@ -14,7 +11,6 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
-    private val UpdateTableMultipleTemplate = "update %s set %s where %s;"
     private val DeleteTableTemplate = "delete from %s where id=%s;"
     private val WhereClauseTemplate = "select * from %s where %s;"
     private val SelectAllTemplate = "select * from %s limit %s;"
@@ -27,32 +23,33 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
     override val javaIdName: String = "id"
 
-    override val javaTypeToSqlType: Map<String, String> = object : HashMap<String, String>() {
+    override val javaTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {
         init {
-            put(CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName, SqlTextName)
-            put(CommonSqlDataTypeUtilities.JavaAlt1IntegerName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaAlt1BooleanName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaAlt1LongName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaAlt1DoubleName, SqlRealName)
-            put(CommonSqlDataTypeUtilities.JavaAltIntegerName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaAltLongName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaAltDoubleName, SqlRealName)
-            put(CommonSqlDataTypeUtilities.JavaStringName, SqlTextName)
-            put(CommonSqlDataTypeUtilities.JavaByteName, SqlBlobName)
-            put(CommonSqlDataTypeUtilities.JavaIntegerName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaDoubleName, SqlRealName)
-            put(CommonSqlDataTypeUtilities.JavaBooleanName, SqlIntegerName)
-            put(CommonSqlDataTypeUtilities.JavaLongName, SqlIntegerName)
+            put(YaormModel.ProtobufType.STRING, SqlTextName)
+            put(YaormModel.ProtobufType.INT32, SqlIntegerName)
+            put(YaormModel.ProtobufType.INT64, SqlIntegerName)
+            put(YaormModel.ProtobufType.UINT32, SqlIntegerName)
+            put(YaormModel.ProtobufType.UINT64, SqlIntegerName)
+            put(YaormModel.ProtobufType.SINT32, SqlIntegerName)
+            put(YaormModel.ProtobufType.SINT64, SqlIntegerName)
+            put(YaormModel.ProtobufType.FIXED32, SqlIntegerName)
+            put(YaormModel.ProtobufType.FIXED64, SqlIntegerName)
+            put(YaormModel.ProtobufType.SFIXED32, SqlIntegerName)
+            put(YaormModel.ProtobufType.SFIXED64, SqlIntegerName)
+            put(YaormModel.ProtobufType.BOOL, SqlIntegerName)
+            put(YaormModel.ProtobufType.BYTES, SqlBlobName)
+            put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
+            put(YaormModel.ProtobufType.FLOAT, SqlRealName)
         }
     }
 
-    override fun buildCountSql(definition: DefinitionModel): String {
+    override fun buildCountSql(definition: YaormModel.Definition): String {
         return "select count(1) as longVal from ${definition.name}"
     }
 
     override fun buildCreateColumn(
-            definition: DefinitionModel,
-            propertyDefinition: PropertyDefinitionModel): String? {
+            definition: YaormModel.Definition,
+            propertyDefinition: YaormModel.PropertyDefinition): String? {
         if (javaTypeToSqlType.containsKey(propertyDefinition.type)) {
             return "alter table ${definition.name} add column ${propertyDefinition.name} ${javaTypeToSqlType[propertyDefinition.type]}"
         }
@@ -60,165 +57,126 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildDropColumn(
-            definition: DefinitionModel,
-            propertyDefinition: PropertyDefinitionModel): String? {
+            definition: YaormModel.Definition,
+            propertyDefinition: YaormModel.PropertyDefinition): String? {
         val createTableSql = this.buildCreateTable(definition) ?: return null
 
         val returnList = ArrayList<String>()
         returnList.add("drop table if exists temp_${definition.name}")
         returnList.add("alter table ${definition.name} rename to temp_${definition.name}")
-        returnList.add(createTableSql.replace(CommonSqlDataTypeUtilities.SemiColon, ""))
+        returnList.add(createTableSql.replace(CommonUtils.SemiColon, ""))
 
-        val nameTypes = CommonSqlDataTypeUtilities.getNameTypes(
+        val nameTypes = CommonUtils.getNameTypes(
                 definition,
                 this.javaIdName,
-                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
+                YaormModel.ProtobufType.STRING,
                 this.javaTypeToSqlType)
 
         val columnsWithoutId = nameTypes
                 .filter { !javaIdName.equals(it.sqlColumnName) }
                 .map { "${it.sqlColumnName}" }
-                .joinToString(CommonSqlDataTypeUtilities.Comma)
+                .joinToString(CommonUtils.Comma)
 
         val selectIntoStatement =
                 "insert into ${definition.name} ($columnsWithoutId) select $columnsWithoutId from temp_${definition.name}"
         returnList.add(selectIntoStatement)
-        return returnList.joinToString(CommonSqlDataTypeUtilities.SemiColon) + CommonSqlDataTypeUtilities.SemiColon
+        return returnList.joinToString(CommonUtils.SemiColon) + CommonUtils.SemiColon
     }
 
     override fun buildDropIndex(
-            definition: DefinitionModel,
-            columns: List<PropertyDefinitionModel>): String? {
-        val indexName = CommonSqlDataTypeUtilities.buildIndexName(columns.map { it.name })
+            definition: YaormModel.Definition,
+            columns: List<YaormModel.PropertyDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(columns.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
     override fun buildCreateIndex(
-            definition: DefinitionModel,
-            properties: List<PropertyDefinitionModel>,
-            includes: List<PropertyDefinitionModel>): String? {
-        val indexName = CommonSqlDataTypeUtilities.buildIndexName(properties.map { it.name })
-        val joinedColumnNames = properties.map { it.name }.joinToString(CommonSqlDataTypeUtilities.Comma)
+            definition: YaormModel.Definition,
+            properties: List<YaormModel.PropertyDefinition>,
+            includes: List<YaormModel.PropertyDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(properties.map { it.name })
+        val joinedColumnNames = properties.map { it.name }.joinToString(CommonUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
 
         if (includes.isEmpty()) {
             return sqlStatement
         }
 
-        val joinedIncludeColumnNames = includes.joinToString(CommonSqlDataTypeUtilities.Comma)
+        val joinedIncludeColumnNames = includes.joinToString(CommonUtils.Comma)
         return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
     override fun buildDeleteWithCriteria(
-            definition: DefinitionModel,
-            whereClauseItem: WhereClauseItem): String {
-        val whereClause = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
+            definition: YaormModel.Definition,
+            whereClauseItem: YaormModel.WhereClauseItem): String {
+        val whereClause = CommonUtils.buildWhereClause(whereClauseItem)
         return "delete from ${definition.name} where $whereClause"
     }
 
     override fun buildUpdateWithCriteria(
-            definition: DefinitionModel,
-            newValues: Map<String, Any?>,
-            whereClauseItem: WhereClauseItem): String? {
-        try {
-            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            CommonSqlDataTypeUtilities.getNameTypes(
-                    definition,
-                    this.javaIdName,
-                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
-                    this.javaTypeToSqlType)
-                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
+            definition: YaormModel.Definition,
+            record: YaormModel.Record,
+            whereClauseItem: YaormModel.WhereClauseItem): String? {
 
-            if (nameTypeMap.size == 0) {
-                return null
+        val whereClauseStr = CommonUtils.buildWhereClause(whereClauseItem)
+        val newValuesWorkspace = StringBuilder()
+
+        record.columnsList.forEach {
+            if (newValuesWorkspace.length > 0) {
+                newValuesWorkspace.append(CommonUtils.Comma)
             }
-
-            val tableName = definition.name
-            val criteriaString: String = CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem)
-            val updateKvp = ArrayList<String>()
-
-            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
-                    definition,
-                    nameTypeMap,
-                    newValues)
-
-            mapWithCorrectValues
-                .forEach {
-                    updateKvp.add(it.key + CommonSqlDataTypeUtilities.Equals + it.value)
-                }
-
-            // nope, not updating entire table
-            if (criteriaString.length == 0) {
-                return null
-            }
-
-            val updateSql = java.lang.String.format(
-                    UpdateTableMultipleTemplate,
-                    tableName,
-                    updateKvp.joinToString(CommonSqlDataTypeUtilities.Comma + CommonSqlDataTypeUtilities.Space),
-                    criteriaString)
-
-            return updateSql
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return null
+            newValuesWorkspace.append(it.propertyDefinition.name)
+            newValuesWorkspace.append(CommonUtils.Equals)
+            newValuesWorkspace.append(CommonUtils.getFormattedString(it))
         }
+
+        return "update ${definition.name} set ${newValuesWorkspace.toString()} where $whereClauseStr${CommonUtils.SemiColon}"
     }
 
-    override fun buildDropTable(definition: DefinitionModel): String {
+    override fun buildDropTable(definition: YaormModel.Definition): String {
         return "drop table if exists ${definition.name}"
     }
 
-    override fun buildDeleteAll(definition: DefinitionModel) : String {
+    override fun buildDeleteAll(definition: YaormModel.Definition) : String {
         return "delete from ${definition.name}"
     }
 
     override fun buildBulkInsert(
-            definition: DefinitionModel,
-            items: List<Map<String, Any?>>) : String {
+            definition: YaormModel.Definition,
+            records: YaormModel.Records) : String {
         val tableName = definition.name
-        val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-        CommonSqlDataTypeUtilities.getNameTypes(
-                definition,
-                this.javaIdName,
-                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
-                this.javaTypeToSqlType)
-                .forEach { nameTypeMap.put(it.sqlColumnName, it) }
+        val columnNames = definition.propertyDefinitionsList.sortedBy { it.name } .map { it.name }
 
-        val columnNames = definition.properties.sortedBy { it.name } .map { it.name }
-
-        val commaSeparatedColumnNames = columnNames.joinToString(CommonSqlDataTypeUtilities.Comma)
+        val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "insert into $tableName ($commaSeparatedColumnNames) "
         val selectStatements = ArrayList<String>()
 
-        items
+        records
+            .recordsList
             .forEach { instance ->
                 val valueColumnPairs = ArrayList<String>()
 
-                val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
-                        definition,
-                        nameTypeMap,
-                        instance)
-
-                mapWithCorrectValues
+                instance
+                    .columnsList
                     .forEach {
+                        val formattedValue = CommonUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {
-                            valueColumnPairs.add("select ${it.value} as ${it.key}")
+                            valueColumnPairs.add("select $formattedValue as ${it.propertyDefinition.name}")
                         }
                         else {
-                            valueColumnPairs.add("${it.value} as ${it.key}")
+                            valueColumnPairs.add("$formattedValue as ${it.propertyDefinition.name}")
                         }
                     }
 
-                selectStatements.add(valueColumnPairs.joinToString(CommonSqlDataTypeUtilities.Comma))
+                selectStatements.add(valueColumnPairs.joinToString(CommonUtils.Comma))
             }
 
-        val unionSeparatedStatements = selectStatements.joinToString(CommonSqlDataTypeUtilities.SpacedUnion)
+        val unionSeparatedStatements = selectStatements.joinToString(CommonUtils.SpacedUnion)
 
-        return "$initialStatement $unionSeparatedStatements${CommonSqlDataTypeUtilities.SemiColon}"
+        return "$initialStatement $unionSeparatedStatements${CommonUtils.SemiColon}"
     }
 
-    override fun buildSelectAll(definition: DefinitionModel, n: Int): String {
+    override fun buildSelectAll(definition: YaormModel.Definition, n: Int): String {
         return java.lang.String.format(
                 SelectAllTemplate,
                 definition.name,
@@ -226,35 +184,35 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildWhereClause(
-            definition: DefinitionModel,
-            whereClauseItem: WhereClauseItem): String? {
+            definition: YaormModel.Definition,
+            whereClauseItem: YaormModel.WhereClauseItem): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 definition.name,
-                CommonSqlDataTypeUtilities.buildWhereClause(whereClauseItem))
+                CommonUtils.buildWhereClause(whereClauseItem))
 
         return whereSql
     }
 
-    override fun buildDeleteTable(definition: DefinitionModel, primaryKey: Any): String? {
+    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.PropertyHolder): String? {
         val tableName = definition.name
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 tableName,
-                CommonSqlDataTypeUtilities.getFormattedString(primaryKey))
+                CommonUtils.getFormattedString(primaryKey))
 
         return deleteSql
     }
 
     override fun buildUpdateTable(
-            definition: DefinitionModel,
-            updateModel: Map<String, Any?>): String? {
+            definition: YaormModel.Definition,
+            record: YaormModel.Record): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            CommonSqlDataTypeUtilities.getNameTypes(
+            CommonUtils.getNameTypes(
                     definition,
                     this.javaIdName,
-                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
+                    YaormModel.ProtobufType.STRING,
                     this.javaTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
@@ -266,18 +224,15 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             var stringId: String? = null
 
             val updateKvp = ArrayList<String>()
-            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
-                    definition,
-                    nameTypeMap,
-                    updateModel)
-
-            mapWithCorrectValues
+            record
+                .columnsList
                 .forEach {
-                    if (it.key.equals(this.javaIdName)) {
-                        stringId = it.value
+                    val formattedValue = CommonUtils.getFormattedString(it)
+                    if (it.propertyDefinition.name.equals(this.javaIdName)) {
+                        stringId = formattedValue
                     }
                     else {
-                        updateKvp.add(it.key + CommonSqlDataTypeUtilities.Equals + it.value)
+                        updateKvp.add(it.propertyDefinition.name + CommonUtils.Equals + formattedValue)
                     }
                 }
 
@@ -289,8 +244,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
                     UpdateTableSingleTemplate,
                     tableName,
                     updateKvp.joinToString(
-                            CommonSqlDataTypeUtilities.Comma +
-                                    CommonSqlDataTypeUtilities.Space),
+                            CommonUtils.Comma +
+                                    CommonUtils.Space),
                     stringId!!)
 
             return updateSql
@@ -301,37 +256,24 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildInsertIntoTable(
-            definition: DefinitionModel,
-            newInsertModel: Map<String, Any?>): String? {
+            definition: YaormModel.Definition,
+            record: YaormModel.Record): String? {
         try {
-            val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-
-            CommonSqlDataTypeUtilities.getNameTypes(
-                    definition,
-                    this.javaIdName,
-                    CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
-                    this.javaTypeToSqlType)
-                    .forEach { nameTypeMap.put(it.sqlColumnName, it) }
-
             val columnNames = ArrayList<String>()
             val values = ArrayList<String>()
 
-            val mapWithCorrectValues = SqlGeneratorUtils.buildInsertUpdateValues(
-                    definition,
-                    nameTypeMap,
-                    newInsertModel)
-
-            mapWithCorrectValues
+            record
+                .columnsList
                 .forEach {
-                    columnNames.add(it.key)
-                    values.add(it.value)
+                    columnNames.add(it.propertyDefinition.name)
+                    values.add(CommonUtils.getFormattedString(it))
                 }
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     definition.name,
-                    columnNames.joinToString(CommonSqlDataTypeUtilities.Comma),
-                    values.joinToString(CommonSqlDataTypeUtilities.Comma))
+                    columnNames.joinToString(CommonUtils.Comma),
+                    values.joinToString(CommonUtils.Comma))
 
             return insertSql
         } catch (e: Exception) {
@@ -340,12 +282,12 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         }
     }
 
-    override fun buildCreateTable(definition: DefinitionModel): String? {
+    override fun buildCreateTable(definition: YaormModel.Definition): String? {
 
-        val nameTypes = CommonSqlDataTypeUtilities.getNameTypes(
+        val nameTypes = CommonUtils.getNameTypes(
                 definition,
                 this.javaIdName,
-                CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName,
+                YaormModel.ProtobufType.STRING,
                 this.javaTypeToSqlType)
 
         if (nameTypes.size == 0) {
@@ -358,9 +300,9 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             if (javaIdName.equals(nameType.sqlColumnName)) {
                 workspace
                         .append(nameType.sqlColumnName)
-                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(CommonUtils.Space)
                         .append(nameType.dataType)
-                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(CommonUtils.Space)
                         .append(PrimaryKey)
             }
         }
@@ -368,10 +310,10 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         for (nameType in nameTypes) {
             if (!javaIdName.equals(nameType.sqlColumnName)) {
                 workspace
-                        .append(CommonSqlDataTypeUtilities.Comma)
-                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(CommonUtils.Comma)
+                        .append(CommonUtils.Space)
                         .append(nameType.sqlColumnName)
-                        .append(CommonSqlDataTypeUtilities.Space)
+                        .append(CommonUtils.Space)
                         .append(nameType.dataType)
             }
         }

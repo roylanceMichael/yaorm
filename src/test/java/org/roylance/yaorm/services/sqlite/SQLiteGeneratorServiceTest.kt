@@ -2,15 +2,14 @@ package org.roylance.yaorm.services.sqlite
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import org.roylance.yaorm.utilities.EntityUtils
 import java.io.File
 import java.util.*
 
 class SQLiteGeneratorServiceTest {
-//     @Test
+     @Test
     fun anotherSimpleCreateTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))
@@ -20,7 +19,7 @@ class SQLiteGeneratorServiceTest {
             val granularDatabaseService = JDBCGranularDatabaseService(sourceConnection.connectionSource, false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
-            val simpleTestDefinition = EntityUtils.getDefinition(org.roylance.yaorm.testmodels.before.SimpleTestModel::class.java)
+            val simpleTestDefinition = EntityUtils.getDefinitionProto(org.roylance.yaorm.testmodels.before.SimpleTestModel::class.java)
 
             val dropTableSql = sqliteGeneratorService.buildDropTable(simpleTestDefinition)
             granularDatabaseService.executeUpdateQuery(dropTableSql)
@@ -35,7 +34,7 @@ class SQLiteGeneratorServiceTest {
             newModel.mName = "this"
 
             val newModelProperties = EntityUtils.getProperties(newModel)
-            val newModelMap = EntityUtils.getMapFromObject(newModelProperties, newModel)
+            val newModelMap = EntityUtils.getRecordFromObject(newModelProperties, newModel)
 
             val insertSql = sqliteGeneratorService.buildInsertIntoTable(
                     simpleTestDefinition,
@@ -43,8 +42,8 @@ class SQLiteGeneratorServiceTest {
 
             granularDatabaseService.executeUpdateQuery(insertSql)
 
-            val secondDefinition = EntityUtils.getDefinition(org.roylance.yaorm.testmodels.after.SimpleTestModel::class.java)
-            val propertyDefinition = PropertyDefinitionModel(org.roylance.yaorm.testmodels.before.SimpleTestModel.MNameName, CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName)
+            val secondDefinition = EntityUtils.getDefinitionProto(org.roylance.yaorm.testmodels.after.SimpleTestModel::class.java)
+            val propertyDefinition = YaormModel.PropertyDefinition.newBuilder().setName(org.roylance.yaorm.testmodels.before.SimpleTestModel.MNameName).setType(YaormModel.ProtobufType.STRING).build()
 
             // act
             val dropColumnSql = sqliteGeneratorService.buildDropColumn(

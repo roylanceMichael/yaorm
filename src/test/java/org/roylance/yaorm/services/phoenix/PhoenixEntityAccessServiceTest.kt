@@ -1,15 +1,11 @@
 package org.roylance.yaorm.services.phoenix
 
 import org.junit.Assert
-import org.junit.Test
-import org.roylance.yaorm.models.WhereClauseItem
-import org.roylance.yaorm.models.migration.IndexModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.AnotherTestModel
 import org.roylance.yaorm.testmodels.TestModel
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
 import java.util.*
 
 class PhoenixEntityAccessServiceTest {
@@ -42,10 +38,12 @@ class PhoenixEntityAccessServiceTest {
 
             // act
             entityService.create(testModel)
+            val property = YaormModel.PropertyDefinition.newBuilder().setName("date").setType(YaormModel.ProtobufType.STRING)
+            val holder = YaormModel.PropertyHolder.newBuilder().setStringHolder("what").setPropertyDefinition(property)
+            val whereClause = YaormModel.WhereClauseItem.newBuilder().setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS).setNameAndProperty(holder).build()
 
             // assert
-            val whereClauseItem = WhereClauseItem("date", WhereClauseItem.Equals, "what")
-            val testModels = entityService.where(whereClauseItem)
+            val testModels = entityService.where(whereClause)
 
             Assert.assertEquals(1, testModels.size)
 
@@ -109,14 +107,12 @@ class PhoenixEntityAccessServiceTest {
             entityService.dropTable()
             entityService.createTable()
 
-            val columnNames = ArrayList<PropertyDefinitionModel>()
-            columnNames.add(PropertyDefinitionModel(AnotherTestModel.DescriptionName, CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName))
-            columnNames.add(PropertyDefinitionModel(AnotherTestModel.GramName, CommonSqlDataTypeUtilities.JavaFullyQualifiedStringName))
-
-            val indexModel = IndexModel(columnNames, ArrayList())
+            val index = YaormModel.Index.newBuilder()
+            index.addColumnNames(YaormModel.PropertyDefinition.newBuilder().setName(AnotherTestModel.DescriptionName).setType(YaormModel.ProtobufType.STRING))
+            index.addColumnNames(YaormModel.PropertyDefinition.newBuilder().setName(AnotherTestModel.GramName).setType(YaormModel.ProtobufType.STRING))
 
             // act
-            entityService.createIndex(indexModel)
+            entityService.createIndex(index.build())
 
             // assert
             Assert.assertEquals(0, entityService.getMany().size)

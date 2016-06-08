@@ -1,11 +1,8 @@
 package org.roylance.yaorm.utilities
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.ColumnNameTuple
-import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import java.lang.reflect.Method
 import java.util.*
 
@@ -15,60 +12,61 @@ object EntityUtils {
     const private val NumberOfTotalFieldsWithId = 4
     const private val EntityCollectionName = "org.roylance.yaorm.models.EntityCollection"
 
-    fun getMapsFromObjects(
+    fun getRecordsFromObjects(
             entityDefinitions: List<EntityDefinitionModel<*>>,
-            objects: List<Any>): List<Map<String, Any?>> {
-        return objects
-            .map { currentObject ->
-                this.getMapFromObject(entityDefinitions, currentObject)
-            }
+            objects: List<Any>): YaormModel.Records {
+        val records = YaormModel.Records.newBuilder()
+        objects.forEach { records.addRecords(getRecordFromObject(entityDefinitions, it)) }
+        return records.build()
     }
 
-    fun getMapFromObject(entityDefinitions: List<EntityDefinitionModel<*>>, item: Any) : Map<String, Any?> {
-        val returnMap = HashMap<String, Any?>()
-
+    fun getRecordFromObject(entityDefinitions: List<EntityDefinitionModel<*>>, item: Any) : YaormModel.Record {
+        val returnRecord = YaormModel.Record.newBuilder()
         entityDefinitions
             .forEach {
                 val result = it.getMethod.invoke(item)
-                if (result != null) {
-                    returnMap[it.propertyName] = it.getMethod.invoke(item)
-                }
-                else {
-                    returnMap[it.propertyName] = null
-                }
+                val propertyHolder = CommonUtils.buildPropertyHolder(result, it.getMethod.returnType, it.propertyName)
+                returnRecord.addColumns(propertyHolder)
             }
 
-        return returnMap
+        return returnRecord.build()
     }
 
-    fun <T> getDefinition(classType: Class<T>): DefinitionModel {
+    fun <T> getDefinitionProto(classType: Class<T>): YaormModel.Definition {
         val propertyNames = classType
                 .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Set) }
-                .map { it.name.substring(CommonSqlDataTypeUtilities.GetSetLength) }
+                .filter { it.name.startsWith(CommonUtils.Set) }
+                .map { it.name.substring(CommonUtils.GetSetLength) }
                 .toHashSet()
 
-        val propertyDefinitions = classType
-                .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
-                        propertyNames.contains(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)) &&
-                        !CommonSqlDataTypeUtilities.JavaObjectName.equals(it.returnType.name) }
-                .map {
-                    val name = CommonSqlDataTypeUtilities.lowercaseFirstChar(
-                            it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
-                    val javaType = it.returnType.name
+        val definition = YaormModel.Definition.newBuilder().setName(classType.simpleName)
 
-                    if (javaType.equals(EntityCollectionName)) {
-                        PropertyDefinitionModel(name, javaType, true)
+        classType
+                .methods
+                .filter { it.name.startsWith(CommonUtils.Get) &&
+                        propertyNames.contains(it.name.substring(CommonUtils.GetSetLength)) &&
+                        !CommonUtils.JavaObjectName.equals(it.returnType.name) }
+                .map {
+                    val name = CommonUtils.lowercaseFirstChar(
+                            it.name.substring(CommonUtils.GetSetLength))
+
+                    if (CommonUtils.JavaToProtoMap.containsKey(it.returnType)) {
+                        val property = YaormModel.PropertyDefinition.newBuilder()
+                            .setType(CommonUtils.JavaToProtoMap[it.returnType])
+                            .setName(name)
+                            .setIsKey(name == CommonUtils.IdName)
+                        definition.addPropertyDefinitions(property)
                     }
                     else {
-                        PropertyDefinitionModel(name, javaType)
+                        val property = YaormModel.PropertyDefinition.newBuilder()
+                                .setType(YaormModel.ProtobufType.STRING)
+                                .setName(name)
+                                .setIsKey(name == CommonUtils.IdName)
+                        definition.addPropertyDefinitions(property)
                     }
                 }
 
-        return DefinitionModel(classType.simpleName,
-                            propertyDefinitions,
-                            null)
+        return definition.build()
     }
 
     fun getProperties(item:Any):List<EntityDefinitionModel<*>> {
@@ -76,24 +74,24 @@ object EntityUtils {
         item
                 .javaClass
                 .methods
-                .filter { it.name.startsWith(CommonSqlDataTypeUtilities.Get) }
+                .filter { it.name.startsWith(CommonUtils.Get) }
                 .map { it }
                 .forEach {
-                    allGetMethods[it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)] = it
+                    allGetMethods[it.name.substring(CommonUtils.GetSetLength)] = it
                 }
 
         return item
             .javaClass
             .methods
             .filter {
-                it.name.startsWith(CommonSqlDataTypeUtilities.Set) &&
-                    allGetMethods.containsKey(it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                it.name.startsWith(CommonUtils.Set) &&
+                    allGetMethods.containsKey(it.name.substring(CommonUtils.GetSetLength))
             }
             .map {
-                val commonPropertyName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                val commonPropertyName = it.name.substring(CommonUtils.GetSetLength)
                 val getter = allGetMethods[commonPropertyName]!!
                 val setter = it
-                val propertyName = CommonSqlDataTypeUtilities.lowercaseFirstChar(commonPropertyName)
+                val propertyName = CommonUtils.lowercaseFirstChar(commonPropertyName)
                 var entityType = EntityDefinitionModel.Single
                 if (EntityCollectionName.equals(getter.returnType.name)) {
                     entityType = EntityDefinitionModel.List
@@ -111,39 +109,11 @@ object EntityUtils {
     fun doesClassHaveAMethodGetId(classModel: Class<*>):Boolean {
         return classModel
             .methods
-            .any { it.name.equals(CommonSqlDataTypeUtilities.Get + IdName) }
+            .any { it.name.equals(CommonUtils.Get + IdName) }
     }
 
     fun isClassAListAndDoesTypeHaveGetId(classModel: Class<*>):Boolean {
         return EntityCollectionName.equals(classModel.name)
-    }
-
-    fun getEntityTuple(getMethod: Method, typeDict: Map<String, String>): ColumnNameTuple<String>? {
-        val foundIds = getMethod
-                .returnType
-                .methods
-                .filter {
-                    it.name.equals(CommonSqlDataTypeUtilities.Get + IdName) ||
-                    it.name.equals(CommonSqlDataTypeUtilities.Set + IdName)
-                }
-
-        if (foundIds.size == NumberOfTotalFieldsWithId) {
-            val filteredId = foundIds
-                    .firstOrNull {
-                        typeDict.containsKey(it.returnType.name)
-                    }
-
-            if (filteredId != null) {
-                val javaColumnName = getMethod
-                        .name
-                        .substring(CommonSqlDataTypeUtilities.GetSetLength)
-                val sqlColumnName = CommonSqlDataTypeUtilities
-                        .lowercaseFirstChar(javaColumnName)
-                val dataType = typeDict[filteredId.returnType.name]
-                return ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!, true)
-            }
-        }
-        return null
     }
 
     fun getAllForeignObjects(entityDefinition: Class<*>): List<EntityDefinitionModel<*>> {
@@ -151,24 +121,24 @@ object EntityUtils {
         entityDefinition
             .methods
             .filter {
-                it.name.startsWith(CommonSqlDataTypeUtilities.Get) &&
+                it.name.startsWith(CommonUtils.Get) &&
                 this.doesClassHaveAMethodGetId(it.returnType) ||
                 this.isClassAListAndDoesTypeHaveGetId(it.returnType)
             }
             .forEach {
-                val propertyName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                val propertyName = it.name.substring(CommonUtils.GetSetLength)
                 getMethodMap[propertyName] = it
             }
 
         val singleEntities = entityDefinition
             .methods
             .filter {
-                it.name.startsWith(CommonSqlDataTypeUtilities.Set) &&
+                it.name.startsWith(CommonUtils.Set) &&
                 getMethodMap.containsKey(
-                        it.name.substring(CommonSqlDataTypeUtilities.GetSetLength))
+                        it.name.substring(CommonUtils.GetSetLength))
             }
             .map {
-                val propertyName = it.name.substring(CommonSqlDataTypeUtilities.GetSetLength)
+                val propertyName = it.name.substring(CommonUtils.GetSetLength)
 
                 if (this
                         .isClassAListAndDoesTypeHaveGetId(
@@ -176,7 +146,7 @@ object EntityUtils {
 
                     EntityDefinitionModel(
                             propertyName,
-                            CommonSqlDataTypeUtilities.lowercaseFirstChar(propertyName),
+                            CommonUtils.lowercaseFirstChar(propertyName),
                             getMethodMap[propertyName]!!,
                             it,
                             getMethodMap[propertyName]!!.returnType,
@@ -185,7 +155,7 @@ object EntityUtils {
                 else {
                     EntityDefinitionModel(
                             propertyName,
-                            CommonSqlDataTypeUtilities.lowercaseFirstChar(propertyName),
+                            CommonUtils.lowercaseFirstChar(propertyName),
                             getMethodMap[propertyName]!!,
                             it,
                             getMethodMap[propertyName]!!.returnType,
@@ -196,10 +166,17 @@ object EntityUtils {
         return singleEntities
     }
 
-    fun buildWhereClauseOnId(entity:IEntity):WhereClauseItem {
-        return WhereClauseItem(
-            IdNameLowercase,
-            WhereClauseItem.Equals,
-                entity.id)
+    fun buildWhereClauseOnIdProto(entity:IEntity):YaormModel.WhereClauseItem {
+        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+                .setStringHolder(entity.id)
+                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(IdNameLowercase).setIsKey(true))
+                .build()
+
+        val whereClause = YaormModel.WhereClauseItem.newBuilder()
+                .setNameAndProperty(propertyHolder)
+                .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+                .build()
+
+        return whereClause
     }
 }

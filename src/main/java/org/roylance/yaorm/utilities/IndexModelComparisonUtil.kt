@@ -1,71 +1,73 @@
 package org.roylance.yaorm.utilities
 
-import org.roylance.yaorm.models.migration.DifferenceModel
-import org.roylance.yaorm.models.migration.IndexModel
+import org.roylance.yaorm.models.YaormModel
 
 object IndexModelComparisonUtil {
     fun addDifferenceIfDifference(
         name:String,
-        currentIndexModel: IndexModel?,
-        otherIndexModel: IndexModel?,
-        differenceReports: MutableList<DifferenceModel>) {
+        currentIndexModel: YaormModel.Index?,
+        otherIndexModel: YaormModel.Index?,
+        differenceReports: MutableList<YaormModel.Difference>) {
         if (currentIndexModel == null && otherIndexModel != null) {
-            val differenceReport = DifferenceModel(
-                    DifferenceModel.EntityTypeIndex,
-                    DifferenceModel.OperationDrop,
-                    name,
-                    indexModel = otherIndexModel)
+            val difference = YaormModel.Difference.newBuilder()
+                .setEntityType(YaormModel.Difference.EntityType.INDEX)
+                .setOperation(YaormModel.Difference.Operation.DROP)
+                .setName(name)
+                .setIndex(otherIndexModel)
+                .build()
 
-            differenceReports.add(differenceReport)
+            differenceReports.add(difference)
         }
 
         if (currentIndexModel != null && otherIndexModel == null) {
-            val differenceReport = DifferenceModel(
-                    DifferenceModel.EntityTypeIndex,
-                    DifferenceModel.OperationCreate,
-                    name,
-                    indexModel = currentIndexModel)
+            val difference = YaormModel.Difference.newBuilder()
+                    .setEntityType(YaormModel.Difference.EntityType.INDEX)
+                    .setOperation(YaormModel.Difference.Operation.CREATE)
+                    .setName(name)
+                    .setIndex(currentIndexModel)
+                    .build()
 
-            differenceReports.add(differenceReport)
+            differenceReports.add(difference)
         }
 
         if (currentIndexModel != null && otherIndexModel != null) {
             val currentColumnNames =  currentIndexModel
-                    .columnNames
+                    .columnNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonSqlDataTypeUtilities.Comma)
+                    .joinToString(CommonUtils.Comma)
 
             val currentIncludeNames = currentIndexModel
-                    .includeNames
+                    .includeNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonSqlDataTypeUtilities.Comma)
+                    .joinToString(CommonUtils.Comma)
 
             val otherColumnNames = otherIndexModel
-                    .columnNames
+                    .columnNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonSqlDataTypeUtilities.Comma)
+                    .joinToString(CommonUtils.Comma)
 
             val otherIncludeNames = otherIndexModel
-                    .includeNames
+                    .includeNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonSqlDataTypeUtilities.Comma)
+                    .joinToString(CommonUtils.Comma)
 
             if (!currentColumnNames.equals(otherColumnNames) ||
                 !currentIncludeNames.equals(otherIncludeNames)) {
-                // drop other, create current
-                val dropIndexDifference = DifferenceModel(
-                        DifferenceModel.EntityTypeIndex,
-                        DifferenceModel.OperationDrop,
-                        name,
-                        indexModel = otherIndexModel)
+                val dropIndexDifference = YaormModel.Difference.newBuilder()
+                        .setEntityType(YaormModel.Difference.EntityType.INDEX)
+                        .setOperation(YaormModel.Difference.Operation.DROP)
+                        .setName(name)
+                        .setIndex(otherIndexModel)
+                        .build()
 
                 differenceReports.add(dropIndexDifference)
 
-                val createIndexDifference = DifferenceModel(
-                        DifferenceModel.EntityTypeIndex,
-                        DifferenceModel.OperationCreate,
-                        name,
-                        indexModel = currentIndexModel)
+                val createIndexDifference = YaormModel.Difference.newBuilder()
+                        .setEntityType(YaormModel.Difference.EntityType.INDEX)
+                        .setOperation(YaormModel.Difference.Operation.CREATE)
+                        .setName(name)
+                        .setIndex(currentIndexModel)
+                        .build()
 
                 differenceReports.add(createIndexDifference)
             }

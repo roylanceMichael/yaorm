@@ -2,26 +2,22 @@ package org.roylance.yaorm.services.entity
 
 import org.roylance.yaorm.models.EntityCollection
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.WhereClauseItem
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
-import org.roylance.yaorm.models.migration.DefinitionModel
-import org.roylance.yaorm.models.migration.IndexModel
-import org.roylance.yaorm.models.migration.PropertyDefinitionModel
 import org.roylance.yaorm.services.ISqlGeneratorService
-import org.roylance.yaorm.utilities.CommonSqlDataTypeUtilities
+import org.roylance.yaorm.utilities.CommonUtils
 import org.roylance.yaorm.utilities.EntityUtils
-import org.roylance.yaorm.utilities.SqlOperators
 import java.util.*
 
 class EntityService<T: IEntity>(
         override val entityDefinition: Class<T>,
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService,
-        override val indexDefinition: IndexModel? = null
+        override val indexDefinition: YaormModel.Index? = null
 ) : IEntityService<T> {
 
-    private val definition: DefinitionModel
+    private val definition: YaormModel.Definition
     private val currentDefinitions: List<EntityDefinitionModel<*>>
     private val foreignObjects:List<EntityDefinitionModel<*>>
     private val cachedStore: MutableMap<String, T> = HashMap()
@@ -35,7 +31,7 @@ class EntityService<T: IEntity>(
         this.foreignObjects = EntityUtils
                 .getAllForeignObjects(this.entityDefinition)
 
-        this.definition = EntityUtils.getDefinition(this.entityDefinition)
+        this.definition = EntityUtils.getDefinitionProto(this.entityDefinition)
     }
 
     override var entityContext: EntityContext? = null
@@ -103,57 +99,57 @@ class EntityService<T: IEntity>(
                 .successful
     }
 
-    override fun createIndex(indexModel: IndexModel): Boolean {
+    override fun createIndex(index: YaormModel.Index): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 this.definition,
-                indexModel.columnNames,
-                indexModel.includeNames) ?: return false
+                index.columnNamesList,
+                index.includeNamesList) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
                 .successful
     }
 
-    override fun dropIndex(indexModel: IndexModel): Boolean {
+    override fun dropIndex(index: YaormModel.Index): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 this.definition,
-                indexModel.columnNames) ?: return false
+                index.columnNamesList) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropIndexSql)
                 .successful
     }
 
-    override fun createColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
+    override fun createColumn(propertyDefinition: YaormModel.PropertyDefinition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val addColumnSql = this.sqlGeneratorService.buildCreateColumn(
                 this.definition,
-                propertyDefinitionModel) ?: return false
+                propertyDefinition) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(addColumnSql)
                 .successful
     }
 
-    override fun dropColumn(propertyDefinitionModel: PropertyDefinitionModel): Boolean {
+    override fun dropColumn(propertyDefinition: YaormModel.PropertyDefinition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 
         val dropTableSqlStatements = this.sqlGeneratorService.buildDropColumn(
                 this.definition,
-                propertyDefinitionModel) ?: return false
+                propertyDefinition) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropTableSqlStatements)
@@ -195,10 +191,15 @@ class EntityService<T: IEntity>(
             return this.cachedStore[id]
         }
 
-        val whereClause = WhereClauseItem(
-                this.sqlGeneratorService.javaIdName,
-                SqlOperators.Equals,
-                id as Any)
+        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+                .setStringHolder(id)
+                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .build()
+
+        val whereClause = YaormModel.WhereClauseItem.newBuilder()
+                .setNameAndProperty(propertyHolder)
+                .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+                .build()
 
         val whereSql = this.sqlGeneratorService
                 .buildWhereClause(this.definition, whereClause) ?: return null
@@ -251,7 +252,7 @@ class EntityService<T: IEntity>(
         return returnObjects
     }
 
-    override fun where(whereClauseItem: WhereClauseItem): List<T> {
+    override fun where(whereClauseItem: YaormModel.WhereClauseItem): List<T> {
         if (!this.granularDatabaseService.isAvailable()) {
             return ArrayList()
         }
@@ -298,10 +299,10 @@ class EntityService<T: IEntity>(
                 temporaryList.add(it)
 
                 if (temporaryList.size >= this.sqlGeneratorService.bulkInsertSize) {
-                    val mapsFromObjects = EntityUtils.getMapsFromObjects(this.currentDefinitions, temporaryList)
+                    val recordsFromObjects = EntityUtils.getRecordsFromObjects(this.currentDefinitions, temporaryList)
 
                     val bulkInsertSql = this.sqlGeneratorService
-                            .buildBulkInsert(this.definition, mapsFromObjects)
+                            .buildBulkInsert(this.definition, recordsFromObjects)
 
                     val result = this.granularDatabaseService
                             .executeUpdateQuery(bulkInsertSql)
@@ -311,8 +312,8 @@ class EntityService<T: IEntity>(
             }
 
         if (!temporaryList.isEmpty()) {
-            val mapsFromObjects = EntityUtils.getMapsFromObjects(this.currentDefinitions, temporaryList)
-            val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.definition, mapsFromObjects)
+            val recordsFromObjects = EntityUtils.getRecordsFromObjects(this.currentDefinitions, temporaryList)
+            val bulkInsertSql = this.sqlGeneratorService.buildBulkInsert(this.definition, recordsFromObjects)
 
             val result = this.granularDatabaseService
                     .executeUpdateQuery(bulkInsertSql)
@@ -350,7 +351,7 @@ class EntityService<T: IEntity>(
             // handle foreign objects first
             this.createOrUpdateForeignObject(entity)
 
-            val mappedObject = EntityUtils.getMapFromObject(this.currentDefinitions, entity)
+            val mappedObject = EntityUtils.getRecordFromObject(this.currentDefinitions, entity)
 
             // create
             val insertSql = this.sqlGeneratorService
@@ -388,7 +389,7 @@ class EntityService<T: IEntity>(
         try {
             this.createOrUpdateForeignObject(entity)
 
-            val objectMap = EntityUtils.getMapFromObject(this.currentDefinitions, entity)
+            val objectMap = EntityUtils.getRecordFromObject(this.currentDefinitions, entity)
 
             // update
             val updateSql = this
@@ -409,8 +410,8 @@ class EntityService<T: IEntity>(
     }
 
     override fun updateWithCriteria(
-            newValues: Map<String, Any>,
-            whereClauseItem: WhereClauseItem): Boolean {
+            newValues: YaormModel.Record,
+            whereClauseItem: YaormModel.WhereClauseItem): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -436,9 +437,14 @@ class EntityService<T: IEntity>(
             this.cachedStore.remove(id)
         }
 
+        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+                .setStringHolder(id)
+                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .build()
+
         val deleteSql =
                 this.sqlGeneratorService
-                        .buildDeleteTable(this.definition, id as Any) ?: return false
+                        .buildDeleteTable(this.definition, propertyHolder) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(deleteSql)
@@ -479,18 +485,18 @@ class EntityService<T: IEntity>(
                                 .getForeignService(firstObject.javaClass) ?: return@forEach
 
                         // get the setter method for the child
-                        val commonFirstWord = CommonSqlDataTypeUtilities.getFirstWordInProperty(it.propertyName)
+                        val commonFirstWord = CommonUtils.getFirstWordInProperty(it.propertyName)
 
                         val foundSetter = firstObject.javaClass
                                 .methods
                                 .filter {
-                                    if(!it.name.startsWith(CommonSqlDataTypeUtilities.Set)) {
+                                    if(!it.name.startsWith(CommonUtils.Set)) {
                                         false
                                     }
                                     else {
                                         val nameWithoutSet = it.name.substring(
-                                                CommonSqlDataTypeUtilities.GetSetLength)
-                                        val commonWord = CommonSqlDataTypeUtilities.getFirstWordInProperty(nameWithoutSet)
+                                                CommonUtils.GetSetLength)
+                                        val commonWord = CommonUtils.getFirstWordInProperty(nameWithoutSet)
                                         if (commonFirstWord.equals(commonWord)) {
                                             true
                                         }
@@ -552,7 +558,7 @@ class EntityService<T: IEntity>(
                                 ?.getForeignService(castToAny) ?: return@forEach
 
                         val builtWhereClause = EntityUtils
-                                .buildWhereClauseOnId((foreignObject as IEntity))
+                                .buildWhereClauseOnIdProto((foreignObject as IEntity))
                         val foreignObjects = foreignService.where(builtWhereClause)
 
                         if (foreignObjects.size > 0) {
@@ -571,35 +577,40 @@ class EntityService<T: IEntity>(
                         // the children will have a reference to this id
                         // but what name...
                         // let's enforce a common string between then
-                        val propertyToLookFor = CommonSqlDataTypeUtilities
+                        val propertyToLookFor = CommonUtils
                                 .getFirstWordInProperty(it.propertyName)
 
                         val foundCorrespondingProperty = foreignObject.entityDefinition
                                 .methods
                                 .filter {
-                                    val containsGet = it.name.startsWith(CommonSqlDataTypeUtilities.Get)
+                                    val containsGet = it.name.startsWith(CommonUtils.Get)
                                     if (!containsGet) {
                                         false
                                     } else {
                                         val propertyName = it.name
-                                                .substring(CommonSqlDataTypeUtilities.GetSetLength)
+                                                .substring(CommonUtils.GetSetLength)
                                         propertyToLookFor.equals(
-                                                CommonSqlDataTypeUtilities
+                                                CommonUtils
                                                         .getFirstWordInProperty(propertyName))
                                     }
                                 }
                                 .firstOrNull() ?: return@forEach
 
-                        val cleansedPropertyName = CommonSqlDataTypeUtilities.lowercaseFirstChar(
+                        val cleansedPropertyName = CommonUtils.lowercaseFirstChar(
                                 foundCorrespondingProperty
                                 .name
-                                .substring(CommonSqlDataTypeUtilities.GetSetLength))
+                                .substring(CommonUtils.GetSetLength))
 
                         // need to get the name of this property
-                        val whereClause = WhereClauseItem(
-                                cleansedPropertyName,
-                                WhereClauseItem.Equals,
-                                actualObject.id as Any)
+                        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+                                .setStringHolder(actualObject.id)
+                                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(cleansedPropertyName).setIsKey(true))
+                                .build()
+
+                        val whereClause = YaormModel.WhereClauseItem.newBuilder()
+                                .setNameAndProperty(propertyHolder)
+                                .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+                                .build()
 
                         val childObjects = foreignService.where(whereClause)
                         foreignObject.addAll(childObjects)
