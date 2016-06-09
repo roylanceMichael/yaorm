@@ -186,6 +186,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
                     val valueColumnPairs = ArrayList<String>()
                     instance
                         .columnsList
+                        .sortedBy { it.propertyDefinition.name }
                         .forEach {
                             val formattedString = CommonUtils.getFormattedString(it)
                             if (valueColumnPairs.isEmpty()) {

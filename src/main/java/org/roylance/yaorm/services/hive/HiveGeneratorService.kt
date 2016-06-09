@@ -178,6 +178,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
 
                 instance
                     .columnsList
+                    .sortedBy { it.propertyDefinition.name }
                     .forEach {
                         val formattedString = CommonUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {

@@ -158,6 +158,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
                 instance
                     .columnsList
+                    .sortedBy { it.propertyDefinition.name }
                     .forEach {
                         val formattedValue = CommonUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {
@@ -172,7 +173,6 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             }
 
         val unionSeparatedStatements = selectStatements.joinToString(CommonUtils.SpacedUnion)
-
         return "$initialStatement $unionSeparatedStatements${CommonUtils.SemiColon}"
     }
 
