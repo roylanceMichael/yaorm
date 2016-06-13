@@ -64,7 +64,7 @@ class SqlUtilitiesTest {
         val expectedSql = "delete from BeaconBroadcastModel where id='1';"
 
         val property = YaormModel.PropertyDefinition.newBuilder().setName(CommonUtils.IdName).setType(YaormModel.ProtobufType.STRING)
-        val holder = YaormModel.PropertyHolder.newBuilder().setStringHolder(1.toString()).setPropertyDefinition(property).build()
+        val holder = YaormModel.Column.newBuilder().setStringHolder(1.toString()).setPropertyDefinition(property).build()
 
         // act
         val deleteSql = sqliteGeneratorService.buildDeleteTable(this.beaconBroadcastDefinition, holder)!!
@@ -80,7 +80,7 @@ class SqlUtilitiesTest {
         val expectedSql = "select * from BeaconBroadcastModel where cachedName='mike';"
 
         val property = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.CachedNameName).setType(YaormModel.ProtobufType.STRING).build()
-        val holder = YaormModel.PropertyHolder.newBuilder().setStringHolder("mike").setPropertyDefinition(property).build()
+        val holder = YaormModel.Column.newBuilder().setStringHolder("mike").setPropertyDefinition(property).build()
         val whereClause = YaormModel.WhereClauseItem.newBuilder().setNameAndProperty(holder).setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS).build()
 
 

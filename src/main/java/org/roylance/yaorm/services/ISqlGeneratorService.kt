@@ -22,7 +22,7 @@ interface ISqlGeneratorService {
     fun buildCreateTable(definition: YaormModel.Definition): String?
 
     fun buildDeleteAll(definition: YaormModel.Definition) : String
-    fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.PropertyHolder): String?
+    fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.Column): String?
     fun buildDeleteWithCriteria(definition: YaormModel.Definition, whereClauseItem: YaormModel.WhereClauseItem): String
 
     fun buildBulkInsert(definition: YaormModel.Definition, records: YaormModel.Records) : String

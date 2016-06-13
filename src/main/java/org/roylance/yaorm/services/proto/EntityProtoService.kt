@@ -138,7 +138,7 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
             return YaormModel.Record.getDefaultInstance()
         }
 
-        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+        val propertyHolder = YaormModel.Column.newBuilder()
             .setStringHolder(id)
             .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
             .build()
@@ -299,7 +299,7 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
-        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+        val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
                 .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
                 .build()

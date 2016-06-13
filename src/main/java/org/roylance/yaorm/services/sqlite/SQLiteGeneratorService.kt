@@ -194,7 +194,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         return whereSql
     }
 
-    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.PropertyHolder): String? {
+    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.Column): String? {
         val tableName = definition.name
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,

@@ -191,7 +191,7 @@ class EntityService<T: IEntity>(
             return this.cachedStore[id]
         }
 
-        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+        val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
                 .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
                 .build()
@@ -437,7 +437,7 @@ class EntityService<T: IEntity>(
             this.cachedStore.remove(id)
         }
 
-        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+        val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
                 .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
                 .build()
@@ -602,7 +602,7 @@ class EntityService<T: IEntity>(
                                 .substring(CommonUtils.GetSetLength))
 
                         // need to get the name of this property
-                        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+                        val propertyHolder = YaormModel.Column.newBuilder()
                                 .setStringHolder(actualObject.id)
                                 .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(cleansedPropertyName).setIsKey(true))
                                 .build()

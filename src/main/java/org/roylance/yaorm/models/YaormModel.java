@@ -240,17 +240,17 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+     * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
     boolean hasNameAndProperty();
     /**
-     * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+     * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
-    org.roylance.yaorm.models.YaormModel.PropertyHolder getNameAndProperty();
+    org.roylance.yaorm.models.YaormModel.Column getNameAndProperty();
     /**
-     * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+     * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
-    org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder getNameAndPropertyOrBuilder();
+    org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder();
 
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClauseItem.OperatorType operator_type = 2;</code>
@@ -324,11 +324,11 @@ public final class YaormModel {
               break;
             }
             case 10: {
-              org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder subBuilder = null;
+              org.roylance.yaorm.models.YaormModel.Column.Builder subBuilder = null;
               if (nameAndProperty_ != null) {
                 subBuilder = nameAndProperty_.toBuilder();
               }
-              nameAndProperty_ = input.readMessage(org.roylance.yaorm.models.YaormModel.PropertyHolder.parser(), extensionRegistry);
+              nameAndProperty_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Column.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(nameAndProperty_);
                 nameAndProperty_ = subBuilder.buildPartial();
@@ -597,23 +597,23 @@ public final class YaormModel {
     }
 
     public static final int NAME_AND_PROPERTY_FIELD_NUMBER = 1;
-    private org.roylance.yaorm.models.YaormModel.PropertyHolder nameAndProperty_;
+    private org.roylance.yaorm.models.YaormModel.Column nameAndProperty_;
     /**
-     * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+     * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
     public boolean hasNameAndProperty() {
       return nameAndProperty_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+     * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
-    public org.roylance.yaorm.models.YaormModel.PropertyHolder getNameAndProperty() {
-      return nameAndProperty_ == null ? org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance() : nameAndProperty_;
+    public org.roylance.yaorm.models.YaormModel.Column getNameAndProperty() {
+      return nameAndProperty_ == null ? org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+     * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
-    public org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder getNameAndPropertyOrBuilder() {
+    public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder() {
       return getNameAndProperty();
     }
 
@@ -931,29 +931,29 @@ public final class YaormModel {
         return this;
       }
 
-      private org.roylance.yaorm.models.YaormModel.PropertyHolder nameAndProperty_ = null;
+      private org.roylance.yaorm.models.YaormModel.Column nameAndProperty_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.PropertyHolder, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder, org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> nameAndPropertyBuilder_;
+          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> nameAndPropertyBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       public boolean hasNameAndProperty() {
         return nameAndPropertyBuilder_ != null || nameAndProperty_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder getNameAndProperty() {
+      public org.roylance.yaorm.models.YaormModel.Column getNameAndProperty() {
         if (nameAndPropertyBuilder_ == null) {
-          return nameAndProperty_ == null ? org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance() : nameAndProperty_;
+          return nameAndProperty_ == null ? org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
         } else {
           return nameAndPropertyBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
-      public Builder setNameAndProperty(org.roylance.yaorm.models.YaormModel.PropertyHolder value) {
+      public Builder setNameAndProperty(org.roylance.yaorm.models.YaormModel.Column value) {
         if (nameAndPropertyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -967,10 +967,10 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       public Builder setNameAndProperty(
-          org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder builderForValue) {
+          org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
         if (nameAndPropertyBuilder_ == null) {
           nameAndProperty_ = builderForValue.build();
           onChanged();
@@ -981,13 +981,13 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
-      public Builder mergeNameAndProperty(org.roylance.yaorm.models.YaormModel.PropertyHolder value) {
+      public Builder mergeNameAndProperty(org.roylance.yaorm.models.YaormModel.Column value) {
         if (nameAndPropertyBuilder_ == null) {
           if (nameAndProperty_ != null) {
             nameAndProperty_ =
-              org.roylance.yaorm.models.YaormModel.PropertyHolder.newBuilder(nameAndProperty_).mergeFrom(value).buildPartial();
+              org.roylance.yaorm.models.YaormModel.Column.newBuilder(nameAndProperty_).mergeFrom(value).buildPartial();
           } else {
             nameAndProperty_ = value;
           }
@@ -999,7 +999,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       public Builder clearNameAndProperty() {
         if (nameAndPropertyBuilder_ == null) {
@@ -1013,33 +1013,33 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder getNameAndPropertyBuilder() {
+      public org.roylance.yaorm.models.YaormModel.Column.Builder getNameAndPropertyBuilder() {
         
         onChanged();
         return getNameAndPropertyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder getNameAndPropertyOrBuilder() {
+      public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder() {
         if (nameAndPropertyBuilder_ != null) {
           return nameAndPropertyBuilder_.getMessageOrBuilder();
         } else {
           return nameAndProperty_ == null ?
-              org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance() : nameAndProperty_;
+              org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.models.PropertyHolder name_and_property = 1;</code>
+       * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.PropertyHolder, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder, org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> 
+          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
           getNameAndPropertyFieldBuilder() {
         if (nameAndPropertyBuilder_ == null) {
           nameAndPropertyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.PropertyHolder, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder, org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder>(
+              org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder>(
                   getNameAndProperty(),
                   getParentForChildren(),
                   isClean());
@@ -6796,8 +6796,8 @@ public final class YaormModel {
 
   }
 
-  public interface PropertyHolderOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.PropertyHolder)
+  public interface ColumnOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.Column)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6894,17 +6894,17 @@ public final class YaormModel {
     com.google.protobuf.ByteString getBytesHolder();
   }
   /**
-   * Protobuf type {@code org.roylance.yaorm.models.PropertyHolder}
+   * Protobuf type {@code org.roylance.yaorm.models.Column}
    */
-  public  static final class PropertyHolder extends
+  public  static final class Column extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.PropertyHolder)
-      PropertyHolderOrBuilder {
-    // Use PropertyHolder.newBuilder() to construct.
-    private PropertyHolder(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Column)
+      ColumnOrBuilder {
+    // Use Column.newBuilder() to construct.
+    private Column(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private PropertyHolder() {
+    private Column() {
       doubleHolder_ = 0D;
       floatHolder_ = 0F;
       int32Holder_ = 0;
@@ -6927,7 +6927,7 @@ public final class YaormModel {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private PropertyHolder(
+    private Column(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
@@ -7049,14 +7049,14 @@ public final class YaormModel {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_PropertyHolder_descriptor;
+      return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Column_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_PropertyHolder_fieldAccessorTable
+      return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Column_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.roylance.yaorm.models.YaormModel.PropertyHolder.class, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder.class);
+              org.roylance.yaorm.models.YaormModel.Column.class, org.roylance.yaorm.models.YaormModel.Column.Builder.class);
     }
 
     public static final int PROPERTY_DEFINITION_FIELD_NUMBER = 1;
@@ -7375,53 +7375,53 @@ public final class YaormModel {
     }
 
     private static final long serialVersionUID = 0L;
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(byte[] data)
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(java.io.InputStream input)
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseDelimitedFrom(java.io.InputStream input)
+    public static org.roylance.yaorm.models.YaormModel.Column parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseDelimitedFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder parseFrom(
+    public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7432,7 +7432,7 @@ public final class YaormModel {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.PropertyHolder prototype) {
+    public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Column prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -7447,25 +7447,25 @@ public final class YaormModel {
       return builder;
     }
     /**
-     * Protobuf type {@code org.roylance.yaorm.models.PropertyHolder}
+     * Protobuf type {@code org.roylance.yaorm.models.Column}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.models.PropertyHolder)
-        org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder {
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.models.Column)
+        org.roylance.yaorm.models.YaormModel.ColumnOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_PropertyHolder_descriptor;
+        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Column_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_PropertyHolder_fieldAccessorTable
+        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Column_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.roylance.yaorm.models.YaormModel.PropertyHolder.class, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder.class);
+                org.roylance.yaorm.models.YaormModel.Column.class, org.roylance.yaorm.models.YaormModel.Column.Builder.class);
       }
 
-      // Construct using org.roylance.yaorm.models.YaormModel.PropertyHolder.newBuilder()
+      // Construct using org.roylance.yaorm.models.YaormModel.Column.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7522,23 +7522,23 @@ public final class YaormModel {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_PropertyHolder_descriptor;
+        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Column_descriptor;
       }
 
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder getDefaultInstanceForType() {
-        return org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance();
+      public org.roylance.yaorm.models.YaormModel.Column getDefaultInstanceForType() {
+        return org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance();
       }
 
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder build() {
-        org.roylance.yaorm.models.YaormModel.PropertyHolder result = buildPartial();
+      public org.roylance.yaorm.models.YaormModel.Column build() {
+        org.roylance.yaorm.models.YaormModel.Column result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder buildPartial() {
-        org.roylance.yaorm.models.YaormModel.PropertyHolder result = new org.roylance.yaorm.models.YaormModel.PropertyHolder(this);
+      public org.roylance.yaorm.models.YaormModel.Column buildPartial() {
+        org.roylance.yaorm.models.YaormModel.Column result = new org.roylance.yaorm.models.YaormModel.Column(this);
         if (propertyDefinitionBuilder_ == null) {
           result.propertyDefinition_ = propertyDefinition_;
         } else {
@@ -7564,16 +7564,16 @@ public final class YaormModel {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.roylance.yaorm.models.YaormModel.PropertyHolder) {
-          return mergeFrom((org.roylance.yaorm.models.YaormModel.PropertyHolder)other);
+        if (other instanceof org.roylance.yaorm.models.YaormModel.Column) {
+          return mergeFrom((org.roylance.yaorm.models.YaormModel.Column)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.PropertyHolder other) {
-        if (other == org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Column other) {
+        if (other == org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance()) return this;
         if (other.hasPropertyDefinition()) {
           mergePropertyDefinition(other.getPropertyDefinition());
         }
@@ -7635,11 +7635,11 @@ public final class YaormModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.roylance.yaorm.models.YaormModel.PropertyHolder parsedMessage = null;
+        org.roylance.yaorm.models.YaormModel.Column parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.roylance.yaorm.models.YaormModel.PropertyHolder) e.getUnfinishedMessage();
+          parsedMessage = (org.roylance.yaorm.models.YaormModel.Column) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -8212,27 +8212,27 @@ public final class YaormModel {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.PropertyHolder)
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Column)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.PropertyHolder)
-    private static final org.roylance.yaorm.models.YaormModel.PropertyHolder DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Column)
+    private static final org.roylance.yaorm.models.YaormModel.Column DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.PropertyHolder();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.Column();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.PropertyHolder getDefaultInstance() {
+    public static org.roylance.yaorm.models.YaormModel.Column getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PropertyHolder>
-        PARSER = new com.google.protobuf.AbstractParser<PropertyHolder>() {
-      public PropertyHolder parsePartialFrom(
+    private static final com.google.protobuf.Parser<Column>
+        PARSER = new com.google.protobuf.AbstractParser<Column>() {
+      public Column parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         try {
-          return new PropertyHolder(input, extensionRegistry);
+          return new Column(input, extensionRegistry);
         } catch (RuntimeException e) {
           if (e.getCause() instanceof
               com.google.protobuf.InvalidProtocolBufferException) {
@@ -8244,16 +8244,16 @@ public final class YaormModel {
       }
     };
 
-    public static com.google.protobuf.Parser<PropertyHolder> parser() {
+    public static com.google.protobuf.Parser<Column> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PropertyHolder> getParserForType() {
+    public com.google.protobuf.Parser<Column> getParserForType() {
       return PARSER;
     }
 
-    public org.roylance.yaorm.models.YaormModel.PropertyHolder getDefaultInstanceForType() {
+    public org.roylance.yaorm.models.YaormModel.Column getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8264,27 +8264,27 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.PropertyHolder> 
+    java.util.List<org.roylance.yaorm.models.YaormModel.Column> 
         getColumnsList();
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    org.roylance.yaorm.models.YaormModel.PropertyHolder getColumns(int index);
+    org.roylance.yaorm.models.YaormModel.Column getColumns(int index);
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
     int getColumnsCount();
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> 
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
         getColumnsOrBuilderList();
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder getColumnsOrBuilder(
+    org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
         int index);
   }
   /**
@@ -8328,10 +8328,10 @@ public final class YaormModel {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.PropertyHolder>();
+                columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Column>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              columns_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.PropertyHolder.parser(), extensionRegistry));
+              columns_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Column.parser(), extensionRegistry));
               break;
             }
           }
@@ -8362,36 +8362,36 @@ public final class YaormModel {
     }
 
     public static final int COLUMNS_FIELD_NUMBER = 1;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.PropertyHolder> columns_;
+    private java.util.List<org.roylance.yaorm.models.YaormModel.Column> columns_;
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.PropertyHolder> getColumnsList() {
+    public java.util.List<org.roylance.yaorm.models.YaormModel.Column> getColumnsList() {
       return columns_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> 
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
         getColumnsOrBuilderList() {
       return columns_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
     public int getColumnsCount() {
       return columns_.size();
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    public org.roylance.yaorm.models.YaormModel.PropertyHolder getColumns(int index) {
+    public org.roylance.yaorm.models.YaormModel.Column getColumns(int index) {
       return columns_.get(index);
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    public org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder getColumnsOrBuilder(
+    public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
         int index) {
       return columns_.get(index);
     }
@@ -8640,22 +8640,22 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.PropertyHolder> columns_ =
+      private java.util.List<org.roylance.yaorm.models.YaormModel.Column> columns_ =
         java.util.Collections.emptyList();
       private void ensureColumnsIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.PropertyHolder>(columns_);
+          columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Column>(columns_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.PropertyHolder, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder, org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> columnsBuilder_;
+          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> columnsBuilder_;
 
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.PropertyHolder> getColumnsList() {
+      public java.util.List<org.roylance.yaorm.models.YaormModel.Column> getColumnsList() {
         if (columnsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(columns_);
         } else {
@@ -8663,7 +8663,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public int getColumnsCount() {
         if (columnsBuilder_ == null) {
@@ -8673,9 +8673,9 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder getColumns(int index) {
+      public org.roylance.yaorm.models.YaormModel.Column getColumns(int index) {
         if (columnsBuilder_ == null) {
           return columns_.get(index);
         } else {
@@ -8683,10 +8683,10 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder setColumns(
-          int index, org.roylance.yaorm.models.YaormModel.PropertyHolder value) {
+          int index, org.roylance.yaorm.models.YaormModel.Column value) {
         if (columnsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8700,10 +8700,10 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder setColumns(
-          int index, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder builderForValue) {
+          int index, org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
         if (columnsBuilder_ == null) {
           ensureColumnsIsMutable();
           columns_.set(index, builderForValue.build());
@@ -8714,9 +8714,9 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public Builder addColumns(org.roylance.yaorm.models.YaormModel.PropertyHolder value) {
+      public Builder addColumns(org.roylance.yaorm.models.YaormModel.Column value) {
         if (columnsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8730,10 +8730,10 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder addColumns(
-          int index, org.roylance.yaorm.models.YaormModel.PropertyHolder value) {
+          int index, org.roylance.yaorm.models.YaormModel.Column value) {
         if (columnsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8747,10 +8747,10 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder addColumns(
-          org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder builderForValue) {
+          org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
         if (columnsBuilder_ == null) {
           ensureColumnsIsMutable();
           columns_.add(builderForValue.build());
@@ -8761,10 +8761,10 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder addColumns(
-          int index, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder builderForValue) {
+          int index, org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
         if (columnsBuilder_ == null) {
           ensureColumnsIsMutable();
           columns_.add(index, builderForValue.build());
@@ -8775,10 +8775,10 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder addAllColumns(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.PropertyHolder> values) {
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.Column> values) {
         if (columnsBuilder_ == null) {
           ensureColumnsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -8790,7 +8790,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder clearColumns() {
         if (columnsBuilder_ == null) {
@@ -8803,7 +8803,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
       public Builder removeColumns(int index) {
         if (columnsBuilder_ == null) {
@@ -8816,16 +8816,16 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder getColumnsBuilder(
+      public org.roylance.yaorm.models.YaormModel.Column.Builder getColumnsBuilder(
           int index) {
         return getColumnsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder getColumnsOrBuilder(
+      public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
           int index) {
         if (columnsBuilder_ == null) {
           return columns_.get(index);  } else {
@@ -8833,9 +8833,9 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> 
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
            getColumnsOrBuilderList() {
         if (columnsBuilder_ != null) {
           return columnsBuilder_.getMessageOrBuilderList();
@@ -8844,33 +8844,33 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder addColumnsBuilder() {
+      public org.roylance.yaorm.models.YaormModel.Column.Builder addColumnsBuilder() {
         return getColumnsFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance());
+            org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder addColumnsBuilder(
+      public org.roylance.yaorm.models.YaormModel.Column.Builder addColumnsBuilder(
           int index) {
         return getColumnsFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.PropertyHolder.getDefaultInstance());
+            index, org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.PropertyHolder columns = 1;</code>
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
        */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder> 
+      public java.util.List<org.roylance.yaorm.models.YaormModel.Column.Builder> 
            getColumnsBuilderList() {
         return getColumnsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.PropertyHolder, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder, org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder> 
+          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
           getColumnsFieldBuilder() {
         if (columnsBuilder_ == null) {
           columnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.PropertyHolder, org.roylance.yaorm.models.YaormModel.PropertyHolder.Builder, org.roylance.yaorm.models.YaormModel.PropertyHolderOrBuilder>(
+              org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder>(
                   columns_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -9651,10 +9651,10 @@ public final class YaormModel {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_DifferenceReport_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_PropertyHolder_descriptor;
+    internal_static_org_roylance_yaorm_models_Column_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_PropertyHolder_fieldAccessorTable;
+      internal_static_org_roylance_yaorm_models_Column_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Record_descriptor;
   private static
@@ -9675,64 +9675,64 @@ public final class YaormModel {
   static {
     java.lang.String[] descriptorData = {
       "\n\020YaormModel.proto\022\031org.roylance.yaorm.m" +
-      "odels\"\306\003\n\017WhereClauseItem\022D\n\021name_and_pr" +
-      "operty\030\001 \001(\0132).org.roylance.yaorm.models" +
-      ".PropertyHolder\022N\n\roperator_type\030\002 \001(\01627" +
-      ".org.roylance.yaorm.models.WhereClauseIt" +
-      "em.OperatorType\022U\n\021connecting_and_or\030\003 \001" +
-      "(\0162:.org.roylance.yaorm.models.WhereClau" +
-      "seItem.ConnectingAndOr\022K\n\027connecting_whe" +
-      "re_clause\030\004 \001(\0132*.org.roylance.yaorm.mod" +
-      "els.WhereClauseItem\"K\n\014OperatorType\022\n\n\006E",
-      "QUALS\020\000\022\020\n\014GREATER_THAN\020\001\022\r\n\tLESS_THAN\020\002" +
-      "\022\016\n\nNOT_EQUALS\020\003\",\n\017ConnectingAndOr\022\010\n\004N" +
-      "ONE\020\000\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\205\001\n\022PropertyDefin" +
-      "ition\022\014\n\004name\030\001 \001(\t\0225\n\004type\030\002 \001(\0162\'.org." +
-      "roylance.yaorm.models.ProtobufType\022\032\n\022fo" +
-      "reign_collection\030\003 \001(\010\022\016\n\006is_key\030\004 \001(\010\"\222" +
-      "\001\n\005Index\022C\n\014column_names\030\001 \003(\0132-.org.roy" +
-      "lance.yaorm.models.PropertyDefinition\022D\n" +
-      "\rinclude_names\030\002 \003(\0132-.org.roylance.yaor" +
-      "m.models.PropertyDefinition\"\260\003\n\nDifferen",
-      "ce\022E\n\013entity_type\030\001 \001(\01620.org.roylance.y" +
-      "aorm.models.Difference.EntityType\022B\n\tope" +
-      "ration\030\002 \001(\0162/.org.roylance.yaorm.models" +
-      ".Difference.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005i" +
-      "ndex\030\004 \001(\0132 .org.roylance.yaorm.models.I" +
-      "ndex\022J\n\023property_definition\030\005 \001(\0132-.org." +
+      "odels\"\276\003\n\017WhereClauseItem\022<\n\021name_and_pr" +
+      "operty\030\001 \001(\0132!.org.roylance.yaorm.models" +
+      ".Column\022N\n\roperator_type\030\002 \001(\01627.org.roy" +
+      "lance.yaorm.models.WhereClauseItem.Opera" +
+      "torType\022U\n\021connecting_and_or\030\003 \001(\0162:.org" +
+      ".roylance.yaorm.models.WhereClauseItem.C" +
+      "onnectingAndOr\022K\n\027connecting_where_claus" +
+      "e\030\004 \001(\0132*.org.roylance.yaorm.models.Wher" +
+      "eClauseItem\"K\n\014OperatorType\022\n\n\006EQUALS\020\000\022",
+      "\020\n\014GREATER_THAN\020\001\022\r\n\tLESS_THAN\020\002\022\016\n\nNOT_" +
+      "EQUALS\020\003\",\n\017ConnectingAndOr\022\010\n\004NONE\020\000\022\007\n" +
+      "\003AND\020\001\022\006\n\002OR\020\002\"\205\001\n\022PropertyDefinition\022\014\n" +
+      "\004name\030\001 \001(\t\0225\n\004type\030\002 \001(\0162\'.org.roylance" +
+      ".yaorm.models.ProtobufType\022\032\n\022foreign_co" +
+      "llection\030\003 \001(\010\022\016\n\006is_key\030\004 \001(\010\"\222\001\n\005Index" +
+      "\022C\n\014column_names\030\001 \003(\0132-.org.roylance.ya" +
+      "orm.models.PropertyDefinition\022D\n\rinclude" +
+      "_names\030\002 \003(\0132-.org.roylance.yaorm.models" +
+      ".PropertyDefinition\"\260\003\n\nDifference\022E\n\013en",
+      "tity_type\030\001 \001(\01620.org.roylance.yaorm.mod" +
+      "els.Difference.EntityType\022B\n\toperation\030\002" +
+      " \001(\0162/.org.roylance.yaorm.models.Differe" +
+      "nce.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005index\030\004 \001" +
+      "(\0132 .org.roylance.yaorm.models.Index\022J\n\023" +
+      "property_definition\030\005 \001(\0132-.org.roylance" +
+      ".yaorm.models.PropertyDefinition\0229\n\ndefi" +
+      "nition\030\006 \001(\0132%.org.roylance.yaorm.models" +
+      ".Definition\".\n\nEntityType\022\t\n\005INDEX\020\000\022\n\n\006" +
+      "COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation\022\n\n\006CREA",
+      "TE\020\000\022\010\n\004DROP\020\001\"\230\001\n\nDefinition\022\014\n\004name\030\001 " +
+      "\001(\t\022K\n\024property_definitions\030\002 \003(\0132-.org." +
       "roylance.yaorm.models.PropertyDefinition" +
-      "\0229\n\ndefinition\030\006 \001(\0132%.org.roylance.yaor" +
-      "m.models.Definition\".\n\nEntityType\022\t\n\005IND" +
-      "EX\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation",
-      "\022\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\230\001\n\nDefinition\022\014\n" +
-      "\004name\030\001 \001(\t\022K\n\024property_definitions\030\002 \003(" +
-      "\0132-.org.roylance.yaorm.models.PropertyDe" +
-      "finition\022/\n\005index\030\003 \001(\0132 .org.roylance.y" +
-      "aorm.models.Index\"I\n\013Definitions\022:\n\013defi" +
-      "nitions\030\003 \003(\0132%.org.roylance.yaorm.model" +
-      "s.Definition\"h\n\020DifferenceReport\022\030\n\020migr" +
-      "ation_exists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132" +
-      "%.org.roylance.yaorm.models.Difference\"\265" +
-      "\003\n\016PropertyHolder\022J\n\023property_definition",
-      "\030\001 \001(\0132-.org.roylance.yaorm.models.Prope" +
-      "rtyDefinition\022\025\n\rdouble_holder\030\002 \001(\001\022\024\n\014" +
-      "float_holder\030\003 \001(\002\022\024\n\014int32_holder\030\004 \001(\005" +
-      "\022\024\n\014int64_holder\030\005 \001(\003\022\025\n\ruint32_holder\030" +
-      "\006 \001(\r\022\025\n\ruint64_holder\030\007 \001(\004\022\025\n\rsint32_h" +
-      "older\030\010 \001(\021\022\025\n\rsint64_holder\030\t \001(\022\022\026\n\016fi" +
-      "xed32_holder\030\n \001(\007\022\026\n\016fixed64_holder\030\013 \001" +
-      "(\006\022\027\n\017sfixed32_holder\030\014 \001(\017\022\027\n\017sfixed64_" +
-      "holder\030\r \001(\020\022\023\n\013bool_holder\030\016 \001(\010\022\025\n\rstr" +
-      "ing_holder\030\017 \001(\t\022\024\n\014bytes_holder\030\020 \001(\014\"D",
-      "\n\006Record\022:\n\007columns\030\001 \003(\0132).org.roylance" +
-      ".yaorm.models.PropertyHolder\"=\n\007Records\022" +
-      "2\n\007records\030\001 \003(\0132!.org.roylance.yaorm.mo" +
-      "dels.Record*\327\001\n\014ProtobufType\022\010\n\004NONE\020\000\022\n" +
-      "\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005INT6" +
-      "4\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020\007\022" +
-      "\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64\020\n\022\014\n" +
-      "\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n\006S" +
-      "TRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020b\006proto3"
+      "\022/\n\005index\030\003 \001(\0132 .org.roylance.yaorm.mod" +
+      "els.Index\"I\n\013Definitions\022:\n\013definitions\030" +
+      "\003 \003(\0132%.org.roylance.yaorm.models.Defini" +
+      "tion\"h\n\020DifferenceReport\022\030\n\020migration_ex" +
+      "ists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132%.org.ro" +
+      "ylance.yaorm.models.Difference\"\255\003\n\006Colum" +
+      "n\022J\n\023property_definition\030\001 \001(\0132-.org.roy",
+      "lance.yaorm.models.PropertyDefinition\022\025\n" +
+      "\rdouble_holder\030\002 \001(\001\022\024\n\014float_holder\030\003 \001" +
+      "(\002\022\024\n\014int32_holder\030\004 \001(\005\022\024\n\014int64_holder" +
+      "\030\005 \001(\003\022\025\n\ruint32_holder\030\006 \001(\r\022\025\n\ruint64_" +
+      "holder\030\007 \001(\004\022\025\n\rsint32_holder\030\010 \001(\021\022\025\n\rs" +
+      "int64_holder\030\t \001(\022\022\026\n\016fixed32_holder\030\n \001" +
+      "(\007\022\026\n\016fixed64_holder\030\013 \001(\006\022\027\n\017sfixed32_h" +
+      "older\030\014 \001(\017\022\027\n\017sfixed64_holder\030\r \001(\020\022\023\n\013" +
+      "bool_holder\030\016 \001(\010\022\025\n\rstring_holder\030\017 \001(\t" +
+      "\022\024\n\014bytes_holder\030\020 \001(\014\"<\n\006Record\0222\n\007colu",
+      "mns\030\001 \003(\0132!.org.roylance.yaorm.models.Co" +
+      "lumn\"=\n\007Records\0222\n\007records\030\001 \003(\0132!.org.r" +
+      "oylance.yaorm.models.Record*\327\001\n\014Protobuf" +
+      "Type\022\010\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n" +
+      "\005INT32\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT6" +
+      "4\020\006\022\n\n\006SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t" +
+      "\022\013\n\007FIXED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020" +
+      "\014\022\010\n\004BOOL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PR" +
+      "OTO\020\020b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9788,11 +9788,11 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_DifferenceReport_descriptor,
         new java.lang.String[] { "MigrationExists", "Differences", });
-    internal_static_org_roylance_yaorm_models_PropertyHolder_descriptor =
+    internal_static_org_roylance_yaorm_models_Column_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_org_roylance_yaorm_models_PropertyHolder_fieldAccessorTable = new
+    internal_static_org_roylance_yaorm_models_Column_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_PropertyHolder_descriptor,
+        internal_static_org_roylance_yaorm_models_Column_descriptor,
         new java.lang.String[] { "PropertyDefinition", "DoubleHolder", "FloatHolder", "Int32Holder", "Int64Holder", "Uint32Holder", "Uint64Holder", "Sint32Holder", "Sint64Holder", "Fixed32Holder", "Fixed64Holder", "Sfixed32Holder", "Sfixed64Holder", "BoolHolder", "StringHolder", "BytesHolder", });
     internal_static_org_roylance_yaorm_models_Record_descriptor =
       getDescriptor().getMessageTypes().get(8);

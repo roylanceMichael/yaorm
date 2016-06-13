@@ -9,7 +9,6 @@ import java.util.*
 object EntityUtils {
     const private val IdNameLowercase = "id"
     const private val IdName = "Id"
-    const private val NumberOfTotalFieldsWithId = 4
     const private val EntityCollectionName = "org.roylance.yaorm.models.EntityCollection"
 
     fun getRecordsFromObjects(
@@ -167,7 +166,7 @@ object EntityUtils {
     }
 
     fun buildWhereClauseOnIdProto(entity:IEntity):YaormModel.WhereClauseItem {
-        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+        val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(entity.id)
                 .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(IdNameLowercase).setIsKey(true))
                 .build()

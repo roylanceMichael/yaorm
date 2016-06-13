@@ -61,8 +61,8 @@ object CommonUtils {
         }
     }
 
-    fun buildPropertyHolder(value: Any?, propertyDefinition:YaormModel.PropertyDefinition):YaormModel.PropertyHolder {
-        val returnHolder = YaormModel.PropertyHolder.newBuilder()
+    fun buildPropertyHolder(value: Any?, propertyDefinition:YaormModel.PropertyDefinition):YaormModel.Column {
+        val returnHolder = YaormModel.Column.newBuilder()
         returnHolder.propertyDefinition = propertyDefinition
 
         val notNullValueAsString = if (value == null) "" else value.toString()
@@ -130,8 +130,8 @@ object CommonUtils {
         return returnHolder.build()
     }
 
-    fun buildPropertyHolder(value: Any?, javaType: Class<*>, name:String):YaormModel.PropertyHolder {
-        val returnHolder = YaormModel.PropertyHolder.newBuilder()
+    fun buildPropertyHolder(value: Any?, javaType: Class<*>, name:String):YaormModel.Column {
+        val returnHolder = YaormModel.Column.newBuilder()
         val propertyDefinition = YaormModel.PropertyDefinition.newBuilder().setName(name).setIsKey(IdName.equals(name))
 
         if (JavaToProtoMap.containsKey(javaType)) {
@@ -208,7 +208,7 @@ object CommonUtils {
         return returnHolder.build()
     }
 
-    fun getAnyObject(holder:YaormModel.PropertyHolder):Any? {
+    fun getAnyObject(holder:YaormModel.Column):Any? {
         val propertyDefinition = holder.propertyDefinition
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.STRING)) {
             return holder.stringHolder
@@ -272,7 +272,7 @@ object CommonUtils {
         return null
     }
 
-    fun getFormattedString(value: YaormModel.PropertyHolder): String {
+    fun getFormattedString(value: YaormModel.Column): String {
         if (!value.hasPropertyDefinition()) {
             return Null
         }
@@ -349,14 +349,14 @@ object CommonUtils {
             return input.toLowerCase()
         }
 
-        val firstChar = input.get(0).toLowerCase()
+        val firstChar = input[0].toLowerCase()
         return firstChar + input.substring(1)
     }
 
     fun getFirstWordInProperty(input:String):String {
         // going to lower case, just in case
         val lowerInput = this.lowercaseFirstChar(input)
-        var returnString = StringBuilder()
+        val returnString = StringBuilder()
 
         for (newChar in lowerInput) {
             if (newChar.isLetter()) {
@@ -465,5 +465,15 @@ object CommonUtils {
 
     fun buildMapsFromRecords(records:YaormModel.Records):List<Map<String, Any?>> {
         return records.recordsList.map { buildMapFromRecord(it) }
+    }
+
+    fun <T> getValueFromRecord(name:String, record:YaormModel.Record):T? {
+        val foundColumn = record.columnsList.firstOrNull { name.equals(it.propertyDefinition.name) } ?: return  null
+        return getAnyObject(foundColumn) as T
+    }
+
+    fun getValueFromRecordAny(name:String, record:YaormModel.Record):Any? {
+        val foundColumn = record.columnsList.firstOrNull { name.equals(it.propertyDefinition.name) } ?: return  null
+        return getAnyObject(foundColumn)
     }
 }

@@ -56,7 +56,7 @@ abstract class EntityContext(
     }
 
     fun getLatestMigrationDefinition() : YaormModel.Definitions? {
-        val propertyHolder = YaormModel.PropertyHolder.newBuilder()
+        val propertyHolder = YaormModel.Column.newBuilder()
         propertyHolder.stringHolder = this.contextName
         val propertyDefinition = YaormModel.PropertyDefinition.newBuilder()
             .setName(MigrationModel.ContextName)

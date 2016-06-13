@@ -39,7 +39,7 @@ class PhoenixEntityAccessServiceTest {
             // act
             entityService.create(testModel)
             val property = YaormModel.PropertyDefinition.newBuilder().setName("date").setType(YaormModel.ProtobufType.STRING)
-            val holder = YaormModel.PropertyHolder.newBuilder().setStringHolder("what").setPropertyDefinition(property)
+            val holder = YaormModel.Column.newBuilder().setStringHolder("what").setPropertyDefinition(property)
             val whereClause = YaormModel.WhereClauseItem.newBuilder().setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS).setNameAndProperty(holder).build()
 
             // assert

@@ -214,7 +214,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
         return whereSql
     }
 
-    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.PropertyHolder): String? {
+    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.Column): String? {
         val tableName = definition.name
 
         val deleteSql = java.lang.String.format(

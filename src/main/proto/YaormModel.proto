@@ -22,7 +22,7 @@ enum ProtobufType {
 }
 
 message WhereClauseItem {
-    PropertyHolder name_and_property = 1;
+    Column name_and_property = 1;
     enum OperatorType {
         EQUALS = 0;
         GREATER_THAN = 1;
@@ -84,7 +84,7 @@ message DifferenceReport {
     repeated Difference differences = 2;
 }
 
-message PropertyHolder {
+message Column {
     PropertyDefinition property_definition = 1;
     double double_holder = 2;
     float float_holder = 3;
@@ -104,7 +104,7 @@ message PropertyHolder {
 }
 
 message Record {
-    repeated PropertyHolder columns = 1;
+    repeated Column columns = 1;
 }
 
 message Records {
