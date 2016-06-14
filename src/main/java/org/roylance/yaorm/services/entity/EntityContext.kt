@@ -55,17 +55,17 @@ abstract class EntityContext(
         }
     }
 
-    fun getLatestMigrationDefinition() : YaormModel.Definitions? {
+    fun getLatestMigrationDefinition() : YaormModel.TableDefinitions? {
         val propertyHolder = YaormModel.Column.newBuilder()
         propertyHolder.stringHolder = this.contextName
-        val propertyDefinition = YaormModel.PropertyDefinition.newBuilder()
+        val propertyDefinition = YaormModel.ColumnDefinition.newBuilder()
             .setName(MigrationModel.ContextName)
             .setType(YaormModel.ProtobufType.STRING)
             .setIsKey(false)
-        propertyHolder.setPropertyDefinition(propertyDefinition)
+        propertyHolder.setDefinition(propertyDefinition)
 
-        val whereClause = YaormModel.WhereClauseItem.newBuilder()
-                    .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+        val whereClause = YaormModel.WhereClause.newBuilder()
+                    .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
                     .setNameAndProperty(propertyHolder)
                     .build()
 
@@ -76,7 +76,7 @@ abstract class EntityContext(
                     .sortedByDescending { it.insertDate }
                     .first()
             val byteString = ByteString.copyFromUtf8(lastMigration.modelDefinitionJson)
-            return YaormModel.Definitions.parseFrom(byteString)
+            return YaormModel.TableDefinitions.parseFrom(byteString)
         }
 
         return null
@@ -101,7 +101,7 @@ abstract class EntityContext(
         val currentModel = this.getDefinitions()
 
         currentModel
-            .definitionsList
+            .tableDefinitionsList
             .forEach { currentDefinition ->
                 if (latestMigration == null) {
                     DefinitionModelComparisonUtil
@@ -111,7 +111,7 @@ abstract class EntityContext(
                                     returnModels)
                 }
                 else {
-                    val foundDefinition = latestMigration.definitionsList
+                    val foundDefinition = latestMigration.tableDefinitionsList
                             .filter { currentDefinition.name.equals(it.name) }
                             .firstOrNull()
 
@@ -156,8 +156,8 @@ abstract class EntityContext(
             }
     }
 
-    fun getDefinitions():YaormModel.Definitions {
-        val definitions = YaormModel.Definitions.newBuilder()
+    fun getDefinitions():YaormModel.TableDefinitions {
+        val definitions = YaormModel.TableDefinitions.newBuilder()
 
         this.entityServices.forEach {
             val propertyNames = it.entityDefinition
@@ -166,7 +166,7 @@ abstract class EntityContext(
                     .map { it.name.substring(CommonUtils.GetSetLength) }
                     .toHashSet()
 
-            val newDefinition = YaormModel.Definition.newBuilder()
+            val newDefinition = YaormModel.TableDefinition.newBuilder()
                     .setName(it.entityDefinition.simpleName)
             if (it.indexDefinition != null) {
                 newDefinition.index = it.indexDefinition
@@ -180,7 +180,7 @@ abstract class EntityContext(
                     .forEach {
                         val name = CommonUtils.lowercaseFirstChar(
                                 it.name.substring(CommonUtils.GetSetLength))
-                        val property = YaormModel.PropertyDefinition.newBuilder()
+                        val property = YaormModel.ColumnDefinition.newBuilder()
                                 .setName(name)
                                 .setIsKey(it.name.equals(CommonUtils.IdName))
                         if (CommonUtils.JavaToProtoMap.containsKey(it.returnType)) {
@@ -190,10 +190,10 @@ abstract class EntityContext(
                             property.type = YaormModel.ProtobufType.STRING
                         }
 
-                        newDefinition.addPropertyDefinitions(property)
+                        newDefinition.addColumnDefinitions(property)
                     }
 
-            definitions.addDefinitions(newDefinition)
+            definitions.addTableDefinitions(newDefinition)
         }
 
         return definitions.build()

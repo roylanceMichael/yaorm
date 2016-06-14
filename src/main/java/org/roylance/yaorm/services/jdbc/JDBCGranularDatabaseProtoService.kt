@@ -50,7 +50,7 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
         }
     }
 
-    override fun executeSelectQuery(definition: YaormModel.Definition, query: String): IProtoCursor {
+    override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): IProtoCursor {
         val statement = this.connection.prepareStatement(query)
         try {
             val resultSet = statement.executeQuery()
@@ -64,7 +64,7 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
         }
     }
 
-    override fun executeSelectQueryStream(definition: YaormModel.Definition, query: String, streamer: IProtoStreamer) {
+    override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IProtoStreamer) {
         val statement = this.connection.prepareStatement(query)
         try {
             val resultSet = statement.executeQuery()

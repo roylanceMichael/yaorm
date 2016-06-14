@@ -5,8 +5,8 @@ import org.roylance.yaorm.models.YaormModel
 object PropertyModelComparisonUtil {
     fun addDifferenceIfDifferent(
             name:String,
-            currentProperty: YaormModel.PropertyDefinition?,
-            otherProperty: YaormModel.PropertyDefinition?,
+            currentProperty: YaormModel.ColumnDefinition?,
+            otherProperty: YaormModel.ColumnDefinition?,
             differenceReports: MutableList<YaormModel.Difference>) {
         if (currentProperty == null && otherProperty != null) {
             val difference = YaormModel.Difference.newBuilder()

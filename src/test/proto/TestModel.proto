@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package org.roylance.yaorm;
+
+message SimpleInsertTest {
+    string id = 1;
+    string display = 2;
+    int32 test_int32 = 3;
+    int64 test_int64 = 4;
+    uint32 test_uint32 = 5;
+    uint64 test_uint64 = 6;
+    sint32 test_sint32 = 7;
+    sint64 test_sint64 = 8;
+    fixed32 test_fixed32 = 9;
+    fixed64 test_fixed64 = 10;
+    sfixed32 test_sfixed32 = 11;
+    sfixed64 test_sfixed64 = 12;
+    bool test_bool = 13;
+    bytes test_bytes = 14;
+    double test_double = 15;
+    float test_float = 16;
+
+    enum CoolType {
+        TEST=0;
+        SAMPLE=1;
+        SURPRISED=2;
+    }
+    CoolType cool_type = 17;
+    Child child = 18;
+
+    repeated CoolType cool_types = 19;
+    repeated Child childs = 20;
+}
+
+message Child {
+    string id = 1;
+    string test_display = 2;
+}

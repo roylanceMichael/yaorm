@@ -43,13 +43,13 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         }
     }
 
-    override fun buildCountSql(definition: YaormModel.Definition): String {
+    override fun buildCountSql(definition: YaormModel.TableDefinition): String {
         return "select count(1) as longVal from ${definition.name}"
     }
 
     override fun buildCreateColumn(
-            definition: YaormModel.Definition,
-            propertyDefinition: YaormModel.PropertyDefinition): String? {
+            definition: YaormModel.TableDefinition,
+            propertyDefinition: YaormModel.ColumnDefinition): String? {
         if (javaTypeToSqlType.containsKey(propertyDefinition.type)) {
             return "alter table ${definition.name} add column ${propertyDefinition.name} ${javaTypeToSqlType[propertyDefinition.type]}"
         }
@@ -57,8 +57,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildDropColumn(
-            definition: YaormModel.Definition,
-            propertyDefinition: YaormModel.PropertyDefinition): String? {
+            definition: YaormModel.TableDefinition,
+            propertyDefinition: YaormModel.ColumnDefinition): String? {
         val createTableSql = this.buildCreateTable(definition) ?: return null
 
         val returnList = ArrayList<String>()
@@ -84,16 +84,16 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildDropIndex(
-            definition: YaormModel.Definition,
-            columns: List<YaormModel.PropertyDefinition>): String? {
+            definition: YaormModel.TableDefinition,
+            columns: List<YaormModel.ColumnDefinition>): String? {
         val indexName = CommonUtils.buildIndexName(columns.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
     override fun buildCreateIndex(
-            definition: YaormModel.Definition,
-            properties: List<YaormModel.PropertyDefinition>,
-            includes: List<YaormModel.PropertyDefinition>): String? {
+            definition: YaormModel.TableDefinition,
+            properties: List<YaormModel.ColumnDefinition>,
+            includes: List<YaormModel.ColumnDefinition>): String? {
         val indexName = CommonUtils.buildIndexName(properties.map { it.name })
         val joinedColumnNames = properties.map { it.name }.joinToString(CommonUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
@@ -107,16 +107,16 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildDeleteWithCriteria(
-            definition: YaormModel.Definition,
-            whereClauseItem: YaormModel.WhereClauseItem): String {
+            definition: YaormModel.TableDefinition,
+            whereClauseItem: YaormModel.WhereClause): String {
         val whereClause = CommonUtils.buildWhereClause(whereClauseItem)
         return "delete from ${definition.name} where $whereClause"
     }
 
     override fun buildUpdateWithCriteria(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             record: YaormModel.Record,
-            whereClauseItem: YaormModel.WhereClauseItem): String? {
+            whereClauseItem: YaormModel.WhereClause): String? {
 
         val whereClauseStr = CommonUtils.buildWhereClause(whereClauseItem)
         val newValuesWorkspace = StringBuilder()
@@ -125,7 +125,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             if (newValuesWorkspace.length > 0) {
                 newValuesWorkspace.append(CommonUtils.Comma)
             }
-            newValuesWorkspace.append(it.propertyDefinition.name)
+            newValuesWorkspace.append(it.definition.name)
             newValuesWorkspace.append(CommonUtils.Equals)
             newValuesWorkspace.append(CommonUtils.getFormattedString(it))
         }
@@ -133,19 +133,19 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         return "update ${definition.name} set ${newValuesWorkspace.toString()} where $whereClauseStr${CommonUtils.SemiColon}"
     }
 
-    override fun buildDropTable(definition: YaormModel.Definition): String {
+    override fun buildDropTable(definition: YaormModel.TableDefinition): String {
         return "drop table if exists ${definition.name}"
     }
 
-    override fun buildDeleteAll(definition: YaormModel.Definition) : String {
+    override fun buildDeleteAll(definition: YaormModel.TableDefinition) : String {
         return "delete from ${definition.name}"
     }
 
     override fun buildBulkInsert(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             records: YaormModel.Records) : String {
         val tableName = definition.name
-        val columnNames = definition.propertyDefinitionsList.sortedBy { it.name } .map { it.name }
+        val columnNames = definition.columnDefinitionsList.sortedBy { it.name } .map { it.name }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "insert into $tableName ($commaSeparatedColumnNames) "
@@ -158,14 +158,14 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
                 instance
                     .columnsList
-                    .sortedBy { it.propertyDefinition.name }
+                    .sortedBy { it.definition.name }
                     .forEach {
                         val formattedValue = CommonUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {
-                            valueColumnPairs.add("select $formattedValue as ${it.propertyDefinition.name}")
+                            valueColumnPairs.add("select $formattedValue as ${it.definition.name}")
                         }
                         else {
-                            valueColumnPairs.add("$formattedValue as ${it.propertyDefinition.name}")
+                            valueColumnPairs.add("$formattedValue as ${it.definition.name}")
                         }
                     }
 
@@ -176,7 +176,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         return "$initialStatement $unionSeparatedStatements${CommonUtils.SemiColon}"
     }
 
-    override fun buildSelectAll(definition: YaormModel.Definition, n: Int): String {
+    override fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int): String {
         return java.lang.String.format(
                 SelectAllTemplate,
                 definition.name,
@@ -184,8 +184,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildWhereClause(
-            definition: YaormModel.Definition,
-            whereClauseItem: YaormModel.WhereClauseItem): String? {
+            definition: YaormModel.TableDefinition,
+            whereClauseItem: YaormModel.WhereClause): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 definition.name,
@@ -194,7 +194,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         return whereSql
     }
 
-    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.Column): String? {
+    override fun buildDeleteTable(definition: YaormModel.TableDefinition, primaryKey: YaormModel.Column): String? {
         val tableName = definition.name
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
@@ -205,7 +205,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildUpdateTable(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             record: YaormModel.Record): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
@@ -228,11 +228,11 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
                 .columnsList
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
-                    if (it.propertyDefinition.name.equals(this.javaIdName)) {
+                    if (it.definition.name.equals(this.javaIdName)) {
                         stringId = formattedValue
                     }
                     else {
-                        updateKvp.add(it.propertyDefinition.name + CommonUtils.Equals + formattedValue)
+                        updateKvp.add(it.definition.name + CommonUtils.Equals + formattedValue)
                     }
                 }
 
@@ -256,7 +256,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     }
 
     override fun buildInsertIntoTable(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             record: YaormModel.Record): String? {
         try {
             val columnNames = ArrayList<String>()
@@ -265,7 +265,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             record
                 .columnsList
                 .forEach {
-                    columnNames.add(it.propertyDefinition.name)
+                    columnNames.add(it.definition.name)
                     values.add(CommonUtils.getFormattedString(it))
                 }
 
@@ -282,7 +282,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         }
     }
 
-    override fun buildCreateTable(definition: YaormModel.Definition): String? {
+    override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
 
         val nameTypes = CommonUtils.getNameTypes(
                 definition,

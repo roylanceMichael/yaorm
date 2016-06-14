@@ -17,7 +17,7 @@ class EntityService<T: IEntity>(
         override val indexDefinition: YaormModel.Index? = null
 ) : IEntityService<T> {
 
-    private val definition: YaormModel.Definition
+    private val definition: YaormModel.TableDefinition
     private val currentDefinitions: List<EntityDefinitionModel<*>>
     private val foreignObjects:List<EntityDefinitionModel<*>>
     private val cachedStore: MutableMap<String, T> = HashMap()
@@ -128,7 +128,7 @@ class EntityService<T: IEntity>(
                 .successful
     }
 
-    override fun createColumn(propertyDefinition: YaormModel.PropertyDefinition): Boolean {
+    override fun createColumn(propertyDefinition: YaormModel.ColumnDefinition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -142,7 +142,7 @@ class EntityService<T: IEntity>(
                 .successful
     }
 
-    override fun dropColumn(propertyDefinition: YaormModel.PropertyDefinition): Boolean {
+    override fun dropColumn(propertyDefinition: YaormModel.ColumnDefinition): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -193,12 +193,12 @@ class EntityService<T: IEntity>(
 
         val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
-                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
                 .build()
 
-        val whereClause = YaormModel.WhereClauseItem.newBuilder()
+        val whereClause = YaormModel.WhereClause.newBuilder()
                 .setNameAndProperty(propertyHolder)
-                .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+                .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
                 .build()
 
         val whereSql = this.sqlGeneratorService
@@ -252,7 +252,7 @@ class EntityService<T: IEntity>(
         return returnObjects
     }
 
-    override fun where(whereClauseItem: YaormModel.WhereClauseItem): List<T> {
+    override fun where(whereClauseItem: YaormModel.WhereClause): List<T> {
         if (!this.granularDatabaseService.isAvailable()) {
             return ArrayList()
         }
@@ -411,7 +411,7 @@ class EntityService<T: IEntity>(
 
     override fun updateWithCriteria(
             newValues: YaormModel.Record,
-            whereClauseItem: YaormModel.WhereClauseItem): Boolean {
+            whereClauseItem: YaormModel.WhereClause): Boolean {
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -439,7 +439,7 @@ class EntityService<T: IEntity>(
 
         val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
-                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
                 .build()
 
         val deleteSql =
@@ -604,12 +604,12 @@ class EntityService<T: IEntity>(
                         // need to get the name of this property
                         val propertyHolder = YaormModel.Column.newBuilder()
                                 .setStringHolder(actualObject.id)
-                                .setPropertyDefinition(YaormModel.PropertyDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(cleansedPropertyName).setIsKey(true))
+                                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(cleansedPropertyName).setIsKey(true))
                                 .build()
 
-                        val whereClause = YaormModel.WhereClauseItem.newBuilder()
+                        val whereClause = YaormModel.WhereClause.newBuilder()
                                 .setNameAndProperty(propertyHolder)
-                                .setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS)
+                                .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
                                 .build()
 
                         val childObjects = foreignService.where(whereClause)

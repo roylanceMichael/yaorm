@@ -88,13 +88,13 @@ class HiveEntityAccessServiceTest {
         val newMinorId = 3
 
         val record = YaormModel.Record.newBuilder()
-        val beaconProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.BeaconIdName).setType(YaormModel.ProtobufType.STRING)
-        val majorProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.MajorIdName).setType(YaormModel.ProtobufType.INT32)
-        val minorProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.MinorIdName).setType(YaormModel.ProtobufType.INT32)
+        val beaconProperty = YaormModel.ColumnDefinition.newBuilder().setName(BeaconBroadcastModel.BeaconIdName).setType(YaormModel.ProtobufType.STRING)
+        val majorProperty = YaormModel.ColumnDefinition.newBuilder().setName(BeaconBroadcastModel.MajorIdName).setType(YaormModel.ProtobufType.INT32)
+        val minorProperty = YaormModel.ColumnDefinition.newBuilder().setName(BeaconBroadcastModel.MinorIdName).setType(YaormModel.ProtobufType.INT32)
 
-        val beaconHolder = YaormModel.Column.newBuilder().setPropertyDefinition(beaconProperty).setStringHolder(newBeaconId).build()
-        val majorHolder = YaormModel.Column.newBuilder().setPropertyDefinition(majorProperty).setInt32Holder(newMajorId).build()
-        val minorHolder = YaormModel.Column.newBuilder().setPropertyDefinition(minorProperty).setInt32Holder(newMinorId).build()
+        val beaconHolder = YaormModel.Column.newBuilder().setDefinition(beaconProperty).setStringHolder(newBeaconId).build()
+        val majorHolder = YaormModel.Column.newBuilder().setDefinition(majorProperty).setInt32Holder(newMajorId).build()
+        val minorHolder = YaormModel.Column.newBuilder().setDefinition(minorProperty).setInt32Holder(newMinorId).build()
 
         record.addColumns(beaconHolder).addColumns(majorHolder).addColumns(minorHolder)
 
@@ -103,9 +103,9 @@ class HiveEntityAccessServiceTest {
         newValues.put(BeaconBroadcastModel.MajorIdName, newMajorId)
         newValues.put(BeaconBroadcastModel.MinorIdName, newMinorId)
 
-        val cachedNameProperty = YaormModel.PropertyDefinition.newBuilder().setName(BeaconBroadcastModel.CachedNameName).setType(YaormModel.ProtobufType.STRING).build()
-        val cachedNameHolder = YaormModel.Column.newBuilder().setStringHolder(cachedName).setPropertyDefinition(cachedNameProperty).build()
-        val whereClause = YaormModel.WhereClauseItem.newBuilder().setNameAndProperty(cachedNameHolder).setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS).build()
+        val cachedNameProperty = YaormModel.ColumnDefinition.newBuilder().setName(BeaconBroadcastModel.CachedNameName).setType(YaormModel.ProtobufType.STRING).build()
+        val cachedNameHolder = YaormModel.Column.newBuilder().setStringHolder(cachedName).setDefinition(cachedNameProperty).build()
+        val whereClause = YaormModel.WhereClause.newBuilder().setNameAndProperty(cachedNameHolder).setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS).build()
 
         // act
         entityService.updateWithCriteria(record.build(), whereClause)

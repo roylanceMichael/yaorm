@@ -8,7 +8,7 @@ import java.sql.ResultSet
 import java.sql.Statement
 import java.util.*
 
-class JDBCProtoCursor(private val definitionModel: YaormModel.Definition,
+class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
                       private val resultSet: ResultSet,
                       private val preparedStatement: Statement):IProtoCursor {
     private val columnNamesFromResultSet: HashSet<String> = HashSet()
@@ -38,10 +38,10 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.Definition,
 
         // set all the properties that we can
         this.definitionModel
-                .propertyDefinitionsList
+                .columnDefinitionsList
                 .forEach {
                     val newValue = resultSet.getString(it.name) //this.typeToAction[it.type]!!(it.name, this.resultSet)
-                    val propertyHolder = CommonUtils.buildPropertyHolder(newValue, it)
+                    val propertyHolder = CommonUtils.buildColumn(newValue, it)
                     newInstance.addColumns(propertyHolder)
                 }
 

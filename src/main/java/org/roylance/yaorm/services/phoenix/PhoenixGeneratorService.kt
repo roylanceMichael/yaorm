@@ -43,27 +43,27 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         }
     }
 
-    override fun buildCountSql(definition: YaormModel.Definition): String {
+    override fun buildCountSql(definition: YaormModel.TableDefinition): String {
         return "select count(1) as longVal from ${definition.name}"
     }
 
-    override fun buildCreateColumn(definition: YaormModel.Definition, propertyDefinition: YaormModel.PropertyDefinition): String? {
+    override fun buildCreateColumn(definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String? {
         if (!javaTypeToSqlType.containsKey(propertyDefinition.type)) {
             return null
         }
         return "alter table ${definition.name} add if not exists ${propertyDefinition.name} ${javaTypeToSqlType[propertyDefinition.type]}"
     }
 
-    override fun buildDropColumn(definition: YaormModel.Definition, propertyDefinition: YaormModel.PropertyDefinition): String {
+    override fun buildDropColumn(definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String {
         return "alter table ${definition.name} drop column if exists ${propertyDefinition.name}"
     }
 
-    override fun buildDropIndex(definition: YaormModel.Definition, columns: List<YaormModel.PropertyDefinition>): String? {
+    override fun buildDropIndex(definition: YaormModel.TableDefinition, columns: List<YaormModel.ColumnDefinition>): String? {
         val indexName = CommonUtils.buildIndexName(columns.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
-    override fun buildCreateIndex(definition: YaormModel.Definition, properties: List<YaormModel.PropertyDefinition>, includes: List<YaormModel.PropertyDefinition>): String? {
+    override fun buildCreateIndex(definition: YaormModel.TableDefinition, properties: List<YaormModel.ColumnDefinition>, includes: List<YaormModel.ColumnDefinition>): String? {
         val indexName = CommonUtils.buildIndexName(properties.map { it.name })
         val joinedColumnNames = properties.joinToString(CommonUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
@@ -76,33 +76,33 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     }
 
     override fun buildDeleteWithCriteria(
-            definition: YaormModel.Definition,
-            whereClauseItem: YaormModel.WhereClauseItem): String {
+            definition: YaormModel.TableDefinition,
+            whereClauseItem: YaormModel.WhereClause): String {
         val whereClause = CommonUtils.buildWhereClause(whereClauseItem)
         return "delete from ${definition.name} where $whereClause"
     }
 
     override fun buildUpdateWithCriteria(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             record: YaormModel.Record,
-            whereClauseItem: YaormModel.WhereClauseItem): String? {
+            whereClauseItem: YaormModel.WhereClause): String? {
         return null
     }
 
-    override fun buildDropTable(definition: YaormModel.Definition): String {
+    override fun buildDropTable(definition: YaormModel.TableDefinition): String {
         return "drop table if exists ${definition.name}"
     }
 
-    override fun buildDeleteAll(definition: YaormModel.Definition) : String {
+    override fun buildDeleteAll(definition: YaormModel.TableDefinition) : String {
         return "delete from ${definition.name}"
     }
 
-    override fun buildBulkInsert(definition: YaormModel.Definition, records: YaormModel.Records) : String {
+    override fun buildBulkInsert(definition: YaormModel.TableDefinition, records: YaormModel.Records) : String {
         // do single inserts, then commit
         return ""
     }
 
-    override fun buildSelectAll(definition: YaormModel.Definition, n: Int): String {
+    override fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int): String {
         return java.lang.String.format(
                 SelectAllTemplate,
                 definition.name,
@@ -110,8 +110,8 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     }
 
     override fun buildWhereClause(
-            definition: YaormModel.Definition,
-            whereClauseItem: YaormModel.WhereClauseItem): String? {
+            definition: YaormModel.TableDefinition,
+            whereClauseItem: YaormModel.WhereClause): String? {
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 definition.name,
@@ -120,7 +120,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         return whereSql
     }
 
-    override fun buildDeleteTable(definition: YaormModel.Definition, primaryKey: YaormModel.Column): String? {
+    override fun buildDeleteTable(definition: YaormModel.TableDefinition, primaryKey: YaormModel.Column): String? {
         val tableName = definition.name
 
         val deleteSql = java.lang.String.format(
@@ -132,13 +132,13 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     }
 
     override fun buildUpdateTable(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             record: YaormModel.Record): String? {
         return this.buildInsertIntoTable(definition, record)
     }
 
     override fun buildInsertIntoTable(
-            definition: YaormModel.Definition,
+            definition: YaormModel.TableDefinition,
             record: YaormModel.Record): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
@@ -157,7 +157,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
                 .columnsList
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
-                    columnNames.add(it.propertyDefinition.name)
+                    columnNames.add(it.definition.name)
                     values.add(formattedValue)
                 }
 
@@ -174,7 +174,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         }
     }
 
-    override fun buildCreateTable(definition: YaormModel.Definition): String? {
+    override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
         val nameTypes = CommonUtils.getNameTypes(
                 definition,
                 this.javaIdName,

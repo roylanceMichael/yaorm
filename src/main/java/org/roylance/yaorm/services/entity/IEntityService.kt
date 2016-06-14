@@ -18,15 +18,15 @@ interface IEntityService<T: IEntity> {
     fun createIndex(index: YaormModel.Index): Boolean
     fun dropIndex(index: YaormModel.Index): Boolean
 
-    fun createColumn(propertyDefinition: YaormModel.PropertyDefinition): Boolean
-    fun dropColumn(propertyDefinition: YaormModel.PropertyDefinition): Boolean
+    fun createColumn(propertyDefinition: YaormModel.ColumnDefinition): Boolean
+    fun dropColumn(propertyDefinition: YaormModel.ColumnDefinition): Boolean
 
     fun getCount(): Long
 
     fun getCustom(customSql: String): List<T>
     fun get(id: String): T?
     fun getMany(n: Int=1000): List<T>
-    fun where(whereClauseItem: YaormModel.WhereClauseItem): List<T>
+    fun where(whereClauseItem: YaormModel.WhereClause): List<T>
 
     fun bulkInsert(instances: List<T>): Boolean
     fun createOrUpdate(entity: T): Boolean
@@ -34,7 +34,7 @@ interface IEntityService<T: IEntity> {
     fun update(entity: T): Boolean
     fun updateWithCriteria(
             newValues: YaormModel.Record,
-            whereClauseItem: YaormModel.WhereClauseItem): Boolean
+            whereClauseItem: YaormModel.WhereClause): Boolean
 
     fun updateCustom(customSql: String): Boolean
 

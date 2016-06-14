@@ -18,14 +18,14 @@ class GenericModel(
         const val DoubleValName = "doubleVal"
         const val BoolValName = "boolVal"
 
-        fun buildProtoDefinitionModel():YaormModel.Definition {
-            val returnModel = YaormModel.Definition.newBuilder()
-            returnModel.addPropertyDefinitions(YaormModel.PropertyDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING))
-            returnModel.addPropertyDefinitions(YaormModel.PropertyDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING))
-            returnModel.addPropertyDefinitions(YaormModel.PropertyDefinition.newBuilder().setName(IntValName).setType(YaormModel.ProtobufType.INT64))
-            returnModel.addPropertyDefinitions(YaormModel.PropertyDefinition.newBuilder().setName(LongValName).setType(YaormModel.ProtobufType.INT64))
-            returnModel.addPropertyDefinitions(YaormModel.PropertyDefinition.newBuilder().setName(DoubleValName).setType(YaormModel.ProtobufType.DOUBLE))
-            returnModel.addPropertyDefinitions(YaormModel.PropertyDefinition.newBuilder().setName(BoolValName).setType(YaormModel.ProtobufType.BOOL))
+        fun buildProtoDefinitionModel():YaormModel.TableDefinition {
+            val returnModel = YaormModel.TableDefinition.newBuilder()
+            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING))
+            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING))
+            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(IntValName).setType(YaormModel.ProtobufType.INT64))
+            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(LongValName).setType(YaormModel.ProtobufType.INT64))
+            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(DoubleValName).setType(YaormModel.ProtobufType.DOUBLE))
+            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(BoolValName).setType(YaormModel.ProtobufType.BOOL))
             return returnModel.build()
         }
     }

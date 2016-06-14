@@ -21,7 +21,7 @@ enum ProtobufType {
     PROTO = 16;
 }
 
-message WhereClauseItem {
+message WhereClause {
     Column name_and_property = 1;
     enum OperatorType {
         EQUALS = 0;
@@ -36,19 +36,25 @@ message WhereClauseItem {
         OR = 2;
     }
     ConnectingAndOr connecting_and_or = 3;
-    WhereClauseItem connecting_where_clause = 4;
+    WhereClause connecting_where_clause = 4;
 }
 
-message PropertyDefinition {
+message ColumnDefinition {
     string name = 1;
     ProtobufType type = 2;
-    bool foreign_collection = 3;
-    bool is_key = 4;
+    bool is_key = 3;
+    enum ColumnType {
+        SCALAR = 0;
+        ENUM_NAME = 1;
+        ENUM_VALUE = 2;
+        MESSAGE_KEY = 3;
+    }
+    ColumnType column_type = 4;
 }
 
 message Index {
-    repeated PropertyDefinition column_names = 1;
-    repeated PropertyDefinition include_names = 2;
+    repeated ColumnDefinition column_names = 1;
+    repeated ColumnDefinition include_names = 2;
 }
 
 message Difference {
@@ -65,18 +71,18 @@ message Difference {
     Operation operation = 2;
     string name = 3;
     Index index = 4;
-    PropertyDefinition property_definition = 5;
-    Definition definition = 6;
+    ColumnDefinition property_definition = 5;
+    TableDefinition table_definition = 6;
 }
 
-message Definition {
+message TableDefinition {
     string name = 1;
-    repeated PropertyDefinition property_definitions = 2;
+    repeated ColumnDefinition column_definitions = 2;
     Index index = 3;
 }
 
-message Definitions {
-    repeated Definition definitions = 3;
+message TableDefinitions {
+    repeated TableDefinition table_definitions = 3;
 }
 
 message DifferenceReport {
@@ -85,7 +91,7 @@ message DifferenceReport {
 }
 
 message Column {
-    PropertyDefinition property_definition = 1;
+    ColumnDefinition definition = 1;
     double double_holder = 2;
     float float_holder = 3;
     int32 int32_holder = 4;
@@ -109,4 +115,85 @@ message Record {
 
 message Records {
     repeated Record records = 1;
+}
+
+message TableRecords {
+    TableDefinition table_definition = 1;
+    Records records = 2;
+}
+
+message AllTableRecords {
+    repeated TableRecords table_records = 1;
+}
+
+message DatabaseOperation {
+    TableDefinition table_definition = 1;
+    Records records = 2;
+    Index index = 3;
+    ColumnDefinition column_definition = 4;
+    WhereClause where_clause = 5;
+    enum DatabaseOperationType {
+        CREATE_TABLE = 0;
+        DROP_TABLE = 1;
+        CREATE_INDEX = 2;
+        DROP_INDEX = 3;
+        CREATE_COLUMN = 4;
+        DROP_COLUMN = 5;
+        GET_COUNT = 6;
+        GET_CUSTOM = 7;
+        GET = 8;
+        GET_MANY = 9;
+        GET_WHERE = 10;
+        BULK_INSERT = 11;
+        CREATE_OR_UPDATE = 12;
+        CREATE = 13;
+        UPDATE = 14;
+        UPDATE_WITH_CRITERIA = 15;
+        UPDATE_CUSTOM = 16;
+        DELETE = 17;
+        DELETE_ALL = 18;
+    }
+    DatabaseOperationType database_operation_type = 6;
+}
+
+message DatabaseOperationResult {
+    bool bool_result = 1;
+    int64 count_result = 2;
+    Record record_result = 3;
+    Records records_result = 4;
+    string error_message = 5;
+    DatabaseOperation database_operation = 6;
+}
+
+message DatabaseDefinition {
+    string schema = 1;
+    string name = 2;
+    repeated TableDefinition table_definitions = 3;
+    repeated TableDefinitionGraphs table_definition_graphs = 4;
+}
+
+message TableDefinitionGraph {
+    TableDefinition main_table_definition = 1;
+    TableDefinition other_table_definition = 2;
+    TableDefinition linker_table_table = 3;
+    enum TableDefinitionGraphType {
+        ENUM_TYPE = 0;
+        MESSAGE_TYPE = 1;
+    }
+    TableDefinitionGraphType definition_graph_type = 4;
+    string main_name = 5;
+    string other_name = 6;
+    string column_name = 7;
+}
+
+message TableDefinitionGraphs {
+    TableDefinition main_table_definition = 1;
+    repeated TableDefinitionGraph table_definition_graphs = 2;
+}
+
+message ConnectionInfo {
+    string host = 1;
+    string user = 2;
+    string password = 3;
+    string schema = 4;
 }

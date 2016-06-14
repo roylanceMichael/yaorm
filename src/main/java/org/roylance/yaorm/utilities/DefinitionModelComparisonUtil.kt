@@ -5,8 +5,8 @@ import java.util.*
 
 object DefinitionModelComparisonUtil {
     fun addDifferenceIfDifferent(
-            currentDefinitionModel: YaormModel.Definition,
-            otherDefinitionModel: YaormModel.Definition?,
+            currentDefinitionModel: YaormModel.TableDefinition,
+            otherDefinitionModel: YaormModel.TableDefinition?,
             differenceReports: MutableList<YaormModel.Difference>) {
 
         if (otherDefinitionModel == null) {
@@ -14,7 +14,7 @@ object DefinitionModelComparisonUtil {
                 .setEntityType(YaormModel.Difference.EntityType.TABLE)
                 .setOperation(YaormModel.Difference.Operation.CREATE)
                 .setName(currentDefinitionModel.name)
-                .setDefinition(currentDefinitionModel)
+                .setTableDefinition(currentDefinitionModel)
 
             differenceReports.add(newDifferenceModel.build())
             return
@@ -27,17 +27,17 @@ object DefinitionModelComparisonUtil {
                 differenceReports)
 
         // convert both to dictionaries
-        val currentDictionary = HashMap<String, YaormModel.PropertyDefinition>()
-        val otherDictionary = HashMap<String, YaormModel.PropertyDefinition>()
+        val currentDictionary = HashMap<String, YaormModel.ColumnDefinition>()
+        val otherDictionary = HashMap<String, YaormModel.ColumnDefinition>()
 
         currentDefinitionModel
-            .propertyDefinitionsList
+            .columnDefinitionsList
             .forEach {
                 currentDictionary.put(it.name, it)
             }
 
         otherDefinitionModel
-            .propertyDefinitionsList
+            .columnDefinitionsList
             .forEach {
                 otherDictionary.put(it.name, it)
             }

@@ -38,9 +38,9 @@ class PhoenixEntityAccessServiceTest {
 
             // act
             entityService.create(testModel)
-            val property = YaormModel.PropertyDefinition.newBuilder().setName("date").setType(YaormModel.ProtobufType.STRING)
-            val holder = YaormModel.Column.newBuilder().setStringHolder("what").setPropertyDefinition(property)
-            val whereClause = YaormModel.WhereClauseItem.newBuilder().setOperatorType(YaormModel.WhereClauseItem.OperatorType.EQUALS).setNameAndProperty(holder).build()
+            val property = YaormModel.ColumnDefinition.newBuilder().setName("date").setType(YaormModel.ProtobufType.STRING)
+            val holder = YaormModel.Column.newBuilder().setStringHolder("what").setDefinition(property)
+            val whereClause = YaormModel.WhereClause.newBuilder().setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS).setNameAndProperty(holder).build()
 
             // assert
             val testModels = entityService.where(whereClause)
@@ -108,8 +108,8 @@ class PhoenixEntityAccessServiceTest {
             entityService.createTable()
 
             val index = YaormModel.Index.newBuilder()
-            index.addColumnNames(YaormModel.PropertyDefinition.newBuilder().setName(AnotherTestModel.DescriptionName).setType(YaormModel.ProtobufType.STRING))
-            index.addColumnNames(YaormModel.PropertyDefinition.newBuilder().setName(AnotherTestModel.GramName).setType(YaormModel.ProtobufType.STRING))
+            index.addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(AnotherTestModel.DescriptionName).setType(YaormModel.ProtobufType.STRING))
+            index.addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(AnotherTestModel.GramName).setType(YaormModel.ProtobufType.STRING))
 
             // act
             entityService.createIndex(index.build())
