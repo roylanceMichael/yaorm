@@ -334,7 +334,7 @@ object CommonUtils {
         }
 
         if (value.definition.type.equals(YaormModel.ProtobufType.BYTES)) {
-            return value.bytesHolder.toString()
+            return value.bytesHolder.toStringUtf8()
         }
 
         return Null

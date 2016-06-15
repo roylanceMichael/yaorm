@@ -73,7 +73,6 @@ class ProtobufUtilsTest {
     @Test
     fun moreComplexPassThroughTest2() {
         // arrange
-
         val testModel = TestModel.SimpleInsertTest.newBuilder()
 
         testModel.id = UUID.randomUUID().toString()
@@ -84,7 +83,7 @@ class ProtobufUtilsTest {
         val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
 
         // assert
-        Assert.assertTrue(records.tableRecordsCount.equals(1))
+        Assert.assertTrue(records.tableRecordsCount.equals(2))
         val foundRecords = records.tableRecordsList[0].records
         val firstRecord = foundRecords.recordsList[0]
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
@@ -108,14 +107,13 @@ class ProtobufUtilsTest {
     @Test
     fun moreComplexPassThroughTest3() {
         // arrange
-
         val testModel = TestModel.SimpleInsertTest.newBuilder()
 
         testModel.id = UUID.randomUUID().toString()
         testModel.coolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
-        testModel.child = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).build()
+        testModel.child = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
 
-        val subTestChild = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString())
+        val subTestChild = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
         testModel.addChilds(subTestChild)
 
         val firstCoolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
@@ -128,24 +126,45 @@ class ProtobufUtilsTest {
         val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
 
         // assert
-        Assert.assertTrue(records.tableRecordsCount.equals(2))
-//        Assert.assertTrue(records.recordsCount.equals(4))
-//        val firstRecord = records.recordsList[0]
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) })
-//        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
+        Assert.assertTrue(records.tableRecordsCount.equals(4))
+
+        // verify main record insert
+        val simpleInsertTestRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest") }!!
+        val firstRecord = simpleInsertTestRecords.records.recordsList.first()
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
+
+        val simpleInsertChildLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
+        val firstLinkerRecord = simpleInsertChildLinkerRecords.records.recordsList.first()
+        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
+        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
+
+        val simpleInsertEnumLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
+        simpleInsertEnumLinkerRecords.records.recordsList.forEach {
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestModel.SimpleInsertTest.CoolType.TEST.name}")) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.TEST.name) ) })
+        }
+
+        val simpleInsertMessageLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("Child") }!!
+        simpleInsertMessageLinkerRecords.records.recordsList.forEach {
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals(testModel.child.id) || it.stringHolder.equals(subTestChild.id)) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("test_display") && (it.stringHolder.equals(testModel.child.testDisplay) || it.stringHolder.equals(subTestChild.testDisplay) ) })
+        }
     }
 }

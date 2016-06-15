@@ -120,6 +120,7 @@ message Records {
 message TableRecords {
     TableDefinition table_definition = 1;
     Records records = 2;
+    string table_name = 3;
 }
 
 message AllTableRecords {

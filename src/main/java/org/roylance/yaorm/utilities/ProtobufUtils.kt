@@ -126,14 +126,24 @@ object ProtobufUtils {
     }
 
     fun convertProtobufObjectToRecords(message:GeneratedMessage):YaormModel.AllTableRecords {
+        val resultMap = convertProtobufObjectToRecordsInternal(message)
+        val returnRecords = YaormModel.AllTableRecords.newBuilder()
+
+        resultMap.keys.forEach {
+            returnRecords.addTableRecords(resultMap[it]!!)
+        }
+
+        return returnRecords.build()
+    }
+
+    private fun convertProtobufObjectToRecordsInternal(message:GeneratedMessage):MutableMap<String, YaormModel.TableRecords.Builder> {
         if (!isMessageOk(message)) {
-            return YaormModel.AllTableRecords.getDefaultInstance()
+            return HashMap()
         }
 
         val mainMessageId = getIdFromGeneratedMessage(message)
-
         val definitions = buildDefinitionGraph(message.descriptorForType)
-        val returnRecords = YaormModel.AllTableRecords.newBuilder()
+        val recordsMap = HashMap<String, YaormModel.TableRecords.Builder>()
 
         // get base record
         val baseRecord = YaormModel.Record.newBuilder()
@@ -175,7 +185,7 @@ object ProtobufUtils {
                     }
                 }
 
-        // now messages
+        // now messages, we'll add a column for the foreign key, but then new records for the child object
         definitions.mainTableDefinition
                 .columnDefinitionsList
                 .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY) }
@@ -191,6 +201,15 @@ object ProtobufUtils {
                     if (foundField is GeneratedMessage && isMessageOk(foundField)) {
                         val generatedNameColumn = CommonUtils.buildColumn(getIdFromGeneratedMessage(foundField), columnDefinition)
                         baseRecord.addColumns(generatedNameColumn)
+                        val childMessageRecords = convertProtobufObjectToRecordsInternal(foundField)
+                        childMessageRecords.keys.forEach {
+                            if (recordsMap.containsKey(it)) {
+                                recordsMap[it]!!.mergeRecords(childMessageRecords[it]!!.records)
+                            }
+                            else {
+                                recordsMap[it] = childMessageRecords[it]!!
+                            }
+                        }
                     }
                     else {
                         val generatedNameColumn = CommonUtils.buildColumn(Empty, columnDefinition)
@@ -198,63 +217,211 @@ object ProtobufUtils {
                     }
                 }
 
-        returnRecords.addTableRecords(YaormModel.TableRecords.newBuilder().setTableDefinition(definitions.mainTableDefinition).setRecords(YaormModel.Records.newBuilder().addRecords(baseRecord)))
+        // add base
+        recordsMap[definitions.mainTableDefinition.name] = YaormModel.TableRecords.newBuilder()
+                .setTableDefinition(definitions.mainTableDefinition)
+                .setTableName(definitions.mainTableDefinition.name)
+                .setRecords(YaormModel.Records.newBuilder().addRecords(baseRecord))
 
         // let's add the enum children now
-        message.allFields.keys.filter { it.type.name.equals(ProtoEnumType) && it.isRepeated }
-            .forEach { fieldKey ->
-                val foundLinkerTable = definitions.tableDefinitionGraphsList.firstOrNull {
-                    it.otherName.equals(fieldKey.enumType.name) &&
-                    it.columnName.equals(fieldKey.name)
-                } ?: return@forEach
-
-                val tableRecords = YaormModel.TableRecords.newBuilder().setTableDefinition(foundLinkerTable.linkerTableTable)
-                val foundItem = message.allFields[fieldKey]
-
-                if (foundItem == null || foundItem !is List<*> || foundItem.size == 0) {
-                    return@forEach
-                }
-                else {
-                    val records = YaormModel.Records.newBuilder()
-                    foundItem.filter { it is Descriptors.EnumValueDescriptor }.forEach {
-                        val castedDescriptor = it as Descriptors.EnumValueDescriptor
-
-                        val record = YaormModel.Record.newBuilder()
-
-                        val idColumn = YaormModel.Column.newBuilder()
-                                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
-                                    .setName(CommonUtils.IdName)
-                                    .setType(YaormModel.ProtobufType.STRING))
-                                .setStringHolder(UUID.randomUUID().toString())
-
-                        val mainIdColumn = YaormModel.Column.newBuilder()
-                                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
-                                        .setName(message.descriptorForType.name)
-                                        .setType(YaormModel.ProtobufType.STRING)
-                                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
-                               .setStringHolder(mainMessageId)
-
-                        val enumColumnn = YaormModel.Column.newBuilder()
-                                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
-                                        .setName(fieldKey.enumType.name)
-                                        .setType(YaormModel.ProtobufType.STRING)
-                                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME))
-                                .setStringHolder(castedDescriptor.name)
-
-
-                        record.addColumns(idColumn)
-                        record.addColumns(mainIdColumn)
-                        record.addColumns(enumColumnn)
-                        records.addRecords(record)
-                    }
-                    tableRecords.setRecords(records)
-                    returnRecords.addTableRecords(tableRecords)
-                }
+        val repeatedEnumMap = handleRepeatedEnumFields(message, mainMessageId, definitions)
+        repeatedEnumMap.keys.forEach {
+            if (recordsMap.containsKey(it)) {
+                recordsMap[it]!!.mergeRecords(repeatedEnumMap[it]!!.records)
             }
+            else {
+                recordsMap[it] = repeatedEnumMap[it]!!
+            }
+        }
 
         // add in message children now
+        val repeatedMessageMap = handleRepeatedMessageFields(message, mainMessageId)
+        repeatedMessageMap.keys.forEach {
+            if (recordsMap.containsKey(it)) {
+                recordsMap[it]!!.mergeRecords(repeatedMessageMap[it]!!.records)
+            }
+            else {
+                recordsMap[it] = repeatedMessageMap[it]!!
+            }
+        }
 
-        return returnRecords.build()
+        return recordsMap
+    }
+
+    private fun handleRepeatedMessageFields(message:GeneratedMessage, mainMessageId: String): Map<String, YaormModel.TableRecords.Builder> {
+        val returnMap = HashMap<String, YaormModel.TableRecords.Builder>()
+        message.allFields.keys.filter { it.type.name.equals(ProtoMessageType) && it.isRepeated }
+                .forEach { fieldKey ->
+                    val foundItem = message.allFields[fieldKey]
+
+                    var foundTableDefinition:YaormModel.TableDefinition? = null
+                    val linkerTableRecords = YaormModel.TableRecords.newBuilder()
+
+                    // this is recursive
+                    if (foundItem == null || foundItem !is List<*> || foundItem.size == 0) {
+                        return@forEach
+                    }
+                    else {
+                        foundItem.filter { it is GeneratedMessage }.forEach {
+                            val generatedMessage = it as GeneratedMessage
+                            if (foundTableDefinition == null) {
+                                foundTableDefinition = buildMessageRepeatedRecordTableDefinition(message.descriptorForType.name,
+                                        generatedMessage.descriptorForType.name,
+                                        fieldKey.name)
+                                linkerTableRecords.tableDefinition = foundTableDefinition
+                                linkerTableRecords.tableName = foundTableDefinition!!.name
+                            }
+
+                            val generatedMessageId = getIdFromGeneratedMessage(generatedMessage)
+                            if (generatedMessageId == Empty) {
+                                return@forEach
+                            }
+
+                            val record = buildMessageRepeatedRecord(message.descriptorForType.name,
+                                    generatedMessage.descriptorForType.name,
+                                    mainMessageId,
+                                    generatedMessageId)
+
+                            linkerTableRecords.recordsBuilder.addRecords(record)
+
+                            // recursively call for child...
+                            val subRecords = convertProtobufObjectToRecordsInternal(generatedMessage)
+                            subRecords.keys.forEach { subRecordKey ->
+                                if (returnMap.containsKey(subRecordKey)) {
+                                    returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
+                                }
+                                else {
+                                    returnMap[subRecordKey] = subRecords[subRecordKey]!!
+                                }
+                            }
+                        }
+                        if (foundTableDefinition != null) {
+                            returnMap[linkerTableRecords.tableName] = linkerTableRecords
+                        }
+                    }
+                }
+
+        return returnMap
+    }
+
+    private fun handleRepeatedEnumFields(message:GeneratedMessage,
+                                         mainMessageId:String,
+                                         definitions:YaormModel.TableDefinitionGraphs):Map<String, YaormModel.TableRecords.Builder> {
+        val returnRecords = HashMap<String, YaormModel.TableRecords.Builder>()
+        message.allFields.keys.filter { it.type.name.equals(ProtoEnumType) && it.isRepeated }
+                .forEach { fieldKey ->
+                    val foundLinkerTable = definitions.tableDefinitionGraphsList.firstOrNull {
+                        it.otherName.equals(fieldKey.enumType.name) &&
+                                it.columnName.equals(fieldKey.name)
+                    } ?: return@forEach
+
+                    val foundItem = message.allFields[fieldKey]
+
+                    // nothing there, nothing to insert
+                    if (foundItem == null || foundItem !is List<*> || foundItem.size == 0) {
+                        return@forEach
+                    }
+                    else {
+                        val records = YaormModel.Records.newBuilder()
+                        foundItem.filter { it is Descriptors.EnumValueDescriptor }.forEach {
+                            val castedDescriptor = it as Descriptors.EnumValueDescriptor
+                            val record = buildEnumRepeatedRecord(
+                                    message.descriptorForType.name,
+                                    fieldKey.enumType.name,
+                                    mainMessageId,
+                                    castedDescriptor)
+                            records.addRecords(record)
+                        }
+                        val tableRecords = YaormModel.TableRecords.newBuilder()
+                                .setTableDefinition(foundLinkerTable.linkerTableTable)
+                                .setTableName(foundLinkerTable.linkerTableTable.name)
+                                .setRecords(records)
+                        returnRecords[foundLinkerTable.linkerTableTable.name] = tableRecords
+                    }
+                }
+
+        return returnRecords
+    }
+
+    private fun buildMessageRepeatedRecordTableDefinition(mainName:String,
+                                                          otherName:String,
+                                                          columnName:String):YaormModel.TableDefinition {
+        return YaormModel.TableDefinition.newBuilder()
+            .setName(buildLinkerTableNameStr(mainName, otherName, columnName))
+            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR).setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName))
+            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).setType(YaormModel.ProtobufType.STRING).setName(mainName))
+            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).setType(YaormModel.ProtobufType.STRING).setName(otherName))
+            .build()
+    }
+
+    // todo: fill out
+    private fun buildMessageRepeatedRecord(mainColumnName:String,
+                                           otherColumnName:String,
+                                           mainColumnId:String,
+                                           otherColumnId:String):YaormModel.Record {
+        val record = YaormModel.Record.newBuilder()
+
+        val idColumn = YaormModel.Column.newBuilder()
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setName(CommonUtils.IdName)
+                        .setType(YaormModel.ProtobufType.STRING))
+                .setStringHolder("$mainColumnId~$otherColumnId")
+
+        val mainIdColumn = YaormModel.Column.newBuilder()
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setName(mainColumnName)
+                        .setType(YaormModel.ProtobufType.STRING)
+                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
+                .setStringHolder(mainColumnId)
+
+        val enumColumn = YaormModel.Column.newBuilder()
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setName(otherColumnName)
+                        .setType(YaormModel.ProtobufType.STRING)
+                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
+                .setStringHolder(otherColumnId)
+
+
+        record.addColumns(idColumn)
+        record.addColumns(mainIdColumn)
+        record.addColumns(enumColumn)
+
+        return record.build()
+    }
+
+
+    private fun buildEnumRepeatedRecord(mainColumnName:String,
+                                        enumName:String,
+                                        mainColumnId:String,
+                                        enumValueDescriptor: Descriptors.EnumValueDescriptor):YaormModel.Record {
+        val record = YaormModel.Record.newBuilder()
+
+        val idColumn = YaormModel.Column.newBuilder()
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setName(CommonUtils.IdName)
+                        .setType(YaormModel.ProtobufType.STRING))
+                .setStringHolder("$mainColumnId~${enumValueDescriptor.name}")
+
+        val mainIdColumn = YaormModel.Column.newBuilder()
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setName(mainColumnName)
+                        .setType(YaormModel.ProtobufType.STRING)
+                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
+                .setStringHolder(mainColumnId)
+
+        val enumColumn = YaormModel.Column.newBuilder()
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setName(enumName)
+                        .setType(YaormModel.ProtobufType.STRING)
+                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME))
+                .setStringHolder(enumValueDescriptor.name)
+
+
+        record.addColumns(idColumn)
+        record.addColumns(mainIdColumn)
+        record.addColumns(enumColumn)
+
+        return record.build()
     }
 
     private fun getIdFromGeneratedMessage(message:GeneratedMessage):String {
