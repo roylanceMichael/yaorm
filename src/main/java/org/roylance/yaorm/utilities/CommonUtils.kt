@@ -92,11 +92,11 @@ object CommonUtils {
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
-            returnHolder.fixed32Holder = if (value == null) 0 else notNullValueAsString.toInt()
+            returnHolder.sfixed32Holder = if (value == null) 0 else notNullValueAsString.toInt()
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
-            returnHolder.fixed64Holder =  if (value == null) 0L else notNullValueAsString.toLong()
+            returnHolder.sfixed64Holder =  if (value == null) 0L else notNullValueAsString.toLong()
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
@@ -124,7 +124,15 @@ object CommonUtils {
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES  )) {
-            returnHolder.bytesHolder = if (value == null) ByteString.EMPTY else ByteString.copyFromUtf8(notNullValueAsString.toString())
+            if (value is ByteString) {
+                returnHolder.bytesHolder = value
+            }
+            else if (value is String) {
+                returnHolder.bytesHolder = ByteString.copyFromUtf8(value)
+            }
+            else {
+                returnHolder.bytesHolder = ByteString.EMPTY
+            }
         }
 
         return returnHolder.build()
@@ -197,12 +205,20 @@ object CommonUtils {
             returnHolder.doubleHolder = notNullValueAsString.toDouble()
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT  )) {
+        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT)) {
             returnHolder.floatHolder = notNullValueAsString.toFloat()
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES  )) {
-            returnHolder.bytesHolder = ByteString.copyFromUtf8(notNullValueAsString)
+        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES)) {
+            if (value is ByteString) {
+                returnHolder.bytesHolder = value
+            }
+            else if (value is String) {
+                returnHolder.bytesHolder = ByteString.copyFromUtf8(value)
+            }
+            else {
+                returnHolder.bytesHolder = ByteString.EMPTY
+            }
         }
 
         return returnHolder.build()
@@ -242,6 +258,14 @@ object CommonUtils {
             return holder.sfixed64Holder
         }
 
+        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
+            return holder.sint32Holder
+        }
+
+        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
+            return holder.sint64Holder
+        }
+
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
             return holder.uint32Holder
         }
@@ -250,23 +274,15 @@ object CommonUtils {
             return holder.uint64Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
-            return holder.sfixed32Holder
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
-            return holder.sfixed64Holder
-        }
-
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
             return holder.doubleHolder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT  )) {
+        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT)) {
             return holder.floatHolder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES  )) {
+        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES)) {
             return holder.bytesHolder
         }
         return null
@@ -306,7 +322,7 @@ object CommonUtils {
         }
 
         if (value.definition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
-            return value.sint64Holder.toString()
+            return value.sfixed64Holder.toString()
         }
 
         if (value.definition.type.equals(YaormModel.ProtobufType.UINT32)) {

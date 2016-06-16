@@ -19,7 +19,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     private val PhoenixIntegerName = "bigint"
     private val PhoenixTextName = "varchar"
     private val PhoenixRealName = "decimal"
-    private val PhoenixBinaryName = "binary"
+    private val PhoenixBinaryName = "varchar"
 
     override val javaIdName: String = "id"
 

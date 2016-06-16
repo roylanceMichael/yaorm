@@ -19,7 +19,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     private val SqlIntegerName = "integer"
     private val SqlTextName = "text"
     private val SqlRealName = "real"
-    private val SqlBlobName = "blob"
+    private val SqlBlobName = "text"
 
     override val javaIdName: String = "id"
 
