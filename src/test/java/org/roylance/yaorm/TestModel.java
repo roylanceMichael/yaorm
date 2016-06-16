@@ -2431,6 +2431,43 @@ public final class TestModel {
      */
     com.google.protobuf.ByteString
         getTestDisplayBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestModel.SubChild> 
+        getSubChildList();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    org.roylance.yaorm.TestModel.SubChild getSubChild(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    int getSubChildCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestModel.SubChildOrBuilder> 
+        getSubChildOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    org.roylance.yaorm.TestModel.SubChildOrBuilder getSubChildOrBuilder(
+        int index);
+
+    /**
+     * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+     */
+    boolean hasSubSubSubChild();
+    /**
+     * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+     */
+    org.roylance.yaorm.TestModel.SubSubSubChild getSubSubSubChild();
+    /**
+     * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+     */
+    org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder getSubSubSubChildOrBuilder();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.Child}
@@ -2446,6 +2483,7 @@ public final class TestModel {
     private Child() {
       id_ = "";
       testDisplay_ = "";
+      subChild_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2484,6 +2522,27 @@ public final class TestModel {
               testDisplay_ = s;
               break;
             }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                subChild_ = new java.util.ArrayList<org.roylance.yaorm.TestModel.SubChild>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              subChild_.add(input.readMessage(org.roylance.yaorm.TestModel.SubChild.parser(), extensionRegistry));
+              break;
+            }
+            case 34: {
+              org.roylance.yaorm.TestModel.SubSubSubChild.Builder subBuilder = null;
+              if (subSubSubChild_ != null) {
+                subBuilder = subSubSubChild_.toBuilder();
+              }
+              subSubSubChild_ = input.readMessage(org.roylance.yaorm.TestModel.SubSubSubChild.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(subSubSubChild_);
+                subSubSubChild_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2493,6 +2552,9 @@ public final class TestModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          subChild_ = java.util.Collections.unmodifiableList(subChild_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -2508,6 +2570,7 @@ public final class TestModel {
               org.roylance.yaorm.TestModel.Child.class, org.roylance.yaorm.TestModel.Child.Builder.class);
     }
 
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
@@ -2576,6 +2639,62 @@ public final class TestModel {
       }
     }
 
+    public static final int SUB_CHILD_FIELD_NUMBER = 3;
+    private java.util.List<org.roylance.yaorm.TestModel.SubChild> subChild_;
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestModel.SubChild> getSubChildList() {
+      return subChild_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestModel.SubChildOrBuilder> 
+        getSubChildOrBuilderList() {
+      return subChild_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    public int getSubChildCount() {
+      return subChild_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubChild getSubChild(int index) {
+      return subChild_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubChildOrBuilder getSubChildOrBuilder(
+        int index) {
+      return subChild_.get(index);
+    }
+
+    public static final int SUB_SUB_SUB_CHILD_FIELD_NUMBER = 4;
+    private org.roylance.yaorm.TestModel.SubSubSubChild subSubSubChild_;
+    /**
+     * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+     */
+    public boolean hasSubSubSubChild() {
+      return subSubSubChild_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubSubSubChild getSubSubSubChild() {
+      return subSubSubChild_ == null ? org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance() : subSubSubChild_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder getSubSubSubChildOrBuilder() {
+      return getSubSubSubChild();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2594,6 +2713,12 @@ public final class TestModel {
       if (!getTestDisplayBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 2, testDisplay_);
       }
+      for (int i = 0; i < subChild_.size(); i++) {
+        output.writeMessage(3, subChild_.get(i));
+      }
+      if (subSubSubChild_ != null) {
+        output.writeMessage(4, getSubSubSubChild());
+      }
     }
 
     public int getSerializedSize() {
@@ -2606,6 +2731,14 @@ public final class TestModel {
       }
       if (!getTestDisplayBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(2, testDisplay_);
+      }
+      for (int i = 0; i < subChild_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, subChild_.get(i));
+      }
+      if (subSubSubChild_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getSubSubSubChild());
       }
       memoizedSize = size;
       return size;
@@ -2714,6 +2847,7 @@ public final class TestModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSubChildFieldBuilder();
         }
       }
       public Builder clear() {
@@ -2722,6 +2856,18 @@ public final class TestModel {
 
         testDisplay_ = "";
 
+        if (subChildBuilder_ == null) {
+          subChild_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          subChildBuilder_.clear();
+        }
+        if (subSubSubChildBuilder_ == null) {
+          subSubSubChild_ = null;
+        } else {
+          subSubSubChild_ = null;
+          subSubSubChildBuilder_ = null;
+        }
         return this;
       }
 
@@ -2744,8 +2890,25 @@ public final class TestModel {
 
       public org.roylance.yaorm.TestModel.Child buildPartial() {
         org.roylance.yaorm.TestModel.Child result = new org.roylance.yaorm.TestModel.Child(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.id_ = id_;
         result.testDisplay_ = testDisplay_;
+        if (subChildBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            subChild_ = java.util.Collections.unmodifiableList(subChild_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.subChild_ = subChild_;
+        } else {
+          result.subChild_ = subChildBuilder_.build();
+        }
+        if (subSubSubChildBuilder_ == null) {
+          result.subSubSubChild_ = subSubSubChild_;
+        } else {
+          result.subSubSubChild_ = subSubSubChildBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2768,6 +2931,35 @@ public final class TestModel {
         if (!other.getTestDisplay().isEmpty()) {
           testDisplay_ = other.testDisplay_;
           onChanged();
+        }
+        if (subChildBuilder_ == null) {
+          if (!other.subChild_.isEmpty()) {
+            if (subChild_.isEmpty()) {
+              subChild_ = other.subChild_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureSubChildIsMutable();
+              subChild_.addAll(other.subChild_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.subChild_.isEmpty()) {
+            if (subChildBuilder_.isEmpty()) {
+              subChildBuilder_.dispose();
+              subChildBuilder_ = null;
+              subChild_ = other.subChild_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              subChildBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSubChildFieldBuilder() : null;
+            } else {
+              subChildBuilder_.addAllMessages(other.subChild_);
+            }
+          }
+        }
+        if (other.hasSubSubSubChild()) {
+          mergeSubSubSubChild(other.getSubSubSubChild());
         }
         onChanged();
         return this;
@@ -2794,6 +2986,7 @@ public final class TestModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
       /**
@@ -2932,6 +3125,363 @@ public final class TestModel {
         onChanged();
         return this;
       }
+
+      private java.util.List<org.roylance.yaorm.TestModel.SubChild> subChild_ =
+        java.util.Collections.emptyList();
+      private void ensureSubChildIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          subChild_ = new java.util.ArrayList<org.roylance.yaorm.TestModel.SubChild>(subChild_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestModel.SubChild, org.roylance.yaorm.TestModel.SubChild.Builder, org.roylance.yaorm.TestModel.SubChildOrBuilder> subChildBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestModel.SubChild> getSubChildList() {
+        if (subChildBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(subChild_);
+        } else {
+          return subChildBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public int getSubChildCount() {
+        if (subChildBuilder_ == null) {
+          return subChild_.size();
+        } else {
+          return subChildBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubChild getSubChild(int index) {
+        if (subChildBuilder_ == null) {
+          return subChild_.get(index);
+        } else {
+          return subChildBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder setSubChild(
+          int index, org.roylance.yaorm.TestModel.SubChild value) {
+        if (subChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubChildIsMutable();
+          subChild_.set(index, value);
+          onChanged();
+        } else {
+          subChildBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder setSubChild(
+          int index, org.roylance.yaorm.TestModel.SubChild.Builder builderForValue) {
+        if (subChildBuilder_ == null) {
+          ensureSubChildIsMutable();
+          subChild_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          subChildBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder addSubChild(org.roylance.yaorm.TestModel.SubChild value) {
+        if (subChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubChildIsMutable();
+          subChild_.add(value);
+          onChanged();
+        } else {
+          subChildBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder addSubChild(
+          int index, org.roylance.yaorm.TestModel.SubChild value) {
+        if (subChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubChildIsMutable();
+          subChild_.add(index, value);
+          onChanged();
+        } else {
+          subChildBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder addSubChild(
+          org.roylance.yaorm.TestModel.SubChild.Builder builderForValue) {
+        if (subChildBuilder_ == null) {
+          ensureSubChildIsMutable();
+          subChild_.add(builderForValue.build());
+          onChanged();
+        } else {
+          subChildBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder addSubChild(
+          int index, org.roylance.yaorm.TestModel.SubChild.Builder builderForValue) {
+        if (subChildBuilder_ == null) {
+          ensureSubChildIsMutable();
+          subChild_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          subChildBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder addAllSubChild(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestModel.SubChild> values) {
+        if (subChildBuilder_ == null) {
+          ensureSubChildIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, subChild_);
+          onChanged();
+        } else {
+          subChildBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder clearSubChild() {
+        if (subChildBuilder_ == null) {
+          subChild_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          subChildBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public Builder removeSubChild(int index) {
+        if (subChildBuilder_ == null) {
+          ensureSubChildIsMutable();
+          subChild_.remove(index);
+          onChanged();
+        } else {
+          subChildBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubChild.Builder getSubChildBuilder(
+          int index) {
+        return getSubChildFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubChildOrBuilder getSubChildOrBuilder(
+          int index) {
+        if (subChildBuilder_ == null) {
+          return subChild_.get(index);  } else {
+          return subChildBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestModel.SubChildOrBuilder> 
+           getSubChildOrBuilderList() {
+        if (subChildBuilder_ != null) {
+          return subChildBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(subChild_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubChild.Builder addSubChildBuilder() {
+        return getSubChildFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestModel.SubChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubChild.Builder addSubChildBuilder(
+          int index) {
+        return getSubChildFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestModel.SubChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubChild sub_child = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestModel.SubChild.Builder> 
+           getSubChildBuilderList() {
+        return getSubChildFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestModel.SubChild, org.roylance.yaorm.TestModel.SubChild.Builder, org.roylance.yaorm.TestModel.SubChildOrBuilder> 
+          getSubChildFieldBuilder() {
+        if (subChildBuilder_ == null) {
+          subChildBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestModel.SubChild, org.roylance.yaorm.TestModel.SubChild.Builder, org.roylance.yaorm.TestModel.SubChildOrBuilder>(
+                  subChild_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          subChild_ = null;
+        }
+        return subChildBuilder_;
+      }
+
+      private org.roylance.yaorm.TestModel.SubSubSubChild subSubSubChild_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestModel.SubSubSubChild, org.roylance.yaorm.TestModel.SubSubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> subSubSubChildBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public boolean hasSubSubSubChild() {
+        return subSubSubChildBuilder_ != null || subSubSubChild_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChild getSubSubSubChild() {
+        if (subSubSubChildBuilder_ == null) {
+          return subSubSubChild_ == null ? org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance() : subSubSubChild_;
+        } else {
+          return subSubSubChildBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public Builder setSubSubSubChild(org.roylance.yaorm.TestModel.SubSubSubChild value) {
+        if (subSubSubChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          subSubSubChild_ = value;
+          onChanged();
+        } else {
+          subSubSubChildBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public Builder setSubSubSubChild(
+          org.roylance.yaorm.TestModel.SubSubSubChild.Builder builderForValue) {
+        if (subSubSubChildBuilder_ == null) {
+          subSubSubChild_ = builderForValue.build();
+          onChanged();
+        } else {
+          subSubSubChildBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public Builder mergeSubSubSubChild(org.roylance.yaorm.TestModel.SubSubSubChild value) {
+        if (subSubSubChildBuilder_ == null) {
+          if (subSubSubChild_ != null) {
+            subSubSubChild_ =
+              org.roylance.yaorm.TestModel.SubSubSubChild.newBuilder(subSubSubChild_).mergeFrom(value).buildPartial();
+          } else {
+            subSubSubChild_ = value;
+          }
+          onChanged();
+        } else {
+          subSubSubChildBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public Builder clearSubSubSubChild() {
+        if (subSubSubChildBuilder_ == null) {
+          subSubSubChild_ = null;
+          onChanged();
+        } else {
+          subSubSubChild_ = null;
+          subSubSubChildBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChild.Builder getSubSubSubChildBuilder() {
+        
+        onChanged();
+        return getSubSubSubChildFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder getSubSubSubChildOrBuilder() {
+        if (subSubSubChildBuilder_ != null) {
+          return subSubSubChildBuilder_.getMessageOrBuilder();
+        } else {
+          return subSubSubChild_ == null ?
+              org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance() : subSubSubChild_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestModel.SubSubSubChild, org.roylance.yaorm.TestModel.SubSubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> 
+          getSubSubSubChildFieldBuilder() {
+        if (subSubSubChildBuilder_ == null) {
+          subSubSubChildBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestModel.SubSubSubChild, org.roylance.yaorm.TestModel.SubSubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder>(
+                  getSubSubSubChild(),
+                  getParentForChildren(),
+                  isClean());
+          subSubSubChild_ = null;
+        }
+        return subSubSubChildBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -2990,6 +3540,2541 @@ public final class TestModel {
 
   }
 
+  public interface SubChildOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SubChild)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string another_test_display = 2;</code>
+     */
+    java.lang.String getAnotherTestDisplay();
+    /**
+     * <code>optional string another_test_display = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getAnotherTestDisplayBytes();
+
+    /**
+     * <code>optional bool cool_test = 3;</code>
+     */
+    boolean getCoolTest();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestModel.SubSubChild> 
+        getSubSubChildList();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    org.roylance.yaorm.TestModel.SubSubChild getSubSubChild(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    int getSubSubChildCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestModel.SubSubChildOrBuilder> 
+        getSubSubChildOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    org.roylance.yaorm.TestModel.SubSubChildOrBuilder getSubSubChildOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.SubChild}
+   */
+  public  static final class SubChild extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubChild)
+      SubChildOrBuilder {
+    // Use SubChild.newBuilder() to construct.
+    private SubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SubChild() {
+      id_ = "";
+      anotherTestDisplay_ = "";
+      coolTest_ = false;
+      subSubChild_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SubChild(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              anotherTestDisplay_ = s;
+              break;
+            }
+            case 24: {
+
+              coolTest_ = input.readBool();
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                subSubChild_ = new java.util.ArrayList<org.roylance.yaorm.TestModel.SubSubChild>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              subSubChild_.add(input.readMessage(org.roylance.yaorm.TestModel.SubSubChild.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          subSubChild_ = java.util.Collections.unmodifiableList(subSubChild_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubChild_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestModel.SubChild.class, org.roylance.yaorm.TestModel.SubChild.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ANOTHER_TEST_DISPLAY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object anotherTestDisplay_;
+    /**
+     * <code>optional string another_test_display = 2;</code>
+     */
+    public java.lang.String getAnotherTestDisplay() {
+      java.lang.Object ref = anotherTestDisplay_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        anotherTestDisplay_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string another_test_display = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAnotherTestDisplayBytes() {
+      java.lang.Object ref = anotherTestDisplay_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        anotherTestDisplay_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int COOL_TEST_FIELD_NUMBER = 3;
+    private boolean coolTest_;
+    /**
+     * <code>optional bool cool_test = 3;</code>
+     */
+    public boolean getCoolTest() {
+      return coolTest_;
+    }
+
+    public static final int SUB_SUB_CHILD_FIELD_NUMBER = 4;
+    private java.util.List<org.roylance.yaorm.TestModel.SubSubChild> subSubChild_;
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestModel.SubSubChild> getSubSubChildList() {
+      return subSubChild_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestModel.SubSubChildOrBuilder> 
+        getSubSubChildOrBuilderList() {
+      return subSubChild_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    public int getSubSubChildCount() {
+      return subSubChild_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubSubChild getSubSubChild(int index) {
+      return subSubChild_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubSubChildOrBuilder getSubSubChildOrBuilder(
+        int index) {
+      return subSubChild_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getAnotherTestDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, anotherTestDisplay_);
+      }
+      if (coolTest_ != false) {
+        output.writeBool(3, coolTest_);
+      }
+      for (int i = 0; i < subSubChild_.size(); i++) {
+        output.writeMessage(4, subSubChild_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getAnotherTestDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, anotherTestDisplay_);
+      }
+      if (coolTest_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, coolTest_);
+      }
+      for (int i = 0; i < subSubChild_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, subSubChild_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubChild parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestModel.SubChild prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.SubChild}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SubChild)
+        org.roylance.yaorm.TestModel.SubChildOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubChild_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestModel.SubChild.class, org.roylance.yaorm.TestModel.SubChild.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestModel.SubChild.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSubSubChildFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        anotherTestDisplay_ = "";
+
+        coolTest_ = false;
+
+        if (subSubChildBuilder_ == null) {
+          subSubChild_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          subSubChildBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubChild_descriptor;
+      }
+
+      public org.roylance.yaorm.TestModel.SubChild getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestModel.SubChild.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestModel.SubChild build() {
+        org.roylance.yaorm.TestModel.SubChild result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestModel.SubChild buildPartial() {
+        org.roylance.yaorm.TestModel.SubChild result = new org.roylance.yaorm.TestModel.SubChild(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        result.anotherTestDisplay_ = anotherTestDisplay_;
+        result.coolTest_ = coolTest_;
+        if (subSubChildBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            subSubChild_ = java.util.Collections.unmodifiableList(subSubChild_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.subSubChild_ = subSubChild_;
+        } else {
+          result.subSubChild_ = subSubChildBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestModel.SubChild) {
+          return mergeFrom((org.roylance.yaorm.TestModel.SubChild)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestModel.SubChild other) {
+        if (other == org.roylance.yaorm.TestModel.SubChild.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getAnotherTestDisplay().isEmpty()) {
+          anotherTestDisplay_ = other.anotherTestDisplay_;
+          onChanged();
+        }
+        if (other.getCoolTest() != false) {
+          setCoolTest(other.getCoolTest());
+        }
+        if (subSubChildBuilder_ == null) {
+          if (!other.subSubChild_.isEmpty()) {
+            if (subSubChild_.isEmpty()) {
+              subSubChild_ = other.subSubChild_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureSubSubChildIsMutable();
+              subSubChild_.addAll(other.subSubChild_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.subSubChild_.isEmpty()) {
+            if (subSubChildBuilder_.isEmpty()) {
+              subSubChildBuilder_.dispose();
+              subSubChildBuilder_ = null;
+              subSubChild_ = other.subSubChild_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              subSubChildBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSubSubChildFieldBuilder() : null;
+            } else {
+              subSubChildBuilder_.addAllMessages(other.subSubChild_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestModel.SubChild parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestModel.SubChild) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object anotherTestDisplay_ = "";
+      /**
+       * <code>optional string another_test_display = 2;</code>
+       */
+      public java.lang.String getAnotherTestDisplay() {
+        java.lang.Object ref = anotherTestDisplay_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          anotherTestDisplay_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string another_test_display = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAnotherTestDisplayBytes() {
+        java.lang.Object ref = anotherTestDisplay_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          anotherTestDisplay_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string another_test_display = 2;</code>
+       */
+      public Builder setAnotherTestDisplay(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        anotherTestDisplay_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string another_test_display = 2;</code>
+       */
+      public Builder clearAnotherTestDisplay() {
+        
+        anotherTestDisplay_ = getDefaultInstance().getAnotherTestDisplay();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string another_test_display = 2;</code>
+       */
+      public Builder setAnotherTestDisplayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        anotherTestDisplay_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean coolTest_ ;
+      /**
+       * <code>optional bool cool_test = 3;</code>
+       */
+      public boolean getCoolTest() {
+        return coolTest_;
+      }
+      /**
+       * <code>optional bool cool_test = 3;</code>
+       */
+      public Builder setCoolTest(boolean value) {
+        
+        coolTest_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool cool_test = 3;</code>
+       */
+      public Builder clearCoolTest() {
+        
+        coolTest_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestModel.SubSubChild> subSubChild_ =
+        java.util.Collections.emptyList();
+      private void ensureSubSubChildIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          subSubChild_ = new java.util.ArrayList<org.roylance.yaorm.TestModel.SubSubChild>(subSubChild_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestModel.SubSubChild, org.roylance.yaorm.TestModel.SubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubChildOrBuilder> subSubChildBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestModel.SubSubChild> getSubSubChildList() {
+        if (subSubChildBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(subSubChild_);
+        } else {
+          return subSubChildBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public int getSubSubChildCount() {
+        if (subSubChildBuilder_ == null) {
+          return subSubChild_.size();
+        } else {
+          return subSubChildBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubChild getSubSubChild(int index) {
+        if (subSubChildBuilder_ == null) {
+          return subSubChild_.get(index);
+        } else {
+          return subSubChildBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder setSubSubChild(
+          int index, org.roylance.yaorm.TestModel.SubSubChild value) {
+        if (subSubChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubSubChildIsMutable();
+          subSubChild_.set(index, value);
+          onChanged();
+        } else {
+          subSubChildBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder setSubSubChild(
+          int index, org.roylance.yaorm.TestModel.SubSubChild.Builder builderForValue) {
+        if (subSubChildBuilder_ == null) {
+          ensureSubSubChildIsMutable();
+          subSubChild_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          subSubChildBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder addSubSubChild(org.roylance.yaorm.TestModel.SubSubChild value) {
+        if (subSubChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubSubChildIsMutable();
+          subSubChild_.add(value);
+          onChanged();
+        } else {
+          subSubChildBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder addSubSubChild(
+          int index, org.roylance.yaorm.TestModel.SubSubChild value) {
+        if (subSubChildBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubSubChildIsMutable();
+          subSubChild_.add(index, value);
+          onChanged();
+        } else {
+          subSubChildBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder addSubSubChild(
+          org.roylance.yaorm.TestModel.SubSubChild.Builder builderForValue) {
+        if (subSubChildBuilder_ == null) {
+          ensureSubSubChildIsMutable();
+          subSubChild_.add(builderForValue.build());
+          onChanged();
+        } else {
+          subSubChildBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder addSubSubChild(
+          int index, org.roylance.yaorm.TestModel.SubSubChild.Builder builderForValue) {
+        if (subSubChildBuilder_ == null) {
+          ensureSubSubChildIsMutable();
+          subSubChild_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          subSubChildBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder addAllSubSubChild(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestModel.SubSubChild> values) {
+        if (subSubChildBuilder_ == null) {
+          ensureSubSubChildIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, subSubChild_);
+          onChanged();
+        } else {
+          subSubChildBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder clearSubSubChild() {
+        if (subSubChildBuilder_ == null) {
+          subSubChild_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          subSubChildBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public Builder removeSubSubChild(int index) {
+        if (subSubChildBuilder_ == null) {
+          ensureSubSubChildIsMutable();
+          subSubChild_.remove(index);
+          onChanged();
+        } else {
+          subSubChildBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubChild.Builder getSubSubChildBuilder(
+          int index) {
+        return getSubSubChildFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubChildOrBuilder getSubSubChildOrBuilder(
+          int index) {
+        if (subSubChildBuilder_ == null) {
+          return subSubChild_.get(index);  } else {
+          return subSubChildBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestModel.SubSubChildOrBuilder> 
+           getSubSubChildOrBuilderList() {
+        if (subSubChildBuilder_ != null) {
+          return subSubChildBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(subSubChild_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubChild.Builder addSubSubChildBuilder() {
+        return getSubSubChildFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestModel.SubSubChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubChild.Builder addSubSubChildBuilder(
+          int index) {
+        return getSubSubChildFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestModel.SubSubChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubChild sub_sub_child = 4;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestModel.SubSubChild.Builder> 
+           getSubSubChildBuilderList() {
+        return getSubSubChildFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestModel.SubSubChild, org.roylance.yaorm.TestModel.SubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubChildOrBuilder> 
+          getSubSubChildFieldBuilder() {
+        if (subSubChildBuilder_ == null) {
+          subSubChildBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestModel.SubSubChild, org.roylance.yaorm.TestModel.SubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubChildOrBuilder>(
+                  subSubChild_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          subSubChild_ = null;
+        }
+        return subSubChildBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SubChild)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubChild)
+    private static final org.roylance.yaorm.TestModel.SubChild DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestModel.SubChild();
+    }
+
+    public static org.roylance.yaorm.TestModel.SubChild getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SubChild>
+        PARSER = new com.google.protobuf.AbstractParser<SubChild>() {
+      public SubChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SubChild(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<SubChild> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubChild> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestModel.SubChild getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SubSubChildOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SubSubChild)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string sub_sub_display = 2;</code>
+     */
+    java.lang.String getSubSubDisplay();
+    /**
+     * <code>optional string sub_sub_display = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSubSubDisplayBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestModel.SubSubSubChild> 
+        getSubSubSubChildsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    org.roylance.yaorm.TestModel.SubSubSubChild getSubSubSubChilds(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    int getSubSubSubChildsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> 
+        getSubSubSubChildsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder getSubSubSubChildsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.SubSubChild}
+   */
+  public  static final class SubSubChild extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubSubChild)
+      SubSubChildOrBuilder {
+    // Use SubSubChild.newBuilder() to construct.
+    private SubSubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SubSubChild() {
+      id_ = "";
+      subSubDisplay_ = "";
+      subSubSubChilds_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SubSubChild(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              subSubDisplay_ = s;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                subSubSubChilds_ = new java.util.ArrayList<org.roylance.yaorm.TestModel.SubSubSubChild>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              subSubSubChilds_.add(input.readMessage(org.roylance.yaorm.TestModel.SubSubSubChild.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          subSubSubChilds_ = java.util.Collections.unmodifiableList(subSubSubChilds_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubChild_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestModel.SubSubChild.class, org.roylance.yaorm.TestModel.SubSubChild.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUB_SUB_DISPLAY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object subSubDisplay_;
+    /**
+     * <code>optional string sub_sub_display = 2;</code>
+     */
+    public java.lang.String getSubSubDisplay() {
+      java.lang.Object ref = subSubDisplay_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        subSubDisplay_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string sub_sub_display = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSubSubDisplayBytes() {
+      java.lang.Object ref = subSubDisplay_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        subSubDisplay_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUB_SUB_SUB_CHILDS_FIELD_NUMBER = 3;
+    private java.util.List<org.roylance.yaorm.TestModel.SubSubSubChild> subSubSubChilds_;
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestModel.SubSubSubChild> getSubSubSubChildsList() {
+      return subSubSubChilds_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> 
+        getSubSubSubChildsOrBuilderList() {
+      return subSubSubChilds_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    public int getSubSubSubChildsCount() {
+      return subSubSubChilds_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubSubSubChild getSubSubSubChilds(int index) {
+      return subSubSubChilds_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+     */
+    public org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder getSubSubSubChildsOrBuilder(
+        int index) {
+      return subSubSubChilds_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getSubSubDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, subSubDisplay_);
+      }
+      for (int i = 0; i < subSubSubChilds_.size(); i++) {
+        output.writeMessage(3, subSubSubChilds_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getSubSubDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, subSubDisplay_);
+      }
+      for (int i = 0; i < subSubSubChilds_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, subSubSubChilds_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubChild parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestModel.SubSubChild prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.SubSubChild}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SubSubChild)
+        org.roylance.yaorm.TestModel.SubSubChildOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubChild_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestModel.SubSubChild.class, org.roylance.yaorm.TestModel.SubSubChild.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestModel.SubSubChild.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSubSubSubChildsFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        subSubDisplay_ = "";
+
+        if (subSubSubChildsBuilder_ == null) {
+          subSubSubChilds_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          subSubSubChildsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubChild_descriptor;
+      }
+
+      public org.roylance.yaorm.TestModel.SubSubChild getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestModel.SubSubChild.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestModel.SubSubChild build() {
+        org.roylance.yaorm.TestModel.SubSubChild result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestModel.SubSubChild buildPartial() {
+        org.roylance.yaorm.TestModel.SubSubChild result = new org.roylance.yaorm.TestModel.SubSubChild(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        result.subSubDisplay_ = subSubDisplay_;
+        if (subSubSubChildsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            subSubSubChilds_ = java.util.Collections.unmodifiableList(subSubSubChilds_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.subSubSubChilds_ = subSubSubChilds_;
+        } else {
+          result.subSubSubChilds_ = subSubSubChildsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestModel.SubSubChild) {
+          return mergeFrom((org.roylance.yaorm.TestModel.SubSubChild)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestModel.SubSubChild other) {
+        if (other == org.roylance.yaorm.TestModel.SubSubChild.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getSubSubDisplay().isEmpty()) {
+          subSubDisplay_ = other.subSubDisplay_;
+          onChanged();
+        }
+        if (subSubSubChildsBuilder_ == null) {
+          if (!other.subSubSubChilds_.isEmpty()) {
+            if (subSubSubChilds_.isEmpty()) {
+              subSubSubChilds_ = other.subSubSubChilds_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureSubSubSubChildsIsMutable();
+              subSubSubChilds_.addAll(other.subSubSubChilds_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.subSubSubChilds_.isEmpty()) {
+            if (subSubSubChildsBuilder_.isEmpty()) {
+              subSubSubChildsBuilder_.dispose();
+              subSubSubChildsBuilder_ = null;
+              subSubSubChilds_ = other.subSubSubChilds_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              subSubSubChildsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSubSubSubChildsFieldBuilder() : null;
+            } else {
+              subSubSubChildsBuilder_.addAllMessages(other.subSubSubChilds_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestModel.SubSubChild parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestModel.SubSubChild) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object subSubDisplay_ = "";
+      /**
+       * <code>optional string sub_sub_display = 2;</code>
+       */
+      public java.lang.String getSubSubDisplay() {
+        java.lang.Object ref = subSubDisplay_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          subSubDisplay_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string sub_sub_display = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSubSubDisplayBytes() {
+        java.lang.Object ref = subSubDisplay_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          subSubDisplay_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string sub_sub_display = 2;</code>
+       */
+      public Builder setSubSubDisplay(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        subSubDisplay_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sub_sub_display = 2;</code>
+       */
+      public Builder clearSubSubDisplay() {
+        
+        subSubDisplay_ = getDefaultInstance().getSubSubDisplay();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sub_sub_display = 2;</code>
+       */
+      public Builder setSubSubDisplayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        subSubDisplay_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestModel.SubSubSubChild> subSubSubChilds_ =
+        java.util.Collections.emptyList();
+      private void ensureSubSubSubChildsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          subSubSubChilds_ = new java.util.ArrayList<org.roylance.yaorm.TestModel.SubSubSubChild>(subSubSubChilds_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestModel.SubSubSubChild, org.roylance.yaorm.TestModel.SubSubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> subSubSubChildsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestModel.SubSubSubChild> getSubSubSubChildsList() {
+        if (subSubSubChildsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(subSubSubChilds_);
+        } else {
+          return subSubSubChildsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public int getSubSubSubChildsCount() {
+        if (subSubSubChildsBuilder_ == null) {
+          return subSubSubChilds_.size();
+        } else {
+          return subSubSubChildsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChild getSubSubSubChilds(int index) {
+        if (subSubSubChildsBuilder_ == null) {
+          return subSubSubChilds_.get(index);
+        } else {
+          return subSubSubChildsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder setSubSubSubChilds(
+          int index, org.roylance.yaorm.TestModel.SubSubSubChild value) {
+        if (subSubSubChildsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.set(index, value);
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder setSubSubSubChilds(
+          int index, org.roylance.yaorm.TestModel.SubSubSubChild.Builder builderForValue) {
+        if (subSubSubChildsBuilder_ == null) {
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder addSubSubSubChilds(org.roylance.yaorm.TestModel.SubSubSubChild value) {
+        if (subSubSubChildsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.add(value);
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder addSubSubSubChilds(
+          int index, org.roylance.yaorm.TestModel.SubSubSubChild value) {
+        if (subSubSubChildsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.add(index, value);
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder addSubSubSubChilds(
+          org.roylance.yaorm.TestModel.SubSubSubChild.Builder builderForValue) {
+        if (subSubSubChildsBuilder_ == null) {
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.add(builderForValue.build());
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder addSubSubSubChilds(
+          int index, org.roylance.yaorm.TestModel.SubSubSubChild.Builder builderForValue) {
+        if (subSubSubChildsBuilder_ == null) {
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder addAllSubSubSubChilds(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestModel.SubSubSubChild> values) {
+        if (subSubSubChildsBuilder_ == null) {
+          ensureSubSubSubChildsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, subSubSubChilds_);
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder clearSubSubSubChilds() {
+        if (subSubSubChildsBuilder_ == null) {
+          subSubSubChilds_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public Builder removeSubSubSubChilds(int index) {
+        if (subSubSubChildsBuilder_ == null) {
+          ensureSubSubSubChildsIsMutable();
+          subSubSubChilds_.remove(index);
+          onChanged();
+        } else {
+          subSubSubChildsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChild.Builder getSubSubSubChildsBuilder(
+          int index) {
+        return getSubSubSubChildsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder getSubSubSubChildsOrBuilder(
+          int index) {
+        if (subSubSubChildsBuilder_ == null) {
+          return subSubSubChilds_.get(index);  } else {
+          return subSubSubChildsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> 
+           getSubSubSubChildsOrBuilderList() {
+        if (subSubSubChildsBuilder_ != null) {
+          return subSubSubChildsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(subSubSubChilds_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChild.Builder addSubSubSubChildsBuilder() {
+        return getSubSubSubChildsFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public org.roylance.yaorm.TestModel.SubSubSubChild.Builder addSubSubSubChildsBuilder(
+          int index) {
+        return getSubSubSubChildsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.SubSubSubChild sub_sub_sub_childs = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestModel.SubSubSubChild.Builder> 
+           getSubSubSubChildsBuilderList() {
+        return getSubSubSubChildsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestModel.SubSubSubChild, org.roylance.yaorm.TestModel.SubSubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder> 
+          getSubSubSubChildsFieldBuilder() {
+        if (subSubSubChildsBuilder_ == null) {
+          subSubSubChildsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestModel.SubSubSubChild, org.roylance.yaorm.TestModel.SubSubSubChild.Builder, org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder>(
+                  subSubSubChilds_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          subSubSubChilds_ = null;
+        }
+        return subSubSubChildsBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SubSubChild)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubSubChild)
+    private static final org.roylance.yaorm.TestModel.SubSubChild DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestModel.SubSubChild();
+    }
+
+    public static org.roylance.yaorm.TestModel.SubSubChild getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SubSubChild>
+        PARSER = new com.google.protobuf.AbstractParser<SubSubChild>() {
+      public SubSubChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SubSubChild(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<SubSubChild> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubSubChild> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestModel.SubSubChild getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SubSubSubChildOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SubSubSubChild)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string sub_sub_sub_display = 2;</code>
+     */
+    java.lang.String getSubSubSubDisplay();
+    /**
+     * <code>optional string sub_sub_sub_display = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSubSubSubDisplayBytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.SubSubSubChild}
+   */
+  public  static final class SubSubSubChild extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubSubSubChild)
+      SubSubSubChildOrBuilder {
+    // Use SubSubSubChild.newBuilder() to construct.
+    private SubSubSubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SubSubSubChild() {
+      id_ = "";
+      subSubSubDisplay_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SubSubSubChild(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              subSubSubDisplay_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestModel.SubSubSubChild.class, org.roylance.yaorm.TestModel.SubSubSubChild.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUB_SUB_SUB_DISPLAY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object subSubSubDisplay_;
+    /**
+     * <code>optional string sub_sub_sub_display = 2;</code>
+     */
+    public java.lang.String getSubSubSubDisplay() {
+      java.lang.Object ref = subSubSubDisplay_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        subSubSubDisplay_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string sub_sub_sub_display = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSubSubSubDisplayBytes() {
+      java.lang.Object ref = subSubSubDisplay_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        subSubSubDisplay_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getSubSubSubDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, subSubSubDisplay_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getSubSubSubDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, subSubSubDisplay_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestModel.SubSubSubChild parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestModel.SubSubSubChild prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.SubSubSubChild}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SubSubSubChild)
+        org.roylance.yaorm.TestModel.SubSubSubChildOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestModel.SubSubSubChild.class, org.roylance.yaorm.TestModel.SubSubSubChild.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestModel.SubSubSubChild.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        subSubSubDisplay_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestModel.internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
+      }
+
+      public org.roylance.yaorm.TestModel.SubSubSubChild getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestModel.SubSubSubChild build() {
+        org.roylance.yaorm.TestModel.SubSubSubChild result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestModel.SubSubSubChild buildPartial() {
+        org.roylance.yaorm.TestModel.SubSubSubChild result = new org.roylance.yaorm.TestModel.SubSubSubChild(this);
+        result.id_ = id_;
+        result.subSubSubDisplay_ = subSubSubDisplay_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestModel.SubSubSubChild) {
+          return mergeFrom((org.roylance.yaorm.TestModel.SubSubSubChild)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestModel.SubSubSubChild other) {
+        if (other == org.roylance.yaorm.TestModel.SubSubSubChild.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getSubSubSubDisplay().isEmpty()) {
+          subSubSubDisplay_ = other.subSubSubDisplay_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestModel.SubSubSubChild parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestModel.SubSubSubChild) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object subSubSubDisplay_ = "";
+      /**
+       * <code>optional string sub_sub_sub_display = 2;</code>
+       */
+      public java.lang.String getSubSubSubDisplay() {
+        java.lang.Object ref = subSubSubDisplay_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          subSubSubDisplay_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string sub_sub_sub_display = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSubSubSubDisplayBytes() {
+        java.lang.Object ref = subSubSubDisplay_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          subSubSubDisplay_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string sub_sub_sub_display = 2;</code>
+       */
+      public Builder setSubSubSubDisplay(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        subSubSubDisplay_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sub_sub_sub_display = 2;</code>
+       */
+      public Builder clearSubSubSubDisplay() {
+        
+        subSubSubDisplay_ = getDefaultInstance().getSubSubSubDisplay();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sub_sub_sub_display = 2;</code>
+       */
+      public Builder setSubSubSubDisplayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        subSubSubDisplay_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SubSubSubChild)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubSubSubChild)
+    private static final org.roylance.yaorm.TestModel.SubSubSubChild DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestModel.SubSubSubChild();
+    }
+
+    public static org.roylance.yaorm.TestModel.SubSubSubChild getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SubSubSubChild>
+        PARSER = new com.google.protobuf.AbstractParser<SubSubSubChild>() {
+      public SubSubSubChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SubSubSubChild(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<SubSubSubChild> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubSubSubChild> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestModel.SubSubSubChild getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
   private static
@@ -3000,6 +6085,21 @@ public final class TestModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Child_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_SubChild_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_SubSubChild_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3025,8 +6125,18 @@ public final class TestModel {
       "ance.yaorm.SimpleInsertTest.CoolType\022)\n\006" +
       "childs\030\024 \003(\0132\031.org.roylance.yaorm.Child\"" +
       "/\n\010CoolType\022\010\n\004TEST\020\000\022\n\n\006SAMPLE\020\001\022\r\n\tSUR" +
-      "PRISED\020\002\")\n\005Child\022\n\n\002id\030\001 \001(\t\022\024\n\014test_di" +
-      "splay\030\002 \001(\tb\006proto3"
+      "PRISED\020\002\"\231\001\n\005Child\022\n\n\002id\030\001 \001(\t\022\024\n\014test_d" +
+      "isplay\030\002 \001(\t\022/\n\tsub_child\030\003 \003(\0132\034.org.ro" +
+      "ylance.yaorm.SubChild\022=\n\021sub_sub_sub_chi" +
+      "ld\030\004 \001(\0132\".org.roylance.yaorm.SubSubSubC",
+      "hild\"\177\n\010SubChild\022\n\n\002id\030\001 \001(\t\022\034\n\024another_" +
+      "test_display\030\002 \001(\t\022\021\n\tcool_test\030\003 \001(\010\0226\n" +
+      "\rsub_sub_child\030\004 \003(\0132\037.org.roylance.yaor" +
+      "m.SubSubChild\"r\n\013SubSubChild\022\n\n\002id\030\001 \001(\t" +
+      "\022\027\n\017sub_sub_display\030\002 \001(\t\022>\n\022sub_sub_sub" +
+      "_childs\030\003 \003(\0132\".org.roylance.yaorm.SubSu" +
+      "bSubChild\"9\n\016SubSubSubChild\022\n\n\002id\030\001 \001(\t\022" +
+      "\033\n\023sub_sub_sub_display\030\002 \001(\tb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3051,7 +6161,25 @@ public final class TestModel {
     internal_static_org_roylance_yaorm_Child_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Child_descriptor,
-        new java.lang.String[] { "Id", "TestDisplay", });
+        new java.lang.String[] { "Id", "TestDisplay", "SubChild", "SubSubSubChild", });
+    internal_static_org_roylance_yaorm_SubChild_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_SubChild_descriptor,
+        new java.lang.String[] { "Id", "AnotherTestDisplay", "CoolTest", "SubSubChild", });
+    internal_static_org_roylance_yaorm_SubSubChild_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_SubSubChild_descriptor,
+        new java.lang.String[] { "Id", "SubSubDisplay", "SubSubSubChilds", });
+    internal_static_org_roylance_yaorm_SubSubSubChild_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_SubSubSubChild_descriptor,
+        new java.lang.String[] { "Id", "SubSubSubDisplay", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

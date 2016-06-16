@@ -1,7 +1,6 @@
 package org.roylance.yaorm.utilities
 
 import com.google.protobuf.Descriptors
-import com.google.protobuf.GeneratedMessage
 import com.google.protobuf.Message
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.proto.IEntityProtoService
@@ -111,21 +110,13 @@ object ProtobufUtils {
                     definitionGraph.linkerTableTable = linkerTableDefinition
                     definitionGraph.otherTableDefinition = otherDefinition
                     returnGraph.addTableDefinitionGraphs(definitionGraph)
+
+                    val childDefinitions = buildDefinitionGraph(it.messageType)
+                    returnGraph.addAllTableDefinitionGraphs(childDefinitions.tableDefinitionGraphsList)
                 }
             }
 
         return returnGraph.build()
-    }
-
-    fun buildDefinitionGraphForNameSpace(descriptor:Descriptors.FileDescriptor):List<YaormModel.TableDefinitionGraphs> {
-        val returnList = ArrayList<YaormModel.TableDefinitionGraphs>()
-
-        descriptor.messageTypes.forEach {
-            val definitionGraph = buildDefinitionGraph(it)
-            returnList.add(definitionGraph)
-        }
-
-        return returnList
     }
 
     fun <T:Message> getProtoObjectFromBuilderSingle(builder: T, entityService: IEntityProtoService, entityId:String, generatedMessageBuilder: IProtoGeneratedMessageBuilder): T {
@@ -171,10 +162,11 @@ object ProtobufUtils {
 
             val foundRecords = entityService.where(customWhereClause, definitionForLinkerTable.linkerTableTable)
             foundRecords.recordsList.forEach { record ->
-                val nameColumn = record.columnsList.firstOrNull { it.definition.name.equals(fieldKey.enumType.name) } ?: return@forEach
-
-                val enumToAdd = fieldKey.enumType.findValueByName(nameColumn.stringHolder.toUpperCase())
-                builderForType.addRepeatedField(fieldKey, enumToAdd)
+                val nameColumn = record.columnsList.firstOrNull { it.definition.name.equals(fieldKey.enumType.name) }
+                if (nameColumn != null) {
+                    val enumToAdd = fieldKey.enumType.findValueByName(nameColumn.stringHolder.toUpperCase())
+                    builderForType.addRepeatedField(fieldKey, enumToAdd)
+                }
             }
         }
 
@@ -194,17 +186,18 @@ object ProtobufUtils {
 
             val foundRecords = entityService.where(customWhereClause, definitionForLinkerTable.linkerTableTable)
             foundRecords.recordsList.forEach { record ->
-                val nameColumn = record.columnsList.firstOrNull { it.definition.name.equals(fieldKey.messageType.name) } ?: return@forEach
-
-                val constructedMessage = getProtoObjectFromBuilderSingle(childBuilder, entityService, nameColumn.stringHolder, generatedMessageBuilder)
-                builderForType.addRepeatedField(fieldKey, constructedMessage)
+                val nameColumn = record.columnsList.firstOrNull { it.definition.name.equals(fieldKey.messageType.name) }
+                if (nameColumn != null) {
+                    val constructedMessage = getProtoObjectFromBuilderSingle(childBuilder, entityService, nameColumn.stringHolder, generatedMessageBuilder)
+                    builderForType.addRepeatedField(fieldKey, constructedMessage)
+                }
             }
         }
 
         return builderForType.build() as T
     }
 
-    fun convertProtobufObjectToRecords(message:GeneratedMessage):YaormModel.AllTableRecords {
+    fun convertProtobufObjectToRecords(message:Message):YaormModel.AllTableRecords {
         val resultMap = convertProtobufObjectToRecordsInternal(message)
         val returnRecords = YaormModel.AllTableRecords.newBuilder()
 
@@ -215,14 +208,26 @@ object ProtobufUtils {
         return returnRecords.build()
     }
 
-    private fun convertProtobufObjectToRecordsInternal(message:GeneratedMessage):MutableMap<String, YaormModel.TableRecords.Builder> {
+    private fun convertProtobufObjectToRecordsInternal(message:Message):MutableMap<String, YaormModel.TableRecords.Builder> {
         if (!isMessageOk(message)) {
             return HashMap()
         }
 
-        val mainMessageId = getIdFromGeneratedMessage(message)
-        val definitions = buildDefinitionGraph(message.descriptorForType)
+        val mainMessageId = getIdFromMessage(message)
         val recordsMap = HashMap<String, YaormModel.TableRecords.Builder>()
+        val definitions = buildDefinitionGraph(message.descriptorForType)
+        // add in all the definitions we found
+        definitions.tableDefinitionGraphsList.forEach {
+            if (!recordsMap.containsKey(it.mainName)) {
+                recordsMap[it.mainName] = YaormModel.TableRecords.newBuilder().setTableName(it.mainName).setTableDefinition(it.mainTableDefinition)
+            }
+            if (it.hasLinkerTableTable() && !recordsMap.containsKey(it.linkerTableTable.name)) {
+                recordsMap[it.linkerTableTable.name] = YaormModel.TableRecords.newBuilder().setTableName(it.linkerTableTable.name).setTableDefinition(it.linkerTableTable)
+            }
+            if (it.hasOtherTableDefinition() && !recordsMap.containsKey(it.otherName)) {
+                recordsMap[it.otherName] = YaormModel.TableRecords.newBuilder().setTableName(it.otherName).setTableDefinition(it.otherTableDefinition)
+            }
+        }
 
         // get base record
         val baseRecord = YaormModel.Record.newBuilder()
@@ -277,8 +282,8 @@ object ProtobufUtils {
                     }
 
                     val foundField = message.allFields[foundMessageField]
-                    if (foundField is GeneratedMessage && isMessageOk(foundField)) {
-                        val generatedNameColumn = CommonUtils.buildColumn(getIdFromGeneratedMessage(foundField), columnDefinition)
+                    if (foundField is Message && isMessageOk(foundField)) {
+                        val generatedNameColumn = CommonUtils.buildColumn(getIdFromMessage(foundField), columnDefinition)
                         baseRecord.addColumns(generatedNameColumn)
                         val childMessageRecords = convertProtobufObjectToRecordsInternal(foundField)
                         childMessageRecords.keys.forEach {
@@ -327,7 +332,16 @@ object ProtobufUtils {
         return recordsMap
     }
 
-    private fun handleRepeatedMessageFields(message:GeneratedMessage, mainMessageId: String): Map<String, YaormModel.TableRecords.Builder> {
+    fun getIdFromMessage(message:Message):String {
+        val foundIdField = message.allFields.keys.firstOrNull { it.name.equals(CommonUtils.IdName) } ?: Empty
+        return message.allFields[foundIdField]!!.toString()
+    }
+
+    fun isMessageOk(message: Message):Boolean {
+        return message.descriptorForType.fields.any { it.name.equals(CommonUtils.IdName) }
+    }
+
+    private fun handleRepeatedMessageFields(message:Message, mainMessageId: String): Map<String, YaormModel.TableRecords.Builder> {
         val returnMap = HashMap<String, YaormModel.TableRecords.Builder>()
         message.allFields.keys.filter { it.type.name.equals(ProtoMessageType) && it.isRepeated }
                 .forEach { fieldKey ->
@@ -341,41 +355,39 @@ object ProtobufUtils {
                         return@forEach
                     }
                     else {
-                        foundItem.filter { it is GeneratedMessage }.forEach {
-                            val generatedMessage = it as GeneratedMessage
+                        foundItem.filter { it is Message }.forEach {
+                            val subMessage = it as Message
                             if (foundTableDefinition == null) {
                                 foundTableDefinition = buildMessageRepeatedRecordTableDefinition(message.descriptorForType.name,
-                                        generatedMessage.descriptorForType.name,
+                                        subMessage.descriptorForType.name,
                                         fieldKey.name)
                                 linkerTableRecords.tableDefinition = foundTableDefinition
                                 linkerTableRecords.tableName = foundTableDefinition!!.name
                             }
 
-                            val generatedMessageId = getIdFromGeneratedMessage(generatedMessage)
-                            if (generatedMessageId == Empty) {
-                                return@forEach
-                            }
+                            val messageId = getIdFromMessage(subMessage)
+                            if (messageId != Empty) {
+                                val record = buildMessageRepeatedRecord(message.descriptorForType.name,
+                                        subMessage.descriptorForType.name,
+                                        mainMessageId,
+                                        messageId)
 
-                            val record = buildMessageRepeatedRecord(message.descriptorForType.name,
-                                    generatedMessage.descriptorForType.name,
-                                    mainMessageId,
-                                    generatedMessageId)
+                                linkerTableRecords.recordsBuilder.addRecords(record)
 
-                            linkerTableRecords.recordsBuilder.addRecords(record)
-
-                            // recursively call for child...
-                            val subRecords = convertProtobufObjectToRecordsInternal(generatedMessage)
-                            subRecords.keys.forEach { subRecordKey ->
-                                if (returnMap.containsKey(subRecordKey)) {
-                                    returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
+                                // recursively call for child...
+                                val subRecords = convertProtobufObjectToRecordsInternal(subMessage)
+                                subRecords.keys.forEach { subRecordKey ->
+                                    if (returnMap.containsKey(subRecordKey)) {
+                                        returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
+                                    }
+                                    else {
+                                        returnMap[subRecordKey] = subRecords[subRecordKey]!!
+                                    }
                                 }
-                                else {
-                                    returnMap[subRecordKey] = subRecords[subRecordKey]!!
+                                if (foundTableDefinition != null) {
+                                    returnMap[linkerTableRecords.tableName] = linkerTableRecords
                                 }
                             }
-                        }
-                        if (foundTableDefinition != null) {
-                            returnMap[linkerTableRecords.tableName] = linkerTableRecords
                         }
                     }
                 }
@@ -383,7 +395,7 @@ object ProtobufUtils {
         return returnMap
     }
 
-    private fun handleRepeatedEnumFields(message:GeneratedMessage,
+    private fun handleRepeatedEnumFields(message:Message,
                                          mainMessageId:String,
                                          definitions:YaormModel.TableDefinitionGraphs):Map<String, YaormModel.TableRecords.Builder> {
         val returnRecords = HashMap<String, YaormModel.TableRecords.Builder>()
@@ -433,7 +445,6 @@ object ProtobufUtils {
             .build()
     }
 
-    // todo: fill out
     private fun buildMessageRepeatedRecord(mainColumnName:String,
                                            otherColumnName:String,
                                            mainColumnId:String,
@@ -502,15 +513,6 @@ object ProtobufUtils {
         record.addColumns(enumColumn)
 
         return record.build()
-    }
-
-    private fun getIdFromGeneratedMessage(message:GeneratedMessage):String {
-        val foundIdField = message.allFields.keys.firstOrNull { it.name.equals(CommonUtils.IdName) } ?: Empty
-        return message.allFields[foundIdField]!!.toString()
-    }
-
-    private fun isMessageOk(message: GeneratedMessage):Boolean {
-        return message.descriptorForType.fields.any { it.name.equals(CommonUtils.IdName) }
     }
 
     private fun buildLinkerTableEnum(mainTableName:String, repeatedEnumName:String, repeatedEnumColumnName:String):YaormModel.TableDefinition {

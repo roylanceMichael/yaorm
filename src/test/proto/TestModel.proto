@@ -35,4 +35,24 @@ message SimpleInsertTest {
 message Child {
     string id = 1;
     string test_display = 2;
+    repeated SubChild sub_child = 3;
+    SubSubSubChild sub_sub_sub_child = 4;
+}
+
+message SubChild {
+    string id = 1;
+    string another_test_display = 2;
+    bool cool_test = 3;
+    repeated SubSubChild sub_sub_child = 4;
+}
+
+message SubSubChild {
+    string id = 1;
+    string sub_sub_display = 2;
+    repeated SubSubSubChild sub_sub_sub_childs = 3;
+}
+
+message SubSubSubChild {
+    string id = 1;
+    string sub_sub_sub_display = 2;
 }

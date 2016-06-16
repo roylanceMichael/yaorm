@@ -305,12 +305,24 @@ class MySQLProtoTest {
             val subTestChild = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
             val subTestChild2 = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("third display")
             val subTestChild3 = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("fourth display")
-            testModel.addChilds(subTestChild)
-            testModel.addChilds(subTestChild2)
-            testModel.addChilds(subTestChild3)
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
 
             val firstCoolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
             val secondCoolType = TestModel.SimpleInsertTest.CoolType.TEST
+
+            testModel.addCoolTypes(firstCoolType)
+            testModel.addCoolTypes(secondCoolType)
+
+            val subChild = TestModel.SubChild.newBuilder().setId(UUID.randomUUID().toString()).setAnotherTestDisplay("sub child test").setCoolTest(true)
+            val subSubChild = TestModel.SubSubChild.newBuilder().setId(UUID.randomUUID().toString()).setSubSubDisplay("sub sub child test").build()
+            subChild.addSubSubChild(subSubChild)
+            subTestChild.addSubChild(subChild)
+            testModel.addChilds(subTestChild)
+            testModel.addChilds(subTestChild2)
+            testModel.addChilds(subTestChild3)
 
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
@@ -323,14 +335,28 @@ class MySQLProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestModel.SimpleInsertTest>(TestModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val insertedRecord = ProtobufUtils.getProtoObjectFromBuilderSingle<TestModel.SimpleInsertTest>(TestModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
 
             // assert
-            Assert.assertTrue(record is TestModel.SimpleInsertTest)
-            Assert.assertTrue(record.childsCount == 3)
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild.testDisplay) && it.id.equals(subTestChild.id) })
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild2.testDisplay) && it.id.equals(subTestChild2.id) })
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild3.testDisplay) && it.id.equals(subTestChild3.id) })
+            Assert.assertTrue(insertedRecord is TestModel.SimpleInsertTest)
+            Assert.assertTrue(insertedRecord.childsCount == 3)
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(subTestChild.testDisplay) && it.id.equals(subTestChild.id) })
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(subTestChild2.testDisplay) && it.id.equals(subTestChild2.id) })
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(subTestChild3.testDisplay) && it.id.equals(subTestChild3.id) })
+            Assert.assertTrue(subTestChild.subChildCount == 1)
+
+            val subTestChildFound = insertedRecord.childsList.first { it.testDisplay.equals(subTestChild.testDisplay) }
+            Assert.assertTrue(subTestChildFound.testDisplay.equals(subTestChild.testDisplay))
+            Assert.assertTrue(subTestChildFound.subChildCount == 1)
+
+            val anotherSubTestChild = subTestChildFound.subChildList.first()
+            Assert.assertTrue(anotherSubTestChild.id.equals(anotherSubTestChild.id))
+            Assert.assertTrue(anotherSubTestChild.anotherTestDisplay.equals(subChild.anotherTestDisplay))
+            Assert.assertTrue(anotherSubTestChild.subSubChildCount == 1)
+
+            val subSubChildFound = anotherSubTestChild.subSubChildList.first()
+            Assert.assertTrue(subSubChild.id.equals(subSubChildFound.id))
+            Assert.assertTrue(subSubChild.subSubDisplay.equals(subSubChildFound.subSubDisplay))
         }
         finally {
             dropSchema()
