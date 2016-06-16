@@ -10,7 +10,7 @@ import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
 class MySQLEntityAccessMapServiceTests {
-//    @Test
+    @Test
     fun simpleCreateMySQLTest() {
         // arrange
         getConnectionInfo()

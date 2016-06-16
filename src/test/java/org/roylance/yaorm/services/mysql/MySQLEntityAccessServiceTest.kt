@@ -8,7 +8,7 @@ import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import java.util.*
 
 class MySQLEntityAccessServiceTest {
-//    @Test
+    @Test
     fun simpleCreateMySQLTest() {
         // arrange
         getConnectionInfo()
