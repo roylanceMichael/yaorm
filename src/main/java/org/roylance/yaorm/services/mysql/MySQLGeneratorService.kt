@@ -37,7 +37,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
             put(YaormModel.ProtobufType.SFIXED32, SqlIntegerName)
             put(YaormModel.ProtobufType.SFIXED64, SqlIntegerName)
             put(YaormModel.ProtobufType.BOOL, SqlIntegerName)
-            put(YaormModel.ProtobufType.BYTES, SqlBlobName)
+            put(YaormModel.ProtobufType.BYTES, SqlTextName)
             put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
             put(YaormModel.ProtobufType.FLOAT, SqlRealName)
         }

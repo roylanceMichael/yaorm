@@ -29,7 +29,6 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
         val statement = this.connection.createStatement()
         val returnObject = EntityResultModel()
         try {
-
             val result = statement.executeUpdate(query)
 
             val returnedKeys = ArrayList<String>()
