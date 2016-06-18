@@ -3,7 +3,7 @@ package org.roylance.yaorm.utilities
 import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.TestModel
+import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.models.YaormModel
 import java.util.*
 
@@ -12,7 +12,7 @@ class ProtobufUtilsTest {
     fun simplePassThroughTest() {
         // arrange
         // act
-        val definition = ProtobufUtils.buildDefinitionFromDescriptor(TestModel.SimpleInsertTest.getDescriptor())
+        val definition = ProtobufUtils.buildDefinitionFromDescriptor(TestingModel.SimpleInsertTest.getDescriptor())
 
         // assert
         definition!!
@@ -41,7 +41,7 @@ class ProtobufUtilsTest {
     fun moreComplexPassThroughTest() {
         // arrange
         // act
-        val definition = ProtobufUtils.buildDefinitionGraph(TestModel.SimpleInsertTest.getDescriptor())
+        val definition = ProtobufUtils.buildDefinitionGraph(TestingModel.SimpleInsertTest.getDescriptor())
 
         // assert
         Assert.assertTrue(definition.mainTableDefinition.name.equals("SimpleInsertTest"))
@@ -72,18 +72,18 @@ class ProtobufUtilsTest {
     @Test
     fun moreComplexPassThroughTest2() {
         // arrange
-        val testModel = TestModel.SimpleInsertTest.newBuilder()
+        val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
         testModel.id = UUID.randomUUID().toString()
-        testModel.coolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
-        testModel.child = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).build()
+        testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+        testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).build()
 
         // act
         val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
 
         // assert
         Assert.assertTrue(records.tableRecordsCount.equals(10))
-        val foundRecords = records.tableRecordsList.first { it.tableName.equals(TestModel.SimpleInsertTest.getDescriptor().name) }
+        val foundRecords = records.tableRecordsList.first { it.tableName.equals(TestingModel.SimpleInsertTest.getDescriptor().name) }
         val firstRecord = foundRecords.records.recordsList[0]
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
@@ -99,24 +99,24 @@ class ProtobufUtilsTest {
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
     }
 
     @Test
     fun moreComplexPassThroughTest3() {
         // arrange
-        val testModel = TestModel.SimpleInsertTest.newBuilder()
+        val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
         testModel.id = UUID.randomUUID().toString()
-        testModel.coolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
-        testModel.child = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+        testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+        testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
 
-        val subTestChild = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+        val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
         testModel.addChilds(subTestChild)
 
-        val firstCoolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
-        val secondCoolType = TestModel.SimpleInsertTest.CoolType.TEST
+        val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+        val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
 
         testModel.addCoolTypes(firstCoolType)
         testModel.addCoolTypes(secondCoolType)
@@ -144,7 +144,7 @@ class ProtobufUtilsTest {
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
 
         val simpleInsertChildLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
@@ -155,9 +155,9 @@ class ProtobufUtilsTest {
 
         val simpleInsertEnumLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
         simpleInsertEnumLinkerRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestModel.SimpleInsertTest.CoolType.TEST.name}")) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.TEST.name}")) })
             Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.TEST.name) ) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.TEST.name) ) })
         }
 
         val simpleInsertMessageLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("Child") }!!
@@ -170,23 +170,23 @@ class ProtobufUtilsTest {
     @Test
     fun moreComplexPassThroughTest4() {
         // arrange
-        val testModel = TestModel.SimpleInsertTest.newBuilder()
+        val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
         testModel.id = UUID.randomUUID().toString()
-        testModel.coolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
-        testModel.child = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+        testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+        testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
 
-        val subTestChild = TestModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+        val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
 
-        val firstCoolType = TestModel.SimpleInsertTest.CoolType.SURPRISED
-        val secondCoolType = TestModel.SimpleInsertTest.CoolType.TEST
+        val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+        val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
 
         testModel.addCoolTypes(firstCoolType)
         testModel.addCoolTypes(secondCoolType)
 
-        val subChild = TestModel.SubChild.newBuilder().setId(UUID.randomUUID().toString()).setAnotherTestDisplay("sub child test").setCoolTest(true)
+        val subChild = TestingModel.SubChild.newBuilder().setId(UUID.randomUUID().toString()).setAnotherTestDisplay("sub child test").setCoolTest(true)
 
-        val subSubChild = TestModel.SubSubChild.newBuilder().setId(UUID.randomUUID().toString()).setSubSubDisplay("sub sub child test").build()
+        val subSubChild = TestingModel.SubSubChild.newBuilder().setId(UUID.randomUUID().toString()).setSubSubDisplay("sub sub child test").build()
         subChild.addSubSubChild(subSubChild)
         subTestChild.addSubChild(subChild)
         testModel.addChilds(subTestChild)
@@ -214,7 +214,7 @@ class ProtobufUtilsTest {
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
         Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
 
         val simpleInsertChildLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
@@ -225,9 +225,9 @@ class ProtobufUtilsTest {
 
         val simpleInsertEnumLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
         simpleInsertEnumLinkerRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestModel.SimpleInsertTest.CoolType.TEST.name}")) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.TEST.name}")) })
             Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestModel.SimpleInsertTest.CoolType.TEST.name) ) })
+            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.TEST.name) ) })
         }
 
         val simpleInsertMessageLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("Child") }!!

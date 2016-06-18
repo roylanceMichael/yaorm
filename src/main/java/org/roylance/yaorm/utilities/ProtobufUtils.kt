@@ -48,6 +48,14 @@ object ProtobufUtils {
         }
     }
 
+    fun buildIdOnlyTableDefinition(descriptor: Descriptors.Descriptor):YaormModel.TableDefinition {
+        val idColumnDefinition = YaormModel.ColumnDefinition.newBuilder()
+                .setName(CommonUtils.IdName)
+                .setType(YaormModel.ProtobufType.STRING)
+
+        return YaormModel.TableDefinition.newBuilder().setName(descriptor.name).addColumnDefinitions(idColumnDefinition).build()
+    }
+
     fun buildDefinitionFromDescriptor(descriptor:Descriptors.Descriptor):YaormModel.TableDefinition? {
         // make sure we have an id, or return nothing
         descriptor.fields.firstOrNull { CommonUtils.IdName.equals(it.name) && ProtoStringName.equals(it.type.name) } ?: return null

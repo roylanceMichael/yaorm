@@ -9,7 +9,12 @@ import java.util.*
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService):IEntityMessageService {
+
     override fun <T : Message> createEntireSchema(message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
+            return false
+        }
+
         val records = ProtobufUtils.buildDefinitionGraph(message.descriptorForType)
 
         val seenTables = HashSet<String>()
@@ -32,6 +37,9 @@ class EntityMessageService(
     }
 
     override fun <T : Message> dropAndRecreateEntireSchema(message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
+            return false
+        }
         val records = ProtobufUtils.buildDefinitionGraph(message.descriptorForType)
 
         val seenTables = HashSet<String>()
@@ -56,14 +64,7 @@ class EntityMessageService(
         return true
     }
 
-    override fun <T : Message> bulkCreate(sourceOfTruthMessages: List<T>): Boolean {
-        sourceOfTruthMessages.forEach {
-            this.createOrUpdate(it)
-        }
-        return true
-    }
-
-    override fun <T : Message> createOrUpdate(sourceOfTruthMessage: T): Boolean {
+    override fun <T : Message> merge(sourceOfTruthMessage: T): Boolean {
         if (!ProtobufUtils.isMessageOk(sourceOfTruthMessage)) {
             return false
         }
@@ -74,16 +75,26 @@ class EntityMessageService(
         val records = ProtobufUtils.convertProtobufObjectToRecords(sourceOfTruthMessage)
 
         // create the main one
-        val mainRecords = records.tableRecordsList.firstOrNull { it.tableName.equals(sourceOfTruthMessage.descriptorForType.name) } ?: return false
+        val mainRecords = records.tableRecordsList.firstOrNull {
+            it.tableName.equals(sourceOfTruthMessage.descriptorForType.name)
+        } ?: return false
+
         if (!mainRecords.hasRecords()) {
             return false
         }
 
-        this.entityService.createOrUpdate(mainRecords.records.recordsList.first(), mainRecords.tableDefinition)
+        this.entityService.createOrUpdate(
+                mainRecords.records.recordsList.first(),
+                mainRecords.tableDefinition)
 
+        // todo - order this as a dag, also create relational constraints between the tables
         // go through children now, this is the source of truth
         records.tableRecordsList
-                .filter { !it.tableName.equals(sourceOfTruthMessage.descriptorForType.name) }
+                .filter { !it.tableName.equals(sourceOfTruthMessage.descriptorForType.name) &&
+                        it.tableDefinition.columnDefinitionsList.any { column ->
+                            sourceOfTruthMessage.descriptorForType.name.equals(column.name)
+                        }
+                }
                 .forEach { tableRecords ->
                     val customWhereClause = YaormModel.WhereClause.newBuilder()
                                 .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
@@ -99,14 +110,19 @@ class EntityMessageService(
                     val recordsFromClientMap = HashMap<String, YaormModel.Record>()
                     val recordsFromDatabaseMap = HashMap<String, YaormModel.Record>()
                     tableRecords.records.recordsList.forEach {
-                        val idColumn = it.columnsList.firstOrNull { it.definition.name.equals(CommonUtils.IdName) }
+                        val idColumn = it.columnsList.firstOrNull {
+                            it.definition.name.equals(CommonUtils.IdName)
+                        }
                         if (idColumn != null) {
                             recordsFromClientMap[idColumn.stringHolder] = it
                         }
                     }
 
-                    entityService.where(customWhereClause, tableRecords.tableDefinition).recordsList.forEach {
-                        val idColumn = it.columnsList.firstOrNull { it.definition.name.equals(CommonUtils.IdName) }
+                    entityService.where(customWhereClause, tableRecords.tableDefinition)
+                            .recordsList.forEach {
+                        val idColumn = it.columnsList.firstOrNull {
+                            it.definition.name.equals(CommonUtils.IdName)
+                        }
                         if (idColumn != null) {
                             recordsFromDatabaseMap[idColumn.stringHolder] = it
                         }
@@ -116,11 +132,13 @@ class EntityMessageService(
                     recordsFromClientMap.keys.forEach {
                         if (recordsFromDatabaseMap.containsKey(it)) {
                             // update
-                            entityService.update(recordsFromClientMap[it]!!, tableRecords.tableDefinition)
+                            entityService.update(recordsFromClientMap[it]!!,
+                                    tableRecords.tableDefinition)
                         }
                         else {
                             // insert
-                            entityService.create(recordsFromClientMap[it]!!, tableRecords.tableDefinition)
+                            entityService.create(recordsFromClientMap[it]!!,
+                                    tableRecords.tableDefinition)
                         }
                     }
 
@@ -129,7 +147,8 @@ class EntityMessageService(
                             // delete
                             val foundIdColumn = recordsFromDatabaseMap[it]!!.columnsList.firstOrNull { it.definition.name.equals(CommonUtils.IdName) }
                             if (foundIdColumn != null) {
-                                entityService.delete(foundIdColumn.stringHolder, tableRecords.tableDefinition)
+                                entityService.delete(foundIdColumn.stringHolder,
+                                        tableRecords.tableDefinition)
                             }
                         }
                     }
@@ -138,31 +157,90 @@ class EntityMessageService(
         return true
     }
 
-    override fun <T : Message> delete(message: T): Boolean {
-        // delete all children too
-        throw UnsupportedOperationException()
+    override fun <T : Message> delete(sourceOfTruthMessage: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(sourceOfTruthMessage)) {
+            return false
+        }
+
+        val tableDefinition = ProtobufUtils.buildDefinitionFromDescriptor(sourceOfTruthMessage.descriptorForType) ?:
+                return false
+
+        val id = ProtobufUtils.getIdFromMessage(sourceOfTruthMessage)
+        return this.entityService.delete(id, tableDefinition)
     }
 
-    override fun <T : Message> deleteAll(message: List<T>): Boolean {
-        // delete message and all children
-        throw UnsupportedOperationException()
+    override fun <T : Message> get(messageType:T, id: String): T {
+        return ProtobufUtils.getProtoObjectFromBuilderSingle(messageType, this.entityService, id, this.protoGeneratedMessageBuilder)
     }
 
     override fun <T : Message> getMany(messageType: T, maxAmount: Int): List<T> {
+        val returnList = ArrayList<T>()
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return returnList
+        }
+
+        // get ids first
+        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        this.entityService.getMany(maxAmount, tableDefinition).recordsList
+                .forEach { record ->
+                    val idColumn = record.columnsList.firstOrNull { CommonUtils.IdName.equals(it.definition.name) } ?: return@forEach
+                    val completedMessage = this.get(messageType, idColumn.stringHolder)
+                    returnList.add(completedMessage)
+        }
+
         // get message and all children
-//        ProtobufUtils.getProtoObjectFromBuilderSingle()
-        throw UnsupportedOperationException()
+        return returnList
     }
 
     override fun <T : Message> getManyStream(messageType: T, streamer: IMessageStreamer) {
-        throw UnsupportedOperationException()
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return
+        }
+        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        this.entityService.getMany(definition = tableDefinition).recordsList
+                .forEach { record ->
+                    val idColumn = record.columnsList.firstOrNull { CommonUtils.IdName.equals(it.definition.name) } ?: return@forEach
+                    val completedMessage = this.get(messageType, idColumn.stringHolder)
+                    streamer.stream(completedMessage)
+                }
     }
 
-    override fun <T : Message> where(messageType: T, whereClause: YaormModel.WhereClause, streamer: IMessageStreamer) {
-        throw UnsupportedOperationException()
+    override fun <T : Message> where(messageType: T, whereClause: YaormModel.WhereClause): List<T> {
+        val returnList = ArrayList<T>()
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return returnList
+        }
+        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        this.entityService.where(whereClause, tableDefinition).recordsList
+                .forEach { record ->
+                    val idColumn = record.columnsList.firstOrNull { CommonUtils.IdName.equals(it.definition.name) } ?: return@forEach
+                    val completedMessage = this.get(messageType, idColumn.stringHolder)
+                    returnList.add(completedMessage)
+                }
+
+        return returnList
+    }
+
+    override fun <T : Message> whereStream(messageType: T,
+                                           whereClause: YaormModel.WhereClause,
+                                           streamer: IMessageStreamer) {
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return
+        }
+        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        this.entityService.where(whereClause, tableDefinition).recordsList
+                .forEach { record ->
+                    val idColumn = record.columnsList.firstOrNull { CommonUtils.IdName.equals(it.definition.name) } ?: return@forEach
+                    val completedMessage = this.get(messageType, idColumn.stringHolder)
+                    streamer.stream(completedMessage)
+                }
     }
 
     override fun <T : Message> getCount(messageType: T): Long {
-        throw UnsupportedOperationException()
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return -1L
+        }
+        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        return this.entityService.getCount(tableDefinition)
     }
 }
