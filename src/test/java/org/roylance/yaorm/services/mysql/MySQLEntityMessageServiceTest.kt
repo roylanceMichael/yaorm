@@ -83,6 +83,122 @@ class MySQLEntityMessageServiceTest {
         }
     }
 
+    @Test
+    fun childAddThenDeleteTest() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            val testModel = TestingModel.SimpleInsertTest.newBuilder()
+            entityProtoMessageService.createEntireSchema(testModel.build())
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+            testModel.display = "random display"
+            testModel.testInt32 = 1
+            testModel.testInt64 = 2
+            testModel.testUint32 = 3
+            testModel.testUint64 = 4
+            testModel.testSint32 = 5
+            testModel.testSint64 = 6
+            testModel.testFixed32 = 7
+            testModel.testFixed64 = 8
+            testModel.testSfixed32 = 9
+            testModel.testSfixed64 = 10
+            testModel.testBool = true
+            testModel.testBytes = ByteString.copyFromUtf8("what is this")
+            testModel.testDouble = 11.0
+            testModel.testFloat = 12.0F
+
+            entityProtoMessageService.merge(testModel.build())
+            testModel.clearChild()
+
+            // act
+            val result = entityProtoMessageService.merge(testModel.build())
+
+            // assert
+            Assert.assertTrue(result)
+            val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
+
+            Assert.assertTrue(foundMessage != null)
+            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage.child.id.equals(""))
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
+    @Test
+    fun verifyChildSerializedProperly() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            val testModel = TestingModel.SimpleInsertTest.newBuilder()
+            entityProtoMessageService.createEntireSchema(testModel.build())
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+            testModel.display = "random display"
+            testModel.testInt32 = 1
+            testModel.testInt64 = 2
+            testModel.testUint32 = 3
+            testModel.testUint64 = 4
+            testModel.testSint32 = 5
+            testModel.testSint64 = 6
+            testModel.testFixed32 = 7
+            testModel.testFixed64 = 8
+            testModel.testSfixed32 = 9
+            testModel.testSfixed64 = 10
+            testModel.testBool = true
+            testModel.testBytes = ByteString.copyFromUtf8("what is this")
+            testModel.testDouble = 11.0
+            testModel.testFloat = 12.0F
+
+            // act
+            val result = entityProtoMessageService.merge(testModel.build())
+
+            // assert
+            Assert.assertTrue(result)
+            val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
+
+            Assert.assertTrue(foundMessage != null)
+            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
+            Assert.assertTrue(foundMessage.child.testDisplay.equals(testModel.child.testDisplay))
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
     companion object {
         private var host:String? = null
         private var userName:String? = null

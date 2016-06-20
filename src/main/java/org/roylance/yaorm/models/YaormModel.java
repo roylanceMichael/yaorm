@@ -1346,6 +1346,15 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
      */
     org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType getColumnType();
+
+    /**
+     * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+     */
+    int getLinkerTypeValue();
+    /**
+     * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType getLinkerType();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.ColumnDefinition}
@@ -1363,6 +1372,7 @@ public final class YaormModel {
       type_ = 0;
       isKey_ = false;
       columnType_ = 0;
+      linkerType_ = 0;
     }
 
     @java.lang.Override
@@ -1410,6 +1420,12 @@ public final class YaormModel {
               int rawValue = input.readEnum();
 
               columnType_ = rawValue;
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+
+              linkerType_ = rawValue;
               break;
             }
           }
@@ -1546,6 +1562,116 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.ColumnDefinition.ColumnType)
     }
 
+    /**
+     * Protobuf enum {@code org.roylance.yaorm.models.ColumnDefinition.LinkerType}
+     */
+    public enum LinkerType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NONE = 0;</code>
+       */
+      NONE(0, 0),
+      /**
+       * <code>PARENT = 1;</code>
+       */
+      PARENT(1, 1),
+      /**
+       * <code>CHILD = 2;</code>
+       */
+      CHILD(2, 2),
+      /**
+       * <code>NEITHER = 3;</code>
+       */
+      NEITHER(3, 3),
+      UNRECOGNIZED(-1, -1),
+      ;
+
+      /**
+       * <code>NONE = 0;</code>
+       */
+      public static final int NONE_VALUE = 0;
+      /**
+       * <code>PARENT = 1;</code>
+       */
+      public static final int PARENT_VALUE = 1;
+      /**
+       * <code>CHILD = 2;</code>
+       */
+      public static final int CHILD_VALUE = 2;
+      /**
+       * <code>NEITHER = 3;</code>
+       */
+      public static final int NEITHER_VALUE = 3;
+
+
+      public final int getNumber() {
+        if (index == -1) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      public static LinkerType valueOf(int value) {
+        switch (value) {
+          case 0: return NONE;
+          case 1: return PARENT;
+          case 2: return CHILD;
+          case 3: return NEITHER;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<LinkerType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          LinkerType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<LinkerType>() {
+              public LinkerType findValueByNumber(int number) {
+                return LinkerType.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDescriptor().getEnumTypes().get(1);
+      }
+
+      private static final LinkerType[] VALUES = values();
+
+      public static LinkerType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private LinkerType(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.ColumnDefinition.LinkerType)
+    }
+
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
@@ -1621,6 +1747,22 @@ public final class YaormModel {
       return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.UNRECOGNIZED : result;
     }
 
+    public static final int LINKER_TYPE_FIELD_NUMBER = 5;
+    private int linkerType_;
+    /**
+     * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+     */
+    public int getLinkerTypeValue() {
+      return linkerType_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType getLinkerType() {
+      org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType result = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.valueOf(linkerType_);
+      return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1645,6 +1787,9 @@ public final class YaormModel {
       if (columnType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR.getNumber()) {
         output.writeEnum(4, columnType_);
       }
+      if (linkerType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE.getNumber()) {
+        output.writeEnum(5, linkerType_);
+      }
     }
 
     public int getSerializedSize() {
@@ -1666,6 +1811,10 @@ public final class YaormModel {
       if (columnType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(4, columnType_);
+      }
+      if (linkerType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, linkerType_);
       }
       memoizedSize = size;
       return size;
@@ -1786,6 +1935,8 @@ public final class YaormModel {
 
         columnType_ = 0;
 
+        linkerType_ = 0;
+
         return this;
       }
 
@@ -1812,6 +1963,7 @@ public final class YaormModel {
         result.type_ = type_;
         result.isKey_ = isKey_;
         result.columnType_ = columnType_;
+        result.linkerType_ = linkerType_;
         onBuilt();
         return result;
       }
@@ -1839,6 +1991,9 @@ public final class YaormModel {
         }
         if (other.columnType_ != 0) {
           setColumnTypeValue(other.getColumnTypeValue());
+        }
+        if (other.linkerType_ != 0) {
+          setLinkerTypeValue(other.getLinkerTypeValue());
         }
         onChanged();
         return this;
@@ -2045,6 +2200,50 @@ public final class YaormModel {
       public Builder clearColumnType() {
         
         columnType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int linkerType_ = 0;
+      /**
+       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+       */
+      public int getLinkerTypeValue() {
+        return linkerType_;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+       */
+      public Builder setLinkerTypeValue(int value) {
+        linkerType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType getLinkerType() {
+        org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType result = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.valueOf(linkerType_);
+        return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+       */
+      public Builder setLinkerType(org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        linkerType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
+       */
+      public Builder clearLinkerType() {
+        
+        linkerType_ = 0;
         onChanged();
         return this;
       }
@@ -4569,6 +4768,15 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     org.roylance.yaorm.models.YaormModel.IndexOrBuilder getIndexOrBuilder();
+
+    /**
+     * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+     */
+    int getTableTypeValue();
+    /**
+     * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.TableDefinition.TableType getTableType();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableDefinition}
@@ -4584,6 +4792,7 @@ public final class YaormModel {
     private TableDefinition() {
       name_ = "";
       columnDefinitions_ = java.util.Collections.emptyList();
+      tableType_ = 0;
     }
 
     @java.lang.Override
@@ -4637,6 +4846,12 @@ public final class YaormModel {
 
               break;
             }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              tableType_ = rawValue;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4662,6 +4877,107 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.TableDefinition.class, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code org.roylance.yaorm.models.TableDefinition.TableType}
+     */
+    public enum TableType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NORMAL = 0;</code>
+       */
+      NORMAL(0, 0),
+      /**
+       * <code>LINKER_MESSAGE = 1;</code>
+       */
+      LINKER_MESSAGE(1, 1),
+      /**
+       * <code>LINKER_ENUM = 2;</code>
+       */
+      LINKER_ENUM(2, 2),
+      UNRECOGNIZED(-1, -1),
+      ;
+
+      /**
+       * <code>NORMAL = 0;</code>
+       */
+      public static final int NORMAL_VALUE = 0;
+      /**
+       * <code>LINKER_MESSAGE = 1;</code>
+       */
+      public static final int LINKER_MESSAGE_VALUE = 1;
+      /**
+       * <code>LINKER_ENUM = 2;</code>
+       */
+      public static final int LINKER_ENUM_VALUE = 2;
+
+
+      public final int getNumber() {
+        if (index == -1) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      public static TableType valueOf(int value) {
+        switch (value) {
+          case 0: return NORMAL;
+          case 1: return LINKER_MESSAGE;
+          case 2: return LINKER_ENUM;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<TableType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          TableType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TableType>() {
+              public TableType findValueByNumber(int number) {
+                return TableType.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.roylance.yaorm.models.YaormModel.TableDefinition.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final TableType[] VALUES = values();
+
+      public static TableType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private TableType(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.TableDefinition.TableType)
     }
 
     private int bitField0_;
@@ -4755,6 +5071,22 @@ public final class YaormModel {
       return getIndex();
     }
 
+    public static final int TABLE_TYPE_FIELD_NUMBER = 4;
+    private int tableType_;
+    /**
+     * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+     */
+    public int getTableTypeValue() {
+      return tableType_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.TableDefinition.TableType getTableType() {
+      org.roylance.yaorm.models.YaormModel.TableDefinition.TableType result = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.valueOf(tableType_);
+      return result == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4776,6 +5108,9 @@ public final class YaormModel {
       if (index_ != null) {
         output.writeMessage(3, getIndex());
       }
+      if (tableType_ != org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL.getNumber()) {
+        output.writeEnum(4, tableType_);
+      }
     }
 
     public int getSerializedSize() {
@@ -4793,6 +5128,10 @@ public final class YaormModel {
       if (index_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getIndex());
+      }
+      if (tableType_ != org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, tableType_);
       }
       memoizedSize = size;
       return size;
@@ -4920,6 +5259,8 @@ public final class YaormModel {
           index_ = null;
           indexBuilder_ = null;
         }
+        tableType_ = 0;
+
         return this;
       }
 
@@ -4959,6 +5300,7 @@ public final class YaormModel {
         } else {
           result.index_ = indexBuilder_.build();
         }
+        result.tableType_ = tableType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5007,6 +5349,9 @@ public final class YaormModel {
         }
         if (other.hasIndex()) {
           mergeIndex(other.getIndex());
+        }
+        if (other.tableType_ != 0) {
+          setTableTypeValue(other.getTableTypeValue());
         }
         onChanged();
         return this;
@@ -5459,6 +5804,50 @@ public final class YaormModel {
           index_ = null;
         }
         return indexBuilder_;
+      }
+
+      private int tableType_ = 0;
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+       */
+      public int getTableTypeValue() {
+        return tableType_;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+       */
+      public Builder setTableTypeValue(int value) {
+        tableType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinition.TableType getTableType() {
+        org.roylance.yaorm.models.YaormModel.TableDefinition.TableType result = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.valueOf(tableType_);
+        return result == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+       */
+      public Builder setTableType(org.roylance.yaorm.models.YaormModel.TableDefinition.TableType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        tableType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
+       */
+      public Builder clearTableType() {
+        
+        tableType_ = 0;
+        onChanged();
+        return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -18531,113 +18920,119 @@ public final class YaormModel {
       "g.roylance.yaorm.models.WhereClause\"K\n\014O" +
       "peratorType\022\n\n\006EQUALS\020\000\022\020\n\014GREATER_THAN\020",
       "\001\022\r\n\tLESS_THAN\020\002\022\016\n\nNOT_EQUALS\020\003\",\n\017Conn" +
-      "ectingAndOr\022\010\n\004NONE\020\000\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\376" +
-      "\001\n\020ColumnDefinition\022\014\n\004name\030\001 \001(\t\0225\n\004typ" +
+      "ectingAndOr\022\010\n\004NONE\020\000\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\207" +
+      "\003\n\020ColumnDefinition\022\014\n\004name\030\001 \001(\t\0225\n\004typ" +
       "e\030\002 \001(\0162\'.org.roylance.yaorm.models.Prot" +
       "obufType\022\016\n\006is_key\030\003 \001(\010\022K\n\013column_type\030" +
       "\004 \001(\01626.org.roylance.yaorm.models.Column" +
-      "Definition.ColumnType\"H\n\nColumnType\022\n\n\006S" +
-      "CALAR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nENUM_VALUE\020\002\022\017" +
-      "\n\013MESSAGE_KEY\020\003\"\216\001\n\005Index\022A\n\014column_name" +
-      "s\030\001 \003(\0132+.org.roylance.yaorm.models.Colu",
-      "mnDefinition\022B\n\rinclude_names\030\002 \003(\0132+.or" +
-      "g.roylance.yaorm.models.ColumnDefinition" +
-      "\"\271\003\n\nDifference\022E\n\013entity_type\030\001 \001(\01620.o" +
-      "rg.roylance.yaorm.models.Difference.Enti" +
-      "tyType\022B\n\toperation\030\002 \001(\0162/.org.roylance" +
-      ".yaorm.models.Difference.Operation\022\014\n\004na" +
-      "me\030\003 \001(\t\022/\n\005index\030\004 \001(\0132 .org.roylance.y" +
-      "aorm.models.Index\022H\n\023property_definition" +
-      "\030\005 \001(\0132+.org.roylance.yaorm.models.Colum" +
-      "nDefinition\022D\n\020table_definition\030\006 \001(\0132*.",
+      "Definition.ColumnType\022K\n\013linker_type\030\005 \001" +
+      "(\01626.org.roylance.yaorm.models.ColumnDef" +
+      "inition.LinkerType\"H\n\nColumnType\022\n\n\006SCAL" +
+      "AR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nENUM_VALUE\020\002\022\017\n\013M",
+      "ESSAGE_KEY\020\003\":\n\nLinkerType\022\010\n\004NONE\020\000\022\n\n\006" +
+      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\216\001\n\005Ind" +
+      "ex\022A\n\014column_names\030\001 \003(\0132+.org.roylance." +
+      "yaorm.models.ColumnDefinition\022B\n\rinclude" +
+      "_names\030\002 \003(\0132+.org.roylance.yaorm.models" +
+      ".ColumnDefinition\"\271\003\n\nDifference\022E\n\013enti" +
+      "ty_type\030\001 \001(\01620.org.roylance.yaorm.model" +
+      "s.Difference.EntityType\022B\n\toperation\030\002 \001" +
+      "(\0162/.org.roylance.yaorm.models.Differenc" +
+      "e.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005index\030\004 \001(\013",
+      "2 .org.roylance.yaorm.models.Index\022H\n\023pr" +
+      "operty_definition\030\005 \001(\0132+.org.roylance.y" +
+      "aorm.models.ColumnDefinition\022D\n\020table_de" +
+      "finition\030\006 \001(\0132*.org.roylance.yaorm.mode" +
+      "ls.TableDefinition\".\n\nEntityType\022\t\n\005INDE" +
+      "X\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation\022" +
+      "\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\241\002\n\017TableDefinitio" +
+      "n\022\014\n\004name\030\001 \001(\t\022G\n\022column_definitions\030\002 " +
+      "\003(\0132+.org.roylance.yaorm.models.ColumnDe" +
+      "finition\022/\n\005index\030\003 \001(\0132 .org.roylance.y",
+      "aorm.models.Index\022H\n\ntable_type\030\004 \001(\01624." +
       "org.roylance.yaorm.models.TableDefinitio" +
-      "n\".\n\nEntityType\022\t\n\005INDEX\020\000\022\n\n\006COLUMN\020\001\022\t" +
-      "\n\005TABLE\020\002\"!\n\tOperation\022\n\n\006CREATE\020\000\022\010\n\004DR" +
-      "OP\020\001\"\231\001\n\017TableDefinition\022\014\n\004name\030\001 \001(\t\022G" +
-      "\n\022column_definitions\030\002 \003(\0132+.org.roylanc" +
-      "e.yaorm.models.ColumnDefinition\022/\n\005index" +
-      "\030\003 \001(\0132 .org.roylance.yaorm.models.Index" +
-      "\"Y\n\020TableDefinitions\022E\n\021table_definition" +
-      "s\030\003 \003(\0132*.org.roylance.yaorm.models.Tabl" +
-      "eDefinition\"h\n\020DifferenceReport\022\030\n\020migra",
-      "tion_exists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132%" +
-      ".org.roylance.yaorm.models.Difference\"\242\003" +
-      "\n\006Column\022?\n\ndefinition\030\001 \001(\0132+.org.royla" +
-      "nce.yaorm.models.ColumnDefinition\022\025\n\rdou" +
-      "ble_holder\030\002 \001(\001\022\024\n\014float_holder\030\003 \001(\002\022\024" +
-      "\n\014int32_holder\030\004 \001(\005\022\024\n\014int64_holder\030\005 \001" +
-      "(\003\022\025\n\ruint32_holder\030\006 \001(\r\022\025\n\ruint64_hold" +
-      "er\030\007 \001(\004\022\025\n\rsint32_holder\030\010 \001(\021\022\025\n\rsint6" +
-      "4_holder\030\t \001(\022\022\026\n\016fixed32_holder\030\n \001(\007\022\026" +
-      "\n\016fixed64_holder\030\013 \001(\006\022\027\n\017sfixed32_holde",
-      "r\030\014 \001(\017\022\027\n\017sfixed64_holder\030\r \001(\020\022\023\n\013bool" +
-      "_holder\030\016 \001(\010\022\025\n\rstring_holder\030\017 \001(\t\022\024\n\014" +
-      "bytes_holder\030\020 \001(\014\"<\n\006Record\0222\n\007columns\030" +
-      "\001 \003(\0132!.org.roylance.yaorm.models.Column" +
-      "\"=\n\007Records\0222\n\007records\030\001 \003(\0132!.org.royla" +
-      "nce.yaorm.models.Record\"\235\001\n\014TableRecords" +
-      "\022D\n\020table_definition\030\001 \001(\0132*.org.roylanc" +
-      "e.yaorm.models.TableDefinition\0223\n\007record" +
-      "s\030\002 \001(\0132\".org.roylance.yaorm.models.Reco" +
-      "rds\022\022\n\ntable_name\030\003 \001(\t\"Q\n\017AllTableRecor",
-      "ds\022>\n\rtable_records\030\001 \003(\0132\'.org.roylance" +
-      ".yaorm.models.TableRecords\"\371\005\n\021DatabaseO" +
-      "peration\022D\n\020table_definition\030\001 \001(\0132*.org" +
-      ".roylance.yaorm.models.TableDefinition\0223" +
-      "\n\007records\030\002 \001(\0132\".org.roylance.yaorm.mod" +
-      "els.Records\022/\n\005index\030\003 \001(\0132 .org.roylanc" +
-      "e.yaorm.models.Index\022F\n\021column_definitio" +
-      "n\030\004 \001(\0132+.org.roylance.yaorm.models.Colu" +
-      "mnDefinition\022<\n\014where_clause\030\005 \001(\0132&.org" +
-      ".roylance.yaorm.models.WhereClause\022c\n\027da",
-      "tabase_operation_type\030\006 \001(\0162B.org.roylan" +
-      "ce.yaorm.models.DatabaseOperation.Databa" +
-      "seOperationType\"\314\002\n\025DatabaseOperationTyp" +
-      "e\022\020\n\014CREATE_TABLE\020\000\022\016\n\nDROP_TABLE\020\001\022\020\n\014C" +
-      "REATE_INDEX\020\002\022\016\n\nDROP_INDEX\020\003\022\021\n\rCREATE_" +
-      "COLUMN\020\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\tGET_COUNT\020\006" +
-      "\022\016\n\nGET_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010GET_MANY\020\t\022" +
-      "\r\n\tGET_WHERE\020\n\022\017\n\013BULK_INSERT\020\013\022\024\n\020CREAT" +
-      "E_OR_UPDATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006UPDATE\020\016\022\030\n" +
-      "\024UPDATE_WITH_CRITERIA\020\017\022\021\n\rUPDATE_CUSTOM",
-      "\020\020\022\n\n\006DELETE\020\021\022\016\n\nDELETE_ALL\020\022\"\233\002\n\027Datab" +
-      "aseOperationResult\022\023\n\013bool_result\030\001 \001(\010\022" +
-      "\024\n\014count_result\030\002 \001(\003\0228\n\rrecord_result\030\003" +
-      " \001(\0132!.org.roylance.yaorm.models.Record\022" +
-      ":\n\016records_result\030\004 \001(\0132\".org.roylance.y" +
-      "aorm.models.Records\022\025\n\rerror_message\030\005 \001" +
-      "(\t\022H\n\022database_operation\030\006 \001(\0132,.org.roy" +
-      "lance.yaorm.models.DatabaseOperation\"\314\001\n" +
-      "\022DatabaseDefinition\022\016\n\006schema\030\001 \001(\t\022\014\n\004n" +
-      "ame\030\002 \001(\t\022E\n\021table_definitions\030\003 \003(\0132*.o",
-      "rg.roylance.yaorm.models.TableDefinition" +
-      "\022Q\n\027table_definition_graphs\030\004 \003(\01320.org." +
-      "roylance.yaorm.models.TableDefinitionGra" +
-      "phs\"\327\003\n\024TableDefinitionGraph\022I\n\025main_tab" +
+      "n.TableType\"<\n\tTableType\022\n\n\006NORMAL\020\000\022\022\n\016" +
+      "LINKER_MESSAGE\020\001\022\017\n\013LINKER_ENUM\020\002\"Y\n\020Tab" +
+      "leDefinitions\022E\n\021table_definitions\030\003 \003(\013" +
+      "2*.org.roylance.yaorm.models.TableDefini" +
+      "tion\"h\n\020DifferenceReport\022\030\n\020migration_ex" +
+      "ists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132%.org.ro" +
+      "ylance.yaorm.models.Difference\"\242\003\n\006Colum" +
+      "n\022?\n\ndefinition\030\001 \001(\0132+.org.roylance.yao",
+      "rm.models.ColumnDefinition\022\025\n\rdouble_hol" +
+      "der\030\002 \001(\001\022\024\n\014float_holder\030\003 \001(\002\022\024\n\014int32" +
+      "_holder\030\004 \001(\005\022\024\n\014int64_holder\030\005 \001(\003\022\025\n\ru" +
+      "int32_holder\030\006 \001(\r\022\025\n\ruint64_holder\030\007 \001(" +
+      "\004\022\025\n\rsint32_holder\030\010 \001(\021\022\025\n\rsint64_holde" +
+      "r\030\t \001(\022\022\026\n\016fixed32_holder\030\n \001(\007\022\026\n\016fixed" +
+      "64_holder\030\013 \001(\006\022\027\n\017sfixed32_holder\030\014 \001(\017" +
+      "\022\027\n\017sfixed64_holder\030\r \001(\020\022\023\n\013bool_holder" +
+      "\030\016 \001(\010\022\025\n\rstring_holder\030\017 \001(\t\022\024\n\014bytes_h" +
+      "older\030\020 \001(\014\"<\n\006Record\0222\n\007columns\030\001 \003(\0132!",
+      ".org.roylance.yaorm.models.Column\"=\n\007Rec" +
+      "ords\0222\n\007records\030\001 \003(\0132!.org.roylance.yao" +
+      "rm.models.Record\"\235\001\n\014TableRecords\022D\n\020tab" +
       "le_definition\030\001 \001(\0132*.org.roylance.yaorm" +
-      ".models.TableDefinition\022J\n\026other_table_d" +
-      "efinition\030\002 \001(\0132*.org.roylance.yaorm.mod" +
-      "els.TableDefinition\022F\n\022linker_table_tabl" +
-      "e\030\003 \001(\0132*.org.roylance.yaorm.models.Tabl" +
-      "eDefinition\022g\n\025definition_graph_type\030\004 \001",
-      "(\0162H.org.roylance.yaorm.models.TableDefi" +
-      "nitionGraph.TableDefinitionGraphType\022\021\n\t" +
-      "main_name\030\005 \001(\t\022\022\n\nother_name\030\006 \001(\t\022\023\n\013c" +
-      "olumn_name\030\007 \001(\t\";\n\030TableDefinitionGraph" +
-      "Type\022\r\n\tENUM_TYPE\020\000\022\020\n\014MESSAGE_TYPE\020\001\"\264\001" +
-      "\n\025TableDefinitionGraphs\022I\n\025main_table_de" +
-      "finition\030\001 \001(\0132*.org.roylance.yaorm.mode" +
-      "ls.TableDefinition\022P\n\027table_definition_g" +
-      "raphs\030\002 \003(\0132/.org.roylance.yaorm.models." +
-      "TableDefinitionGraph\"N\n\016ConnectionInfo\022\014",
-      "\n\004host\030\001 \001(\t\022\014\n\004user\030\002 \001(\t\022\020\n\010password\030\003" +
-      " \001(\t\022\016\n\006schema\030\004 \001(\t*\327\001\n\014ProtobufType\022\010\n" +
-      "\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020" +
-      "\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006" +
-      "SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIX" +
-      "ED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BO" +
-      "OL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020b\006" +
-      "proto3"
+      ".models.TableDefinition\0223\n\007records\030\002 \001(\013" +
+      "2\".org.roylance.yaorm.models.Records\022\022\n\n" +
+      "table_name\030\003 \001(\t\"Q\n\017AllTableRecords\022>\n\rt" +
+      "able_records\030\001 \003(\0132\'.org.roylance.yaorm." +
+      "models.TableRecords\"\371\005\n\021DatabaseOperatio" +
+      "n\022D\n\020table_definition\030\001 \001(\0132*.org.roylan",
+      "ce.yaorm.models.TableDefinition\0223\n\007recor" +
+      "ds\030\002 \001(\0132\".org.roylance.yaorm.models.Rec" +
+      "ords\022/\n\005index\030\003 \001(\0132 .org.roylance.yaorm" +
+      ".models.Index\022F\n\021column_definition\030\004 \001(\013" +
+      "2+.org.roylance.yaorm.models.ColumnDefin" +
+      "ition\022<\n\014where_clause\030\005 \001(\0132&.org.roylan" +
+      "ce.yaorm.models.WhereClause\022c\n\027database_" +
+      "operation_type\030\006 \001(\0162B.org.roylance.yaor" +
+      "m.models.DatabaseOperation.DatabaseOpera" +
+      "tionType\"\314\002\n\025DatabaseOperationType\022\020\n\014CR",
+      "EATE_TABLE\020\000\022\016\n\nDROP_TABLE\020\001\022\020\n\014CREATE_I" +
+      "NDEX\020\002\022\016\n\nDROP_INDEX\020\003\022\021\n\rCREATE_COLUMN\020" +
+      "\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n\nGET" +
+      "_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\tGET_" +
+      "WHERE\020\n\022\017\n\013BULK_INSERT\020\013\022\024\n\020CREATE_OR_UP" +
+      "DATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UPDATE" +
+      "_WITH_CRITERIA\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022\n\n\006D" +
+      "ELETE\020\021\022\016\n\nDELETE_ALL\020\022\"\233\002\n\027DatabaseOper" +
+      "ationResult\022\023\n\013bool_result\030\001 \001(\010\022\024\n\014coun" +
+      "t_result\030\002 \001(\003\0228\n\rrecord_result\030\003 \001(\0132!.",
+      "org.roylance.yaorm.models.Record\022:\n\016reco" +
+      "rds_result\030\004 \001(\0132\".org.roylance.yaorm.mo" +
+      "dels.Records\022\025\n\rerror_message\030\005 \001(\t\022H\n\022d" +
+      "atabase_operation\030\006 \001(\0132,.org.roylance.y" +
+      "aorm.models.DatabaseOperation\"\314\001\n\022Databa" +
+      "seDefinition\022\016\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 \001" +
+      "(\t\022E\n\021table_definitions\030\003 \003(\0132*.org.royl" +
+      "ance.yaorm.models.TableDefinition\022Q\n\027tab" +
+      "le_definition_graphs\030\004 \003(\01320.org.roylanc" +
+      "e.yaorm.models.TableDefinitionGraphs\"\327\003\n",
+      "\024TableDefinitionGraph\022I\n\025main_table_defi" +
+      "nition\030\001 \001(\0132*.org.roylance.yaorm.models" +
+      ".TableDefinition\022J\n\026other_table_definiti" +
+      "on\030\002 \001(\0132*.org.roylance.yaorm.models.Tab" +
+      "leDefinition\022F\n\022linker_table_table\030\003 \001(\013" +
+      "2*.org.roylance.yaorm.models.TableDefini" +
+      "tion\022g\n\025definition_graph_type\030\004 \001(\0162H.or" +
+      "g.roylance.yaorm.models.TableDefinitionG" +
+      "raph.TableDefinitionGraphType\022\021\n\tmain_na" +
+      "me\030\005 \001(\t\022\022\n\nother_name\030\006 \001(\t\022\023\n\013column_n",
+      "ame\030\007 \001(\t\";\n\030TableDefinitionGraphType\022\r\n" +
+      "\tENUM_TYPE\020\000\022\020\n\014MESSAGE_TYPE\020\001\"\264\001\n\025Table" +
+      "DefinitionGraphs\022I\n\025main_table_definitio" +
+      "n\030\001 \001(\0132*.org.roylance.yaorm.models.Tabl" +
+      "eDefinition\022P\n\027table_definition_graphs\030\002" +
+      " \003(\0132/.org.roylance.yaorm.models.TableDe" +
+      "finitionGraph\"N\n\016ConnectionInfo\022\014\n\004host\030" +
+      "\001 \001(\t\022\014\n\004user\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\016\n" +
+      "\006schema\030\004 \001(\t*\327\001\n\014ProtobufType\022\010\n\004NONE\020\000" +
+      "\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005IN",
+      "T64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020" +
+      "\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64\020\n\022" +
+      "\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n" +
+      "\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -18662,7 +19057,7 @@ public final class YaormModel {
     internal_static_org_roylance_yaorm_models_ColumnDefinition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_ColumnDefinition_descriptor,
-        new java.lang.String[] { "Name", "Type", "IsKey", "ColumnType", });
+        new java.lang.String[] { "Name", "Type", "IsKey", "ColumnType", "LinkerType", });
     internal_static_org_roylance_yaorm_models_Index_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable = new
@@ -18680,7 +19075,7 @@ public final class YaormModel {
     internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_TableDefinition_descriptor,
-        new java.lang.String[] { "Name", "ColumnDefinitions", "Index", });
+        new java.lang.String[] { "Name", "ColumnDefinitions", "Index", "TableType", });
     internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable = new

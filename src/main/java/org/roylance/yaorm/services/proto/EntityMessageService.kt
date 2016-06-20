@@ -68,8 +68,6 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(sourceOfTruthMessage)) {
             return false
         }
-        // get id
-        val mainRecordId = ProtobufUtils.getIdFromMessage(sourceOfTruthMessage)
 
         // build records
         val records = ProtobufUtils.convertProtobufObjectToRecords(sourceOfTruthMessage)
@@ -83,32 +81,14 @@ class EntityMessageService(
             return false
         }
 
-        this.entityService.createOrUpdate(
-                mainRecords.records.recordsList.first(),
-                mainRecords.tableDefinition)
-
         // todo - order this as a dag, also create relational constraints between the tables
         // go through children now, this is the source of truth
         records.tableRecordsList
-                .filter { !it.tableName.equals(sourceOfTruthMessage.descriptorForType.name) &&
-                        it.tableDefinition.columnDefinitionsList.any { column ->
-                            sourceOfTruthMessage.descriptorForType.name.equals(column.name)
-                        }
-                }
                 .forEach { tableRecords ->
-                    val customWhereClause = YaormModel.WhereClause.newBuilder()
-                                .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
-                                .setNameAndProperty(
-                                        YaormModel.Column.newBuilder()
-                                                    .setDefinition(YaormModel.ColumnDefinition.newBuilder()
-                                                            .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)
-                                                            .setType(YaormModel.ProtobufType.STRING)
-                                                            .setName(sourceOfTruthMessage.descriptorForType.name))
-                                                    .setStringHolder(mainRecordId))
-                            .build()
-
                     val recordsFromClientMap = HashMap<String, YaormModel.Record>()
-                    val recordsFromDatabaseMap = HashMap<String, YaormModel.Record>()
+                    val recordsFromDatabaseMap:HashMap<String, YaormModel.Record>
+
+                    // where clause with all the ids
                     tableRecords.records.recordsList.forEach {
                         val idColumn = it.columnsList.firstOrNull {
                             it.definition.name.equals(CommonUtils.IdName)
@@ -118,14 +98,12 @@ class EntityMessageService(
                         }
                     }
 
-                    entityService.where(customWhereClause, tableRecords.tableDefinition)
-                            .recordsList.forEach {
-                        val idColumn = it.columnsList.firstOrNull {
-                            it.definition.name.equals(CommonUtils.IdName)
-                        }
-                        if (idColumn != null) {
-                            recordsFromDatabaseMap[idColumn.stringHolder] = it
-                        }
+                    // if this is a linker table, then we want compare all the items with parent vs what we have
+                    if (tableRecords.tableDefinition.tableType.equals(YaormModel.TableDefinition.TableType.NORMAL)) {
+                        recordsFromDatabaseMap = this.handleNormalCase(tableRecords)
+                    }
+                    else {
+                        recordsFromDatabaseMap = this.handleLinkerMessageCase(tableRecords)
                     }
 
                     // merge stuff here
@@ -242,5 +220,93 @@ class EntityMessageService(
         }
         val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
         return this.entityService.getCount(tableDefinition)
+    }
+
+    private fun handleLinkerMessageCase(tableRecords: YaormModel.TableRecords):HashMap<String, YaormModel.Record> {
+        // where clause with all the main parent items
+        val recordsFromDatabaseMap = HashMap<String, YaormModel.Record>()
+        val parentColumn = tableRecords.tableDefinition.columnDefinitionsList
+                .firstOrNull { it.linkerType.equals(YaormModel.ColumnDefinition.LinkerType.PARENT) } ?: return recordsFromDatabaseMap
+
+        var customWhereClauseLinker = YaormModel.WhereClause.newBuilder()
+                .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
+
+        var firstWhereClause:YaormModel.WhereClause.Builder? = null
+
+        tableRecords.records.recordsList.forEach { record ->
+            val parentIdColumn = record.columnsList.firstOrNull { it.definition.name.equals(parentColumn.name) }
+            if (parentIdColumn != null) {
+                customWhereClauseLinker.nameAndProperty = parentIdColumn
+
+                val newWhereClause = YaormModel.WhereClause.newBuilder()
+                        .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                        .setConnectingWhereClause(customWhereClauseLinker)
+                        .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
+
+                if (firstWhereClause == null) {
+                    firstWhereClause = customWhereClauseLinker
+                }
+
+                customWhereClauseLinker = newWhereClause
+            }
+        }
+
+        if (firstWhereClause == null) {
+            return recordsFromDatabaseMap
+        }
+
+        entityService.where(firstWhereClause!!.build(), tableRecords.tableDefinition)
+                .recordsList.forEach {
+            val idColumn = it.columnsList.firstOrNull {
+                it.definition.name.equals(CommonUtils.IdName)
+            }
+            if (idColumn != null) {
+                recordsFromDatabaseMap[idColumn.stringHolder] = it
+            }
+        }
+        return recordsFromDatabaseMap
+    }
+
+    private fun handleNormalCase(tableRecords:YaormModel.TableRecords):HashMap<String, YaormModel.Record> {
+        // if this is a normal table, we want to compare id with what we have
+        val recordsFromDatabaseMap = HashMap<String, YaormModel.Record>()
+        var customWhereClause = YaormModel.WhereClause.newBuilder()
+                .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
+
+        var firstWhereClause:YaormModel.WhereClause.Builder? = null
+        tableRecords.records.recordsList.forEach { record ->
+            val idColumn = record.columnsList
+                    .firstOrNull { it.definition.name.equals(CommonUtils.IdName) }
+            if (idColumn != null) {
+                customWhereClause.nameAndProperty = idColumn
+                val newWhereClause = YaormModel.WhereClause.newBuilder()
+                        .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                        .setConnectingWhereClause(customWhereClause)
+                        .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
+
+                if (firstWhereClause == null) {
+                    firstWhereClause = customWhereClause
+                }
+
+                customWhereClause = newWhereClause
+            }
+        }
+
+        if (firstWhereClause == null) {
+            return recordsFromDatabaseMap
+        }
+
+        entityService.where(firstWhereClause!!.build(), tableRecords.tableDefinition)
+                .recordsList.forEach {
+            val idColumn = it.columnsList.firstOrNull {
+                it.definition.name.equals(CommonUtils.IdName)
+            }
+            if (idColumn != null) {
+                recordsFromDatabaseMap[idColumn.stringHolder] = it
+            }
+        }
+        return recordsFromDatabaseMap
     }
 }

@@ -446,7 +446,8 @@ object CommonUtils {
                             stringValue +
                             CommonUtils.Space)
 
-            if (!currentWhereClauseItem.connectingAndOr.equals(YaormModel.WhereClause.ConnectingAndOr.NONE)) {
+            if (!currentWhereClauseItem.connectingAndOr.equals(YaormModel.WhereClause.ConnectingAndOr.NONE) &&
+                currentWhereClauseItem.hasConnectingWhereClause()) {
                 filterItems.append(currentWhereClauseItem.connectingAndOr.name + CommonUtils.Space)
                 currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
             }

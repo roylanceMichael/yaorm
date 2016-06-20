@@ -446,10 +446,11 @@ object ProtobufUtils {
                                                           otherName:String,
                                                           columnName:String):YaormModel.TableDefinition {
         return YaormModel.TableDefinition.newBuilder()
+            .setTableType(YaormModel.TableDefinition.TableType.LINKER_MESSAGE)
             .setName(buildLinkerTableNameStr(mainName, otherName, columnName))
             .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR).setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName))
-            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).setType(YaormModel.ProtobufType.STRING).setName(mainName))
-            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).setType(YaormModel.ProtobufType.STRING).setName(otherName))
+            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).setLinkerType(YaormModel.ColumnDefinition.LinkerType.PARENT).setType(YaormModel.ProtobufType.STRING).setName(mainName))
+            .addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).setLinkerType(YaormModel.ColumnDefinition.LinkerType.CHILD).setType(YaormModel.ProtobufType.STRING).setName(otherName))
             .build()
     }
 
@@ -470,20 +471,21 @@ object ProtobufUtils {
                 .setDefinition(YaormModel.ColumnDefinition.newBuilder()
                         .setName(mainColumnName)
                         .setType(YaormModel.ProtobufType.STRING)
+                        .setLinkerType(YaormModel.ColumnDefinition.LinkerType.PARENT)
                         .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
                 .setStringHolder(mainColumnId)
 
-        val enumColumn = YaormModel.Column.newBuilder()
+        val otherIdColumn = YaormModel.Column.newBuilder()
                 .setDefinition(YaormModel.ColumnDefinition.newBuilder()
                         .setName(otherColumnName)
                         .setType(YaormModel.ProtobufType.STRING)
+                        .setLinkerType(YaormModel.ColumnDefinition.LinkerType.CHILD)
                         .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
                 .setStringHolder(otherColumnId)
 
-
         record.addColumns(idColumn)
         record.addColumns(mainIdColumn)
-        record.addColumns(enumColumn)
+        record.addColumns(otherIdColumn)
 
         return record.build()
     }
@@ -515,7 +517,6 @@ object ProtobufUtils {
                         .setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME))
                 .setStringHolder(enumValueDescriptor.name)
 
-
         record.addColumns(idColumn)
         record.addColumns(mainIdColumn)
         record.addColumns(enumColumn)
@@ -525,10 +526,11 @@ object ProtobufUtils {
 
     private fun buildLinkerTableEnum(mainTableName:String, repeatedEnumName:String, repeatedEnumColumnName:String):YaormModel.TableDefinition {
         val returnDefinition = YaormModel.TableDefinition.newBuilder()
+                .setTableType(YaormModel.TableDefinition.TableType.LINKER_ENUM)
                 .setName("${mainTableName}_${repeatedEnumName}_$repeatedEnumColumnName")
 
         val idProperty = YaormModel.ColumnDefinition.newBuilder().setName(CommonUtils.IdName).setType(YaormModel.ProtobufType.STRING).build()
-        val mainTableIdProperty = YaormModel.ColumnDefinition.newBuilder().setName(mainTableName).setType(YaormModel.ProtobufType.STRING).build()
+        val mainTableIdProperty = YaormModel.ColumnDefinition.newBuilder().setName(mainTableName).setType(YaormModel.ProtobufType.STRING).setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).build()
         val repeatedEnumNameProperty = YaormModel.ColumnDefinition.newBuilder().setName(repeatedEnumName).setType(YaormModel.ProtobufType.STRING).setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME).build()
         return returnDefinition.addColumnDefinitions(idProperty)
                 .addColumnDefinitions(mainTableIdProperty)
@@ -537,7 +539,10 @@ object ProtobufUtils {
     }
 
     private fun buildLinkerTableMessage(mainTableName:String, linkerTableName:String, linkerTableColumnName:String):YaormModel.TableDefinition {
-        val returnDefinition = YaormModel.TableDefinition.newBuilder().setName(buildLinkerTableNameStr(mainTableName, linkerTableName, linkerTableColumnName))
+        val returnDefinition = YaormModel.TableDefinition.newBuilder()
+                .setName(buildLinkerTableNameStr(mainTableName, linkerTableName, linkerTableColumnName))
+                .setTableType(YaormModel.TableDefinition.TableType.LINKER_MESSAGE)
+
         val idProperty = YaormModel.ColumnDefinition.newBuilder().setName(CommonUtils.IdName).setType(YaormModel.ProtobufType.STRING).build()
         val mainTableIdProperty = YaormModel.ColumnDefinition.newBuilder().setName(mainTableName).setType(YaormModel.ProtobufType.STRING).setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).build()
         val otherTableIdProperty = YaormModel.ColumnDefinition.newBuilder().setName(linkerTableName).setType(YaormModel.ProtobufType.STRING).setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY).build()

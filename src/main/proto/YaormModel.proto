@@ -50,6 +50,13 @@ message ColumnDefinition {
         MESSAGE_KEY = 3;
     }
     ColumnType column_type = 4;
+    enum LinkerType {
+        NONE = 0;
+        PARENT = 1;
+        CHILD = 2;
+        NEITHER = 3;
+    }
+    LinkerType linker_type = 5;
 }
 
 message Index {
@@ -79,6 +86,12 @@ message TableDefinition {
     string name = 1;
     repeated ColumnDefinition column_definitions = 2;
     Index index = 3;
+    enum TableType {
+        NORMAL = 0;
+        LINKER_MESSAGE = 1;
+        LINKER_ENUM = 2;
+    }
+    TableType table_type = 4;
 }
 
 message TableDefinitions {
