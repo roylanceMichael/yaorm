@@ -301,18 +301,17 @@ class MySQLProtoTest {
             Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild2) && it.id.equals(TestingModelUtilities.SubTestChild2Id) })
             Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild3) && it.id.equals(TestingModelUtilities.SubTestChild3Id) })
 
-            val subTestChildFound = insertedRecord.childsList.first { it.testDisplay.equals(subTestChild.testDisplay) }
-            Assert.assertTrue(subTestChildFound.testDisplay.equals(subTestChild.testDisplay))
+            val subTestChildFound = insertedRecord.childsList.first { it.testDisplay.equals(TestingModelUtilities.SubTestChild) }
             Assert.assertTrue(subTestChildFound.subChildCount == 1)
 
             val anotherSubTestChild = subTestChildFound.subChildList.first()
             Assert.assertTrue(anotherSubTestChild.id.equals(anotherSubTestChild.id))
-            Assert.assertTrue(anotherSubTestChild.anotherTestDisplay.equals(subChild.anotherTestDisplay))
+            Assert.assertTrue(anotherSubTestChild.anotherTestDisplay.equals(TestingModelUtilities.SubChildAnotherTestDisplay))
             Assert.assertTrue(anotherSubTestChild.subSubChildCount == 1)
 
             val subSubChildFound = anotherSubTestChild.subSubChildList.first()
-            Assert.assertTrue(subSubChild.id.equals(subSubChildFound.id))
-            Assert.assertTrue(subSubChild.subSubDisplay.equals(subSubChildFound.subSubDisplay))
+            Assert.assertTrue(TestingModelUtilities.SubSubChildId.equals(subSubChildFound.id))
+            Assert.assertTrue(TestingModelUtilities.SubSubChildDisplay.equals(subSubChildFound.subSubDisplay))
         }
         finally {
             dropSchema()
