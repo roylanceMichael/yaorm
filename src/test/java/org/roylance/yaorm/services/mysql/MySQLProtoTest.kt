@@ -8,6 +8,7 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.sql.DriverManager
 import java.util.*
 
@@ -281,51 +282,7 @@ class MySQLProtoTest {
             val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
-            val testModel = TestingModel.SimpleInsertTest.newBuilder()
-
-            testModel.id = UUID.randomUUID().toString()
-            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
-            testModel.display = "random display"
-            testModel.testInt32 = 1
-            testModel.testInt64 = 2
-            testModel.testUint32 = 3
-            testModel.testUint64 = 4
-            testModel.testSint32 = 5
-            testModel.testSint64 = 6
-            testModel.testFixed32 = 7
-            testModel.testFixed64 = 8
-            testModel.testSfixed32 = 9
-            testModel.testSfixed64 = 10
-            testModel.testBool = true
-            testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
-
-            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
-            val subTestChild2 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("third display")
-            val subTestChild3 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("fourth display")
-
-            testModel.id = UUID.randomUUID().toString()
-            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
-
-            val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
-
-            testModel.addCoolTypes(firstCoolType)
-            testModel.addCoolTypes(secondCoolType)
-
-            val subChild = TestingModel.SubChild.newBuilder().setId(UUID.randomUUID().toString()).setAnotherTestDisplay("sub child test").setCoolTest(true)
-            val subSubChild = TestingModel.SubSubChild.newBuilder().setId(UUID.randomUUID().toString()).setSubSubDisplay("sub sub child test").build()
-            subChild.addSubSubChild(subSubChild)
-            subTestChild.addSubChild(subChild)
-            testModel.addChilds(subTestChild)
-            testModel.addChilds(subTestChild2)
-            testModel.addChilds(subTestChild3)
-
-            testModel.addCoolTypes(firstCoolType)
-            testModel.addCoolTypes(secondCoolType)
+            val testModel = TestingModelUtilities.buildSampleRootObject()
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
             records.tableRecordsList.forEach {
@@ -340,10 +297,9 @@ class MySQLProtoTest {
             // assert
             Assert.assertTrue(insertedRecord is TestingModel.SimpleInsertTest)
             Assert.assertTrue(insertedRecord.childsCount == 3)
-            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(subTestChild.testDisplay) && it.id.equals(subTestChild.id) })
-            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(subTestChild2.testDisplay) && it.id.equals(subTestChild2.id) })
-            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(subTestChild3.testDisplay) && it.id.equals(subTestChild3.id) })
-            Assert.assertTrue(subTestChild.subChildCount == 1)
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild) && it.id.equals(TestingModelUtilities.SubTestChildId) })
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild2) && it.id.equals(TestingModelUtilities.SubTestChild2Id) })
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild3) && it.id.equals(TestingModelUtilities.SubTestChild3Id) })
 
             val subTestChildFound = insertedRecord.childsList.first { it.testDisplay.equals(subTestChild.testDisplay) }
             Assert.assertTrue(subTestChildFound.testDisplay.equals(subTestChild.testDisplay))
