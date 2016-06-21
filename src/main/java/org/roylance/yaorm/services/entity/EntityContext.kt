@@ -101,24 +101,25 @@ abstract class EntityContext(
         val currentModel = this.getDefinitions()
 
         currentModel
-            .tableDefinitionsList
+            .tableDefinitions
             .forEach { currentDefinition ->
                 if (latestMigration == null) {
                     DefinitionModelComparisonUtil
                             .addDifferenceIfDifferent(
-                                    currentDefinition,
+                                    currentDefinition.value,
                                     null,
                                     returnModels)
                 }
                 else {
-                    val foundDefinition = latestMigration.tableDefinitionsList
-                            .filter { currentDefinition.name.equals(it.name) }
+                    val foundDefinition = latestMigration.tableDefinitions
+                            .filter { currentDefinition.key.equals(it.key) }
+                            .values
                             .firstOrNull()
 
                     // will look at children as well
                     DefinitionModelComparisonUtil
                             .addDifferenceIfDifferent(
-                                    currentDefinition,
+                                    currentDefinition.value,
                                     foundDefinition,
                                     returnModels)
                 }
@@ -190,10 +191,10 @@ abstract class EntityContext(
                             property.type = YaormModel.ProtobufType.STRING
                         }
 
-                        newDefinition.addColumnDefinitions(property)
+                        newDefinition.mutableColumnDefinitions[name] = property.build()
                     }
 
-            definitions.addTableDefinitions(newDefinition)
+            definitions.mutableTableDefinitions[newDefinition.name] = newDefinition.build()
         }
 
         return definitions.build()

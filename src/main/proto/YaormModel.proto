@@ -60,8 +60,8 @@ message ColumnDefinition {
 }
 
 message Index {
-    repeated ColumnDefinition column_names = 1;
-    repeated ColumnDefinition include_names = 2;
+    map<string, ColumnDefinition> column_names = 1;
+    map<string, ColumnDefinition> include_names = 2;
 }
 
 message Difference {
@@ -84,7 +84,7 @@ message Difference {
 
 message TableDefinition {
     string name = 1;
-    repeated ColumnDefinition column_definitions = 2;
+    map<string, ColumnDefinition> column_definitions = 2;
     Index index = 3;
     enum TableType {
         NORMAL = 0;
@@ -95,7 +95,7 @@ message TableDefinition {
 }
 
 message TableDefinitions {
-    repeated TableDefinition table_definitions = 3;
+    map<string, TableDefinition> table_definitions = 1;
 }
 
 message DifferenceReport {
@@ -123,7 +123,7 @@ message Column {
 }
 
 message Record {
-    repeated Column columns = 1;
+    map<string, Column> columns = 1;
 }
 
 message Records {
@@ -137,7 +137,7 @@ message TableRecords {
 }
 
 message AllTableRecords {
-    repeated TableRecords table_records = 1;
+    map<string, TableRecords> table_records = 1;
 }
 
 message DatabaseOperation {
@@ -182,7 +182,7 @@ message DatabaseOperationResult {
 message DatabaseDefinition {
     string schema = 1;
     string name = 2;
-    repeated TableDefinition table_definitions = 3;
+    TableDefinitions table_definitions = 3;
     repeated TableDefinitionGraphs table_definition_graphs = 4;
 }
 

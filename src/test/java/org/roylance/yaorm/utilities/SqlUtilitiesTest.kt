@@ -83,7 +83,6 @@ class SqlUtilitiesTest {
         val holder = YaormModel.Column.newBuilder().setStringHolder("mike").setDefinition(property).build()
         val whereClause = YaormModel.WhereClause.newBuilder().setNameAndProperty(holder).setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS).build()
 
-
         // act
         val whereSql = sqliteGeneratorService.buildWhereClause(this.beaconBroadcastDefinition, whereClause)!!
 

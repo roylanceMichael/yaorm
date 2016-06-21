@@ -53,8 +53,8 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 definition,
-                indexModel.columnNamesList,
-                indexModel.includeNamesList) ?: return false
+                indexModel.columnNames,
+                indexModel.includeNames) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
@@ -68,7 +68,7 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 definition,
-                indexModel.columnNamesList) ?: return false
+                indexModel.columnNames) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropIndexSql)
@@ -115,9 +115,8 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
 
         if (allRecords.recordsCount > 0) {
             val foundRecord = allRecords.recordsList[0]
-            val foundColumn = foundRecord.columnsList.firstOrNull { it.definition.name.equals(GenericModel.LongValName) }
-            if (foundColumn != null) {
-                return foundColumn.int64Holder
+            if (foundRecord.columns.containsKey(GenericModel.LongValName)) {
+                return foundRecord.columns[GenericModel.LongValName]!!.int64Holder
             }
         }
         return -1
@@ -225,15 +224,17 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
     }
 
     override fun createOrUpdate(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = entity.columnsList.firstOrNull { it.definition.name.equals(sqlGeneratorService.javaIdName) }
-        if (!this.granularDatabaseService.isAvailable() || idColumn == null) {
+        if (!entity.columns.containsKey(CommonUtils.IdName)) {
             return false
         }
 
-
+        val idColumn = entity.columns[CommonUtils.IdName]!!
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
 
         val foundItemInDatabase = this.get(idColumn.stringHolder, definition)
-        if (foundItemInDatabase.columnsCount > 0) {
+        if (foundItemInDatabase.columns.size > 0) {
             return this.update(entity, definition)
         }
 
@@ -241,10 +242,14 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
     }
 
     override fun create(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = entity.columnsList.firstOrNull { it.definition.name.equals(sqlGeneratorService.javaIdName) }
-        if (!this.granularDatabaseService.isAvailable() || idColumn == null) {
+        if (!entity.columns.containsKey(CommonUtils.IdName)) {
             return false
         }
+
+        if (!this.granularDatabaseService.isAvailable()) {
+            return false
+        }
+
         // create
         val insertSql = this.sqlGeneratorService
                 .buildInsertIntoTable(definition, entity) ?: return false
@@ -256,8 +261,11 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
     }
 
     override fun update(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = entity.columnsList.firstOrNull { it.definition.name.equals(sqlGeneratorService.javaIdName) }
-        if (!this.granularDatabaseService.isAvailable()|| idColumn == null) {
+        if (!entity.columns.containsKey(CommonUtils.IdName)) {
+            return false
+        }
+
+        if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
 

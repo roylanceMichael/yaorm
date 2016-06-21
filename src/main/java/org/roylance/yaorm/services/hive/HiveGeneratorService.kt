@@ -74,14 +74,14 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
 
     override fun buildDropIndex(
             definition: YaormModel.TableDefinition,
-            columns: List<YaormModel.ColumnDefinition>): String? {
+            columns: Map<String, YaormModel.ColumnDefinition>): String? {
         return null
     }
 
     override fun buildCreateIndex(
             definition: YaormModel.TableDefinition,
-            properties: List<YaormModel.ColumnDefinition>,
-            includes: List<YaormModel.ColumnDefinition>): String? {
+            properties: Map<String, YaormModel.ColumnDefinition>,
+            includes: Map<String, YaormModel.ColumnDefinition>): String? {
         return null
     }
 
@@ -107,9 +107,9 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
             val updateKvp = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
                 .forEach {
-                    updateKvp.add(it.definition.name + CommonUtils.Equals + CommonUtils.getFormattedString(it))
+                    updateKvp.add(it.key + CommonUtils.Equals + CommonUtils.getFormattedString(it.value))
                 }
 
             // nope, not updating entire table
@@ -160,7 +160,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
         val columnNames = ArrayList<String>()
 
         definition
-            .columnDefinitionsList
+            .columnDefinitions
+            .values
             .sortedBy { it.name }
             .forEach {
                 if (nameTypeMap.containsKey(it.name)) {
@@ -177,7 +178,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
                 val valueColumnPairs = ArrayList<String>()
 
                 instance
-                    .columnsList
+                    .columns
+                    .values
                     .sortedBy { it.definition.name }
                     .forEach {
                         val formattedString = CommonUtils.getFormattedString(it)
@@ -245,7 +247,9 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
             val updateKvp = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
+                .values
+                .sortedBy { it.definition.name }
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
                     if (it.definition.name.equals(this.javaIdName)) {
@@ -280,7 +284,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
             val values = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
+                .values
                 .sortedBy { it.definition.name }
                 .forEach {
                     values.add(CommonUtils.getFormattedString(it))

@@ -14,9 +14,9 @@ interface ISqlGeneratorService {
 
     fun buildCreateIndex(
             definition: YaormModel.TableDefinition,
-            properties: List<YaormModel.ColumnDefinition>,
-            includes: List<YaormModel.ColumnDefinition>): String?
-    fun buildDropIndex(definition: YaormModel.TableDefinition, columns: List<YaormModel.ColumnDefinition>): String?
+            properties: Map<String, YaormModel.ColumnDefinition>,
+            includes: Map<String, YaormModel.ColumnDefinition>): String?
+    fun buildDropIndex(definition: YaormModel.TableDefinition, columns: Map<String, YaormModel.ColumnDefinition>): String?
 
     fun buildDropTable(definition: YaormModel.TableDefinition): String
     fun buildCreateTable(definition: YaormModel.TableDefinition): String?

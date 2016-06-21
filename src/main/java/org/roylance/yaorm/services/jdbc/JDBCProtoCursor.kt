@@ -38,11 +38,12 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
 
         // set all the properties that we can
         this.definitionModel
-                .columnDefinitionsList
+                .columnDefinitions
+                .values
                 .forEach {
                     val newValue = resultSet.getString(it.name) //this.typeToAction[it.type]!!(it.name, this.resultSet)
                     val propertyHolder = CommonUtils.buildColumn(newValue, it)
-                    newInstance.addColumns(propertyHolder)
+                    newInstance.mutableColumns[it.name] = (propertyHolder)
                 }
 
         return newInstance.build()

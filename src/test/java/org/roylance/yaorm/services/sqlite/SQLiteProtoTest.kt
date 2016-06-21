@@ -42,7 +42,7 @@ class SQLiteProtoTest {
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
             // act
-            records.tableRecordsList.forEach {
+            records.tableRecords.values.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
                 entityService.bulkInsert(it.records, it.tableDefinition)
@@ -85,7 +85,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(secondCoolType)
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
-            records.tableRecordsList.forEach {
+            records.tableRecords.values.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
                 entityService.bulkInsert(it.records, it.tableDefinition)
@@ -147,7 +147,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(secondCoolType)
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
-            records.tableRecordsList.forEach {
+            records.tableRecords.values.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
                 entityService.bulkInsert(it.records, it.tableDefinition)
@@ -224,7 +224,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(secondCoolType)
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
-            records.tableRecordsList.forEach {
+            records.tableRecords.values.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
                 entityService.bulkInsert(it.records, it.tableDefinition)
@@ -292,7 +292,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(secondCoolType)
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
-            records.tableRecordsList.forEach {
+            records.tableRecords.values.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
                 entityService.bulkInsert(it.records, it.tableDefinition)

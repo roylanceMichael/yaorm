@@ -25,7 +25,7 @@ object EntityUtils {
             .forEach {
                 val result = it.getMethod.invoke(item)
                 val propertyHolder = CommonUtils.buildColumn(result, it.getMethod.returnType, it.propertyName)
-                returnRecord.addColumns(propertyHolder)
+                returnRecord.mutableColumns[it.propertyName] = (propertyHolder)
             }
 
         return returnRecord.build()
@@ -39,7 +39,6 @@ object EntityUtils {
                 .toHashSet()
 
         val definition = YaormModel.TableDefinition.newBuilder().setName(classType.simpleName)
-
         classType
                 .methods
                 .filter { it.name.startsWith(CommonUtils.Get) &&
@@ -54,14 +53,14 @@ object EntityUtils {
                             .setType(CommonUtils.JavaToProtoMap[it.returnType])
                             .setName(name)
                             .setIsKey(name == CommonUtils.IdName)
-                        definition.addColumnDefinitions(property)
+                        definition.mutableColumnDefinitions.put(it.name, (property).build())
                     }
                     else {
                         val property = YaormModel.ColumnDefinition.newBuilder()
                                 .setType(YaormModel.ProtobufType.STRING)
                                 .setName(name)
                                 .setIsKey(name == CommonUtils.IdName)
-                        definition.addColumnDefinitions(property)
+                        definition.mutableColumnDefinitions.put(it.name, (property).build())
                     }
                 }
 
@@ -92,6 +91,7 @@ object EntityUtils {
                 val setter = it
                 val propertyName = CommonUtils.lowercaseFirstChar(commonPropertyName)
                 var entityType = EntityDefinitionModel.Single
+
                 if (EntityCollectionName.equals(getter.returnType.name)) {
                     entityType = EntityDefinitionModel.List
                 }
@@ -133,14 +133,12 @@ object EntityUtils {
             .methods
             .filter {
                 it.name.startsWith(CommonUtils.Set) &&
-                getMethodMap.containsKey(
-                        it.name.substring(CommonUtils.GetSetLength))
+                getMethodMap.containsKey(it.name.substring(CommonUtils.GetSetLength))
             }
             .map {
                 val propertyName = it.name.substring(CommonUtils.GetSetLength)
 
-                if (this
-                        .isClassAListAndDoesTypeHaveGetId(
+                if (this.isClassAListAndDoesTypeHaveGetId(
                                 getMethodMap[propertyName]!!.returnType)) {
 
                     EntityDefinitionModel(

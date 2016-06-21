@@ -58,20 +58,20 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         return "alter table ${definition.name} drop column if exists ${propertyDefinition.name}"
     }
 
-    override fun buildDropIndex(definition: YaormModel.TableDefinition, columns: List<YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(columns.map { it.name })
+    override fun buildDropIndex(definition: YaormModel.TableDefinition, columns: Map<String, YaormModel.ColumnDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(columns.values.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
-    override fun buildCreateIndex(definition: YaormModel.TableDefinition, properties: List<YaormModel.ColumnDefinition>, includes: List<YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(properties.map { it.name })
-        val joinedColumnNames = properties.joinToString(CommonUtils.Comma)
+    override fun buildCreateIndex(definition: YaormModel.TableDefinition, properties: Map<String, YaormModel.ColumnDefinition>, includes: Map<String, YaormModel.ColumnDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(properties.values.map { it.name })
+        val joinedColumnNames = properties.values.joinToString(CommonUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
 
         if (includes.isEmpty()) {
             return sqlStatement
         }
-        val joinedIncludeColumnNames = includes.joinToString(CommonUtils.Comma)
+        val joinedIncludeColumnNames = includes.values.joinToString(CommonUtils.Comma)
         return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
@@ -154,7 +154,9 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
             val values = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
+                .values
+                .sortedBy { it.definition.name }
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
                     columnNames.add(it.definition.name)

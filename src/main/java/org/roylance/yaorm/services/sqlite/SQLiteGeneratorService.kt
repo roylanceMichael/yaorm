@@ -85,24 +85,24 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
     override fun buildDropIndex(
             definition: YaormModel.TableDefinition,
-            columns: List<YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(columns.map { it.name })
+            columns: Map<String, YaormModel.ColumnDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(columns.values.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
     override fun buildCreateIndex(
             definition: YaormModel.TableDefinition,
-            properties: List<YaormModel.ColumnDefinition>,
-            includes: List<YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(properties.map { it.name })
-        val joinedColumnNames = properties.map { it.name }.joinToString(CommonUtils.Comma)
+            properties: Map<String, YaormModel.ColumnDefinition>,
+            includes: Map<String, YaormModel.ColumnDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(properties.values.map { it.name })
+        val joinedColumnNames = properties.values.map { it.name }.joinToString(CommonUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
 
         if (includes.isEmpty()) {
             return sqlStatement
         }
 
-        val joinedIncludeColumnNames = includes.joinToString(CommonUtils.Comma)
+        val joinedIncludeColumnNames = includes.values.joinToString(CommonUtils.Comma)
         return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
@@ -121,7 +121,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         val whereClauseStr = CommonUtils.buildWhereClause(whereClauseItem)
         val newValuesWorkspace = StringBuilder()
 
-        record.columnsList.forEach {
+        record.columns.values.forEach {
             if (newValuesWorkspace.length > 0) {
                 newValuesWorkspace.append(CommonUtils.Comma)
             }
@@ -145,7 +145,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             definition: YaormModel.TableDefinition,
             records: YaormModel.Records) : String {
         val tableName = definition.name
-        val columnNames = definition.columnDefinitionsList.sortedBy { it.name } .map { it.name }
+        val columnNames = definition.columnDefinitions.values.sortedBy { it.name } .map { it.name }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "insert into $tableName ($commaSeparatedColumnNames) "
@@ -157,7 +157,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
                 val valueColumnPairs = ArrayList<String>()
 
                 instance
-                    .columnsList
+                    .columns
+                    .values
                     .sortedBy { it.definition.name }
                     .forEach {
                         val formattedValue = CommonUtils.getFormattedString(it)
@@ -225,7 +226,9 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
             val updateKvp = ArrayList<String>()
             record
-                .columnsList
+                .columns
+                .values
+                .sortedBy { it.definition.name }
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
                     if (it.definition.name.equals(this.javaIdName)) {
@@ -263,7 +266,9 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             val values = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
+                .values
+                .sortedBy { it.definition.name }
                 .forEach {
                     columnNames.add(it.definition.name)
                     values.add(CommonUtils.getFormattedString(it))

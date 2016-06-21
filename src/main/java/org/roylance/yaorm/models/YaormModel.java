@@ -2310,52 +2310,16 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> 
-        getColumnNamesList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnNames(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    int getColumnNamesCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-        getColumnNamesOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnNamesOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+    getColumnNames();
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> 
-        getIncludeNamesList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnDefinition getIncludeNames(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    int getIncludeNamesCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-        getIncludeNamesOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getIncludeNamesOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+    getIncludeNames();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Index}
@@ -2369,8 +2333,6 @@ public final class YaormModel {
       super(builder);
     }
     private Index() {
-      columnNames_ = java.util.Collections.emptyList();
-      includeNames_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2399,18 +2361,26 @@ public final class YaormModel {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                columnNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>();
+                columnNames_ = com.google.protobuf.MapField.newMapField(
+                    ColumnNamesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              columnNames_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+              columnNames = input.readMessage(
+                  ColumnNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              columnNames_.getMutableMap().put(columnNames.getKey(), columnNames.getValue());
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                includeNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>();
+                includeNames_ = com.google.protobuf.MapField.newMapField(
+                    IncludeNamesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              includeNames_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+              includeNames = input.readMessage(
+                  IncludeNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              includeNames_.getMutableMap().put(includeNames.getKey(), includeNames.getValue());
               break;
             }
           }
@@ -2422,12 +2392,6 @@ public final class YaormModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          columnNames_ = java.util.Collections.unmodifiableList(columnNames_);
-        }
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          includeNames_ = java.util.Collections.unmodifiableList(includeNames_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -2436,6 +2400,19 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetColumnNames();
+        case 2:
+          return internalGetIncludeNames();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable
@@ -2444,73 +2421,63 @@ public final class YaormModel {
     }
 
     public static final int COLUMN_NAMES_FIELD_NUMBER = 1;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_;
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNamesList() {
+    private static final class ColumnNamesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>newDefaultInstance(
+                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_;
+    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+    internalGetColumnNames() {
+      if (columnNames_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            ColumnNamesDefaultEntryHolder.defaultEntry);
+     }
       return columnNames_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-        getColumnNamesOrBuilderList() {
-      return columnNames_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    public int getColumnNamesCount() {
-      return columnNames_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnNames(int index) {
-      return columnNames_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnNamesOrBuilder(
-        int index) {
-      return columnNames_.get(index);
+
+    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNames() {
+      return internalGetColumnNames().getMap();
     }
 
     public static final int INCLUDE_NAMES_FIELD_NUMBER = 2;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_;
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNamesList() {
+    private static final class IncludeNamesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>newDefaultInstance(
+                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_;
+    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+    internalGetIncludeNames() {
+      if (includeNames_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            IncludeNamesDefaultEntryHolder.defaultEntry);
+     }
       return includeNames_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-        getIncludeNamesOrBuilderList() {
-      return includeNames_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    public int getIncludeNamesCount() {
-      return includeNames_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getIncludeNames(int index) {
-      return includeNames_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getIncludeNamesOrBuilder(
-        int index) {
-      return includeNames_.get(index);
+
+    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNames() {
+      return internalGetIncludeNames().getMap();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2525,11 +2492,23 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < columnNames_.size(); i++) {
-        output.writeMessage(1, columnNames_.get(i));
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
+           : internalGetColumnNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+        columnNames = ColumnNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(1, columnNames);
       }
-      for (int i = 0; i < includeNames_.size(); i++) {
-        output.writeMessage(2, includeNames_.get(i));
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
+           : internalGetIncludeNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+        includeNames = IncludeNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(2, includeNames);
       }
     }
 
@@ -2538,13 +2517,25 @@ public final class YaormModel {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < columnNames_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
+           : internalGetColumnNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+        columnNames = ColumnNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, columnNames_.get(i));
+            .computeMessageSize(1, columnNames);
       }
-      for (int i = 0; i < includeNames_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
+           : internalGetIncludeNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+        includeNames = IncludeNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, includeNames_.get(i));
+            .computeMessageSize(2, includeNames);
       }
       memoizedSize = size;
       return size;
@@ -2634,6 +2625,32 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetColumnNames();
+          case 2:
+            return internalGetIncludeNames();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableColumnNames();
+          case 2:
+            return internalGetMutableIncludeNames();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable
@@ -2653,24 +2670,12 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getColumnNamesFieldBuilder();
-          getIncludeNamesFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
-        if (columnNamesBuilder_ == null) {
-          columnNames_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          columnNamesBuilder_.clear();
-        }
-        if (includeNamesBuilder_ == null) {
-          includeNames_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          includeNamesBuilder_.clear();
-        }
+        internalGetMutableColumnNames().clear();
+        internalGetMutableIncludeNames().clear();
         return this;
       }
 
@@ -2694,24 +2699,10 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.Index buildPartial() {
         org.roylance.yaorm.models.YaormModel.Index result = new org.roylance.yaorm.models.YaormModel.Index(this);
         int from_bitField0_ = bitField0_;
-        if (columnNamesBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            columnNames_ = java.util.Collections.unmodifiableList(columnNames_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.columnNames_ = columnNames_;
-        } else {
-          result.columnNames_ = columnNamesBuilder_.build();
-        }
-        if (includeNamesBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            includeNames_ = java.util.Collections.unmodifiableList(includeNames_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.includeNames_ = includeNames_;
-        } else {
-          result.includeNames_ = includeNamesBuilder_.build();
-        }
+        result.columnNames_ = internalGetColumnNames();
+        result.columnNames_.makeImmutable();
+        result.includeNames_ = internalGetIncludeNames();
+        result.includeNames_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -2727,58 +2718,10 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Index other) {
         if (other == org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance()) return this;
-        if (columnNamesBuilder_ == null) {
-          if (!other.columnNames_.isEmpty()) {
-            if (columnNames_.isEmpty()) {
-              columnNames_ = other.columnNames_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureColumnNamesIsMutable();
-              columnNames_.addAll(other.columnNames_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.columnNames_.isEmpty()) {
-            if (columnNamesBuilder_.isEmpty()) {
-              columnNamesBuilder_.dispose();
-              columnNamesBuilder_ = null;
-              columnNames_ = other.columnNames_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              columnNamesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getColumnNamesFieldBuilder() : null;
-            } else {
-              columnNamesBuilder_.addAllMessages(other.columnNames_);
-            }
-          }
-        }
-        if (includeNamesBuilder_ == null) {
-          if (!other.includeNames_.isEmpty()) {
-            if (includeNames_.isEmpty()) {
-              includeNames_ = other.includeNames_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureIncludeNamesIsMutable();
-              includeNames_.addAll(other.includeNames_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.includeNames_.isEmpty()) {
-            if (includeNamesBuilder_.isEmpty()) {
-              includeNamesBuilder_.dispose();
-              includeNamesBuilder_ = null;
-              includeNames_ = other.includeNames_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              includeNamesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIncludeNamesFieldBuilder() : null;
-            } else {
-              includeNamesBuilder_.addAllMessages(other.includeNames_);
-            }
-          }
-        }
+        internalGetMutableColumnNames().mergeFrom(
+            other.internalGetColumnNames());
+        internalGetMutableIncludeNames().mergeFrom(
+            other.internalGetIncludeNames());
         onChanged();
         return this;
       }
@@ -2806,484 +2749,92 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_ =
-        java.util.Collections.emptyList();
-      private void ensureColumnNamesIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          columnNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>(columnNames_);
-          bitField0_ |= 0x00000001;
-         }
+      private com.google.protobuf.MapField<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_;
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      internalGetColumnNames() {
+        if (columnNames_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              ColumnNamesDefaultEntryHolder.defaultEntry);
+       }
+        return columnNames_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      internalGetMutableColumnNames() {
+        onChanged();;
+        if (columnNames_ == null) {
+          columnNames_ = com.google.protobuf.MapField.newMapField(
+              ColumnNamesDefaultEntryHolder.defaultEntry);
+        }
+        if (!columnNames_.isMutable()) {
+          columnNames_ = columnNames_.copy();
+        }
+        return columnNames_;
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
+       */
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNames() {
+        return internalGetColumnNames().getMap();
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
+       */
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      getMutableColumnNames() {
+        return internalGetMutableColumnNames().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
+       */
+      public Builder putAllColumnNames(
+          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
+        getMutableColumnNames().putAll(values);
+        return this;
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> columnNamesBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNamesList() {
-        if (columnNamesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(columnNames_);
-        } else {
-          return columnNamesBuilder_.getMessageList();
+      private com.google.protobuf.MapField<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_;
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      internalGetIncludeNames() {
+        if (includeNames_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              IncludeNamesDefaultEntryHolder.defaultEntry);
+       }
+        return includeNames_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      internalGetMutableIncludeNames() {
+        onChanged();;
+        if (includeNames_ == null) {
+          includeNames_ = com.google.protobuf.MapField.newMapField(
+              IncludeNamesDefaultEntryHolder.defaultEntry);
         }
+        if (!includeNames_.isMutable()) {
+          includeNames_ = includeNames_.copy();
+        }
+        return includeNames_;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
        */
-      public int getColumnNamesCount() {
-        if (columnNamesBuilder_ == null) {
-          return columnNames_.size();
-        } else {
-          return columnNamesBuilder_.getCount();
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNames() {
+        return internalGetIncludeNames().getMap();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnNames(int index) {
-        if (columnNamesBuilder_ == null) {
-          return columnNames_.get(index);
-        } else {
-          return columnNamesBuilder_.getMessage(index);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      getMutableIncludeNames() {
+        return internalGetMutableIncludeNames().getMutableMap();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
        */
-      public Builder setColumnNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (columnNamesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnNamesIsMutable();
-          columnNames_.set(index, value);
-          onChanged();
-        } else {
-          columnNamesBuilder_.setMessage(index, value);
-        }
+      public Builder putAllIncludeNames(
+          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
+        getMutableIncludeNames().putAll(values);
         return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder setColumnNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (columnNamesBuilder_ == null) {
-          ensureColumnNamesIsMutable();
-          columnNames_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          columnNamesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder addColumnNames(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (columnNamesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnNamesIsMutable();
-          columnNames_.add(value);
-          onChanged();
-        } else {
-          columnNamesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder addColumnNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (columnNamesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnNamesIsMutable();
-          columnNames_.add(index, value);
-          onChanged();
-        } else {
-          columnNamesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder addColumnNames(
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (columnNamesBuilder_ == null) {
-          ensureColumnNamesIsMutable();
-          columnNames_.add(builderForValue.build());
-          onChanged();
-        } else {
-          columnNamesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder addColumnNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (columnNamesBuilder_ == null) {
-          ensureColumnNamesIsMutable();
-          columnNames_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          columnNamesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder addAllColumnNames(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
-        if (columnNamesBuilder_ == null) {
-          ensureColumnNamesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, columnNames_);
-          onChanged();
-        } else {
-          columnNamesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder clearColumnNames() {
-        if (columnNamesBuilder_ == null) {
-          columnNames_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          columnNamesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public Builder removeColumnNames(int index) {
-        if (columnNamesBuilder_ == null) {
-          ensureColumnNamesIsMutable();
-          columnNames_.remove(index);
-          onChanged();
-        } else {
-          columnNamesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getColumnNamesBuilder(
-          int index) {
-        return getColumnNamesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnNamesOrBuilder(
-          int index) {
-        if (columnNamesBuilder_ == null) {
-          return columnNames_.get(index);  } else {
-          return columnNamesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-           getColumnNamesOrBuilderList() {
-        if (columnNamesBuilder_ != null) {
-          return columnNamesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(columnNames_);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnNamesBuilder() {
-        return getColumnNamesFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnNamesBuilder(
-          int index) {
-        return getColumnNamesFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder> 
-           getColumnNamesBuilderList() {
-        return getColumnNamesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-          getColumnNamesFieldBuilder() {
-        if (columnNamesBuilder_ == null) {
-          columnNamesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder>(
-                  columnNames_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          columnNames_ = null;
-        }
-        return columnNamesBuilder_;
-      }
-
-      private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_ =
-        java.util.Collections.emptyList();
-      private void ensureIncludeNamesIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          includeNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>(includeNames_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> includeNamesBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNamesList() {
-        if (includeNamesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(includeNames_);
-        } else {
-          return includeNamesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public int getIncludeNamesCount() {
-        if (includeNamesBuilder_ == null) {
-          return includeNames_.size();
-        } else {
-          return includeNamesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition getIncludeNames(int index) {
-        if (includeNamesBuilder_ == null) {
-          return includeNames_.get(index);
-        } else {
-          return includeNamesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder setIncludeNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (includeNamesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureIncludeNamesIsMutable();
-          includeNames_.set(index, value);
-          onChanged();
-        } else {
-          includeNamesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder setIncludeNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (includeNamesBuilder_ == null) {
-          ensureIncludeNamesIsMutable();
-          includeNames_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          includeNamesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder addIncludeNames(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (includeNamesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureIncludeNamesIsMutable();
-          includeNames_.add(value);
-          onChanged();
-        } else {
-          includeNamesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder addIncludeNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (includeNamesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureIncludeNamesIsMutable();
-          includeNames_.add(index, value);
-          onChanged();
-        } else {
-          includeNamesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder addIncludeNames(
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (includeNamesBuilder_ == null) {
-          ensureIncludeNamesIsMutable();
-          includeNames_.add(builderForValue.build());
-          onChanged();
-        } else {
-          includeNamesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder addIncludeNames(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (includeNamesBuilder_ == null) {
-          ensureIncludeNamesIsMutable();
-          includeNames_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          includeNamesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder addAllIncludeNames(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
-        if (includeNamesBuilder_ == null) {
-          ensureIncludeNamesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, includeNames_);
-          onChanged();
-        } else {
-          includeNamesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder clearIncludeNames() {
-        if (includeNamesBuilder_ == null) {
-          includeNames_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          includeNamesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public Builder removeIncludeNames(int index) {
-        if (includeNamesBuilder_ == null) {
-          ensureIncludeNamesIsMutable();
-          includeNames_.remove(index);
-          onChanged();
-        } else {
-          includeNamesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getIncludeNamesBuilder(
-          int index) {
-        return getIncludeNamesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getIncludeNamesOrBuilder(
-          int index) {
-        if (includeNamesBuilder_ == null) {
-          return includeNames_.get(index);  } else {
-          return includeNamesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-           getIncludeNamesOrBuilderList() {
-        if (includeNamesBuilder_ != null) {
-          return includeNamesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(includeNames_);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addIncludeNamesBuilder() {
-        return getIncludeNamesFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addIncludeNamesBuilder(
-          int index) {
-        return getIncludeNamesFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder> 
-           getIncludeNamesBuilderList() {
-        return getIncludeNamesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-          getIncludeNamesFieldBuilder() {
-        if (includeNamesBuilder_ == null) {
-          includeNamesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder>(
-                  includeNames_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          includeNames_ = null;
-        }
-        return includeNamesBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4733,28 +4284,10 @@ public final class YaormModel {
         getNameBytes();
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> 
-        getColumnDefinitionsList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinitions(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    int getColumnDefinitionsCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-        getColumnDefinitionsOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionsOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+    getColumnDefinitions();
 
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
@@ -4791,7 +4324,6 @@ public final class YaormModel {
     }
     private TableDefinition() {
       name_ = "";
-      columnDefinitions_ = java.util.Collections.emptyList();
       tableType_ = 0;
     }
 
@@ -4827,10 +4359,14 @@ public final class YaormModel {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                columnDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>();
+                columnDefinitions_ = com.google.protobuf.MapField.newMapField(
+                    ColumnDefinitionsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              columnDefinitions_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+              columnDefinitions = input.readMessage(
+                  ColumnDefinitionsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              columnDefinitions_.getMutableMap().put(columnDefinitions.getKey(), columnDefinitions.getValue());
               break;
             }
             case 26: {
@@ -4861,9 +4397,6 @@ public final class YaormModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          columnDefinitions_ = java.util.Collections.unmodifiableList(columnDefinitions_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -4872,6 +4405,17 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 2:
+          return internalGetColumnDefinitions();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable
@@ -5016,38 +4560,33 @@ public final class YaormModel {
     }
 
     public static final int COLUMN_DEFINITIONS_FIELD_NUMBER = 2;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_;
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitionsList() {
+    private static final class ColumnDefinitionsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>newDefaultInstance(
+                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_;
+    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+    internalGetColumnDefinitions() {
+      if (columnDefinitions_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            ColumnDefinitionsDefaultEntryHolder.defaultEntry);
+     }
       return columnDefinitions_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-        getColumnDefinitionsOrBuilderList() {
-      return columnDefinitions_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    public int getColumnDefinitionsCount() {
-      return columnDefinitions_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinitions(int index) {
-      return columnDefinitions_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionsOrBuilder(
-        int index) {
-      return columnDefinitions_.get(index);
+
+    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitions() {
+      return internalGetColumnDefinitions().getMap();
     }
 
     public static final int INDEX_FIELD_NUMBER = 3;
@@ -5102,8 +4641,14 @@ public final class YaormModel {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
-      for (int i = 0; i < columnDefinitions_.size(); i++) {
-        output.writeMessage(2, columnDefinitions_.get(i));
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
+           : internalGetColumnDefinitions().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+        columnDefinitions = ColumnDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(2, columnDefinitions);
       }
       if (index_ != null) {
         output.writeMessage(3, getIndex());
@@ -5121,9 +4666,15 @@ public final class YaormModel {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
       }
-      for (int i = 0; i < columnDefinitions_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
+           : internalGetColumnDefinitions().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+        columnDefinitions = ColumnDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, columnDefinitions_.get(i));
+            .computeMessageSize(2, columnDefinitions);
       }
       if (index_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -5221,6 +4772,28 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 2:
+            return internalGetColumnDefinitions();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 2:
+            return internalGetMutableColumnDefinitions();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable
@@ -5240,19 +4813,13 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getColumnDefinitionsFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
         name_ = "";
 
-        if (columnDefinitionsBuilder_ == null) {
-          columnDefinitions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          columnDefinitionsBuilder_.clear();
-        }
+        internalGetMutableColumnDefinitions().clear();
         if (indexBuilder_ == null) {
           index_ = null;
         } else {
@@ -5286,15 +4853,8 @@ public final class YaormModel {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.name_ = name_;
-        if (columnDefinitionsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            columnDefinitions_ = java.util.Collections.unmodifiableList(columnDefinitions_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.columnDefinitions_ = columnDefinitions_;
-        } else {
-          result.columnDefinitions_ = columnDefinitionsBuilder_.build();
-        }
+        result.columnDefinitions_ = internalGetColumnDefinitions();
+        result.columnDefinitions_.makeImmutable();
         if (indexBuilder_ == null) {
           result.index_ = index_;
         } else {
@@ -5321,32 +4881,8 @@ public final class YaormModel {
           name_ = other.name_;
           onChanged();
         }
-        if (columnDefinitionsBuilder_ == null) {
-          if (!other.columnDefinitions_.isEmpty()) {
-            if (columnDefinitions_.isEmpty()) {
-              columnDefinitions_ = other.columnDefinitions_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureColumnDefinitionsIsMutable();
-              columnDefinitions_.addAll(other.columnDefinitions_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.columnDefinitions_.isEmpty()) {
-            if (columnDefinitionsBuilder_.isEmpty()) {
-              columnDefinitionsBuilder_.dispose();
-              columnDefinitionsBuilder_ = null;
-              columnDefinitions_ = other.columnDefinitions_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              columnDefinitionsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getColumnDefinitionsFieldBuilder() : null;
-            } else {
-              columnDefinitionsBuilder_.addAllMessages(other.columnDefinitions_);
-            }
-          }
-        }
+        internalGetMutableColumnDefinitions().mergeFrom(
+            other.internalGetColumnDefinitions());
         if (other.hasIndex()) {
           mergeIndex(other.getIndex());
         }
@@ -5449,244 +4985,48 @@ public final class YaormModel {
         return this;
       }
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_ =
-        java.util.Collections.emptyList();
-      private void ensureColumnDefinitionsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          columnDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>(columnDefinitions_);
-          bitField0_ |= 0x00000002;
-         }
+      private com.google.protobuf.MapField<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_;
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      internalGetColumnDefinitions() {
+        if (columnDefinitions_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              ColumnDefinitionsDefaultEntryHolder.defaultEntry);
+       }
+        return columnDefinitions_;
       }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> columnDefinitionsBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitionsList() {
-        if (columnDefinitionsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(columnDefinitions_);
-        } else {
-          return columnDefinitionsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      internalGetMutableColumnDefinitions() {
+        onChanged();;
+        if (columnDefinitions_ == null) {
+          columnDefinitions_ = com.google.protobuf.MapField.newMapField(
+              ColumnDefinitionsDefaultEntryHolder.defaultEntry);
         }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public int getColumnDefinitionsCount() {
-        if (columnDefinitionsBuilder_ == null) {
-          return columnDefinitions_.size();
-        } else {
-          return columnDefinitionsBuilder_.getCount();
+        if (!columnDefinitions_.isMutable()) {
+          columnDefinitions_ = columnDefinitions_.copy();
         }
+        return columnDefinitions_;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinitions(int index) {
-        if (columnDefinitionsBuilder_ == null) {
-          return columnDefinitions_.get(index);
-        } else {
-          return columnDefinitionsBuilder_.getMessage(index);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitions() {
+        return internalGetColumnDefinitions().getMap();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
        */
-      public Builder setColumnDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (columnDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.set(index, value);
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.setMessage(index, value);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
+      getMutableColumnDefinitions() {
+        return internalGetMutableColumnDefinitions().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
+       */
+      public Builder putAllColumnDefinitions(
+          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
+        getMutableColumnDefinitions().putAll(values);
         return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder setColumnDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (columnDefinitionsBuilder_ == null) {
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder addColumnDefinitions(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (columnDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.add(value);
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder addColumnDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
-        if (columnDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.add(index, value);
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder addColumnDefinitions(
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (columnDefinitionsBuilder_ == null) {
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.add(builderForValue.build());
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder addColumnDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
-        if (columnDefinitionsBuilder_ == null) {
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder addAllColumnDefinitions(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
-        if (columnDefinitionsBuilder_ == null) {
-          ensureColumnDefinitionsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, columnDefinitions_);
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder clearColumnDefinitions() {
-        if (columnDefinitionsBuilder_ == null) {
-          columnDefinitions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public Builder removeColumnDefinitions(int index) {
-        if (columnDefinitionsBuilder_ == null) {
-          ensureColumnDefinitionsIsMutable();
-          columnDefinitions_.remove(index);
-          onChanged();
-        } else {
-          columnDefinitionsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getColumnDefinitionsBuilder(
-          int index) {
-        return getColumnDefinitionsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionsOrBuilder(
-          int index) {
-        if (columnDefinitionsBuilder_ == null) {
-          return columnDefinitions_.get(index);  } else {
-          return columnDefinitionsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-           getColumnDefinitionsOrBuilderList() {
-        if (columnDefinitionsBuilder_ != null) {
-          return columnDefinitionsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(columnDefinitions_);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnDefinitionsBuilder() {
-        return getColumnDefinitionsFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnDefinitionsBuilder(
-          int index) {
-        return getColumnDefinitionsFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder> 
-           getColumnDefinitionsBuilderList() {
-        return getColumnDefinitionsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
-          getColumnDefinitionsFieldBuilder() {
-        if (columnDefinitionsBuilder_ == null) {
-          columnDefinitionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder>(
-                  columnDefinitions_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          columnDefinitions_ = null;
-        }
-        return columnDefinitionsBuilder_;
       }
 
       private org.roylance.yaorm.models.YaormModel.Index index_ = null;
@@ -5912,28 +5252,10 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> 
-        getTableDefinitionsList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    int getTableDefinitionsCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-        getTableDefinitionsOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+    getTableDefinitions();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableDefinitions}
@@ -5947,7 +5269,6 @@ public final class YaormModel {
       super(builder);
     }
     private TableDefinitions() {
-      tableDefinitions_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -5974,12 +5295,16 @@ public final class YaormModel {
               }
               break;
             }
-            case 26: {
+            case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                tableDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinition>();
+                tableDefinitions_ = com.google.protobuf.MapField.newMapField(
+                    TableDefinitionsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              tableDefinitions_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+              tableDefinitions = input.readMessage(
+                  TableDefinitionsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              tableDefinitions_.getMutableMap().put(tableDefinitions.getKey(), tableDefinitions.getValue());
               break;
             }
           }
@@ -5991,9 +5316,6 @@ public final class YaormModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -6002,6 +5324,17 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetTableDefinitions();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable
@@ -6009,39 +5342,34 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.TableDefinitions.class, org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder.class);
     }
 
-    public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 3;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitionsList() {
+    public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 1;
+    private static final class TableDefinitionsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>newDefaultInstance(
+                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
+    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+    internalGetTableDefinitions() {
+      if (tableDefinitions_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            TableDefinitionsDefaultEntryHolder.defaultEntry);
+     }
       return tableDefinitions_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-        getTableDefinitionsOrBuilderList() {
-      return tableDefinitions_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    public int getTableDefinitionsCount() {
-      return tableDefinitions_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index) {
-      return tableDefinitions_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
-        int index) {
-      return tableDefinitions_.get(index);
+
+    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitions() {
+      return internalGetTableDefinitions().getMap();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6056,8 +5384,14 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < tableDefinitions_.size(); i++) {
-        output.writeMessage(3, tableDefinitions_.get(i));
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> entry
+           : internalGetTableDefinitions().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+        tableDefinitions = TableDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(1, tableDefinitions);
       }
     }
 
@@ -6066,9 +5400,15 @@ public final class YaormModel {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < tableDefinitions_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> entry
+           : internalGetTableDefinitions().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+        tableDefinitions = TableDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, tableDefinitions_.get(i));
+            .computeMessageSize(1, tableDefinitions);
       }
       memoizedSize = size;
       return size;
@@ -6158,6 +5498,28 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetTableDefinitions();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableTableDefinitions();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable
@@ -6177,17 +5539,11 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getTableDefinitionsFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
-        if (tableDefinitionsBuilder_ == null) {
-          tableDefinitions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          tableDefinitionsBuilder_.clear();
-        }
+        internalGetMutableTableDefinitions().clear();
         return this;
       }
 
@@ -6211,15 +5567,8 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.TableDefinitions buildPartial() {
         org.roylance.yaorm.models.YaormModel.TableDefinitions result = new org.roylance.yaorm.models.YaormModel.TableDefinitions(this);
         int from_bitField0_ = bitField0_;
-        if (tableDefinitionsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.tableDefinitions_ = tableDefinitions_;
-        } else {
-          result.tableDefinitions_ = tableDefinitionsBuilder_.build();
-        }
+        result.tableDefinitions_ = internalGetTableDefinitions();
+        result.tableDefinitions_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -6235,32 +5584,8 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.TableDefinitions other) {
         if (other == org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance()) return this;
-        if (tableDefinitionsBuilder_ == null) {
-          if (!other.tableDefinitions_.isEmpty()) {
-            if (tableDefinitions_.isEmpty()) {
-              tableDefinitions_ = other.tableDefinitions_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureTableDefinitionsIsMutable();
-              tableDefinitions_.addAll(other.tableDefinitions_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.tableDefinitions_.isEmpty()) {
-            if (tableDefinitionsBuilder_.isEmpty()) {
-              tableDefinitionsBuilder_.dispose();
-              tableDefinitionsBuilder_ = null;
-              tableDefinitions_ = other.tableDefinitions_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              tableDefinitionsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getTableDefinitionsFieldBuilder() : null;
-            } else {
-              tableDefinitionsBuilder_.addAllMessages(other.tableDefinitions_);
-            }
-          }
-        }
+        internalGetMutableTableDefinitions().mergeFrom(
+            other.internalGetTableDefinitions());
         onChanged();
         return this;
       }
@@ -6288,244 +5613,48 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_ =
-        java.util.Collections.emptyList();
-      private void ensureTableDefinitionsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          tableDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinition>(tableDefinitions_);
-          bitField0_ |= 0x00000001;
-         }
+      private com.google.protobuf.MapField<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+      internalGetTableDefinitions() {
+        if (tableDefinitions_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              TableDefinitionsDefaultEntryHolder.defaultEntry);
+       }
+        return tableDefinitions_;
       }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> tableDefinitionsBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitionsList() {
-        if (tableDefinitionsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(tableDefinitions_);
-        } else {
-          return tableDefinitionsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+      internalGetMutableTableDefinitions() {
+        onChanged();;
+        if (tableDefinitions_ == null) {
+          tableDefinitions_ = com.google.protobuf.MapField.newMapField(
+              TableDefinitionsDefaultEntryHolder.defaultEntry);
         }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public int getTableDefinitionsCount() {
-        if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_.size();
-        } else {
-          return tableDefinitionsBuilder_.getCount();
+        if (!tableDefinitions_.isMutable()) {
+          tableDefinitions_ = tableDefinitions_.copy();
         }
+        return tableDefinitions_;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index) {
-        if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_.get(index);
-        } else {
-          return tableDefinitionsBuilder_.getMessage(index);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitions() {
+        return internalGetTableDefinitions().getMap();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
        */
-      public Builder setTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition value) {
-        if (tableDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.set(index, value);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.setMessage(index, value);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
+      getMutableTableDefinitions() {
+        return internalGetMutableTableDefinitions().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
+       */
+      public Builder putAllTableDefinitions(
+          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> values) {
+        getMutableTableDefinitions().putAll(values);
         return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder setTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
-        if (tableDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(value);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition value) {
-        if (tableDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(index, value);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(
-          org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(builderForValue.build());
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addAllTableDefinitions(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.TableDefinition> values) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, tableDefinitions_);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder clearTableDefinitions() {
-        if (tableDefinitionsBuilder_ == null) {
-          tableDefinitions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder removeTableDefinitions(int index) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.remove(index);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getTableDefinitionsBuilder(
-          int index) {
-        return getTableDefinitionsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
-          int index) {
-        if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_.get(index);  } else {
-          return tableDefinitionsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-           getTableDefinitionsOrBuilderList() {
-        if (tableDefinitionsBuilder_ != null) {
-          return tableDefinitionsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(tableDefinitions_);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder addTableDefinitionsBuilder() {
-        return getTableDefinitionsFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder addTableDefinitionsBuilder(
-          int index) {
-        return getTableDefinitionsFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition.Builder> 
-           getTableDefinitionsBuilderList() {
-        return getTableDefinitionsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-          getTableDefinitionsFieldBuilder() {
-        if (tableDefinitionsBuilder_ == null) {
-          tableDefinitionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder>(
-                  tableDefinitions_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          tableDefinitions_ = null;
-        }
-        return tableDefinitionsBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8793,28 +7922,10 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.Column> 
-        getColumnsList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.Column getColumns(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    int getColumnsCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
-        getColumnsOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+    getColumns();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Record}
@@ -8828,7 +7939,6 @@ public final class YaormModel {
       super(builder);
     }
     private Record() {
-      columns_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -8857,10 +7967,14 @@ public final class YaormModel {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Column>();
+                columns_ = com.google.protobuf.MapField.newMapField(
+                    ColumnsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              columns_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Column.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+              columns = input.readMessage(
+                  ColumnsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              columns_.getMutableMap().put(columns.getKey(), columns.getValue());
               break;
             }
           }
@@ -8872,9 +7986,6 @@ public final class YaormModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          columns_ = java.util.Collections.unmodifiableList(columns_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -8883,6 +7994,17 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetColumns();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_fieldAccessorTable
@@ -8891,38 +8013,33 @@ public final class YaormModel {
     }
 
     public static final int COLUMNS_FIELD_NUMBER = 1;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.Column> columns_;
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.Column> getColumnsList() {
+    private static final class ColumnsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.Column> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>newDefaultInstance(
+                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.roylance.yaorm.models.YaormModel.Column> columns_;
+    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+    internalGetColumns() {
+      if (columns_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            ColumnsDefaultEntryHolder.defaultEntry);
+     }
       return columns_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
-        getColumnsOrBuilderList() {
-      return columns_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    public int getColumnsCount() {
-      return columns_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.Column getColumns(int index) {
-      return columns_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
-        int index) {
-      return columns_.get(index);
+
+    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> getColumns() {
+      return internalGetColumns().getMap();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8937,8 +8054,14 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < columns_.size(); i++) {
-        output.writeMessage(1, columns_.get(i));
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> entry
+           : internalGetColumns().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+        columns = ColumnsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(1, columns);
       }
     }
 
@@ -8947,9 +8070,15 @@ public final class YaormModel {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < columns_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> entry
+           : internalGetColumns().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+        columns = ColumnsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, columns_.get(i));
+            .computeMessageSize(1, columns);
       }
       memoizedSize = size;
       return size;
@@ -9039,6 +8168,28 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetColumns();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableColumns();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_fieldAccessorTable
@@ -9058,17 +8209,11 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getColumnsFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
-        if (columnsBuilder_ == null) {
-          columns_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          columnsBuilder_.clear();
-        }
+        internalGetMutableColumns().clear();
         return this;
       }
 
@@ -9092,15 +8237,8 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.Record buildPartial() {
         org.roylance.yaorm.models.YaormModel.Record result = new org.roylance.yaorm.models.YaormModel.Record(this);
         int from_bitField0_ = bitField0_;
-        if (columnsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            columns_ = java.util.Collections.unmodifiableList(columns_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.columns_ = columns_;
-        } else {
-          result.columns_ = columnsBuilder_.build();
-        }
+        result.columns_ = internalGetColumns();
+        result.columns_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -9116,32 +8254,8 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Record other) {
         if (other == org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance()) return this;
-        if (columnsBuilder_ == null) {
-          if (!other.columns_.isEmpty()) {
-            if (columns_.isEmpty()) {
-              columns_ = other.columns_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureColumnsIsMutable();
-              columns_.addAll(other.columns_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.columns_.isEmpty()) {
-            if (columnsBuilder_.isEmpty()) {
-              columnsBuilder_.dispose();
-              columnsBuilder_ = null;
-              columns_ = other.columns_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              columnsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getColumnsFieldBuilder() : null;
-            } else {
-              columnsBuilder_.addAllMessages(other.columns_);
-            }
-          }
-        }
+        internalGetMutableColumns().mergeFrom(
+            other.internalGetColumns());
         onChanged();
         return this;
       }
@@ -9169,244 +8283,48 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.Column> columns_ =
-        java.util.Collections.emptyList();
-      private void ensureColumnsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Column>(columns_);
-          bitField0_ |= 0x00000001;
-         }
+      private com.google.protobuf.MapField<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.Column> columns_;
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+      internalGetColumns() {
+        if (columns_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              ColumnsDefaultEntryHolder.defaultEntry);
+       }
+        return columns_;
       }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> columnsBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.Column> getColumnsList() {
-        if (columnsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(columns_);
-        } else {
-          return columnsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+      internalGetMutableColumns() {
+        onChanged();;
+        if (columns_ == null) {
+          columns_ = com.google.protobuf.MapField.newMapField(
+              ColumnsDefaultEntryHolder.defaultEntry);
         }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public int getColumnsCount() {
-        if (columnsBuilder_ == null) {
-          return columns_.size();
-        } else {
-          return columnsBuilder_.getCount();
+        if (!columns_.isMutable()) {
+          columns_ = columns_.copy();
         }
+        return columns_;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.Column getColumns(int index) {
-        if (columnsBuilder_ == null) {
-          return columns_.get(index);
-        } else {
-          return columnsBuilder_.getMessage(index);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> getColumns() {
+        return internalGetColumns().getMap();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
        */
-      public Builder setColumns(
-          int index, org.roylance.yaorm.models.YaormModel.Column value) {
-        if (columnsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnsIsMutable();
-          columns_.set(index, value);
-          onChanged();
-        } else {
-          columnsBuilder_.setMessage(index, value);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
+      getMutableColumns() {
+        return internalGetMutableColumns().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
+       */
+      public Builder putAllColumns(
+          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> values) {
+        getMutableColumns().putAll(values);
         return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder setColumns(
-          int index, org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
-        if (columnsBuilder_ == null) {
-          ensureColumnsIsMutable();
-          columns_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          columnsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder addColumns(org.roylance.yaorm.models.YaormModel.Column value) {
-        if (columnsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnsIsMutable();
-          columns_.add(value);
-          onChanged();
-        } else {
-          columnsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder addColumns(
-          int index, org.roylance.yaorm.models.YaormModel.Column value) {
-        if (columnsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureColumnsIsMutable();
-          columns_.add(index, value);
-          onChanged();
-        } else {
-          columnsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder addColumns(
-          org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
-        if (columnsBuilder_ == null) {
-          ensureColumnsIsMutable();
-          columns_.add(builderForValue.build());
-          onChanged();
-        } else {
-          columnsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder addColumns(
-          int index, org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
-        if (columnsBuilder_ == null) {
-          ensureColumnsIsMutable();
-          columns_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          columnsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder addAllColumns(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.Column> values) {
-        if (columnsBuilder_ == null) {
-          ensureColumnsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, columns_);
-          onChanged();
-        } else {
-          columnsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder clearColumns() {
-        if (columnsBuilder_ == null) {
-          columns_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          columnsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public Builder removeColumns(int index) {
-        if (columnsBuilder_ == null) {
-          ensureColumnsIsMutable();
-          columns_.remove(index);
-          onChanged();
-        } else {
-          columnsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.Column.Builder getColumnsBuilder(
-          int index) {
-        return getColumnsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
-          int index) {
-        if (columnsBuilder_ == null) {
-          return columns_.get(index);  } else {
-          return columnsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
-           getColumnsOrBuilderList() {
-        if (columnsBuilder_ != null) {
-          return columnsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(columns_);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.Column.Builder addColumnsBuilder() {
-        return getColumnsFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.Column.Builder addColumnsBuilder(
-          int index) {
-        return getColumnsFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.Column.Builder> 
-           getColumnsBuilderList() {
-        return getColumnsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
-          getColumnsFieldBuilder() {
-        if (columnsBuilder_ == null) {
-          columnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder>(
-                  columns_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          columns_ = null;
-        }
-        return columnsBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10968,28 +9886,10 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> 
-        getTableRecordsList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.TableRecords getTableRecords(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    int getTableRecordsCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
-        getTableRecordsOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder getTableRecordsOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+    getTableRecords();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.AllTableRecords}
@@ -11003,7 +9903,6 @@ public final class YaormModel {
       super(builder);
     }
     private AllTableRecords() {
-      tableRecords_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -11032,10 +9931,14 @@ public final class YaormModel {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                tableRecords_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableRecords>();
+                tableRecords_ = com.google.protobuf.MapField.newMapField(
+                    TableRecordsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              tableRecords_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableRecords.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+              tableRecords = input.readMessage(
+                  TableRecordsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              tableRecords_.getMutableMap().put(tableRecords.getKey(), tableRecords.getValue());
               break;
             }
           }
@@ -11047,9 +9950,6 @@ public final class YaormModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          tableRecords_ = java.util.Collections.unmodifiableList(tableRecords_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -11058,6 +9958,17 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetTableRecords();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_fieldAccessorTable
@@ -11066,38 +9977,33 @@ public final class YaormModel {
     }
 
     public static final int TABLE_RECORDS_FIELD_NUMBER = 1;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_;
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecordsList() {
+    private static final class TableRecordsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>newDefaultInstance(
+                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.roylance.yaorm.models.YaormModel.TableRecords.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_;
+    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+    internalGetTableRecords() {
+      if (tableRecords_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            TableRecordsDefaultEntryHolder.defaultEntry);
+     }
       return tableRecords_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
-        getTableRecordsOrBuilderList() {
-      return tableRecords_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    public int getTableRecordsCount() {
-      return tableRecords_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.TableRecords getTableRecords(int index) {
-      return tableRecords_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder getTableRecordsOrBuilder(
-        int index) {
-      return tableRecords_.get(index);
+
+    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecords() {
+      return internalGetTableRecords().getMap();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -11112,8 +10018,14 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < tableRecords_.size(); i++) {
-        output.writeMessage(1, tableRecords_.get(i));
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> entry
+           : internalGetTableRecords().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+        tableRecords = TableRecordsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(1, tableRecords);
       }
     }
 
@@ -11122,9 +10034,15 @@ public final class YaormModel {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < tableRecords_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> entry
+           : internalGetTableRecords().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+        tableRecords = TableRecordsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, tableRecords_.get(i));
+            .computeMessageSize(1, tableRecords);
       }
       memoizedSize = size;
       return size;
@@ -11214,6 +10132,28 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetTableRecords();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableTableRecords();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_fieldAccessorTable
@@ -11233,17 +10173,11 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getTableRecordsFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
-        if (tableRecordsBuilder_ == null) {
-          tableRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          tableRecordsBuilder_.clear();
-        }
+        internalGetMutableTableRecords().clear();
         return this;
       }
 
@@ -11267,15 +10201,8 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.AllTableRecords buildPartial() {
         org.roylance.yaorm.models.YaormModel.AllTableRecords result = new org.roylance.yaorm.models.YaormModel.AllTableRecords(this);
         int from_bitField0_ = bitField0_;
-        if (tableRecordsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            tableRecords_ = java.util.Collections.unmodifiableList(tableRecords_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.tableRecords_ = tableRecords_;
-        } else {
-          result.tableRecords_ = tableRecordsBuilder_.build();
-        }
+        result.tableRecords_ = internalGetTableRecords();
+        result.tableRecords_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -11291,32 +10218,8 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.AllTableRecords other) {
         if (other == org.roylance.yaorm.models.YaormModel.AllTableRecords.getDefaultInstance()) return this;
-        if (tableRecordsBuilder_ == null) {
-          if (!other.tableRecords_.isEmpty()) {
-            if (tableRecords_.isEmpty()) {
-              tableRecords_ = other.tableRecords_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureTableRecordsIsMutable();
-              tableRecords_.addAll(other.tableRecords_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.tableRecords_.isEmpty()) {
-            if (tableRecordsBuilder_.isEmpty()) {
-              tableRecordsBuilder_.dispose();
-              tableRecordsBuilder_ = null;
-              tableRecords_ = other.tableRecords_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              tableRecordsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getTableRecordsFieldBuilder() : null;
-            } else {
-              tableRecordsBuilder_.addAllMessages(other.tableRecords_);
-            }
-          }
-        }
+        internalGetMutableTableRecords().mergeFrom(
+            other.internalGetTableRecords());
         onChanged();
         return this;
       }
@@ -11344,244 +10247,48 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_ =
-        java.util.Collections.emptyList();
-      private void ensureTableRecordsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          tableRecords_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableRecords>(tableRecords_);
-          bitField0_ |= 0x00000001;
-         }
+      private com.google.protobuf.MapField<
+          java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_;
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+      internalGetTableRecords() {
+        if (tableRecords_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              TableRecordsDefaultEntryHolder.defaultEntry);
+       }
+        return tableRecords_;
       }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.TableRecords, org.roylance.yaorm.models.YaormModel.TableRecords.Builder, org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> tableRecordsBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecordsList() {
-        if (tableRecordsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(tableRecords_);
-        } else {
-          return tableRecordsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+      internalGetMutableTableRecords() {
+        onChanged();;
+        if (tableRecords_ == null) {
+          tableRecords_ = com.google.protobuf.MapField.newMapField(
+              TableRecordsDefaultEntryHolder.defaultEntry);
         }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public int getTableRecordsCount() {
-        if (tableRecordsBuilder_ == null) {
-          return tableRecords_.size();
-        } else {
-          return tableRecordsBuilder_.getCount();
+        if (!tableRecords_.isMutable()) {
+          tableRecords_ = tableRecords_.copy();
         }
+        return tableRecords_;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.TableRecords getTableRecords(int index) {
-        if (tableRecordsBuilder_ == null) {
-          return tableRecords_.get(index);
-        } else {
-          return tableRecordsBuilder_.getMessage(index);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecords() {
+        return internalGetTableRecords().getMap();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
        */
-      public Builder setTableRecords(
-          int index, org.roylance.yaorm.models.YaormModel.TableRecords value) {
-        if (tableRecordsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableRecordsIsMutable();
-          tableRecords_.set(index, value);
-          onChanged();
-        } else {
-          tableRecordsBuilder_.setMessage(index, value);
-        }
+      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
+      getMutableTableRecords() {
+        return internalGetMutableTableRecords().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
+       */
+      public Builder putAllTableRecords(
+          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> values) {
+        getMutableTableRecords().putAll(values);
         return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder setTableRecords(
-          int index, org.roylance.yaorm.models.YaormModel.TableRecords.Builder builderForValue) {
-        if (tableRecordsBuilder_ == null) {
-          ensureTableRecordsIsMutable();
-          tableRecords_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          tableRecordsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder addTableRecords(org.roylance.yaorm.models.YaormModel.TableRecords value) {
-        if (tableRecordsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableRecordsIsMutable();
-          tableRecords_.add(value);
-          onChanged();
-        } else {
-          tableRecordsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder addTableRecords(
-          int index, org.roylance.yaorm.models.YaormModel.TableRecords value) {
-        if (tableRecordsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableRecordsIsMutable();
-          tableRecords_.add(index, value);
-          onChanged();
-        } else {
-          tableRecordsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder addTableRecords(
-          org.roylance.yaorm.models.YaormModel.TableRecords.Builder builderForValue) {
-        if (tableRecordsBuilder_ == null) {
-          ensureTableRecordsIsMutable();
-          tableRecords_.add(builderForValue.build());
-          onChanged();
-        } else {
-          tableRecordsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder addTableRecords(
-          int index, org.roylance.yaorm.models.YaormModel.TableRecords.Builder builderForValue) {
-        if (tableRecordsBuilder_ == null) {
-          ensureTableRecordsIsMutable();
-          tableRecords_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          tableRecordsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder addAllTableRecords(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.TableRecords> values) {
-        if (tableRecordsBuilder_ == null) {
-          ensureTableRecordsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, tableRecords_);
-          onChanged();
-        } else {
-          tableRecordsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder clearTableRecords() {
-        if (tableRecordsBuilder_ == null) {
-          tableRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          tableRecordsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public Builder removeTableRecords(int index) {
-        if (tableRecordsBuilder_ == null) {
-          ensureTableRecordsIsMutable();
-          tableRecords_.remove(index);
-          onChanged();
-        } else {
-          tableRecordsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableRecords.Builder getTableRecordsBuilder(
-          int index) {
-        return getTableRecordsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder getTableRecordsOrBuilder(
-          int index) {
-        if (tableRecordsBuilder_ == null) {
-          return tableRecords_.get(index);  } else {
-          return tableRecordsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
-           getTableRecordsOrBuilderList() {
-        if (tableRecordsBuilder_ != null) {
-          return tableRecordsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(tableRecords_);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableRecords.Builder addTableRecordsBuilder() {
-        return getTableRecordsFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.TableRecords.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableRecords.Builder addTableRecordsBuilder(
-          int index) {
-        return getTableRecordsFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.TableRecords.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords.Builder> 
-           getTableRecordsBuilderList() {
-        return getTableRecordsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.TableRecords, org.roylance.yaorm.models.YaormModel.TableRecords.Builder, org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
-          getTableRecordsFieldBuilder() {
-        if (tableRecordsBuilder_ == null) {
-          tableRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.TableRecords, org.roylance.yaorm.models.YaormModel.TableRecords.Builder, org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder>(
-                  tableRecords_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          tableRecords_ = null;
-        }
-        return tableRecordsBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -14363,28 +13070,17 @@ public final class YaormModel {
         getNameBytes();
 
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
-    java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> 
-        getTableDefinitionsList();
+    boolean hasTableDefinitions();
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
-    org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index);
+    org.roylance.yaorm.models.YaormModel.TableDefinitions getTableDefinitions();
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
-    int getTableDefinitionsCount();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-        getTableDefinitionsOrBuilderList();
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
-        int index);
+    org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder();
 
     /**
      * <code>repeated .org.roylance.yaorm.models.TableDefinitionGraphs table_definition_graphs = 4;</code>
@@ -14424,7 +13120,6 @@ public final class YaormModel {
     private DatabaseDefinition() {
       schema_ = "";
       name_ = "";
-      tableDefinitions_ = java.util.Collections.emptyList();
       tableDefinitionGraphs_ = java.util.Collections.emptyList();
     }
 
@@ -14465,11 +13160,16 @@ public final class YaormModel {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                tableDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinition>();
-                mutable_bitField0_ |= 0x00000004;
+              org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder subBuilder = null;
+              if (tableDefinitions_ != null) {
+                subBuilder = tableDefinitions_.toBuilder();
               }
-              tableDefinitions_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry));
+              tableDefinitions_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitions.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tableDefinitions_);
+                tableDefinitions_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 34: {
@@ -14489,9 +13189,6 @@ public final class YaormModel {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
-        }
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           tableDefinitionGraphs_ = java.util.Collections.unmodifiableList(tableDefinitionGraphs_);
         }
@@ -14580,38 +13277,24 @@ public final class YaormModel {
     }
 
     public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 3;
-    private java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
+    private org.roylance.yaorm.models.YaormModel.TableDefinitions tableDefinitions_;
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
-    public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitionsList() {
-      return tableDefinitions_;
+    public boolean hasTableDefinitions() {
+      return tableDefinitions_ != null;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
-    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-        getTableDefinitionsOrBuilderList() {
-      return tableDefinitions_;
+    public org.roylance.yaorm.models.YaormModel.TableDefinitions getTableDefinitions() {
+      return tableDefinitions_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
     }
     /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+     * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
-    public int getTableDefinitionsCount() {
-      return tableDefinitions_.size();
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index) {
-      return tableDefinitions_.get(index);
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-     */
-    public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
-        int index) {
-      return tableDefinitions_.get(index);
+    public org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
+      return getTableDefinitions();
     }
 
     public static final int TABLE_DEFINITION_GRAPHS_FIELD_NUMBER = 4;
@@ -14667,8 +13350,8 @@ public final class YaormModel {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
       }
-      for (int i = 0; i < tableDefinitions_.size(); i++) {
-        output.writeMessage(3, tableDefinitions_.get(i));
+      if (tableDefinitions_ != null) {
+        output.writeMessage(3, getTableDefinitions());
       }
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         output.writeMessage(4, tableDefinitionGraphs_.get(i));
@@ -14686,9 +13369,9 @@ public final class YaormModel {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
       }
-      for (int i = 0; i < tableDefinitions_.size(); i++) {
+      if (tableDefinitions_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, tableDefinitions_.get(i));
+          .computeMessageSize(3, getTableDefinitions());
       }
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -14801,7 +13484,6 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getTableDefinitionsFieldBuilder();
           getTableDefinitionGraphsFieldBuilder();
         }
       }
@@ -14812,10 +13494,10 @@ public final class YaormModel {
         name_ = "";
 
         if (tableDefinitionsBuilder_ == null) {
-          tableDefinitions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          tableDefinitions_ = null;
         } else {
-          tableDefinitionsBuilder_.clear();
+          tableDefinitions_ = null;
+          tableDefinitionsBuilder_ = null;
         }
         if (tableDefinitionGraphsBuilder_ == null) {
           tableDefinitionGraphs_ = java.util.Collections.emptyList();
@@ -14850,10 +13532,6 @@ public final class YaormModel {
         result.schema_ = schema_;
         result.name_ = name_;
         if (tableDefinitionsBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
-            tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
           result.tableDefinitions_ = tableDefinitions_;
         } else {
           result.tableDefinitions_ = tableDefinitionsBuilder_.build();
@@ -14891,31 +13569,8 @@ public final class YaormModel {
           name_ = other.name_;
           onChanged();
         }
-        if (tableDefinitionsBuilder_ == null) {
-          if (!other.tableDefinitions_.isEmpty()) {
-            if (tableDefinitions_.isEmpty()) {
-              tableDefinitions_ = other.tableDefinitions_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureTableDefinitionsIsMutable();
-              tableDefinitions_.addAll(other.tableDefinitions_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.tableDefinitions_.isEmpty()) {
-            if (tableDefinitionsBuilder_.isEmpty()) {
-              tableDefinitionsBuilder_.dispose();
-              tableDefinitionsBuilder_ = null;
-              tableDefinitions_ = other.tableDefinitions_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              tableDefinitionsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getTableDefinitionsFieldBuilder() : null;
-            } else {
-              tableDefinitionsBuilder_.addAllMessages(other.tableDefinitions_);
-            }
-          }
+        if (other.hasTableDefinitions()) {
+          mergeTableDefinitions(other.getTableDefinitions());
         }
         if (tableDefinitionGraphsBuilder_ == null) {
           if (!other.tableDefinitionGraphs_.isEmpty()) {
@@ -15108,239 +13763,116 @@ public final class YaormModel {
         return this;
       }
 
-      private java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_ =
-        java.util.Collections.emptyList();
-      private void ensureTableDefinitionsIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          tableDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinition>(tableDefinitions_);
-          bitField0_ |= 0x00000004;
-         }
+      private org.roylance.yaorm.models.YaormModel.TableDefinitions tableDefinitions_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.TableDefinitions, org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder> tableDefinitionsBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
+       */
+      public boolean hasTableDefinitions() {
+        return tableDefinitionsBuilder_ != null || tableDefinitions_ != null;
       }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinitions getTableDefinitions() {
+        if (tableDefinitionsBuilder_ == null) {
+          return tableDefinitions_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
+        } else {
+          return tableDefinitionsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
+       */
+      public Builder setTableDefinitions(org.roylance.yaorm.models.YaormModel.TableDefinitions value) {
+        if (tableDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tableDefinitions_ = value;
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.setMessage(value);
+        }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> tableDefinitionsBuilder_;
-
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitionsList() {
-        if (tableDefinitionsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(tableDefinitions_);
-        } else {
-          return tableDefinitionsBuilder_.getMessageList();
-        }
+        return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public int getTableDefinitionsCount() {
-        if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_.size();
-        } else {
-          return tableDefinitionsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index) {
-        if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_.get(index);
-        } else {
-          return tableDefinitionsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
       public Builder setTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition value) {
+          org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder builderForValue) {
         if (tableDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
+          tableDefinitions_ = builderForValue.build();
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
+       */
+      public Builder mergeTableDefinitions(org.roylance.yaorm.models.YaormModel.TableDefinitions value) {
+        if (tableDefinitionsBuilder_ == null) {
+          if (tableDefinitions_ != null) {
+            tableDefinitions_ =
+              org.roylance.yaorm.models.YaormModel.TableDefinitions.newBuilder(tableDefinitions_).mergeFrom(value).buildPartial();
+          } else {
+            tableDefinitions_ = value;
           }
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.set(index, value);
           onChanged();
         } else {
-          tableDefinitionsBuilder_.setMessage(index, value);
+          tableDefinitionsBuilder_.mergeFrom(value);
         }
+
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder setTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
-        if (tableDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(value);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition value) {
-        if (tableDefinitionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(index, value);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(
-          org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(builderForValue.build());
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addTableDefinitions(
-          int index, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public Builder addAllTableDefinitions(
-          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.TableDefinition> values) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, tableDefinitions_);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
       public Builder clearTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
-          tableDefinitions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          tableDefinitions_ = null;
           onChanged();
         } else {
-          tableDefinitionsBuilder_.clear();
+          tableDefinitions_ = null;
+          tableDefinitionsBuilder_ = null;
         }
+
         return this;
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
-      public Builder removeTableDefinitions(int index) {
-        if (tableDefinitionsBuilder_ == null) {
-          ensureTableDefinitionsIsMutable();
-          tableDefinitions_.remove(index);
-          onChanged();
-        } else {
-          tableDefinitionsBuilder_.remove(index);
-        }
-        return this;
+      public org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder getTableDefinitionsBuilder() {
+        
+        onChanged();
+        return getTableDefinitionsFieldBuilder().getBuilder();
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getTableDefinitionsBuilder(
-          int index) {
-        return getTableDefinitionsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
-          int index) {
-        if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_.get(index);  } else {
-          return tableDefinitionsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
-           getTableDefinitionsOrBuilderList() {
+      public org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
         if (tableDefinitionsBuilder_ != null) {
-          return tableDefinitionsBuilder_.getMessageOrBuilderList();
+          return tableDefinitionsBuilder_.getMessageOrBuilder();
         } else {
-          return java.util.Collections.unmodifiableList(tableDefinitions_);
+          return tableDefinitions_ == null ?
+              org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
         }
       }
       /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
+       * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder addTableDefinitionsBuilder() {
-        return getTableDefinitionsFieldBuilder().addBuilder(
-            org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder addTableDefinitionsBuilder(
-          int index) {
-        return getTableDefinitionsFieldBuilder().addBuilder(
-            index, org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 3;</code>
-       */
-      public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition.Builder> 
-           getTableDefinitionsBuilderList() {
-        return getTableDefinitionsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.TableDefinitions, org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder> 
           getTableDefinitionsFieldBuilder() {
         if (tableDefinitionsBuilder_ == null) {
-          tableDefinitionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder>(
-                  tableDefinitions_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+          tableDefinitionsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.TableDefinitions, org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder>(
+                  getTableDefinitions(),
                   getParentForChildren(),
                   isClean());
           tableDefinitions_ = null;
@@ -18826,6 +17358,16 @@ public final class YaormModel {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Difference_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -18836,10 +17378,20 @@ public final class YaormModel {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_DifferenceReport_descriptor;
   private static
@@ -18856,6 +17408,11 @@ public final class YaormModel {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Record_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Records_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -18870,6 +17427,11 @@ public final class YaormModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_AllTableRecords_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_DatabaseOperation_descriptor;
   private static
@@ -18930,109 +17492,126 @@ public final class YaormModel {
       "inition.LinkerType\"H\n\nColumnType\022\n\n\006SCAL" +
       "AR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nENUM_VALUE\020\002\022\017\n\013M",
       "ESSAGE_KEY\020\003\":\n\nLinkerType\022\010\n\004NONE\020\000\022\n\n\006" +
-      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\216\001\n\005Ind" +
-      "ex\022A\n\014column_names\030\001 \003(\0132+.org.roylance." +
-      "yaorm.models.ColumnDefinition\022B\n\rinclude" +
-      "_names\030\002 \003(\0132+.org.roylance.yaorm.models" +
-      ".ColumnDefinition\"\271\003\n\nDifference\022E\n\013enti" +
-      "ty_type\030\001 \001(\01620.org.roylance.yaorm.model" +
-      "s.Difference.EntityType\022B\n\toperation\030\002 \001" +
-      "(\0162/.org.roylance.yaorm.models.Differenc" +
-      "e.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005index\030\004 \001(\013",
-      "2 .org.roylance.yaorm.models.Index\022H\n\023pr" +
-      "operty_definition\030\005 \001(\0132+.org.roylance.y" +
-      "aorm.models.ColumnDefinition\022D\n\020table_de" +
-      "finition\030\006 \001(\0132*.org.roylance.yaorm.mode" +
-      "ls.TableDefinition\".\n\nEntityType\022\t\n\005INDE" +
-      "X\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation\022" +
-      "\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\241\002\n\017TableDefinitio" +
-      "n\022\014\n\004name\030\001 \001(\t\022G\n\022column_definitions\030\002 " +
-      "\003(\0132+.org.roylance.yaorm.models.ColumnDe" +
-      "finition\022/\n\005index\030\003 \001(\0132 .org.roylance.y",
-      "aorm.models.Index\022H\n\ntable_type\030\004 \001(\01624." +
-      "org.roylance.yaorm.models.TableDefinitio" +
-      "n.TableType\"<\n\tTableType\022\n\n\006NORMAL\020\000\022\022\n\016" +
-      "LINKER_MESSAGE\020\001\022\017\n\013LINKER_ENUM\020\002\"Y\n\020Tab" +
-      "leDefinitions\022E\n\021table_definitions\030\003 \003(\013" +
+      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\336\002\n\005Ind" +
+      "ex\022G\n\014column_names\030\001 \003(\01321.org.roylance." +
+      "yaorm.models.Index.ColumnNamesEntry\022I\n\ri" +
+      "nclude_names\030\002 \003(\01322.org.roylance.yaorm." +
+      "models.Index.IncludeNamesEntry\032_\n\020Column" +
+      "NamesEntry\022\013\n\003key\030\001 \001(\t\022:\n\005value\030\002 \001(\0132+" +
+      ".org.roylance.yaorm.models.ColumnDefinit" +
+      "ion:\0028\001\032`\n\021IncludeNamesEntry\022\013\n\003key\030\001 \001(" +
+      "\t\022:\n\005value\030\002 \001(\0132+.org.roylance.yaorm.mo",
+      "dels.ColumnDefinition:\0028\001\"\271\003\n\nDifference" +
+      "\022E\n\013entity_type\030\001 \001(\01620.org.roylance.yao" +
+      "rm.models.Difference.EntityType\022B\n\topera" +
+      "tion\030\002 \001(\0162/.org.roylance.yaorm.models.D" +
+      "ifference.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005ind" +
+      "ex\030\004 \001(\0132 .org.roylance.yaorm.models.Ind" +
+      "ex\022H\n\023property_definition\030\005 \001(\0132+.org.ro" +
+      "ylance.yaorm.models.ColumnDefinition\022D\n\020" +
+      "table_definition\030\006 \001(\0132*.org.roylance.ya" +
+      "orm.models.TableDefinition\".\n\nEntityType",
+      "\022\t\n\005INDEX\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOp" +
+      "eration\022\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\236\003\n\017TableD" +
+      "efinition\022\014\n\004name\030\001 \001(\t\022]\n\022column_defini" +
+      "tions\030\002 \003(\0132A.org.roylance.yaorm.models." +
+      "TableDefinition.ColumnDefinitionsEntry\022/" +
+      "\n\005index\030\003 \001(\0132 .org.roylance.yaorm.model" +
+      "s.Index\022H\n\ntable_type\030\004 \001(\01624.org.roylan" +
+      "ce.yaorm.models.TableDefinition.TableTyp" +
+      "e\032e\n\026ColumnDefinitionsEntry\022\013\n\003key\030\001 \001(\t" +
+      "\022:\n\005value\030\002 \001(\0132+.org.roylance.yaorm.mod",
+      "els.ColumnDefinition:\0028\001\"<\n\tTableType\022\n\n" +
+      "\006NORMAL\020\000\022\022\n\016LINKER_MESSAGE\020\001\022\017\n\013LINKER_" +
+      "ENUM\020\002\"\325\001\n\020TableDefinitions\022\\\n\021table_def" +
+      "initions\030\001 \003(\0132A.org.roylance.yaorm.mode" +
+      "ls.TableDefinitions.TableDefinitionsEntr" +
+      "y\032c\n\025TableDefinitionsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "9\n\005value\030\002 \001(\0132*.org.roylance.yaorm.mode" +
+      "ls.TableDefinition:\0028\001\"h\n\020DifferenceRepo" +
+      "rt\022\030\n\020migration_exists\030\001 \001(\010\022:\n\013differen" +
+      "ces\030\002 \003(\0132%.org.roylance.yaorm.models.Di",
+      "fference\"\242\003\n\006Column\022?\n\ndefinition\030\001 \001(\0132" +
+      "+.org.roylance.yaorm.models.ColumnDefini" +
+      "tion\022\025\n\rdouble_holder\030\002 \001(\001\022\024\n\014float_hol" +
+      "der\030\003 \001(\002\022\024\n\014int32_holder\030\004 \001(\005\022\024\n\014int64" +
+      "_holder\030\005 \001(\003\022\025\n\ruint32_holder\030\006 \001(\r\022\025\n\r" +
+      "uint64_holder\030\007 \001(\004\022\025\n\rsint32_holder\030\010 \001" +
+      "(\021\022\025\n\rsint64_holder\030\t \001(\022\022\026\n\016fixed32_hol" +
+      "der\030\n \001(\007\022\026\n\016fixed64_holder\030\013 \001(\006\022\027\n\017sfi" +
+      "xed32_holder\030\014 \001(\017\022\027\n\017sfixed64_holder\030\r " +
+      "\001(\020\022\023\n\013bool_holder\030\016 \001(\010\022\025\n\rstring_holde",
+      "r\030\017 \001(\t\022\024\n\014bytes_holder\030\020 \001(\014\"\234\001\n\006Record" +
+      "\022?\n\007columns\030\001 \003(\0132..org.roylance.yaorm.m" +
+      "odels.Record.ColumnsEntry\032Q\n\014ColumnsEntr" +
+      "y\022\013\n\003key\030\001 \001(\t\0220\n\005value\030\002 \001(\0132!.org.royl" +
+      "ance.yaorm.models.Column:\0028\001\"=\n\007Records\022" +
+      "2\n\007records\030\001 \003(\0132!.org.roylance.yaorm.mo" +
+      "dels.Record\"\235\001\n\014TableRecords\022D\n\020table_de" +
+      "finition\030\001 \001(\0132*.org.roylance.yaorm.mode" +
+      "ls.TableDefinition\0223\n\007records\030\002 \001(\0132\".or" +
+      "g.roylance.yaorm.models.Records\022\022\n\ntable",
+      "_name\030\003 \001(\t\"\304\001\n\017AllTableRecords\022S\n\rtable" +
+      "_records\030\001 \003(\0132<.org.roylance.yaorm.mode" +
+      "ls.AllTableRecords.TableRecordsEntry\032\\\n\021" +
+      "TableRecordsEntry\022\013\n\003key\030\001 \001(\t\0226\n\005value\030" +
+      "\002 \001(\0132\'.org.roylance.yaorm.models.TableR" +
+      "ecords:\0028\001\"\371\005\n\021DatabaseOperation\022D\n\020tabl" +
+      "e_definition\030\001 \001(\0132*.org.roylance.yaorm." +
+      "models.TableDefinition\0223\n\007records\030\002 \001(\0132" +
+      "\".org.roylance.yaorm.models.Records\022/\n\005i" +
+      "ndex\030\003 \001(\0132 .org.roylance.yaorm.models.I",
+      "ndex\022F\n\021column_definition\030\004 \001(\0132+.org.ro" +
+      "ylance.yaorm.models.ColumnDefinition\022<\n\014" +
+      "where_clause\030\005 \001(\0132&.org.roylance.yaorm." +
+      "models.WhereClause\022c\n\027database_operation" +
+      "_type\030\006 \001(\0162B.org.roylance.yaorm.models." +
+      "DatabaseOperation.DatabaseOperationType\"" +
+      "\314\002\n\025DatabaseOperationType\022\020\n\014CREATE_TABL" +
+      "E\020\000\022\016\n\nDROP_TABLE\020\001\022\020\n\014CREATE_INDEX\020\002\022\016\n" +
+      "\nDROP_INDEX\020\003\022\021\n\rCREATE_COLUMN\020\004\022\017\n\013DROP" +
+      "_COLUMN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n\nGET_CUSTOM\020\007",
+      "\022\007\n\003GET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\tGET_WHERE\020\n\022\017" +
+      "\n\013BULK_INSERT\020\013\022\024\n\020CREATE_OR_UPDATE\020\014\022\n\n" +
+      "\006CREATE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UPDATE_WITH_CRI" +
+      "TERIA\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022\n\n\006DELETE\020\021\022\016" +
+      "\n\nDELETE_ALL\020\022\"\233\002\n\027DatabaseOperationResu" +
+      "lt\022\023\n\013bool_result\030\001 \001(\010\022\024\n\014count_result\030" +
+      "\002 \001(\003\0228\n\rrecord_result\030\003 \001(\0132!.org.royla" +
+      "nce.yaorm.models.Record\022:\n\016records_resul" +
+      "t\030\004 \001(\0132\".org.roylance.yaorm.models.Reco" +
+      "rds\022\025\n\rerror_message\030\005 \001(\t\022H\n\022database_o",
+      "peration\030\006 \001(\0132,.org.roylance.yaorm.mode" +
+      "ls.DatabaseOperation\"\315\001\n\022DatabaseDefinit" +
+      "ion\022\016\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022F\n\021tab" +
+      "le_definitions\030\003 \001(\0132+.org.roylance.yaor" +
+      "m.models.TableDefinitions\022Q\n\027table_defin" +
+      "ition_graphs\030\004 \003(\01320.org.roylance.yaorm." +
+      "models.TableDefinitionGraphs\"\327\003\n\024TableDe" +
+      "finitionGraph\022I\n\025main_table_definition\030\001" +
+      " \001(\0132*.org.roylance.yaorm.models.TableDe" +
+      "finition\022J\n\026other_table_definition\030\002 \001(\013",
       "2*.org.roylance.yaorm.models.TableDefini" +
-      "tion\"h\n\020DifferenceReport\022\030\n\020migration_ex" +
-      "ists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132%.org.ro" +
-      "ylance.yaorm.models.Difference\"\242\003\n\006Colum" +
-      "n\022?\n\ndefinition\030\001 \001(\0132+.org.roylance.yao",
-      "rm.models.ColumnDefinition\022\025\n\rdouble_hol" +
-      "der\030\002 \001(\001\022\024\n\014float_holder\030\003 \001(\002\022\024\n\014int32" +
-      "_holder\030\004 \001(\005\022\024\n\014int64_holder\030\005 \001(\003\022\025\n\ru" +
-      "int32_holder\030\006 \001(\r\022\025\n\ruint64_holder\030\007 \001(" +
-      "\004\022\025\n\rsint32_holder\030\010 \001(\021\022\025\n\rsint64_holde" +
-      "r\030\t \001(\022\022\026\n\016fixed32_holder\030\n \001(\007\022\026\n\016fixed" +
-      "64_holder\030\013 \001(\006\022\027\n\017sfixed32_holder\030\014 \001(\017" +
-      "\022\027\n\017sfixed64_holder\030\r \001(\020\022\023\n\013bool_holder" +
-      "\030\016 \001(\010\022\025\n\rstring_holder\030\017 \001(\t\022\024\n\014bytes_h" +
-      "older\030\020 \001(\014\"<\n\006Record\0222\n\007columns\030\001 \003(\0132!",
-      ".org.roylance.yaorm.models.Column\"=\n\007Rec" +
-      "ords\0222\n\007records\030\001 \003(\0132!.org.roylance.yao" +
-      "rm.models.Record\"\235\001\n\014TableRecords\022D\n\020tab" +
-      "le_definition\030\001 \001(\0132*.org.roylance.yaorm" +
-      ".models.TableDefinition\0223\n\007records\030\002 \001(\013" +
-      "2\".org.roylance.yaorm.models.Records\022\022\n\n" +
-      "table_name\030\003 \001(\t\"Q\n\017AllTableRecords\022>\n\rt" +
-      "able_records\030\001 \003(\0132\'.org.roylance.yaorm." +
-      "models.TableRecords\"\371\005\n\021DatabaseOperatio" +
-      "n\022D\n\020table_definition\030\001 \001(\0132*.org.roylan",
-      "ce.yaorm.models.TableDefinition\0223\n\007recor" +
-      "ds\030\002 \001(\0132\".org.roylance.yaorm.models.Rec" +
-      "ords\022/\n\005index\030\003 \001(\0132 .org.roylance.yaorm" +
-      ".models.Index\022F\n\021column_definition\030\004 \001(\013" +
-      "2+.org.roylance.yaorm.models.ColumnDefin" +
-      "ition\022<\n\014where_clause\030\005 \001(\0132&.org.roylan" +
-      "ce.yaorm.models.WhereClause\022c\n\027database_" +
-      "operation_type\030\006 \001(\0162B.org.roylance.yaor" +
-      "m.models.DatabaseOperation.DatabaseOpera" +
-      "tionType\"\314\002\n\025DatabaseOperationType\022\020\n\014CR",
-      "EATE_TABLE\020\000\022\016\n\nDROP_TABLE\020\001\022\020\n\014CREATE_I" +
-      "NDEX\020\002\022\016\n\nDROP_INDEX\020\003\022\021\n\rCREATE_COLUMN\020" +
-      "\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n\nGET" +
-      "_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\tGET_" +
-      "WHERE\020\n\022\017\n\013BULK_INSERT\020\013\022\024\n\020CREATE_OR_UP" +
-      "DATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UPDATE" +
-      "_WITH_CRITERIA\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022\n\n\006D" +
-      "ELETE\020\021\022\016\n\nDELETE_ALL\020\022\"\233\002\n\027DatabaseOper" +
-      "ationResult\022\023\n\013bool_result\030\001 \001(\010\022\024\n\014coun" +
-      "t_result\030\002 \001(\003\0228\n\rrecord_result\030\003 \001(\0132!.",
-      "org.roylance.yaorm.models.Record\022:\n\016reco" +
-      "rds_result\030\004 \001(\0132\".org.roylance.yaorm.mo" +
-      "dels.Records\022\025\n\rerror_message\030\005 \001(\t\022H\n\022d" +
-      "atabase_operation\030\006 \001(\0132,.org.roylance.y" +
-      "aorm.models.DatabaseOperation\"\314\001\n\022Databa" +
-      "seDefinition\022\016\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 \001" +
-      "(\t\022E\n\021table_definitions\030\003 \003(\0132*.org.royl" +
-      "ance.yaorm.models.TableDefinition\022Q\n\027tab" +
-      "le_definition_graphs\030\004 \003(\01320.org.roylanc" +
-      "e.yaorm.models.TableDefinitionGraphs\"\327\003\n",
-      "\024TableDefinitionGraph\022I\n\025main_table_defi" +
-      "nition\030\001 \001(\0132*.org.roylance.yaorm.models" +
-      ".TableDefinition\022J\n\026other_table_definiti" +
-      "on\030\002 \001(\0132*.org.roylance.yaorm.models.Tab" +
-      "leDefinition\022F\n\022linker_table_table\030\003 \001(\013" +
-      "2*.org.roylance.yaorm.models.TableDefini" +
-      "tion\022g\n\025definition_graph_type\030\004 \001(\0162H.or" +
-      "g.roylance.yaorm.models.TableDefinitionG" +
-      "raph.TableDefinitionGraphType\022\021\n\tmain_na" +
-      "me\030\005 \001(\t\022\022\n\nother_name\030\006 \001(\t\022\023\n\013column_n",
-      "ame\030\007 \001(\t\";\n\030TableDefinitionGraphType\022\r\n" +
-      "\tENUM_TYPE\020\000\022\020\n\014MESSAGE_TYPE\020\001\"\264\001\n\025Table" +
-      "DefinitionGraphs\022I\n\025main_table_definitio" +
-      "n\030\001 \001(\0132*.org.roylance.yaorm.models.Tabl" +
-      "eDefinition\022P\n\027table_definition_graphs\030\002" +
-      " \003(\0132/.org.roylance.yaorm.models.TableDe" +
-      "finitionGraph\"N\n\016ConnectionInfo\022\014\n\004host\030" +
-      "\001 \001(\t\022\014\n\004user\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\016\n" +
-      "\006schema\030\004 \001(\t*\327\001\n\014ProtobufType\022\010\n\004NONE\020\000" +
-      "\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005IN",
-      "T64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020" +
-      "\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64\020\n\022" +
-      "\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n" +
-      "\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020b\006proto3"
+      "tion\022F\n\022linker_table_table\030\003 \001(\0132*.org.r" +
+      "oylance.yaorm.models.TableDefinition\022g\n\025" +
+      "definition_graph_type\030\004 \001(\0162H.org.roylan" +
+      "ce.yaorm.models.TableDefinitionGraph.Tab" +
+      "leDefinitionGraphType\022\021\n\tmain_name\030\005 \001(\t" +
+      "\022\022\n\nother_name\030\006 \001(\t\022\023\n\013column_name\030\007 \001(" +
+      "\t\";\n\030TableDefinitionGraphType\022\r\n\tENUM_TY" +
+      "PE\020\000\022\020\n\014MESSAGE_TYPE\020\001\"\264\001\n\025TableDefiniti" +
+      "onGraphs\022I\n\025main_table_definition\030\001 \001(\0132",
+      "*.org.roylance.yaorm.models.TableDefinit" +
+      "ion\022P\n\027table_definition_graphs\030\002 \003(\0132/.o" +
+      "rg.roylance.yaorm.models.TableDefinition" +
+      "Graph\"N\n\016ConnectionInfo\022\014\n\004host\030\001 \001(\t\022\014\n" +
+      "\004user\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030" +
+      "\004 \001(\t*\327\001\n\014ProtobufType\022\010\n\004NONE\020\000\022\n\n\006DOUB" +
+      "LE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005INT64\020\004\022\n\n" +
+      "\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020\007\022\n\n\006SIN" +
+      "T64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64\020\n\022\014\n\010SFIXE" +
+      "D32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n\006STRING\020",
+      "\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -19064,6 +17643,18 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_Index_descriptor,
         new java.lang.String[] { "ColumnNames", "IncludeNames", });
+    internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor =
+      internal_static_org_roylance_yaorm_models_Index_descriptor.getNestedTypes().get(0);
+    internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor =
+      internal_static_org_roylance_yaorm_models_Index_descriptor.getNestedTypes().get(1);
+    internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_Difference_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_org_roylance_yaorm_models_Difference_fieldAccessorTable = new
@@ -19076,12 +17667,24 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_TableDefinition_descriptor,
         new java.lang.String[] { "Name", "ColumnDefinitions", "Index", "TableType", });
+    internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor =
+      internal_static_org_roylance_yaorm_models_TableDefinition_descriptor.getNestedTypes().get(0);
+    internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor,
         new java.lang.String[] { "TableDefinitions", });
+    internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor =
+      internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor.getNestedTypes().get(0);
+    internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_DifferenceReport_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_org_roylance_yaorm_models_DifferenceReport_fieldAccessorTable = new
@@ -19100,6 +17703,12 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_Record_descriptor,
         new java.lang.String[] { "Columns", });
+    internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor =
+      internal_static_org_roylance_yaorm_models_Record_descriptor.getNestedTypes().get(0);
+    internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_Records_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_org_roylance_yaorm_models_Records_fieldAccessorTable = new
@@ -19118,6 +17727,12 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor,
         new java.lang.String[] { "TableRecords", });
+    internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor =
+      internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor.getNestedTypes().get(0);
+    internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_DatabaseOperation_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_org_roylance_yaorm_models_DatabaseOperation_fieldAccessorTable = new

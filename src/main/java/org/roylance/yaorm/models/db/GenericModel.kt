@@ -20,12 +20,12 @@ class GenericModel(
 
         fun buildProtoDefinitionModel():YaormModel.TableDefinition {
             val returnModel = YaormModel.TableDefinition.newBuilder()
-            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING))
-            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING))
-            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(IntValName).setType(YaormModel.ProtobufType.INT64))
-            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(LongValName).setType(YaormModel.ProtobufType.INT64))
-            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(DoubleValName).setType(YaormModel.ProtobufType.DOUBLE))
-            returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(BoolValName).setType(YaormModel.ProtobufType.BOOL))
+            returnModel.columnDefinitions[IdName] = YaormModel.ColumnDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING).build()
+            returnModel.columnDefinitions[StrValName] = (YaormModel.ColumnDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING)).build()
+            returnModel.columnDefinitions[IntValName] = (YaormModel.ColumnDefinition.newBuilder().setName(IntValName).setType(YaormModel.ProtobufType.INT64)).build()
+            returnModel.columnDefinitions[LongValName] = (YaormModel.ColumnDefinition.newBuilder().setName(LongValName).setType(YaormModel.ProtobufType.INT64)).build()
+            returnModel.columnDefinitions[DoubleValName] = (YaormModel.ColumnDefinition.newBuilder().setName(DoubleValName).setType(YaormModel.ProtobufType.DOUBLE)).build()
+            returnModel.columnDefinitions[BoolValName] = (YaormModel.ColumnDefinition.newBuilder().setName(BoolValName).setType(YaormModel.ProtobufType.BOOL)).build()
             return returnModel.build()
         }
     }

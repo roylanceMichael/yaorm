@@ -17,24 +17,24 @@ class ProtobufUtilsTest {
         // assert
         definition!!
         Assert.assertTrue(definition.name?.equals("SimpleInsertTest")!!)
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals(CommonUtils.IdName) && it.type.name.equals(ProtobufUtils.ProtoStringName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("display") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_int32") && it.type.name.equals(ProtobufUtils.ProtoInt32Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_int64") && it.type.name.equals(ProtobufUtils.ProtoInt64Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_uint32") && it.type.name.equals(ProtobufUtils.ProtoUInt32Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_uint64") && it.type.name.equals(ProtobufUtils.ProtoUInt64Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_sint32") && it.type.name.equals(ProtobufUtils.ProtoSInt32Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_sint64") && it.type.name.equals(ProtobufUtils.ProtoSInt64Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_fixed32") && it.type.name.equals(ProtobufUtils.ProtoFixed32Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_fixed64") && it.type.name.equals(ProtobufUtils.ProtoFixed64Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_sfixed32") && it.type.name.equals(ProtobufUtils.ProtoSFixed32Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_sfixed64") && it.type.name.equals(ProtobufUtils.ProtoSFixed64Name) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_bool") && it.type.name.equals(ProtobufUtils.ProtoBoolName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_bytes") && it.type.name.equals(ProtobufUtils.ProtoBytesName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_double") && it.type.name.equals(ProtobufUtils.ProtoDoubleName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_float") && it.type.name.equals(ProtobufUtils.ProtoFloatName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("cool_type") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("child") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals(CommonUtils.IdName) && it.type.name.equals(ProtobufUtils.ProtoStringName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("display") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_int32") && it.type.name.equals(ProtobufUtils.ProtoInt32Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_int64") && it.type.name.equals(ProtobufUtils.ProtoInt64Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_uint32") && it.type.name.equals(ProtobufUtils.ProtoUInt32Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_uint64") && it.type.name.equals(ProtobufUtils.ProtoUInt64Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_sint32") && it.type.name.equals(ProtobufUtils.ProtoSInt32Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_sint64") && it.type.name.equals(ProtobufUtils.ProtoSInt64Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_fixed32") && it.type.name.equals(ProtobufUtils.ProtoFixed32Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_fixed64") && it.type.name.equals(ProtobufUtils.ProtoFixed64Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_sfixed32") && it.type.name.equals(ProtobufUtils.ProtoSFixed32Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_sfixed64") && it.type.name.equals(ProtobufUtils.ProtoSFixed64Name) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_bool") && it.type.name.equals(ProtobufUtils.ProtoBoolName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_bytes") && it.type.name.equals(ProtobufUtils.ProtoBytesName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_double") && it.type.name.equals(ProtobufUtils.ProtoDoubleName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("test_float") && it.type.name.equals(ProtobufUtils.ProtoFloatName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("cool_type") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
+        Assert.assertTrue(definition.columnDefinitions.values.any { it.name.equals("child") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
     }
 
     @Test
@@ -49,24 +49,24 @@ class ProtobufUtilsTest {
 
         val foundEnumLinkerDefinition = definition.tableDefinitionGraphsList.first { YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE.equals(it.definitionGraphType) }
         Assert.assertTrue(foundEnumLinkerDefinition.hasLinkerTableTable())
-        foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.forEach { System.out.println(it.name) }
+        foundEnumLinkerDefinition.linkerTableTable.columnDefinitions.values.forEach { System.out.println(it.name) }
         Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.name.equals("${definition.mainTableDefinition.name}_CoolType_cool_types"))
-        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "${definition.mainTableDefinition.name}".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "CoolType".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitions.values.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "${definition.mainTableDefinition.name}".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "CoolType".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
 
         val foundMessageLinkerDefinition = definition.tableDefinitionGraphsList.first { YaormModel.TableDefinitionGraph.TableDefinitionGraphType.MESSAGE_TYPE.equals(it.definitionGraphType) }
         Assert.assertTrue(foundMessageLinkerDefinition.hasLinkerTableTable())
         Assert.assertTrue(foundMessageLinkerDefinition.hasOtherTableDefinition())
 
         Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.name.equals("${definition.mainTableDefinition.name}_Child_childs"))
-        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "${definition.mainTableDefinition.name}".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "Child".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "${definition.mainTableDefinition.name}".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "Child".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
 
         Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.name.equals("Child"))
-        Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitionsList.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitionsList.any { "test_display".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitions.values.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitions.values.any { "test_display".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
     }
 
     @Test
@@ -82,25 +82,25 @@ class ProtobufUtilsTest {
         val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
 
         // assert
-        Assert.assertTrue(records.tableRecordsCount.equals(10))
-        val foundRecords = records.tableRecordsList.first { it.tableName.equals(TestingModel.SimpleInsertTest.getDescriptor().name) }
+        Assert.assertTrue(records.tableRecords.size.equals(10))
+        val foundRecords = records.tableRecords.values.first { it.tableName.equals(TestingModel.SimpleInsertTest.getDescriptor().name) }
         val firstRecord = foundRecords.records.recordsList[0]
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
     }
 
     @Test
@@ -125,45 +125,45 @@ class ProtobufUtilsTest {
         val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
 
         // assert
-        Assert.assertTrue(records.tableRecordsCount.equals(10))
+        Assert.assertTrue(records.tableRecords.values.size.equals(10))
 
         // verify main record insert
-        val simpleInsertTestRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest") }!!
+        val simpleInsertTestRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest") }!!
         val firstRecord = simpleInsertTestRecords.records.recordsList.first()
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
 
-        val simpleInsertChildLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
+        val simpleInsertChildLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
         val firstLinkerRecord = simpleInsertChildLinkerRecords.records.recordsList.first()
-        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
-        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
 
-        val simpleInsertEnumLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
+        val simpleInsertEnumLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
         simpleInsertEnumLinkerRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.TEST.name}")) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.TEST.name) ) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.TEST.name}")) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.TEST.name) ) })
         }
 
-        val simpleInsertMessageLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("Child") }!!
+        val simpleInsertMessageLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("Child") }!!
         simpleInsertMessageLinkerRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals(testModel.child.id) || it.stringHolder.equals(subTestChild.id)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("test_display") && (it.stringHolder.equals(testModel.child.testDisplay) || it.stringHolder.equals(subTestChild.testDisplay) ) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("id") && (it.stringHolder.equals(testModel.child.id) || it.stringHolder.equals(subTestChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("test_display") && (it.stringHolder.equals(testModel.child.testDisplay) || it.stringHolder.equals(subTestChild.testDisplay) ) })
         }
     }
 
@@ -195,70 +195,70 @@ class ProtobufUtilsTest {
         val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
 
         // assert
-        Assert.assertTrue(records.tableRecordsCount.equals(10))
+        Assert.assertTrue(records.tableRecords.values.size.equals(10))
 
         // verify main record insert
-        val simpleInsertTestRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest") }!!
+        val simpleInsertTestRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest") }!!
         val firstRecord = simpleInsertTestRecords.records.recordsList.first()
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
-        Assert.assertTrue(firstRecord.columnsList.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_int32") && it.int32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_int64") && it.int64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_uint32") && it.uint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_uint64") && it.uint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sint32") && it.sint32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sint64") && it.sint64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_fixed32") && it.fixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_fixed64") && it.fixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sfixed32") && it.sfixed32Holder.equals(0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_sfixed64") && it.sfixed64Holder.equals(0L) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_bool") && it.boolHolder.equals(false) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_bytes") && it.bytesHolder.equals(ByteString.EMPTY) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_double") && it.doubleHolder.equals(0.0) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("test_float") && it.floatHolder.equals(0F) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("cool_type") && it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) })
+        Assert.assertTrue(firstRecord.columns.values.any { it.definition.name.equals("child") && it.stringHolder.equals(testModel.child.id) })
 
-        val simpleInsertChildLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
+        val simpleInsertChildLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
         val firstLinkerRecord = simpleInsertChildLinkerRecords.records.recordsList.first()
-        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
-        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-        Assert.assertTrue(firstLinkerRecord.columnsList.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
 
-        val simpleInsertEnumLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
+        val simpleInsertEnumLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
         simpleInsertEnumLinkerRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.TEST.name}")) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.TEST.name) ) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("id") && (it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.SURPRISED.name}") || it.stringHolder.equals("${testModel.id}~${TestingModel.SimpleInsertTest.CoolType.TEST.name}")) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("CoolType") && (it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED.name) || it.stringHolder.equals(TestingModel.SimpleInsertTest.CoolType.TEST.name) ) })
         }
 
-        val simpleInsertMessageLinkerRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("Child") }!!
+        val simpleInsertMessageLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("Child") }!!
         simpleInsertMessageLinkerRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals(testModel.child.id) || it.stringHolder.equals(subTestChild.id)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("test_display") && (it.stringHolder.equals(testModel.child.testDisplay) || it.stringHolder.equals(subTestChild.testDisplay) ) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("id") && (it.stringHolder.equals(testModel.child.id) || it.stringHolder.equals(subTestChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("test_display") && (it.stringHolder.equals(testModel.child.testDisplay) || it.stringHolder.equals(subTestChild.testDisplay) ) })
         }
 
-        val subSubChildRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SubSubChild") }!!
+        val subSubChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SubSubChild") }!!
         subSubChildRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals(subSubChild.id)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("sub_sub_display") && (it.stringHolder.equals(subSubChild.subSubDisplay)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("id") && (it.stringHolder.equals(subSubChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("sub_sub_display") && (it.stringHolder.equals(subSubChild.subSubDisplay)) })
         }
 
-        val childSubChildSubChildRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("Child_SubChild_sub_child") }!!
+        val childSubChildSubChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("Child_SubChild_sub_child") }!!
         childSubChildSubChildRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("Child") && (it.stringHolder.equals(subTestChild.id)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SubChild") && (it.stringHolder.equals(subChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("Child") && (it.stringHolder.equals(subTestChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubChild") && (it.stringHolder.equals(subChild.id)) })
         }
 
-        val subChildSubSubChildSubSubChildRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SubChild_SubSubChild_sub_sub_child") }!!
+        val subChildSubSubChildSubSubChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SubChild_SubSubChild_sub_sub_child") }!!
         subChildSubSubChildSubSubChildRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SubSubChild") && (it.stringHolder.equals(subSubChild.id)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("SubChild") && (it.stringHolder.equals(subChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubSubChild") && (it.stringHolder.equals(subSubChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubChild") && (it.stringHolder.equals(subChild.id)) })
         }
 
-        val subChildRecords = records.tableRecordsList.firstOrNull { it.tableName.equals("SubChild") }!!
+        val subChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SubChild") }!!
         subChildRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("id") && (it.stringHolder.equals(subChild.id)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("another_test_display") && (it.stringHolder.equals(subChild.anotherTestDisplay)) })
-            Assert.assertTrue(it.columnsList.any { it.definition.name.equals("cool_test") && (it.boolHolder.equals(true)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("id") && (it.stringHolder.equals(subChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("another_test_display") && (it.stringHolder.equals(subChild.anotherTestDisplay)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("cool_test") && (it.boolHolder.equals(true)) })
         }
     }
 }

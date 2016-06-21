@@ -70,10 +70,10 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     override fun buildCreateIndex(
             definition: YaormModel.TableDefinition,
-            properties: List<YaormModel.ColumnDefinition>,
-            includes: List<YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(properties.map { it.name })
-        val joinedColumnNames = properties.map { it.name }.joinToString(CommonUtils.Comma)
+            properties: Map<String, YaormModel.ColumnDefinition>,
+            includes: Map<String, YaormModel.ColumnDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(properties.values.map { it.name })
+        val joinedColumnNames = properties.values.map { it.name }.joinToString(CommonUtils.Comma)
         val sqlStatement = "create index $indexName on " +
                 "${this.schemaName}.${definition.name} " +
                 "($joinedColumnNames) using BTREE"
@@ -82,8 +82,8 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     override fun buildDropIndex(
             definition: YaormModel.TableDefinition,
-            columns: List<YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(columns.map { it.name })
+            columns: Map<String, YaormModel.ColumnDefinition>): String? {
+        val indexName = CommonUtils.buildIndexName(columns.values.map { it.name })
         return "drop index $indexName on ${this.schemaName}.${definition.name}"
     }
 
@@ -174,7 +174,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
             definition: YaormModel.TableDefinition,
             records: YaormModel.Records): String {
         val tableName = definition.name
-        val columnNames = definition.columnDefinitionsList.sortedBy { it.name }.map { it.name }
+        val columnNames = definition.columnDefinitions.values.sortedBy { it.name }.map { it.name }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "replace into ${this.schemaName}.$tableName ($commaSeparatedColumnNames) "
@@ -185,7 +185,8 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
                 .forEach { instance ->
                     val valueColumnPairs = ArrayList<String>()
                     instance
-                        .columnsList
+                        .columns
+                        .values
                         .sortedBy { it.definition.name }
                         .forEach {
                             val formattedString = CommonUtils.getFormattedString(it)
@@ -213,7 +214,8 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
             val values = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
+                .values
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
                     columnNames.add(it.definition.name)
@@ -254,7 +256,8 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
             val updateKvp = ArrayList<String>()
 
             record
-                .columnsList
+                .columns
+                .values
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
                     if (it.definition.name.equals(this.javaIdName)) {
@@ -305,7 +308,9 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
             val criteriaString: String = CommonUtils.buildWhereClause(whereClauseItem)
             val updateKvp = ArrayList<String>()
 
-            record.columnsList
+            record.columns
+                .values
+                .sortedBy { it.definition.name }
                 .forEach {
                     updateKvp.add(it.definition.name + CommonUtils.Equals + CommonUtils.getFormattedString(it))
                 }

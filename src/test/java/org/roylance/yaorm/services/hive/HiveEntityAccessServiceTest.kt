@@ -96,7 +96,9 @@ class HiveEntityAccessServiceTest {
         val majorHolder = YaormModel.Column.newBuilder().setDefinition(majorProperty).setInt32Holder(newMajorId).build()
         val minorHolder = YaormModel.Column.newBuilder().setDefinition(minorProperty).setInt32Holder(newMinorId).build()
 
-        record.addColumns(beaconHolder).addColumns(majorHolder).addColumns(minorHolder)
+        record.mutableColumns[BeaconBroadcastModel.BeaconIdName] = beaconHolder
+        record.mutableColumns[BeaconBroadcastModel.MajorIdName] = majorHolder
+        record.mutableColumns[BeaconBroadcastModel.MinorIdName] = minorHolder
 
         val newValues = HashMap<String, Any>()
         newValues.put(BeaconBroadcastModel.BeaconIdName, newBeaconId)

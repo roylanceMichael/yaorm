@@ -31,13 +31,15 @@ object DefinitionModelComparisonUtil {
         val otherDictionary = HashMap<String, YaormModel.ColumnDefinition>()
 
         currentDefinitionModel
-            .columnDefinitionsList
+            .columnDefinitions
+            .values
             .forEach {
                 currentDictionary.put(it.name, it)
             }
 
         otherDefinitionModel
-            .columnDefinitionsList
+            .columnDefinitions
+            .values
             .forEach {
                 otherDictionary.put(it.name, it)
             }

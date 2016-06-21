@@ -14,8 +14,7 @@ class EntityService<T: IEntity>(
         override val entityDefinition: Class<T>,
         private val granularDatabaseService: IGranularDatabaseService,
         private val sqlGeneratorService: ISqlGeneratorService,
-        override val indexDefinition: YaormModel.Index? = null
-) : IEntityService<T> {
+        override val indexDefinition: YaormModel.Index? = null) : IEntityService<T> {
 
     private val definition: YaormModel.TableDefinition
     private val currentDefinitions: List<EntityDefinitionModel<*>>
@@ -106,8 +105,8 @@ class EntityService<T: IEntity>(
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 this.definition,
-                index.columnNamesList,
-                index.includeNamesList) ?: return false
+                index.columnNames,
+                index.includeNames) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
@@ -121,7 +120,7 @@ class EntityService<T: IEntity>(
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 this.definition,
-                index.columnNamesList) ?: return false
+                index.columnNames) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropIndexSql)

@@ -108,8 +108,8 @@ class PhoenixEntityAccessServiceTest {
             entityService.createTable()
 
             val index = YaormModel.Index.newBuilder()
-            index.addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(AnotherTestModel.DescriptionName).setType(YaormModel.ProtobufType.STRING))
-            index.addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(AnotherTestModel.GramName).setType(YaormModel.ProtobufType.STRING))
+            index.columnNames[AnotherTestModel.DescriptionName] = YaormModel.ColumnDefinition.newBuilder().setName(AnotherTestModel.DescriptionName).setType(YaormModel.ProtobufType.STRING).build()
+            index.columnNames[AnotherTestModel.GramName] = YaormModel.ColumnDefinition.newBuilder().setName(AnotherTestModel.GramName).setType(YaormModel.ProtobufType.STRING).build()
 
             // act
             entityService.createIndex(index.build())
