@@ -139,11 +139,12 @@ object ProtobufUtils {
                                                     entityService: IEntityProtoService,
                                                     entityId:String,
                                                     generatedMessageBuilder: IProtoGeneratedMessageBuilder): T {
-        return GetProtoObject(entityService, generatedMessageBuilder).execute(builder, entityId)
+        return GetProtoObject(entityService, generatedMessageBuilder)
+                .build(builder, entityId)
     }
 
     fun convertProtobufObjectToRecords(message:Message):YaormModel.AllTableRecords {
-        val resultMap = ConvertProtobufToRecords().execute(message)
+        val resultMap = ConvertProtobufToRecords().build(message)
         val returnRecords = YaormModel.AllTableRecords.newBuilder()
 
         resultMap.keys.forEach {
@@ -199,7 +200,7 @@ object ProtobufUtils {
                                 linkerTableRecords.recordsBuilder.addRecords(record)
 
                                 // recursively call for child...
-                                val subRecords = convertProto.execute(subMessage)
+                                val subRecords = convertProto.build(subMessage)
                                 subRecords.keys.forEach { subRecordKey ->
                                     if (returnMap.containsKey(subRecordKey)) {
                                         returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)

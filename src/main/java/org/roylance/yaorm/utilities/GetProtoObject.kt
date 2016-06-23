@@ -11,7 +11,7 @@ internal class GetProtoObject(
         private val generatedMessageBuilder: IProtoGeneratedMessageBuilder) {
     private val tableDefinitionGraphs = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
-    internal fun <T: Message> execute(builder: T, entityId:String):T {
+    internal fun <T: Message> build(builder: T, entityId:String):T {
         if (!tableDefinitionGraphs.containsKey(builder.descriptorForType.name)) {
             tableDefinitionGraphs[builder.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(builder.descriptorForType)
         }
@@ -40,7 +40,7 @@ internal class GetProtoObject(
                         // recursively get the child object
                         val childObject = generatedMessageBuilder.buildGeneratedMessage(fieldKey.messageType.name)
                         if (foundColumn.stringHolder.length > 0) {
-                            val reconciledObject = this.execute(childObject, foundColumn.stringHolder)
+                            val reconciledObject = this.build(childObject, foundColumn.stringHolder)
                             builderForType.setField(fieldKey, reconciledObject)
                         }
                     }
@@ -99,17 +99,20 @@ internal class GetProtoObject(
                         return@forEach
                     }
 
-                    val foundRecords = entityService.where(customWhereClause, definitionForLinkerTable.linkerTableTable)
+                    val foundRecords = entityService.where(customWhereClause,
+                            definitionForLinkerTable.linkerTableTable)
+                    val otherColumnName = ProtobufUtils.buildLinkerMessageOtherTableColumnName(fieldKey.messageType.name)
+
                     foundRecords.recordsList
                             .forEach { record ->
-                        if (record.columns.containsKey(fieldKey.messageType.name)) {
-                            val nameColumn = record.columns[fieldKey.messageType.name]!!
-                            if (nameColumn.stringHolder.length > 0) {
-                                val constructedMessage = this.execute(childBuilder, nameColumn.stringHolder)
-                                builderForType.addRepeatedField(fieldKey, constructedMessage)
+                                if (record.columns.containsKey(otherColumnName)) {
+                                    val nameColumn = record.columns[otherColumnName]!!
+                                    if (nameColumn.stringHolder.length > 0) {
+                                        val constructedMessage = this.build(childBuilder, nameColumn.stringHolder)
+                                        builderForType.addRepeatedField(fieldKey, constructedMessage)
+                                    }
+                                }
                             }
-                        }
-                    }
                 }
 
         return builderForType.build() as T

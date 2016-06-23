@@ -8,7 +8,7 @@ import java.util.*
 internal class ConvertProtobufToRecords {
     internal val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
-    internal fun execute(message:Message):MutableMap<String, YaormModel.TableRecords.Builder> {
+    internal fun build(message:Message):MutableMap<String, YaormModel.TableRecords.Builder> {
         if (!ProtobufUtils.isMessageOk(message)) {
             return HashMap()
         }
@@ -102,7 +102,7 @@ internal class ConvertProtobufToRecords {
                             val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.getIdFromMessage(foundField), columnDefinition)
                             baseRecord.mutableColumns[generatedNameColumn.definition.name] = generatedNameColumn
 
-                            val childMessageRecords = this.execute(foundField)
+                            val childMessageRecords = this.build(foundField)
                             childMessageRecords.keys.forEach {
                                 if (recordsMap.containsKey(it)) {
                                     recordsMap[it]!!.mergeRecords(childMessageRecords[it]!!.records)

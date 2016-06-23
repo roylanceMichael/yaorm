@@ -292,10 +292,15 @@ class MySQLProtoTest {
             }
 
             // act
-            val insertedRecord = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val insertedRecord = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(
+                    TestingModel.SimpleInsertTest.getDefaultInstance(),
+                    entityService,
+                    testModel.id,
+                    protoService)
 
             // assert
             Assert.assertTrue(insertedRecord is TestingModel.SimpleInsertTest)
+            System.out.println(insertedRecord.childsCount)
             Assert.assertTrue(insertedRecord.childsCount == 3)
             Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild) && it.id.equals(TestingModelUtilities.SubTestChildId) })
             Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild2) && it.id.equals(TestingModelUtilities.SubTestChild2Id) })

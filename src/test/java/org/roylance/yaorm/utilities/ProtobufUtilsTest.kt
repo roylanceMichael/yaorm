@@ -61,8 +61,8 @@ class ProtobufUtilsTest {
 
         Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.name.equals("${definition.mainTableDefinition.name}_Child_childs"))
         Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "${definition.mainTableDefinition.name}".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
-        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "Child".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "${definition.mainTableDefinition.name}_main".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitions.values.any { "Child_other".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
 
         Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.name.equals("Child"))
         Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitions.values.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
@@ -150,8 +150,8 @@ class ProtobufUtilsTest {
         val simpleInsertChildLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
         val firstLinkerRecord = simpleInsertChildLinkerRecords.records.recordsList.first()
         Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
-        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("SimpleInsertTest_main") && it.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("Child_other") && it.stringHolder.equals(subTestChild.id) })
 
         val simpleInsertEnumLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
         simpleInsertEnumLinkerRecords.records.recordsList.forEach {
@@ -220,8 +220,8 @@ class ProtobufUtilsTest {
         val simpleInsertChildLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_Child_childs") }!!
         val firstLinkerRecord = simpleInsertChildLinkerRecords.records.recordsList.first()
         Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("id") && it.stringHolder.equals("${testModel.id}~${subTestChild.id}") })
-        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("SimpleInsertTest") && it.stringHolder.equals(testModel.id) })
-        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("Child") && it.stringHolder.equals(subTestChild.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("SimpleInsertTest_main") && it.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(firstLinkerRecord.columns.values.any { it.definition.name.equals("Child_other") && it.stringHolder.equals(subTestChild.id) })
 
         val simpleInsertEnumLinkerRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SimpleInsertTest_CoolType_cool_types") }!!
         simpleInsertEnumLinkerRecords.records.recordsList.forEach {
@@ -244,14 +244,14 @@ class ProtobufUtilsTest {
 
         val childSubChildSubChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("Child_SubChild_sub_child") }!!
         childSubChildSubChildRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("Child") && (it.stringHolder.equals(subTestChild.id)) })
-            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubChild") && (it.stringHolder.equals(subChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("Child_main") && (it.stringHolder.equals(subTestChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubChild_other") && (it.stringHolder.equals(subChild.id)) })
         }
 
         val subChildSubSubChildSubSubChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SubChild_SubSubChild_sub_sub_child") }!!
         subChildSubSubChildSubSubChildRecords.records.recordsList.forEach {
-            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubSubChild") && (it.stringHolder.equals(subSubChild.id)) })
-            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubChild") && (it.stringHolder.equals(subChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubSubChild_other") && (it.stringHolder.equals(subSubChild.id)) })
+            Assert.assertTrue(it.columns.values.any { it.definition.name.equals("SubChild_main") && (it.stringHolder.equals(subChild.id)) })
         }
 
         val subChildRecords = records.tableRecords.values.firstOrNull { it.tableName.equals("SubChild") }!!
