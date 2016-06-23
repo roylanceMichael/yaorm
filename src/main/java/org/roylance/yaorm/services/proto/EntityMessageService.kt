@@ -147,7 +147,10 @@ class EntityMessageService(
     }
 
     override fun <T : Message> get(messageType:T, id: String): T {
-        return ProtobufUtils.getProtoObjectFromBuilderSingle(messageType, this.entityService, id, this.protoGeneratedMessageBuilder)
+        return ProtobufUtils.getProtoObjectFromBuilderSingle(messageType,
+                this.entityService,
+                id,
+                this.protoGeneratedMessageBuilder)
     }
 
     override fun <T : Message> getMany(messageType: T, maxAmount: Int): List<T> {

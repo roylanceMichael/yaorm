@@ -6075,6 +6075,3739 @@ public final class TestingModel {
 
   }
 
+  public interface PersonOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Person)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string first_name = 2;</code>
+     */
+    java.lang.String getFirstName();
+    /**
+     * <code>optional string first_name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getFirstNameBytes();
+
+    /**
+     * <code>optional string last_name = 3;</code>
+     */
+    java.lang.String getLastName();
+    /**
+     * <code>optional string last_name = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getLastNameBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Address> 
+        getAddressesList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    org.roylance.yaorm.TestingModel.Address getAddresses(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    int getAddressesCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.AddressOrBuilder> 
+        getAddressesOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    org.roylance.yaorm.TestingModel.AddressOrBuilder getAddressesOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Phone> 
+        getPhoneNumbersList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    org.roylance.yaorm.TestingModel.Phone getPhoneNumbers(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    int getPhoneNumbersCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.PhoneOrBuilder> 
+        getPhoneNumbersOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    org.roylance.yaorm.TestingModel.PhoneOrBuilder getPhoneNumbersOrBuilder(
+        int index);
+
+    /**
+     * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+     */
+    boolean hasMother();
+    /**
+     * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+     */
+    org.roylance.yaorm.TestingModel.Person getMother();
+    /**
+     * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+     */
+    org.roylance.yaorm.TestingModel.PersonOrBuilder getMotherOrBuilder();
+
+    /**
+     * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+     */
+    boolean hasFather();
+    /**
+     * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+     */
+    org.roylance.yaorm.TestingModel.Person getFather();
+    /**
+     * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+     */
+    org.roylance.yaorm.TestingModel.PersonOrBuilder getFatherOrBuilder();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Person> 
+        getFriendsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    org.roylance.yaorm.TestingModel.Person getFriends(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    int getFriendsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.PersonOrBuilder> 
+        getFriendsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    org.roylance.yaorm.TestingModel.PersonOrBuilder getFriendsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.Person}
+   */
+  public  static final class Person extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Person)
+      PersonOrBuilder {
+    // Use Person.newBuilder() to construct.
+    private Person(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Person() {
+      id_ = "";
+      firstName_ = "";
+      lastName_ = "";
+      addresses_ = java.util.Collections.emptyList();
+      phoneNumbers_ = java.util.Collections.emptyList();
+      friends_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Person(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              firstName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              lastName_ = s;
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                addresses_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Address>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              addresses_.add(input.readMessage(org.roylance.yaorm.TestingModel.Address.parser(), extensionRegistry));
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                phoneNumbers_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Phone>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              phoneNumbers_.add(input.readMessage(org.roylance.yaorm.TestingModel.Phone.parser(), extensionRegistry));
+              break;
+            }
+            case 50: {
+              org.roylance.yaorm.TestingModel.Person.Builder subBuilder = null;
+              if (mother_ != null) {
+                subBuilder = mother_.toBuilder();
+              }
+              mother_ = input.readMessage(org.roylance.yaorm.TestingModel.Person.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(mother_);
+                mother_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 58: {
+              org.roylance.yaorm.TestingModel.Person.Builder subBuilder = null;
+              if (father_ != null) {
+                subBuilder = father_.toBuilder();
+              }
+              father_ = input.readMessage(org.roylance.yaorm.TestingModel.Person.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(father_);
+                father_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                friends_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Person>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              friends_.add(input.readMessage(org.roylance.yaorm.TestingModel.Person.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          addresses_ = java.util.Collections.unmodifiableList(addresses_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          phoneNumbers_ = java.util.Collections.unmodifiableList(phoneNumbers_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          friends_ = java.util.Collections.unmodifiableList(friends_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Person_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Person_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.Person.class, org.roylance.yaorm.TestingModel.Person.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FIRST_NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object firstName_;
+    /**
+     * <code>optional string first_name = 2;</code>
+     */
+    public java.lang.String getFirstName() {
+      java.lang.Object ref = firstName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        firstName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string first_name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFirstNameBytes() {
+      java.lang.Object ref = firstName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        firstName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LAST_NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object lastName_;
+    /**
+     * <code>optional string last_name = 3;</code>
+     */
+    public java.lang.String getLastName() {
+      java.lang.Object ref = lastName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lastName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string last_name = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getLastNameBytes() {
+      java.lang.Object ref = lastName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lastName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ADDRESSES_FIELD_NUMBER = 4;
+    private java.util.List<org.roylance.yaorm.TestingModel.Address> addresses_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Address> getAddressesList() {
+      return addresses_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.AddressOrBuilder> 
+        getAddressesOrBuilderList() {
+      return addresses_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    public int getAddressesCount() {
+      return addresses_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Address getAddresses(int index) {
+      return addresses_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+     */
+    public org.roylance.yaorm.TestingModel.AddressOrBuilder getAddressesOrBuilder(
+        int index) {
+      return addresses_.get(index);
+    }
+
+    public static final int PHONE_NUMBERS_FIELD_NUMBER = 5;
+    private java.util.List<org.roylance.yaorm.TestingModel.Phone> phoneNumbers_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Phone> getPhoneNumbersList() {
+      return phoneNumbers_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.PhoneOrBuilder> 
+        getPhoneNumbersOrBuilderList() {
+      return phoneNumbers_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    public int getPhoneNumbersCount() {
+      return phoneNumbers_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Phone getPhoneNumbers(int index) {
+      return phoneNumbers_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+     */
+    public org.roylance.yaorm.TestingModel.PhoneOrBuilder getPhoneNumbersOrBuilder(
+        int index) {
+      return phoneNumbers_.get(index);
+    }
+
+    public static final int MOTHER_FIELD_NUMBER = 6;
+    private org.roylance.yaorm.TestingModel.Person mother_;
+    /**
+     * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+     */
+    public boolean hasMother() {
+      return mother_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Person getMother() {
+      return mother_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : mother_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+     */
+    public org.roylance.yaorm.TestingModel.PersonOrBuilder getMotherOrBuilder() {
+      return getMother();
+    }
+
+    public static final int FATHER_FIELD_NUMBER = 7;
+    private org.roylance.yaorm.TestingModel.Person father_;
+    /**
+     * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+     */
+    public boolean hasFather() {
+      return father_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Person getFather() {
+      return father_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : father_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+     */
+    public org.roylance.yaorm.TestingModel.PersonOrBuilder getFatherOrBuilder() {
+      return getFather();
+    }
+
+    public static final int FRIENDS_FIELD_NUMBER = 8;
+    private java.util.List<org.roylance.yaorm.TestingModel.Person> friends_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Person> getFriendsList() {
+      return friends_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.PersonOrBuilder> 
+        getFriendsOrBuilderList() {
+      return friends_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    public int getFriendsCount() {
+      return friends_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Person getFriends(int index) {
+      return friends_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+     */
+    public org.roylance.yaorm.TestingModel.PersonOrBuilder getFriendsOrBuilder(
+        int index) {
+      return friends_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getFirstNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, firstName_);
+      }
+      if (!getLastNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, lastName_);
+      }
+      for (int i = 0; i < addresses_.size(); i++) {
+        output.writeMessage(4, addresses_.get(i));
+      }
+      for (int i = 0; i < phoneNumbers_.size(); i++) {
+        output.writeMessage(5, phoneNumbers_.get(i));
+      }
+      if (mother_ != null) {
+        output.writeMessage(6, getMother());
+      }
+      if (father_ != null) {
+        output.writeMessage(7, getFather());
+      }
+      for (int i = 0; i < friends_.size(); i++) {
+        output.writeMessage(8, friends_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getFirstNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, firstName_);
+      }
+      if (!getLastNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, lastName_);
+      }
+      for (int i = 0; i < addresses_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, addresses_.get(i));
+      }
+      for (int i = 0; i < phoneNumbers_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, phoneNumbers_.get(i));
+      }
+      if (mother_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getMother());
+      }
+      if (father_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getFather());
+      }
+      for (int i = 0; i < friends_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, friends_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Person parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.Person prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.Person}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Person)
+        org.roylance.yaorm.TestingModel.PersonOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Person_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Person_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.Person.class, org.roylance.yaorm.TestingModel.Person.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.Person.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAddressesFieldBuilder();
+          getPhoneNumbersFieldBuilder();
+          getFriendsFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        firstName_ = "";
+
+        lastName_ = "";
+
+        if (addressesBuilder_ == null) {
+          addresses_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          addressesBuilder_.clear();
+        }
+        if (phoneNumbersBuilder_ == null) {
+          phoneNumbers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          phoneNumbersBuilder_.clear();
+        }
+        if (motherBuilder_ == null) {
+          mother_ = null;
+        } else {
+          mother_ = null;
+          motherBuilder_ = null;
+        }
+        if (fatherBuilder_ == null) {
+          father_ = null;
+        } else {
+          father_ = null;
+          fatherBuilder_ = null;
+        }
+        if (friendsBuilder_ == null) {
+          friends_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          friendsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Person_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.Person getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.Person build() {
+        org.roylance.yaorm.TestingModel.Person result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.Person buildPartial() {
+        org.roylance.yaorm.TestingModel.Person result = new org.roylance.yaorm.TestingModel.Person(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        result.firstName_ = firstName_;
+        result.lastName_ = lastName_;
+        if (addressesBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            addresses_ = java.util.Collections.unmodifiableList(addresses_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.addresses_ = addresses_;
+        } else {
+          result.addresses_ = addressesBuilder_.build();
+        }
+        if (phoneNumbersBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            phoneNumbers_ = java.util.Collections.unmodifiableList(phoneNumbers_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.phoneNumbers_ = phoneNumbers_;
+        } else {
+          result.phoneNumbers_ = phoneNumbersBuilder_.build();
+        }
+        if (motherBuilder_ == null) {
+          result.mother_ = mother_;
+        } else {
+          result.mother_ = motherBuilder_.build();
+        }
+        if (fatherBuilder_ == null) {
+          result.father_ = father_;
+        } else {
+          result.father_ = fatherBuilder_.build();
+        }
+        if (friendsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            friends_ = java.util.Collections.unmodifiableList(friends_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.friends_ = friends_;
+        } else {
+          result.friends_ = friendsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.Person) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.Person)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.Person other) {
+        if (other == org.roylance.yaorm.TestingModel.Person.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getFirstName().isEmpty()) {
+          firstName_ = other.firstName_;
+          onChanged();
+        }
+        if (!other.getLastName().isEmpty()) {
+          lastName_ = other.lastName_;
+          onChanged();
+        }
+        if (addressesBuilder_ == null) {
+          if (!other.addresses_.isEmpty()) {
+            if (addresses_.isEmpty()) {
+              addresses_ = other.addresses_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureAddressesIsMutable();
+              addresses_.addAll(other.addresses_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.addresses_.isEmpty()) {
+            if (addressesBuilder_.isEmpty()) {
+              addressesBuilder_.dispose();
+              addressesBuilder_ = null;
+              addresses_ = other.addresses_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              addressesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getAddressesFieldBuilder() : null;
+            } else {
+              addressesBuilder_.addAllMessages(other.addresses_);
+            }
+          }
+        }
+        if (phoneNumbersBuilder_ == null) {
+          if (!other.phoneNumbers_.isEmpty()) {
+            if (phoneNumbers_.isEmpty()) {
+              phoneNumbers_ = other.phoneNumbers_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensurePhoneNumbersIsMutable();
+              phoneNumbers_.addAll(other.phoneNumbers_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.phoneNumbers_.isEmpty()) {
+            if (phoneNumbersBuilder_.isEmpty()) {
+              phoneNumbersBuilder_.dispose();
+              phoneNumbersBuilder_ = null;
+              phoneNumbers_ = other.phoneNumbers_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              phoneNumbersBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getPhoneNumbersFieldBuilder() : null;
+            } else {
+              phoneNumbersBuilder_.addAllMessages(other.phoneNumbers_);
+            }
+          }
+        }
+        if (other.hasMother()) {
+          mergeMother(other.getMother());
+        }
+        if (other.hasFather()) {
+          mergeFather(other.getFather());
+        }
+        if (friendsBuilder_ == null) {
+          if (!other.friends_.isEmpty()) {
+            if (friends_.isEmpty()) {
+              friends_ = other.friends_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureFriendsIsMutable();
+              friends_.addAll(other.friends_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.friends_.isEmpty()) {
+            if (friendsBuilder_.isEmpty()) {
+              friendsBuilder_.dispose();
+              friendsBuilder_ = null;
+              friends_ = other.friends_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              friendsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFriendsFieldBuilder() : null;
+            } else {
+              friendsBuilder_.addAllMessages(other.friends_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.Person parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.Person) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object firstName_ = "";
+      /**
+       * <code>optional string first_name = 2;</code>
+       */
+      public java.lang.String getFirstName() {
+        java.lang.Object ref = firstName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          firstName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string first_name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFirstNameBytes() {
+        java.lang.Object ref = firstName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          firstName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string first_name = 2;</code>
+       */
+      public Builder setFirstName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        firstName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string first_name = 2;</code>
+       */
+      public Builder clearFirstName() {
+        
+        firstName_ = getDefaultInstance().getFirstName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string first_name = 2;</code>
+       */
+      public Builder setFirstNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        firstName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object lastName_ = "";
+      /**
+       * <code>optional string last_name = 3;</code>
+       */
+      public java.lang.String getLastName() {
+        java.lang.Object ref = lastName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          lastName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string last_name = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getLastNameBytes() {
+        java.lang.Object ref = lastName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          lastName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string last_name = 3;</code>
+       */
+      public Builder setLastName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        lastName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string last_name = 3;</code>
+       */
+      public Builder clearLastName() {
+        
+        lastName_ = getDefaultInstance().getLastName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string last_name = 3;</code>
+       */
+      public Builder setLastNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        lastName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Address> addresses_ =
+        java.util.Collections.emptyList();
+      private void ensureAddressesIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          addresses_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Address>(addresses_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Address, org.roylance.yaorm.TestingModel.Address.Builder, org.roylance.yaorm.TestingModel.AddressOrBuilder> addressesBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Address> getAddressesList() {
+        if (addressesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(addresses_);
+        } else {
+          return addressesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public int getAddressesCount() {
+        if (addressesBuilder_ == null) {
+          return addresses_.size();
+        } else {
+          return addressesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Address getAddresses(int index) {
+        if (addressesBuilder_ == null) {
+          return addresses_.get(index);
+        } else {
+          return addressesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder setAddresses(
+          int index, org.roylance.yaorm.TestingModel.Address value) {
+        if (addressesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAddressesIsMutable();
+          addresses_.set(index, value);
+          onChanged();
+        } else {
+          addressesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder setAddresses(
+          int index, org.roylance.yaorm.TestingModel.Address.Builder builderForValue) {
+        if (addressesBuilder_ == null) {
+          ensureAddressesIsMutable();
+          addresses_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          addressesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder addAddresses(org.roylance.yaorm.TestingModel.Address value) {
+        if (addressesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAddressesIsMutable();
+          addresses_.add(value);
+          onChanged();
+        } else {
+          addressesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder addAddresses(
+          int index, org.roylance.yaorm.TestingModel.Address value) {
+        if (addressesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAddressesIsMutable();
+          addresses_.add(index, value);
+          onChanged();
+        } else {
+          addressesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder addAddresses(
+          org.roylance.yaorm.TestingModel.Address.Builder builderForValue) {
+        if (addressesBuilder_ == null) {
+          ensureAddressesIsMutable();
+          addresses_.add(builderForValue.build());
+          onChanged();
+        } else {
+          addressesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder addAddresses(
+          int index, org.roylance.yaorm.TestingModel.Address.Builder builderForValue) {
+        if (addressesBuilder_ == null) {
+          ensureAddressesIsMutable();
+          addresses_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          addressesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder addAllAddresses(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Address> values) {
+        if (addressesBuilder_ == null) {
+          ensureAddressesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, addresses_);
+          onChanged();
+        } else {
+          addressesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder clearAddresses() {
+        if (addressesBuilder_ == null) {
+          addresses_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          addressesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public Builder removeAddresses(int index) {
+        if (addressesBuilder_ == null) {
+          ensureAddressesIsMutable();
+          addresses_.remove(index);
+          onChanged();
+        } else {
+          addressesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Address.Builder getAddressesBuilder(
+          int index) {
+        return getAddressesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public org.roylance.yaorm.TestingModel.AddressOrBuilder getAddressesOrBuilder(
+          int index) {
+        if (addressesBuilder_ == null) {
+          return addresses_.get(index);  } else {
+          return addressesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.AddressOrBuilder> 
+           getAddressesOrBuilderList() {
+        if (addressesBuilder_ != null) {
+          return addressesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(addresses_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Address.Builder addAddressesBuilder() {
+        return getAddressesFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Address.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Address.Builder addAddressesBuilder(
+          int index) {
+        return getAddressesFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Address.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Address addresses = 4;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Address.Builder> 
+           getAddressesBuilderList() {
+        return getAddressesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Address, org.roylance.yaorm.TestingModel.Address.Builder, org.roylance.yaorm.TestingModel.AddressOrBuilder> 
+          getAddressesFieldBuilder() {
+        if (addressesBuilder_ == null) {
+          addressesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Address, org.roylance.yaorm.TestingModel.Address.Builder, org.roylance.yaorm.TestingModel.AddressOrBuilder>(
+                  addresses_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          addresses_ = null;
+        }
+        return addressesBuilder_;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Phone> phoneNumbers_ =
+        java.util.Collections.emptyList();
+      private void ensurePhoneNumbersIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          phoneNumbers_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Phone>(phoneNumbers_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Phone, org.roylance.yaorm.TestingModel.Phone.Builder, org.roylance.yaorm.TestingModel.PhoneOrBuilder> phoneNumbersBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Phone> getPhoneNumbersList() {
+        if (phoneNumbersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(phoneNumbers_);
+        } else {
+          return phoneNumbersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public int getPhoneNumbersCount() {
+        if (phoneNumbersBuilder_ == null) {
+          return phoneNumbers_.size();
+        } else {
+          return phoneNumbersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Phone getPhoneNumbers(int index) {
+        if (phoneNumbersBuilder_ == null) {
+          return phoneNumbers_.get(index);
+        } else {
+          return phoneNumbersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder setPhoneNumbers(
+          int index, org.roylance.yaorm.TestingModel.Phone value) {
+        if (phoneNumbersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.set(index, value);
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder setPhoneNumbers(
+          int index, org.roylance.yaorm.TestingModel.Phone.Builder builderForValue) {
+        if (phoneNumbersBuilder_ == null) {
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder addPhoneNumbers(org.roylance.yaorm.TestingModel.Phone value) {
+        if (phoneNumbersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.add(value);
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder addPhoneNumbers(
+          int index, org.roylance.yaorm.TestingModel.Phone value) {
+        if (phoneNumbersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.add(index, value);
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder addPhoneNumbers(
+          org.roylance.yaorm.TestingModel.Phone.Builder builderForValue) {
+        if (phoneNumbersBuilder_ == null) {
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.add(builderForValue.build());
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder addPhoneNumbers(
+          int index, org.roylance.yaorm.TestingModel.Phone.Builder builderForValue) {
+        if (phoneNumbersBuilder_ == null) {
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder addAllPhoneNumbers(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Phone> values) {
+        if (phoneNumbersBuilder_ == null) {
+          ensurePhoneNumbersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, phoneNumbers_);
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder clearPhoneNumbers() {
+        if (phoneNumbersBuilder_ == null) {
+          phoneNumbers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public Builder removePhoneNumbers(int index) {
+        if (phoneNumbersBuilder_ == null) {
+          ensurePhoneNumbersIsMutable();
+          phoneNumbers_.remove(index);
+          onChanged();
+        } else {
+          phoneNumbersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Phone.Builder getPhoneNumbersBuilder(
+          int index) {
+        return getPhoneNumbersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.PhoneOrBuilder getPhoneNumbersOrBuilder(
+          int index) {
+        if (phoneNumbersBuilder_ == null) {
+          return phoneNumbers_.get(index);  } else {
+          return phoneNumbersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.PhoneOrBuilder> 
+           getPhoneNumbersOrBuilderList() {
+        if (phoneNumbersBuilder_ != null) {
+          return phoneNumbersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(phoneNumbers_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Phone.Builder addPhoneNumbersBuilder() {
+        return getPhoneNumbersFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Phone.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Phone.Builder addPhoneNumbersBuilder(
+          int index) {
+        return getPhoneNumbersFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Phone.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Phone phone_numbers = 5;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Phone.Builder> 
+           getPhoneNumbersBuilderList() {
+        return getPhoneNumbersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Phone, org.roylance.yaorm.TestingModel.Phone.Builder, org.roylance.yaorm.TestingModel.PhoneOrBuilder> 
+          getPhoneNumbersFieldBuilder() {
+        if (phoneNumbersBuilder_ == null) {
+          phoneNumbersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Phone, org.roylance.yaorm.TestingModel.Phone.Builder, org.roylance.yaorm.TestingModel.PhoneOrBuilder>(
+                  phoneNumbers_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          phoneNumbers_ = null;
+        }
+        return phoneNumbersBuilder_;
+      }
+
+      private org.roylance.yaorm.TestingModel.Person mother_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> motherBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public boolean hasMother() {
+        return motherBuilder_ != null || mother_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person getMother() {
+        if (motherBuilder_ == null) {
+          return mother_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : mother_;
+        } else {
+          return motherBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public Builder setMother(org.roylance.yaorm.TestingModel.Person value) {
+        if (motherBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          mother_ = value;
+          onChanged();
+        } else {
+          motherBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public Builder setMother(
+          org.roylance.yaorm.TestingModel.Person.Builder builderForValue) {
+        if (motherBuilder_ == null) {
+          mother_ = builderForValue.build();
+          onChanged();
+        } else {
+          motherBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public Builder mergeMother(org.roylance.yaorm.TestingModel.Person value) {
+        if (motherBuilder_ == null) {
+          if (mother_ != null) {
+            mother_ =
+              org.roylance.yaorm.TestingModel.Person.newBuilder(mother_).mergeFrom(value).buildPartial();
+          } else {
+            mother_ = value;
+          }
+          onChanged();
+        } else {
+          motherBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public Builder clearMother() {
+        if (motherBuilder_ == null) {
+          mother_ = null;
+          onChanged();
+        } else {
+          mother_ = null;
+          motherBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person.Builder getMotherBuilder() {
+        
+        onChanged();
+        return getMotherFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      public org.roylance.yaorm.TestingModel.PersonOrBuilder getMotherOrBuilder() {
+        if (motherBuilder_ != null) {
+          return motherBuilder_.getMessageOrBuilder();
+        } else {
+          return mother_ == null ?
+              org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : mother_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> 
+          getMotherFieldBuilder() {
+        if (motherBuilder_ == null) {
+          motherBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder>(
+                  getMother(),
+                  getParentForChildren(),
+                  isClean());
+          mother_ = null;
+        }
+        return motherBuilder_;
+      }
+
+      private org.roylance.yaorm.TestingModel.Person father_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> fatherBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public boolean hasFather() {
+        return fatherBuilder_ != null || father_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person getFather() {
+        if (fatherBuilder_ == null) {
+          return father_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : father_;
+        } else {
+          return fatherBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public Builder setFather(org.roylance.yaorm.TestingModel.Person value) {
+        if (fatherBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          father_ = value;
+          onChanged();
+        } else {
+          fatherBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public Builder setFather(
+          org.roylance.yaorm.TestingModel.Person.Builder builderForValue) {
+        if (fatherBuilder_ == null) {
+          father_ = builderForValue.build();
+          onChanged();
+        } else {
+          fatherBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public Builder mergeFather(org.roylance.yaorm.TestingModel.Person value) {
+        if (fatherBuilder_ == null) {
+          if (father_ != null) {
+            father_ =
+              org.roylance.yaorm.TestingModel.Person.newBuilder(father_).mergeFrom(value).buildPartial();
+          } else {
+            father_ = value;
+          }
+          onChanged();
+        } else {
+          fatherBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public Builder clearFather() {
+        if (fatherBuilder_ == null) {
+          father_ = null;
+          onChanged();
+        } else {
+          father_ = null;
+          fatherBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person.Builder getFatherBuilder() {
+        
+        onChanged();
+        return getFatherFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      public org.roylance.yaorm.TestingModel.PersonOrBuilder getFatherOrBuilder() {
+        if (fatherBuilder_ != null) {
+          return fatherBuilder_.getMessageOrBuilder();
+        } else {
+          return father_ == null ?
+              org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : father_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Person father = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> 
+          getFatherFieldBuilder() {
+        if (fatherBuilder_ == null) {
+          fatherBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder>(
+                  getFather(),
+                  getParentForChildren(),
+                  isClean());
+          father_ = null;
+        }
+        return fatherBuilder_;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Person> friends_ =
+        java.util.Collections.emptyList();
+      private void ensureFriendsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          friends_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Person>(friends_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> friendsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Person> getFriendsList() {
+        if (friendsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(friends_);
+        } else {
+          return friendsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public int getFriendsCount() {
+        if (friendsBuilder_ == null) {
+          return friends_.size();
+        } else {
+          return friendsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person getFriends(int index) {
+        if (friendsBuilder_ == null) {
+          return friends_.get(index);
+        } else {
+          return friendsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder setFriends(
+          int index, org.roylance.yaorm.TestingModel.Person value) {
+        if (friendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendsIsMutable();
+          friends_.set(index, value);
+          onChanged();
+        } else {
+          friendsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder setFriends(
+          int index, org.roylance.yaorm.TestingModel.Person.Builder builderForValue) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder addFriends(org.roylance.yaorm.TestingModel.Person value) {
+        if (friendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendsIsMutable();
+          friends_.add(value);
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder addFriends(
+          int index, org.roylance.yaorm.TestingModel.Person value) {
+        if (friendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendsIsMutable();
+          friends_.add(index, value);
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder addFriends(
+          org.roylance.yaorm.TestingModel.Person.Builder builderForValue) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.add(builderForValue.build());
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder addFriends(
+          int index, org.roylance.yaorm.TestingModel.Person.Builder builderForValue) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder addAllFriends(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Person> values) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, friends_);
+          onChanged();
+        } else {
+          friendsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder clearFriends() {
+        if (friendsBuilder_ == null) {
+          friends_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          friendsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public Builder removeFriends(int index) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.remove(index);
+          onChanged();
+        } else {
+          friendsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person.Builder getFriendsBuilder(
+          int index) {
+        return getFriendsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.PersonOrBuilder getFriendsOrBuilder(
+          int index) {
+        if (friendsBuilder_ == null) {
+          return friends_.get(index);  } else {
+          return friendsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.PersonOrBuilder> 
+           getFriendsOrBuilderList() {
+        if (friendsBuilder_ != null) {
+          return friendsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(friends_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person.Builder addFriendsBuilder() {
+        return getFriendsFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Person.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Person.Builder addFriendsBuilder(
+          int index) {
+        return getFriendsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Person.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Person friends = 8;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Person.Builder> 
+           getFriendsBuilderList() {
+        return getFriendsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> 
+          getFriendsFieldBuilder() {
+        if (friendsBuilder_ == null) {
+          friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder>(
+                  friends_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          friends_ = null;
+        }
+        return friendsBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Person)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Person)
+    private static final org.roylance.yaorm.TestingModel.Person DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Person();
+    }
+
+    public static org.roylance.yaorm.TestingModel.Person getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Person>
+        PARSER = new com.google.protobuf.AbstractParser<Person>() {
+      public Person parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new Person(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<Person> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Person> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.Person getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AddressOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Address)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string address = 2;</code>
+     */
+    java.lang.String getAddress();
+    /**
+     * <code>optional string address = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getAddressBytes();
+
+    /**
+     * <code>optional string city = 3;</code>
+     */
+    java.lang.String getCity();
+    /**
+     * <code>optional string city = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getCityBytes();
+
+    /**
+     * <code>optional string state = 4;</code>
+     */
+    java.lang.String getState();
+    /**
+     * <code>optional string state = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getStateBytes();
+
+    /**
+     * <code>optional string zip = 5;</code>
+     */
+    java.lang.String getZip();
+    /**
+     * <code>optional string zip = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getZipBytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.Address}
+   */
+  public  static final class Address extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Address)
+      AddressOrBuilder {
+    // Use Address.newBuilder() to construct.
+    private Address(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Address() {
+      id_ = "";
+      address_ = "";
+      city_ = "";
+      state_ = "";
+      zip_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Address(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              address_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              city_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              state_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              zip_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Address_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Address_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.Address.class, org.roylance.yaorm.TestingModel.Address.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 2;
+    private volatile java.lang.Object address_;
+    /**
+     * <code>optional string address = 2;</code>
+     */
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        address_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string address = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAddressBytes() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        address_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CITY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object city_;
+    /**
+     * <code>optional string city = 3;</code>
+     */
+    public java.lang.String getCity() {
+      java.lang.Object ref = city_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        city_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string city = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCityBytes() {
+      java.lang.Object ref = city_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        city_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object state_;
+    /**
+     * <code>optional string state = 4;</code>
+     */
+    public java.lang.String getState() {
+      java.lang.Object ref = state_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        state_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string state = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStateBytes() {
+      java.lang.Object ref = state_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        state_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ZIP_FIELD_NUMBER = 5;
+    private volatile java.lang.Object zip_;
+    /**
+     * <code>optional string zip = 5;</code>
+     */
+    public java.lang.String getZip() {
+      java.lang.Object ref = zip_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        zip_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string zip = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getZipBytes() {
+      java.lang.Object ref = zip_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        zip_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, address_);
+      }
+      if (!getCityBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, city_);
+      }
+      if (!getStateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, state_);
+      }
+      if (!getZipBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, zip_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, address_);
+      }
+      if (!getCityBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, city_);
+      }
+      if (!getStateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, state_);
+      }
+      if (!getZipBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, zip_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Address parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.Address prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.Address}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Address)
+        org.roylance.yaorm.TestingModel.AddressOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Address_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Address_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.Address.class, org.roylance.yaorm.TestingModel.Address.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.Address.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        address_ = "";
+
+        city_ = "";
+
+        state_ = "";
+
+        zip_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Address_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.Address getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.Address.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.Address build() {
+        org.roylance.yaorm.TestingModel.Address result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.Address buildPartial() {
+        org.roylance.yaorm.TestingModel.Address result = new org.roylance.yaorm.TestingModel.Address(this);
+        result.id_ = id_;
+        result.address_ = address_;
+        result.city_ = city_;
+        result.state_ = state_;
+        result.zip_ = zip_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.Address) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.Address)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.Address other) {
+        if (other == org.roylance.yaorm.TestingModel.Address.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getAddress().isEmpty()) {
+          address_ = other.address_;
+          onChanged();
+        }
+        if (!other.getCity().isEmpty()) {
+          city_ = other.city_;
+          onChanged();
+        }
+        if (!other.getState().isEmpty()) {
+          state_ = other.state_;
+          onChanged();
+        }
+        if (!other.getZip().isEmpty()) {
+          zip_ = other.zip_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.Address parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.Address) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object address_ = "";
+      /**
+       * <code>optional string address = 2;</code>
+       */
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          address_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string address = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          address_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string address = 2;</code>
+       */
+      public Builder setAddress(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string address = 2;</code>
+       */
+      public Builder clearAddress() {
+        
+        address_ = getDefaultInstance().getAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string address = 2;</code>
+       */
+      public Builder setAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        address_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object city_ = "";
+      /**
+       * <code>optional string city = 3;</code>
+       */
+      public java.lang.String getCity() {
+        java.lang.Object ref = city_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          city_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string city = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCityBytes() {
+        java.lang.Object ref = city_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          city_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string city = 3;</code>
+       */
+      public Builder setCity(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        city_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string city = 3;</code>
+       */
+      public Builder clearCity() {
+        
+        city_ = getDefaultInstance().getCity();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string city = 3;</code>
+       */
+      public Builder setCityBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        city_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object state_ = "";
+      /**
+       * <code>optional string state = 4;</code>
+       */
+      public java.lang.String getState() {
+        java.lang.Object ref = state_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          state_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string state = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStateBytes() {
+        java.lang.Object ref = state_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          state_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string state = 4;</code>
+       */
+      public Builder setState(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        state_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string state = 4;</code>
+       */
+      public Builder clearState() {
+        
+        state_ = getDefaultInstance().getState();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string state = 4;</code>
+       */
+      public Builder setStateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        state_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object zip_ = "";
+      /**
+       * <code>optional string zip = 5;</code>
+       */
+      public java.lang.String getZip() {
+        java.lang.Object ref = zip_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          zip_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string zip = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getZipBytes() {
+        java.lang.Object ref = zip_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          zip_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string zip = 5;</code>
+       */
+      public Builder setZip(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        zip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string zip = 5;</code>
+       */
+      public Builder clearZip() {
+        
+        zip_ = getDefaultInstance().getZip();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string zip = 5;</code>
+       */
+      public Builder setZipBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        zip_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Address)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Address)
+    private static final org.roylance.yaorm.TestingModel.Address DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Address();
+    }
+
+    public static org.roylance.yaorm.TestingModel.Address getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Address>
+        PARSER = new com.google.protobuf.AbstractParser<Address>() {
+      public Address parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new Address(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<Address> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Address> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.Address getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PhoneOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Phone)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string number = 2;</code>
+     */
+    java.lang.String getNumber();
+    /**
+     * <code>optional string number = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNumberBytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.Phone}
+   */
+  public  static final class Phone extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Phone)
+      PhoneOrBuilder {
+    // Use Phone.newBuilder() to construct.
+    private Phone(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Phone() {
+      id_ = "";
+      number_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Phone(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              number_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Phone_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Phone_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.Phone.class, org.roylance.yaorm.TestingModel.Phone.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NUMBER_FIELD_NUMBER = 2;
+    private volatile java.lang.Object number_;
+    /**
+     * <code>optional string number = 2;</code>
+     */
+    public java.lang.String getNumber() {
+      java.lang.Object ref = number_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        number_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string number = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNumberBytes() {
+      java.lang.Object ref = number_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        number_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getNumberBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, number_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getNumberBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, number_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Phone parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.Phone prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.Phone}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Phone)
+        org.roylance.yaorm.TestingModel.PhoneOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Phone_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Phone_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.Phone.class, org.roylance.yaorm.TestingModel.Phone.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.Phone.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        number_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Phone_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.Phone getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.Phone.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.Phone build() {
+        org.roylance.yaorm.TestingModel.Phone result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.Phone buildPartial() {
+        org.roylance.yaorm.TestingModel.Phone result = new org.roylance.yaorm.TestingModel.Phone(this);
+        result.id_ = id_;
+        result.number_ = number_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.Phone) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.Phone)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.Phone other) {
+        if (other == org.roylance.yaorm.TestingModel.Phone.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getNumber().isEmpty()) {
+          number_ = other.number_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.Phone parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.Phone) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object number_ = "";
+      /**
+       * <code>optional string number = 2;</code>
+       */
+      public java.lang.String getNumber() {
+        java.lang.Object ref = number_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          number_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string number = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNumberBytes() {
+        java.lang.Object ref = number_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          number_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string number = 2;</code>
+       */
+      public Builder setNumber(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        number_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string number = 2;</code>
+       */
+      public Builder clearNumber() {
+        
+        number_ = getDefaultInstance().getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string number = 2;</code>
+       */
+      public Builder setNumberBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        number_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Phone)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Phone)
+    private static final org.roylance.yaorm.TestingModel.Phone DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Phone();
+    }
+
+    public static org.roylance.yaorm.TestingModel.Phone getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Phone>
+        PARSER = new com.google.protobuf.AbstractParser<Phone>() {
+      public Phone parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new Phone(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<Phone> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Phone> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.Phone getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
   private static
@@ -6100,6 +9833,21 @@ public final class TestingModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_Person_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_Person_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_Address_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_Address_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_Phone_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_Phone_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6136,7 +9884,18 @@ public final class TestingModel {
       "\001(\t\022\027\n\017sub_sub_display\030\002 \001(\t\022>\n\022sub_sub_" +
       "sub_childs\030\003 \003(\0132\".org.roylance.yaorm.Su" +
       "bSubSubChild\"9\n\016SubSubSubChild\022\n\n\002id\030\001 \001" +
-      "(\t\022\033\n\023sub_sub_sub_display\030\002 \001(\tb\006proto3"
+      "(\t\022\033\n\023sub_sub_sub_display\030\002 \001(\t\"\242\002\n\006Pers" +
+      "on\022\n\n\002id\030\001 \001(\t\022\022\n\nfirst_name\030\002 \001(\t\022\021\n\tla" +
+      "st_name\030\003 \001(\t\022.\n\taddresses\030\004 \003(\0132\033.org.r",
+      "oylance.yaorm.Address\0220\n\rphone_numbers\030\005" +
+      " \003(\0132\031.org.roylance.yaorm.Phone\022*\n\006mothe" +
+      "r\030\006 \001(\0132\032.org.roylance.yaorm.Person\022*\n\006f" +
+      "ather\030\007 \001(\0132\032.org.roylance.yaorm.Person\022" +
+      "+\n\007friends\030\010 \003(\0132\032.org.roylance.yaorm.Pe" +
+      "rson\"P\n\007Address\022\n\n\002id\030\001 \001(\t\022\017\n\007address\030\002" +
+      " \001(\t\022\014\n\004city\030\003 \001(\t\022\r\n\005state\030\004 \001(\t\022\013\n\003zip" +
+      "\030\005 \001(\t\"#\n\005Phone\022\n\n\002id\030\001 \001(\t\022\016\n\006number\030\002 " +
+      "\001(\tb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6180,6 +9939,24 @@ public final class TestingModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_SubSubSubChild_descriptor,
         new java.lang.String[] { "Id", "SubSubSubDisplay", });
+    internal_static_org_roylance_yaorm_Person_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_org_roylance_yaorm_Person_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_Person_descriptor,
+        new java.lang.String[] { "Id", "FirstName", "LastName", "Addresses", "PhoneNumbers", "Mother", "Father", "Friends", });
+    internal_static_org_roylance_yaorm_Address_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_org_roylance_yaorm_Address_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_Address_descriptor,
+        new java.lang.String[] { "Id", "Address", "City", "State", "Zip", });
+    internal_static_org_roylance_yaorm_Phone_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_org_roylance_yaorm_Phone_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_Phone_descriptor,
+        new java.lang.String[] { "Id", "Number", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

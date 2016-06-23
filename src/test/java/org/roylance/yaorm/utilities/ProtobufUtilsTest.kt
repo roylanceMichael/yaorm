@@ -261,4 +261,25 @@ class ProtobufUtilsTest {
             Assert.assertTrue(it.columns.values.any { it.definition.name.equals("cool_test") && (it.boolHolder.equals(true)) })
         }
     }
+
+    @Test
+    fun moreComplexPassThroughTest5() {
+        // arrange
+        val testModel = TestingModel.Person.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setFirstName("Mike")
+                .setLastName("Roylance")
+                .setMother(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Terri").setLastName("Roylance"))
+                .setFather(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Paul").setLastName("Roylance"))
+
+        // act
+        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+
+        // assert
+        Assert.assertTrue(true)
+        val personRecords = records.tableRecords[TestingModel.Person.getDescriptor().name]!!
+        Assert.assertTrue(personRecords.records.recordsList.any { it.columns[CommonUtils.IdName]!!.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(personRecords.records.recordsList.any { it.columns[CommonUtils.IdName]!!.stringHolder.equals(testModel.mother.id) })
+        Assert.assertTrue(personRecords.records.recordsList.any { it.columns[CommonUtils.IdName]!!.stringHolder.equals(testModel.father.id) })
+    }
 }

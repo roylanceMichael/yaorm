@@ -55,3 +55,27 @@ message SubSubSubChild {
     string id = 1;
     string sub_sub_sub_display = 2;
 }
+
+message Person {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    repeated Address addresses = 4;
+    repeated Phone phone_numbers = 5;
+    Person mother = 6;
+    Person father = 7;
+    repeated Person friends = 8;
+}
+
+message Address {
+    string id = 1;
+    string address = 2;
+    string city = 3;
+    string state = 4;
+    string zip = 5;
+}
+
+message Phone {
+    string id = 1;
+    string number = 2;
+}

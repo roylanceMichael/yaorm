@@ -8,6 +8,7 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.sql.DriverManager
 import java.util.*
 
@@ -255,6 +256,152 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.id.equals(testModel.id))
             Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
             Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
+    @Test
+    fun additionalAddRemoveTest() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            val testModel = TestingModelUtilities.buildSampleRootObject()
+            entityProtoMessageService.createEntireSchema(testModel.build())
+            entityProtoMessageService.merge(testModel.build())
+            val newFirstDisplay = "new first display"
+
+            testModel.childBuilder.testDisplay = newFirstDisplay
+
+            // act
+            val result = entityProtoMessageService.merge(testModel.build())
+
+            // assert
+            Assert.assertTrue(result)
+            val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
+
+            Assert.assertTrue(foundMessage != null)
+            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
+            Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
+    @Test
+    fun simplePersonTest() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            val person = TestingModel.Person.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setFirstName("Mike")
+                .setLastName("Roylance")
+                .setFather(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Paul").setLastName("Roylance"))
+                .setMother(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Terri").setLastName("Roylance"))
+                .addPhoneNumbers(TestingModel.Phone.newBuilder().setId(UUID.randomUUID().toString()).setNumber("555-555-55555"))
+                .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
+
+            entityProtoMessageService.createEntireSchema(person.build())
+            entityProtoMessageService.merge(person.build())
+
+            // act
+            person.firstName = "Michael"
+            entityProtoMessageService.merge(person.build())
+
+            // assert
+            val foundPerson = entityProtoMessageService.get(person.build(), person.id)
+            Assert.assertTrue(foundPerson.firstName.equals("Michael"))
+            Assert.assertTrue(foundPerson.lastName.equals("Roylance"))
+            Assert.assertTrue(foundPerson.mother.id.equals(person.mother.id))
+            Assert.assertTrue(foundPerson.mother.firstName.equals(person.mother.firstName))
+            Assert.assertTrue(foundPerson.mother.lastName.equals(person.mother.lastName))
+            Assert.assertTrue(foundPerson.father.id.equals(person.father.id))
+            Assert.assertTrue(foundPerson.father.firstName.equals(person.father.firstName))
+            Assert.assertTrue(foundPerson.father.lastName.equals(person.father.lastName))
+
+            val foundMother = entityProtoMessageService.get(person.build(), person.mother.id)
+            Assert.assertTrue(foundMother.firstName.equals("Terri"))
+            Assert.assertTrue(foundMother.lastName.equals("Roylance"))
+
+            val foundFather = entityProtoMessageService.get(person.build(), person.father.id)
+            Assert.assertTrue(foundFather.firstName.equals("Paul"))
+            Assert.assertTrue(foundFather.lastName.equals("Roylance"))
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
+    @Test
+    fun simplePersonFriendsTest() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            val person = TestingModel.Person.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setFirstName("Mike")
+                    .setLastName("Roylance")
+                    .setFather(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Paul").setLastName("Roylance"))
+                    .setMother(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Terri").setLastName("Roylance"))
+                    .addPhoneNumbers(TestingModel.Phone.newBuilder().setId(UUID.randomUUID().toString()).setNumber("555-555-55555"))
+                    .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
+                    .addFriends(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("James").setLastName("Hu"))
+
+            entityProtoMessageService.createEntireSchema(person.build())
+            entityProtoMessageService.merge(person.build())
+
+            // act
+            person.firstName = "Michael"
+            entityProtoMessageService.merge(person.build())
+
+            // assert
+            val foundPerson = entityProtoMessageService.get(person.build(), person.friendsList[0].id)
+            Assert.assertTrue(foundPerson.id.equals(person.friendsList[0].id))
+            Assert.assertTrue(foundPerson.firstName.equals("James"))
+            Assert.assertTrue(foundPerson.lastName.equals("Hu"))
         }
         finally {
             dropSchema()

@@ -22,6 +22,15 @@ class TestModelGeneratedMessageBuilder: IProtoGeneratedMessageBuilder {
         else if (TestingModel.SubSubSubChild.getDescriptor().name.equals(name)) {
             return TestingModel.SubSubSubChild.getDefaultInstance()
         }
+        else if (TestingModel.Person.getDescriptor().name.equals(name)) {
+            return TestingModel.Person.getDefaultInstance()
+        }
+        else if (TestingModel.Address.getDescriptor().name.equals(name)) {
+            return TestingModel.Address.getDefaultInstance()
+        }
+        else if (TestingModel.Phone.getDescriptor().name.equals(name)) {
+            return TestingModel.Phone.getDefaultInstance()
+        }
 
         throw InvalidClassException("bad class name given")
     }
