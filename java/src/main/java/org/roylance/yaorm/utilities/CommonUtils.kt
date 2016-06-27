@@ -73,55 +73,55 @@ object CommonUtils {
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.BOOL)) {
-            returnHolder.boolHolder = if(notNullValueAsString == "1" || notNullValueAsString.toLowerCase().equals("true")) true else false
+            returnHolder.boolHolder = getBool(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT32)) {
-            returnHolder.int32Holder = if (value == null) 0 else notNullValueAsString.toInt()
+            returnHolder.int32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT64)) {
-            returnHolder.int64Holder = if (value == null) 0L else notNullValueAsString.toLong()
+            returnHolder.int64Holder = if (value == null) 0L else getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED32)) {
-            returnHolder.fixed32Holder = if (value == null) 0 else notNullValueAsString.toInt()
+            returnHolder.fixed32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED64)) {
-            returnHolder.fixed64Holder =  if (value == null) 0L else notNullValueAsString.toLong()
+            returnHolder.fixed64Holder =  if (value == null) 0L else getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
-            returnHolder.sfixed32Holder = if (value == null) 0 else notNullValueAsString.toInt()
+            returnHolder.sfixed32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
-            returnHolder.sfixed64Holder =  if (value == null) 0L else notNullValueAsString.toLong()
+            returnHolder.sfixed64Holder =  if (value == null) 0L else getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
-            returnHolder.uint32Holder = if (value == null) 0 else notNullValueAsString.toInt()
+            returnHolder.uint32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT64)) {
-            returnHolder.uint64Holder = if (value == null) 0L else notNullValueAsString.toLong()
+            returnHolder.uint64Holder = if (value == null) 0L else getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
-            returnHolder.sint32Holder = if (value == null) 0 else notNullValueAsString.toInt()
+            returnHolder.sint32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
-            returnHolder.sint64Holder = if (value == null) 0L else notNullValueAsString.toLong()
+            returnHolder.sint64Holder = if (value == null) 0L else getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
-            returnHolder.doubleHolder = if (value == null) 0.0 else notNullValueAsString.toDouble()
+            returnHolder.doubleHolder = if (value == null) 0.0 else getDouble(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT  )) {
-            returnHolder.floatHolder = if (value == null) 0F else notNullValueAsString.toFloat()
+            returnHolder.floatHolder = if (value == null) 0F else getFloat(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES  )) {
@@ -159,55 +159,55 @@ object CommonUtils {
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.BOOL)) {
-            returnHolder.boolHolder = notNullValueAsString.toBoolean()
+            returnHolder.boolHolder = getBool(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT32)) {
-            returnHolder.int32Holder = notNullValueAsString.toInt()
+            returnHolder.int32Holder = getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT64)) {
-            returnHolder.int64Holder = notNullValueAsString.toLong()
+            returnHolder.int64Holder = getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED32)) {
-            returnHolder.fixed32Holder = notNullValueAsString.toInt()
+            returnHolder.fixed32Holder = getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED64)) {
-            returnHolder.fixed64Holder = notNullValueAsString.toLong()
+            returnHolder.fixed64Holder = getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
-            returnHolder.sfixed32Holder = notNullValueAsString.toInt()
+            returnHolder.sfixed32Holder = getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
-            returnHolder.sfixed64Holder = notNullValueAsString.toLong()
+            returnHolder.sfixed64Holder = getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
-            returnHolder.uint32Holder = notNullValueAsString.toInt()
+            returnHolder.uint32Holder = getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT64)) {
-            returnHolder.uint64Holder = notNullValueAsString.toLong()
+            returnHolder.uint64Holder = getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
-            returnHolder.sint32Holder = notNullValueAsString.toInt()
+            returnHolder.sint32Holder = getInt(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
-            returnHolder.sint64Holder = notNullValueAsString.toLong()
+            returnHolder.sint64Holder = getLong(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
-            returnHolder.doubleHolder = notNullValueAsString.toDouble()
+            returnHolder.doubleHolder = getDouble(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT)) {
-            returnHolder.floatHolder = notNullValueAsString.toFloat()
+            returnHolder.floatHolder = getFloat(notNullValueAsString)
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES)) {
@@ -494,5 +494,54 @@ object CommonUtils {
     fun getValueFromRecordAny(name:String, record:YaormModel.Record):Any? {
         val foundColumn = record.columns.values.firstOrNull { name.equals(it.definition.name) } ?: return  null
         return getAnyObject(foundColumn)
+    }
+
+    private fun getBool(item:String):Boolean {
+        if (item.equals("0")) {
+            return false
+        }
+        if (item.toLowerCase().equals("false")) {
+            return false
+        }
+        if (item.length == 0) {
+            return false
+        }
+        return true
+    }
+
+    private fun getInt(item:String):Int {
+        try {
+            return item.toInt()
+        }
+        catch(e:NumberFormatException) {
+            return 0
+        }
+    }
+
+    private fun getLong(item:String):Long {
+        try {
+            return item.toLong()
+        }
+        catch(e:NumberFormatException) {
+            return 0
+        }
+    }
+
+    private fun getDouble(item:String):Double {
+        try {
+            return item.toDouble()
+        }
+        catch(e:NumberFormatException) {
+            return 0.0
+        }
+    }
+
+    private fun getFloat(item:String):Float {
+        try {
+            return item.toFloat()
+        }
+        catch(e:NumberFormatException) {
+            return 0F
+        }
     }
 }
