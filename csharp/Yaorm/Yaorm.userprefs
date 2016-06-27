@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="Yaorm/Yaorm.csproj" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Yaorm/Services/SQLite/SQLiteGeneratorService.cs">
+    <Files>
+      <File FileName="Yaorm/YaormModel.cs" Line="6" Column="12" />
+      <File FileName="Yaorm/Services/ISqlGeneratorService.cs" Line="38" Column="80" />
+      <File FileName="Yaorm/Services/IEntityProtoService.cs" Line="36" Column="75" />
+      <File FileName="Yaorm/Services/IProtoGeneratedMessageBuilder.cs" Line="4" Column="3" />
+      <File FileName="Yaorm/Services/IProtoCursor.cs" Line="7" Column="3" />
+      <File FileName="Yaorm/Services/SQLite/SQLiteGeneratorService.cs" Line="105" Column="20" />
+      <File FileName="Yaorm/Utilities/CommonUtils.cs" Line="27" Column="41" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Yaorm PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
