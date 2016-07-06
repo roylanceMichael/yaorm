@@ -7,7 +7,6 @@ import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
 class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGeneratorService {
-
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
@@ -41,6 +40,10 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
             put(YaormModel.ProtobufType.FLOAT, SqlRealName)
         }
+    }
+
+    override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
+        return "select id from ${definition.name}"
     }
 
     override fun buildCountSql(definition: YaormModel.TableDefinition): String {

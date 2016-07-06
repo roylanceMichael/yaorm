@@ -33,4 +33,6 @@ interface ISqlGeneratorService {
 
     fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int = 1000): String
     fun buildWhereClause(definition: YaormModel.TableDefinition, whereClauseItem: YaormModel.WhereClause): String?
+
+    fun buildSelectIds(definition: YaormModel.TableDefinition):String
 }

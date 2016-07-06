@@ -31,6 +31,27 @@ class TestModelGeneratedMessageBuilder: IProtoGeneratedMessageBuilder {
         else if (TestingModel.Phone.getDescriptor().name.equals(name)) {
             return TestingModel.Phone.getDefaultInstance()
         }
+        else if (TestingModel.WorkerConfiguration.getDescriptor().name.equals(name)) {
+            return TestingModel.WorkerConfiguration.getDefaultInstance()
+        }
+        else if (TestingModel.Log.getDescriptor().name.equals(name)) {
+            return TestingModel.Log.getDefaultInstance()
+        }
+        else if (TestingModel.Dag.getDescriptor().name.equals(name)) {
+            return TestingModel.Dag.getDefaultInstance()
+        }
+        else if (TestingModel.Task.getDescriptor().name.equals(name)) {
+            return TestingModel.Task.getDefaultInstance()
+        }
+        else if (TestingModel.AddTaskToDag.getDescriptor().name.equals(name)) {
+            return TestingModel.AddTaskToDag.getDefaultInstance()
+        }
+        else if (TestingModel.CompleteTask.getDescriptor().name.equals(name)) {
+            return TestingModel.CompleteTask.getDefaultInstance()
+        }
+        else if (TestingModel.TaskDependency.getDescriptor().name.equals(name)) {
+            return TestingModel.TaskDependency.getDefaultInstance()
+        }
 
         throw InvalidClassException("bad class name given")
     }

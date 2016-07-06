@@ -9,6 +9,28 @@ import java.util.*
 class EntityProtoService(override val indexDefinition: YaormModel.Index?,
                          private val granularDatabaseService: IGranularDatabaseProtoService,
                          private val sqlGeneratorService: ISqlGeneratorService) : IEntityProtoService {
+    override fun getIdsStream(definition: YaormModel.TableDefinition, streamer: IProtoStreamer) {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return
+        }
+        val selectSql = this.sqlGeneratorService.buildSelectIds(definition)
+
+        this.granularDatabaseService.executeSelectQuery(definition, selectSql).getRecords().recordsList.map {
+            streamer.stream(it)
+        }
+    }
+
+    override fun getIds(definition: YaormModel.TableDefinition): List<String> {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return ArrayList()
+        }
+        val selectSql = this.sqlGeneratorService.buildSelectIds(definition)
+
+        return this.granularDatabaseService.executeSelectQuery(definition, selectSql).getRecords().recordsList.map {
+            it.columns[CommonUtils.IdName]!!.stringHolder
+        }
+    }
+
     override fun getManyStream(n:Int, definition: YaormModel.TableDefinition, streamer: IProtoStreamer) {
         if (!this.granularDatabaseService.isAvailable()) {
             return

@@ -9,6 +9,31 @@ import java.util.*
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService):IEntityMessageService {
+    override fun <T : Message> getKeysStream(messageType: T, streamer: IMessageStreamer) {
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return
+        }
+
+        val idField = messageType.descriptorForType.fields.first { it.name.equals(CommonUtils.IdName) }
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
+        this.entityService.getIdsStream(tableDefinition, object: IProtoStreamer {
+            override fun stream(record: YaormModel.Record) {
+                val builder = protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name).toBuilder()
+                builder.setField(idField, record.columns[CommonUtils.IdName]!!.stringHolder)
+                streamer.stream(builder.build())
+            }
+        })
+    }
+
+    override fun <T : Message> getKeys(messageType: T): List<String> {
+        val returnList = ArrayList<String>()
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return returnList
+        }
+
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
+        return this.entityService.getIds(tableDefinition)
+    }
 
     override fun <T : Message> createEntireSchema(message: T): Boolean {
         if (!ProtobufUtils.isMessageOk(message)) {
@@ -99,7 +124,7 @@ class EntityMessageService(
                         }
                     }
 
-                    // if this is a linker table, then we want compare all the items with parent vs what we have
+                    // if this is a linker table, then we want to compare all the items with parent vs what we have
                     if (tableRecords.tableDefinition.tableType.equals(YaormModel.TableDefinition.TableType.NORMAL)) {
                         recordsFromDatabaseMap = this.handleNormalCase(tableRecords)
                     }
@@ -107,18 +132,9 @@ class EntityMessageService(
                         recordsFromDatabaseMap = this.handleLinkerMessageCase(tableRecords)
                     }
 
-                    // merge stuff here
+                    // merge here
                     recordsFromClientMap.keys.forEach {
-                        if (recordsFromDatabaseMap.containsKey(it)) {
-                            // update
-                            entityService.update(recordsFromClientMap[it]!!,
-                                    tableRecords.tableDefinition)
-                        }
-                        else {
-                            // insert
-                            entityService.create(recordsFromClientMap[it]!!,
-                                    tableRecords.tableDefinition)
-                        }
+                        entityService.createOrUpdate(recordsFromClientMap[it]!!, tableRecords.tableDefinition)
                     }
 
                     recordsFromDatabaseMap.keys.forEach {
@@ -146,7 +162,7 @@ class EntityMessageService(
         return this.entityService.delete(id, tableDefinition)
     }
 
-    override fun <T : Message> get(messageType:T, id: String): T {
+    override fun <T : Message> get(messageType:T, id: String): T? {
         return ProtobufUtils.getProtoObjectFromBuilderSingle(messageType,
                 this.entityService,
                 id,
@@ -166,7 +182,9 @@ class EntityMessageService(
                     if (record.columns.containsKey(CommonUtils.IdName)) {
                         val idColumn = record.columns[CommonUtils.IdName]!!
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        returnList.add(completedMessage)
+                        if (completedMessage != null) {
+                            returnList.add(completedMessage)
+                        }
                     }
         }
 
@@ -184,7 +202,9 @@ class EntityMessageService(
                     if (record.columns.containsKey(CommonUtils.IdName)) {
                         val idColumn = record.columns[CommonUtils.IdName]!!
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        streamer.stream(completedMessage)
+                        if (completedMessage != null) {
+                            streamer.stream(completedMessage)
+                        }
                     }
                 }
     }
@@ -200,7 +220,9 @@ class EntityMessageService(
                     if (record.columns.containsKey(CommonUtils.IdName)) {
                         val idColumn = record.columns[CommonUtils.IdName]!!
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        returnList.add(completedMessage)
+                        if (completedMessage != null) {
+                            returnList.add(completedMessage)
+                        }
                     }
                 }
 
@@ -219,7 +241,9 @@ class EntityMessageService(
                     if (record.columns.containsKey(CommonUtils.IdName)) {
                         val idColumn = record.columns[CommonUtils.IdName]!!
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        streamer.stream(completedMessage)
+                        if (completedMessage != null) {
+                            streamer.stream(completedMessage)
+                        }
                     }
                 }
     }
@@ -236,7 +260,7 @@ class EntityMessageService(
         // where clause with all the main parent items
         val recordsFromDatabaseMap = HashMap<String, YaormModel.Record>()
         val parentColumn = tableRecords.tableDefinition.columnDefinitions.values
-                .firstOrNull { it.linkerType.equals(YaormModel.ColumnDefinition.LinkerType.PARENT) } ?: return recordsFromDatabaseMap
+                .firstOrNull { it.name.endsWith(ProtobufUtils.MainSuffix) } ?: return recordsFromDatabaseMap
 
         var customWhereClauseLinker = YaormModel.WhereClause.newBuilder()
                 .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
@@ -244,23 +268,22 @@ class EntityMessageService(
 
         var firstWhereClause:YaormModel.WhereClause.Builder? = null
 
-        tableRecords.records.recordsList.forEach { record ->
-            if (record.columns.containsKey(parentColumn.name)) {
-                val parentIdColumn = record.columns[parentColumn.name]!!
-                customWhereClauseLinker.nameAndProperty = parentIdColumn
+        tableRecords.knownParentIdsList.forEach { id ->
+            customWhereClauseLinker.nameAndProperty = YaormModel.Column.newBuilder()
+                .setDefinition(parentColumn)
+                .setStringHolder(id)
+                .build()
 
-                val newWhereClause = YaormModel.WhereClause.newBuilder()
-                        .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
-                        .setConnectingWhereClause(customWhereClauseLinker)
-                        .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
+            val newWhereClause = YaormModel.WhereClause.newBuilder()
+                    .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                    .setConnectingWhereClause(customWhereClauseLinker)
+                    .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
 
-                if (firstWhereClause == null) {
-                    firstWhereClause = customWhereClauseLinker
-                }
-
-                customWhereClauseLinker = newWhereClause
+            if (firstWhereClause == null) {
+                firstWhereClause = customWhereClauseLinker
             }
 
+            customWhereClauseLinker = newWhereClause
         }
 
         if (firstWhereClause == null) {
@@ -314,5 +337,17 @@ class EntityMessageService(
             }
         }
         return recordsFromDatabaseMap
+    }
+
+    private fun buildTableDefinitionWithOnlyId(messageType:Message):YaormModel.TableDefinition{
+        val tableDefinition = YaormModel.TableDefinition.newBuilder()
+                .setName(messageType.descriptorForType.name)
+        tableDefinition.mutableColumnDefinitions[CommonUtils.IdName] = YaormModel.ColumnDefinition.newBuilder()
+                .setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR)
+                .setIsKey(true)
+                .setName(CommonUtils.IdName)
+                .setType(YaormModel.ProtobufType.STRING)
+                .build()
+        return tableDefinition.build()
     }
 }

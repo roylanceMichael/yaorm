@@ -20,6 +20,13 @@ public class SQLiteConnectionSourceFactory
             String.format(SqliteJdbcDbTemplate, dbPath));
     }
 
+    public SQLiteConnectionSourceFactory(
+            @NotNull String dbPath,
+            @NotNull String userName,
+            @NotNull String password) throws SQLException {
+        this.commonConnection = DriverManager.getConnection(String.format(SqliteJdbcDbTemplate, dbPath), userName, password);
+    }
+
     @Override
     public Connection getConnectionSource()
             throws SQLException {

@@ -10,7 +10,9 @@ interface IEntityMessageService {
     fun <T: Message> merge(sourceOfTruthMessage:T): Boolean
     fun <T: Message> delete(sourceOfTruthMessage:T): Boolean
 
-    fun <T: Message> get(messageType:T, id:String):T
+    fun <T: Message> get(messageType:T, id:String):T?
+    fun <T: Message> getKeys(messageType:T):List<String>
+    fun <T: Message> getKeysStream(messageType:T, streamer: IMessageStreamer)
     fun <T: Message> getMany(messageType:T, maxAmount:Int=10000):List<T>
     fun <T: Message> getManyStream(messageType: T, streamer: IMessageStreamer)
 

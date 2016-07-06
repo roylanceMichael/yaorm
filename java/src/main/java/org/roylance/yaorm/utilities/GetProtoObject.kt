@@ -10,8 +10,14 @@ internal class GetProtoObject(
         private val entityService: IEntityProtoService,
         private val generatedMessageBuilder: IProtoGeneratedMessageBuilder) {
     private val tableDefinitionGraphs = HashMap<String, YaormModel.TableDefinitionGraphs>()
+    private val typeNameMap = HashMap<String, Message.Builder>()
 
-    internal fun <T: Message> build(builder: T, entityId:String):T {
+    internal fun <T: Message> build(builder: T, entityId:String):T? {
+        val uniqueKey = this.buildUniqueKey(builder, entityId)
+        if (this.typeNameMap.containsKey(uniqueKey)) {
+            return this.typeNameMap[uniqueKey]!!.build() as T
+        }
+
         if (!tableDefinitionGraphs.containsKey(builder.descriptorForType.name)) {
             tableDefinitionGraphs[builder.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(builder.descriptorForType)
         }
@@ -19,7 +25,10 @@ internal class GetProtoObject(
         val builderForType = builder.newBuilderForType()
 
         val foundRecord = this.entityService.get(entityId, tableDefinitionGraph.mainTableDefinition)
-                ?: return builderForType.build() as T
+        if (foundRecord == null) {
+            this.typeNameMap[uniqueKey] = builderForType
+            return null
+        }
 
         // main fields
         builder.descriptorForType
@@ -75,6 +84,8 @@ internal class GetProtoObject(
                     }
                 }
 
+        this.typeNameMap[this.buildUniqueKey(builder, entityId)] = builderForType
+
         // repeated messages
         builder.descriptorForType
                 .fields
@@ -115,6 +126,10 @@ internal class GetProtoObject(
                             }
                 }
 
-        return builderForType.build() as T
+        return this.typeNameMap[this.buildUniqueKey(builder, entityId)]!!.build() as T
+    }
+
+    private fun buildUniqueKey(builder: Message, entityId:String):String {
+        return "${builder.descriptorForType.name}~$entityId"
     }
 }

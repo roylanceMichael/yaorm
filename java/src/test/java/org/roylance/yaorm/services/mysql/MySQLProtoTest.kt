@@ -106,7 +106,7 @@ class MySQLProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
-            Assert.assertTrue(record.testDisplay.equals("second display"))
+            Assert.assertTrue(record!!.testDisplay.equals("second display"))
         }
         finally {
             dropSchema()
@@ -173,7 +173,7 @@ class MySQLProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record.coolType.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED))
+            Assert.assertTrue(record!!.coolType.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED))
             Assert.assertTrue(record.display.equals(testModel.display))
             Assert.assertTrue(record.testInt32.equals(testModel.testInt32))
             Assert.assertTrue(record.testInt64.equals(testModel.testInt64))
@@ -255,7 +255,7 @@ class MySQLProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record.coolTypesCount == 2)
+            Assert.assertTrue(record!!.coolTypesCount == 2)
             Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED) })
             Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.TEST) })
         }
@@ -300,7 +300,7 @@ class MySQLProtoTest {
 
             // assert
             Assert.assertTrue(insertedRecord is TestingModel.SimpleInsertTest)
-            System.out.println(insertedRecord.childsCount)
+            System.out.println(insertedRecord!!.childsCount)
             Assert.assertTrue(insertedRecord.childsCount == 3)
             Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild) && it.id.equals(TestingModelUtilities.SubTestChildId) })
             Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild2) && it.id.equals(TestingModelUtilities.SubTestChild2Id) })

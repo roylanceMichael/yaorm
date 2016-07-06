@@ -17,7 +17,7 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
     private val SqlIntegerName = "bigint"
     // http://dev.mysql.com/doc/refman/5.0/en/char.html - thank you
     private val SqlTextName = "mediumtext"
-    private val SqlTextIdName = "varchar(100)"
+    private val SqlTextIdName = "varchar(150)"
     private val SqlRealName = "decimal"
     private val SqlBlobName = "longtext"
 
@@ -44,6 +44,10 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
     }
 
     override val bulkInsertSize: Int = 1000
+
+    override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
+        return "select id from ${definition.name}"
+    }
 
     override fun buildCountSql(definition: YaormModel.TableDefinition): String {
         return "select count(1) as longVal from ${definition.name}"

@@ -96,7 +96,7 @@ class SQLiteProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
-            Assert.assertTrue(record.testDisplay.equals("second display"))
+            Assert.assertTrue(record!!.testDisplay.equals("second display"))
         }
         finally {
             database.deleteOnExit()
@@ -158,7 +158,7 @@ class SQLiteProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record.coolType.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED))
+            Assert.assertTrue(record!!.coolType.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED))
             Assert.assertTrue(record.display.equals(testModel.display))
             Assert.assertTrue(record.testInt32.equals(testModel.testInt32))
             Assert.assertTrue(record.testInt64.equals(testModel.testInt64))
@@ -235,7 +235,7 @@ class SQLiteProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record.coolTypesCount == 2)
+            Assert.assertTrue(record!!.coolTypesCount == 2)
             Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED) })
             Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.TEST) })
         }
@@ -303,7 +303,7 @@ class SQLiteProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record.childsCount == 3)
+            Assert.assertTrue(record!!.childsCount == 3)
             Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild.testDisplay) && it.id.equals(subTestChild.id) })
             Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild2.testDisplay) && it.id.equals(subTestChild2.id) })
             Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild3.testDisplay) && it.id.equals(subTestChild3.id) })

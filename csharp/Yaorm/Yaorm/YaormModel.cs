@@ -90,86 +90,86 @@ namespace Org.Roylance.Yaorm.Models {
             "b2RlbHMuUmVjb3JkLkNvbHVtbnNFbnRyeRpRCgxDb2x1bW5zRW50cnkSCwoD",
             "a2V5GAEgASgJEjAKBXZhbHVlGAIgASgLMiEub3JnLnJveWxhbmNlLnlhb3Jt",
             "Lm1vZGVscy5Db2x1bW46AjgBIj0KB1JlY29yZHMSMgoHcmVjb3JkcxgBIAMo",
-            "CzIhLm9yZy5yb3lsYW5jZS55YW9ybS5tb2RlbHMuUmVjb3JkIp0BCgxUYWJs",
+            "CzIhLm9yZy5yb3lsYW5jZS55YW9ybS5tb2RlbHMuUmVjb3JkIrcBCgxUYWJs",
             "ZVJlY29yZHMSRAoQdGFibGVfZGVmaW5pdGlvbhgBIAEoCzIqLm9yZy5yb3ls",
             "YW5jZS55YW9ybS5tb2RlbHMuVGFibGVEZWZpbml0aW9uEjMKB3JlY29yZHMY",
             "AiABKAsyIi5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLlJlY29yZHMSEgoK",
-            "dGFibGVfbmFtZRgDIAEoCSLEAQoPQWxsVGFibGVSZWNvcmRzElMKDXRhYmxl",
-            "X3JlY29yZHMYASADKAsyPC5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLkFs",
-            "bFRhYmxlUmVjb3Jkcy5UYWJsZVJlY29yZHNFbnRyeRpcChFUYWJsZVJlY29y",
-            "ZHNFbnRyeRILCgNrZXkYASABKAkSNgoFdmFsdWUYAiABKAsyJy5vcmcucm95",
-            "bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxlUmVjb3JkczoCOAEi+QUKEURhdGFi",
-            "YXNlT3BlcmF0aW9uEkQKEHRhYmxlX2RlZmluaXRpb24YASABKAsyKi5vcmcu",
-            "cm95bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxlRGVmaW5pdGlvbhIzCgdyZWNv",
-            "cmRzGAIgASgLMiIub3JnLnJveWxhbmNlLnlhb3JtLm1vZGVscy5SZWNvcmRz",
-            "Ei8KBWluZGV4GAMgASgLMiAub3JnLnJveWxhbmNlLnlhb3JtLm1vZGVscy5J",
-            "bmRleBJGChFjb2x1bW5fZGVmaW5pdGlvbhgEIAEoCzIrLm9yZy5yb3lsYW5j",
-            "ZS55YW9ybS5tb2RlbHMuQ29sdW1uRGVmaW5pdGlvbhI8Cgx3aGVyZV9jbGF1",
-            "c2UYBSABKAsyJi5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLldoZXJlQ2xh",
-            "dXNlEmMKF2RhdGFiYXNlX29wZXJhdGlvbl90eXBlGAYgASgOMkIub3JnLnJv",
-            "eWxhbmNlLnlhb3JtLm1vZGVscy5EYXRhYmFzZU9wZXJhdGlvbi5EYXRhYmFz",
-            "ZU9wZXJhdGlvblR5cGUizAIKFURhdGFiYXNlT3BlcmF0aW9uVHlwZRIQCgxD",
-            "UkVBVEVfVEFCTEUQABIOCgpEUk9QX1RBQkxFEAESEAoMQ1JFQVRFX0lOREVY",
-            "EAISDgoKRFJPUF9JTkRFWBADEhEKDUNSRUFURV9DT0xVTU4QBBIPCgtEUk9Q",
-            "X0NPTFVNThAFEg0KCUdFVF9DT1VOVBAGEg4KCkdFVF9DVVNUT00QBxIHCgNH",
-            "RVQQCBIMCghHRVRfTUFOWRAJEg0KCUdFVF9XSEVSRRAKEg8KC0JVTEtfSU5T",
-            "RVJUEAsSFAoQQ1JFQVRFX09SX1VQREFURRAMEgoKBkNSRUFURRANEgoKBlVQ",
-            "REFURRAOEhgKFFVQREFURV9XSVRIX0NSSVRFUklBEA8SEQoNVVBEQVRFX0NV",
-            "U1RPTRAQEgoKBkRFTEVURRAREg4KCkRFTEVURV9BTEwQEiKbAgoXRGF0YWJh",
-            "c2VPcGVyYXRpb25SZXN1bHQSEwoLYm9vbF9yZXN1bHQYASABKAgSFAoMY291",
-            "bnRfcmVzdWx0GAIgASgDEjgKDXJlY29yZF9yZXN1bHQYAyABKAsyIS5vcmcu",
-            "cm95bGFuY2UueWFvcm0ubW9kZWxzLlJlY29yZBI6Cg5yZWNvcmRzX3Jlc3Vs",
-            "dBgEIAEoCzIiLm9yZy5yb3lsYW5jZS55YW9ybS5tb2RlbHMuUmVjb3JkcxIV",
-            "Cg1lcnJvcl9tZXNzYWdlGAUgASgJEkgKEmRhdGFiYXNlX29wZXJhdGlvbhgG",
-            "IAEoCzIsLm9yZy5yb3lsYW5jZS55YW9ybS5tb2RlbHMuRGF0YWJhc2VPcGVy",
-            "YXRpb24izQEKEkRhdGFiYXNlRGVmaW5pdGlvbhIOCgZzY2hlbWEYASABKAkS",
-            "DAoEbmFtZRgCIAEoCRJGChF0YWJsZV9kZWZpbml0aW9ucxgDIAEoCzIrLm9y",
-            "Zy5yb3lsYW5jZS55YW9ybS5tb2RlbHMuVGFibGVEZWZpbml0aW9ucxJRChd0",
-            "YWJsZV9kZWZpbml0aW9uX2dyYXBocxgEIAMoCzIwLm9yZy5yb3lsYW5jZS55",
-            "YW9ybS5tb2RlbHMuVGFibGVEZWZpbml0aW9uR3JhcGhzItcDChRUYWJsZURl",
-            "ZmluaXRpb25HcmFwaBJJChVtYWluX3RhYmxlX2RlZmluaXRpb24YASABKAsy",
-            "Ki5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxlRGVmaW5pdGlvbhJK",
-            "ChZvdGhlcl90YWJsZV9kZWZpbml0aW9uGAIgASgLMioub3JnLnJveWxhbmNl",
-            "Lnlhb3JtLm1vZGVscy5UYWJsZURlZmluaXRpb24SRgoSbGlua2VyX3RhYmxl",
-            "X3RhYmxlGAMgASgLMioub3JnLnJveWxhbmNlLnlhb3JtLm1vZGVscy5UYWJs",
-            "ZURlZmluaXRpb24SZwoVZGVmaW5pdGlvbl9ncmFwaF90eXBlGAQgASgOMkgu",
-            "b3JnLnJveWxhbmNlLnlhb3JtLm1vZGVscy5UYWJsZURlZmluaXRpb25HcmFw",
-            "aC5UYWJsZURlZmluaXRpb25HcmFwaFR5cGUSEQoJbWFpbl9uYW1lGAUgASgJ",
-            "EhIKCm90aGVyX25hbWUYBiABKAkSEwoLY29sdW1uX25hbWUYByABKAkiOwoY",
-            "VGFibGVEZWZpbml0aW9uR3JhcGhUeXBlEg0KCUVOVU1fVFlQRRAAEhAKDE1F",
-            "U1NBR0VfVFlQRRABIrQBChVUYWJsZURlZmluaXRpb25HcmFwaHMSSQoVbWFp",
-            "bl90YWJsZV9kZWZpbml0aW9uGAEgASgLMioub3JnLnJveWxhbmNlLnlhb3Jt",
-            "Lm1vZGVscy5UYWJsZURlZmluaXRpb24SUAoXdGFibGVfZGVmaW5pdGlvbl9n",
-            "cmFwaHMYAiADKAsyLy5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxl",
-            "RGVmaW5pdGlvbkdyYXBoIk4KDkNvbm5lY3Rpb25JbmZvEgwKBGhvc3QYASAB",
-            "KAkSDAoEdXNlchgCIAEoCRIQCghwYXNzd29yZBgDIAEoCRIOCgZzY2hlbWEY",
-            "BCABKAkq1wEKDFByb3RvYnVmVHlwZRIICgROT05FEAASCgoGRE9VQkxFEAES",
-            "CQoFRkxPQVQQAhIJCgVJTlQzMhADEgkKBUlOVDY0EAQSCgoGVUlOVDMyEAUS",
-            "CgoGVUlOVDY0EAYSCgoGU0lOVDMyEAcSCgoGU0lOVDY0EAgSCwoHRklYRUQz",
-            "MhAJEgsKB0ZJWEVENjQQChIMCghTRklYRUQzMhALEgwKCFNGSVhFRDY0EAwS",
-            "CAoEQk9PTBANEgoKBlNUUklORxAOEgkKBUJZVEVTEA8SCQoFUFJPVE8QEGIG",
-            "cHJvdG8z"));
+            "dGFibGVfbmFtZRgDIAEoCRIYChBrbm93bl9wYXJlbnRfaWRzGAQgAygJIsQB",
+            "Cg9BbGxUYWJsZVJlY29yZHMSUwoNdGFibGVfcmVjb3JkcxgBIAMoCzI8Lm9y",
+            "Zy5yb3lsYW5jZS55YW9ybS5tb2RlbHMuQWxsVGFibGVSZWNvcmRzLlRhYmxl",
+            "UmVjb3Jkc0VudHJ5GlwKEVRhYmxlUmVjb3Jkc0VudHJ5EgsKA2tleRgBIAEo",
+            "CRI2CgV2YWx1ZRgCIAEoCzInLm9yZy5yb3lsYW5jZS55YW9ybS5tb2RlbHMu",
+            "VGFibGVSZWNvcmRzOgI4ASL5BQoRRGF0YWJhc2VPcGVyYXRpb24SRAoQdGFi",
+            "bGVfZGVmaW5pdGlvbhgBIAEoCzIqLm9yZy5yb3lsYW5jZS55YW9ybS5tb2Rl",
+            "bHMuVGFibGVEZWZpbml0aW9uEjMKB3JlY29yZHMYAiABKAsyIi5vcmcucm95",
+            "bGFuY2UueWFvcm0ubW9kZWxzLlJlY29yZHMSLwoFaW5kZXgYAyABKAsyIC5v",
+            "cmcucm95bGFuY2UueWFvcm0ubW9kZWxzLkluZGV4EkYKEWNvbHVtbl9kZWZp",
+            "bml0aW9uGAQgASgLMisub3JnLnJveWxhbmNlLnlhb3JtLm1vZGVscy5Db2x1",
+            "bW5EZWZpbml0aW9uEjwKDHdoZXJlX2NsYXVzZRgFIAEoCzImLm9yZy5yb3ls",
+            "YW5jZS55YW9ybS5tb2RlbHMuV2hlcmVDbGF1c2USYwoXZGF0YWJhc2Vfb3Bl",
+            "cmF0aW9uX3R5cGUYBiABKA4yQi5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxz",
+            "LkRhdGFiYXNlT3BlcmF0aW9uLkRhdGFiYXNlT3BlcmF0aW9uVHlwZSLMAgoV",
+            "RGF0YWJhc2VPcGVyYXRpb25UeXBlEhAKDENSRUFURV9UQUJMRRAAEg4KCkRS",
+            "T1BfVEFCTEUQARIQCgxDUkVBVEVfSU5ERVgQAhIOCgpEUk9QX0lOREVYEAMS",
+            "EQoNQ1JFQVRFX0NPTFVNThAEEg8KC0RST1BfQ09MVU1OEAUSDQoJR0VUX0NP",
+            "VU5UEAYSDgoKR0VUX0NVU1RPTRAHEgcKA0dFVBAIEgwKCEdFVF9NQU5ZEAkS",
+            "DQoJR0VUX1dIRVJFEAoSDwoLQlVMS19JTlNFUlQQCxIUChBDUkVBVEVfT1Jf",
+            "VVBEQVRFEAwSCgoGQ1JFQVRFEA0SCgoGVVBEQVRFEA4SGAoUVVBEQVRFX1dJ",
+            "VEhfQ1JJVEVSSUEQDxIRCg1VUERBVEVfQ1VTVE9NEBASCgoGREVMRVRFEBES",
+            "DgoKREVMRVRFX0FMTBASIpsCChdEYXRhYmFzZU9wZXJhdGlvblJlc3VsdBIT",
+            "Cgtib29sX3Jlc3VsdBgBIAEoCBIUCgxjb3VudF9yZXN1bHQYAiABKAMSOAoN",
+            "cmVjb3JkX3Jlc3VsdBgDIAEoCzIhLm9yZy5yb3lsYW5jZS55YW9ybS5tb2Rl",
+            "bHMuUmVjb3JkEjoKDnJlY29yZHNfcmVzdWx0GAQgASgLMiIub3JnLnJveWxh",
+            "bmNlLnlhb3JtLm1vZGVscy5SZWNvcmRzEhUKDWVycm9yX21lc3NhZ2UYBSAB",
+            "KAkSSAoSZGF0YWJhc2Vfb3BlcmF0aW9uGAYgASgLMiwub3JnLnJveWxhbmNl",
+            "Lnlhb3JtLm1vZGVscy5EYXRhYmFzZU9wZXJhdGlvbiLNAQoSRGF0YWJhc2VE",
+            "ZWZpbml0aW9uEg4KBnNjaGVtYRgBIAEoCRIMCgRuYW1lGAIgASgJEkYKEXRh",
+            "YmxlX2RlZmluaXRpb25zGAMgASgLMisub3JnLnJveWxhbmNlLnlhb3JtLm1v",
+            "ZGVscy5UYWJsZURlZmluaXRpb25zElEKF3RhYmxlX2RlZmluaXRpb25fZ3Jh",
+            "cGhzGAQgAygLMjAub3JnLnJveWxhbmNlLnlhb3JtLm1vZGVscy5UYWJsZURl",
+            "ZmluaXRpb25HcmFwaHMi1wMKFFRhYmxlRGVmaW5pdGlvbkdyYXBoEkkKFW1h",
+            "aW5fdGFibGVfZGVmaW5pdGlvbhgBIAEoCzIqLm9yZy5yb3lsYW5jZS55YW9y",
+            "bS5tb2RlbHMuVGFibGVEZWZpbml0aW9uEkoKFm90aGVyX3RhYmxlX2RlZmlu",
+            "aXRpb24YAiABKAsyKi5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxl",
+            "RGVmaW5pdGlvbhJGChJsaW5rZXJfdGFibGVfdGFibGUYAyABKAsyKi5vcmcu",
+            "cm95bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxlRGVmaW5pdGlvbhJnChVkZWZp",
+            "bml0aW9uX2dyYXBoX3R5cGUYBCABKA4ySC5vcmcucm95bGFuY2UueWFvcm0u",
+            "bW9kZWxzLlRhYmxlRGVmaW5pdGlvbkdyYXBoLlRhYmxlRGVmaW5pdGlvbkdy",
+            "YXBoVHlwZRIRCgltYWluX25hbWUYBSABKAkSEgoKb3RoZXJfbmFtZRgGIAEo",
+            "CRITCgtjb2x1bW5fbmFtZRgHIAEoCSI7ChhUYWJsZURlZmluaXRpb25HcmFw",
+            "aFR5cGUSDQoJRU5VTV9UWVBFEAASEAoMTUVTU0FHRV9UWVBFEAEitAEKFVRh",
+            "YmxlRGVmaW5pdGlvbkdyYXBocxJJChVtYWluX3RhYmxlX2RlZmluaXRpb24Y",
+            "ASABKAsyKi5vcmcucm95bGFuY2UueWFvcm0ubW9kZWxzLlRhYmxlRGVmaW5p",
+            "dGlvbhJQChd0YWJsZV9kZWZpbml0aW9uX2dyYXBocxgCIAMoCzIvLm9yZy5y",
+            "b3lsYW5jZS55YW9ybS5tb2RlbHMuVGFibGVEZWZpbml0aW9uR3JhcGgiTgoO",
+            "Q29ubmVjdGlvbkluZm8SDAoEaG9zdBgBIAEoCRIMCgR1c2VyGAIgASgJEhAK",
+            "CHBhc3N3b3JkGAMgASgJEg4KBnNjaGVtYRgEIAEoCSrXAQoMUHJvdG9idWZU",
+            "eXBlEggKBE5PTkUQABIKCgZET1VCTEUQARIJCgVGTE9BVBACEgkKBUlOVDMy",
+            "EAMSCQoFSU5UNjQQBBIKCgZVSU5UMzIQBRIKCgZVSU5UNjQQBhIKCgZTSU5U",
+            "MzIQBxIKCgZTSU5UNjQQCBILCgdGSVhFRDMyEAkSCwoHRklYRUQ2NBAKEgwK",
+            "CFNGSVhFRDMyEAsSDAoIU0ZJWEVENjQQDBIICgRCT09MEA0SCgoGU1RSSU5H",
+            "EA4SCQoFQllURVMQDxIJCgVQUk9UTxAQYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Org.Roylance.Yaorm.Models.ProtobufType), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.WhereClause), global::Org.Roylance.Yaorm.Models.WhereClause.Parser, new[]{ "NameAndProperty", "OperatorType", "ConnectingAndOr", "ConnectingWhereClause" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType), typeof(global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.ColumnDefinition), global::Org.Roylance.Yaorm.Models.ColumnDefinition.Parser, new[]{ "Name", "Type", "IsKey", "ColumnType", "LinkerType" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType), typeof(global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.Index), global::Org.Roylance.Yaorm.Models.Index.Parser, new[]{ "ColumnNames", "IncludeNames" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.Difference), global::Org.Roylance.Yaorm.Models.Difference.Parser, new[]{ "EntityType", "Operation", "Name", "Index", "PropertyDefinition", "TableDefinition" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType), typeof(global::Org.Roylance.Yaorm.Models.Difference.Types.Operation) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinition), global::Org.Roylance.Yaorm.Models.TableDefinition.Parser, new[]{ "Name", "ColumnDefinitions", "Index", "TableType" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinitions), global::Org.Roylance.Yaorm.Models.TableDefinitions.Parser, new[]{ "TableDefinitions_" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.DifferenceReport), global::Org.Roylance.Yaorm.Models.DifferenceReport.Parser, new[]{ "MigrationExists", "Differences" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.Column), global::Org.Roylance.Yaorm.Models.Column.Parser, new[]{ "Definition", "DoubleHolder", "FloatHolder", "Int32Holder", "Int64Holder", "Uint32Holder", "Uint64Holder", "Sint32Holder", "Sint64Holder", "Fixed32Holder", "Fixed64Holder", "Sfixed32Holder", "Sfixed64Holder", "BoolHolder", "StringHolder", "BytesHolder" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.Record), global::Org.Roylance.Yaorm.Models.Record.Parser, new[]{ "Columns" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.Records), global::Org.Roylance.Yaorm.Models.Records.Parser, new[]{ "Records_" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableRecords), global::Org.Roylance.Yaorm.Models.TableRecords.Parser, new[]{ "TableDefinition", "Records", "TableName" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.AllTableRecords), global::Org.Roylance.Yaorm.Models.AllTableRecords.Parser, new[]{ "TableRecords" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.DatabaseOperation), global::Org.Roylance.Yaorm.Models.DatabaseOperation.Parser, new[]{ "TableDefinition", "Records", "Index", "ColumnDefinition", "WhereClause", "DatabaseOperationType" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.DatabaseOperationResult), global::Org.Roylance.Yaorm.Models.DatabaseOperationResult.Parser, new[]{ "BoolResult", "CountResult", "RecordResult", "RecordsResult", "ErrorMessage", "DatabaseOperation" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.DatabaseDefinition), global::Org.Roylance.Yaorm.Models.DatabaseDefinition.Parser, new[]{ "Schema", "Name", "TableDefinitions", "TableDefinitionGraphs" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinitionGraph), global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Parser, new[]{ "MainTableDefinition", "OtherTableDefinition", "LinkerTableTable", "DefinitionGraphType", "MainName", "OtherName", "ColumnName" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinitionGraphs), global::Org.Roylance.Yaorm.Models.TableDefinitionGraphs.Parser, new[]{ "MainTableDefinition", "TableDefinitionGraphs_" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Models.ConnectionInfo), global::Org.Roylance.Yaorm.Models.ConnectionInfo.Parser, new[]{ "Host", "User", "Password", "Schema" }, null, null, null)
+          new pbr::GeneratedCodeInfo(new[] {typeof(global::Org.Roylance.Yaorm.Models.ProtobufType), }, new pbr::GeneratedCodeInfo[] {
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.WhereClause), global::Org.Roylance.Yaorm.Models.WhereClause.Parser, new[]{ "NameAndProperty", "OperatorType", "ConnectingAndOr", "ConnectingWhereClause" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType), typeof(global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.ColumnDefinition), global::Org.Roylance.Yaorm.Models.ColumnDefinition.Parser, new[]{ "Name", "Type", "IsKey", "ColumnType", "LinkerType" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType), typeof(global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.Index), global::Org.Roylance.Yaorm.Models.Index.Parser, new[]{ "ColumnNames", "IncludeNames" }, null, null, new pbr::GeneratedCodeInfo[] { null, null, }),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.Difference), global::Org.Roylance.Yaorm.Models.Difference.Parser, new[]{ "EntityType", "Operation", "Name", "Index", "PropertyDefinition", "TableDefinition" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType), typeof(global::Org.Roylance.Yaorm.Models.Difference.Types.Operation) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinition), global::Org.Roylance.Yaorm.Models.TableDefinition.Parser, new[]{ "Name", "ColumnDefinitions", "Index", "TableType" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType) }, new pbr::GeneratedCodeInfo[] { null, }),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinitions), global::Org.Roylance.Yaorm.Models.TableDefinitions.Parser, new[]{ "TableDefinitions_" }, null, null, new pbr::GeneratedCodeInfo[] { null, }),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.DifferenceReport), global::Org.Roylance.Yaorm.Models.DifferenceReport.Parser, new[]{ "MigrationExists", "Differences" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.Column), global::Org.Roylance.Yaorm.Models.Column.Parser, new[]{ "Definition", "DoubleHolder", "FloatHolder", "Int32Holder", "Int64Holder", "Uint32Holder", "Uint64Holder", "Sint32Holder", "Sint64Holder", "Fixed32Holder", "Fixed64Holder", "Sfixed32Holder", "Sfixed64Holder", "BoolHolder", "StringHolder", "BytesHolder" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.Record), global::Org.Roylance.Yaorm.Models.Record.Parser, new[]{ "Columns" }, null, null, new pbr::GeneratedCodeInfo[] { null, }),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.Records), global::Org.Roylance.Yaorm.Models.Records.Parser, new[]{ "Records_" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableRecords), global::Org.Roylance.Yaorm.Models.TableRecords.Parser, new[]{ "TableDefinition", "Records", "TableName", "KnownParentIds" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.AllTableRecords), global::Org.Roylance.Yaorm.Models.AllTableRecords.Parser, new[]{ "TableRecords" }, null, null, new pbr::GeneratedCodeInfo[] { null, }),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.DatabaseOperation), global::Org.Roylance.Yaorm.Models.DatabaseOperation.Parser, new[]{ "TableDefinition", "Records", "Index", "ColumnDefinition", "WhereClause", "DatabaseOperationType" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.DatabaseOperationResult), global::Org.Roylance.Yaorm.Models.DatabaseOperationResult.Parser, new[]{ "BoolResult", "CountResult", "RecordResult", "RecordsResult", "ErrorMessage", "DatabaseOperation" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.DatabaseDefinition), global::Org.Roylance.Yaorm.Models.DatabaseDefinition.Parser, new[]{ "Schema", "Name", "TableDefinitions", "TableDefinitionGraphs" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinitionGraph), global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Parser, new[]{ "MainTableDefinition", "OtherTableDefinition", "LinkerTableTable", "DefinitionGraphType", "MainName", "OtherName", "ColumnName" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.TableDefinitionGraphs), global::Org.Roylance.Yaorm.Models.TableDefinitionGraphs.Parser, new[]{ "MainTableDefinition", "TableDefinitionGraphs_" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Org.Roylance.Yaorm.Models.ConnectionInfo), global::Org.Roylance.Yaorm.Models.ConnectionInfo.Parser, new[]{ "Host", "User", "Password", "Schema" }, null, null, null)
           }));
     }
     #endregion
@@ -177,23 +177,23 @@ namespace Org.Roylance.Yaorm.Models {
   }
   #region Enums
   public enum ProtobufType {
-    [pbr::OriginalName("NONE")] None = 0,
-    [pbr::OriginalName("DOUBLE")] Double = 1,
-    [pbr::OriginalName("FLOAT")] Float = 2,
-    [pbr::OriginalName("INT32")] Int32 = 3,
-    [pbr::OriginalName("INT64")] Int64 = 4,
-    [pbr::OriginalName("UINT32")] Uint32 = 5,
-    [pbr::OriginalName("UINT64")] Uint64 = 6,
-    [pbr::OriginalName("SINT32")] Sint32 = 7,
-    [pbr::OriginalName("SINT64")] Sint64 = 8,
-    [pbr::OriginalName("FIXED32")] Fixed32 = 9,
-    [pbr::OriginalName("FIXED64")] Fixed64 = 10,
-    [pbr::OriginalName("SFIXED32")] Sfixed32 = 11,
-    [pbr::OriginalName("SFIXED64")] Sfixed64 = 12,
-    [pbr::OriginalName("BOOL")] Bool = 13,
-    [pbr::OriginalName("STRING")] String = 14,
-    [pbr::OriginalName("BYTES")] Bytes = 15,
-    [pbr::OriginalName("PROTO")] Proto = 16,
+    NONE = 0,
+    DOUBLE = 1,
+    FLOAT = 2,
+    INT32 = 3,
+    INT64 = 4,
+    UINT32 = 5,
+    UINT64 = 6,
+    SINT32 = 7,
+    SINT64 = 8,
+    FIXED32 = 9,
+    FIXED64 = 10,
+    SFIXED32 = 11,
+    SFIXED64 = 12,
+    BOOL = 13,
+    STRING = 14,
+    BYTES = 15,
+    PROTO = 16,
   }
 
   #endregion
@@ -241,7 +241,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "operator_type" field.</summary>
     public const int OperatorTypeFieldNumber = 2;
-    private global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType operatorType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType operatorType_ = global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType.EQUALS;
     public global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType OperatorType {
       get { return operatorType_; }
       set {
@@ -251,7 +251,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "connecting_and_or" field.</summary>
     public const int ConnectingAndOrFieldNumber = 3;
-    private global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr connectingAndOr_ = 0;
+    private global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr connectingAndOr_ = global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr.NONE;
     public global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr ConnectingAndOr {
       get { return connectingAndOr_; }
       set {
@@ -290,8 +290,8 @@ namespace Org.Roylance.Yaorm.Models {
     public override int GetHashCode() {
       int hash = 1;
       if (nameAndProperty_ != null) hash ^= NameAndProperty.GetHashCode();
-      if (OperatorType != 0) hash ^= OperatorType.GetHashCode();
-      if (ConnectingAndOr != 0) hash ^= ConnectingAndOr.GetHashCode();
+      if (OperatorType != global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType.EQUALS) hash ^= OperatorType.GetHashCode();
+      if (ConnectingAndOr != global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr.NONE) hash ^= ConnectingAndOr.GetHashCode();
       if (connectingWhereClause_ != null) hash ^= ConnectingWhereClause.GetHashCode();
       return hash;
     }
@@ -305,11 +305,11 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(10);
         output.WriteMessage(NameAndProperty);
       }
-      if (OperatorType != 0) {
+      if (OperatorType != global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType.EQUALS) {
         output.WriteRawTag(16);
         output.WriteEnum((int) OperatorType);
       }
-      if (ConnectingAndOr != 0) {
+      if (ConnectingAndOr != global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr.NONE) {
         output.WriteRawTag(24);
         output.WriteEnum((int) ConnectingAndOr);
       }
@@ -324,10 +324,10 @@ namespace Org.Roylance.Yaorm.Models {
       if (nameAndProperty_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(NameAndProperty);
       }
-      if (OperatorType != 0) {
+      if (OperatorType != global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType.EQUALS) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OperatorType);
       }
-      if (ConnectingAndOr != 0) {
+      if (ConnectingAndOr != global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr.NONE) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ConnectingAndOr);
       }
       if (connectingWhereClause_ != null) {
@@ -346,10 +346,10 @@ namespace Org.Roylance.Yaorm.Models {
         }
         NameAndProperty.MergeFrom(other.NameAndProperty);
       }
-      if (other.OperatorType != 0) {
+      if (other.OperatorType != global::Org.Roylance.Yaorm.Models.WhereClause.Types.OperatorType.EQUALS) {
         OperatorType = other.OperatorType;
       }
-      if (other.ConnectingAndOr != 0) {
+      if (other.ConnectingAndOr != global::Org.Roylance.Yaorm.Models.WhereClause.Types.ConnectingAndOr.NONE) {
         ConnectingAndOr = other.ConnectingAndOr;
       }
       if (other.connectingWhereClause_ != null) {
@@ -398,16 +398,16 @@ namespace Org.Roylance.Yaorm.Models {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum OperatorType {
-        [pbr::OriginalName("EQUALS")] Equals = 0,
-        [pbr::OriginalName("GREATER_THAN")] GreaterThan = 1,
-        [pbr::OriginalName("LESS_THAN")] LessThan = 2,
-        [pbr::OriginalName("NOT_EQUALS")] NotEquals = 3,
+        EQUALS = 0,
+        GREATER_THAN = 1,
+        LESS_THAN = 2,
+        NOT_EQUALS = 3,
       }
 
       public enum ConnectingAndOr {
-        [pbr::OriginalName("NONE")] None = 0,
-        [pbr::OriginalName("AND")] And = 1,
-        [pbr::OriginalName("OR")] Or = 2,
+        NONE = 0,
+        AND = 1,
+        OR = 2,
       }
 
     }
@@ -452,13 +452,13 @@ namespace Org.Roylance.Yaorm.Models {
     public string Name {
       get { return name_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 2;
-    private global::Org.Roylance.Yaorm.Models.ProtobufType type_ = 0;
+    private global::Org.Roylance.Yaorm.Models.ProtobufType type_ = global::Org.Roylance.Yaorm.Models.ProtobufType.NONE;
     public global::Org.Roylance.Yaorm.Models.ProtobufType Type {
       get { return type_; }
       set {
@@ -478,7 +478,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "column_type" field.</summary>
     public const int ColumnTypeFieldNumber = 4;
-    private global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType columnType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType columnType_ = global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType.SCALAR;
     public global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType ColumnType {
       get { return columnType_; }
       set {
@@ -488,7 +488,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "linker_type" field.</summary>
     public const int LinkerTypeFieldNumber = 5;
-    private global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType linkerType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType linkerType_ = global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType.NONE;
     public global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType LinkerType {
       get { return linkerType_; }
       set {
@@ -518,10 +518,10 @@ namespace Org.Roylance.Yaorm.Models {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::Org.Roylance.Yaorm.Models.ProtobufType.NONE) hash ^= Type.GetHashCode();
       if (IsKey != false) hash ^= IsKey.GetHashCode();
-      if (ColumnType != 0) hash ^= ColumnType.GetHashCode();
-      if (LinkerType != 0) hash ^= LinkerType.GetHashCode();
+      if (ColumnType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType.SCALAR) hash ^= ColumnType.GetHashCode();
+      if (LinkerType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType.NONE) hash ^= LinkerType.GetHashCode();
       return hash;
     }
 
@@ -534,7 +534,7 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Type != 0) {
+      if (Type != global::Org.Roylance.Yaorm.Models.ProtobufType.NONE) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -542,11 +542,11 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(24);
         output.WriteBool(IsKey);
       }
-      if (ColumnType != 0) {
+      if (ColumnType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType.SCALAR) {
         output.WriteRawTag(32);
         output.WriteEnum((int) ColumnType);
       }
-      if (LinkerType != 0) {
+      if (LinkerType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType.NONE) {
         output.WriteRawTag(40);
         output.WriteEnum((int) LinkerType);
       }
@@ -557,16 +557,16 @@ namespace Org.Roylance.Yaorm.Models {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (Type != 0) {
+      if (Type != global::Org.Roylance.Yaorm.Models.ProtobufType.NONE) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (IsKey != false) {
         size += 1 + 1;
       }
-      if (ColumnType != 0) {
+      if (ColumnType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType.SCALAR) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ColumnType);
       }
-      if (LinkerType != 0) {
+      if (LinkerType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType.NONE) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LinkerType);
       }
       return size;
@@ -579,16 +579,16 @@ namespace Org.Roylance.Yaorm.Models {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Org.Roylance.Yaorm.Models.ProtobufType.NONE) {
         Type = other.Type;
       }
       if (other.IsKey != false) {
         IsKey = other.IsKey;
       }
-      if (other.ColumnType != 0) {
+      if (other.ColumnType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.ColumnType.SCALAR) {
         ColumnType = other.ColumnType;
       }
-      if (other.LinkerType != 0) {
+      if (other.LinkerType != global::Org.Roylance.Yaorm.Models.ColumnDefinition.Types.LinkerType.NONE) {
         LinkerType = other.LinkerType;
       }
     }
@@ -629,17 +629,17 @@ namespace Org.Roylance.Yaorm.Models {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum ColumnType {
-        [pbr::OriginalName("SCALAR")] Scalar = 0,
-        [pbr::OriginalName("ENUM_NAME")] EnumName = 1,
-        [pbr::OriginalName("ENUM_VALUE")] EnumValue = 2,
-        [pbr::OriginalName("MESSAGE_KEY")] MessageKey = 3,
+        SCALAR = 0,
+        ENUM_NAME = 1,
+        ENUM_VALUE = 2,
+        MESSAGE_KEY = 3,
       }
 
       public enum LinkerType {
-        [pbr::OriginalName("NONE")] None = 0,
-        [pbr::OriginalName("PARENT")] Parent = 1,
-        [pbr::OriginalName("CHILD")] Child = 2,
-        [pbr::OriginalName("NEITHER")] Neither = 3,
+        NONE = 0,
+        PARENT = 1,
+        CHILD = 2,
+        NEITHER = 3,
       }
 
     }
@@ -795,7 +795,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "entity_type" field.</summary>
     public const int EntityTypeFieldNumber = 1;
-    private global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType entityType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType entityType_ = global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType.INDEX;
     public global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType EntityType {
       get { return entityType_; }
       set {
@@ -805,7 +805,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "operation" field.</summary>
     public const int OperationFieldNumber = 2;
-    private global::Org.Roylance.Yaorm.Models.Difference.Types.Operation operation_ = 0;
+    private global::Org.Roylance.Yaorm.Models.Difference.Types.Operation operation_ = global::Org.Roylance.Yaorm.Models.Difference.Types.Operation.CREATE;
     public global::Org.Roylance.Yaorm.Models.Difference.Types.Operation Operation {
       get { return operation_; }
       set {
@@ -819,7 +819,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Name {
       get { return name_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -875,8 +875,8 @@ namespace Org.Roylance.Yaorm.Models {
 
     public override int GetHashCode() {
       int hash = 1;
-      if (EntityType != 0) hash ^= EntityType.GetHashCode();
-      if (Operation != 0) hash ^= Operation.GetHashCode();
+      if (EntityType != global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType.INDEX) hash ^= EntityType.GetHashCode();
+      if (Operation != global::Org.Roylance.Yaorm.Models.Difference.Types.Operation.CREATE) hash ^= Operation.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (index_ != null) hash ^= Index.GetHashCode();
       if (propertyDefinition_ != null) hash ^= PropertyDefinition.GetHashCode();
@@ -889,11 +889,11 @@ namespace Org.Roylance.Yaorm.Models {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (EntityType != 0) {
+      if (EntityType != global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType.INDEX) {
         output.WriteRawTag(8);
         output.WriteEnum((int) EntityType);
       }
-      if (Operation != 0) {
+      if (Operation != global::Org.Roylance.Yaorm.Models.Difference.Types.Operation.CREATE) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Operation);
       }
@@ -917,10 +917,10 @@ namespace Org.Roylance.Yaorm.Models {
 
     public int CalculateSize() {
       int size = 0;
-      if (EntityType != 0) {
+      if (EntityType != global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType.INDEX) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EntityType);
       }
-      if (Operation != 0) {
+      if (Operation != global::Org.Roylance.Yaorm.Models.Difference.Types.Operation.CREATE) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Operation);
       }
       if (Name.Length != 0) {
@@ -942,10 +942,10 @@ namespace Org.Roylance.Yaorm.Models {
       if (other == null) {
         return;
       }
-      if (other.EntityType != 0) {
+      if (other.EntityType != global::Org.Roylance.Yaorm.Models.Difference.Types.EntityType.INDEX) {
         EntityType = other.EntityType;
       }
-      if (other.Operation != 0) {
+      if (other.Operation != global::Org.Roylance.Yaorm.Models.Difference.Types.Operation.CREATE) {
         Operation = other.Operation;
       }
       if (other.Name.Length != 0) {
@@ -1020,14 +1020,14 @@ namespace Org.Roylance.Yaorm.Models {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum EntityType {
-        [pbr::OriginalName("INDEX")] Index = 0,
-        [pbr::OriginalName("COLUMN")] Column = 1,
-        [pbr::OriginalName("TABLE")] Table = 2,
+        INDEX = 0,
+        COLUMN = 1,
+        TABLE = 2,
       }
 
       public enum Operation {
-        [pbr::OriginalName("CREATE")] Create = 0,
-        [pbr::OriginalName("DROP")] Drop = 1,
+        CREATE = 0,
+        DROP = 1,
       }
 
     }
@@ -1071,7 +1071,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Name {
       get { return name_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1096,7 +1096,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "table_type" field.</summary>
     public const int TableTypeFieldNumber = 4;
-    private global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType tableType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType tableType_ = global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType.NORMAL;
     public global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType TableType {
       get { return tableType_; }
       set {
@@ -1127,7 +1127,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       hash ^= ColumnDefinitions.GetHashCode();
       if (index_ != null) hash ^= Index.GetHashCode();
-      if (TableType != 0) hash ^= TableType.GetHashCode();
+      if (TableType != global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType.NORMAL) hash ^= TableType.GetHashCode();
       return hash;
     }
 
@@ -1145,7 +1145,7 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(26);
         output.WriteMessage(Index);
       }
-      if (TableType != 0) {
+      if (TableType != global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType.NORMAL) {
         output.WriteRawTag(32);
         output.WriteEnum((int) TableType);
       }
@@ -1160,7 +1160,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (index_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Index);
       }
-      if (TableType != 0) {
+      if (TableType != global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType.NORMAL) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TableType);
       }
       return size;
@@ -1180,7 +1180,7 @@ namespace Org.Roylance.Yaorm.Models {
         }
         Index.MergeFrom(other.Index);
       }
-      if (other.TableType != 0) {
+      if (other.TableType != global::Org.Roylance.Yaorm.Models.TableDefinition.Types.TableType.NORMAL) {
         TableType = other.TableType;
       }
     }
@@ -1220,9 +1220,9 @@ namespace Org.Roylance.Yaorm.Models {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum TableType {
-        [pbr::OriginalName("NORMAL")] Normal = 0,
-        [pbr::OriginalName("LINKER_MESSAGE")] LinkerMessage = 1,
-        [pbr::OriginalName("LINKER_ENUM")] LinkerEnum = 2,
+        NORMAL = 0,
+        LINKER_MESSAGE = 1,
+        LINKER_ENUM = 2,
       }
 
     }
@@ -1635,7 +1635,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string StringHolder {
       get { return stringHolder_; }
       set {
-        stringHolder_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        stringHolder_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1645,7 +1645,7 @@ namespace Org.Roylance.Yaorm.Models {
     public pb::ByteString BytesHolder {
       get { return bytesHolder_; }
       set {
-        bytesHolder_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        bytesHolder_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -2174,6 +2174,7 @@ namespace Org.Roylance.Yaorm.Models {
       TableDefinition = other.tableDefinition_ != null ? other.TableDefinition.Clone() : null;
       Records = other.records_ != null ? other.Records.Clone() : null;
       tableName_ = other.tableName_;
+      knownParentIds_ = other.knownParentIds_.Clone();
     }
 
     public TableRecords Clone() {
@@ -2206,8 +2207,17 @@ namespace Org.Roylance.Yaorm.Models {
     public string TableName {
       get { return tableName_; }
       set {
-        tableName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tableName_ = pb::Preconditions.CheckNotNull(value, "value");
       }
+    }
+
+    /// <summary>Field number for the "known_parent_ids" field.</summary>
+    public const int KnownParentIdsFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _repeated_knownParentIds_codec
+        = pb::FieldCodec.ForString(34);
+    private readonly pbc::RepeatedField<string> knownParentIds_ = new pbc::RepeatedField<string>();
+    public pbc::RepeatedField<string> KnownParentIds {
+      get { return knownParentIds_; }
     }
 
     public override bool Equals(object other) {
@@ -2224,6 +2234,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (!object.Equals(TableDefinition, other.TableDefinition)) return false;
       if (!object.Equals(Records, other.Records)) return false;
       if (TableName != other.TableName) return false;
+      if(!knownParentIds_.Equals(other.knownParentIds_)) return false;
       return true;
     }
 
@@ -2232,6 +2243,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (tableDefinition_ != null) hash ^= TableDefinition.GetHashCode();
       if (records_ != null) hash ^= Records.GetHashCode();
       if (TableName.Length != 0) hash ^= TableName.GetHashCode();
+      hash ^= knownParentIds_.GetHashCode();
       return hash;
     }
 
@@ -2252,6 +2264,7 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(26);
         output.WriteString(TableName);
       }
+      knownParentIds_.WriteTo(output, _repeated_knownParentIds_codec);
     }
 
     public int CalculateSize() {
@@ -2265,6 +2278,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (TableName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TableName);
       }
+      size += knownParentIds_.CalculateSize(_repeated_knownParentIds_codec);
       return size;
     }
 
@@ -2287,6 +2301,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (other.TableName.Length != 0) {
         TableName = other.TableName;
       }
+      knownParentIds_.Add(other.knownParentIds_);
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
@@ -2312,6 +2327,10 @@ namespace Org.Roylance.Yaorm.Models {
           }
           case 26: {
             TableName = input.ReadString();
+            break;
+          }
+          case 34: {
+            knownParentIds_.AddEntriesFrom(input, _repeated_knownParentIds_codec);
             break;
           }
         }
@@ -2499,7 +2518,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "database_operation_type" field.</summary>
     public const int DatabaseOperationTypeFieldNumber = 6;
-    private global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType databaseOperationType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType databaseOperationType_ = global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType.CREATE_TABLE;
     public global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType DatabaseOperationType {
       get { return databaseOperationType_; }
       set {
@@ -2534,7 +2553,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (index_ != null) hash ^= Index.GetHashCode();
       if (columnDefinition_ != null) hash ^= ColumnDefinition.GetHashCode();
       if (whereClause_ != null) hash ^= WhereClause.GetHashCode();
-      if (DatabaseOperationType != 0) hash ^= DatabaseOperationType.GetHashCode();
+      if (DatabaseOperationType != global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType.CREATE_TABLE) hash ^= DatabaseOperationType.GetHashCode();
       return hash;
     }
 
@@ -2563,7 +2582,7 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(42);
         output.WriteMessage(WhereClause);
       }
-      if (DatabaseOperationType != 0) {
+      if (DatabaseOperationType != global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType.CREATE_TABLE) {
         output.WriteRawTag(48);
         output.WriteEnum((int) DatabaseOperationType);
       }
@@ -2586,7 +2605,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (whereClause_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(WhereClause);
       }
-      if (DatabaseOperationType != 0) {
+      if (DatabaseOperationType != global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType.CREATE_TABLE) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DatabaseOperationType);
       }
       return size;
@@ -2626,7 +2645,7 @@ namespace Org.Roylance.Yaorm.Models {
         }
         WhereClause.MergeFrom(other.WhereClause);
       }
-      if (other.DatabaseOperationType != 0) {
+      if (other.DatabaseOperationType != global::Org.Roylance.Yaorm.Models.DatabaseOperation.Types.DatabaseOperationType.CREATE_TABLE) {
         DatabaseOperationType = other.DatabaseOperationType;
       }
     }
@@ -2686,25 +2705,25 @@ namespace Org.Roylance.Yaorm.Models {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum DatabaseOperationType {
-        [pbr::OriginalName("CREATE_TABLE")] CreateTable = 0,
-        [pbr::OriginalName("DROP_TABLE")] DropTable = 1,
-        [pbr::OriginalName("CREATE_INDEX")] CreateIndex = 2,
-        [pbr::OriginalName("DROP_INDEX")] DropIndex = 3,
-        [pbr::OriginalName("CREATE_COLUMN")] CreateColumn = 4,
-        [pbr::OriginalName("DROP_COLUMN")] DropColumn = 5,
-        [pbr::OriginalName("GET_COUNT")] GetCount = 6,
-        [pbr::OriginalName("GET_CUSTOM")] GetCustom = 7,
-        [pbr::OriginalName("GET")] Get = 8,
-        [pbr::OriginalName("GET_MANY")] GetMany = 9,
-        [pbr::OriginalName("GET_WHERE")] GetWhere = 10,
-        [pbr::OriginalName("BULK_INSERT")] BulkInsert = 11,
-        [pbr::OriginalName("CREATE_OR_UPDATE")] CreateOrUpdate = 12,
-        [pbr::OriginalName("CREATE")] Create = 13,
-        [pbr::OriginalName("UPDATE")] Update = 14,
-        [pbr::OriginalName("UPDATE_WITH_CRITERIA")] UpdateWithCriteria = 15,
-        [pbr::OriginalName("UPDATE_CUSTOM")] UpdateCustom = 16,
-        [pbr::OriginalName("DELETE")] Delete = 17,
-        [pbr::OriginalName("DELETE_ALL")] DeleteAll = 18,
+        CREATE_TABLE = 0,
+        DROP_TABLE = 1,
+        CREATE_INDEX = 2,
+        DROP_INDEX = 3,
+        CREATE_COLUMN = 4,
+        DROP_COLUMN = 5,
+        GET_COUNT = 6,
+        GET_CUSTOM = 7,
+        GET = 8,
+        GET_MANY = 9,
+        GET_WHERE = 10,
+        BULK_INSERT = 11,
+        CREATE_OR_UPDATE = 12,
+        CREATE = 13,
+        UPDATE = 14,
+        UPDATE_WITH_CRITERIA = 15,
+        UPDATE_CUSTOM = 16,
+        DELETE = 17,
+        DELETE_ALL = 18,
       }
 
     }
@@ -2790,7 +2809,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string ErrorMessage {
       get { return errorMessage_; }
       set {
-        errorMessage_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        errorMessage_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3004,7 +3023,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Schema {
       get { return schema_; }
       set {
-        schema_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        schema_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3014,7 +3033,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Name {
       get { return name_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3215,7 +3234,7 @@ namespace Org.Roylance.Yaorm.Models {
 
     /// <summary>Field number for the "definition_graph_type" field.</summary>
     public const int DefinitionGraphTypeFieldNumber = 4;
-    private global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType definitionGraphType_ = 0;
+    private global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType definitionGraphType_ = global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType.ENUM_TYPE;
     public global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType DefinitionGraphType {
       get { return definitionGraphType_; }
       set {
@@ -3229,7 +3248,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string MainName {
       get { return mainName_; }
       set {
-        mainName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mainName_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3239,7 +3258,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string OtherName {
       get { return otherName_; }
       set {
-        otherName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        otherName_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3249,7 +3268,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string ColumnName {
       get { return columnName_; }
       set {
-        columnName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        columnName_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3279,7 +3298,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (mainTableDefinition_ != null) hash ^= MainTableDefinition.GetHashCode();
       if (otherTableDefinition_ != null) hash ^= OtherTableDefinition.GetHashCode();
       if (linkerTableTable_ != null) hash ^= LinkerTableTable.GetHashCode();
-      if (DefinitionGraphType != 0) hash ^= DefinitionGraphType.GetHashCode();
+      if (DefinitionGraphType != global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType.ENUM_TYPE) hash ^= DefinitionGraphType.GetHashCode();
       if (MainName.Length != 0) hash ^= MainName.GetHashCode();
       if (OtherName.Length != 0) hash ^= OtherName.GetHashCode();
       if (ColumnName.Length != 0) hash ^= ColumnName.GetHashCode();
@@ -3303,7 +3322,7 @@ namespace Org.Roylance.Yaorm.Models {
         output.WriteRawTag(26);
         output.WriteMessage(LinkerTableTable);
       }
-      if (DefinitionGraphType != 0) {
+      if (DefinitionGraphType != global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType.ENUM_TYPE) {
         output.WriteRawTag(32);
         output.WriteEnum((int) DefinitionGraphType);
       }
@@ -3332,7 +3351,7 @@ namespace Org.Roylance.Yaorm.Models {
       if (linkerTableTable_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(LinkerTableTable);
       }
-      if (DefinitionGraphType != 0) {
+      if (DefinitionGraphType != global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType.ENUM_TYPE) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DefinitionGraphType);
       }
       if (MainName.Length != 0) {
@@ -3369,7 +3388,7 @@ namespace Org.Roylance.Yaorm.Models {
         }
         LinkerTableTable.MergeFrom(other.LinkerTableTable);
       }
-      if (other.DefinitionGraphType != 0) {
+      if (other.DefinitionGraphType != global::Org.Roylance.Yaorm.Models.TableDefinitionGraph.Types.TableDefinitionGraphType.ENUM_TYPE) {
         DefinitionGraphType = other.DefinitionGraphType;
       }
       if (other.MainName.Length != 0) {
@@ -3436,8 +3455,8 @@ namespace Org.Roylance.Yaorm.Models {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum TableDefinitionGraphType {
-        [pbr::OriginalName("ENUM_TYPE")] EnumType = 0,
-        [pbr::OriginalName("MESSAGE_TYPE")] MessageType = 1,
+        ENUM_TYPE = 0,
+        MESSAGE_TYPE = 1,
       }
 
     }
@@ -3609,7 +3628,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Host {
       get { return host_; }
       set {
-        host_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        host_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3619,7 +3638,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string User {
       get { return user_; }
       set {
-        user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        user_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3629,7 +3648,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Password {
       get { return password_; }
       set {
-        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        password_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3639,7 +3658,7 @@ namespace Org.Roylance.Yaorm.Models {
     public string Schema {
       get { return schema_; }
       set {
-        schema_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        schema_ = pb::Preconditions.CheckNotNull(value, "value");
       }
     }
 

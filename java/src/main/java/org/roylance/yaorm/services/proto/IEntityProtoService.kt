@@ -32,6 +32,8 @@ interface IEntityProtoService {
     fun getManyStream(n: Int=100000, definition: YaormModel.TableDefinition, streamer: IProtoStreamer)
 
     fun get(id: String, definition: YaormModel.TableDefinition): YaormModel.Record?
+    fun getIds(definition: YaormModel.TableDefinition):List<String>
+    fun getIdsStream(definition:YaormModel.TableDefinition, streamer: IProtoStreamer)
 
     fun getCustom(customSql: String, definition: YaormModel.TableDefinition): YaormModel.Records
     fun getMany(n: Int=1000, definition: YaormModel.TableDefinition): YaormModel.Records

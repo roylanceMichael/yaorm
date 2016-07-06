@@ -43,6 +43,10 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         }
     }
 
+    override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
+        return "select id from ${definition.name}"
+    }
+
     override fun buildCountSql(definition: YaormModel.TableDefinition): String {
         return "select count(1) as longVal from ${definition.name}"
     }

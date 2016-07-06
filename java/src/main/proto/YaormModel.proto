@@ -134,6 +134,7 @@ message TableRecords {
     TableDefinition table_definition = 1;
     Records records = 2;
     string table_name = 3;
+    repeated string known_parent_ids = 4;
 }
 
 message AllTableRecords {

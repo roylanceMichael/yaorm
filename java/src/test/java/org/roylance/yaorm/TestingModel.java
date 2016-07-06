@@ -8,6 +8,356 @@ public final class TestingModel {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code org.roylance.yaorm.WorkerState}
+   */
+  public enum WorkerState
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>WORKING = 0;</code>
+     */
+    WORKING(0, 0),
+    /**
+     * <code>IDLE = 1;</code>
+     */
+    IDLE(1, 1),
+    UNRECOGNIZED(-1, -1),
+    ;
+
+    /**
+     * <code>WORKING = 0;</code>
+     */
+    public static final int WORKING_VALUE = 0;
+    /**
+     * <code>IDLE = 1;</code>
+     */
+    public static final int IDLE_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (index == -1) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    public static WorkerState valueOf(int value) {
+      switch (value) {
+        case 0: return WORKING;
+        case 1: return IDLE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<WorkerState>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        WorkerState> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<WorkerState>() {
+            public WorkerState findValueByNumber(int number) {
+              return WorkerState.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final WorkerState[] VALUES = values();
+
+    public static WorkerState valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private WorkerState(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.WorkerState)
+  }
+
+  /**
+   * Protobuf enum {@code org.roylance.yaorm.WorkerToManagerMessageType}
+   */
+  public enum WorkerToManagerMessageType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>REGISTRATION = 0;</code>
+     */
+    REGISTRATION(0, 0),
+    UNRECOGNIZED(-1, -1),
+    ;
+
+    /**
+     * <code>REGISTRATION = 0;</code>
+     */
+    public static final int REGISTRATION_VALUE = 0;
+
+
+    public final int getNumber() {
+      if (index == -1) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    public static WorkerToManagerMessageType valueOf(int value) {
+      switch (value) {
+        case 0: return REGISTRATION;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<WorkerToManagerMessageType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        WorkerToManagerMessageType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<WorkerToManagerMessageType>() {
+            public WorkerToManagerMessageType findValueByNumber(int number) {
+              return WorkerToManagerMessageType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final WorkerToManagerMessageType[] VALUES = values();
+
+    public static WorkerToManagerMessageType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private WorkerToManagerMessageType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.WorkerToManagerMessageType)
+  }
+
+  /**
+   * Protobuf enum {@code org.roylance.yaorm.ManagerToManagerMessageType}
+   */
+  public enum ManagerToManagerMessageType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ENSURE_WORKERS_WORKING = 0;</code>
+     */
+    ENSURE_WORKERS_WORKING(0, 0),
+    UNRECOGNIZED(-1, -1),
+    ;
+
+    /**
+     * <code>ENSURE_WORKERS_WORKING = 0;</code>
+     */
+    public static final int ENSURE_WORKERS_WORKING_VALUE = 0;
+
+
+    public final int getNumber() {
+      if (index == -1) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    public static ManagerToManagerMessageType valueOf(int value) {
+      switch (value) {
+        case 0: return ENSURE_WORKERS_WORKING;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ManagerToManagerMessageType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ManagerToManagerMessageType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ManagerToManagerMessageType>() {
+            public ManagerToManagerMessageType findValueByNumber(int number) {
+              return ManagerToManagerMessageType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final ManagerToManagerMessageType[] VALUES = values();
+
+    public static ManagerToManagerMessageType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ManagerToManagerMessageType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.ManagerToManagerMessageType)
+  }
+
+  /**
+   * Protobuf enum {@code org.roylance.yaorm.ActorRole}
+   */
+  public enum ActorRole
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MANAGER = 0;</code>
+     */
+    MANAGER(0, 0),
+    /**
+     * <code>WORKER = 1;</code>
+     */
+    WORKER(1, 1),
+    UNRECOGNIZED(-1, -1),
+    ;
+
+    /**
+     * <code>MANAGER = 0;</code>
+     */
+    public static final int MANAGER_VALUE = 0;
+    /**
+     * <code>WORKER = 1;</code>
+     */
+    public static final int WORKER_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (index == -1) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    public static ActorRole valueOf(int value) {
+      switch (value) {
+        case 0: return MANAGER;
+        case 1: return WORKER;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ActorRole>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ActorRole> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ActorRole>() {
+            public ActorRole findValueByNumber(int number) {
+              return ActorRole.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final ActorRole[] VALUES = values();
+
+    public static ActorRole valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ActorRole(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.ActorRole)
+  }
+
   public interface SimpleInsertTestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SimpleInsertTest)
       com.google.protobuf.MessageOrBuilder {
@@ -210,8 +560,7 @@ public final class TestingModel {
     }
     private SimpleInsertTest(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -363,10 +712,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
           coolTypes_ = java.util.Collections.unmodifiableList(coolTypes_);
@@ -397,16 +747,16 @@ public final class TestingModel {
       /**
        * <code>TEST = 0;</code>
        */
-      TEST(0),
+      TEST(0, 0),
       /**
        * <code>SAMPLE = 1;</code>
        */
-      SAMPLE(1),
+      SAMPLE(1, 1),
       /**
        * <code>SURPRISED = 2;</code>
        */
-      SURPRISED(2),
-      UNRECOGNIZED(-1),
+      SURPRISED(2, 2),
+      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -424,22 +774,14 @@ public final class TestingModel {
 
 
       public final int getNumber() {
-        if (this == UNRECOGNIZED) {
+        if (index == -1) {
           throw new java.lang.IllegalArgumentException(
               "Can't get the number of an unknown enum value.");
         }
         return value;
       }
 
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
       public static CoolType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static CoolType forNumber(int value) {
         switch (value) {
           case 0: return TEST;
           case 1: return SAMPLE;
@@ -456,13 +798,13 @@ public final class TestingModel {
           CoolType> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<CoolType>() {
               public CoolType findValueByNumber(int number) {
-                return CoolType.forNumber(number);
+                return CoolType.valueOf(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
+        return getDescriptor().getValues().get(index);
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -487,9 +829,11 @@ public final class TestingModel {
         return VALUES[desc.getIndex()];
       }
 
+      private final int index;
       private final int value;
 
-      private CoolType(int value) {
+      private CoolType(int index, int value) {
+        this.index = index;
         this.value = value;
       }
 
@@ -703,7 +1047,7 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
      */
     public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolType() {
-      org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.forNumber(coolType_);
+      org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(coolType_);
       return result == null ? org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
     }
 
@@ -735,7 +1079,7 @@ public final class TestingModel {
             new com.google.protobuf.Internal.ListAdapter.Converter<
                 java.lang.Integer, org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>() {
               public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType convert(java.lang.Integer from) {
-                org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.forNumber(from);
+                org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(from);
                 return result == null ? org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
               }
             };
@@ -1006,40 +1350,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -1329,7 +1667,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.SimpleInsertTest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1863,7 +2201,7 @@ public final class TestingModel {
        * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
        */
       public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolType() {
-        org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.forNumber(coolType_);
+        org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(coolType_);
         return result == null ? org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
       }
       /**
@@ -2392,7 +2730,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new SimpleInsertTest(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -2496,8 +2843,7 @@ public final class TestingModel {
     }
     private Child(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -2550,10 +2896,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           subChild_ = java.util.Collections.unmodifiableList(subChild_);
@@ -2771,40 +3118,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.Child parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Child parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Child parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Child parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Child parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Child parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -2987,7 +3328,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.Child) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -3521,7 +3862,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new Child(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -3618,8 +3968,7 @@ public final class TestingModel {
     }
     private SubChild(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -3664,10 +4013,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           subSubChild_ = java.util.Collections.unmodifiableList(subSubChild_);
@@ -3873,40 +4223,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.SubChild parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubChild parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SubChild parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubChild parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SubChild parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubChild parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -4081,7 +4425,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.SubChild) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -4524,7 +4868,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new SubChild(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -4615,8 +4968,7 @@ public final class TestingModel {
     }
     private SubSubChild(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -4656,10 +5008,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           subSubSubChilds_ = java.util.Collections.unmodifiableList(subSubSubChilds_);
@@ -4849,40 +5202,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.SubSubChild parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubSubChild parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SubSubChild parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubSubChild parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -5051,7 +5398,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.SubSubChild) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -5468,7 +5815,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new SubSubChild(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -5534,8 +5890,7 @@ public final class TestingModel {
     }
     private SubSubSubChild(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -5567,10 +5922,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         makeExtensionsImmutable();
       }
@@ -5714,40 +6070,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -5871,7 +6221,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.SubSubSubChild) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -6047,7 +6397,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new SubSubSubChild(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -6225,8 +6584,7 @@ public final class TestingModel {
     }
     private Person(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -6314,10 +6672,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           addresses_ = java.util.Collections.unmodifiableList(addresses_);
@@ -6693,40 +7052,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.Person parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Person parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Person parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Person parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Person parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Person parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -7014,7 +7367,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.Person) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -8214,7 +8567,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new Person(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -8313,8 +8675,7 @@ public final class TestingModel {
     }
     private Address(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -8364,10 +8725,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         makeExtensionsImmutable();
       }
@@ -8631,40 +8993,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.Address parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Address parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Address parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Address parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Address parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Address parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -8809,7 +9165,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.Address) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -9192,7 +9548,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new Address(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -9258,8 +9623,7 @@ public final class TestingModel {
     }
     private Phone(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
       int mutable_bitField0_ = 0;
       try {
@@ -9291,10 +9655,11 @@ public final class TestingModel {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         makeExtensionsImmutable();
       }
@@ -9438,40 +9803,34 @@ public final class TestingModel {
     }
     public static org.roylance.yaorm.TestingModel.Phone parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Phone parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Phone parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Phone parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModel.Phone parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.roylance.yaorm.TestingModel.Phone parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -9595,7 +9954,7 @@ public final class TestingModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.TestingModel.Phone) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -9771,7 +10130,16 @@ public final class TestingModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
           return new Phone(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -9790,52 +10158,9229 @@ public final class TestingModel {
 
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
+  public interface WorkerConfigurationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.WorkerConfiguration)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string ip = 2;</code>
+     */
+    java.lang.String getIp();
+    /**
+     * <code>optional string ip = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getIpBytes();
+
+    /**
+     * <code>optional string port = 3;</code>
+     */
+    java.lang.String getPort();
+    /**
+     * <code>optional string port = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getPortBytes();
+
+    /**
+     * <code>optional string host = 4;</code>
+     */
+    java.lang.String getHost();
+    /**
+     * <code>optional string host = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getHostBytes();
+
+    /**
+     * <code>optional uint64 initialized_time = 5;</code>
+     */
+    long getInitializedTime();
+
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     */
+    int getStateValue();
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     */
+    org.roylance.yaorm.TestingModel.WorkerState getState();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.WorkerConfiguration}
+   */
+  public  static final class WorkerConfiguration extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.WorkerConfiguration)
+      WorkerConfigurationOrBuilder {
+    // Use WorkerConfiguration.newBuilder() to construct.
+    private WorkerConfiguration(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private WorkerConfiguration() {
+      id_ = "";
+      ip_ = "";
+      port_ = "";
+      host_ = "";
+      initializedTime_ = 0L;
+      state_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private WorkerConfiguration(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ip_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              port_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              host_ = s;
+              break;
+            }
+            case 40: {
+
+              initializedTime_ = input.readUInt64();
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+
+              state_ = rawValue;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.WorkerConfiguration.class, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int IP_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ip_;
+    /**
+     * <code>optional string ip = 2;</code>
+     */
+    public java.lang.String getIp() {
+      java.lang.Object ref = ip_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ip_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string ip = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIpBytes() {
+      java.lang.Object ref = ip_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ip_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PORT_FIELD_NUMBER = 3;
+    private volatile java.lang.Object port_;
+    /**
+     * <code>optional string port = 3;</code>
+     */
+    public java.lang.String getPort() {
+      java.lang.Object ref = port_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        port_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string port = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPortBytes() {
+      java.lang.Object ref = port_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        port_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HOST_FIELD_NUMBER = 4;
+    private volatile java.lang.Object host_;
+    /**
+     * <code>optional string host = 4;</code>
+     */
+    public java.lang.String getHost() {
+      java.lang.Object ref = host_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        host_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string host = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getHostBytes() {
+      java.lang.Object ref = host_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        host_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int INITIALIZED_TIME_FIELD_NUMBER = 5;
+    private long initializedTime_;
+    /**
+     * <code>optional uint64 initialized_time = 5;</code>
+     */
+    public long getInitializedTime() {
+      return initializedTime_;
+    }
+
+    public static final int STATE_FIELD_NUMBER = 6;
+    private int state_;
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     */
+    public int getStateValue() {
+      return state_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     */
+    public org.roylance.yaorm.TestingModel.WorkerState getState() {
+      org.roylance.yaorm.TestingModel.WorkerState result = org.roylance.yaorm.TestingModel.WorkerState.valueOf(state_);
+      return result == null ? org.roylance.yaorm.TestingModel.WorkerState.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getIpBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, ip_);
+      }
+      if (!getPortBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, port_);
+      }
+      if (!getHostBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, host_);
+      }
+      if (initializedTime_ != 0L) {
+        output.writeUInt64(5, initializedTime_);
+      }
+      if (state_ != org.roylance.yaorm.TestingModel.WorkerState.WORKING.getNumber()) {
+        output.writeEnum(6, state_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getIpBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, ip_);
+      }
+      if (!getPortBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, port_);
+      }
+      if (!getHostBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, host_);
+      }
+      if (initializedTime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(5, initializedTime_);
+      }
+      if (state_ != org.roylance.yaorm.TestingModel.WorkerState.WORKING.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, state_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.WorkerConfiguration prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.WorkerConfiguration}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.WorkerConfiguration)
+        org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.WorkerConfiguration.class, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.WorkerConfiguration.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        ip_ = "";
+
+        port_ = "";
+
+        host_ = "";
+
+        initializedTime_ = 0L;
+
+        state_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.WorkerConfiguration getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.WorkerConfiguration build() {
+        org.roylance.yaorm.TestingModel.WorkerConfiguration result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.WorkerConfiguration buildPartial() {
+        org.roylance.yaorm.TestingModel.WorkerConfiguration result = new org.roylance.yaorm.TestingModel.WorkerConfiguration(this);
+        result.id_ = id_;
+        result.ip_ = ip_;
+        result.port_ = port_;
+        result.host_ = host_;
+        result.initializedTime_ = initializedTime_;
+        result.state_ = state_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.WorkerConfiguration) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.WorkerConfiguration)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.WorkerConfiguration other) {
+        if (other == org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getIp().isEmpty()) {
+          ip_ = other.ip_;
+          onChanged();
+        }
+        if (!other.getPort().isEmpty()) {
+          port_ = other.port_;
+          onChanged();
+        }
+        if (!other.getHost().isEmpty()) {
+          host_ = other.host_;
+          onChanged();
+        }
+        if (other.getInitializedTime() != 0L) {
+          setInitializedTime(other.getInitializedTime());
+        }
+        if (other.state_ != 0) {
+          setStateValue(other.getStateValue());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.WorkerConfiguration parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.WorkerConfiguration) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ip_ = "";
+      /**
+       * <code>optional string ip = 2;</code>
+       */
+      public java.lang.String getIp() {
+        java.lang.Object ref = ip_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ip_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string ip = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIpBytes() {
+        java.lang.Object ref = ip_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ip_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string ip = 2;</code>
+       */
+      public Builder setIp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string ip = 2;</code>
+       */
+      public Builder clearIp() {
+        
+        ip_ = getDefaultInstance().getIp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string ip = 2;</code>
+       */
+      public Builder setIpBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ip_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object port_ = "";
+      /**
+       * <code>optional string port = 3;</code>
+       */
+      public java.lang.String getPort() {
+        java.lang.Object ref = port_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          port_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string port = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPortBytes() {
+        java.lang.Object ref = port_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          port_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string port = 3;</code>
+       */
+      public Builder setPort(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        port_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string port = 3;</code>
+       */
+      public Builder clearPort() {
+        
+        port_ = getDefaultInstance().getPort();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string port = 3;</code>
+       */
+      public Builder setPortBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        port_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object host_ = "";
+      /**
+       * <code>optional string host = 4;</code>
+       */
+      public java.lang.String getHost() {
+        java.lang.Object ref = host_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          host_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string host = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getHostBytes() {
+        java.lang.Object ref = host_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          host_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string host = 4;</code>
+       */
+      public Builder setHost(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        host_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string host = 4;</code>
+       */
+      public Builder clearHost() {
+        
+        host_ = getDefaultInstance().getHost();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string host = 4;</code>
+       */
+      public Builder setHostBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        host_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long initializedTime_ ;
+      /**
+       * <code>optional uint64 initialized_time = 5;</code>
+       */
+      public long getInitializedTime() {
+        return initializedTime_;
+      }
+      /**
+       * <code>optional uint64 initialized_time = 5;</code>
+       */
+      public Builder setInitializedTime(long value) {
+        
+        initializedTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 initialized_time = 5;</code>
+       */
+      public Builder clearInitializedTime() {
+        
+        initializedTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int state_ = 0;
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       */
+      public int getStateValue() {
+        return state_;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       */
+      public Builder setStateValue(int value) {
+        state_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       */
+      public org.roylance.yaorm.TestingModel.WorkerState getState() {
+        org.roylance.yaorm.TestingModel.WorkerState result = org.roylance.yaorm.TestingModel.WorkerState.valueOf(state_);
+        return result == null ? org.roylance.yaorm.TestingModel.WorkerState.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       */
+      public Builder setState(org.roylance.yaorm.TestingModel.WorkerState value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        state_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       */
+      public Builder clearState() {
+        
+        state_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.WorkerConfiguration)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.WorkerConfiguration)
+    private static final org.roylance.yaorm.TestingModel.WorkerConfiguration DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.WorkerConfiguration();
+    }
+
+    public static org.roylance.yaorm.TestingModel.WorkerConfiguration getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<WorkerConfiguration>
+        PARSER = new com.google.protobuf.AbstractParser<WorkerConfiguration>() {
+      public WorkerConfiguration parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new WorkerConfiguration(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<WorkerConfiguration> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WorkerConfiguration> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.WorkerConfiguration getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LogOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Log)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.Log}
+   */
+  public  static final class Log extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Log)
+      LogOrBuilder {
+    // Use Log.newBuilder() to construct.
+    private Log(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Log() {
+      id_ = "";
+      message_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Log(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Log_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Log_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.Log.class, org.roylance.yaorm.TestingModel.Log.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, message_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, message_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Log parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.Log prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.Log}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Log)
+        org.roylance.yaorm.TestingModel.LogOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Log_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Log_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.Log.class, org.roylance.yaorm.TestingModel.Log.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.Log.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        message_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Log_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.Log getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.Log.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.Log build() {
+        org.roylance.yaorm.TestingModel.Log result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.Log buildPartial() {
+        org.roylance.yaorm.TestingModel.Log result = new org.roylance.yaorm.TestingModel.Log(this);
+        result.id_ = id_;
+        result.message_ = message_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.Log) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.Log)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.Log other) {
+        if (other == org.roylance.yaorm.TestingModel.Log.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.Log parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.Log) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>optional string message = 2;</code>
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string message = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string message = 2;</code>
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string message = 2;</code>
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string message = 2;</code>
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Log)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Log)
+    private static final org.roylance.yaorm.TestingModel.Log DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Log();
+    }
+
+    public static org.roylance.yaorm.TestingModel.Log getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Log>
+        PARSER = new com.google.protobuf.AbstractParser<Log>() {
+      public Log parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new Log(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<Log> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Log> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.Log getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DagOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Dag)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    java.lang.String getDisplay();
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getDisplayBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Task> 
+        getFlattenedTasksList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getFlattenedTasks(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    int getFlattenedTasksCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getFlattenedTasksOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getFlattenedTasksOrBuilder(
+        int index);
+
+    /**
+     * <code>optional int64 execution_date = 4;</code>
+     */
+    long getExecutionDate();
+
+    /**
+     * <code>optional int64 start_date = 5;</code>
+     */
+    long getStartDate();
+
+    /**
+     * <code>optional int64 end_date = 6;</code>
+     */
+    long getEndDate();
+
+    /**
+     * <code>optional int64 duration = 7;</code>
+     */
+    long getDuration();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Task> 
+        getUncompletedTasksList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getUncompletedTasks(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    int getUncompletedTasksCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getUncompletedTasksOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getUncompletedTasksOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Task> 
+        getProcessingTasksList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getProcessingTasks(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    int getProcessingTasksCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getProcessingTasksOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getProcessingTasksOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Task> 
+        getErroredTasksList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getErroredTasks(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    int getErroredTasksCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getErroredTasksOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getErroredTasksOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Task> 
+        getCompletedTasksList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getCompletedTasks(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    int getCompletedTasksCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getCompletedTasksOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getCompletedTasksOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.Dag}
+   */
+  public  static final class Dag extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Dag)
+      DagOrBuilder {
+    // Use Dag.newBuilder() to construct.
+    private Dag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Dag() {
+      id_ = "";
+      display_ = "";
+      flattenedTasks_ = java.util.Collections.emptyList();
+      executionDate_ = 0L;
+      startDate_ = 0L;
+      endDate_ = 0L;
+      duration_ = 0L;
+      uncompletedTasks_ = java.util.Collections.emptyList();
+      processingTasks_ = java.util.Collections.emptyList();
+      erroredTasks_ = java.util.Collections.emptyList();
+      completedTasks_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Dag(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              display_ = s;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                flattenedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              flattenedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              break;
+            }
+            case 32: {
+
+              executionDate_ = input.readInt64();
+              break;
+            }
+            case 40: {
+
+              startDate_ = input.readInt64();
+              break;
+            }
+            case 48: {
+
+              endDate_ = input.readInt64();
+              break;
+            }
+            case 56: {
+
+              duration_ = input.readInt64();
+              break;
+            }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                uncompletedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              uncompletedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              break;
+            }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+                processingTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              processingTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              break;
+            }
+            case 82: {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+                erroredTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
+                mutable_bitField0_ |= 0x00000200;
+              }
+              erroredTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              break;
+            }
+            case 90: {
+              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+                completedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
+                mutable_bitField0_ |= 0x00000400;
+              }
+              completedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          flattenedTasks_ = java.util.Collections.unmodifiableList(flattenedTasks_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          uncompletedTasks_ = java.util.Collections.unmodifiableList(uncompletedTasks_);
+        }
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+          processingTasks_ = java.util.Collections.unmodifiableList(processingTasks_);
+        }
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+          erroredTasks_ = java.util.Collections.unmodifiableList(erroredTasks_);
+        }
+        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+          completedTasks_ = java.util.Collections.unmodifiableList(completedTasks_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Dag_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Dag_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.Dag.class, org.roylance.yaorm.TestingModel.Dag.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DISPLAY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object display_;
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public java.lang.String getDisplay() {
+      java.lang.Object ref = display_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        display_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDisplayBytes() {
+      java.lang.Object ref = display_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        display_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FLATTENED_TASKS_FIELD_NUMBER = 3;
+    private java.util.List<org.roylance.yaorm.TestingModel.Task> flattenedTasks_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Task> getFlattenedTasksList() {
+      return flattenedTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getFlattenedTasksOrBuilderList() {
+      return flattenedTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    public int getFlattenedTasksCount() {
+      return flattenedTasks_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getFlattenedTasks(int index) {
+      return flattenedTasks_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getFlattenedTasksOrBuilder(
+        int index) {
+      return flattenedTasks_.get(index);
+    }
+
+    public static final int EXECUTION_DATE_FIELD_NUMBER = 4;
+    private long executionDate_;
+    /**
+     * <code>optional int64 execution_date = 4;</code>
+     */
+    public long getExecutionDate() {
+      return executionDate_;
+    }
+
+    public static final int START_DATE_FIELD_NUMBER = 5;
+    private long startDate_;
+    /**
+     * <code>optional int64 start_date = 5;</code>
+     */
+    public long getStartDate() {
+      return startDate_;
+    }
+
+    public static final int END_DATE_FIELD_NUMBER = 6;
+    private long endDate_;
+    /**
+     * <code>optional int64 end_date = 6;</code>
+     */
+    public long getEndDate() {
+      return endDate_;
+    }
+
+    public static final int DURATION_FIELD_NUMBER = 7;
+    private long duration_;
+    /**
+     * <code>optional int64 duration = 7;</code>
+     */
+    public long getDuration() {
+      return duration_;
+    }
+
+    public static final int UNCOMPLETED_TASKS_FIELD_NUMBER = 8;
+    private java.util.List<org.roylance.yaorm.TestingModel.Task> uncompletedTasks_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Task> getUncompletedTasksList() {
+      return uncompletedTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getUncompletedTasksOrBuilderList() {
+      return uncompletedTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    public int getUncompletedTasksCount() {
+      return uncompletedTasks_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getUncompletedTasks(int index) {
+      return uncompletedTasks_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getUncompletedTasksOrBuilder(
+        int index) {
+      return uncompletedTasks_.get(index);
+    }
+
+    public static final int PROCESSING_TASKS_FIELD_NUMBER = 9;
+    private java.util.List<org.roylance.yaorm.TestingModel.Task> processingTasks_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Task> getProcessingTasksList() {
+      return processingTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getProcessingTasksOrBuilderList() {
+      return processingTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    public int getProcessingTasksCount() {
+      return processingTasks_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getProcessingTasks(int index) {
+      return processingTasks_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getProcessingTasksOrBuilder(
+        int index) {
+      return processingTasks_.get(index);
+    }
+
+    public static final int ERRORED_TASKS_FIELD_NUMBER = 10;
+    private java.util.List<org.roylance.yaorm.TestingModel.Task> erroredTasks_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Task> getErroredTasksList() {
+      return erroredTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getErroredTasksOrBuilderList() {
+      return erroredTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    public int getErroredTasksCount() {
+      return erroredTasks_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getErroredTasks(int index) {
+      return erroredTasks_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getErroredTasksOrBuilder(
+        int index) {
+      return erroredTasks_.get(index);
+    }
+
+    public static final int COMPLETED_TASKS_FIELD_NUMBER = 11;
+    private java.util.List<org.roylance.yaorm.TestingModel.Task> completedTasks_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Task> getCompletedTasksList() {
+      return completedTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+        getCompletedTasksOrBuilderList() {
+      return completedTasks_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    public int getCompletedTasksCount() {
+      return completedTasks_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getCompletedTasks(int index) {
+      return completedTasks_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getCompletedTasksOrBuilder(
+        int index) {
+      return completedTasks_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+      }
+      for (int i = 0; i < flattenedTasks_.size(); i++) {
+        output.writeMessage(3, flattenedTasks_.get(i));
+      }
+      if (executionDate_ != 0L) {
+        output.writeInt64(4, executionDate_);
+      }
+      if (startDate_ != 0L) {
+        output.writeInt64(5, startDate_);
+      }
+      if (endDate_ != 0L) {
+        output.writeInt64(6, endDate_);
+      }
+      if (duration_ != 0L) {
+        output.writeInt64(7, duration_);
+      }
+      for (int i = 0; i < uncompletedTasks_.size(); i++) {
+        output.writeMessage(8, uncompletedTasks_.get(i));
+      }
+      for (int i = 0; i < processingTasks_.size(); i++) {
+        output.writeMessage(9, processingTasks_.get(i));
+      }
+      for (int i = 0; i < erroredTasks_.size(); i++) {
+        output.writeMessage(10, erroredTasks_.get(i));
+      }
+      for (int i = 0; i < completedTasks_.size(); i++) {
+        output.writeMessage(11, completedTasks_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+      }
+      for (int i = 0; i < flattenedTasks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, flattenedTasks_.get(i));
+      }
+      if (executionDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, executionDate_);
+      }
+      if (startDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, startDate_);
+      }
+      if (endDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, endDate_);
+      }
+      if (duration_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, duration_);
+      }
+      for (int i = 0; i < uncompletedTasks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, uncompletedTasks_.get(i));
+      }
+      for (int i = 0; i < processingTasks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, processingTasks_.get(i));
+      }
+      for (int i = 0; i < erroredTasks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, erroredTasks_.get(i));
+      }
+      for (int i = 0; i < completedTasks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, completedTasks_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Dag parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.Dag prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.Dag}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Dag)
+        org.roylance.yaorm.TestingModel.DagOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Dag_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Dag_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.Dag.class, org.roylance.yaorm.TestingModel.Dag.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.Dag.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getFlattenedTasksFieldBuilder();
+          getUncompletedTasksFieldBuilder();
+          getProcessingTasksFieldBuilder();
+          getErroredTasksFieldBuilder();
+          getCompletedTasksFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        display_ = "";
+
+        if (flattenedTasksBuilder_ == null) {
+          flattenedTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          flattenedTasksBuilder_.clear();
+        }
+        executionDate_ = 0L;
+
+        startDate_ = 0L;
+
+        endDate_ = 0L;
+
+        duration_ = 0L;
+
+        if (uncompletedTasksBuilder_ == null) {
+          uncompletedTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          uncompletedTasksBuilder_.clear();
+        }
+        if (processingTasksBuilder_ == null) {
+          processingTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+        } else {
+          processingTasksBuilder_.clear();
+        }
+        if (erroredTasksBuilder_ == null) {
+          erroredTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000200);
+        } else {
+          erroredTasksBuilder_.clear();
+        }
+        if (completedTasksBuilder_ == null) {
+          completedTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000400);
+        } else {
+          completedTasksBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Dag_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.Dag getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.Dag.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.Dag build() {
+        org.roylance.yaorm.TestingModel.Dag result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.Dag buildPartial() {
+        org.roylance.yaorm.TestingModel.Dag result = new org.roylance.yaorm.TestingModel.Dag(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        result.display_ = display_;
+        if (flattenedTasksBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            flattenedTasks_ = java.util.Collections.unmodifiableList(flattenedTasks_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.flattenedTasks_ = flattenedTasks_;
+        } else {
+          result.flattenedTasks_ = flattenedTasksBuilder_.build();
+        }
+        result.executionDate_ = executionDate_;
+        result.startDate_ = startDate_;
+        result.endDate_ = endDate_;
+        result.duration_ = duration_;
+        if (uncompletedTasksBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            uncompletedTasks_ = java.util.Collections.unmodifiableList(uncompletedTasks_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.uncompletedTasks_ = uncompletedTasks_;
+        } else {
+          result.uncompletedTasks_ = uncompletedTasksBuilder_.build();
+        }
+        if (processingTasksBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+            processingTasks_ = java.util.Collections.unmodifiableList(processingTasks_);
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
+          result.processingTasks_ = processingTasks_;
+        } else {
+          result.processingTasks_ = processingTasksBuilder_.build();
+        }
+        if (erroredTasksBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
+            erroredTasks_ = java.util.Collections.unmodifiableList(erroredTasks_);
+            bitField0_ = (bitField0_ & ~0x00000200);
+          }
+          result.erroredTasks_ = erroredTasks_;
+        } else {
+          result.erroredTasks_ = erroredTasksBuilder_.build();
+        }
+        if (completedTasksBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) == 0x00000400)) {
+            completedTasks_ = java.util.Collections.unmodifiableList(completedTasks_);
+            bitField0_ = (bitField0_ & ~0x00000400);
+          }
+          result.completedTasks_ = completedTasks_;
+        } else {
+          result.completedTasks_ = completedTasksBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.Dag) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.Dag)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.Dag other) {
+        if (other == org.roylance.yaorm.TestingModel.Dag.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getDisplay().isEmpty()) {
+          display_ = other.display_;
+          onChanged();
+        }
+        if (flattenedTasksBuilder_ == null) {
+          if (!other.flattenedTasks_.isEmpty()) {
+            if (flattenedTasks_.isEmpty()) {
+              flattenedTasks_ = other.flattenedTasks_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureFlattenedTasksIsMutable();
+              flattenedTasks_.addAll(other.flattenedTasks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.flattenedTasks_.isEmpty()) {
+            if (flattenedTasksBuilder_.isEmpty()) {
+              flattenedTasksBuilder_.dispose();
+              flattenedTasksBuilder_ = null;
+              flattenedTasks_ = other.flattenedTasks_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              flattenedTasksBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFlattenedTasksFieldBuilder() : null;
+            } else {
+              flattenedTasksBuilder_.addAllMessages(other.flattenedTasks_);
+            }
+          }
+        }
+        if (other.getExecutionDate() != 0L) {
+          setExecutionDate(other.getExecutionDate());
+        }
+        if (other.getStartDate() != 0L) {
+          setStartDate(other.getStartDate());
+        }
+        if (other.getEndDate() != 0L) {
+          setEndDate(other.getEndDate());
+        }
+        if (other.getDuration() != 0L) {
+          setDuration(other.getDuration());
+        }
+        if (uncompletedTasksBuilder_ == null) {
+          if (!other.uncompletedTasks_.isEmpty()) {
+            if (uncompletedTasks_.isEmpty()) {
+              uncompletedTasks_ = other.uncompletedTasks_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureUncompletedTasksIsMutable();
+              uncompletedTasks_.addAll(other.uncompletedTasks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.uncompletedTasks_.isEmpty()) {
+            if (uncompletedTasksBuilder_.isEmpty()) {
+              uncompletedTasksBuilder_.dispose();
+              uncompletedTasksBuilder_ = null;
+              uncompletedTasks_ = other.uncompletedTasks_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              uncompletedTasksBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getUncompletedTasksFieldBuilder() : null;
+            } else {
+              uncompletedTasksBuilder_.addAllMessages(other.uncompletedTasks_);
+            }
+          }
+        }
+        if (processingTasksBuilder_ == null) {
+          if (!other.processingTasks_.isEmpty()) {
+            if (processingTasks_.isEmpty()) {
+              processingTasks_ = other.processingTasks_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensureProcessingTasksIsMutable();
+              processingTasks_.addAll(other.processingTasks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.processingTasks_.isEmpty()) {
+            if (processingTasksBuilder_.isEmpty()) {
+              processingTasksBuilder_.dispose();
+              processingTasksBuilder_ = null;
+              processingTasks_ = other.processingTasks_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+              processingTasksBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getProcessingTasksFieldBuilder() : null;
+            } else {
+              processingTasksBuilder_.addAllMessages(other.processingTasks_);
+            }
+          }
+        }
+        if (erroredTasksBuilder_ == null) {
+          if (!other.erroredTasks_.isEmpty()) {
+            if (erroredTasks_.isEmpty()) {
+              erroredTasks_ = other.erroredTasks_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+            } else {
+              ensureErroredTasksIsMutable();
+              erroredTasks_.addAll(other.erroredTasks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.erroredTasks_.isEmpty()) {
+            if (erroredTasksBuilder_.isEmpty()) {
+              erroredTasksBuilder_.dispose();
+              erroredTasksBuilder_ = null;
+              erroredTasks_ = other.erroredTasks_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+              erroredTasksBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getErroredTasksFieldBuilder() : null;
+            } else {
+              erroredTasksBuilder_.addAllMessages(other.erroredTasks_);
+            }
+          }
+        }
+        if (completedTasksBuilder_ == null) {
+          if (!other.completedTasks_.isEmpty()) {
+            if (completedTasks_.isEmpty()) {
+              completedTasks_ = other.completedTasks_;
+              bitField0_ = (bitField0_ & ~0x00000400);
+            } else {
+              ensureCompletedTasksIsMutable();
+              completedTasks_.addAll(other.completedTasks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.completedTasks_.isEmpty()) {
+            if (completedTasksBuilder_.isEmpty()) {
+              completedTasksBuilder_.dispose();
+              completedTasksBuilder_ = null;
+              completedTasks_ = other.completedTasks_;
+              bitField0_ = (bitField0_ & ~0x00000400);
+              completedTasksBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getCompletedTasksFieldBuilder() : null;
+            } else {
+              completedTasksBuilder_.addAllMessages(other.completedTasks_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.Dag parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.Dag) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object display_ = "";
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public java.lang.String getDisplay() {
+        java.lang.Object ref = display_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          display_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDisplayBytes() {
+        java.lang.Object ref = display_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          display_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public Builder setDisplay(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        display_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public Builder clearDisplay() {
+        
+        display_ = getDefaultInstance().getDisplay();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public Builder setDisplayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        display_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Task> flattenedTasks_ =
+        java.util.Collections.emptyList();
+      private void ensureFlattenedTasksIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          flattenedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>(flattenedTasks_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> flattenedTasksBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task> getFlattenedTasksList() {
+        if (flattenedTasksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(flattenedTasks_);
+        } else {
+          return flattenedTasksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public int getFlattenedTasksCount() {
+        if (flattenedTasksBuilder_ == null) {
+          return flattenedTasks_.size();
+        } else {
+          return flattenedTasksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getFlattenedTasks(int index) {
+        if (flattenedTasksBuilder_ == null) {
+          return flattenedTasks_.get(index);
+        } else {
+          return flattenedTasksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder setFlattenedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (flattenedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.set(index, value);
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder setFlattenedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (flattenedTasksBuilder_ == null) {
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder addFlattenedTasks(org.roylance.yaorm.TestingModel.Task value) {
+        if (flattenedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.add(value);
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder addFlattenedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (flattenedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.add(index, value);
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder addFlattenedTasks(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (flattenedTasksBuilder_ == null) {
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder addFlattenedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (flattenedTasksBuilder_ == null) {
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder addAllFlattenedTasks(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Task> values) {
+        if (flattenedTasksBuilder_ == null) {
+          ensureFlattenedTasksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, flattenedTasks_);
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder clearFlattenedTasks() {
+        if (flattenedTasksBuilder_ == null) {
+          flattenedTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public Builder removeFlattenedTasks(int index) {
+        if (flattenedTasksBuilder_ == null) {
+          ensureFlattenedTasksIsMutable();
+          flattenedTasks_.remove(index);
+          onChanged();
+        } else {
+          flattenedTasksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getFlattenedTasksBuilder(
+          int index) {
+        return getFlattenedTasksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getFlattenedTasksOrBuilder(
+          int index) {
+        if (flattenedTasksBuilder_ == null) {
+          return flattenedTasks_.get(index);  } else {
+          return flattenedTasksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+           getFlattenedTasksOrBuilderList() {
+        if (flattenedTasksBuilder_ != null) {
+          return flattenedTasksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(flattenedTasks_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addFlattenedTasksBuilder() {
+        return getFlattenedTasksFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addFlattenedTasksBuilder(
+          int index) {
+        return getFlattenedTasksFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task flattened_tasks = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task.Builder> 
+           getFlattenedTasksBuilderList() {
+        return getFlattenedTasksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getFlattenedTasksFieldBuilder() {
+        if (flattenedTasksBuilder_ == null) {
+          flattenedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  flattenedTasks_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          flattenedTasks_ = null;
+        }
+        return flattenedTasksBuilder_;
+      }
+
+      private long executionDate_ ;
+      /**
+       * <code>optional int64 execution_date = 4;</code>
+       */
+      public long getExecutionDate() {
+        return executionDate_;
+      }
+      /**
+       * <code>optional int64 execution_date = 4;</code>
+       */
+      public Builder setExecutionDate(long value) {
+        
+        executionDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 execution_date = 4;</code>
+       */
+      public Builder clearExecutionDate() {
+        
+        executionDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long startDate_ ;
+      /**
+       * <code>optional int64 start_date = 5;</code>
+       */
+      public long getStartDate() {
+        return startDate_;
+      }
+      /**
+       * <code>optional int64 start_date = 5;</code>
+       */
+      public Builder setStartDate(long value) {
+        
+        startDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 start_date = 5;</code>
+       */
+      public Builder clearStartDate() {
+        
+        startDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long endDate_ ;
+      /**
+       * <code>optional int64 end_date = 6;</code>
+       */
+      public long getEndDate() {
+        return endDate_;
+      }
+      /**
+       * <code>optional int64 end_date = 6;</code>
+       */
+      public Builder setEndDate(long value) {
+        
+        endDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 end_date = 6;</code>
+       */
+      public Builder clearEndDate() {
+        
+        endDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long duration_ ;
+      /**
+       * <code>optional int64 duration = 7;</code>
+       */
+      public long getDuration() {
+        return duration_;
+      }
+      /**
+       * <code>optional int64 duration = 7;</code>
+       */
+      public Builder setDuration(long value) {
+        
+        duration_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 duration = 7;</code>
+       */
+      public Builder clearDuration() {
+        
+        duration_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Task> uncompletedTasks_ =
+        java.util.Collections.emptyList();
+      private void ensureUncompletedTasksIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          uncompletedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>(uncompletedTasks_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> uncompletedTasksBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task> getUncompletedTasksList() {
+        if (uncompletedTasksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(uncompletedTasks_);
+        } else {
+          return uncompletedTasksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public int getUncompletedTasksCount() {
+        if (uncompletedTasksBuilder_ == null) {
+          return uncompletedTasks_.size();
+        } else {
+          return uncompletedTasksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getUncompletedTasks(int index) {
+        if (uncompletedTasksBuilder_ == null) {
+          return uncompletedTasks_.get(index);
+        } else {
+          return uncompletedTasksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder setUncompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (uncompletedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.set(index, value);
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder setUncompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (uncompletedTasksBuilder_ == null) {
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder addUncompletedTasks(org.roylance.yaorm.TestingModel.Task value) {
+        if (uncompletedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.add(value);
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder addUncompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (uncompletedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.add(index, value);
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder addUncompletedTasks(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (uncompletedTasksBuilder_ == null) {
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder addUncompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (uncompletedTasksBuilder_ == null) {
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder addAllUncompletedTasks(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Task> values) {
+        if (uncompletedTasksBuilder_ == null) {
+          ensureUncompletedTasksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, uncompletedTasks_);
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder clearUncompletedTasks() {
+        if (uncompletedTasksBuilder_ == null) {
+          uncompletedTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public Builder removeUncompletedTasks(int index) {
+        if (uncompletedTasksBuilder_ == null) {
+          ensureUncompletedTasksIsMutable();
+          uncompletedTasks_.remove(index);
+          onChanged();
+        } else {
+          uncompletedTasksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getUncompletedTasksBuilder(
+          int index) {
+        return getUncompletedTasksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getUncompletedTasksOrBuilder(
+          int index) {
+        if (uncompletedTasksBuilder_ == null) {
+          return uncompletedTasks_.get(index);  } else {
+          return uncompletedTasksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+           getUncompletedTasksOrBuilderList() {
+        if (uncompletedTasksBuilder_ != null) {
+          return uncompletedTasksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(uncompletedTasks_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addUncompletedTasksBuilder() {
+        return getUncompletedTasksFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addUncompletedTasksBuilder(
+          int index) {
+        return getUncompletedTasksFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task uncompleted_tasks = 8;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task.Builder> 
+           getUncompletedTasksBuilderList() {
+        return getUncompletedTasksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getUncompletedTasksFieldBuilder() {
+        if (uncompletedTasksBuilder_ == null) {
+          uncompletedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  uncompletedTasks_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          uncompletedTasks_ = null;
+        }
+        return uncompletedTasksBuilder_;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Task> processingTasks_ =
+        java.util.Collections.emptyList();
+      private void ensureProcessingTasksIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          processingTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>(processingTasks_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> processingTasksBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task> getProcessingTasksList() {
+        if (processingTasksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(processingTasks_);
+        } else {
+          return processingTasksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public int getProcessingTasksCount() {
+        if (processingTasksBuilder_ == null) {
+          return processingTasks_.size();
+        } else {
+          return processingTasksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getProcessingTasks(int index) {
+        if (processingTasksBuilder_ == null) {
+          return processingTasks_.get(index);
+        } else {
+          return processingTasksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder setProcessingTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (processingTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProcessingTasksIsMutable();
+          processingTasks_.set(index, value);
+          onChanged();
+        } else {
+          processingTasksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder setProcessingTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (processingTasksBuilder_ == null) {
+          ensureProcessingTasksIsMutable();
+          processingTasks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          processingTasksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder addProcessingTasks(org.roylance.yaorm.TestingModel.Task value) {
+        if (processingTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProcessingTasksIsMutable();
+          processingTasks_.add(value);
+          onChanged();
+        } else {
+          processingTasksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder addProcessingTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (processingTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProcessingTasksIsMutable();
+          processingTasks_.add(index, value);
+          onChanged();
+        } else {
+          processingTasksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder addProcessingTasks(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (processingTasksBuilder_ == null) {
+          ensureProcessingTasksIsMutable();
+          processingTasks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          processingTasksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder addProcessingTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (processingTasksBuilder_ == null) {
+          ensureProcessingTasksIsMutable();
+          processingTasks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          processingTasksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder addAllProcessingTasks(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Task> values) {
+        if (processingTasksBuilder_ == null) {
+          ensureProcessingTasksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, processingTasks_);
+          onChanged();
+        } else {
+          processingTasksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder clearProcessingTasks() {
+        if (processingTasksBuilder_ == null) {
+          processingTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+          onChanged();
+        } else {
+          processingTasksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public Builder removeProcessingTasks(int index) {
+        if (processingTasksBuilder_ == null) {
+          ensureProcessingTasksIsMutable();
+          processingTasks_.remove(index);
+          onChanged();
+        } else {
+          processingTasksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getProcessingTasksBuilder(
+          int index) {
+        return getProcessingTasksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getProcessingTasksOrBuilder(
+          int index) {
+        if (processingTasksBuilder_ == null) {
+          return processingTasks_.get(index);  } else {
+          return processingTasksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+           getProcessingTasksOrBuilderList() {
+        if (processingTasksBuilder_ != null) {
+          return processingTasksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(processingTasks_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addProcessingTasksBuilder() {
+        return getProcessingTasksFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addProcessingTasksBuilder(
+          int index) {
+        return getProcessingTasksFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task processing_tasks = 9;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task.Builder> 
+           getProcessingTasksBuilderList() {
+        return getProcessingTasksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getProcessingTasksFieldBuilder() {
+        if (processingTasksBuilder_ == null) {
+          processingTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  processingTasks_,
+                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  getParentForChildren(),
+                  isClean());
+          processingTasks_ = null;
+        }
+        return processingTasksBuilder_;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Task> erroredTasks_ =
+        java.util.Collections.emptyList();
+      private void ensureErroredTasksIsMutable() {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+          erroredTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>(erroredTasks_);
+          bitField0_ |= 0x00000200;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> erroredTasksBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task> getErroredTasksList() {
+        if (erroredTasksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(erroredTasks_);
+        } else {
+          return erroredTasksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public int getErroredTasksCount() {
+        if (erroredTasksBuilder_ == null) {
+          return erroredTasks_.size();
+        } else {
+          return erroredTasksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getErroredTasks(int index) {
+        if (erroredTasksBuilder_ == null) {
+          return erroredTasks_.get(index);
+        } else {
+          return erroredTasksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder setErroredTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (erroredTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureErroredTasksIsMutable();
+          erroredTasks_.set(index, value);
+          onChanged();
+        } else {
+          erroredTasksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder setErroredTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (erroredTasksBuilder_ == null) {
+          ensureErroredTasksIsMutable();
+          erroredTasks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          erroredTasksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder addErroredTasks(org.roylance.yaorm.TestingModel.Task value) {
+        if (erroredTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureErroredTasksIsMutable();
+          erroredTasks_.add(value);
+          onChanged();
+        } else {
+          erroredTasksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder addErroredTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (erroredTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureErroredTasksIsMutable();
+          erroredTasks_.add(index, value);
+          onChanged();
+        } else {
+          erroredTasksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder addErroredTasks(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (erroredTasksBuilder_ == null) {
+          ensureErroredTasksIsMutable();
+          erroredTasks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          erroredTasksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder addErroredTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (erroredTasksBuilder_ == null) {
+          ensureErroredTasksIsMutable();
+          erroredTasks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          erroredTasksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder addAllErroredTasks(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Task> values) {
+        if (erroredTasksBuilder_ == null) {
+          ensureErroredTasksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, erroredTasks_);
+          onChanged();
+        } else {
+          erroredTasksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder clearErroredTasks() {
+        if (erroredTasksBuilder_ == null) {
+          erroredTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000200);
+          onChanged();
+        } else {
+          erroredTasksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public Builder removeErroredTasks(int index) {
+        if (erroredTasksBuilder_ == null) {
+          ensureErroredTasksIsMutable();
+          erroredTasks_.remove(index);
+          onChanged();
+        } else {
+          erroredTasksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getErroredTasksBuilder(
+          int index) {
+        return getErroredTasksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getErroredTasksOrBuilder(
+          int index) {
+        if (erroredTasksBuilder_ == null) {
+          return erroredTasks_.get(index);  } else {
+          return erroredTasksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+           getErroredTasksOrBuilderList() {
+        if (erroredTasksBuilder_ != null) {
+          return erroredTasksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(erroredTasks_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addErroredTasksBuilder() {
+        return getErroredTasksFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addErroredTasksBuilder(
+          int index) {
+        return getErroredTasksFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task errored_tasks = 10;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task.Builder> 
+           getErroredTasksBuilderList() {
+        return getErroredTasksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getErroredTasksFieldBuilder() {
+        if (erroredTasksBuilder_ == null) {
+          erroredTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  erroredTasks_,
+                  ((bitField0_ & 0x00000200) == 0x00000200),
+                  getParentForChildren(),
+                  isClean());
+          erroredTasks_ = null;
+        }
+        return erroredTasksBuilder_;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Task> completedTasks_ =
+        java.util.Collections.emptyList();
+      private void ensureCompletedTasksIsMutable() {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+          completedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>(completedTasks_);
+          bitField0_ |= 0x00000400;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> completedTasksBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task> getCompletedTasksList() {
+        if (completedTasksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(completedTasks_);
+        } else {
+          return completedTasksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public int getCompletedTasksCount() {
+        if (completedTasksBuilder_ == null) {
+          return completedTasks_.size();
+        } else {
+          return completedTasksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getCompletedTasks(int index) {
+        if (completedTasksBuilder_ == null) {
+          return completedTasks_.get(index);
+        } else {
+          return completedTasksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder setCompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (completedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCompletedTasksIsMutable();
+          completedTasks_.set(index, value);
+          onChanged();
+        } else {
+          completedTasksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder setCompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (completedTasksBuilder_ == null) {
+          ensureCompletedTasksIsMutable();
+          completedTasks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          completedTasksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder addCompletedTasks(org.roylance.yaorm.TestingModel.Task value) {
+        if (completedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCompletedTasksIsMutable();
+          completedTasks_.add(value);
+          onChanged();
+        } else {
+          completedTasksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder addCompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task value) {
+        if (completedTasksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCompletedTasksIsMutable();
+          completedTasks_.add(index, value);
+          onChanged();
+        } else {
+          completedTasksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder addCompletedTasks(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (completedTasksBuilder_ == null) {
+          ensureCompletedTasksIsMutable();
+          completedTasks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          completedTasksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder addCompletedTasks(
+          int index, org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (completedTasksBuilder_ == null) {
+          ensureCompletedTasksIsMutable();
+          completedTasks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          completedTasksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder addAllCompletedTasks(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Task> values) {
+        if (completedTasksBuilder_ == null) {
+          ensureCompletedTasksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, completedTasks_);
+          onChanged();
+        } else {
+          completedTasksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder clearCompletedTasks() {
+        if (completedTasksBuilder_ == null) {
+          completedTasks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000400);
+          onChanged();
+        } else {
+          completedTasksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public Builder removeCompletedTasks(int index) {
+        if (completedTasksBuilder_ == null) {
+          ensureCompletedTasksIsMutable();
+          completedTasks_.remove(index);
+          onChanged();
+        } else {
+          completedTasksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getCompletedTasksBuilder(
+          int index) {
+        return getCompletedTasksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getCompletedTasksOrBuilder(
+          int index) {
+        if (completedTasksBuilder_ == null) {
+          return completedTasks_.get(index);  } else {
+          return completedTasksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+           getCompletedTasksOrBuilderList() {
+        if (completedTasksBuilder_ != null) {
+          return completedTasksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(completedTasks_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addCompletedTasksBuilder() {
+        return getCompletedTasksFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder addCompletedTasksBuilder(
+          int index) {
+        return getCompletedTasksFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Task completed_tasks = 11;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Task.Builder> 
+           getCompletedTasksBuilderList() {
+        return getCompletedTasksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getCompletedTasksFieldBuilder() {
+        if (completedTasksBuilder_ == null) {
+          completedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  completedTasks_,
+                  ((bitField0_ & 0x00000400) == 0x00000400),
+                  getParentForChildren(),
+                  isClean());
+          completedTasks_ = null;
+        }
+        return completedTasksBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Dag)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Dag)
+    private static final org.roylance.yaorm.TestingModel.Dag DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Dag();
+    }
+
+    public static org.roylance.yaorm.TestingModel.Dag getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Dag>
+        PARSER = new com.google.protobuf.AbstractParser<Dag>() {
+      public Dag parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new Dag(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<Dag> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Dag> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.Dag getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TaskOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Task)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    java.lang.String getDisplay();
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getDisplayBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.TaskDependency> 
+        getDependenciesList();
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskDependency getDependencies(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    int getDependenciesCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder> 
+        getDependenciesOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder getDependenciesOrBuilder(
+        int index);
+
+    /**
+     * <code>optional string dag_id = 4;</code>
+     */
+    java.lang.String getDagId();
+    /**
+     * <code>optional string dag_id = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getDagIdBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    java.util.List<org.roylance.yaorm.TestingModel.Log> 
+        getLogsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    org.roylance.yaorm.TestingModel.Log getLogs(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    int getLogsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.TestingModel.LogOrBuilder> 
+        getLogsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    org.roylance.yaorm.TestingModel.LogOrBuilder getLogsOrBuilder(
+        int index);
+
+    /**
+     * <code>optional int64 execution_date = 6;</code>
+     */
+    long getExecutionDate();
+
+    /**
+     * <code>optional int64 start_date = 7;</code>
+     */
+    long getStartDate();
+
+    /**
+     * <code>optional int64 end_date = 8;</code>
+     */
+    long getEndDate();
+
+    /**
+     * <code>optional int64 duration = 9;</code>
+     */
+    long getDuration();
+
+    /**
+     * <code>optional string first_context_base_64 = 10;</code>
+     */
+    java.lang.String getFirstContextBase64();
+    /**
+     * <code>optional string first_context_base_64 = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getFirstContextBase64Bytes();
+
+    /**
+     * <code>optional string second_context_base_64 = 11;</code>
+     */
+    java.lang.String getSecondContextBase64();
+    /**
+     * <code>optional string second_context_base_64 = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getSecondContextBase64Bytes();
+
+    /**
+     * <code>optional string third_context_base_64 = 12;</code>
+     */
+    java.lang.String getThirdContextBase64();
+    /**
+     * <code>optional string third_context_base_64 = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getThirdContextBase64Bytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.Task}
+   */
+  public  static final class Task extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Task)
+      TaskOrBuilder {
+    // Use Task.newBuilder() to construct.
+    private Task(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Task() {
+      id_ = "";
+      display_ = "";
+      dependencies_ = java.util.Collections.emptyList();
+      dagId_ = "";
+      logs_ = java.util.Collections.emptyList();
+      executionDate_ = 0L;
+      startDate_ = 0L;
+      endDate_ = 0L;
+      duration_ = 0L;
+      firstContextBase64_ = "";
+      secondContextBase64_ = "";
+      thirdContextBase64_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Task(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              display_ = s;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                dependencies_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.TaskDependency>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              dependencies_.add(input.readMessage(org.roylance.yaorm.TestingModel.TaskDependency.parser(), extensionRegistry));
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dagId_ = s;
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                logs_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Log>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              logs_.add(input.readMessage(org.roylance.yaorm.TestingModel.Log.parser(), extensionRegistry));
+              break;
+            }
+            case 48: {
+
+              executionDate_ = input.readInt64();
+              break;
+            }
+            case 56: {
+
+              startDate_ = input.readInt64();
+              break;
+            }
+            case 64: {
+
+              endDate_ = input.readInt64();
+              break;
+            }
+            case 72: {
+
+              duration_ = input.readInt64();
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              firstContextBase64_ = s;
+              break;
+            }
+            case 90: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              secondContextBase64_ = s;
+              break;
+            }
+            case 98: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              thirdContextBase64_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          dependencies_ = java.util.Collections.unmodifiableList(dependencies_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          logs_ = java.util.Collections.unmodifiableList(logs_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Task_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Task_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.Task.class, org.roylance.yaorm.TestingModel.Task.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DISPLAY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object display_;
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public java.lang.String getDisplay() {
+      java.lang.Object ref = display_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        display_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDisplayBytes() {
+      java.lang.Object ref = display_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        display_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEPENDENCIES_FIELD_NUMBER = 3;
+    private java.util.List<org.roylance.yaorm.TestingModel.TaskDependency> dependencies_;
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.TaskDependency> getDependenciesList() {
+      return dependencies_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder> 
+        getDependenciesOrBuilderList() {
+      return dependencies_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    public int getDependenciesCount() {
+      return dependencies_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskDependency getDependencies(int index) {
+      return dependencies_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder getDependenciesOrBuilder(
+        int index) {
+      return dependencies_.get(index);
+    }
+
+    public static final int DAG_ID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object dagId_;
+    /**
+     * <code>optional string dag_id = 4;</code>
+     */
+    public java.lang.String getDagId() {
+      java.lang.Object ref = dagId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dagId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string dag_id = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDagIdBytes() {
+      java.lang.Object ref = dagId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dagId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LOGS_FIELD_NUMBER = 5;
+    private java.util.List<org.roylance.yaorm.TestingModel.Log> logs_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    public java.util.List<org.roylance.yaorm.TestingModel.Log> getLogsList() {
+      return logs_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.TestingModel.LogOrBuilder> 
+        getLogsOrBuilderList() {
+      return logs_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    public int getLogsCount() {
+      return logs_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Log getLogs(int index) {
+      return logs_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+     */
+    public org.roylance.yaorm.TestingModel.LogOrBuilder getLogsOrBuilder(
+        int index) {
+      return logs_.get(index);
+    }
+
+    public static final int EXECUTION_DATE_FIELD_NUMBER = 6;
+    private long executionDate_;
+    /**
+     * <code>optional int64 execution_date = 6;</code>
+     */
+    public long getExecutionDate() {
+      return executionDate_;
+    }
+
+    public static final int START_DATE_FIELD_NUMBER = 7;
+    private long startDate_;
+    /**
+     * <code>optional int64 start_date = 7;</code>
+     */
+    public long getStartDate() {
+      return startDate_;
+    }
+
+    public static final int END_DATE_FIELD_NUMBER = 8;
+    private long endDate_;
+    /**
+     * <code>optional int64 end_date = 8;</code>
+     */
+    public long getEndDate() {
+      return endDate_;
+    }
+
+    public static final int DURATION_FIELD_NUMBER = 9;
+    private long duration_;
+    /**
+     * <code>optional int64 duration = 9;</code>
+     */
+    public long getDuration() {
+      return duration_;
+    }
+
+    public static final int FIRST_CONTEXT_BASE_64_FIELD_NUMBER = 10;
+    private volatile java.lang.Object firstContextBase64_;
+    /**
+     * <code>optional string first_context_base_64 = 10;</code>
+     */
+    public java.lang.String getFirstContextBase64() {
+      java.lang.Object ref = firstContextBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        firstContextBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string first_context_base_64 = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFirstContextBase64Bytes() {
+      java.lang.Object ref = firstContextBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        firstContextBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SECOND_CONTEXT_BASE_64_FIELD_NUMBER = 11;
+    private volatile java.lang.Object secondContextBase64_;
+    /**
+     * <code>optional string second_context_base_64 = 11;</code>
+     */
+    public java.lang.String getSecondContextBase64() {
+      java.lang.Object ref = secondContextBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        secondContextBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string second_context_base_64 = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSecondContextBase64Bytes() {
+      java.lang.Object ref = secondContextBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        secondContextBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int THIRD_CONTEXT_BASE_64_FIELD_NUMBER = 12;
+    private volatile java.lang.Object thirdContextBase64_;
+    /**
+     * <code>optional string third_context_base_64 = 12;</code>
+     */
+    public java.lang.String getThirdContextBase64() {
+      java.lang.Object ref = thirdContextBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        thirdContextBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string third_context_base_64 = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getThirdContextBase64Bytes() {
+      java.lang.Object ref = thirdContextBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        thirdContextBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+      }
+      for (int i = 0; i < dependencies_.size(); i++) {
+        output.writeMessage(3, dependencies_.get(i));
+      }
+      if (!getDagIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, dagId_);
+      }
+      for (int i = 0; i < logs_.size(); i++) {
+        output.writeMessage(5, logs_.get(i));
+      }
+      if (executionDate_ != 0L) {
+        output.writeInt64(6, executionDate_);
+      }
+      if (startDate_ != 0L) {
+        output.writeInt64(7, startDate_);
+      }
+      if (endDate_ != 0L) {
+        output.writeInt64(8, endDate_);
+      }
+      if (duration_ != 0L) {
+        output.writeInt64(9, duration_);
+      }
+      if (!getFirstContextBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 10, firstContextBase64_);
+      }
+      if (!getSecondContextBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 11, secondContextBase64_);
+      }
+      if (!getThirdContextBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 12, thirdContextBase64_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+      }
+      for (int i = 0; i < dependencies_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, dependencies_.get(i));
+      }
+      if (!getDagIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, dagId_);
+      }
+      for (int i = 0; i < logs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, logs_.get(i));
+      }
+      if (executionDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, executionDate_);
+      }
+      if (startDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, startDate_);
+      }
+      if (endDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(8, endDate_);
+      }
+      if (duration_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(9, duration_);
+      }
+      if (!getFirstContextBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, firstContextBase64_);
+      }
+      if (!getSecondContextBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(11, secondContextBase64_);
+      }
+      if (!getThirdContextBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(12, thirdContextBase64_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.Task parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.Task prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.Task}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Task)
+        org.roylance.yaorm.TestingModel.TaskOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Task_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Task_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.Task.class, org.roylance.yaorm.TestingModel.Task.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.Task.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDependenciesFieldBuilder();
+          getLogsFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        display_ = "";
+
+        if (dependenciesBuilder_ == null) {
+          dependencies_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          dependenciesBuilder_.clear();
+        }
+        dagId_ = "";
+
+        if (logsBuilder_ == null) {
+          logs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          logsBuilder_.clear();
+        }
+        executionDate_ = 0L;
+
+        startDate_ = 0L;
+
+        endDate_ = 0L;
+
+        duration_ = 0L;
+
+        firstContextBase64_ = "";
+
+        secondContextBase64_ = "";
+
+        thirdContextBase64_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Task_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.Task getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.Task build() {
+        org.roylance.yaorm.TestingModel.Task result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.Task buildPartial() {
+        org.roylance.yaorm.TestingModel.Task result = new org.roylance.yaorm.TestingModel.Task(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        result.display_ = display_;
+        if (dependenciesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            dependencies_ = java.util.Collections.unmodifiableList(dependencies_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.dependencies_ = dependencies_;
+        } else {
+          result.dependencies_ = dependenciesBuilder_.build();
+        }
+        result.dagId_ = dagId_;
+        if (logsBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            logs_ = java.util.Collections.unmodifiableList(logs_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.logs_ = logs_;
+        } else {
+          result.logs_ = logsBuilder_.build();
+        }
+        result.executionDate_ = executionDate_;
+        result.startDate_ = startDate_;
+        result.endDate_ = endDate_;
+        result.duration_ = duration_;
+        result.firstContextBase64_ = firstContextBase64_;
+        result.secondContextBase64_ = secondContextBase64_;
+        result.thirdContextBase64_ = thirdContextBase64_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.Task) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.Task)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.Task other) {
+        if (other == org.roylance.yaorm.TestingModel.Task.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getDisplay().isEmpty()) {
+          display_ = other.display_;
+          onChanged();
+        }
+        if (dependenciesBuilder_ == null) {
+          if (!other.dependencies_.isEmpty()) {
+            if (dependencies_.isEmpty()) {
+              dependencies_ = other.dependencies_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureDependenciesIsMutable();
+              dependencies_.addAll(other.dependencies_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.dependencies_.isEmpty()) {
+            if (dependenciesBuilder_.isEmpty()) {
+              dependenciesBuilder_.dispose();
+              dependenciesBuilder_ = null;
+              dependencies_ = other.dependencies_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              dependenciesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDependenciesFieldBuilder() : null;
+            } else {
+              dependenciesBuilder_.addAllMessages(other.dependencies_);
+            }
+          }
+        }
+        if (!other.getDagId().isEmpty()) {
+          dagId_ = other.dagId_;
+          onChanged();
+        }
+        if (logsBuilder_ == null) {
+          if (!other.logs_.isEmpty()) {
+            if (logs_.isEmpty()) {
+              logs_ = other.logs_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureLogsIsMutable();
+              logs_.addAll(other.logs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.logs_.isEmpty()) {
+            if (logsBuilder_.isEmpty()) {
+              logsBuilder_.dispose();
+              logsBuilder_ = null;
+              logs_ = other.logs_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              logsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getLogsFieldBuilder() : null;
+            } else {
+              logsBuilder_.addAllMessages(other.logs_);
+            }
+          }
+        }
+        if (other.getExecutionDate() != 0L) {
+          setExecutionDate(other.getExecutionDate());
+        }
+        if (other.getStartDate() != 0L) {
+          setStartDate(other.getStartDate());
+        }
+        if (other.getEndDate() != 0L) {
+          setEndDate(other.getEndDate());
+        }
+        if (other.getDuration() != 0L) {
+          setDuration(other.getDuration());
+        }
+        if (!other.getFirstContextBase64().isEmpty()) {
+          firstContextBase64_ = other.firstContextBase64_;
+          onChanged();
+        }
+        if (!other.getSecondContextBase64().isEmpty()) {
+          secondContextBase64_ = other.secondContextBase64_;
+          onChanged();
+        }
+        if (!other.getThirdContextBase64().isEmpty()) {
+          thirdContextBase64_ = other.thirdContextBase64_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.Task parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.Task) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object display_ = "";
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public java.lang.String getDisplay() {
+        java.lang.Object ref = display_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          display_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDisplayBytes() {
+        java.lang.Object ref = display_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          display_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public Builder setDisplay(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        display_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public Builder clearDisplay() {
+        
+        display_ = getDefaultInstance().getDisplay();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
+      public Builder setDisplayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        display_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.TaskDependency> dependencies_ =
+        java.util.Collections.emptyList();
+      private void ensureDependenciesIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          dependencies_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.TaskDependency>(dependencies_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.TaskDependency, org.roylance.yaorm.TestingModel.TaskDependency.Builder, org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder> dependenciesBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.TaskDependency> getDependenciesList() {
+        if (dependenciesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(dependencies_);
+        } else {
+          return dependenciesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public int getDependenciesCount() {
+        if (dependenciesBuilder_ == null) {
+          return dependencies_.size();
+        } else {
+          return dependenciesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskDependency getDependencies(int index) {
+        if (dependenciesBuilder_ == null) {
+          return dependencies_.get(index);
+        } else {
+          return dependenciesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder setDependencies(
+          int index, org.roylance.yaorm.TestingModel.TaskDependency value) {
+        if (dependenciesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDependenciesIsMutable();
+          dependencies_.set(index, value);
+          onChanged();
+        } else {
+          dependenciesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder setDependencies(
+          int index, org.roylance.yaorm.TestingModel.TaskDependency.Builder builderForValue) {
+        if (dependenciesBuilder_ == null) {
+          ensureDependenciesIsMutable();
+          dependencies_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dependenciesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder addDependencies(org.roylance.yaorm.TestingModel.TaskDependency value) {
+        if (dependenciesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDependenciesIsMutable();
+          dependencies_.add(value);
+          onChanged();
+        } else {
+          dependenciesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder addDependencies(
+          int index, org.roylance.yaorm.TestingModel.TaskDependency value) {
+        if (dependenciesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDependenciesIsMutable();
+          dependencies_.add(index, value);
+          onChanged();
+        } else {
+          dependenciesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder addDependencies(
+          org.roylance.yaorm.TestingModel.TaskDependency.Builder builderForValue) {
+        if (dependenciesBuilder_ == null) {
+          ensureDependenciesIsMutable();
+          dependencies_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dependenciesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder addDependencies(
+          int index, org.roylance.yaorm.TestingModel.TaskDependency.Builder builderForValue) {
+        if (dependenciesBuilder_ == null) {
+          ensureDependenciesIsMutable();
+          dependencies_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dependenciesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder addAllDependencies(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.TaskDependency> values) {
+        if (dependenciesBuilder_ == null) {
+          ensureDependenciesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, dependencies_);
+          onChanged();
+        } else {
+          dependenciesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder clearDependencies() {
+        if (dependenciesBuilder_ == null) {
+          dependencies_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          dependenciesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public Builder removeDependencies(int index) {
+        if (dependenciesBuilder_ == null) {
+          ensureDependenciesIsMutable();
+          dependencies_.remove(index);
+          onChanged();
+        } else {
+          dependenciesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskDependency.Builder getDependenciesBuilder(
+          int index) {
+        return getDependenciesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder getDependenciesOrBuilder(
+          int index) {
+        if (dependenciesBuilder_ == null) {
+          return dependencies_.get(index);  } else {
+          return dependenciesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder> 
+           getDependenciesOrBuilderList() {
+        if (dependenciesBuilder_ != null) {
+          return dependenciesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(dependencies_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskDependency.Builder addDependenciesBuilder() {
+        return getDependenciesFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.TaskDependency.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskDependency.Builder addDependenciesBuilder(
+          int index) {
+        return getDependenciesFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.TaskDependency.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.TaskDependency dependencies = 3;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.TaskDependency.Builder> 
+           getDependenciesBuilderList() {
+        return getDependenciesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.TaskDependency, org.roylance.yaorm.TestingModel.TaskDependency.Builder, org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder> 
+          getDependenciesFieldBuilder() {
+        if (dependenciesBuilder_ == null) {
+          dependenciesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.TaskDependency, org.roylance.yaorm.TestingModel.TaskDependency.Builder, org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder>(
+                  dependencies_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          dependencies_ = null;
+        }
+        return dependenciesBuilder_;
+      }
+
+      private java.lang.Object dagId_ = "";
+      /**
+       * <code>optional string dag_id = 4;</code>
+       */
+      public java.lang.String getDagId() {
+        java.lang.Object ref = dagId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dagId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string dag_id = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDagIdBytes() {
+        java.lang.Object ref = dagId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dagId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string dag_id = 4;</code>
+       */
+      public Builder setDagId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dagId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dag_id = 4;</code>
+       */
+      public Builder clearDagId() {
+        
+        dagId_ = getDefaultInstance().getDagId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dag_id = 4;</code>
+       */
+      public Builder setDagIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dagId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.TestingModel.Log> logs_ =
+        java.util.Collections.emptyList();
+      private void ensureLogsIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          logs_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Log>(logs_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Log, org.roylance.yaorm.TestingModel.Log.Builder, org.roylance.yaorm.TestingModel.LogOrBuilder> logsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Log> getLogsList() {
+        if (logsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(logs_);
+        } else {
+          return logsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public int getLogsCount() {
+        if (logsBuilder_ == null) {
+          return logs_.size();
+        } else {
+          return logsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Log getLogs(int index) {
+        if (logsBuilder_ == null) {
+          return logs_.get(index);
+        } else {
+          return logsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder setLogs(
+          int index, org.roylance.yaorm.TestingModel.Log value) {
+        if (logsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLogsIsMutable();
+          logs_.set(index, value);
+          onChanged();
+        } else {
+          logsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder setLogs(
+          int index, org.roylance.yaorm.TestingModel.Log.Builder builderForValue) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          logsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder addLogs(org.roylance.yaorm.TestingModel.Log value) {
+        if (logsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLogsIsMutable();
+          logs_.add(value);
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder addLogs(
+          int index, org.roylance.yaorm.TestingModel.Log value) {
+        if (logsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLogsIsMutable();
+          logs_.add(index, value);
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder addLogs(
+          org.roylance.yaorm.TestingModel.Log.Builder builderForValue) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder addLogs(
+          int index, org.roylance.yaorm.TestingModel.Log.Builder builderForValue) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          logsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder addAllLogs(
+          java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.Log> values) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, logs_);
+          onChanged();
+        } else {
+          logsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder clearLogs() {
+        if (logsBuilder_ == null) {
+          logs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          logsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public Builder removeLogs(int index) {
+        if (logsBuilder_ == null) {
+          ensureLogsIsMutable();
+          logs_.remove(index);
+          onChanged();
+        } else {
+          logsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Log.Builder getLogsBuilder(
+          int index) {
+        return getLogsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.LogOrBuilder getLogsOrBuilder(
+          int index) {
+        if (logsBuilder_ == null) {
+          return logs_.get(index);  } else {
+          return logsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.TestingModel.LogOrBuilder> 
+           getLogsOrBuilderList() {
+        if (logsBuilder_ != null) {
+          return logsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(logs_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Log.Builder addLogsBuilder() {
+        return getLogsFieldBuilder().addBuilder(
+            org.roylance.yaorm.TestingModel.Log.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Log.Builder addLogsBuilder(
+          int index) {
+        return getLogsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.TestingModel.Log.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Log logs = 5;</code>
+       */
+      public java.util.List<org.roylance.yaorm.TestingModel.Log.Builder> 
+           getLogsBuilderList() {
+        return getLogsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.TestingModel.Log, org.roylance.yaorm.TestingModel.Log.Builder, org.roylance.yaorm.TestingModel.LogOrBuilder> 
+          getLogsFieldBuilder() {
+        if (logsBuilder_ == null) {
+          logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.TestingModel.Log, org.roylance.yaorm.TestingModel.Log.Builder, org.roylance.yaorm.TestingModel.LogOrBuilder>(
+                  logs_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          logs_ = null;
+        }
+        return logsBuilder_;
+      }
+
+      private long executionDate_ ;
+      /**
+       * <code>optional int64 execution_date = 6;</code>
+       */
+      public long getExecutionDate() {
+        return executionDate_;
+      }
+      /**
+       * <code>optional int64 execution_date = 6;</code>
+       */
+      public Builder setExecutionDate(long value) {
+        
+        executionDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 execution_date = 6;</code>
+       */
+      public Builder clearExecutionDate() {
+        
+        executionDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long startDate_ ;
+      /**
+       * <code>optional int64 start_date = 7;</code>
+       */
+      public long getStartDate() {
+        return startDate_;
+      }
+      /**
+       * <code>optional int64 start_date = 7;</code>
+       */
+      public Builder setStartDate(long value) {
+        
+        startDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 start_date = 7;</code>
+       */
+      public Builder clearStartDate() {
+        
+        startDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long endDate_ ;
+      /**
+       * <code>optional int64 end_date = 8;</code>
+       */
+      public long getEndDate() {
+        return endDate_;
+      }
+      /**
+       * <code>optional int64 end_date = 8;</code>
+       */
+      public Builder setEndDate(long value) {
+        
+        endDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 end_date = 8;</code>
+       */
+      public Builder clearEndDate() {
+        
+        endDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long duration_ ;
+      /**
+       * <code>optional int64 duration = 9;</code>
+       */
+      public long getDuration() {
+        return duration_;
+      }
+      /**
+       * <code>optional int64 duration = 9;</code>
+       */
+      public Builder setDuration(long value) {
+        
+        duration_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 duration = 9;</code>
+       */
+      public Builder clearDuration() {
+        
+        duration_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object firstContextBase64_ = "";
+      /**
+       * <code>optional string first_context_base_64 = 10;</code>
+       */
+      public java.lang.String getFirstContextBase64() {
+        java.lang.Object ref = firstContextBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          firstContextBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string first_context_base_64 = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFirstContextBase64Bytes() {
+        java.lang.Object ref = firstContextBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          firstContextBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string first_context_base_64 = 10;</code>
+       */
+      public Builder setFirstContextBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        firstContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string first_context_base_64 = 10;</code>
+       */
+      public Builder clearFirstContextBase64() {
+        
+        firstContextBase64_ = getDefaultInstance().getFirstContextBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string first_context_base_64 = 10;</code>
+       */
+      public Builder setFirstContextBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        firstContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object secondContextBase64_ = "";
+      /**
+       * <code>optional string second_context_base_64 = 11;</code>
+       */
+      public java.lang.String getSecondContextBase64() {
+        java.lang.Object ref = secondContextBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          secondContextBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string second_context_base_64 = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSecondContextBase64Bytes() {
+        java.lang.Object ref = secondContextBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          secondContextBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string second_context_base_64 = 11;</code>
+       */
+      public Builder setSecondContextBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        secondContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string second_context_base_64 = 11;</code>
+       */
+      public Builder clearSecondContextBase64() {
+        
+        secondContextBase64_ = getDefaultInstance().getSecondContextBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string second_context_base_64 = 11;</code>
+       */
+      public Builder setSecondContextBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        secondContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object thirdContextBase64_ = "";
+      /**
+       * <code>optional string third_context_base_64 = 12;</code>
+       */
+      public java.lang.String getThirdContextBase64() {
+        java.lang.Object ref = thirdContextBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          thirdContextBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string third_context_base_64 = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getThirdContextBase64Bytes() {
+        java.lang.Object ref = thirdContextBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          thirdContextBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string third_context_base_64 = 12;</code>
+       */
+      public Builder setThirdContextBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        thirdContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string third_context_base_64 = 12;</code>
+       */
+      public Builder clearThirdContextBase64() {
+        
+        thirdContextBase64_ = getDefaultInstance().getThirdContextBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string third_context_base_64 = 12;</code>
+       */
+      public Builder setThirdContextBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        thirdContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Task)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Task)
+    private static final org.roylance.yaorm.TestingModel.Task DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Task();
+    }
+
+    public static org.roylance.yaorm.TestingModel.Task getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Task>
+        PARSER = new com.google.protobuf.AbstractParser<Task>() {
+      public Task parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new Task(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<Task> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Task> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.Task getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TaskDependencyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.TaskDependency)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string parent_task_id = 2;</code>
+     */
+    java.lang.String getParentTaskId();
+    /**
+     * <code>optional string parent_task_id = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getParentTaskIdBytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.TaskDependency}
+   */
+  public  static final class TaskDependency extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TaskDependency)
+      TaskDependencyOrBuilder {
+    // Use TaskDependency.newBuilder() to construct.
+    private TaskDependency(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private TaskDependency() {
+      id_ = "";
+      parentTaskId_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private TaskDependency(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              parentTaskId_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_TaskDependency_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.TaskDependency.class, org.roylance.yaorm.TestingModel.TaskDependency.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PARENT_TASK_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object parentTaskId_;
+    /**
+     * <code>optional string parent_task_id = 2;</code>
+     */
+    public java.lang.String getParentTaskId() {
+      java.lang.Object ref = parentTaskId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        parentTaskId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string parent_task_id = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getParentTaskIdBytes() {
+      java.lang.Object ref = parentTaskId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        parentTaskId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!getParentTaskIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, parentTaskId_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!getParentTaskIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, parentTaskId_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.TaskDependency prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.TaskDependency}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.TaskDependency)
+        org.roylance.yaorm.TestingModel.TaskDependencyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_TaskDependency_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.TaskDependency.class, org.roylance.yaorm.TestingModel.TaskDependency.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.TaskDependency.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        parentTaskId_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_TaskDependency_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.TaskDependency getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.TaskDependency.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.TaskDependency build() {
+        org.roylance.yaorm.TestingModel.TaskDependency result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.TaskDependency buildPartial() {
+        org.roylance.yaorm.TestingModel.TaskDependency result = new org.roylance.yaorm.TestingModel.TaskDependency(this);
+        result.id_ = id_;
+        result.parentTaskId_ = parentTaskId_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.TaskDependency) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.TaskDependency)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.TaskDependency other) {
+        if (other == org.roylance.yaorm.TestingModel.TaskDependency.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getParentTaskId().isEmpty()) {
+          parentTaskId_ = other.parentTaskId_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.TaskDependency parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.TaskDependency) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object parentTaskId_ = "";
+      /**
+       * <code>optional string parent_task_id = 2;</code>
+       */
+      public java.lang.String getParentTaskId() {
+        java.lang.Object ref = parentTaskId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          parentTaskId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string parent_task_id = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getParentTaskIdBytes() {
+        java.lang.Object ref = parentTaskId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          parentTaskId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string parent_task_id = 2;</code>
+       */
+      public Builder setParentTaskId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        parentTaskId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string parent_task_id = 2;</code>
+       */
+      public Builder clearParentTaskId() {
+        
+        parentTaskId_ = getDefaultInstance().getParentTaskId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string parent_task_id = 2;</code>
+       */
+      public Builder setParentTaskIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        parentTaskId_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.TaskDependency)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.TaskDependency)
+    private static final org.roylance.yaorm.TestingModel.TaskDependency DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.TaskDependency();
+    }
+
+    public static org.roylance.yaorm.TestingModel.TaskDependency getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TaskDependency>
+        PARSER = new com.google.protobuf.AbstractParser<TaskDependency>() {
+      public TaskDependency parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new TaskDependency(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<TaskDependency> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TaskDependency> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.TaskDependency getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AddTaskToDagOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.AddTaskToDag)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     */
+    boolean hasParentTask();
+    /**
+     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getParentTask();
+    /**
+     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getParentTaskOrBuilder();
+
+    /**
+     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     */
+    boolean hasNewTask();
+    /**
+     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getNewTask();
+    /**
+     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getNewTaskOrBuilder();
+
+    /**
+     * <code>optional string first_context_base_64 = 4;</code>
+     */
+    java.lang.String getFirstContextBase64();
+    /**
+     * <code>optional string first_context_base_64 = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getFirstContextBase64Bytes();
+
+    /**
+     * <code>optional string second_context_base_64 = 5;</code>
+     */
+    java.lang.String getSecondContextBase64();
+    /**
+     * <code>optional string second_context_base_64 = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getSecondContextBase64Bytes();
+
+    /**
+     * <code>optional string third_context_base_64 = 6;</code>
+     */
+    java.lang.String getThirdContextBase64();
+    /**
+     * <code>optional string third_context_base_64 = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getThirdContextBase64Bytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.AddTaskToDag}
+   */
+  public  static final class AddTaskToDag extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.AddTaskToDag)
+      AddTaskToDagOrBuilder {
+    // Use AddTaskToDag.newBuilder() to construct.
+    private AddTaskToDag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private AddTaskToDag() {
+      id_ = "";
+      firstContextBase64_ = "";
+      secondContextBase64_ = "";
+      thirdContextBase64_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private AddTaskToDag(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              org.roylance.yaorm.TestingModel.Task.Builder subBuilder = null;
+              if (parentTask_ != null) {
+                subBuilder = parentTask_.toBuilder();
+              }
+              parentTask_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(parentTask_);
+                parentTask_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              org.roylance.yaorm.TestingModel.Task.Builder subBuilder = null;
+              if (newTask_ != null) {
+                subBuilder = newTask_.toBuilder();
+              }
+              newTask_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(newTask_);
+                newTask_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              firstContextBase64_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              secondContextBase64_ = s;
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              thirdContextBase64_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.AddTaskToDag.class, org.roylance.yaorm.TestingModel.AddTaskToDag.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PARENT_TASK_FIELD_NUMBER = 2;
+    private org.roylance.yaorm.TestingModel.Task parentTask_;
+    /**
+     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     */
+    public boolean hasParentTask() {
+      return parentTask_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getParentTask() {
+      return parentTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : parentTask_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getParentTaskOrBuilder() {
+      return getParentTask();
+    }
+
+    public static final int NEW_TASK_FIELD_NUMBER = 3;
+    private org.roylance.yaorm.TestingModel.Task newTask_;
+    /**
+     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     */
+    public boolean hasNewTask() {
+      return newTask_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getNewTask() {
+      return newTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : newTask_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getNewTaskOrBuilder() {
+      return getNewTask();
+    }
+
+    public static final int FIRST_CONTEXT_BASE_64_FIELD_NUMBER = 4;
+    private volatile java.lang.Object firstContextBase64_;
+    /**
+     * <code>optional string first_context_base_64 = 4;</code>
+     */
+    public java.lang.String getFirstContextBase64() {
+      java.lang.Object ref = firstContextBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        firstContextBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string first_context_base_64 = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFirstContextBase64Bytes() {
+      java.lang.Object ref = firstContextBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        firstContextBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SECOND_CONTEXT_BASE_64_FIELD_NUMBER = 5;
+    private volatile java.lang.Object secondContextBase64_;
+    /**
+     * <code>optional string second_context_base_64 = 5;</code>
+     */
+    public java.lang.String getSecondContextBase64() {
+      java.lang.Object ref = secondContextBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        secondContextBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string second_context_base_64 = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSecondContextBase64Bytes() {
+      java.lang.Object ref = secondContextBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        secondContextBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int THIRD_CONTEXT_BASE_64_FIELD_NUMBER = 6;
+    private volatile java.lang.Object thirdContextBase64_;
+    /**
+     * <code>optional string third_context_base_64 = 6;</code>
+     */
+    public java.lang.String getThirdContextBase64() {
+      java.lang.Object ref = thirdContextBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        thirdContextBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string third_context_base_64 = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getThirdContextBase64Bytes() {
+      java.lang.Object ref = thirdContextBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        thirdContextBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (parentTask_ != null) {
+        output.writeMessage(2, getParentTask());
+      }
+      if (newTask_ != null) {
+        output.writeMessage(3, getNewTask());
+      }
+      if (!getFirstContextBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, firstContextBase64_);
+      }
+      if (!getSecondContextBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, secondContextBase64_);
+      }
+      if (!getThirdContextBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, thirdContextBase64_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (parentTask_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getParentTask());
+      }
+      if (newTask_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getNewTask());
+      }
+      if (!getFirstContextBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, firstContextBase64_);
+      }
+      if (!getSecondContextBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, secondContextBase64_);
+      }
+      if (!getThirdContextBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, thirdContextBase64_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.AddTaskToDag prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.AddTaskToDag}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.AddTaskToDag)
+        org.roylance.yaorm.TestingModel.AddTaskToDagOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.AddTaskToDag.class, org.roylance.yaorm.TestingModel.AddTaskToDag.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.AddTaskToDag.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        if (parentTaskBuilder_ == null) {
+          parentTask_ = null;
+        } else {
+          parentTask_ = null;
+          parentTaskBuilder_ = null;
+        }
+        if (newTaskBuilder_ == null) {
+          newTask_ = null;
+        } else {
+          newTask_ = null;
+          newTaskBuilder_ = null;
+        }
+        firstContextBase64_ = "";
+
+        secondContextBase64_ = "";
+
+        thirdContextBase64_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.AddTaskToDag getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.AddTaskToDag.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.AddTaskToDag build() {
+        org.roylance.yaorm.TestingModel.AddTaskToDag result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.AddTaskToDag buildPartial() {
+        org.roylance.yaorm.TestingModel.AddTaskToDag result = new org.roylance.yaorm.TestingModel.AddTaskToDag(this);
+        result.id_ = id_;
+        if (parentTaskBuilder_ == null) {
+          result.parentTask_ = parentTask_;
+        } else {
+          result.parentTask_ = parentTaskBuilder_.build();
+        }
+        if (newTaskBuilder_ == null) {
+          result.newTask_ = newTask_;
+        } else {
+          result.newTask_ = newTaskBuilder_.build();
+        }
+        result.firstContextBase64_ = firstContextBase64_;
+        result.secondContextBase64_ = secondContextBase64_;
+        result.thirdContextBase64_ = thirdContextBase64_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.AddTaskToDag) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.AddTaskToDag)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.AddTaskToDag other) {
+        if (other == org.roylance.yaorm.TestingModel.AddTaskToDag.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (other.hasParentTask()) {
+          mergeParentTask(other.getParentTask());
+        }
+        if (other.hasNewTask()) {
+          mergeNewTask(other.getNewTask());
+        }
+        if (!other.getFirstContextBase64().isEmpty()) {
+          firstContextBase64_ = other.firstContextBase64_;
+          onChanged();
+        }
+        if (!other.getSecondContextBase64().isEmpty()) {
+          secondContextBase64_ = other.secondContextBase64_;
+          onChanged();
+        }
+        if (!other.getThirdContextBase64().isEmpty()) {
+          thirdContextBase64_ = other.thirdContextBase64_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.AddTaskToDag parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.AddTaskToDag) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private org.roylance.yaorm.TestingModel.Task parentTask_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> parentTaskBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public boolean hasParentTask() {
+        return parentTaskBuilder_ != null || parentTask_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getParentTask() {
+        if (parentTaskBuilder_ == null) {
+          return parentTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : parentTask_;
+        } else {
+          return parentTaskBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public Builder setParentTask(org.roylance.yaorm.TestingModel.Task value) {
+        if (parentTaskBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          parentTask_ = value;
+          onChanged();
+        } else {
+          parentTaskBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public Builder setParentTask(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (parentTaskBuilder_ == null) {
+          parentTask_ = builderForValue.build();
+          onChanged();
+        } else {
+          parentTaskBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public Builder mergeParentTask(org.roylance.yaorm.TestingModel.Task value) {
+        if (parentTaskBuilder_ == null) {
+          if (parentTask_ != null) {
+            parentTask_ =
+              org.roylance.yaorm.TestingModel.Task.newBuilder(parentTask_).mergeFrom(value).buildPartial();
+          } else {
+            parentTask_ = value;
+          }
+          onChanged();
+        } else {
+          parentTaskBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public Builder clearParentTask() {
+        if (parentTaskBuilder_ == null) {
+          parentTask_ = null;
+          onChanged();
+        } else {
+          parentTask_ = null;
+          parentTaskBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getParentTaskBuilder() {
+        
+        onChanged();
+        return getParentTaskFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getParentTaskOrBuilder() {
+        if (parentTaskBuilder_ != null) {
+          return parentTaskBuilder_.getMessageOrBuilder();
+        } else {
+          return parentTask_ == null ?
+              org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : parentTask_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getParentTaskFieldBuilder() {
+        if (parentTaskBuilder_ == null) {
+          parentTaskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  getParentTask(),
+                  getParentForChildren(),
+                  isClean());
+          parentTask_ = null;
+        }
+        return parentTaskBuilder_;
+      }
+
+      private org.roylance.yaorm.TestingModel.Task newTask_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> newTaskBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public boolean hasNewTask() {
+        return newTaskBuilder_ != null || newTask_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getNewTask() {
+        if (newTaskBuilder_ == null) {
+          return newTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : newTask_;
+        } else {
+          return newTaskBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public Builder setNewTask(org.roylance.yaorm.TestingModel.Task value) {
+        if (newTaskBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          newTask_ = value;
+          onChanged();
+        } else {
+          newTaskBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public Builder setNewTask(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (newTaskBuilder_ == null) {
+          newTask_ = builderForValue.build();
+          onChanged();
+        } else {
+          newTaskBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public Builder mergeNewTask(org.roylance.yaorm.TestingModel.Task value) {
+        if (newTaskBuilder_ == null) {
+          if (newTask_ != null) {
+            newTask_ =
+              org.roylance.yaorm.TestingModel.Task.newBuilder(newTask_).mergeFrom(value).buildPartial();
+          } else {
+            newTask_ = value;
+          }
+          onChanged();
+        } else {
+          newTaskBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public Builder clearNewTask() {
+        if (newTaskBuilder_ == null) {
+          newTask_ = null;
+          onChanged();
+        } else {
+          newTask_ = null;
+          newTaskBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getNewTaskBuilder() {
+        
+        onChanged();
+        return getNewTaskFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getNewTaskOrBuilder() {
+        if (newTaskBuilder_ != null) {
+          return newTaskBuilder_.getMessageOrBuilder();
+        } else {
+          return newTask_ == null ?
+              org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : newTask_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getNewTaskFieldBuilder() {
+        if (newTaskBuilder_ == null) {
+          newTaskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  getNewTask(),
+                  getParentForChildren(),
+                  isClean());
+          newTask_ = null;
+        }
+        return newTaskBuilder_;
+      }
+
+      private java.lang.Object firstContextBase64_ = "";
+      /**
+       * <code>optional string first_context_base_64 = 4;</code>
+       */
+      public java.lang.String getFirstContextBase64() {
+        java.lang.Object ref = firstContextBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          firstContextBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string first_context_base_64 = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFirstContextBase64Bytes() {
+        java.lang.Object ref = firstContextBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          firstContextBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string first_context_base_64 = 4;</code>
+       */
+      public Builder setFirstContextBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        firstContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string first_context_base_64 = 4;</code>
+       */
+      public Builder clearFirstContextBase64() {
+        
+        firstContextBase64_ = getDefaultInstance().getFirstContextBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string first_context_base_64 = 4;</code>
+       */
+      public Builder setFirstContextBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        firstContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object secondContextBase64_ = "";
+      /**
+       * <code>optional string second_context_base_64 = 5;</code>
+       */
+      public java.lang.String getSecondContextBase64() {
+        java.lang.Object ref = secondContextBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          secondContextBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string second_context_base_64 = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSecondContextBase64Bytes() {
+        java.lang.Object ref = secondContextBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          secondContextBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string second_context_base_64 = 5;</code>
+       */
+      public Builder setSecondContextBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        secondContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string second_context_base_64 = 5;</code>
+       */
+      public Builder clearSecondContextBase64() {
+        
+        secondContextBase64_ = getDefaultInstance().getSecondContextBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string second_context_base_64 = 5;</code>
+       */
+      public Builder setSecondContextBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        secondContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object thirdContextBase64_ = "";
+      /**
+       * <code>optional string third_context_base_64 = 6;</code>
+       */
+      public java.lang.String getThirdContextBase64() {
+        java.lang.Object ref = thirdContextBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          thirdContextBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string third_context_base_64 = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getThirdContextBase64Bytes() {
+        java.lang.Object ref = thirdContextBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          thirdContextBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string third_context_base_64 = 6;</code>
+       */
+      public Builder setThirdContextBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        thirdContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string third_context_base_64 = 6;</code>
+       */
+      public Builder clearThirdContextBase64() {
+        
+        thirdContextBase64_ = getDefaultInstance().getThirdContextBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string third_context_base_64 = 6;</code>
+       */
+      public Builder setThirdContextBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        thirdContextBase64_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.AddTaskToDag)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.AddTaskToDag)
+    private static final org.roylance.yaorm.TestingModel.AddTaskToDag DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.AddTaskToDag();
+    }
+
+    public static org.roylance.yaorm.TestingModel.AddTaskToDag getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AddTaskToDag>
+        PARSER = new com.google.protobuf.AbstractParser<AddTaskToDag>() {
+      public AddTaskToDag parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new AddTaskToDag(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<AddTaskToDag> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddTaskToDag> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.AddTaskToDag getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CompleteTaskOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.CompleteTask)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     */
+    boolean hasTask();
+    /**
+     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     */
+    org.roylance.yaorm.TestingModel.Task getTask();
+    /**
+     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     */
+    org.roylance.yaorm.TestingModel.TaskOrBuilder getTaskOrBuilder();
+
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     */
+    boolean hasWorkerConfiguration();
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.WorkerConfiguration getWorkerConfiguration();
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     */
+    org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder();
+
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    com.google.protobuf.ProtocolStringList
+        getLogsList();
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    int getLogsCount();
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    java.lang.String getLogs(int index);
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getLogsBytes(int index);
+
+    /**
+     * <code>optional bool is_error = 5;</code>
+     */
+    boolean getIsError();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.CompleteTask}
+   */
+  public  static final class CompleteTask extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.CompleteTask)
+      CompleteTaskOrBuilder {
+    // Use CompleteTask.newBuilder() to construct.
+    private CompleteTask(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private CompleteTask() {
+      id_ = "";
+      logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      isError_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private CompleteTask(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              org.roylance.yaorm.TestingModel.Task.Builder subBuilder = null;
+              if (task_ != null) {
+                subBuilder = task_.toBuilder();
+              }
+              task_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(task_);
+                task_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder subBuilder = null;
+              if (workerConfiguration_ != null) {
+                subBuilder = workerConfiguration_.toBuilder();
+              }
+              workerConfiguration_ = input.readMessage(org.roylance.yaorm.TestingModel.WorkerConfiguration.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(workerConfiguration_);
+                workerConfiguration_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                logs_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              logs_.add(s);
+              break;
+            }
+            case 40: {
+
+              isError_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          logs_ = logs_.getUnmodifiableView();
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_CompleteTask_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.TestingModel.CompleteTask.class, org.roylance.yaorm.TestingModel.CompleteTask.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TASK_FIELD_NUMBER = 2;
+    private org.roylance.yaorm.TestingModel.Task task_;
+    /**
+     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     */
+    public boolean hasTask() {
+      return task_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     */
+    public org.roylance.yaorm.TestingModel.Task getTask() {
+      return task_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : task_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     */
+    public org.roylance.yaorm.TestingModel.TaskOrBuilder getTaskOrBuilder() {
+      return getTask();
+    }
+
+    public static final int WORKER_CONFIGURATION_FIELD_NUMBER = 3;
+    private org.roylance.yaorm.TestingModel.WorkerConfiguration workerConfiguration_;
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     */
+    public boolean hasWorkerConfiguration() {
+      return workerConfiguration_ != null;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.WorkerConfiguration getWorkerConfiguration() {
+      return workerConfiguration_ == null ? org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
+    }
+    /**
+     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     */
+    public org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder() {
+      return getWorkerConfiguration();
+    }
+
+    public static final int LOGS_FIELD_NUMBER = 4;
+    private com.google.protobuf.LazyStringList logs_;
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getLogsList() {
+      return logs_;
+    }
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    public int getLogsCount() {
+      return logs_.size();
+    }
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    public java.lang.String getLogs(int index) {
+      return logs_.get(index);
+    }
+    /**
+     * <code>repeated string logs = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getLogsBytes(int index) {
+      return logs_.getByteString(index);
+    }
+
+    public static final int IS_ERROR_FIELD_NUMBER = 5;
+    private boolean isError_;
+    /**
+     * <code>optional bool is_error = 5;</code>
+     */
+    public boolean getIsError() {
+      return isError_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (task_ != null) {
+        output.writeMessage(2, getTask());
+      }
+      if (workerConfiguration_ != null) {
+        output.writeMessage(3, getWorkerConfiguration());
+      }
+      for (int i = 0; i < logs_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, logs_.getRaw(i));
+      }
+      if (isError_ != false) {
+        output.writeBool(5, isError_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (task_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTask());
+      }
+      if (workerConfiguration_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getWorkerConfiguration());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < logs_.size(); i++) {
+          dataSize += computeStringSizeNoTag(logs_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getLogsList().size();
+      }
+      if (isError_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, isError_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.TestingModel.CompleteTask prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.CompleteTask}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.CompleteTask)
+        org.roylance.yaorm.TestingModel.CompleteTaskOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_CompleteTask_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.TestingModel.CompleteTask.class, org.roylance.yaorm.TestingModel.CompleteTask.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.TestingModel.CompleteTask.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        if (taskBuilder_ == null) {
+          task_ = null;
+        } else {
+          task_ = null;
+          taskBuilder_ = null;
+        }
+        if (workerConfigurationBuilder_ == null) {
+          workerConfiguration_ = null;
+        } else {
+          workerConfiguration_ = null;
+          workerConfigurationBuilder_ = null;
+        }
+        logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        isError_ = false;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_CompleteTask_descriptor;
+      }
+
+      public org.roylance.yaorm.TestingModel.CompleteTask getDefaultInstanceForType() {
+        return org.roylance.yaorm.TestingModel.CompleteTask.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.TestingModel.CompleteTask build() {
+        org.roylance.yaorm.TestingModel.CompleteTask result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.TestingModel.CompleteTask buildPartial() {
+        org.roylance.yaorm.TestingModel.CompleteTask result = new org.roylance.yaorm.TestingModel.CompleteTask(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        if (taskBuilder_ == null) {
+          result.task_ = task_;
+        } else {
+          result.task_ = taskBuilder_.build();
+        }
+        if (workerConfigurationBuilder_ == null) {
+          result.workerConfiguration_ = workerConfiguration_;
+        } else {
+          result.workerConfiguration_ = workerConfigurationBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          logs_ = logs_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.logs_ = logs_;
+        result.isError_ = isError_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.TestingModel.CompleteTask) {
+          return mergeFrom((org.roylance.yaorm.TestingModel.CompleteTask)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.TestingModel.CompleteTask other) {
+        if (other == org.roylance.yaorm.TestingModel.CompleteTask.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (other.hasTask()) {
+          mergeTask(other.getTask());
+        }
+        if (other.hasWorkerConfiguration()) {
+          mergeWorkerConfiguration(other.getWorkerConfiguration());
+        }
+        if (!other.logs_.isEmpty()) {
+          if (logs_.isEmpty()) {
+            logs_ = other.logs_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureLogsIsMutable();
+            logs_.addAll(other.logs_);
+          }
+          onChanged();
+        }
+        if (other.getIsError() != false) {
+          setIsError(other.getIsError());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.TestingModel.CompleteTask parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.TestingModel.CompleteTask) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private org.roylance.yaorm.TestingModel.Task task_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> taskBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public boolean hasTask() {
+        return taskBuilder_ != null || task_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task getTask() {
+        if (taskBuilder_ == null) {
+          return task_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : task_;
+        } else {
+          return taskBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public Builder setTask(org.roylance.yaorm.TestingModel.Task value) {
+        if (taskBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          task_ = value;
+          onChanged();
+        } else {
+          taskBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public Builder setTask(
+          org.roylance.yaorm.TestingModel.Task.Builder builderForValue) {
+        if (taskBuilder_ == null) {
+          task_ = builderForValue.build();
+          onChanged();
+        } else {
+          taskBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public Builder mergeTask(org.roylance.yaorm.TestingModel.Task value) {
+        if (taskBuilder_ == null) {
+          if (task_ != null) {
+            task_ =
+              org.roylance.yaorm.TestingModel.Task.newBuilder(task_).mergeFrom(value).buildPartial();
+          } else {
+            task_ = value;
+          }
+          onChanged();
+        } else {
+          taskBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public Builder clearTask() {
+        if (taskBuilder_ == null) {
+          task_ = null;
+          onChanged();
+        } else {
+          task_ = null;
+          taskBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public org.roylance.yaorm.TestingModel.Task.Builder getTaskBuilder() {
+        
+        onChanged();
+        return getTaskFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      public org.roylance.yaorm.TestingModel.TaskOrBuilder getTaskOrBuilder() {
+        if (taskBuilder_ != null) {
+          return taskBuilder_.getMessageOrBuilder();
+        } else {
+          return task_ == null ?
+              org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : task_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> 
+          getTaskFieldBuilder() {
+        if (taskBuilder_ == null) {
+          taskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder>(
+                  getTask(),
+                  getParentForChildren(),
+                  isClean());
+          task_ = null;
+        }
+        return taskBuilder_;
+      }
+
+      private org.roylance.yaorm.TestingModel.WorkerConfiguration workerConfiguration_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.WorkerConfiguration, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder> workerConfigurationBuilder_;
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public boolean hasWorkerConfiguration() {
+        return workerConfigurationBuilder_ != null || workerConfiguration_ != null;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.WorkerConfiguration getWorkerConfiguration() {
+        if (workerConfigurationBuilder_ == null) {
+          return workerConfiguration_ == null ? org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
+        } else {
+          return workerConfigurationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public Builder setWorkerConfiguration(org.roylance.yaorm.TestingModel.WorkerConfiguration value) {
+        if (workerConfigurationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          workerConfiguration_ = value;
+          onChanged();
+        } else {
+          workerConfigurationBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public Builder setWorkerConfiguration(
+          org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder builderForValue) {
+        if (workerConfigurationBuilder_ == null) {
+          workerConfiguration_ = builderForValue.build();
+          onChanged();
+        } else {
+          workerConfigurationBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public Builder mergeWorkerConfiguration(org.roylance.yaorm.TestingModel.WorkerConfiguration value) {
+        if (workerConfigurationBuilder_ == null) {
+          if (workerConfiguration_ != null) {
+            workerConfiguration_ =
+              org.roylance.yaorm.TestingModel.WorkerConfiguration.newBuilder(workerConfiguration_).mergeFrom(value).buildPartial();
+          } else {
+            workerConfiguration_ = value;
+          }
+          onChanged();
+        } else {
+          workerConfigurationBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public Builder clearWorkerConfiguration() {
+        if (workerConfigurationBuilder_ == null) {
+          workerConfiguration_ = null;
+          onChanged();
+        } else {
+          workerConfiguration_ = null;
+          workerConfigurationBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder getWorkerConfigurationBuilder() {
+        
+        onChanged();
+        return getWorkerConfigurationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      public org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder() {
+        if (workerConfigurationBuilder_ != null) {
+          return workerConfigurationBuilder_.getMessageOrBuilder();
+        } else {
+          return workerConfiguration_ == null ?
+              org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
+        }
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.roylance.yaorm.TestingModel.WorkerConfiguration, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder> 
+          getWorkerConfigurationFieldBuilder() {
+        if (workerConfigurationBuilder_ == null) {
+          workerConfigurationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.roylance.yaorm.TestingModel.WorkerConfiguration, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder>(
+                  getWorkerConfiguration(),
+                  getParentForChildren(),
+                  isClean());
+          workerConfiguration_ = null;
+        }
+        return workerConfigurationBuilder_;
+      }
+
+      private com.google.protobuf.LazyStringList logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureLogsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          logs_ = new com.google.protobuf.LazyStringArrayList(logs_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getLogsList() {
+        return logs_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public int getLogsCount() {
+        return logs_.size();
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public java.lang.String getLogs(int index) {
+        return logs_.get(index);
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getLogsBytes(int index) {
+        return logs_.getByteString(index);
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public Builder setLogs(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureLogsIsMutable();
+        logs_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public Builder addLogs(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureLogsIsMutable();
+        logs_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public Builder addAllLogs(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureLogsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, logs_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public Builder clearLogs() {
+        logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string logs = 4;</code>
+       */
+      public Builder addLogsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureLogsIsMutable();
+        logs_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private boolean isError_ ;
+      /**
+       * <code>optional bool is_error = 5;</code>
+       */
+      public boolean getIsError() {
+        return isError_;
+      }
+      /**
+       * <code>optional bool is_error = 5;</code>
+       */
+      public Builder setIsError(boolean value) {
+        
+        isError_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool is_error = 5;</code>
+       */
+      public Builder clearIsError() {
+        
+        isError_ = false;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.CompleteTask)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.CompleteTask)
+    private static final org.roylance.yaorm.TestingModel.CompleteTask DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.CompleteTask();
+    }
+
+    public static org.roylance.yaorm.TestingModel.CompleteTask getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CompleteTask>
+        PARSER = new com.google.protobuf.AbstractParser<CompleteTask>() {
+      public CompleteTask parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CompleteTask(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<CompleteTask> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CompleteTask> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.TestingModel.CompleteTask getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Child_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Child_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubChild_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubSubChild_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Person_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Person_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Address_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Address_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Phone_descriptor;
-  private static final 
+  private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Phone_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_Log_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_Log_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_Dag_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_Dag_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_Task_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_Task_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_TaskDependency_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_CompleteTask_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -9877,7 +19422,44 @@ public final class TestingModel {
       "rson\"P\n\007Address\022\n\n\002id\030\001 \001(\t\022\017\n\007address\030\002" +
       " \001(\t\022\014\n\004city\030\003 \001(\t\022\r\n\005state\030\004 \001(\t\022\013\n\003zip" +
       "\030\005 \001(\t\"#\n\005Phone\022\n\n\002id\030\001 \001(\t\022\016\n\006number\030\002 " +
-      "\001(\tb\006proto3"
+      "\001(\t\"\223\001\n\023WorkerConfiguration\022\n\n\002id\030\001 \001(\t\022" +
+      "\n\n\002ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\t\022\014\n\004host\030\004 \001(\t\022",
+      "\030\n\020initialized_time\030\005 \001(\004\022.\n\005state\030\006 \001(\016" +
+      "2\037.org.roylance.yaorm.WorkerState\"\"\n\003Log" +
+      "\022\n\n\002id\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"\362\002\n\003Dag\022\n\n" +
+      "\002id\030\001 \001(\t\022\017\n\007display\030\002 \001(\t\0221\n\017flattened_" +
+      "tasks\030\003 \003(\0132\030.org.roylance.yaorm.Task\022\026\n" +
+      "\016execution_date\030\004 \001(\003\022\022\n\nstart_date\030\005 \001(" +
+      "\003\022\020\n\010end_date\030\006 \001(\003\022\020\n\010duration\030\007 \001(\003\0223\n" +
+      "\021uncompleted_tasks\030\010 \003(\0132\030.org.roylance." +
+      "yaorm.Task\0222\n\020processing_tasks\030\t \003(\0132\030.o" +
+      "rg.roylance.yaorm.Task\022/\n\rerrored_tasks\030",
+      "\n \003(\0132\030.org.roylance.yaorm.Task\0221\n\017compl" +
+      "eted_tasks\030\013 \003(\0132\030.org.roylance.yaorm.Ta" +
+      "sk\"\302\002\n\004Task\022\n\n\002id\030\001 \001(\t\022\017\n\007display\030\002 \001(\t" +
+      "\0228\n\014dependencies\030\003 \003(\0132\".org.roylance.ya" +
+      "orm.TaskDependency\022\016\n\006dag_id\030\004 \001(\t\022%\n\004lo" +
+      "gs\030\005 \003(\0132\027.org.roylance.yaorm.Log\022\026\n\016exe" +
+      "cution_date\030\006 \001(\003\022\022\n\nstart_date\030\007 \001(\003\022\020\n" +
+      "\010end_date\030\010 \001(\003\022\020\n\010duration\030\t \001(\003\022\035\n\025fir" +
+      "st_context_base_64\030\n \001(\t\022\036\n\026second_conte" +
+      "xt_base_64\030\013 \001(\t\022\035\n\025third_context_base_6",
+      "4\030\014 \001(\t\"4\n\016TaskDependency\022\n\n\002id\030\001 \001(\t\022\026\n" +
+      "\016parent_task_id\030\002 \001(\t\"\323\001\n\014AddTaskToDag\022\n" +
+      "\n\002id\030\001 \001(\t\022-\n\013parent_task\030\002 \001(\0132\030.org.ro" +
+      "ylance.yaorm.Task\022*\n\010new_task\030\003 \001(\0132\030.or" +
+      "g.roylance.yaorm.Task\022\035\n\025first_context_b" +
+      "ase_64\030\004 \001(\t\022\036\n\026second_context_base_64\030\005" +
+      " \001(\t\022\035\n\025third_context_base_64\030\006 \001(\t\"\251\001\n\014" +
+      "CompleteTask\022\n\n\002id\030\001 \001(\t\022&\n\004task\030\002 \001(\0132\030" +
+      ".org.roylance.yaorm.Task\022E\n\024worker_confi" +
+      "guration\030\003 \001(\0132\'.org.roylance.yaorm.Work",
+      "erConfiguration\022\014\n\004logs\030\004 \003(\t\022\020\n\010is_erro" +
+      "r\030\005 \001(\010*$\n\013WorkerState\022\013\n\007WORKING\020\000\022\010\n\004I" +
+      "DLE\020\001*.\n\032WorkerToManagerMessageType\022\020\n\014R" +
+      "EGISTRATION\020\000*9\n\033ManagerToManagerMessage" +
+      "Type\022\032\n\026ENSURE_WORKERS_WORKING\020\000*$\n\tActo" +
+      "rRole\022\013\n\007MANAGER\020\000\022\n\n\006WORKER\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9939,6 +19521,48 @@ public final class TestingModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Phone_descriptor,
         new java.lang.String[] { "Id", "Number", });
+    internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor,
+        new java.lang.String[] { "Id", "Ip", "Port", "Host", "InitializedTime", "State", });
+    internal_static_org_roylance_yaorm_Log_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_org_roylance_yaorm_Log_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_Log_descriptor,
+        new java.lang.String[] { "Id", "Message", });
+    internal_static_org_roylance_yaorm_Dag_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_org_roylance_yaorm_Dag_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_Dag_descriptor,
+        new java.lang.String[] { "Id", "Display", "FlattenedTasks", "ExecutionDate", "StartDate", "EndDate", "Duration", "UncompletedTasks", "ProcessingTasks", "ErroredTasks", "CompletedTasks", });
+    internal_static_org_roylance_yaorm_Task_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_org_roylance_yaorm_Task_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_Task_descriptor,
+        new java.lang.String[] { "Id", "Display", "Dependencies", "DagId", "Logs", "ExecutionDate", "StartDate", "EndDate", "Duration", "FirstContextBase64", "SecondContextBase64", "ThirdContextBase64", });
+    internal_static_org_roylance_yaorm_TaskDependency_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_TaskDependency_descriptor,
+        new java.lang.String[] { "Id", "ParentTaskId", });
+    internal_static_org_roylance_yaorm_AddTaskToDag_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_AddTaskToDag_descriptor,
+        new java.lang.String[] { "Id", "ParentTask", "NewTask", "FirstContextBase64", "SecondContextBase64", "ThirdContextBase64", });
+    internal_static_org_roylance_yaorm_CompleteTask_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_CompleteTask_descriptor,
+        new java.lang.String[] { "Id", "Task", "WorkerConfiguration", "Logs", "IsError", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

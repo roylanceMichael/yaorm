@@ -7,6 +7,8 @@ import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.testmodels.TestModel
+import org.roylance.yaorm.utilities.DagBuilder
 import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.sql.DriverManager
@@ -61,7 +63,7 @@ class MySQLEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
             Assert.assertTrue(foundMessage.coolType.equals(testModel.coolType))
             Assert.assertTrue(foundMessage.display.equals(testModel.display))
             Assert.assertTrue(foundMessage.testInt32.equals(testModel.testInt32))
@@ -135,7 +137,7 @@ class MySQLEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
             Assert.assertTrue(foundMessage.child.id.equals(""))
         }
         finally {
@@ -191,7 +193,7 @@ class MySQLEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
             Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
             Assert.assertTrue(foundMessage.child.testDisplay.equals(testModel.child.testDisplay))
         }
@@ -253,7 +255,7 @@ class MySQLEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
             Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
             Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
         }
@@ -295,7 +297,7 @@ class MySQLEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage.id.equals(testModel.id))
+            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
             Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
             Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
         }
@@ -340,7 +342,7 @@ class MySQLEntityMessageServiceTest {
 
             // assert
             val foundPerson = entityProtoMessageService.get(person.build(), person.id)
-            Assert.assertTrue(foundPerson.firstName.equals("Michael"))
+            Assert.assertTrue(foundPerson!!.firstName.equals("Michael"))
             Assert.assertTrue(foundPerson.lastName.equals("Roylance"))
             Assert.assertTrue(foundPerson.mother.id.equals(person.mother.id))
             Assert.assertTrue(foundPerson.mother.firstName.equals(person.mother.firstName))
@@ -350,11 +352,11 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundPerson.father.lastName.equals(person.father.lastName))
 
             val foundMother = entityProtoMessageService.get(person.build(), person.mother.id)
-            Assert.assertTrue(foundMother.firstName.equals("Terri"))
+            Assert.assertTrue(foundMother!!.firstName.equals("Terri"))
             Assert.assertTrue(foundMother.lastName.equals("Roylance"))
 
             val foundFather = entityProtoMessageService.get(person.build(), person.father.id)
-            Assert.assertTrue(foundFather.firstName.equals("Paul"))
+            Assert.assertTrue(foundFather!!.firstName.equals("Paul"))
             Assert.assertTrue(foundFather.lastName.equals("Roylance"))
         }
         finally {
@@ -399,9 +401,90 @@ class MySQLEntityMessageServiceTest {
 
             // assert
             val foundPerson = entityProtoMessageService.get(person.build(), person.friendsList[0].id)
-            Assert.assertTrue(foundPerson.id.equals(person.friendsList[0].id))
+            Assert.assertTrue(foundPerson!!.id.equals(person.friendsList[0].id))
             Assert.assertTrue(foundPerson.firstName.equals("James"))
             Assert.assertTrue(foundPerson.lastName.equals("Hu"))
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
+    @Test
+    fun simpleDagTest() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            entityProtoMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            val newDag = DagBuilder().build()
+            entityProtoMessageService.merge(newDag)
+
+            // act
+            val manyDags = entityProtoMessageService.getMany(TestingModel.Dag.getDefaultInstance())
+            entityProtoMessageService.merge(newDag)
+            val moreDags = entityProtoMessageService.getMany(TestingModel.Dag.getDefaultInstance())
+
+            // assert
+            Assert.assertTrue(manyDags.size == 1)
+            Assert.assertTrue(moreDags.size == 1)
+        }
+        finally {
+            dropSchema()
+        }
+    }
+
+    @Test
+    fun moreComplexDagTest() {
+        // arrange
+        getConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    host!!,
+                    schema!!,
+                    userName!!,
+                    password!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+
+            entityProtoMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            val newDag = DagBuilder().build()
+            entityProtoMessageService.merge(newDag)
+
+            // act
+            val builder = DagBuilder().build().toBuilder()
+            val firstUncompleted = builder.uncompletedTasksBuilderList[0]
+            builder.removeUncompletedTasks(0)
+            builder.addProcessingTasks(firstUncompleted.setExecutionDate(Date().time).setStartDate(Date().time))
+            entityProtoMessageService.merge(builder.build())
+
+            // assert
+            val moreDags = entityProtoMessageService.getMany(TestingModel.Dag.getDefaultInstance())
+            Assert.assertTrue(moreDags.size == 2)
+
+            val firstDag = moreDags.first { it.id.equals(newDag.id) }
+            Assert.assertTrue(firstDag.uncompletedTasksCount == 10)
+            Assert.assertTrue(firstDag.processingTasksCount == 0)
+            val secondDag = moreDags.first { it.id.equals(builder.id) }
+            Assert.assertTrue(secondDag.uncompletedTasksCount == 9)
+            Assert.assertTrue(secondDag.processingTasksCount == 1)
         }
         finally {
             dropSchema()

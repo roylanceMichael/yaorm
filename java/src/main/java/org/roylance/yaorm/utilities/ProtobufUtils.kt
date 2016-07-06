@@ -138,7 +138,7 @@ object ProtobufUtils {
     fun <T:Message> getProtoObjectFromBuilderSingle(builder: T,
                                                     entityService: IEntityProtoService,
                                                     entityId:String,
-                                                    generatedMessageBuilder: IProtoGeneratedMessageBuilder): T {
+                                                    generatedMessageBuilder: IProtoGeneratedMessageBuilder): T? {
         return GetProtoObject(entityService, generatedMessageBuilder)
                 .build(builder, entityId)
     }
@@ -440,10 +440,13 @@ object ProtobufUtils {
     }
 
     internal fun buildLinkerMessageMainTableColumnName(tableName:String):String {
-        return "${tableName}_main"
+        return "$tableName$MainSuffix"
     }
 
     internal fun buildLinkerMessageOtherTableColumnName(tableName: String):String {
-        return "${tableName}_other"
+        return "$tableName$OtherSuffix"
     }
+
+    const val MainSuffix = "_main"
+    const val OtherSuffix = "_other"
 }
