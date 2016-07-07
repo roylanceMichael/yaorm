@@ -31,13 +31,13 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
         }
     }
 
-    override fun getManyStream(n:Int, definition: YaormModel.TableDefinition, streamer: IProtoStreamer) {
+    override fun getManyStream(definition: YaormModel.TableDefinition, streamer: IProtoStreamer, limit: Int, offset: Int) {
         if (!this.granularDatabaseService.isAvailable()) {
             return
         }
 
         val allSql =
-                this.sqlGeneratorService.buildSelectAll(definition, n)
+                this.sqlGeneratorService.buildSelectAll(definition, limit, offset)
 
         this.granularDatabaseService.executeSelectQueryStream(definition, allSql, streamer)
     }
@@ -185,13 +185,13 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
         return YaormModel.Record.getDefaultInstance()
     }
 
-    override fun getMany(n: Int, definition: YaormModel.TableDefinition): YaormModel.Records {
+    override fun getMany(definition: YaormModel.TableDefinition,limit: Int, offset: Int): YaormModel.Records {
         if (!this.granularDatabaseService.isAvailable()) {
             return YaormModel.Records.getDefaultInstance()
         }
 
         val allSql =
-                this.sqlGeneratorService.buildSelectAll(definition, n)
+                this.sqlGeneratorService.buildSelectAll(definition, limit, offset)
 
         return this.granularDatabaseService.executeSelectQuery(definition, allSql).getRecords()
     }
@@ -214,7 +214,7 @@ class EntityProtoService(override val indexDefinition: YaormModel.Index?,
             return false
         }
 
-        // let's split this into items of n each... for now
+        // let's split this into items of limit each... for now
         val temporaryList = YaormModel.Records.newBuilder()
         val results = ArrayList<Boolean>()
 

@@ -339,8 +339,9 @@ class MySQLGeneratorService(private val schemaName: String) : ISqlGeneratorServi
 
     override fun buildSelectAll(
             definition: YaormModel.TableDefinition,
-            n: Int): String {
-        return "select * from ${this.schemaName}.${definition.name} limit $n;"
+            limit: Int,
+            offset: Int): String {
+        return "select * from ${this.schemaName}.${definition.name} limit $offset,$limit;"
     }
 
     override fun buildWhereClause(

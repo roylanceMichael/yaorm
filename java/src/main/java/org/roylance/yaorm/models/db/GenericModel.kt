@@ -20,12 +20,12 @@ class GenericModel(
 
         fun buildProtoDefinitionModel():YaormModel.TableDefinition {
             val returnModel = YaormModel.TableDefinition.newBuilder()
-            returnModel.columnDefinitions[IdName] = YaormModel.ColumnDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING).build()
-            returnModel.columnDefinitions[StrValName] = (YaormModel.ColumnDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING)).build()
-            returnModel.columnDefinitions[IntValName] = (YaormModel.ColumnDefinition.newBuilder().setName(IntValName).setType(YaormModel.ProtobufType.INT64)).build()
-            returnModel.columnDefinitions[LongValName] = (YaormModel.ColumnDefinition.newBuilder().setName(LongValName).setType(YaormModel.ProtobufType.INT64)).build()
-            returnModel.columnDefinitions[DoubleValName] = (YaormModel.ColumnDefinition.newBuilder().setName(DoubleValName).setType(YaormModel.ProtobufType.DOUBLE)).build()
-            returnModel.columnDefinitions[BoolValName] = (YaormModel.ColumnDefinition.newBuilder().setName(BoolValName).setType(YaormModel.ProtobufType.BOOL)).build()
+            returnModel.mutableColumnDefinitions[IdName] = YaormModel.ColumnDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING).build()
+            returnModel.mutableColumnDefinitions[StrValName] = (YaormModel.ColumnDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING)).build()
+            returnModel.mutableColumnDefinitions[IntValName] = (YaormModel.ColumnDefinition.newBuilder().setName(IntValName).setType(YaormModel.ProtobufType.INT64)).build()
+            returnModel.mutableColumnDefinitions[LongValName] = (YaormModel.ColumnDefinition.newBuilder().setName(LongValName).setType(YaormModel.ProtobufType.INT64)).build()
+            returnModel.mutableColumnDefinitions[DoubleValName] = (YaormModel.ColumnDefinition.newBuilder().setName(DoubleValName).setType(YaormModel.ProtobufType.DOUBLE)).build()
+            returnModel.mutableColumnDefinitions[BoolValName] = (YaormModel.ColumnDefinition.newBuilder().setName(BoolValName).setType(YaormModel.ProtobufType.BOOL)).build()
             return returnModel.build()
         }
     }

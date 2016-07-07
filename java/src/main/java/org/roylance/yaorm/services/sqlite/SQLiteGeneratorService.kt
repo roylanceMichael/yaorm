@@ -12,7 +12,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
     private val DeleteTableTemplate = "delete from %s where id=%s;"
     private val WhereClauseTemplate = "select * from %s where %s;"
-    private val SelectAllTemplate = "select * from %s limit %s;"
+    private val SelectAllTemplate = "select * from %s limit %s offset %s;"
     private val PrimaryKey = "primary key"
 
     private val SqlIntegerName = "integer"
@@ -180,11 +180,12 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         return "$initialStatement $unionSeparatedStatements${CommonUtils.SemiColon}"
     }
 
-    override fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int): String {
+    override fun buildSelectAll(definition: YaormModel.TableDefinition, limit: Int, offset: Int): String {
         return java.lang.String.format(
                 SelectAllTemplate,
                 definition.name,
-                n)
+                limit,
+                offset)
     }
 
     override fun buildWhereClause(

@@ -72,7 +72,7 @@ class MySQLEntityAccessMapServiceTests {
         entityService.createOrUpdate(newBeaconMap.build(), definition)
 
         // assert
-        val allBeacons = entityService.getMany(10, definition)
+        val allBeacons = entityService.getMany(definition, 10)
 
         Assert.assertEquals(1, allBeacons.recordsCount)
 

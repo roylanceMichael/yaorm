@@ -169,7 +169,7 @@ class EntityMessageService(
                 this.protoGeneratedMessageBuilder)
     }
 
-    override fun <T : Message> getMany(messageType: T, maxAmount: Int): List<T> {
+    override fun <T : Message> getMany(messageType: T, limit: Int, offset: Int): List<T> {
         val returnList = ArrayList<T>()
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return returnList
@@ -177,7 +177,7 @@ class EntityMessageService(
 
         // get ids first
         val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
-        this.entityService.getMany(maxAmount, tableDefinition).recordsList
+        this.entityService.getMany(tableDefinition, limit, offset).recordsList
                 .forEach { record ->
                     if (record.columns.containsKey(CommonUtils.IdName)) {
                         val idColumn = record.columns[CommonUtils.IdName]!!
@@ -192,12 +192,12 @@ class EntityMessageService(
         return returnList
     }
 
-    override fun <T : Message> getManyStream(messageType: T, streamer: IMessageStreamer) {
+    override fun <T : Message> getManyStream(messageType: T, streamer: IMessageStreamer, limit:Int, offset: Int) {
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return
         }
         val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
-        this.entityService.getMany(definition = tableDefinition).recordsList
+        this.entityService.getMany(definition = tableDefinition, limit = limit, offset = offset).recordsList
                 .forEach { record ->
                     if (record.columns.containsKey(CommonUtils.IdName)) {
                         val idColumn = record.columns[CommonUtils.IdName]!!

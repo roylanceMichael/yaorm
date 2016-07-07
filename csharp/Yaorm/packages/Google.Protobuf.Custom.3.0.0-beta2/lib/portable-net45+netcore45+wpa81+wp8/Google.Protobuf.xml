@@ -381,36 +381,14 @@
         </member>
         <member name="M:Google.Protobuf.CodedOutputStream.#ctor(System.IO.Stream)">
             <summary>
-            Creates a new <see cref="T:Google.Protobuf.CodedOutputStream" /> which write to the given stream, and disposes of that
-            stream when the returned <c>CodedOutputStream</c> is disposed.
+            Creates a new CodedOutputStream which write to the given stream.
             </summary>
-            <param name="output">The stream to write to. It will be disposed when the returned <c>CodedOutputStream is disposed.</c></param>
         </member>
         <member name="M:Google.Protobuf.CodedOutputStream.#ctor(System.IO.Stream,System.Int32)">
             <summary>
             Creates a new CodedOutputStream which write to the given stream and uses
             the specified buffer size.
             </summary>
-            <param name="output">The stream to write to. It will be disposed when the returned <c>CodedOutputStream is disposed.</c></param>
-            <param name="bufferSize">The size of buffer to use internally.</param>
-        </member>
-        <member name="M:Google.Protobuf.CodedOutputStream.#ctor(System.IO.Stream,System.Boolean)">
-            <summary>
-            Creates a new CodedOutputStream which write to the given stream.
-            </summary>
-            <param name="output">The stream to write to.</param>
-            <param name="leaveOpen">If <c>true</c>, <paramref name="output"/> is left open when the returned <c>CodedOutputStream</c> is disposed;
-            if <c>false</c>, the provided stream is disposed as well.</param>
-        </member>
-        <member name="M:Google.Protobuf.CodedOutputStream.#ctor(System.IO.Stream,System.Int32,System.Boolean)">
-            <summary>
-            Creates a new CodedOutputStream which write to the given stream and uses
-            the specified buffer size.
-            </summary>
-            <param name="output">The stream to write to.</param>
-            <param name="bufferSize">The size of buffer to use internally.</param>
-            <param name="leaveOpen">If <c>true</c>, <paramref name="output"/> is left open when the returned <c>CodedOutputStream</c> is disposed;
-            if <c>false</c>, the provided stream is disposed as well.</param>
         </member>
         <member name="P:Google.Protobuf.CodedOutputStream.Position">
             <summary>
@@ -629,23 +607,6 @@
             ran out of space.
             </summary>
         </member>
-        <member name="M:Google.Protobuf.CodedOutputStream.Dispose">
-            <summary>
-            Flushes any buffered data and optionally closes the underlying stream, if any.
-            </summary>
-            <remarks>
-            <para>
-            By default, any underlying stream is closed by this method. To configure this behaviour,
-            use a constructor overload with a <c>leaveOpen</c> parameter. If this instance does not
-            have an underlying stream, this method does nothing.
-            </para>
-            <para>
-            For the sake of efficiency, calling this method does not prevent future write calls - but
-            if a later write ends up writing to a stream which has been disposed, that is likely to
-            fail. It is recommend that you not call any other methods after this.
-            </para>
-            </remarks>
-        </member>
         <member name="M:Google.Protobuf.CodedOutputStream.Flush">
             <summary>
             Flushes any buffered data to the underlying stream (if there is one).
@@ -680,12 +641,6 @@
             and <see cref="T:Google.Protobuf.Collections.MapField`2"/> to serialize such fields.
             </para>
             </remarks>
-        </member>
-        <member name="F:Google.Protobuf.CodedInputStream.leaveOpen">
-            <summary>
-            Whether to leave the underlying stream open when disposing of this stream.
-            This is always true when there's no stream.
-            </summary>
         </member>
         <member name="F:Google.Protobuf.CodedInputStream.buffer">
             <summary>
@@ -738,24 +693,13 @@
         </member>
         <member name="M:Google.Protobuf.CodedInputStream.#ctor(System.Byte[],System.Int32,System.Int32)">
             <summary>
-            Creates a new <see cref="T:Google.Protobuf.CodedInputStream"/> that reads from the given byte array slice.
+            Creates a new CodedInputStream that reads from the given byte array slice.
             </summary>
         </member>
         <member name="M:Google.Protobuf.CodedInputStream.#ctor(System.IO.Stream)">
             <summary>
-            Creates a new <see cref="T:Google.Protobuf.CodedInputStream"/> reading data from the given stream, which will be disposed
-            when the returned object is disposed.
+            Creates a new CodedInputStream reading data from the given stream.
             </summary>
-            <param name="input">The stream to read from.</param>
-        </member>
-        <member name="M:Google.Protobuf.CodedInputStream.#ctor(System.IO.Stream,System.Boolean)">
-            <summary>
-            Creates a new <see cref="T:Google.Protobuf.CodedInputStream"/> reading data from the given stream.
-            </summary>
-            <param name="input">The stream to read from.</param>
-            <param name="leaveOpen"><c>true</c> to leave <paramref name="input"/> open when the returned
-            <c cref="T:Google.Protobuf.CodedInputStream"/> is disposed; <c>false</c> to dispose of the given stream when the
-            returned object is disposed.</param>
         </member>
         <member name="M:Google.Protobuf.CodedInputStream.#ctor(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
             <summary>
@@ -825,16 +769,6 @@
             The recursion limit for this stream.
             </value>
         </member>
-        <member name="M:Google.Protobuf.CodedInputStream.Dispose">
-            <summary>
-            Disposes of this instance, potentially closing any underlying stream.
-            </summary>
-            <remarks>
-            As there is no flushing to perform here, disposing of a <see cref="T:Google.Protobuf.CodedInputStream"/> which
-            was constructed with the <c>leaveOpen</c> option parameter set to <c>true</c> (or one which
-            was constructed to read from a byte array) has no effect.
-            </remarks>
-        </member>
         <member name="M:Google.Protobuf.CodedInputStream.CheckReadEndOfStreamTag">
             <summary>
             Verifies that the last call to ReadTag() returned tag 0 - in other words,
@@ -867,14 +801,6 @@
             This should be called directly after <see cref="M:Google.Protobuf.CodedInputStream.ReadTag"/>, when
             the caller wishes to skip an unknown field.
             </summary>
-            <remarks>
-            This method throws <see cref="T:Google.Protobuf.InvalidProtocolBufferException"/> if the last-read tag was an end-group tag.
-            If a caller wishes to skip a group, they should skip the whole group, by calling this method after reading the
-            start-group tag. This behavior allows callers to call this method on any field they don't understand, correctly
-            resulting in an error if an end-group tag has not been paired with an earlier start-group tag.
-            </remarks>
-            <exception cref="T:Google.Protobuf.InvalidProtocolBufferException">The last tag was an end-group tag</exception>
-            <exception cref="T:System.InvalidOperationException">The last read operation read to the end of the logical stream</exception>
         </member>
         <member name="M:Google.Protobuf.CodedInputStream.ReadDouble">
             <summary>
@@ -1120,18 +1046,25 @@
             For string keys, the equality comparison is provided by <see cref="P:System.StringComparer.Ordinal" />.
             </para>
             <para>
-            Null values are not permitted in the map, either for wrapper types or regular messages.
-            If a map is deserialized from a data stream and the value is missing from an entry, a default value
-            is created instead. For primitive types, that is the regular default value (0, the empty string and so
-            on); for message types, an empty instance of the message is created, as if the map entry contained a 0-length
-            encoded value for the field.
-            </para>
-            <para>
             This implementation does not generally prohibit the use of key/value types which are not
             supported by Protocol Buffers (e.g. using a key type of <code>byte</code>) but nor does it guarantee
             that all operations will work in such cases.
             </para>
             </remarks>
+        </member>
+        <member name="M:Google.Protobuf.Collections.MapField`2.#ctor">
+            <summary>
+            Constructs a new map field, defaulting the value nullability to only allow null values for message types
+            and non-nullable value types.
+            </summary>
+        </member>
+        <member name="M:Google.Protobuf.Collections.MapField`2.#ctor(System.Boolean)">
+            <summary>
+            Constructs a new map field, overriding the choice of whether null values are permitted in the map.
+            This is used by wrapper types, where maps with string and bytes wrappers as the value types
+            support null values.
+            </summary>
+            <param name="allowNullValues">Whether null values are permitted in the map or not.</param>
         </member>
         <member name="M:Google.Protobuf.Collections.MapField`2.Clone">
             <summary>
@@ -1197,7 +1130,7 @@
         </member>
         <member name="M:Google.Protobuf.Collections.MapField`2.Add(System.Collections.Generic.IDictionary{`0,`1})">
             <summary>
-            Adds the specified entries to the map. The keys and values are not automatically cloned.
+            Adds the specified entries to the map.
             </summary>
             <param name="entries">The entries to add to the map.</param>
         </member>
@@ -1249,6 +1182,11 @@
             <remarks>Both the key and the value must be found for the entry to be removed.</remarks>
             <param name="item">The key/value pair to remove.</param>
             <returns><c>true</c> if the key/value pair was found and removed; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="P:Google.Protobuf.Collections.MapField`2.AllowsNullValues">
+            <summary>
+            Returns whether or not this map allows values to be null.
+            </summary>
         </member>
         <member name="P:Google.Protobuf.Collections.MapField`2.Count">
             <summary>
@@ -1748,29 +1686,23 @@
         </member>
         <member name="T:Google.Protobuf.FieldCodec`1">
             <summary>
-            <para>
             An encode/decode pair for a single field. This effectively encapsulates
             all the information needed to read or write the field value from/to a coded
             stream.
-            </para>
-            <para>
-            This class is public and has to be as it is used by generated code, but its public
-            API is very limited - just what the generated code needs to call directly.
-            </para>
             </summary>
             <remarks>
-            This never writes default values to the stream, and does not address "packedness"
-            in repeated fields itself, other than to know whether or not the field *should* be packed.
+            This never writes default values to the stream, and is not currently designed
+            to play well with packed arrays.
             </remarks>
-        </member>
-        <member name="P:Google.Protobuf.FieldCodec`1.ValueWriter">
-            <summary>
-            Returns a delegate to write a value (unconditionally) to a coded output stream.
-            </summary>
         </member>
         <member name="P:Google.Protobuf.FieldCodec`1.ValueSizeCalculator">
             <summary>
             Returns the size calculator for just a value.
+            </summary>
+        </member>
+        <member name="P:Google.Protobuf.FieldCodec`1.ValueWriter">
+            <summary>
+            Returns a delegate to write a value (unconditionally) to a coded output stream.
             </summary>
         </member>
         <member name="P:Google.Protobuf.FieldCodec`1.ValueReader">
@@ -1794,9 +1726,7 @@
         </member>
         <member name="P:Google.Protobuf.FieldCodec`1.DefaultValue">
             <summary>
-            Default value for this codec. Usually the same for every instance of the same type, but
-            for string/ByteString wrapper fields the codec's default value is null, whereas for
-            other string/ByteString fields it's "" or ByteString.Empty.
+            Gets the default value of the codec's type.
             </summary>
             <value>
             The default value of the codec's type.
@@ -1824,40 +1754,6 @@
             <summary>
             Class containing helpful workarounds for various platform compatibility
             </summary>
-        </member>
-        <member name="T:Google.Protobuf.ICustomDiagnosticMessage">
-            <summary>
-            A message type that has a custom string format for diagnostic purposes.
-            </summary>
-            <remarks>
-            <para>
-            Calling <see cref="M:System.Object.ToString"/> on a generated message type normally
-            returns the JSON representation. If a message type implements this interface,
-            then the <see cref="M:Google.Protobuf.ICustomDiagnosticMessage.ToDiagnosticString"/> method will be called instead of the regular
-            JSON formatting code, but only when <c>ToString()</c> is called either on the message itself
-            or on another message which contains it. This does not affect the normal JSON formatting of
-            the message.
-            </para>
-            <para>
-            For example, if you create a proto message representing a GUID, the internal
-            representation may be a <c>bytes</c> field or four <c>fixed32</c> fields. However, when debugging
-            it may be more convenient to see a result in the same format as <see cref="T:System.Guid"/> provides.
-            </para>
-            <para>This interface extends <see cref="T:Google.Protobuf.IMessage"/> to avoid it accidentally being implemented
-            on types other than messages, where it would not be used by anything in the framework.</para>
-            </remarks>
-        </member>
-        <member name="M:Google.Protobuf.ICustomDiagnosticMessage.ToDiagnosticString">
-            <summary>
-            Returns a string representation of this object, for diagnostic purposes.
-            </summary>
-            <remarks>
-            This method is called when a message is formatted as part of a <see cref="M:System.Object.ToString"/>
-            call. It does not affect the JSON representation used by <see cref="T:Google.Protobuf.JsonFormatter"/> other than
-            in calls to <see cref="M:Google.Protobuf.JsonFormatter.ToDiagnosticString(Google.Protobuf.IMessage)"/>. While it is recommended
-            that the result is valid JSON, this is never assumed by the Protobuf library.
-            </remarks>
-            <returns>A string representation of this object, for diagnostic purposes.</returns>
         </member>
         <member name="T:Google.Protobuf.IDeepCloneable`1">
             <summary>
@@ -1928,14 +1824,6 @@
             <param name="message">The message to format.</param>
             <returns>The formatted message.</returns>
         </member>
-        <member name="M:Google.Protobuf.JsonFormatter.Format(Google.Protobuf.IMessage,System.IO.TextWriter)">
-            <summary>
-            Formats the specified message as JSON.
-            </summary>
-            <param name="message">The message to format.</param>
-            <param name="writer">The TextWriter to write the formatted message to.</param>
-            <returns>The formatted message.</returns>
-        </member>
         <member name="M:Google.Protobuf.JsonFormatter.ToDiagnosticString(Google.Protobuf.IMessage)">
             <summary>
             Converts a message to JSON for diagnostic purposes with no extra context.
@@ -1955,18 +1843,24 @@
             <param name="message">The message to format for diagnostic purposes.</param>
             <returns>The diagnostic-only JSON representation of the message</returns>
         </member>
-        <member name="M:Google.Protobuf.JsonFormatter.ToCamelCaseForFieldMask(System.String)">
-            <summary>
-            Camel-case converter with added strictness for field mask formatting.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">The field mask is invalid for JSON representation</exception>
-        </member>
-        <member name="M:Google.Protobuf.JsonFormatter.WriteWellKnownTypeValue(System.IO.TextWriter,Google.Protobuf.Reflection.MessageDescriptor,System.Object)">
+        <member name="M:Google.Protobuf.JsonFormatter.WriteWellKnownTypeValue(System.Text.StringBuilder,Google.Protobuf.Reflection.MessageDescriptor,System.Object,System.Boolean)">
             <summary>
             Central interception point for well-known type formatting. Any well-known types which
             don't need special handling can fall back to WriteMessage. We avoid assuming that the
             values are using the embedded well-known types, in order to allow for dynamic messages
             in the future.
+            </summary>
+        </member>
+        <member name="M:Google.Protobuf.JsonFormatter.MaybeWrapInString(System.Text.StringBuilder,System.Object,System.Action{System.Text.StringBuilder,Google.Protobuf.IMessage},System.Boolean)">
+            <summary>
+            Some well-known types end up as string values... so they need wrapping in quotes, but only
+            when they're being used as fields within another message.
+            </summary>
+        </member>
+        <member name="M:Google.Protobuf.JsonFormatter.AppendNanoseconds(System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Appends a number of nanoseconds to a StringBuilder. Either 0 digits are added (in which
+            case no "." is appended), or 3 6 or 9 digits.
             </summary>
         </member>
         <member name="M:Google.Protobuf.JsonFormatter.CanWriteSingleValue(System.Object)">
@@ -1976,13 +1870,18 @@
             For repeated/map fields, this always returns true.
             </summary>
         </member>
-        <member name="M:Google.Protobuf.JsonFormatter.WriteString(System.IO.TextWriter,System.String)">
+        <member name="M:Google.Protobuf.JsonFormatter.WriteString(System.Text.StringBuilder,System.String)">
             <summary>
             Writes a string (including leading and trailing double quotes) to a builder, escaping as required.
             </summary>
             <remarks>
             Other than surrogate pair handling, this code is mostly taken from src/google/protobuf/util/internal/json_escaping.cc.
             </remarks>
+        </member>
+        <member name="M:Google.Protobuf.JsonFormatter.AppendEscapedString(System.Text.StringBuilder,System.String)">
+            <summary>
+            Appends the given text to the string builder, escaping as required.
+            </summary>
         </member>
         <member name="T:Google.Protobuf.JsonFormatter.Settings">
             <summary>
@@ -2108,13 +2007,6 @@
         <member name="M:Google.Protobuf.JsonParser.NewMessageForField(Google.Protobuf.Reflection.FieldDescriptor)">
             <summary>
             Creates a new instance of the message type for the given field.
-            </summary>
-        </member>
-        <member name="M:Google.Protobuf.JsonParser.ValidateInfinityAndNan(System.String,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            Checks that any infinite/NaN values originated from the correct text.
-            This corrects the lenient whitespace handling of double.Parse/float.Parse, as well as the
-            way that Mono parses out-of-range values as infinity.
             </summary>
         </member>
         <member name="T:Google.Protobuf.JsonParser.Settings">
@@ -2909,55 +2801,55 @@
         <member name="T:Google.Protobuf.Reflection.FieldDescriptorProto.Types">
             <summary>Container for nested types declared in the FieldDescriptorProto message type.</summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Double">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_DOUBLE">
             <summary>
              0 is reserved for errors.
              Order is weird for historical reasons.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Int64">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_INT64">
             <summary>
              Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
              negative values are likely.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Int32">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_INT32">
             <summary>
              Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
              negative values are likely.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Group">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_GROUP">
             <summary>
              Tag-delimited aggregate.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Message">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_MESSAGE">
             <summary>
              Length-delimited aggregate.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Bytes">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_BYTES">
             <summary>
              New in version 2.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Sint32">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_SINT32">
             <summary>
              Uses ZigZag encoding.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.Sint64">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Type.TYPE_SINT64">
             <summary>
              Uses ZigZag encoding.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Label.Optional">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Label.LABEL_OPTIONAL">
             <summary>
              0 is reserved for errors
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Label.Repeated">
+        <member name="F:Google.Protobuf.Reflection.FieldDescriptorProto.Types.Label.LABEL_REPEATED">
             <summary>
              TODO(sanjay): Should we add LABEL_MAP?
             </summary>
@@ -3194,6 +3086,15 @@
              Namespace for generated classes; defaults to the package.
             </summary>
         </member>
+        <member name="F:Google.Protobuf.Reflection.FileOptions.JavananoUseDeprecatedPackageFieldNumber">
+            <summary>Field number for the "javanano_use_deprecated_package" field.</summary>
+        </member>
+        <member name="P:Google.Protobuf.Reflection.FileOptions.JavananoUseDeprecatedPackage">
+            <summary>
+             Whether the nano proto compiler should generate in the deprecated non-nano
+             suffixed package.
+            </summary>
+        </member>
         <member name="F:Google.Protobuf.Reflection.FileOptions.UninterpretedOptionFieldNumber">
             <summary>Field number for the "uninterpreted_option" field.</summary>
         </member>
@@ -3210,17 +3111,17 @@
              Generated classes can be optimized for speed or code size.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FileOptions.Types.OptimizeMode.Speed">
+        <member name="F:Google.Protobuf.Reflection.FileOptions.Types.OptimizeMode.SPEED">
             <summary>
              Generate complete code for parsing, serialization,
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FileOptions.Types.OptimizeMode.CodeSize">
+        <member name="F:Google.Protobuf.Reflection.FileOptions.Types.OptimizeMode.CODE_SIZE">
             <summary>
              etc.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FileOptions.Types.OptimizeMode.LiteRuntime">
+        <member name="F:Google.Protobuf.Reflection.FileOptions.Types.OptimizeMode.LITE_RUNTIME">
             <summary>
              Generate code using MessageLite and the lite runtime.
             </summary>
@@ -3410,22 +3311,22 @@
         <member name="T:Google.Protobuf.Reflection.FieldOptions.Types">
             <summary>Container for nested types declared in the FieldOptions message type.</summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.CType.String">
+        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.CType.STRING">
             <summary>
              Default mode.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.JSType.JsNormal">
+        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.JSType.JS_NORMAL">
             <summary>
              Use the default type.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.JSType.JsString">
+        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.JSType.JS_STRING">
             <summary>
              Use JavaScript strings.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.JSType.JsNumber">
+        <member name="F:Google.Protobuf.Reflection.FieldOptions.Types.JSType.JS_NUMBER">
             <summary>
              Use JavaScript numbers.
             </summary>
@@ -3731,61 +3632,6 @@
         <member name="F:Google.Protobuf.Reflection.SourceCodeInfo.Types.Location.LeadingDetachedCommentsFieldNumber">
             <summary>Field number for the "leading_detached_comments" field.</summary>
         </member>
-        <member name="T:Google.Protobuf.Reflection.GeneratedCodeInfo">
-            <summary>
-             Describes the relationship between generated code and its original source
-             file. A GeneratedCodeInfo message is associated with only one generated
-             source file, but may contain references to different source .proto files.
-            </summary>
-        </member>
-        <member name="F:Google.Protobuf.Reflection.GeneratedCodeInfo.AnnotationFieldNumber">
-            <summary>Field number for the "annotation" field.</summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.Annotation">
-            <summary>
-             An Annotation connects some span of text in generated code to an element
-             of its generating .proto file.
-            </summary>
-        </member>
-        <member name="T:Google.Protobuf.Reflection.GeneratedCodeInfo.Types">
-            <summary>Container for nested types declared in the GeneratedCodeInfo message type.</summary>
-        </member>
-        <member name="F:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.PathFieldNumber">
-            <summary>Field number for the "path" field.</summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.Path">
-            <summary>
-             Identifies the element in the original source .proto file. This field
-             is formatted the same as SourceCodeInfo.Location.path.
-            </summary>
-        </member>
-        <member name="F:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.SourceFileFieldNumber">
-            <summary>Field number for the "source_file" field.</summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.SourceFile">
-            <summary>
-             Identifies the filesystem path to the original source .proto.
-            </summary>
-        </member>
-        <member name="F:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.BeginFieldNumber">
-            <summary>Field number for the "begin" field.</summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.Begin">
-            <summary>
-             Identifies the starting offset in bytes in the generated code
-             that relates to the identified object.
-            </summary>
-        </member>
-        <member name="F:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.EndFieldNumber">
-            <summary>Field number for the "end" field.</summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.Types.Annotation.End">
-            <summary>
-             Identifies the ending offset in bytes in the generated code that
-             relates to the identified offset. The end offset should be one past
-             the last relevant byte (so the length of the text = end - begin).
-            </summary>
-        </member>
         <member name="T:Google.Protobuf.Reflection.DescriptorBase">
             <summary>
             Base class for nearly all descriptors, providing common functionality.
@@ -3992,22 +3838,6 @@
             Descriptor for a field or extension within a message in a .proto file.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.FieldDescriptor.ContainingType">
-            <summary>
-            Get the field's containing message type.
-            </summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.FieldDescriptor.ContainingOneof">
-            <summary>
-            Returns the oneof containing this field, or <c>null</c> if it is not part of a oneof.
-            </summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.FieldDescriptor.JsonName">
-            <summary>
-            The effective JSON name for this field. This is usually the lower-camel-cased form of the field name,
-            but can be overridden using the <c>json_name</c> option in the .proto file.
-            </summary>
-        </member>
         <member name="P:Google.Protobuf.Reflection.FieldDescriptor.Name">
             <summary>
             The brief name of the descriptor's target.
@@ -4051,6 +3881,16 @@
         <member name="P:Google.Protobuf.Reflection.FieldDescriptor.IsPacked">
             <summary>
             Returns <c>true</c> if this field is a packed, repeated field; <c>false</c> otherwise.
+            </summary>
+        </member>
+        <member name="P:Google.Protobuf.Reflection.FieldDescriptor.ContainingType">
+            <summary>
+            Get the field's containing message type.
+            </summary>
+        </member>
+        <member name="P:Google.Protobuf.Reflection.FieldDescriptor.ContainingOneof">
+            <summary>
+            Returns the oneof containing this field, or <c>null</c> if it is not part of a oneof.
             </summary>
         </member>
         <member name="P:Google.Protobuf.Reflection.FieldDescriptor.FieldType">
@@ -4268,7 +4108,7 @@
             <typeparam name="T">The type of descriptor to look for</typeparam>
             <returns>The type's descriptor, or null if not found.</returns>
         </member>
-        <member name="M:Google.Protobuf.Reflection.FileDescriptor.BuildFrom(Google.Protobuf.ByteString,Google.Protobuf.Reflection.FileDescriptorProto,Google.Protobuf.Reflection.FileDescriptor[],System.Boolean,Google.Protobuf.Reflection.GeneratedClrTypeInfo)">
+        <member name="M:Google.Protobuf.Reflection.FileDescriptor.BuildFrom(Google.Protobuf.ByteString,Google.Protobuf.Reflection.FileDescriptorProto,Google.Protobuf.Reflection.FileDescriptor[],System.Boolean,Google.Protobuf.Reflection.GeneratedCodeInfo)">
             <summary>
             Builds a FileDescriptor from its protocol buffer representation.
             </summary>
@@ -4285,7 +4125,7 @@
             a valid descriptor. This can occur for a number of reasons, such as a field
             having an undefined type or because two messages were defined with the same name.</exception>
         </member>
-        <member name="M:Google.Protobuf.Reflection.FileDescriptor.FromGeneratedCode(System.Byte[],Google.Protobuf.Reflection.FileDescriptor[],Google.Protobuf.Reflection.GeneratedClrTypeInfo)">
+        <member name="M:Google.Protobuf.Reflection.FileDescriptor.FromGeneratedCode(System.Byte[],Google.Protobuf.Reflection.FileDescriptor[],Google.Protobuf.Reflection.GeneratedCodeInfo)">
             <summary>
             Creates a descriptor for generated code.
             </summary>
@@ -4318,57 +4158,57 @@
             The file descriptor for <c>descriptor.proto</c>.
             </value>
         </member>
-        <member name="T:Google.Protobuf.Reflection.GeneratedClrTypeInfo">
+        <member name="T:Google.Protobuf.Reflection.GeneratedCodeInfo">
             <summary>
             Extra information provided by generated code when initializing a message or file descriptor.
             These are constructed as required, and are not long-lived. Hand-written code should
             never need to use this type.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedClrTypeInfo.ClrType">
+        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.ClrType">
             <summary>
             Irrelevant for file descriptors; the CLR type for the message for message descriptors.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedClrTypeInfo.Parser">
+        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.Parser">
             <summary>
             Irrelevant for file descriptors; the parser for message descriptors.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedClrTypeInfo.PropertyNames">
+        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.PropertyNames">
             <summary>
             Irrelevant for file descriptors; the CLR property names (in message descriptor field order)
             for fields in the message for message descriptors.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedClrTypeInfo.OneofNames">
+        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.OneofNames">
             <summary>
             Irrelevant for file descriptors; the CLR property "base" names (in message descriptor oneof order)
             for oneofs in the message for message descriptors. It is expected that for a oneof name of "Foo",
             there will be a "FooCase" property and a "ClearFoo" method.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedClrTypeInfo.NestedTypes">
+        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.NestedTypes">
             <summary>
             The reflection information for types within this file/message descriptor. Elements may be null
             if there is no corresponding generated type, e.g. for map entry types.
             </summary>
         </member>
-        <member name="P:Google.Protobuf.Reflection.GeneratedClrTypeInfo.NestedEnums">
+        <member name="P:Google.Protobuf.Reflection.GeneratedCodeInfo.NestedEnums">
             <summary>
             The CLR types for enums within this file/message descriptor.
             </summary>
         </member>
-        <member name="M:Google.Protobuf.Reflection.GeneratedClrTypeInfo.#ctor(System.Type,Google.Protobuf.MessageParser,System.String[],System.String[],System.Type[],Google.Protobuf.Reflection.GeneratedClrTypeInfo[])">
+        <member name="M:Google.Protobuf.Reflection.GeneratedCodeInfo.#ctor(System.Type,Google.Protobuf.MessageParser,System.String[],System.String[],System.Type[],Google.Protobuf.Reflection.GeneratedCodeInfo[])">
             <summary>
-            Creates a GeneratedClrTypeInfo for a message descriptor, with nested types, nested enums, the CLR type, property names and oneof names.
+            Creates a GeneratedCodeInfo for a message descriptor, with nested types, nested enums, the CLR type, property names and oneof names.
             Each array parameter may be null, to indicate a lack of values.
             The parameter order is designed to make it feasible to format the generated code readably.
             </summary>
         </member>
-        <member name="M:Google.Protobuf.Reflection.GeneratedClrTypeInfo.#ctor(System.Type[],Google.Protobuf.Reflection.GeneratedClrTypeInfo[])">
+        <member name="M:Google.Protobuf.Reflection.GeneratedCodeInfo.#ctor(System.Type[],Google.Protobuf.Reflection.GeneratedCodeInfo[])">
             <summary>
-            Creates a GeneratedClrTypeInfo for a file descriptor, with only types and enums.
+            Creates a GeneratedCodeInfo for a file descriptor, with only types and enums.
             </summary>
         </member>
         <member name="T:Google.Protobuf.Reflection.IDescriptor">
@@ -4565,10 +4405,9 @@
         </member>
         <member name="M:Google.Protobuf.Reflection.MessageDescriptor.FieldCollection.ByJsonName">
             <value>
-            Returns a read-only dictionary mapping the field names in this message as they're available
+            Returns a read-only dictionary mapping the field names in this message as they're used
             in the JSON representation to the field descriptors. For example, a field <c>foo_bar</c>
-            in the message would result two entries, one with a key <c>fooBar</c> and one with a key
-            <c>foo_bar</c>, both referring to the same field.
+            in the message would result in an entry with a key <c>fooBar</c>.
             </value>
         </member>
         <member name="P:Google.Protobuf.Reflection.MessageDescriptor.FieldCollection.Item(System.Int32)">
@@ -4682,23 +4521,6 @@
             <value>
             The accessor used for reflective access.
             </value>
-        </member>
-        <member name="T:Google.Protobuf.Reflection.OriginalNameAttribute">
-            <summary>
-            Specifies the original name (in the .proto file) of a named element,
-            such as an enum value.
-            </summary>
-        </member>
-        <member name="P:Google.Protobuf.Reflection.OriginalNameAttribute.Name">
-            <summary>
-            The name of the element in the .proto file.
-            </summary>
-        </member>
-        <member name="M:Google.Protobuf.Reflection.OriginalNameAttribute.#ctor(System.String)">
-            <summary>
-            Constructs a new attribute instance for the given name.
-            </summary>
-            <param name="name">The name of the element in the .proto file.</param>
         </member>
         <member name="T:Google.Protobuf.Reflection.PackageDescriptor">
             <summary>
@@ -4849,29 +4671,24 @@
             Builder class which isn't exposed, but acts as a convenient alternative to passing round two dictionaries in recursive calls.
             </summary>
         </member>
-        <member name="T:Google.Protobuf.ProtoPreconditions">
+        <member name="T:Google.Protobuf.Preconditions">
             <summary>
-            Helper methods for throwing exceptions when preconditions are not met.
+            Helper methods for throwing exceptions
             </summary>
-            <remarks>
-            This class is used internally and by generated code; it is not particularly
-            expected to be used from application code, although nothing prevents it
-            from being used that way.
-            </remarks>
         </member>
-        <member name="M:Google.Protobuf.ProtoPreconditions.CheckNotNull``1(``0,System.String)">
+        <member name="M:Google.Protobuf.Preconditions.CheckNotNull``1(``0,System.String)">
             <summary>
             Throws an ArgumentNullException if the given value is null, otherwise
             return the value to the caller.
             </summary>
         </member>
-        <member name="M:Google.Protobuf.ProtoPreconditions.CheckNotNullUnconstrained``1(``0,System.String)">
+        <member name="M:Google.Protobuf.Preconditions.CheckNotNullUnconstrained``1(``0,System.String)">
             <summary>
             Throws an ArgumentNullException if the given value is null, otherwise
             return the value to the caller.
             </summary>
             <remarks>
-            This is equivalent to <see cref="M:Google.Protobuf.ProtoPreconditions.CheckNotNull``1(``0,System.String)"/> but without the type parameter
+            This is equivalent to <see cref="M:Google.Protobuf.Preconditions.CheckNotNull``1(``0,System.String)"/> but without the type parameter
             constraint. In most cases, the constraint is useful to prevent you from calling CheckNotNull
             with a value type - but it gets in the way if either you want to use it with a nullable
             value type, or you want to use it with an unconstrained type parameter.
@@ -4885,36 +4702,8 @@
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Any">
              <summary>
-              `Any` contains an arbitrary serialized protocol buffer message along with a
-              URL that describes the type of the serialized message.
-            
-              Protobuf library provides support to pack/unpack Any values in the form
-              of utility functions or additional generated methods of the Any type.
-            
-              Example 1: Pack and unpack a message in C++.
-            
-                  Foo foo = ...;
-                  Any any;
-                  any.PackFrom(foo);
-                  ...
-                  if (any.UnpackTo(&amp;foo)) {
-                    ...
-                  }
-            
-              Example 2: Pack and unpack a message in Java.
-            
-                  Foo foo = ...;
-                  Any any = Any.pack(foo);
-                  ...
-                  if (any.is(Foo.class)) {
-                    foo = any.unpack(Foo.class);
-                  }
-            
-              The pack methods provided by protobuf library will by default use
-              'type.googleapis.com/full.type.name' as the type URL and the unpack
-              methods only use the fully qualified type name after the last '/'
-              in the type URL, for example "foo.bar.com/x/y.z" will yield type
-              name "y.z".
+              `Any` contains an arbitrary serialized message along with a URL
+              that describes the type of the serialized message.
             
               JSON
               ====
@@ -4936,8 +4725,8 @@
             
               If the embedded message type is well-known and has a custom JSON
               representation, that representation will be embedded adding a field
-              `value` which holds the custom JSON in addition to the `@type`
-              field. Example (for message [google.protobuf.Duration][]):
+              `value` which holds the custom JSON in addition to the the `@type`
+              field. Example (for message [google.protobuf.Duration][google.protobuf.Duration]):
             
                   {
                     "@type": "type.googleapis.com/google.protobuf.Duration",
@@ -4951,7 +4740,7 @@
         <member name="P:Google.Protobuf.WellKnownTypes.Any.TypeUrl">
              <summary>
               A URL/resource name whose content describes the type of the
-              serialized protocol buffer message.
+              serialized message.
             
               For URLs which use the schema `http`, `https`, or no schema, the
               following restrictions and interpretations apply:
@@ -4959,9 +4748,7 @@
               * If no schema is provided, `https` is assumed.
               * The last segment of the URL's path must represent the fully
                 qualified name of the type (as in `path/google.protobuf.Duration`).
-                The name should be in a canonical form (e.g., leading "." is
-                not accepted).
-              * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+              * An HTTP GET on the URL must yield a [google.protobuf.Type][google.protobuf.Type]
                 value in binary format, or produce an error.
               * Applications are allowed to cache lookup results based on the
                 URL, or have them precompiled into a binary to avoid any
@@ -4978,20 +4765,8 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Any.Value">
             <summary>
-             Must be a valid serialized protocol buffer of the above specified type.
+             Must be valid serialized data of the above specified type.
             </summary>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Any.GetTypeName(System.String)">
-            <summary>
-            Retrieves the type name for a type URL. This is always just the last part of the URL,
-            after the trailing slash. No validation of anything before the trailing slash is performed.
-            If the type URL does not include a slash, an empty string is returned rather than an exception
-            being thrown; this won't match any types, and the calling code is probably in a better position
-            to give a meaningful error.
-            There is no handling of fragments or queries  at the moment.
-            </summary>
-            <param name="typeUrl">The URL to extract the type name from</param>
-            <returns>The type name</returns>
         </member>
         <member name="M:Google.Protobuf.WellKnownTypes.Any.Unpack``1">
             <summary>
@@ -5004,17 +4779,9 @@
         </member>
         <member name="M:Google.Protobuf.WellKnownTypes.Any.Pack(Google.Protobuf.IMessage)">
             <summary>
-            Packs the specified message into an Any message using a type URL prefix of "type.googleapis.com".
+            Packs the specified message into an Any message.
             </summary>
             <param name="message">The message to pack.</param>
-            <returns>An Any message with the content and type URL of <paramref name="message"/>.</returns>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Any.Pack(Google.Protobuf.IMessage,System.String)">
-            <summary>
-            Packs the specified message into an Any message using the specified type URL prefix.
-            </summary>
-            <param name="message">The message to pack.</param>
-            <param name="typeUrlPrefix">The prefix for the type URL.</param>
             <returns>An Any message with the content and type URL of <paramref name="message"/>.</returns>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.ApiReflection">
@@ -5196,6 +4963,7 @@
             
                   package google.storage.v2;
                   service Storage {
+                    // (-- see AccessControl.GetAcl --)
                     rpc GetAcl(GetAclRequest) returns (Acl);
             
                     // Get a data record.
@@ -5362,8 +5130,6 @@
             </summary>
             <remarks>If the duration is not a precise number of ticks, it is truncated towards 0.</remarks>
             <returns>The value of this duration, as a <c>TimeSpan</c>.</returns>
-            <exception cref="T:System.InvalidOperationException">This value isn't a valid normalized duration, as
-            described in the documentation.</exception>
         </member>
         <member name="M:Google.Protobuf.WellKnownTypes.Duration.FromTimeSpan(System.TimeSpan)">
             <summary>
@@ -5399,40 +5165,6 @@
             <summary>
             Creates a duration with the normalized values from the given number of seconds and
             nanoseconds, conforming with the description in the proto file.
-            </summary>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Duration.ToJson(System.Int64,System.Int32,System.Boolean)">
-            <summary>
-            Converts a duration specified in seconds/nanoseconds to a string.
-            </summary>
-            <remarks>
-            If the value is a normalized duration in the range described in <c>duration.proto</c>,
-            <paramref name="diagnosticOnly"/> is ignored. Otherwise, if the parameter is <c>true</c>,
-            a JSON object with a warning is returned; if it is <c>false</c>, an <see cref="T:System.InvalidOperationException"/> is thrown.
-            </remarks>
-            <param name="seconds">Seconds portion of the duration.</param>
-            <param name="nanoseconds">Nanoseconds portion of the duration.</param>
-            <param name="diagnosticOnly">Determines the handling of non-normalized values</param>
-            <exception cref="T:System.InvalidOperationException">The represented duration is invalid, and <paramref name="diagnosticOnly"/> is <c>false</c>.</exception>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Duration.ToDiagnosticString">
-            <summary>
-            Returns a string representation of this <see cref="T:Google.Protobuf.WellKnownTypes.Duration"/> for diagnostic purposes.
-            </summary>
-            <remarks>
-            Normally the returned value will be a JSON string value (including leading and trailing quotes) but
-            when the value is non-normalized or out of range, a JSON object representation will be returned
-            instead, including a warning. This is to avoid exceptions being thrown when trying to
-            diagnose problems - the regular JSON formatter will still throw an exception for non-normalized
-            values.
-            </remarks>
-            <returns>A string representation of this value.</returns>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Duration.AppendNanoseconds(System.Text.StringBuilder,System.Int32)">
-            <summary>
-            Appends a number of nanoseconds to a StringBuilder. Either 0 digits are added (in which
-            case no "." is appended), or 3 6 or 9 digits. This is internal for use in Timestamp as well
-            as Duration.
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.EmptyReflection">
@@ -5493,7 +5225,7 @@
                   z: 8
             
               The result will not contain specific values for fields x,y and z
-              (their value will be set to the default, and omitted in proto text
+              (there value will be set to the default, and omitted in proto text
               output):
             
                   f {
@@ -5510,7 +5242,7 @@
               operation applies to all fields (as if a FieldMask of all fields
               had been specified).
             
-              Note that a field mask does not necessarily apply to the
+              Note that a field mask does not necessarily applies to the
               top-level response message. In case of a REST get operation, the
               field mask applies directly to the response, but in case of a REST
               list operation, the mask instead applies to each individual message
@@ -5583,33 +5315,6 @@
                   {
                     mask: "user.displayName,photo"
                   }
-            
-              # Field Masks and Oneof Fields
-            
-              Field masks treat fields in oneofs just as regular fields. Consider the
-              following message:
-            
-                  message SampleMessage {
-                    oneof test_oneof {
-                      string name = 4;
-                      SubMessage sub_message = 9;
-                    }
-                  }
-            
-              The field mask can be:
-            
-                  mask {
-                    paths: "name"
-                  }
-            
-              Or:
-            
-                  mask {
-                    paths: "sub_message"
-                  }
-            
-              Note that oneof type names ("test_oneof" in this case) cannot be used in
-              paths.
              </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.FieldMask.PathsFieldNumber">
@@ -5619,38 +5324,6 @@
             <summary>
              The set of field mask paths.
             </summary>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.FieldMask.ToJson(System.Collections.Generic.IList{System.String},System.Boolean)">
-            <summary>
-            Converts a timestamp  specified in seconds/nanoseconds to a string.
-            </summary>
-            <remarks>
-            If the value is a normalized duration in the range described in <c>field_mask.proto</c>,
-            <paramref name="diagnosticOnly"/> is ignored. Otherwise, if the parameter is <c>true</c>,
-            a JSON object with a warning is returned; if it is <c>false</c>, an <see cref="T:System.InvalidOperationException"/> is thrown.
-            </remarks>
-            <param name="paths">Paths in the field mask</param>
-            <param name="diagnosticOnly">Determines the handling of non-normalized values</param>
-            <exception cref="T:System.InvalidOperationException">The represented duration is invalid, and <paramref name="diagnosticOnly"/> is <c>false</c>.</exception>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.FieldMask.ValidatePath(System.String)">
-            <summary>
-            Camel-case converter with added strictness for field mask formatting.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">The field mask is invalid for JSON representation</exception>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.FieldMask.ToDiagnosticString">
-            <summary>
-            Returns a string representation of this <see cref="T:Google.Protobuf.WellKnownTypes.FieldMask"/> for diagnostic purposes.
-            </summary>
-            <remarks>
-            Normally the returned value will be a JSON string value (including leading and trailing quotes) but
-            when the value is non-normalized or out of range, a JSON object representation will be returned
-            instead, including a warning. This is to avoid exceptions being thrown when trying to
-            diagnose problems - the regular JSON formatter will still throw an exception for non-normalized
-            values.
-            </remarks>
-            <returns>A string representation of this value.</returns>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.SourceContextReflection">
             <summary>Holder for reflection information generated from google/protobuf/source_context.proto</summary>
@@ -5687,7 +5360,7 @@
                The JSON representation for `NullValue` is JSON `null`.
              </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.NullValue.NullValue">
+        <member name="F:Google.Protobuf.WellKnownTypes.NullValue.NULL_VALUE">
             <summary>
              Null value.
             </summary>
@@ -5709,7 +5382,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Struct.Fields">
             <summary>
-             Unordered map of dynamically typed values.
+             Map of dynamically typed values.
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Value">
@@ -5977,8 +5650,6 @@
             <see cref="T:System.DateTime"/> value precisely on a second.
             </remarks>
             <returns>This timestamp as a <c>DateTime</c>.</returns>
-            <exception cref="T:System.InvalidOperationException">The timestamp contains invalid values; either it is
-            incorrectly normalized or is outside the valid range.</exception>
         </member>
         <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.ToDateTimeOffset">
             <summary>
@@ -5991,8 +5662,6 @@
             <see cref="T:System.DateTimeOffset"/> value precisely on a second.
             </remarks>
             <returns>This timestamp as a <c>DateTimeOffset</c>.</returns>
-            <exception cref="T:System.InvalidOperationException">The timestamp contains invalid values; either it is
-            incorrectly normalized or is outside the valid range.</exception>
         </member>
         <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(System.DateTime)">
             <summary>
@@ -6012,33 +5681,6 @@
             <param name="dateTimeOffset">The date and time (with UTC offset) to convert to a timestamp.</param>
             <returns>The converted timestamp.</returns>
         </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.ToJson(System.Int64,System.Int32,System.Boolean)">
-            <summary>
-            Converts a timestamp specified in seconds/nanoseconds to a string.
-            </summary>
-            <remarks>
-            If the value is a normalized duration in the range described in <c>timestamp.proto</c>,
-            <paramref name="diagnosticOnly"/> is ignored. Otherwise, if the parameter is <c>true</c>,
-            a JSON object with a warning is returned; if it is <c>false</c>, an <see cref="T:System.InvalidOperationException"/> is thrown.
-            </remarks>
-            <param name="seconds">Seconds portion of the duration.</param>
-            <param name="nanoseconds">Nanoseconds portion of the duration.</param>
-            <param name="diagnosticOnly">Determines the handling of non-normalized values</param>
-            <exception cref="T:System.InvalidOperationException">The represented duration is invalid, and <paramref name="diagnosticOnly"/> is <c>false</c>.</exception>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.ToDiagnosticString">
-            <summary>
-            Returns a string representation of this <see cref="T:Google.Protobuf.WellKnownTypes.Timestamp"/> for diagnostic purposes.
-            </summary>
-            <remarks>
-            Normally the returned value will be a JSON string value (including leading and trailing quotes) but
-            when the value is non-normalized or out of range, a JSON object representation will be returned
-            instead, including a warning. This is to avoid exceptions being thrown when trying to
-            diagnose problems - the regular JSON formatter will still throw an exception for non-normalized
-            values.
-            </remarks>
-            <returns>A string representation of this value.</returns>
-        </member>
         <member name="T:Google.Protobuf.WellKnownTypes.TypeReflection">
             <summary>Holder for reflection information generated from google/protobuf/type.proto</summary>
         </member>
@@ -6047,22 +5689,22 @@
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Syntax">
             <summary>
-             The syntax in which a protocol buffer element is defined.
+             Syntax specifies the syntax in which a service element was defined.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Syntax.Proto2">
+        <member name="F:Google.Protobuf.WellKnownTypes.Syntax.SYNTAX_PROTO2">
             <summary>
-             Syntax `proto2`.
+             Syntax "proto2"
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Syntax.Proto3">
+        <member name="F:Google.Protobuf.WellKnownTypes.Syntax.SYNTAX_PROTO3">
             <summary>
-             Syntax `proto3`.
+             Syntax "proto3"
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Type">
             <summary>
-             A protocol buffer message type.
+             A light-weight descriptor for a proto message type.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Type.NameFieldNumber">
@@ -6086,7 +5728,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Type.Oneofs">
             <summary>
-             The list of types appearing in `oneof` definitions in this type.
+             The list of oneof definitions.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Type.OptionsFieldNumber">
@@ -6094,7 +5736,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Type.Options">
             <summary>
-             The protocol buffer options.
+             The proto options.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Type.SourceContextFieldNumber">
@@ -6115,7 +5757,7 @@
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Field">
             <summary>
-             A single field of a message type.
+             Field represents a single field of a message type.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.KindFieldNumber">
@@ -6123,7 +5765,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.Kind">
             <summary>
-             The field type.
+             The field kind.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.CardinalityFieldNumber">
@@ -6131,7 +5773,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.Cardinality">
             <summary>
-             The field cardinality.
+             The field cardinality, i.e. optional/required/repeated.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.NumberFieldNumber">
@@ -6139,7 +5781,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.Number">
             <summary>
-             The field number.
+             The proto field number.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.NameFieldNumber">
@@ -6155,8 +5797,8 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.TypeUrl">
             <summary>
-             The field type URL, without the scheme, for message or enumeration
-             types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
+             The type URL (without the scheme) when the type is MESSAGE or ENUM,
+             such as `type.googleapis.com/google.protobuf.Empty`.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.OneofIndexFieldNumber">
@@ -6164,8 +5806,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.OneofIndex">
             <summary>
-             The index of the field type in `Type.oneofs`, for message or enumeration
-             types. The first type has index 1; zero means the type is not in the list.
+             Index in Type.oneofs. Starts at 1. Zero means no oneof mapping.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.PackedFieldNumber">
@@ -6181,7 +5822,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.Options">
             <summary>
-             The protocol buffer options.
+             The proto options.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Field.JsonNameFieldNumber">
@@ -6189,15 +5830,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Field.JsonName">
             <summary>
-             The field JSON name.
-            </summary>
-        </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.DefaultValueFieldNumber">
-            <summary>Field number for the "default_value" field.</summary>
-        </member>
-        <member name="P:Google.Protobuf.WellKnownTypes.Field.DefaultValue">
-            <summary>
-             The string value of the default value of this field. Proto2 syntax only.
+             The JSON name for this field.
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Field.Types">
@@ -6205,125 +5838,126 @@
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Field.Types.Kind">
             <summary>
-             Basic field types.
+             Kind represents a basic field type.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeUnknown">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_UNKNOWN">
             <summary>
              Field type unknown.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeDouble">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_DOUBLE">
             <summary>
              Field type double.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeFloat">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_FLOAT">
             <summary>
              Field type float.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeInt64">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_INT64">
             <summary>
              Field type int64.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeUint64">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_UINT64">
             <summary>
              Field type uint64.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeInt32">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_INT32">
             <summary>
              Field type int32.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeFixed64">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_FIXED64">
             <summary>
              Field type fixed64.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeFixed32">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_FIXED32">
             <summary>
              Field type fixed32.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeBool">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_BOOL">
             <summary>
              Field type bool.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeString">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_STRING">
             <summary>
              Field type string.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeGroup">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_GROUP">
             <summary>
-             Field type group. Proto2 syntax only, and deprecated.
+             Field type group (deprecated proto2 type)
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeMessage">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_MESSAGE">
             <summary>
              Field type message.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeBytes">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_BYTES">
             <summary>
              Field type bytes.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeUint32">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_UINT32">
             <summary>
              Field type uint32.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeEnum">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_ENUM">
             <summary>
              Field type enum.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeSfixed32">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_SFIXED32">
             <summary>
              Field type sfixed32.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeSfixed64">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_SFIXED64">
             <summary>
              Field type sfixed64.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeSint32">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_SINT32">
             <summary>
              Field type sint32.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TypeSint64">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Kind.TYPE_SINT64">
             <summary>
              Field type sint64.
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality">
             <summary>
-             Whether a field is optional, required, or repeated.
+             Cardinality represents whether a field is optional, required, or
+             repeated.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.Unknown">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.CARDINALITY_UNKNOWN">
             <summary>
-             For fields with unknown cardinality.
+             The field cardinality is unknown. Typically an error condition.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.Optional">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.CARDINALITY_OPTIONAL">
             <summary>
              For optional fields.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.Required">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.CARDINALITY_REQUIRED">
             <summary>
-             For required fields. Proto2 syntax only.
+             For required fields. Not used for proto3.
             </summary>
         </member>
-        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.Repeated">
+        <member name="F:Google.Protobuf.WellKnownTypes.Field.Types.Cardinality.CARDINALITY_REPEATED">
             <summary>
              For repeated fields.
             </summary>
@@ -6354,7 +5988,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Enum.Options">
             <summary>
-             Protocol buffer options.
+             Proto options for the enum type.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Enum.SourceContextFieldNumber">
@@ -6399,13 +6033,12 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.EnumValue.Options">
             <summary>
-             Protocol buffer options.
+             Proto options for the enum value.
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.Option">
             <summary>
-             A protocol buffer option, which can be attached to a message, field,
-             enumeration, etc.
+             Proto option attached to messages/fields/enums etc.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Option.NameFieldNumber">
@@ -6413,7 +6046,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Option.Name">
             <summary>
-             The option's name. For example, `"java_package"`.
+             Proto option name.
             </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Option.ValueFieldNumber">
@@ -6421,7 +6054,7 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Option.Value">
             <summary>
-             The option's value. For example, `"com.google.protobuf"`.
+             Proto option value.
             </summary>
         </member>
         <member name="T:Google.Protobuf.WellKnownTypes.WrappersReflection">

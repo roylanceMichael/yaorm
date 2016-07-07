@@ -25,7 +25,7 @@ interface IEntityService<T: IEntity> {
 
     fun getCustom(customSql: String): List<T>
     fun get(id: String): T?
-    fun getMany(n: Int=1000): List<T>
+    fun getMany(limit: Int=1000, offset: Int=0): List<T>
     fun where(whereClauseItem: YaormModel.WhereClause): List<T>
 
     fun bulkInsert(instances: List<T>): Boolean

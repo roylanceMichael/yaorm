@@ -29,13 +29,13 @@ interface IEntityProtoService {
 
     fun getCount(definition: YaormModel.TableDefinition): Long
 
-    fun getManyStream(n: Int=100000, definition: YaormModel.TableDefinition, streamer: IProtoStreamer)
-
     fun get(id: String, definition: YaormModel.TableDefinition): YaormModel.Record?
     fun getIds(definition: YaormModel.TableDefinition):List<String>
     fun getIdsStream(definition:YaormModel.TableDefinition, streamer: IProtoStreamer)
 
     fun getCustom(customSql: String, definition: YaormModel.TableDefinition): YaormModel.Records
-    fun getMany(n: Int=1000, definition: YaormModel.TableDefinition): YaormModel.Records
+    fun getMany(definition: YaormModel.TableDefinition, limit: Int=1000, offset: Int=0): YaormModel.Records
+    fun getManyStream(definition: YaormModel.TableDefinition, streamer: IProtoStreamer, limit: Int=100000, offset: Int=0)
+
     fun where(whereClauseItem: YaormModel.WhereClause, definition: YaormModel.TableDefinition): YaormModel.Records
 }

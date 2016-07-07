@@ -24,25 +24,26 @@ namespace Yaorm
 		readonly int bulkInsertSize;
 		readonly IDictionary<ProtobufType, string> protoTypeToSqlType = new Dictionary<ProtobufType, string>
 		{
-			{ProtobufType.String, SqlTextName},
-			{ProtobufType.Int32, SqlIntegerName},
-			{ProtobufType.Int64, SqlIntegerName},
-			{ProtobufType.Uint32, SqlIntegerName},
-			{ProtobufType.Uint64, SqlIntegerName},
-			{ProtobufType.Sint32, SqlIntegerName},
-			{ProtobufType.Sint64, SqlIntegerName},
-			{ProtobufType.Fixed32, SqlIntegerName},
-			{ProtobufType.Fixed64, SqlIntegerName},
-			{ProtobufType.Sfixed32, SqlIntegerName},
-			{ProtobufType.Sfixed64, SqlIntegerName},
-			{ProtobufType.Bool, SqlIntegerName},
-			{ProtobufType.Bytes, SqlBlobName},
-			{ProtobufType.Double, SqlRealName},
-			{ProtobufType.Float, SqlRealName}
+			{ProtobufType.STRING, SqlTextName},
+			{ProtobufType.INT32, SqlIntegerName},
+			{ProtobufType.INT64, SqlIntegerName},
+			{ProtobufType.UINT32, SqlIntegerName},
+			{ProtobufType.UINT64, SqlIntegerName},
+			{ProtobufType.SINT32, SqlIntegerName},
+			{ProtobufType.SINT64, SqlIntegerName},
+			{ProtobufType.FIXED32, SqlIntegerName},
+			{ProtobufType.FIXED64, SqlIntegerName},
+			{ProtobufType.SFIXED32, SqlIntegerName},
+			{ProtobufType.SFIXED64, SqlIntegerName},
+			{ProtobufType.BOOL, SqlIntegerName},
+			{ProtobufType.BYTES, SqlBlobName},
+			{ProtobufType.DOUBLE, SqlRealName},
+			{ProtobufType.FLOAT, SqlRealName}
 		};
 
 		public SQLiteGeneratorService(int bulkInsertSize)
 		{
+			
 			this.bulkInsertSize = bulkInsertSize;
 		}
 

@@ -12,7 +12,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     private val InsertIntoTableSingleTemplate = "upsert into %s (%s) values (%s)"
     private val DeleteTableTemplate = "delete from %s where id=%s"
     private val WhereClauseTemplate = "select * from %s where %s"
-    private val SelectAllTemplate = "select * from %s"
+    private val SelectAllTemplate = "select * from %s limit %"
     private val PrimaryKey = "primary key"
     private val NotNull = "not null"
 
@@ -106,11 +106,11 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
         return ""
     }
 
-    override fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int): String {
+    override fun buildSelectAll(definition: YaormModel.TableDefinition, limit: Int, offset: Int): String {
         return java.lang.String.format(
                 SelectAllTemplate,
                 definition.name,
-                n)
+                limit)
     }
 
     override fun buildWhereClause(

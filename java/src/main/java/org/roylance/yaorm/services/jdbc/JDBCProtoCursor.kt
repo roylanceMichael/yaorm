@@ -5,13 +5,14 @@ import org.roylance.yaorm.services.proto.IProtoCursor
 import org.roylance.yaorm.services.proto.IProtoStreamer
 import org.roylance.yaorm.utilities.CommonUtils
 import java.sql.ResultSet
+import java.sql.SQLException
 import java.sql.Statement
 import java.util.*
 
 class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
                       private val resultSet: ResultSet,
                       private val preparedStatement: Statement):IProtoCursor {
-    private val columnNamesFromResultSet: HashSet<String> = HashSet()
+    private val namesToAvoid = HashSet<String>()
 
     fun moveNext(): Boolean {
         return this.resultSet.next()
@@ -20,30 +21,29 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
     fun getRecord(): YaormModel.Record {
         val newInstance = YaormModel.Record.newBuilder()
 
-        if (this.columnNamesFromResultSet.isEmpty()) {
-            val totalColumns = this.resultSet.metaData.columnCount
-
-            var iter = 1
-            while (iter <= totalColumns) {
-                // let's make sure we get the last one
-                val lowercaseName = CommonUtils.getLastWord(this.resultSet
-                        .metaData
-                        .getColumnName(iter))
-                        .toLowerCase()
-
-                this.columnNamesFromResultSet.add(lowercaseName)
-                iter++
-            }
-        }
-
         // set all the properties that we can
         this.definitionModel
                 .columnDefinitions
                 .values
                 .forEach {
-                    val newValue = resultSet.getString(it.name) //this.typeToAction[it.type]!!(it.name, this.resultSet)
-                    val propertyHolder = CommonUtils.buildColumn(newValue, it)
-                    newInstance.mutableColumns[it.name] = (propertyHolder)
+                    if (this.namesToAvoid.contains(it.name)) {
+                        val propertyHolder = CommonUtils.buildColumn(null, it)
+                        newInstance.mutableColumns[it.name] = propertyHolder
+                    }
+                    else {
+                        try {
+                            val newValue = resultSet.getString(it.name)
+                            val propertyHolder = CommonUtils.buildColumn(newValue, it)
+                            newInstance.mutableColumns[it.name] = propertyHolder
+                        }
+                        catch (e:SQLException) {
+                            // if we can't see this name for w/e reason, we'll print to the console, but continue on
+                            e.printStackTrace()
+                            this.namesToAvoid.add(it.name)
+                            val propertyHolder = CommonUtils.buildColumn(null, it)
+                            newInstance.mutableColumns[it.name] = propertyHolder
+                        }
+                    }
                 }
 
         return newInstance.build()

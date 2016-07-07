@@ -203,8 +203,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
         return "$initialStatement(\nselect stack(\n ${selectStatements.size},\n $carriageReturnSeparatedRows)) s"
     }
 
-    override fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int): String {
-        return java.lang.String.format(SelectAllTemplate, definition.name, n)
+    override fun buildSelectAll(definition: YaormModel.TableDefinition, limit: Int, offset: Int): String {
+        return java.lang.String.format(SelectAllTemplate, definition.name, limit)
     }
 
     override fun buildWhereClause(

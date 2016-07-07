@@ -222,13 +222,13 @@ class EntityService<T: IEntity>(
         return null
     }
 
-    override fun getMany(n: Int): List<T> {
+    override fun getMany(limit: Int, offset: Int): List<T> {
         if (!this.granularDatabaseService.isAvailable()) {
             return ArrayList()
         }
 
         val allSql =
-                this.sqlGeneratorService.buildSelectAll(this.definition, n)
+                this.sqlGeneratorService.buildSelectAll(this.definition, limit, offset)
 
         val allObjects:List<T> = this.granularDatabaseService.executeSelectQuery(
                 this.entityDefinition, allSql)
@@ -289,7 +289,7 @@ class EntityService<T: IEntity>(
             return false
         }
 
-        // let's split this into items of n each... for now
+        // let's split this into items of limit each... for now
         val temporaryList = ArrayList<T>()
         val results = ArrayList<Boolean>()
 

@@ -34,43 +34,43 @@ namespace Yaorm
 
 			switch (columnDefintion.Type)
 			{
-				case ProtobufType.String:
+				case ProtobufType.STRING:
 					returnColumn.StringHolder = notNullValueAsString;
 					break;
-				case ProtobufType.Bool:
+				case ProtobufType.BOOL:
 					returnColumn.BoolHolder = notNullValueAsString == "1" || bool.TrueString.Equals(notNullValueAsString) ? true : false;
 					break;
-				case ProtobufType.Int32:
+				case ProtobufType.INT32:
 					returnColumn.Int32Holder = int.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Fixed32:
+				case ProtobufType.FIXED32:
 					returnColumn.Fixed32Holder = uint.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Sfixed32:
+				case ProtobufType.SFIXED32:
 					returnColumn.Sfixed32Holder = int.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Uint32:
+				case ProtobufType.UINT32:
 					returnColumn.Uint32Holder = uint.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Sint32:
+				case ProtobufType.SINT32:
 					returnColumn.Sint32Holder = int.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Int64:
+				case ProtobufType.INT64:
 					returnColumn.Int64Holder = long.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Fixed64:
+				case ProtobufType.FIXED64:
 					returnColumn.Fixed64Holder = ulong.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Sfixed64:
+				case ProtobufType.SFIXED64:
 					returnColumn.Sfixed64Holder = long.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Double:
+				case ProtobufType.DOUBLE:
 					returnColumn.DoubleHolder = double.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Float:
+				case ProtobufType.FLOAT:
 					returnColumn.FloatHolder = float.Parse(notNullValueAsString);
 					break;
-				case ProtobufType.Bytes:
+				case ProtobufType.BYTES:
 					if (value is Google.Protobuf.ByteString)
 					{
 						returnColumn.BytesHolder = value as Google.Protobuf.ByteString;
@@ -93,31 +93,31 @@ namespace Yaorm
 		{
 			switch (column.Definition.Type)
 			{
-				case ProtobufType.String:
+				case ProtobufType.STRING:
 					return column.StringHolder;
-				case ProtobufType.Bool:
+				case ProtobufType.BOOL:
 					return column.BoolHolder;
-				case ProtobufType.Int32:
+				case ProtobufType.INT32:
 					return column.Int32Holder;
-				case ProtobufType.Fixed32:
+				case ProtobufType.FIXED32:
 					return column.Fixed32Holder;
-				case ProtobufType.Sfixed32:
+				case ProtobufType.SFIXED32:
 					return column.Sfixed32Holder;
-				case ProtobufType.Uint32:
+				case ProtobufType.UINT32:
 					return column.Uint32Holder;
-				case ProtobufType.Sint32:
+				case ProtobufType.SINT32:
 					return column.Sint32Holder;
-				case ProtobufType.Int64:
+				case ProtobufType.INT64:
 					return column.Int64Holder;
-				case ProtobufType.Fixed64:
+				case ProtobufType.FIXED64:
 					return column.Fixed64Holder;
-				case ProtobufType.Sfixed64:
+				case ProtobufType.SFIXED64:
 					return column.Sfixed64Holder;
-				case ProtobufType.Double:
+				case ProtobufType.DOUBLE:
 					return column.DoubleHolder;
-				case ProtobufType.Float:
+				case ProtobufType.FLOAT:
 					return column.FloatHolder;
-				case ProtobufType.Bytes:
+				case ProtobufType.BYTES:
 					return column.BytesHolder;
 			}
 			return null;
@@ -131,31 +131,31 @@ namespace Yaorm
 			}
 			switch (column.Definition.Type)
 			{
-				case ProtobufType.String:
+				case ProtobufType.STRING:
 					return SingleQuote + column.StringHolder.Replace(SingleQuote, DoubleSingleQuote) + SingleQuote;
-				case ProtobufType.Bool:
+				case ProtobufType.BOOL:
 					return column.BoolHolder ? "1" : "0";
-				case ProtobufType.Int32:
+				case ProtobufType.INT32:
 					return column.Int32Holder.ToString();
-				case ProtobufType.Fixed32:
+				case ProtobufType.FIXED32:
 					return column.Fixed32Holder.ToString();
-				case ProtobufType.Sfixed32:
+				case ProtobufType.SFIXED32:
 					return column.Sfixed32Holder.ToString();
-				case ProtobufType.Uint32:
+				case ProtobufType.UINT32:
 					return column.Uint32Holder.ToString();
-				case ProtobufType.Sint32:
+				case ProtobufType.SINT32:
 					return column.Sint32Holder.ToString();
-				case ProtobufType.Int64:
+				case ProtobufType.INT64:
 					return column.Int64Holder.ToString();
-				case ProtobufType.Fixed64:
+				case ProtobufType.FIXED64:
 					return column.Fixed64Holder.ToString();
-				case ProtobufType.Sfixed64:
+				case ProtobufType.SFIXED64:
 					return column.Sfixed64Holder.ToString();
-				case ProtobufType.Double:
+				case ProtobufType.DOUBLE:
 					return column.DoubleHolder.ToString();
-				case ProtobufType.Float:
+				case ProtobufType.FLOAT:
 					return column.FloatHolder.ToString();
-				case ProtobufType.Bytes:
+				case ProtobufType.BYTES:
 					return SingleQuote + column.BytesHolder.ToStringUtf8() + SingleQuote;
 			}
 			return Null;

@@ -64,7 +64,7 @@ public class JavaEntityAccessServiceTest {
 
             // assert
             // let's get them all, be careful with this, obviously. there is also a filtering method
-            final List<TestModel> foundTestModels = entityAccessService.getMany(1000);
+            final List<TestModel> foundTestModels = entityAccessService.getMany(1000, 0);
 
             // verify we're greater than 0
             assert foundTestModels.size() > 0;

@@ -31,7 +31,7 @@ interface ISqlGeneratorService {
     fun buildUpdateTable(definition: YaormModel.TableDefinition, record: YaormModel.Record): String?
     fun buildUpdateWithCriteria(definition: YaormModel.TableDefinition, record: YaormModel.Record, whereClauseItem: YaormModel.WhereClause): String?
 
-    fun buildSelectAll(definition: YaormModel.TableDefinition, n: Int = 1000): String
+    fun buildSelectAll(definition: YaormModel.TableDefinition, limit: Int = 1000, offset: Int = 0): String
     fun buildWhereClause(definition: YaormModel.TableDefinition, whereClauseItem: YaormModel.WhereClause): String?
 
     fun buildSelectIds(definition: YaormModel.TableDefinition):String
