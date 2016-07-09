@@ -22,7 +22,7 @@ class SQLiteEntityMessageServiceTest {
                     sourceConnection.connectionSource,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(null, granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
@@ -48,7 +48,7 @@ class SQLiteEntityMessageServiceTest {
                     sourceConnection.connectionSource,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(null, granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
@@ -81,7 +81,7 @@ class SQLiteEntityMessageServiceTest {
                     sourceConnection.connectionSource,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(null, granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
@@ -119,7 +119,7 @@ class SQLiteEntityMessageServiceTest {
                     sourceConnection.connectionSource,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(null, granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
@@ -160,7 +160,7 @@ class SQLiteEntityMessageServiceTest {
                     sourceConnection.connectionSource,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(null, granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())

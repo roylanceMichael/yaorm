@@ -5,7 +5,7 @@ import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
-import org.roylance.yaorm.services.ISqlGeneratorService
+import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.CommonUtils
 import org.roylance.yaorm.utilities.EntityUtils
 import java.util.*
@@ -13,7 +13,7 @@ import java.util.*
 class EntityService<T: IEntity>(
         override val entityDefinition: Class<T>,
         private val granularDatabaseService: IGranularDatabaseService,
-        private val sqlGeneratorService: ISqlGeneratorService,
+        private val sqlGeneratorService: ISQLGeneratorService,
         override val indexDefinition: YaormModel.Index? = null) : IEntityService<T> {
 
     private val definition: YaormModel.TableDefinition

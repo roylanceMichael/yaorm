@@ -18,10 +18,6 @@ class HiveConnectionSourceFactory(
         this.connection = DriverManager.getConnection("jdbc:hive2://$host:$port/$database", "", "")
     }
 
-    override fun getGeneratedKeysColumnName(): String? {
-        return "id"
-    }
-
     override fun close() {
         if (!this.isClosed) {
             this.connection.close()

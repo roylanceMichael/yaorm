@@ -3,8 +3,6 @@ package org.roylance.yaorm.services.proto
 import org.roylance.yaorm.models.YaormModel
 
 interface IEntityProtoService {
-    val indexDefinition: YaormModel.Index?
-
     fun createTable(definition: YaormModel.TableDefinition): Boolean
     fun dropTable(definition: YaormModel.TableDefinition): Boolean
 

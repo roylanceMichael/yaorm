@@ -39,7 +39,7 @@ public class JavaEntityAccessServiceTest {
 
         try  {
             // this is the service that generates the sql for SQLite.
-            final ISqlGeneratorService sqlGeneratorService =
+            final ISQLGeneratorService sqlGeneratorService =
                     new SQLiteGeneratorService();
 
             // this entity access service uses the previous dependencies to do common CRUD operations against the data store

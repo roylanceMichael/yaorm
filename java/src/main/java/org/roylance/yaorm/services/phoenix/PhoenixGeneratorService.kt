@@ -2,11 +2,11 @@ package org.roylance.yaorm.services.phoenix
 
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
-import org.roylance.yaorm.services.ISqlGeneratorService
+import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
-class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGeneratorService {
+class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGeneratorService {
 
     private val CreateInitialTableTemplate = "create table if not exists %s (%s)"
     private val InsertIntoTableSingleTemplate = "upsert into %s (%s) values (%s)"
@@ -21,9 +21,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     private val PhoenixRealName = "decimal"
     private val PhoenixBinaryName = "varchar"
 
-    override val javaIdName: String = "id"
-
-    override val javaTypeToSqlType = object : HashMap<YaormModel.ProtobufType, String>() {
+    override val protoTypeToSqlType = object : HashMap<YaormModel.ProtobufType, String>() {
         init {
             put(YaormModel.ProtobufType.STRING, PhoenixTextName)
             put(YaormModel.ProtobufType.INT32, PhoenixIntegerName)
@@ -52,10 +50,10 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     }
 
     override fun buildCreateColumn(definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String? {
-        if (!javaTypeToSqlType.containsKey(propertyDefinition.type)) {
+        if (!protoTypeToSqlType.containsKey(propertyDefinition.type)) {
             return null
         }
-        return "alter table ${definition.name} add if not exists ${propertyDefinition.name} ${javaTypeToSqlType[propertyDefinition.type]}"
+        return "alter table ${definition.name} add if not exists ${propertyDefinition.name} ${protoTypeToSqlType[propertyDefinition.type]}"
     }
 
     override fun buildDropColumn(definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String {
@@ -149,9 +147,8 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
 
             CommonUtils.getNameTypes(
                     definition,
-                    this.javaIdName,
                     YaormModel.ProtobufType.STRING,
-                    this.javaTypeToSqlType)
+                    this.protoTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             val columnNames = ArrayList<String>()
@@ -183,9 +180,8 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
     override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
         val nameTypes = CommonUtils.getNameTypes(
                 definition,
-                this.javaIdName,
                 YaormModel.ProtobufType.STRING,
-                this.javaTypeToSqlType)
+                this.protoTypeToSqlType)
 
         if (nameTypes.size == 0) {
             return null
@@ -193,9 +189,9 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
 
         val workspace = StringBuilder()
 
-        val foundId = nameTypes.firstOrNull { javaIdName.equals(it.sqlColumnName) } ?: return null
+        val foundId = nameTypes.firstOrNull { CommonUtils.IdName.equals(it.sqlColumnName) } ?: return null
 
-        workspace.append(javaIdName)
+        workspace.append(CommonUtils.IdName)
             .append(CommonUtils.Space)
             .append(foundId.dataType)
             .append(CommonUtils.Space)
@@ -203,7 +199,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISqlGen
             .append(CommonUtils.Space)
             .append(PrimaryKey)
 
-        for (nameType in nameTypes.filter { !javaIdName.equals(it.sqlColumnName) }) {
+        for (nameType in nameTypes.filter { !CommonUtils.IdName.equals(it.sqlColumnName) }) {
             workspace
                 .append(CommonUtils.Comma)
                 .append(CommonUtils.Space)

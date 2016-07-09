@@ -2,15 +2,13 @@ package org.roylance.yaorm.services.hive
 
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
-import org.roylance.yaorm.services.ISqlGeneratorService
+import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
-class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGeneratorService {
+class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGeneratorService {
 
-    private val constJavaIdName = "id"
-
-    private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by ($constJavaIdName)\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
+    private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by (${CommonUtils.IdName})\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
     private val InsertIntoTableSingleTemplate = "insert into %s values (%s)"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s"
     private val UpdateTableMultipleTemplate = "update %s set %s where %s"
@@ -22,9 +20,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
     private val HiveDouble: String = "double"
     private val HiveInt: String = "bigint"
 
-    override val javaIdName: String = constJavaIdName
-
-    override val javaTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {
+    override val protoTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {
         init {
             put(YaormModel.ProtobufType.STRING, HiveString)
             put(YaormModel.ProtobufType.INT32, HiveInt)
@@ -55,19 +51,18 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
     override fun buildCreateColumn(
             definition: YaormModel.TableDefinition,
             propertyDefinition: YaormModel.ColumnDefinition): String? {
-        if (!this.javaTypeToSqlType.containsKey(propertyDefinition.type)) {
+        if (!this.protoTypeToSqlType.containsKey(propertyDefinition.type)) {
             return null
         }
-        return "alter table ${definition.name} add columns (${propertyDefinition.name}, ${this.javaTypeToSqlType[propertyDefinition.type]})"
+        return "alter table ${definition.name} add columns (${propertyDefinition.name}, ${this.protoTypeToSqlType[propertyDefinition.type]})"
     }
 
     override fun buildDropColumn(
             definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String? {
         val columnNames = CommonUtils.getNameTypes(
                 definition,
-                this.javaIdName,
                 YaormModel.ProtobufType.STRING,
-                this.javaTypeToSqlType)
+                this.protoTypeToSqlType)
                 .map {
                     "${it.sqlColumnName} ${it.dataType}"
                 }
@@ -97,9 +92,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonUtils.getNameTypes(
                     definition,
-                    this.javaIdName,
                     YaormModel.ProtobufType.STRING,
-                    this.javaTypeToSqlType)
+                    this.protoTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
@@ -156,9 +150,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
         val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
         CommonUtils.getNameTypes(
                 definition,
-                this.javaIdName,
                 YaormModel.ProtobufType.STRING,
-                this.javaTypeToSqlType)
+                this.protoTypeToSqlType)
                 .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
         val columnNames = ArrayList<String>()
@@ -236,9 +229,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonUtils.getNameTypes(
                     definition,
-                    this.javaIdName,
                     YaormModel.ProtobufType.STRING,
-                    this.javaTypeToSqlType)
+                    this.protoTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
@@ -256,7 +248,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
                 .sortedBy { it.definition.name }
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
-                    if (it.definition.name.equals(this.javaIdName)) {
+                    if (it.definition.name.equals(CommonUtils.IdName)) {
                         stringId = formattedString
                     }
                     else {
@@ -310,9 +302,8 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISqlGenera
     override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
         val nameTypes = CommonUtils.getNameTypes(
                 definition,
-                this.javaIdName,
                 YaormModel.ProtobufType.STRING,
-                this.javaTypeToSqlType)
+                this.protoTypeToSqlType)
 
         if (nameTypes.size == 0) {
             return null

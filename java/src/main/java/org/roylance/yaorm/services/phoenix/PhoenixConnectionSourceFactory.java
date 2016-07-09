@@ -30,11 +30,6 @@ public class PhoenixConnectionSourceFactory
     }
 
     @Override
-    public String getGeneratedKeysColumnName() {
-        return "id";
-    }
-
-    @Override
     public void close() throws Exception {
         if (!this.isClosed) {
             this.commonConnection.close();

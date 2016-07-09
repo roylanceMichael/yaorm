@@ -395,7 +395,6 @@ object CommonUtils {
 
     fun getNameTypes(
             definition: YaormModel.TableDefinition,
-            javaIdName: String,
             javaIdType: YaormModel.ProtobufType,
             javaTypeToSqlType: Map<YaormModel.ProtobufType, String>): List<ColumnNameTuple<String>> {
         val nameTypes = ArrayList<ColumnNameTuple<String>>()
@@ -414,7 +413,7 @@ object CommonUtils {
 
                     if (javaTypeToSqlType.containsKey(javaType)) {
                         val dataType = javaTypeToSqlType[javaType]
-                        if (javaIdName.equals(sqlColumnName)) {
+                        if (IdName.equals(sqlColumnName)) {
                             foundIdColumnName = true
                         }
                         nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))

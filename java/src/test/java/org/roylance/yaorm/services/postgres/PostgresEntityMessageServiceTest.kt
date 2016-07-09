@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services.mysql
+package org.roylance.yaorm.services.postgres
 
 import com.google.protobuf.ByteString
 import org.junit.Assert
@@ -13,27 +13,28 @@ import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.util.*
 
-class MySQLEntityMessageServiceTest {
+class PostgresEntityMessageServiceTest {
     @Test
     fun simplePassThroughTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.createEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -81,30 +82,30 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.testFloat.equals(testModel.testFloat))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun childAddThenDeleteTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.createEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -140,30 +141,30 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.child.id.equals(""))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun verifyChildSerializedProperly() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.createEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -197,30 +198,30 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.child.testDisplay.equals(testModel.child.testDisplay))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun verifyChildChangedAfterMergeProperly() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.createEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -259,30 +260,30 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun additionalAddRemoveTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
-            entityProtoMessageService.createEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
             entityProtoMessageService.merge(testModel.build())
             val newFirstDisplay = "new first display"
 
@@ -301,38 +302,38 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun simplePersonTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val person = TestingModel.Person.newBuilder()
-                .setId(UUID.randomUUID().toString())
-                .setFirstName("Mike")
-                .setLastName("Roylance")
-                .setFather(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Paul").setLastName("Roylance"))
-                .setMother(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Terri").setLastName("Roylance"))
-                .addPhoneNumbers(TestingModel.Phone.newBuilder().setId(UUID.randomUUID().toString()).setNumber("555-555-55555"))
-                .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
+                    .setId(UUID.randomUUID().toString())
+                    .setFirstName("Mike")
+                    .setLastName("Roylance")
+                    .setFather(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Paul").setLastName("Roylance"))
+                    .setMother(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Terri").setLastName("Roylance"))
+                    .addPhoneNumbers(TestingModel.Phone.newBuilder().setId(UUID.randomUUID().toString()).setNumber("555-555-55555"))
+                    .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
 
-            entityProtoMessageService.createEntireSchema(person.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(person.build())
             entityProtoMessageService.merge(person.build())
 
             // act
@@ -359,26 +360,26 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundFather.lastName.equals("Roylance"))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun simplePersonFriendsTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val person = TestingModel.Person.newBuilder()
@@ -391,7 +392,7 @@ class MySQLEntityMessageServiceTest {
                     .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
                     .addFriends(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("James").setLastName("Hu"))
 
-            entityProtoMessageService.createEntireSchema(person.build())
+            entityProtoMessageService.dropAndRecreateEntireSchema(person.build())
             entityProtoMessageService.merge(person.build())
 
             // act
@@ -405,29 +406,29 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundPerson.lastName.equals("Hu"))
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun simpleDagTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
-            entityProtoMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityProtoMessageService.dropAndRecreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
             entityProtoMessageService.merge(newDag)
 
@@ -441,29 +442,29 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(moreDags.size == 1)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun moreComplexDagTest() {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
-            entityProtoMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityProtoMessageService.dropAndRecreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
             entityProtoMessageService.merge(newDag)
 
@@ -486,7 +487,6 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(secondDag.processingTasksCount == 1)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
         }
     }
 }

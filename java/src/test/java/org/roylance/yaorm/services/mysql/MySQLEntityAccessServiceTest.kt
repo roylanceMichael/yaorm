@@ -5,13 +5,18 @@ import org.junit.Test
 import org.roylance.yaorm.services.entity.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
-import java.util.*
+import org.roylance.yaorm.utilities.ConnectionUtilities
 
 class MySQLEntityAccessServiceTest {
     @Test
     fun simpleCreateMySQLTest() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
+        val sourceConnection = MySQLConnectionSourceFactory(
+                ConnectionUtilities.mysqlHost!!,
+                ConnectionUtilities.mysqlSchema!!,
+                ConnectionUtilities.mysqlUserName!!,
+                ConnectionUtilities.mysqlPassword!!)
 
         val beaconId = "test"
         val majorId = 1
@@ -19,12 +24,8 @@ class MySQLEntityAccessServiceTest {
         val isActive = true
         val cachedName = "mike"
 
-        val mysqlGeneratorService = MySQLGeneratorService(schema!!)
-        val sourceConnection = MySQLConnectionSourceFactory(
-                host!!,
-                schema!!,
-                userName!!,
-                password!!)
+        val mysqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+
         val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection.connectionSource,
                 false)
@@ -59,24 +60,5 @@ class MySQLEntityAccessServiceTest {
         Assert.assertEquals(minorId, foundBeacon.minorId)
         Assert.assertEquals(isActive, foundBeacon.active)
         Assert.assertEquals(cachedName, foundBeacon.cachedName)
-    }
-
-    companion object {
-        private var host:String? = null
-        private var userName:String? = null
-        private var password:String? = null
-        private var schema:String? = null
-
-        fun getConnectionInfo() {
-            if (host == null) {
-                val properties = Properties()
-                val mysqlStream = MySQLEntityAccessServiceTest::class.java.getResourceAsStream("/mysql.properties")
-                properties.load(mysqlStream)
-                host = properties.getProperty("host")
-                password = properties.getProperty("password")
-                userName = properties.getProperty("userName")
-                schema = properties.getProperty("schema")
-            }
-        }
     }
 }

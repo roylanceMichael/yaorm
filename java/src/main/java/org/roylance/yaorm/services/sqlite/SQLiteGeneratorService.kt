@@ -2,11 +2,11 @@ package org.roylance.yaorm.services.sqlite
 
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
-import org.roylance.yaorm.services.ISqlGeneratorService
+import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.CommonUtils
 import java.util.*
 
-class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGeneratorService {
+class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGeneratorService {
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
     private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
@@ -20,9 +20,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     private val SqlRealName = "real"
     private val SqlBlobName = "text"
 
-    override val javaIdName: String = "id"
-
-    override val javaTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {
+    override val protoTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {
         init {
             put(YaormModel.ProtobufType.STRING, SqlTextName)
             put(YaormModel.ProtobufType.INT32, SqlIntegerName)
@@ -53,8 +51,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
     override fun buildCreateColumn(
             definition: YaormModel.TableDefinition,
             propertyDefinition: YaormModel.ColumnDefinition): String? {
-        if (javaTypeToSqlType.containsKey(propertyDefinition.type)) {
-            return "alter table ${definition.name} add column ${propertyDefinition.name} ${javaTypeToSqlType[propertyDefinition.type]}"
+        if (protoTypeToSqlType.containsKey(propertyDefinition.type)) {
+            return "alter table ${definition.name} add column ${propertyDefinition.name} ${protoTypeToSqlType[propertyDefinition.type]}"
         }
         return null
     }
@@ -71,12 +69,11 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
         val nameTypes = CommonUtils.getNameTypes(
                 definition,
-                this.javaIdName,
                 YaormModel.ProtobufType.STRING,
-                this.javaTypeToSqlType)
+                this.protoTypeToSqlType)
 
         val columnsWithoutId = nameTypes
-                .filter { !javaIdName.equals(it.sqlColumnName) }
+                .filter { !CommonUtils.IdName.equals(it.sqlColumnName) }
                 .map { "${it.sqlColumnName}" }
                 .joinToString(CommonUtils.Comma)
 
@@ -216,9 +213,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
             CommonUtils.getNameTypes(
                     definition,
-                    this.javaIdName,
                     YaormModel.ProtobufType.STRING,
-                    this.javaTypeToSqlType)
+                    this.protoTypeToSqlType)
                     .forEach { nameTypeMap.put(it.sqlColumnName, it) }
 
             if (nameTypeMap.size == 0) {
@@ -235,7 +231,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
                 .sortedBy { it.definition.name }
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
-                    if (it.definition.name.equals(this.javaIdName)) {
+                    if (it.definition.name.equals(CommonUtils.IdName)) {
                         stringId = formattedValue
                     }
                     else {
@@ -295,9 +291,8 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
 
         val nameTypes = CommonUtils.getNameTypes(
                 definition,
-                this.javaIdName,
                 YaormModel.ProtobufType.STRING,
-                this.javaTypeToSqlType)
+                this.protoTypeToSqlType)
 
         if (nameTypes.size == 0) {
             return null
@@ -306,7 +301,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         val workspace = StringBuilder()
 
         for (nameType in nameTypes) {
-            if (javaIdName.equals(nameType.sqlColumnName)) {
+            if (CommonUtils.IdName.equals(nameType.sqlColumnName)) {
                 workspace
                         .append(nameType.sqlColumnName)
                         .append(CommonUtils.Space)
@@ -317,7 +312,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISqlGener
         }
 
         for (nameType in nameTypes) {
-            if (!javaIdName.equals(nameType.sqlColumnName)) {
+            if (!CommonUtils.IdName.equals(nameType.sqlColumnName)) {
                 workspace
                         .append(CommonUtils.Comma)
                         .append(CommonUtils.Space)

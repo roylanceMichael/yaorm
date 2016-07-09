@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services.sqlite
+package org.roylance.yaorm.services.postgres
 
 import com.google.protobuf.ByteString
 import org.junit.Assert
@@ -6,32 +6,42 @@ import org.junit.Test
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
-import java.io.File
+import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.util.*
 
-class SQLiteProtoTest {
+class PostgresProtoTest {
     @Test
     fun simplePassThroughTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
-
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
+
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+            testModel.child = TestingModel.Child.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTestDisplay("first display") .build()
 
-            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+            val subTestChild = TestingModel.Child.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTestDisplay("second display")
             testModel.addChilds(subTestChild)
 
             val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -52,30 +62,39 @@ class SQLiteProtoTest {
             Assert.assertTrue(true)
         }
         finally {
-            database.deleteOnExit()
         }
     }
 
     @Test
     fun simplePassThrough2Test() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
+
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+            testModel.child = TestingModel.Child.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTestDisplay("first display") .build()
 
-            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+            val subTestChild = TestingModel.Child.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTestDisplay("second display")
             testModel.addChilds(subTestChild)
 
             val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -99,21 +118,26 @@ class SQLiteProtoTest {
             Assert.assertTrue(record!!.testDisplay.equals("second display"))
         }
         finally {
-            database.deleteOnExit()
         }
     }
 
     @Test
     fun verifyTypesSavedAndReturnedCorrectlyTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
+
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -176,21 +200,26 @@ class SQLiteProtoTest {
             Assert.assertTrue(record.testFloat.equals(testModel.testFloat))
         }
         finally {
-            database.deleteOnExit()
         }
     }
 
     @Test
     fun verifyRepeatedNumsSavedAndReturnedCorrectlyTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
+
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -240,56 +269,29 @@ class SQLiteProtoTest {
             Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.TEST) })
         }
         finally {
-            database.deleteOnExit()
         }
     }
 
     @Test
     fun verifyRepeatedMessagesSavedAndReturnedCorrectlyTest() {
         // arrange
-        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        ConnectionUtilities.getPostgresConnectionInfo()
         try {
-            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!)
+
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
-            val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
-            val testModel = TestingModel.SimpleInsertTest.newBuilder()
-
-            testModel.id = UUID.randomUUID().toString()
-            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
-            testModel.display = "random display"
-            testModel.testInt32 = 1
-            testModel.testInt64 = 2
-            testModel.testUint32 = 3
-            testModel.testUint64 = 4
-            testModel.testSint32 = 5
-            testModel.testSint64 = 6
-            testModel.testFixed32 = 7
-            testModel.testFixed64 = 8
-            testModel.testSfixed32 = 9
-            testModel.testSfixed64 = 10
-            testModel.testBool = true
-            testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
-
-            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
-            val subTestChild2 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("third display")
-            val subTestChild3 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("fourth display")
-            testModel.addChilds(subTestChild)
-            testModel.addChilds(subTestChild2)
-            testModel.addChilds(subTestChild3)
-
-            val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
-
-            testModel.addCoolTypes(firstCoolType)
-            testModel.addCoolTypes(secondCoolType)
+            val testModel = TestingModelUtilities.buildSampleRootObject()
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
             records.tableRecords.values.forEach {
@@ -299,17 +301,33 @@ class SQLiteProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val insertedRecord = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(
+                    TestingModel.SimpleInsertTest.getDefaultInstance(),
+                    entityService,
+                    testModel.id,
+                    protoService)
 
             // assert
-            Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record!!.childsCount == 3)
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild.testDisplay) && it.id.equals(subTestChild.id) })
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild2.testDisplay) && it.id.equals(subTestChild2.id) })
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild3.testDisplay) && it.id.equals(subTestChild3.id) })
+            Assert.assertTrue(insertedRecord is TestingModel.SimpleInsertTest)
+            System.out.println(insertedRecord!!.childsCount)
+            Assert.assertTrue(insertedRecord.childsCount == 3)
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild) && it.id.equals(TestingModelUtilities.SubTestChildId) })
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild2) && it.id.equals(TestingModelUtilities.SubTestChild2Id) })
+            Assert.assertTrue(insertedRecord.childsList.any { it.testDisplay.equals(TestingModelUtilities.SubTestChild3) && it.id.equals(TestingModelUtilities.SubTestChild3Id) })
+
+            val subTestChildFound = insertedRecord.childsList.first { it.testDisplay.equals(TestingModelUtilities.SubTestChild) }
+            Assert.assertTrue(subTestChildFound.subChildCount == 1)
+
+            val anotherSubTestChild = subTestChildFound.subChildList.first()
+            Assert.assertTrue(anotherSubTestChild.id.equals(anotherSubTestChild.id))
+            Assert.assertTrue(anotherSubTestChild.anotherTestDisplay.equals(TestingModelUtilities.SubChildAnotherTestDisplay))
+            Assert.assertTrue(anotherSubTestChild.subSubChildCount == 1)
+
+            val subSubChildFound = anotherSubTestChild.subSubChildList.first()
+            Assert.assertTrue(TestingModelUtilities.SubSubChildId.equals(subSubChildFound.id))
+            Assert.assertTrue(TestingModelUtilities.SubSubChildDisplay.equals(subSubChildFound.subSubDisplay))
         }
         finally {
-            database.deleteOnExit()
         }
     }
 }

@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.73-SNAPSHOT'
+version '0.74-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -21,8 +21,8 @@ artifactory {
     publish {
         repository {
             repoKey = 'libs-snapshot-local'
-            username = 'admin'
-            password = 'Fuckyou!3'
+            username = ''
+            password = ''
         }
         defaults {
             publications('mavenJava')
@@ -60,6 +60,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
+    testCompile 'org.postgresql:postgresql:9.4.1208'
     testCompile 'mysql:mysql-connector-java:5.1.37'
     testCompile 'org.xerial:sqlite-jdbc:3.8.10.1'
 

@@ -7,13 +7,19 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.ConnectionUtilities
 import java.util.*
 
 class MySQLEntityAccessMapServiceTests {
     @Test
     fun simpleCreateMySQLTest() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
+        val sourceConnection = MySQLConnectionSourceFactory(
+                ConnectionUtilities.mysqlHost!!,
+                ConnectionUtilities.mysqlSchema!!,
+                ConnectionUtilities.mysqlUserName!!,
+                ConnectionUtilities.mysqlPassword!!)
 
         val newId = UUID.randomUUID().toString()
         val beaconId = "test"
@@ -22,18 +28,12 @@ class MySQLEntityAccessMapServiceTests {
         val isActive = true
         val cachedName = "mike"
 
-        val mysqlGeneratorService = MySQLGeneratorService(schema!!)
-        val sourceConnection = MySQLConnectionSourceFactory(
-                host!!,
-                schema!!,
-                userName!!,
-                password!!)
+        val mysqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
         val granularDatabaseService = JDBCGranularDatabaseProtoService(
                 sourceConnection.connectionSource,
                 false)
 
         val entityService = EntityProtoService(
-                indexDefinition = null,
                 granularDatabaseService = granularDatabaseService,
                 sqlGeneratorService = mysqlGeneratorService)
 
@@ -84,24 +84,5 @@ class MySQLEntityAccessMapServiceTests {
         Assert.assertEquals(minorId, foundBeacon[BeaconBroadcastModel.MinorIdName])
         Assert.assertEquals(cachedName, foundBeacon[BeaconBroadcastModel.CachedNameName])
         Assert.assertEquals(isActive, foundBeacon[BeaconBroadcastModel.ActiveName])
-    }
-
-    companion object {
-        private var host:String? = null
-        private var userName:String? = null
-        private var password:String? = null
-        private var schema:String? = null
-
-        fun getConnectionInfo() {
-            if (host == null) {
-                val properties = Properties()
-                val mysqlStream = MySQLEntityAccessServiceTest::class.java.getResourceAsStream("/mysql.properties")
-                properties.load(mysqlStream)
-                host = properties.getProperty("host")
-                password = properties.getProperty("password")
-                userName = properties.getProperty("userName")
-                schema = properties.getProperty("schema")
-            }
-        }
     }
 }

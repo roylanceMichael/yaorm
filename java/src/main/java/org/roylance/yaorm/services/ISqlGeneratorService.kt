@@ -2,9 +2,8 @@ package org.roylance.yaorm.services
 
 import org.roylance.yaorm.models.YaormModel
 
-interface ISqlGeneratorService {
-    val javaIdName: String
-    val javaTypeToSqlType: Map<YaormModel.ProtobufType, String>
+interface ISQLGeneratorService {
+    val protoTypeToSqlType: Map<YaormModel.ProtobufType, String>
     val bulkInsertSize:Int
 
     fun buildCountSql(definition: YaormModel.TableDefinition): String

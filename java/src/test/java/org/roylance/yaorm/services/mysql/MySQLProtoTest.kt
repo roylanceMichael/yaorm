@@ -6,29 +6,29 @@ import org.junit.Test
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
-import java.sql.DriverManager
 import java.util.*
 
 class MySQLProtoTest {
     @Test
     fun simplePassThroughTest() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
-                    host!!,
-                    schema!!,
-                    userName!!,
-                    password!!)
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -57,26 +57,26 @@ class MySQLProtoTest {
             Assert.assertTrue(true)
         }
         finally {
-            dropSchema()
+            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun simplePassThrough2Test() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
-                    host!!,
-                    schema!!,
-                    userName!!,
-                    password!!)
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -109,26 +109,26 @@ class MySQLProtoTest {
             Assert.assertTrue(record!!.testDisplay.equals("second display"))
         }
         finally {
-            dropSchema()
+            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun verifyTypesSavedAndReturnedCorrectlyTest() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
-                    host!!,
-                    schema!!,
-                    userName!!,
-                    password!!)
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -191,26 +191,26 @@ class MySQLProtoTest {
             Assert.assertTrue(record.testFloat.equals(testModel.testFloat))
         }
         finally {
-            dropSchema()
+            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun verifyRepeatedNumsSavedAndReturnedCorrectlyTest() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
-                    host!!,
-                    schema!!,
-                    userName!!,
-                    password!!)
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -260,26 +260,26 @@ class MySQLProtoTest {
             Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.TEST) })
         }
         finally {
-            dropSchema()
+            ConnectionUtilities.dropMySQLSchema()
         }
     }
 
     @Test
     fun verifyRepeatedMessagesSavedAndReturnedCorrectlyTest() {
         // arrange
-        getConnectionInfo()
+        ConnectionUtilities.getMySQLConnectionInfo()
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
-                    host!!,
-                    schema!!,
-                    userName!!,
-                    password!!)
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(null, granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGeneratedMessageBuilder()
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
@@ -319,35 +319,7 @@ class MySQLProtoTest {
             Assert.assertTrue(TestingModelUtilities.SubSubChildDisplay.equals(subSubChildFound.subSubDisplay))
         }
         finally {
-            dropSchema()
-        }
-    }
-
-    companion object {
-        private var host:String? = null
-        private var userName:String? = null
-        private var password:String? = null
-        private var schema:String? = null
-
-        fun dropSchema() {
-            val connection = DriverManager.getConnection(
-                    "jdbc:mysql://$host?user=$userName&password=$password&autoReconnect=true")
-            val statement = connection.prepareStatement("drop database if exists $schema")
-            statement.executeUpdate()
-            statement.close()
-            connection.close()
-        }
-
-        fun getConnectionInfo() {
-            if (host == null) {
-                val properties = Properties()
-                val mysqlStream = MySQLProtoTest::class.java.getResourceAsStream("/mysql.properties")
-                properties.load(mysqlStream)
-                host = properties.getProperty("host")
-                password = properties.getProperty("password")
-                userName = properties.getProperty("userName")
-                schema = "test_${UUID.randomUUID().toString().replace("-", "")}"
-            }
+            ConnectionUtilities.dropMySQLSchema()
         }
     }
 }

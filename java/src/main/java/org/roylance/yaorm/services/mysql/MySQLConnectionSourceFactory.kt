@@ -29,10 +29,6 @@ class MySQLConnectionSourceFactory(
         return this.commonConnection
     }
 
-    override fun getGeneratedKeysColumnName(): String? {
-        return null
-    }
-
     override fun close() {
         if (!this.isClosed) {
             this.commonConnection.close()
