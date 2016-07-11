@@ -190,4 +190,30 @@ class SQLiteEntityMessageServiceTest {
             database.deleteOnExit()
         }
     }
+
+    @Test
+    fun simpleGetTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath, "mike", "testing")
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = TestModelGeneratedMessageBuilder()
+            val entityMessageService = EntityMessageService(protoService, entityService)
+            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+
+            // act
+            val foundDag = entityMessageService.get(TestingModel.Dag.getDefaultInstance(), UUID.randomUUID().toString())
+
+            // assert
+            Assert.assertTrue(foundDag == null)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
 }

@@ -162,7 +162,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
                 .getRecords()
     }
 
-    override fun get(id: String, definition: YaormModel.TableDefinition): YaormModel.Record {
+    override fun get(id: String, definition: YaormModel.TableDefinition): YaormModel.Record? {
         if (!this.granularDatabaseService.isAvailable()) {
             return YaormModel.Record.getDefaultInstance()
         }
@@ -192,7 +192,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
             return records.recordsList.first()
         }
 
-        return YaormModel.Record.getDefaultInstance()
+        return null
     }
 
     override fun getMany(definition: YaormModel.TableDefinition,
@@ -269,7 +269,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
         }
 
         val foundItemInDatabase = this.get(idColumn.stringHolder, definition)
-        if (foundItemInDatabase.columns.size > 0) {
+        if (foundItemInDatabase != null) {
             return this.update(entity, definition)
         }
 
