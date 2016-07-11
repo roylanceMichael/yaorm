@@ -1,5 +1,6 @@
 package org.roylance.yaorm.services.proto
 
+import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.utilities.CommonUtils
@@ -9,6 +10,33 @@ import java.util.*
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService):IEntityMessageService {
+
+    override fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
+        CreateSchema(this.entityService).handleFile(fileDescriptor, false)
+        return true
+    }
+
+    override fun dropAndCreateEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
+        CreateSchema(this.entityService).handleFile(fileDescriptor, true)
+        return true
+    }
+
+    override fun <T : Message> createEntireSchema(message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
+            return false
+        }
+        CreateSchema(this.entityService).handleMessage(message.descriptorForType, false)
+        return true
+    }
+
+    override fun <T : Message> dropAndRecreateEntireSchema(message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
+            return false
+        }
+        CreateSchema(this.entityService).handleMessage(message.descriptorForType, true)
+        return true
+    }
+
     override fun <T : Message> getKeysStream(messageType: T, streamer: IMessageStreamer) {
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return
@@ -33,60 +61,6 @@ class EntityMessageService(
 
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         return this.entityService.getIds(tableDefinition)
-    }
-
-    override fun <T : Message> createEntireSchema(message: T): Boolean {
-        if (!ProtobufUtils.isMessageOk(message)) {
-            return false
-        }
-
-        val records = ProtobufUtils.buildDefinitionGraph(message.descriptorForType)
-
-        val seenTables = HashSet<String>()
-        records.tableDefinitionGraphsList.forEach {
-            if(!seenTables.contains(it.mainName)) {
-                seenTables.add(it.mainName)
-                this.entityService.createTable(it.mainTableDefinition)
-            }
-            if (it.hasLinkerTableTable() && !seenTables.contains(it.linkerTableTable.name)) {
-                seenTables.add(it.linkerTableTable.name)
-                this.entityService.createTable(it.linkerTableTable)
-            }
-            if (it.hasOtherTableDefinition() && !seenTables.contains(it.otherName)) {
-                seenTables.add(it.otherName)
-                this.entityService.createTable(it.otherTableDefinition)
-            }
-        }
-
-        return true
-    }
-
-    override fun <T : Message> dropAndRecreateEntireSchema(message: T): Boolean {
-        if (!ProtobufUtils.isMessageOk(message)) {
-            return false
-        }
-        val records = ProtobufUtils.buildDefinitionGraph(message.descriptorForType)
-
-        val seenTables = HashSet<String>()
-        records.tableDefinitionGraphsList.forEach {
-            if(!seenTables.contains(it.mainName)) {
-                seenTables.add(it.mainName)
-                this.entityService.dropTable(it.mainTableDefinition)
-                this.entityService.createTable(it.mainTableDefinition)
-            }
-            if (it.hasLinkerTableTable() && !seenTables.contains(it.linkerTableTable.name)) {
-                seenTables.add(it.linkerTableTable.name)
-                this.entityService.dropTable(it.linkerTableTable)
-                this.entityService.createTable(it.linkerTableTable)
-            }
-            if (it.hasOtherTableDefinition() && !seenTables.contains(it.otherName)) {
-                seenTables.add(it.otherName)
-                this.entityService.dropTable(it.otherTableDefinition)
-                this.entityService.createTable(it.otherTableDefinition)
-            }
-        }
-
-        return true
     }
 
     override fun <T : Message> merge(sourceOfTruthMessage: T): Boolean {
@@ -349,5 +323,51 @@ class EntityMessageService(
                 .setType(YaormModel.ProtobufType.STRING)
                 .build()
         return tableDefinition.build()
+    }
+
+    private class CreateSchema(private val entityService: IEntityProtoService) {
+        private val seenTables = HashSet<String>()
+
+        fun handleMessage(descriptor: Descriptors.Descriptor, shouldDelete: Boolean) {
+            val definitions = ProtobufUtils.buildDefinitionGraph(descriptor)
+            if (!seenTables.contains(definitions.mainTableDefinition.name)) {
+                if (shouldDelete) {
+                    this.entityService.dropTable(definitions.mainTableDefinition)
+                }
+                this.entityService.createTable(definitions.mainTableDefinition)
+                seenTables.add(definitions.mainTableDefinition.name)
+            }
+
+            definitions.tableDefinitionGraphsList.forEach { graph ->
+                if (!seenTables.contains(graph.mainName)) {
+                    if (shouldDelete) {
+                        this.entityService.dropTable(graph.mainTableDefinition)
+                    }
+                    this.entityService.createTable(graph.mainTableDefinition)
+                    seenTables.add(graph.mainName)
+                }
+                if (graph.hasLinkerTableTable() && !seenTables.contains(graph.linkerTableTable.name)) {
+                    if (shouldDelete) {
+                        this.entityService.dropTable(graph.linkerTableTable)
+                    }
+                    this.entityService.createTable(graph.linkerTableTable)
+                    seenTables.add(graph.linkerTableTable.name)
+                }
+                if (graph.hasOtherTableDefinition() && !seenTables.contains(graph.otherName)) {
+                    if (shouldDelete) {
+                        this.entityService.dropTable(graph.otherTableDefinition)
+                    }
+                    this.entityService.createTable(graph.otherTableDefinition)
+                    seenTables.add(graph.otherName)
+                }
+            }
+        }
+
+        fun handleFile(fileDescriptor: Descriptors.FileDescriptor, shouldDelete: Boolean) {
+            fileDescriptor.messageTypes.forEach { messageDescriptor ->
+                handleMessage(messageDescriptor, shouldDelete)
+            }
+        }
+
     }
 }
