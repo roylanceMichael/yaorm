@@ -45,42 +45,40 @@ internal class ConvertProtobufToRecords {
         val baseRecord = YaormModel.Record.newBuilder()
         definitions[message.descriptorForType.name]!!
                 .mainTableDefinition
-                .columnDefinitions
-                .values
+                .columnDefinitionsList
                 .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.SCALAR) }
                 .forEach { column ->
                     val foundField = message.allFields.keys.firstOrNull { column.name.equals(it.name) }
                     if (foundField == null) {
                         val generatedColumn = CommonUtils.buildColumn(null, column)
-                        baseRecord.mutableColumns[generatedColumn.definition.name] = generatedColumn
+                        baseRecord.addColumns(generatedColumn)
                     }
                     else {
                         val generatedColumn = CommonUtils.buildColumn(message.allFields[foundField], column)
-                        baseRecord.mutableColumns[generatedColumn.definition.name] = generatedColumn
+                        baseRecord.addColumns(generatedColumn)
                     }
                 }
 
         // let's do enums first
         definitions[message.descriptorForType.name]!!
                 .mainTableDefinition
-                .columnDefinitions
-                .values
+                .columnDefinitionsList
                 .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME) }
                 .forEach { columnDefinition ->
                     val foundMessageField = message.allFields.keys.firstOrNull { it.name.equals(columnDefinition.name) }
                     if (foundMessageField == null) {
                         val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
-                        baseRecord.mutableColumns[generatedNameColumn.definition.name] = (generatedNameColumn)
+                        baseRecord.addColumns(generatedNameColumn)
                     }
                     else {
                         val foundField = message.allFields[foundMessageField]
                         if (foundField is Descriptors.EnumValueDescriptor) {
                             val generatedNameColumn = CommonUtils.buildColumn(foundField.name, columnDefinition)
-                            baseRecord.mutableColumns[generatedNameColumn.definition.name] = (generatedNameColumn)
+                            baseRecord.addColumns(generatedNameColumn)
                         }
                         else {
                             val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
-                            baseRecord.mutableColumns[generatedNameColumn.definition.name] = (generatedNameColumn)
+                            baseRecord.addColumns(generatedNameColumn)
                         }
                     }
                 }
@@ -88,20 +86,19 @@ internal class ConvertProtobufToRecords {
         // now messages, we'll add a column for the foreign key, but then new records for the child object
         definitions[message.descriptorForType.name]!!
                 .mainTableDefinition
-                .columnDefinitions
-                .values
+                .columnDefinitionsList
                 .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY) }
                 .forEach { columnDefinition ->
                     val foundMessageField = message.allFields.keys.firstOrNull { it.name.equals(columnDefinition.name) }
                     if (foundMessageField == null) {
                         val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
-                        baseRecord.mutableColumns[generatedNameColumn.definition.name] = (generatedNameColumn)
+                        baseRecord.addColumns(generatedNameColumn)
                     }
                     else {
                         val foundField = message.allFields[foundMessageField]
                         if (foundField is Message && ProtobufUtils.isMessageOk(foundField)) {
                             val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.getIdFromMessage(foundField), columnDefinition)
-                            baseRecord.mutableColumns[generatedNameColumn.definition.name] = generatedNameColumn
+                            baseRecord.addColumns(generatedNameColumn)
 
 
                             val childMessageRecords = this.build(foundField)
@@ -116,7 +113,7 @@ internal class ConvertProtobufToRecords {
                         }
                         else {
                             val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
-                            baseRecord.mutableColumns[generatedNameColumn.definition.name] = (generatedNameColumn)
+                            baseRecord.addColumns(generatedNameColumn)
                         }
                     }
                 }

@@ -25,7 +25,7 @@ object EntityUtils {
             .forEach {
                 val result = it.getMethod.invoke(item)
                 val propertyHolder = CommonUtils.buildColumn(result, it.getMethod.returnType, it.propertyName)
-                returnRecord.mutableColumns[it.propertyName] = (propertyHolder)
+                returnRecord.addColumns(propertyHolder)
             }
 
         return returnRecord.build()
@@ -53,14 +53,14 @@ object EntityUtils {
                             .setType(CommonUtils.JavaToProtoMap[it.returnType])
                             .setName(name)
                             .setIsKey(name == CommonUtils.IdName)
-                        definition.mutableColumnDefinitions.put(it.name, (property).build())
+                        definition.addColumnDefinitions(property)
                     }
                     else {
                         val property = YaormModel.ColumnDefinition.newBuilder()
                                 .setType(YaormModel.ProtobufType.STRING)
                                 .setName(name)
                                 .setIsKey(name == CommonUtils.IdName)
-                        definition.mutableColumnDefinitions.put(it.name, (property).build())
+                        definition.addColumnDefinitions(property)
                     }
                 }
 
@@ -166,7 +166,9 @@ object EntityUtils {
     fun buildWhereClauseOnIdProto(entity:IEntity):YaormModel.WhereClause {
         val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(entity.id)
-                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(IdNameLowercase).setIsKey(true))
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                        .setType(YaormModel.ProtobufType.STRING)
+                        .setName(IdNameLowercase).setIsKey(true))
                 .build()
 
         val whereClause = YaormModel.WhereClause.newBuilder()

@@ -23,25 +23,25 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
 
         // set all the properties that we can
         this.definitionModel
-                .columnDefinitions
-                .values
+                .columnDefinitionsList
+                .distinctBy { it.name }
                 .forEach {
                     if (this.namesToAvoid.contains(it.name)) {
                         val propertyHolder = CommonUtils.buildColumn(null, it)
-                        newInstance.mutableColumns[it.name] = propertyHolder
+                        newInstance.addColumns(propertyHolder)
                     }
                     else {
                         try {
                             val newValue = resultSet.getString(it.name)
                             val propertyHolder = CommonUtils.buildColumn(newValue, it)
-                            newInstance.mutableColumns[it.name] = propertyHolder
+                            newInstance.addColumns(propertyHolder)
                         }
                         catch (e:SQLException) {
                             // if we can't see this name for w/e reason, we'll print to the console, but continue on
                             e.printStackTrace()
                             this.namesToAvoid.add(it.name)
                             val propertyHolder = CommonUtils.buildColumn(null, it)
-                            newInstance.mutableColumns[it.name] = propertyHolder
+                            newInstance.addColumns(propertyHolder)
                         }
                     }
                 }

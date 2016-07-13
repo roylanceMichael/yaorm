@@ -105,8 +105,8 @@ class EntityService<T: IEntity>(
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 this.definition,
-                index.columnNames,
-                index.includeNames) ?: return false
+                index.columnNamesList.associateBy { it.name },
+                index.includeNamesList.associateBy { it.name }) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
@@ -120,7 +120,7 @@ class EntityService<T: IEntity>(
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 this.definition,
-                index.columnNames) ?: return false
+                index.columnNamesList.associateBy { it.name }) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropIndexSql)

@@ -27,7 +27,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
 
         return this.granularDatabaseService.executeSelectQuery(definition, selectSql)
                 .getRecords().recordsList.map {
-            it.columns[CommonUtils.IdName]!!.stringHolder
+            CommonUtils.getIdColumn(it.columnsList)!!.stringHolder
         }
     }
 
@@ -79,8 +79,8 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
 
         val createIndexSql = this.sqlGeneratorService.buildCreateIndex(
                 definition,
-                indexModel.columnNames,
-                indexModel.includeNames) ?: return false
+                indexModel.columnNamesList.associateBy { it.name },
+                indexModel.includeNamesList.associateBy { it.name }) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
@@ -95,7 +95,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
 
         val dropIndexSql = this.sqlGeneratorService.buildDropIndex(
                 definition,
-                indexModel.columnNames) ?: return false
+                indexModel.columnNamesList.associateBy { it.name }) ?: return false
 
         return this.granularDatabaseService
                 .executeUpdateQuery(dropIndexSql)
@@ -145,8 +145,9 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
 
         if (allRecords.recordsCount > 0) {
             val foundRecord = allRecords.recordsList[0]
-            if (foundRecord.columns.containsKey(GenericModel.LongValName)) {
-                return foundRecord.columns[GenericModel.LongValName]!!.int64Holder
+            val longValColumn = foundRecord.columnsList.firstOrNull { it.definition.name.equals(GenericModel.LongValName) }
+            if (longValColumn != null) {
+                return longValColumn.int64Holder
             }
         }
         return -1
@@ -259,11 +260,8 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun createOrUpdate(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        if (!entity.columns.containsKey(CommonUtils.IdName)) {
-            return false
-        }
+        val idColumn = CommonUtils.getIdColumn(entity.columnsList) ?: return false
 
-        val idColumn = entity.columns[CommonUtils.IdName]!!
         if (!this.granularDatabaseService.isAvailable()) {
             return false
         }
@@ -277,9 +275,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun create(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        if (!entity.columns.containsKey(CommonUtils.IdName)) {
-            return false
-        }
+        val idColumn = CommonUtils.getIdColumn(entity.columnsList) ?: return false
 
         if (!this.granularDatabaseService.isAvailable()) {
             return false
@@ -296,7 +292,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun update(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        if (!entity.columns.containsKey(CommonUtils.IdName)) {
+        if (CommonUtils.getIdColumn(entity.columnsList) == null) {
             return false
         }
 

@@ -32,26 +32,22 @@ object IndexModelComparisonUtil {
 
         if (currentIndexModel != null && otherIndexModel != null) {
             val currentColumnNames =  currentIndexModel
-                    .columnNames
-                    .values
+                    .columnNamesList
                     .sortedBy { it.name }
                     .joinToString(CommonUtils.Comma)
 
             val currentIncludeNames = currentIndexModel
-                    .includeNames
-                    .values
+                    .includeNamesList
                     .sortedBy { it.name }
                     .joinToString(CommonUtils.Comma)
 
             val otherColumnNames = otherIndexModel
-                    .columnNames
-                    .values
+                    .columnNamesList
                     .sortedBy { it.name }
                     .joinToString(CommonUtils.Comma)
 
             val otherIncludeNames = otherIndexModel
-                    .includeNames
-                    .values
+                    .includeNamesList
                     .sortedBy { it.name }
                     .joinToString(CommonUtils.Comma)
 

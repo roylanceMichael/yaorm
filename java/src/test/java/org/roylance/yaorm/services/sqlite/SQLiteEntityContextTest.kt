@@ -50,14 +50,13 @@ class SQLiteEntityContextTest {
             val definitions = testEntityContext.getDefinitions()
 
             //assert
-            Assert.assertTrue(definitions.tableDefinitions.values.size == 2)
+            Assert.assertTrue(definitions.tableDefinitionsList.size == 2)
 
-            val anotherTestModelDefinition = definitions.tableDefinitions.values.elementAt(0)
+            val anotherTestModelDefinition = definitions.tableDefinitionsList.elementAt(0)
             Assert.assertEquals(AnotherTestModel::class.java.simpleName, anotherTestModelDefinition.name)
 
             anotherTestModelDefinition
-                    .columnDefinitions
-                    .values
+                    .columnDefinitionsList
                     .forEach {
                         Assert.assertTrue(
                                 (AnotherTestModel.DescriptionName.equals(it.name) ||
@@ -69,12 +68,11 @@ class SQLiteEntityContextTest {
 
             Assert.assertFalse(anotherTestModelDefinition.hasIndex())
 
-            val beaconBroadcastDefinition = definitions.tableDefinitions.values.elementAt(1)
+            val beaconBroadcastDefinition = definitions.tableDefinitionsList.elementAt(1)
             Assert.assertEquals(BeaconBroadcastModel::class.java.simpleName, beaconBroadcastDefinition.name)
 
             beaconBroadcastDefinition
-                    .columnDefinitions
-                    .values
+                    .columnDefinitionsList
                     .forEach {
                         Assert.assertTrue(
                                 (BeaconBroadcastModel.ActiveName.equals(it.name) &&

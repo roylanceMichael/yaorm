@@ -155,8 +155,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
             val values = ArrayList<String>()
 
             record
-                .columns
-                .values
+                .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
@@ -217,6 +216,6 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
     }
 
     override fun buildKeyword(keyword: String): String {
-        return "$keyword"
+        return keyword
     }
 }

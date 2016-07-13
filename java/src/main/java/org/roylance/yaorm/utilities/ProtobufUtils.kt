@@ -53,7 +53,7 @@ object ProtobufUtils {
                 .setName(CommonUtils.IdName)
                 .setType(YaormModel.ProtobufType.STRING)
         val tableDefinitionBuilder = YaormModel.TableDefinition.newBuilder().setName(descriptor.name)
-        tableDefinitionBuilder.mutableColumnDefinitions[CommonUtils.IdName] = (idColumnDefinition).build()
+        tableDefinitionBuilder.addColumnDefinitions(idColumnDefinition)
         return tableDefinitionBuilder.build()
     }
 
@@ -68,7 +68,7 @@ object ProtobufUtils {
                         val newProperty = YaormModel.ColumnDefinition.newBuilder()
                                 .setName(it.name)
                                 .setType(ProtoNameToProtoTypeMap[it.type.name])
-                        definition.mutableColumnDefinitions[it.name] = (newProperty).build()
+                        definition.addColumnDefinitions(newProperty)
                     }
                     else {
                         if (it.isRepeated) {
@@ -76,10 +76,10 @@ object ProtobufUtils {
                             return@forEach
                         }
                         else if (ProtoEnumType.equals(it.type.name)) {
-                            definition.mutableColumnDefinitions[it.name] = (buildEnumNameColumnName(it.name))
+                            definition.addColumnDefinitions(buildEnumNameColumnName(it.name))
                         }
                         else if (ProtoMessageType.equals(it.type.name)) {
-                            definition.mutableColumnDefinitions[it.name] = (buildMessageColumnName(it.name))
+                            definition.addColumnDefinitions(buildMessageColumnName(it.name))
                         }
                     }
         }
@@ -148,7 +148,7 @@ object ProtobufUtils {
         val returnRecords = YaormModel.AllTableRecords.newBuilder()
 
         resultMap.keys.forEach {
-            returnRecords.mutableTableRecords[it] = (resultMap[it]!!).build()
+            returnRecords.addTableRecords(resultMap[it]!!)
         }
 
         return returnRecords.build()
@@ -269,20 +269,20 @@ object ProtobufUtils {
         val actualMainColumnName = buildLinkerMessageMainTableColumnName(mainName)
         val actualOtherColumnName= buildLinkerMessageOtherTableColumnName(otherName)
 
-        tableDefinition.mutableColumnDefinitions[CommonUtils.IdName] = YaormModel.ColumnDefinition.newBuilder()
+        tableDefinition.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder()
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR)
                 .setType(YaormModel.ProtobufType.STRING)
-                .setName(CommonUtils.IdName).build()
-        tableDefinition.mutableColumnDefinitions[mainName] = YaormModel.ColumnDefinition.newBuilder()
+                .setName(CommonUtils.IdName))
+        tableDefinition.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder()
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)
                 .setLinkerType(YaormModel.ColumnDefinition.LinkerType.PARENT)
                 .setType(YaormModel.ProtobufType.STRING)
-                .setName(actualMainColumnName).build()
-        tableDefinition.mutableColumnDefinitions[otherName] = YaormModel.ColumnDefinition.newBuilder()
+                .setName(actualMainColumnName))
+        tableDefinition.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder()
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)
                 .setLinkerType(YaormModel.ColumnDefinition.LinkerType.CHILD)
                 .setType(YaormModel.ProtobufType.STRING)
-                .setName(actualOtherColumnName).build()
+                .setName(actualOtherColumnName))
 
         return tableDefinition.build()
     }
@@ -319,9 +319,9 @@ object ProtobufUtils {
                         .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY))
                 .setStringHolder(otherColumnId)
 
-        record.mutableColumns[CommonUtils.IdName] = idColumn.build()
-        record.mutableColumns[actualMainTableName] = mainIdColumn.build()
-        record.mutableColumns[actualOtherTableName] = otherIdColumn.build()
+        record.addColumns(idColumn)
+        record.addColumns(mainIdColumn)
+        record.addColumns(otherIdColumn)
 
         return record.build()
     }
@@ -353,9 +353,9 @@ object ProtobufUtils {
                         .setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME))
                 .setStringHolder(enumValueDescriptor.name)
 
-        record.mutableColumns[CommonUtils.IdName] = idColumn.build()
-        record.mutableColumns[mainColumnName] = mainIdColumn.build()
-        record.mutableColumns[enumName] = enumColumn.build()
+        record.addColumns(idColumn)
+        record.addColumns(mainIdColumn)
+        record.addColumns(enumColumn)
 
         return record.build()
     }
@@ -380,9 +380,9 @@ object ProtobufUtils {
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME)
                 .build()
 
-        returnDefinition.mutableColumnDefinitions[CommonUtils.IdName] = idProperty
-        returnDefinition.mutableColumnDefinitions[mainTableName] = mainTableIdProperty
-        returnDefinition.mutableColumnDefinitions[repeatedEnumName] = repeatedEnumNameProperty
+        returnDefinition.addColumnDefinitions(idProperty)
+        returnDefinition.addColumnDefinitions(mainTableIdProperty)
+        returnDefinition.addColumnDefinitions(repeatedEnumNameProperty)
 
         return returnDefinition.build()
     }
@@ -412,9 +412,9 @@ object ProtobufUtils {
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)
                 .build()
 
-        returnDefinition.mutableColumnDefinitions[CommonUtils.IdName] = idProperty
-        returnDefinition.mutableColumnDefinitions[mainTableColumnName] = mainTableIdProperty
-        returnDefinition.mutableColumnDefinitions[otherTableColumnName] = otherTableIdProperty
+        returnDefinition.addColumnDefinitions(idProperty)
+        returnDefinition.addColumnDefinitions(mainTableIdProperty)
+        returnDefinition.addColumnDefinitions(otherTableIdProperty)
 
         return returnDefinition.build()
     }

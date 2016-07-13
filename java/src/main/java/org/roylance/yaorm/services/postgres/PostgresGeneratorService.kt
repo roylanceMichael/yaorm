@@ -152,7 +152,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
 
     override fun buildBulkInsert(definition: YaormModel.TableDefinition,
                                  records: YaormModel.Records): String {
-        val columnNames = definition.columnDefinitions.values.sortedBy { it.name }.map { this.buildKeyword(it.name) }
+        val columnNames = definition.columnDefinitionsList.sortedBy { it.name }.map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "insert into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
@@ -163,8 +163,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                 .forEach { instance ->
                     val valueColumnPairs = ArrayList<String>()
                     instance
-                            .columns
-                            .values
+                            .columnsList
                             .sortedBy { it.definition.name }
                             .forEach {
                                 val formattedString = CommonUtils.getFormattedString(it)
@@ -190,8 +189,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             val values = ArrayList<String>()
 
             record
-                    .columns
-                    .values
+                    .columnsList
                     .forEach {
                         val formattedString = CommonUtils.getFormattedString(it)
                         columnNames.add(this.buildKeyword(it.definition.name))
@@ -229,8 +227,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             val updateKvp = ArrayList<String>()
 
             record
-                    .columns
-                    .values
+                    .columnsList
                     .forEach {
                         val formattedString = CommonUtils.getFormattedString(it)
                         if (it.definition.name.equals(CommonUtils.IdName)) {
@@ -278,8 +275,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             val criteriaString: String = CommonUtils.buildWhereClause(whereClauseItem, this)
             val updateKvp = ArrayList<String>()
 
-            record.columns
-                    .values
+            record.columnsList
                     .sortedBy { it.definition.name }
                     .forEach {
                         updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + CommonUtils.getFormattedString(it))

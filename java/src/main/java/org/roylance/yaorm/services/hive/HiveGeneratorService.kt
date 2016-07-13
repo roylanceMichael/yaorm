@@ -41,11 +41,11 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     }
 
     override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
-        return "select id from ${definition.name}"
+        return "select id from ${this.buildKeyword(definition.name)}"
     }
 
     override fun buildCountSql(definition: YaormModel.TableDefinition): String {
-        return "select count(1) as longVal from ${definition.name}"
+        return "select count(1) as ${this.buildKeyword("longVal")} from ${this.buildKeyword(definition.name)}"
     }
 
     override fun buildCreateColumn(
@@ -54,7 +54,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
         if (!this.protoTypeToSqlType.containsKey(propertyDefinition.type)) {
             return null
         }
-        return "alter table ${definition.name} add columns (${propertyDefinition.name}, ${this.protoTypeToSqlType[propertyDefinition.type]})"
+        return "alter table ${this.buildKeyword(definition.name)} add columns (${this.buildKeyword(propertyDefinition.name)}, ${this.protoTypeToSqlType[propertyDefinition.type]})"
     }
 
     override fun buildDropColumn(
@@ -64,11 +64,11 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
                 .map {
-                    "${it.sqlColumnName} ${it.dataType}"
+                    "${this.buildKeyword(it.sqlColumnName)} ${it.dataType}"
                 }
                 .joinToString(CommonUtils.Comma)
 
-        return "alter table ${definition.name} replace columns ($columnNames)"
+        return "alter table ${this.buildKeyword(definition.name)} replace columns ($columnNames)"
     }
 
     override fun buildDropIndex(
@@ -105,9 +105,9 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             val updateKvp = ArrayList<String>()
 
             record
-                .columns
+                .columnsList
                 .forEach {
-                    updateKvp.add(it.key + CommonUtils.Equals + CommonUtils.getFormattedString(it.value))
+                    updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + CommonUtils.getFormattedString(it))
                 }
 
             // nope, not updating entire table
@@ -117,7 +117,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
             val updateSql = java.lang.String.format(
                     UpdateTableMultipleTemplate,
-                    definition.name,
+                    this.buildKeyword(definition.name),
                     updateKvp.joinToString(CommonUtils.Comma + CommonUtils.Space),
                     criteriaString)
 
@@ -129,18 +129,18 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     }
 
     override fun buildDropTable(definition: YaormModel.TableDefinition): String {
-        return "drop table ${definition.name}"
+        return "drop table ${this.buildKeyword(definition.name)}"
     }
 
     override fun buildDeleteAll(definition: YaormModel.TableDefinition): String {
-        return "delete from ${definition.name}"
+        return "delete from ${this.buildKeyword(definition.name)}"
     }
 
     override fun buildDeleteWithCriteria(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String {
         val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
-        return "delete from ${definition.name} where $whereClause"
+        return "delete from ${this.buildKeyword(definition.name)} where $whereClause"
     }
 
     override fun buildBulkInsert(
@@ -157,16 +157,15 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
         val columnNames = ArrayList<String>()
 
         definition
-            .columnDefinitions
-            .values
+            .columnDefinitionsList
             .sortedBy { it.name }
             .forEach {
                 if (nameTypeMap.containsKey(it.name)) {
-                    columnNames.add(it.name)
+                    columnNames.add(this.buildKeyword(it.name))
                 }
             }
 
-        val initialStatement = "insert into table $tableName \nselect * from\n"
+        val initialStatement = "insert into table ${this.buildKeyword(tableName)} \nselect * from\n"
         val selectStatements = ArrayList<String>()
 
         records
@@ -175,16 +174,15 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 val valueColumnPairs = ArrayList<String>()
 
                 instance
-                    .columns
-                    .values
+                    .columnsList
                     .sortedBy { it.definition.name }
                     .forEach {
                         val formattedString = CommonUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {
-                            valueColumnPairs.add("select $formattedString as ${it.definition.name}")
+                            valueColumnPairs.add("select $formattedString as ${this.buildKeyword(it.definition.name)}")
                         }
                         else {
-                            valueColumnPairs.add("$formattedString as ${it.definition.name}")
+                            valueColumnPairs.add("$formattedString as ${this.buildKeyword(it.definition.name)}")
                         }
                     }
 
@@ -197,7 +195,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     }
 
     override fun buildSelectAll(definition: YaormModel.TableDefinition, limit: Int, offset: Int): String {
-        return java.lang.String.format(SelectAllTemplate, definition.name, limit)
+        return java.lang.String.format(SelectAllTemplate, this.buildKeyword(definition.name), limit)
     }
 
     override fun buildWhereClause(
@@ -207,18 +205,16 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
-                definition.name,
+                this.buildKeyword(definition.name),
                 whereClauseItems)
 
         return whereSql
     }
 
     override fun buildDeleteTable(definition: YaormModel.TableDefinition, primaryKey: YaormModel.Column): String? {
-        val tableName = definition.name
-
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
-                tableName,
+                this.buildKeyword(definition.name),
                 CommonUtils.getFormattedString(primaryKey))
 
         return deleteSql
@@ -237,14 +233,12 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 return null
             }
 
-            val tableName = definition.name
             var stringId: String? = null
 
             val updateKvp = ArrayList<String>()
 
             record
-                .columns
-                .values
+                .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
@@ -252,7 +246,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                         stringId = formattedString
                     }
                     else {
-                        updateKvp.add(it.definition.name + CommonUtils.Equals + formattedString)
+                        updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + formattedString)
                     }
                 }
 
@@ -262,7 +256,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
             val updateSql = java.lang.String.format(
                     UpdateTableSingleTemplate,
-                    tableName,
+                    this.buildKeyword(definition.name),
                     updateKvp.joinToString(CommonUtils.Comma + CommonUtils.Space),
                     stringId!!)
 
@@ -280,8 +274,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             val values = ArrayList<String>()
 
             record
-                .columns
-                .values
+                .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
                     values.add(CommonUtils.getFormattedString(it))
@@ -289,7 +282,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
-                    definition.name,
+                    this.buildKeyword(definition.name),
                     values.joinToString(CommonUtils.Comma))
 
             return insertSql
@@ -315,7 +308,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             if (workspace.length == 0) {
                 workspace
                     .append(CommonUtils.Space)
-                    .append(nameType.sqlColumnName)
+                    .append(this.buildKeyword(nameType.sqlColumnName))
                     .append(CommonUtils.Space)
                     .append(nameType.dataType)
             }
@@ -323,7 +316,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 workspace
                     .append(CommonUtils.Comma)
                     .append(CommonUtils.Space)
-                    .append(nameType.sqlColumnName)
+                    .append(this.buildKeyword(nameType.sqlColumnName))
                     .append(CommonUtils.Space)
                     .append(nameType.dataType)
             }
@@ -331,7 +324,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
         val createTableSql = java.lang.String.format(
             CreateInitialTableTemplate,
-            definition.name,
+            this.buildKeyword(definition.name),
             workspace.toString(),
             10)
 

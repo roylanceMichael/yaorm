@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 package org.roylance.yaorm.models;
 
 enum ProtobufType {
@@ -22,46 +22,46 @@ enum ProtobufType {
 }
 
 message WhereClause {
-    Column name_and_property = 1;
+    optional Column name_and_property = 1;
     enum OperatorType {
         EQUALS = 0;
         GREATER_THAN = 1;
         LESS_THAN = 2;
         NOT_EQUALS = 3;
     }
-    OperatorType operator_type = 2;
+    optional OperatorType operator_type = 2;
     enum ConnectingAndOr {
         NONE = 0;
         AND = 1;
         OR = 2;
     }
-    ConnectingAndOr connecting_and_or = 3;
-    WhereClause connecting_where_clause = 4;
+    optional ConnectingAndOr connecting_and_or = 3;
+    optional WhereClause connecting_where_clause = 4;
 }
 
 message ColumnDefinition {
-    string name = 1;
-    ProtobufType type = 2;
-    bool is_key = 3;
+    optional string name = 1;
+    optional ProtobufType type = 2;
+    optional bool is_key = 3;
     enum ColumnType {
         SCALAR = 0;
         ENUM_NAME = 1;
         ENUM_VALUE = 2;
         MESSAGE_KEY = 3;
     }
-    ColumnType column_type = 4;
+    optional ColumnType column_type = 4;
     enum LinkerType {
         NONE = 0;
         PARENT = 1;
         CHILD = 2;
         NEITHER = 3;
     }
-    LinkerType linker_type = 5;
+    optional LinkerType linker_type = 5;
 }
 
 message Index {
-    map<string, ColumnDefinition> column_names = 1;
-    map<string, ColumnDefinition> include_names = 2;
+    repeated ColumnDefinition column_names = 1;
+    repeated ColumnDefinition include_names = 2;
 }
 
 message Difference {
@@ -70,60 +70,60 @@ message Difference {
         COLUMN = 1;
         TABLE = 2;
     }
-    EntityType entity_type = 1;
+    optional EntityType entity_type = 1;
     enum Operation {
         CREATE = 0;
         DROP = 1;
     }
-    Operation operation = 2;
-    string name = 3;
-    Index index = 4;
-    ColumnDefinition property_definition = 5;
-    TableDefinition table_definition = 6;
+    optional Operation operation = 2;
+    optional string name = 3;
+    optional Index index = 4;
+    optional ColumnDefinition property_definition = 5;
+    optional TableDefinition table_definition = 6;
 }
 
 message TableDefinition {
-    string name = 1;
-    map<string, ColumnDefinition> column_definitions = 2;
-    Index index = 3;
+    optional string name = 1;
+    repeated ColumnDefinition column_definitions = 2;
+    optional Index index = 3;
     enum TableType {
         NORMAL = 0;
         LINKER_MESSAGE = 1;
         LINKER_ENUM = 2;
     }
-    TableType table_type = 4;
+    optional TableType table_type = 4;
 }
 
 message TableDefinitions {
-    map<string, TableDefinition> table_definitions = 1;
+    repeated TableDefinition table_definitions = 1;
 }
 
 message DifferenceReport {
-    bool migration_exists = 1;
+    optional bool migration_exists = 1;
     repeated Difference differences = 2;
 }
 
 message Column {
-    ColumnDefinition definition = 1;
-    double double_holder = 2;
-    float float_holder = 3;
-    int32 int32_holder = 4;
-    int64 int64_holder = 5;
-    uint32 uint32_holder = 6;
-    uint64 uint64_holder = 7;
-    sint32 sint32_holder = 8;
-    sint64 sint64_holder = 9;
-    fixed32 fixed32_holder = 10;
-    fixed64 fixed64_holder = 11;
-    sfixed32 sfixed32_holder = 12;
-    sfixed64 sfixed64_holder = 13;
-    bool bool_holder = 14;
-    string string_holder = 15;
-    bytes bytes_holder = 16;
+    optional ColumnDefinition definition = 1;
+    optional double double_holder = 2;
+    optional float float_holder = 3;
+    optional int32 int32_holder = 4;
+    optional int64 int64_holder = 5;
+    optional uint32 uint32_holder = 6;
+    optional uint64 uint64_holder = 7;
+    optional sint32 sint32_holder = 8;
+    optional sint64 sint64_holder = 9;
+    optional fixed32 fixed32_holder = 10;
+    optional fixed64 fixed64_holder = 11;
+    optional sfixed32 sfixed32_holder = 12;
+    optional sfixed64 sfixed64_holder = 13;
+    optional bool bool_holder = 14;
+    optional string string_holder = 15;
+    optional bytes bytes_holder = 16;
 }
 
 message Record {
-    map<string, Column> columns = 1;
+    repeated Column columns = 1;
 }
 
 message Records {
@@ -131,22 +131,22 @@ message Records {
 }
 
 message TableRecords {
-    TableDefinition table_definition = 1;
-    Records records = 2;
-    string table_name = 3;
+    optional TableDefinition table_definition = 1;
+    optional Records records = 2;
+    optional string table_name = 3;
     repeated string known_parent_ids = 4;
 }
 
 message AllTableRecords {
-    map<string, TableRecords> table_records = 1;
+    repeated TableRecords table_records = 1;
 }
 
 message DatabaseOperation {
-    TableDefinition table_definition = 1;
-    Records records = 2;
-    Index index = 3;
-    ColumnDefinition column_definition = 4;
-    WhereClause where_clause = 5;
+    optional TableDefinition table_definition = 1;
+    optional Records records = 2;
+    optional Index index = 3;
+    optional ColumnDefinition column_definition = 4;
+    optional WhereClause where_clause = 5;
     enum DatabaseOperationType {
         CREATE_TABLE = 0;
         DROP_TABLE = 1;
@@ -168,47 +168,47 @@ message DatabaseOperation {
         DELETE = 17;
         DELETE_ALL = 18;
     }
-    DatabaseOperationType database_operation_type = 6;
+    optional DatabaseOperationType database_operation_type = 6;
 }
 
 message DatabaseOperationResult {
-    bool bool_result = 1;
-    int64 count_result = 2;
-    Record record_result = 3;
-    Records records_result = 4;
-    string error_message = 5;
-    DatabaseOperation database_operation = 6;
+    optional bool bool_result = 1;
+    optional int64 count_result = 2;
+    optional Record record_result = 3;
+    optional Records records_result = 4;
+    optional string error_message = 5;
+    optional DatabaseOperation database_operation = 6;
 }
 
 message DatabaseDefinition {
-    string schema = 1;
-    string name = 2;
-    TableDefinitions table_definitions = 3;
+    optional string schema = 1;
+    optional string name = 2;
+    optional TableDefinitions table_definitions = 3;
     repeated TableDefinitionGraphs table_definition_graphs = 4;
 }
 
 message TableDefinitionGraph {
-    TableDefinition main_table_definition = 1;
-    TableDefinition other_table_definition = 2;
-    TableDefinition linker_table_table = 3;
+    optional TableDefinition main_table_definition = 1;
+    optional TableDefinition other_table_definition = 2;
+    optional TableDefinition linker_table_table = 3;
     enum TableDefinitionGraphType {
         ENUM_TYPE = 0;
         MESSAGE_TYPE = 1;
     }
-    TableDefinitionGraphType definition_graph_type = 4;
-    string main_name = 5;
-    string other_name = 6;
-    string column_name = 7;
+    optional TableDefinitionGraphType definition_graph_type = 4;
+    optional string main_name = 5;
+    optional string other_name = 6;
+    optional string column_name = 7;
 }
 
 message TableDefinitionGraphs {
-    TableDefinition main_table_definition = 1;
+    optional TableDefinition main_table_definition = 1;
     repeated TableDefinitionGraph table_definition_graphs = 2;
 }
 
 message ConnectionInfo {
-    string host = 1;
-    string user = 2;
-    string password = 3;
-    string schema = 4;
+    optional string host = 1;
+    optional string user = 2;
+    optional string password = 3;
+    optional string schema = 4;
 }

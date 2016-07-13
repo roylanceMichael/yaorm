@@ -406,8 +406,7 @@ object CommonUtils {
 
         // let's handle the types now
         definition
-                .columnDefinitions
-                .values
+                .columnDefinitionsList
                 .sortedBy { it.name }
                 .forEach {
                     val columnName = it.name
@@ -465,7 +464,7 @@ object CommonUtils {
     }
 
     fun checkIfOk(definition: YaormModel.TableDefinition):Boolean {
-        return definition.columnDefinitions.values.any { it.name.equals(IdName) }
+        return definition.columnDefinitionsList.any { it.name.equals(IdName) }
     }
 
     fun getLastWord(item:String):String {
@@ -478,11 +477,19 @@ object CommonUtils {
 
     fun buildMapFromRecord(record:YaormModel.Record):Map<String, Any?> {
         val returnMap = HashMap<String, Any?>()
-        record.columns.values.forEach {
+        record.columnsList.forEach {
             val item = this.getAnyObject(it)
             returnMap[it.definition.name] = item
         }
         return returnMap
+    }
+
+    fun getIdColumn(columns:List<YaormModel.ColumnDefinition>):YaormModel.ColumnDefinition? {
+        return columns.firstOrNull { it.name.equals(IdName) }
+    }
+
+    fun getIdColumn(columns:List<YaormModel.Column>):YaormModel.Column? {
+        return columns.firstOrNull { it.definition.name.equals(IdName) }
     }
 
     fun buildMapsFromRecords(records:YaormModel.Records):List<Map<String, Any?>> {
@@ -490,12 +497,12 @@ object CommonUtils {
     }
 
     fun <T> getValueFromRecord(name:String, record:YaormModel.Record):T? {
-        val foundColumn = record.columns.values.firstOrNull { name.equals(it.definition.name) } ?: return  null
+        val foundColumn = record.columnsList.firstOrNull { name.equals(it.definition.name) } ?: return  null
         return getAnyObject(foundColumn) as T
     }
 
     fun getValueFromRecordAny(name:String, record:YaormModel.Record):Any? {
-        val foundColumn = record.columns.values.firstOrNull { name.equals(it.definition.name) } ?: return  null
+        val foundColumn = record.columnsList.firstOrNull { name.equals(it.definition.name) } ?: return  null
         return getAnyObject(foundColumn)
     }
 

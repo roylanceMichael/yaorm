@@ -21,7 +21,6 @@ public final class TestingModel {
      * <code>IDLE = 1;</code>
      */
     IDLE(1, 1),
-    UNRECOGNIZED(-1, -1),
     ;
 
     /**
@@ -34,13 +33,7 @@ public final class TestingModel {
     public static final int IDLE_VALUE = 1;
 
 
-    public final int getNumber() {
-      if (index == -1) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
+    public final int getNumber() { return value; }
 
     public static WorkerState valueOf(int value) {
       switch (value) {
@@ -54,8 +47,8 @@ public final class TestingModel {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        WorkerState> internalValueMap =
+    private static com.google.protobuf.Internal.EnumLiteMap<WorkerState>
+        internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<WorkerState>() {
             public WorkerState findValueByNumber(int number) {
               return WorkerState.valueOf(number);
@@ -83,9 +76,6 @@ public final class TestingModel {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
       return VALUES[desc.getIndex()];
     }
 
@@ -109,7 +99,6 @@ public final class TestingModel {
      * <code>REGISTRATION = 0;</code>
      */
     REGISTRATION(0, 0),
-    UNRECOGNIZED(-1, -1),
     ;
 
     /**
@@ -118,13 +107,7 @@ public final class TestingModel {
     public static final int REGISTRATION_VALUE = 0;
 
 
-    public final int getNumber() {
-      if (index == -1) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
+    public final int getNumber() { return value; }
 
     public static WorkerToManagerMessageType valueOf(int value) {
       switch (value) {
@@ -137,8 +120,8 @@ public final class TestingModel {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        WorkerToManagerMessageType> internalValueMap =
+    private static com.google.protobuf.Internal.EnumLiteMap<WorkerToManagerMessageType>
+        internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<WorkerToManagerMessageType>() {
             public WorkerToManagerMessageType findValueByNumber(int number) {
               return WorkerToManagerMessageType.valueOf(number);
@@ -166,9 +149,6 @@ public final class TestingModel {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
       return VALUES[desc.getIndex()];
     }
 
@@ -192,7 +172,6 @@ public final class TestingModel {
      * <code>ENSURE_WORKERS_WORKING = 0;</code>
      */
     ENSURE_WORKERS_WORKING(0, 0),
-    UNRECOGNIZED(-1, -1),
     ;
 
     /**
@@ -201,13 +180,7 @@ public final class TestingModel {
     public static final int ENSURE_WORKERS_WORKING_VALUE = 0;
 
 
-    public final int getNumber() {
-      if (index == -1) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
+    public final int getNumber() { return value; }
 
     public static ManagerToManagerMessageType valueOf(int value) {
       switch (value) {
@@ -220,8 +193,8 @@ public final class TestingModel {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        ManagerToManagerMessageType> internalValueMap =
+    private static com.google.protobuf.Internal.EnumLiteMap<ManagerToManagerMessageType>
+        internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<ManagerToManagerMessageType>() {
             public ManagerToManagerMessageType findValueByNumber(int number) {
               return ManagerToManagerMessageType.valueOf(number);
@@ -248,9 +221,6 @@ public final class TestingModel {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
       }
       return VALUES[desc.getIndex()];
     }
@@ -279,7 +249,6 @@ public final class TestingModel {
      * <code>WORKER = 1;</code>
      */
     WORKER(1, 1),
-    UNRECOGNIZED(-1, -1),
     ;
 
     /**
@@ -292,13 +261,7 @@ public final class TestingModel {
     public static final int WORKER_VALUE = 1;
 
 
-    public final int getNumber() {
-      if (index == -1) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
+    public final int getNumber() { return value; }
 
     public static ActorRole valueOf(int value) {
       switch (value) {
@@ -312,8 +275,8 @@ public final class TestingModel {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        ActorRole> internalValueMap =
+    private static com.google.protobuf.Internal.EnumLiteMap<ActorRole>
+        internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<ActorRole>() {
             public ActorRole findValueByNumber(int number) {
               return ActorRole.valueOf(number);
@@ -341,9 +304,6 @@ public final class TestingModel {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
       return VALUES[desc.getIndex()];
     }
 
@@ -365,6 +325,10 @@ public final class TestingModel {
     /**
      * <code>optional string id = 1;</code>
      */
+    boolean hasId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
     java.lang.String getId();
     /**
      * <code>optional string id = 1;</code>
@@ -372,6 +336,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    boolean hasDisplay();
     /**
      * <code>optional string display = 2;</code>
      */
@@ -385,8 +353,16 @@ public final class TestingModel {
     /**
      * <code>optional int32 test_int32 = 3;</code>
      */
+    boolean hasTestInt32();
+    /**
+     * <code>optional int32 test_int32 = 3;</code>
+     */
     int getTestInt32();
 
+    /**
+     * <code>optional int64 test_int64 = 4;</code>
+     */
+    boolean hasTestInt64();
     /**
      * <code>optional int64 test_int64 = 4;</code>
      */
@@ -395,8 +371,16 @@ public final class TestingModel {
     /**
      * <code>optional uint32 test_uint32 = 5;</code>
      */
+    boolean hasTestUint32();
+    /**
+     * <code>optional uint32 test_uint32 = 5;</code>
+     */
     int getTestUint32();
 
+    /**
+     * <code>optional uint64 test_uint64 = 6;</code>
+     */
+    boolean hasTestUint64();
     /**
      * <code>optional uint64 test_uint64 = 6;</code>
      */
@@ -405,8 +389,16 @@ public final class TestingModel {
     /**
      * <code>optional sint32 test_sint32 = 7;</code>
      */
+    boolean hasTestSint32();
+    /**
+     * <code>optional sint32 test_sint32 = 7;</code>
+     */
     int getTestSint32();
 
+    /**
+     * <code>optional sint64 test_sint64 = 8;</code>
+     */
+    boolean hasTestSint64();
     /**
      * <code>optional sint64 test_sint64 = 8;</code>
      */
@@ -415,8 +407,16 @@ public final class TestingModel {
     /**
      * <code>optional fixed32 test_fixed32 = 9;</code>
      */
+    boolean hasTestFixed32();
+    /**
+     * <code>optional fixed32 test_fixed32 = 9;</code>
+     */
     int getTestFixed32();
 
+    /**
+     * <code>optional fixed64 test_fixed64 = 10;</code>
+     */
+    boolean hasTestFixed64();
     /**
      * <code>optional fixed64 test_fixed64 = 10;</code>
      */
@@ -425,8 +425,16 @@ public final class TestingModel {
     /**
      * <code>optional sfixed32 test_sfixed32 = 11;</code>
      */
+    boolean hasTestSfixed32();
+    /**
+     * <code>optional sfixed32 test_sfixed32 = 11;</code>
+     */
     int getTestSfixed32();
 
+    /**
+     * <code>optional sfixed64 test_sfixed64 = 12;</code>
+     */
+    boolean hasTestSfixed64();
     /**
      * <code>optional sfixed64 test_sfixed64 = 12;</code>
      */
@@ -435,8 +443,16 @@ public final class TestingModel {
     /**
      * <code>optional bool test_bool = 13;</code>
      */
+    boolean hasTestBool();
+    /**
+     * <code>optional bool test_bool = 13;</code>
+     */
     boolean getTestBool();
 
+    /**
+     * <code>optional bytes test_bytes = 14;</code>
+     */
+    boolean hasTestBytes();
     /**
      * <code>optional bytes test_bytes = 14;</code>
      */
@@ -445,8 +461,16 @@ public final class TestingModel {
     /**
      * <code>optional double test_double = 15;</code>
      */
+    boolean hasTestDouble();
+    /**
+     * <code>optional double test_double = 15;</code>
+     */
     double getTestDouble();
 
+    /**
+     * <code>optional float test_float = 16;</code>
+     */
+    boolean hasTestFloat();
     /**
      * <code>optional float test_float = 16;</code>
      */
@@ -455,7 +479,7 @@ public final class TestingModel {
     /**
      * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
      */
-    int getCoolTypeValue();
+    boolean hasCoolType();
     /**
      * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
      */
@@ -486,15 +510,6 @@ public final class TestingModel {
      * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
      */
     org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolTypes(int index);
-    /**
-     * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-     */
-    java.util.List<java.lang.Integer>
-    getCoolTypesValueList();
-    /**
-     * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-     */
-    int getCoolTypesValue(int index);
 
     /**
      * <code>repeated .org.roylance.yaorm.Child childs = 20;</code>
@@ -523,46 +538,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.SimpleInsertTest}
    */
-  public  static final class SimpleInsertTest extends
+  public static final class SimpleInsertTest extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SimpleInsertTest)
       SimpleInsertTestOrBuilder {
     // Use SimpleInsertTest.newBuilder() to construct.
     private SimpleInsertTest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SimpleInsertTest() {
-      id_ = "";
-      display_ = "";
-      testInt32_ = 0;
-      testInt64_ = 0L;
-      testUint32_ = 0;
-      testUint64_ = 0L;
-      testSint32_ = 0;
-      testSint64_ = 0L;
-      testFixed32_ = 0;
-      testFixed64_ = 0L;
-      testSfixed32_ = 0;
-      testSfixed64_ = 0L;
-      testBool_ = false;
-      testBytes_ = com.google.protobuf.ByteString.EMPTY;
-      testDouble_ = 0D;
-      testFloat_ = 0F;
-      coolType_ = 0;
-      coolTypes_ = java.util.Collections.emptyList();
-      childs_ = java.util.Collections.emptyList();
+    private SimpleInsertTest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SimpleInsertTest defaultInstance;
+    public static SimpleInsertTest getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public SimpleInsertTest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private SimpleInsertTest(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -572,119 +581,130 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              display_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              display_ = bs;
               break;
             }
             case 24: {
-
+              bitField0_ |= 0x00000004;
               testInt32_ = input.readInt32();
               break;
             }
             case 32: {
-
+              bitField0_ |= 0x00000008;
               testInt64_ = input.readInt64();
               break;
             }
             case 40: {
-
+              bitField0_ |= 0x00000010;
               testUint32_ = input.readUInt32();
               break;
             }
             case 48: {
-
+              bitField0_ |= 0x00000020;
               testUint64_ = input.readUInt64();
               break;
             }
             case 56: {
-
+              bitField0_ |= 0x00000040;
               testSint32_ = input.readSInt32();
               break;
             }
             case 64: {
-
+              bitField0_ |= 0x00000080;
               testSint64_ = input.readSInt64();
               break;
             }
             case 77: {
-
+              bitField0_ |= 0x00000100;
               testFixed32_ = input.readFixed32();
               break;
             }
             case 81: {
-
+              bitField0_ |= 0x00000200;
               testFixed64_ = input.readFixed64();
               break;
             }
             case 93: {
-
+              bitField0_ |= 0x00000400;
               testSfixed32_ = input.readSFixed32();
               break;
             }
             case 97: {
-
+              bitField0_ |= 0x00000800;
               testSfixed64_ = input.readSFixed64();
               break;
             }
             case 104: {
-
+              bitField0_ |= 0x00001000;
               testBool_ = input.readBool();
               break;
             }
             case 114: {
-
+              bitField0_ |= 0x00002000;
               testBytes_ = input.readBytes();
               break;
             }
             case 121: {
-
+              bitField0_ |= 0x00004000;
               testDouble_ = input.readDouble();
               break;
             }
             case 133: {
-
+              bitField0_ |= 0x00008000;
               testFloat_ = input.readFloat();
               break;
             }
             case 136: {
               int rawValue = input.readEnum();
-
-              coolType_ = rawValue;
+              org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType value = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(17, rawValue);
+              } else {
+                bitField0_ |= 0x00010000;
+                coolType_ = value;
+              }
               break;
             }
             case 146: {
               org.roylance.yaorm.TestingModel.Child.Builder subBuilder = null;
-              if (child_ != null) {
+              if (((bitField0_ & 0x00020000) == 0x00020000)) {
                 subBuilder = child_.toBuilder();
               }
-              child_ = input.readMessage(org.roylance.yaorm.TestingModel.Child.parser(), extensionRegistry);
+              child_ = input.readMessage(org.roylance.yaorm.TestingModel.Child.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(child_);
                 child_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00020000;
               break;
             }
             case 152: {
               int rawValue = input.readEnum();
-              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
-                coolTypes_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00040000;
+              org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType value = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(19, rawValue);
+                } else {
+                if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
+                  coolTypes_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>();
+                  mutable_bitField0_ |= 0x00040000;
+                }
+                coolTypes_.add(value);
               }
-              coolTypes_.add(rawValue);
               break;
             }
             case 154: {
@@ -692,11 +712,16 @@ public final class TestingModel {
               int oldLimit = input.pushLimit(length);
               while(input.getBytesUntilLimit() > 0) {
                 int rawValue = input.readEnum();
-                if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
-                  coolTypes_ = new java.util.ArrayList<java.lang.Integer>();
-                  mutable_bitField0_ |= 0x00040000;
+                org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType value = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(19, rawValue);
+                  } else {
+                  if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
+                    coolTypes_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>();
+                    mutable_bitField0_ |= 0x00040000;
+                  }
+                  coolTypes_.add(value);
                 }
-                coolTypes_.add(rawValue);
               }
               input.popLimit(oldLimit);
               break;
@@ -706,17 +731,16 @@ public final class TestingModel {
                 childs_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Child>();
                 mutable_bitField0_ |= 0x00080000;
               }
-              childs_.add(input.readMessage(org.roylance.yaorm.TestingModel.Child.parser(), extensionRegistry));
+              childs_.add(input.readMessage(org.roylance.yaorm.TestingModel.Child.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
           coolTypes_ = java.util.Collections.unmodifiableList(coolTypes_);
@@ -724,6 +748,7 @@ public final class TestingModel {
         if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
           childs_ = java.util.Collections.unmodifiableList(childs_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -737,6 +762,21 @@ public final class TestingModel {
       return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.TestingModel.SimpleInsertTest.class, org.roylance.yaorm.TestingModel.SimpleInsertTest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SimpleInsertTest> PARSER =
+        new com.google.protobuf.AbstractParser<SimpleInsertTest>() {
+      public SimpleInsertTest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SimpleInsertTest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SimpleInsertTest> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -756,7 +796,6 @@ public final class TestingModel {
        * <code>SURPRISED = 2;</code>
        */
       SURPRISED(2, 2),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -773,13 +812,7 @@ public final class TestingModel {
       public static final int SURPRISED_VALUE = 2;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static CoolType valueOf(int value) {
         switch (value) {
@@ -794,8 +827,8 @@ public final class TestingModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          CoolType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<CoolType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<CoolType>() {
               public CoolType findValueByNumber(int number) {
                 return CoolType.valueOf(number);
@@ -823,9 +856,6 @@ public final class TestingModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -842,7 +872,13 @@ public final class TestingModel {
 
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -854,7 +890,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -876,7 +914,13 @@ public final class TestingModel {
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object display_;
+    private java.lang.Object display_;
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public boolean hasDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string display = 2;</code>
      */
@@ -888,7 +932,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        display_ = s;
+        if (bs.isValidUtf8()) {
+          display_ = s;
+        }
         return s;
       }
     }
@@ -914,12 +960,24 @@ public final class TestingModel {
     /**
      * <code>optional int32 test_int32 = 3;</code>
      */
+    public boolean hasTestInt32() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 test_int32 = 3;</code>
+     */
     public int getTestInt32() {
       return testInt32_;
     }
 
     public static final int TEST_INT64_FIELD_NUMBER = 4;
     private long testInt64_;
+    /**
+     * <code>optional int64 test_int64 = 4;</code>
+     */
+    public boolean hasTestInt64() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional int64 test_int64 = 4;</code>
      */
@@ -932,12 +990,24 @@ public final class TestingModel {
     /**
      * <code>optional uint32 test_uint32 = 5;</code>
      */
+    public boolean hasTestUint32() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional uint32 test_uint32 = 5;</code>
+     */
     public int getTestUint32() {
       return testUint32_;
     }
 
     public static final int TEST_UINT64_FIELD_NUMBER = 6;
     private long testUint64_;
+    /**
+     * <code>optional uint64 test_uint64 = 6;</code>
+     */
+    public boolean hasTestUint64() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
     /**
      * <code>optional uint64 test_uint64 = 6;</code>
      */
@@ -950,12 +1020,24 @@ public final class TestingModel {
     /**
      * <code>optional sint32 test_sint32 = 7;</code>
      */
+    public boolean hasTestSint32() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional sint32 test_sint32 = 7;</code>
+     */
     public int getTestSint32() {
       return testSint32_;
     }
 
     public static final int TEST_SINT64_FIELD_NUMBER = 8;
     private long testSint64_;
+    /**
+     * <code>optional sint64 test_sint64 = 8;</code>
+     */
+    public boolean hasTestSint64() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
     /**
      * <code>optional sint64 test_sint64 = 8;</code>
      */
@@ -968,12 +1050,24 @@ public final class TestingModel {
     /**
      * <code>optional fixed32 test_fixed32 = 9;</code>
      */
+    public boolean hasTestFixed32() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional fixed32 test_fixed32 = 9;</code>
+     */
     public int getTestFixed32() {
       return testFixed32_;
     }
 
     public static final int TEST_FIXED64_FIELD_NUMBER = 10;
     private long testFixed64_;
+    /**
+     * <code>optional fixed64 test_fixed64 = 10;</code>
+     */
+    public boolean hasTestFixed64() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
     /**
      * <code>optional fixed64 test_fixed64 = 10;</code>
      */
@@ -986,12 +1080,24 @@ public final class TestingModel {
     /**
      * <code>optional sfixed32 test_sfixed32 = 11;</code>
      */
+    public boolean hasTestSfixed32() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional sfixed32 test_sfixed32 = 11;</code>
+     */
     public int getTestSfixed32() {
       return testSfixed32_;
     }
 
     public static final int TEST_SFIXED64_FIELD_NUMBER = 12;
     private long testSfixed64_;
+    /**
+     * <code>optional sfixed64 test_sfixed64 = 12;</code>
+     */
+    public boolean hasTestSfixed64() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
     /**
      * <code>optional sfixed64 test_sfixed64 = 12;</code>
      */
@@ -1004,12 +1110,24 @@ public final class TestingModel {
     /**
      * <code>optional bool test_bool = 13;</code>
      */
+    public boolean hasTestBool() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional bool test_bool = 13;</code>
+     */
     public boolean getTestBool() {
       return testBool_;
     }
 
     public static final int TEST_BYTES_FIELD_NUMBER = 14;
     private com.google.protobuf.ByteString testBytes_;
+    /**
+     * <code>optional bytes test_bytes = 14;</code>
+     */
+    public boolean hasTestBytes() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
     /**
      * <code>optional bytes test_bytes = 14;</code>
      */
@@ -1022,6 +1140,12 @@ public final class TestingModel {
     /**
      * <code>optional double test_double = 15;</code>
      */
+    public boolean hasTestDouble() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional double test_double = 15;</code>
+     */
     public double getTestDouble() {
       return testDouble_;
     }
@@ -1031,24 +1155,29 @@ public final class TestingModel {
     /**
      * <code>optional float test_float = 16;</code>
      */
+    public boolean hasTestFloat() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional float test_float = 16;</code>
+     */
     public float getTestFloat() {
       return testFloat_;
     }
 
     public static final int COOL_TYPE_FIELD_NUMBER = 17;
-    private int coolType_;
+    private org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType coolType_;
     /**
      * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
      */
-    public int getCoolTypeValue() {
-      return coolType_;
+    public boolean hasCoolType() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
      */
     public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolType() {
-      org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(coolType_);
-      return result == null ? org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
+      return coolType_;
     }
 
     public static final int CHILD_FIELD_NUMBER = 18;
@@ -1057,38 +1186,28 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.Child child = 18;</code>
      */
     public boolean hasChild() {
-      return child_ != null;
+      return ((bitField0_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .org.roylance.yaorm.Child child = 18;</code>
      */
     public org.roylance.yaorm.TestingModel.Child getChild() {
-      return child_ == null ? org.roylance.yaorm.TestingModel.Child.getDefaultInstance() : child_;
+      return child_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Child child = 18;</code>
      */
     public org.roylance.yaorm.TestingModel.ChildOrBuilder getChildOrBuilder() {
-      return getChild();
+      return child_;
     }
 
     public static final int COOL_TYPES_FIELD_NUMBER = 19;
-    private java.util.List<java.lang.Integer> coolTypes_;
-    private static final com.google.protobuf.Internal.ListAdapter.Converter<
-        java.lang.Integer, org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType> coolTypes_converter_ =
-            new com.google.protobuf.Internal.ListAdapter.Converter<
-                java.lang.Integer, org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>() {
-              public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType convert(java.lang.Integer from) {
-                org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(from);
-                return result == null ? org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
-              }
-            };
+    private java.util.List<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType> coolTypes_;
     /**
      * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
      */
     public java.util.List<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType> getCoolTypesList() {
-      return new com.google.protobuf.Internal.ListAdapter<
-          java.lang.Integer, org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>(coolTypes_, coolTypes_converter_);
+      return coolTypes_;
     }
     /**
      * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
@@ -1100,22 +1219,8 @@ public final class TestingModel {
      * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
      */
     public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolTypes(int index) {
-      return coolTypes_converter_.convert(coolTypes_.get(index));
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-     */
-    public java.util.List<java.lang.Integer>
-    getCoolTypesValueList() {
-      return coolTypes_;
-    }
-    /**
-     * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-     */
-    public int getCoolTypesValue(int index) {
       return coolTypes_.get(index);
     }
-    private int coolTypesMemoizedSerializedSize;
 
     public static final int CHILDS_FIELD_NUMBER = 20;
     private java.util.List<org.roylance.yaorm.TestingModel.Child> childs_;
@@ -1152,6 +1257,28 @@ public final class TestingModel {
       return childs_.get(index);
     }
 
+    private void initFields() {
+      id_ = "";
+      display_ = "";
+      testInt32_ = 0;
+      testInt64_ = 0L;
+      testUint32_ = 0;
+      testUint64_ = 0L;
+      testSint32_ = 0;
+      testSint64_ = 0L;
+      testFixed32_ = 0;
+      testFixed64_ = 0L;
+      testSfixed32_ = 0;
+      testSfixed64_ = 0L;
+      testBool_ = false;
+      testBytes_ = com.google.protobuf.ByteString.EMPTY;
+      testDouble_ = 0D;
+      testFloat_ = 0F;
+      coolType_ = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.TEST;
+      child_ = org.roylance.yaorm.TestingModel.Child.getDefaultInstance();
+      coolTypes_ = java.util.Collections.emptyList();
+      childs_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1165,168 +1292,172 @@ public final class TestingModel {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDisplayBytes());
       }
-      if (testInt32_ != 0) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, testInt32_);
       }
-      if (testInt64_ != 0L) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt64(4, testInt64_);
       }
-      if (testUint32_ != 0) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(5, testUint32_);
       }
-      if (testUint64_ != 0L) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt64(6, testUint64_);
       }
-      if (testSint32_ != 0) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeSInt32(7, testSint32_);
       }
-      if (testSint64_ != 0L) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeSInt64(8, testSint64_);
       }
-      if (testFixed32_ != 0) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeFixed32(9, testFixed32_);
       }
-      if (testFixed64_ != 0L) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeFixed64(10, testFixed64_);
       }
-      if (testSfixed32_ != 0) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeSFixed32(11, testSfixed32_);
       }
-      if (testSfixed64_ != 0L) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeSFixed64(12, testSfixed64_);
       }
-      if (testBool_ != false) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeBool(13, testBool_);
       }
-      if (!testBytes_.isEmpty()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeBytes(14, testBytes_);
       }
-      if (testDouble_ != 0D) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         output.writeDouble(15, testDouble_);
       }
-      if (testFloat_ != 0F) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         output.writeFloat(16, testFloat_);
       }
-      if (coolType_ != org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.TEST.getNumber()) {
-        output.writeEnum(17, coolType_);
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeEnum(17, coolType_.getNumber());
       }
-      if (child_ != null) {
-        output.writeMessage(18, getChild());
-      }
-      if (getCoolTypesList().size() > 0) {
-        output.writeRawVarint32(154);
-        output.writeRawVarint32(coolTypesMemoizedSerializedSize);
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
+        output.writeMessage(18, child_);
       }
       for (int i = 0; i < coolTypes_.size(); i++) {
-        output.writeEnumNoTag(coolTypes_.get(i));
+        output.writeEnum(19, coolTypes_.get(i).getNumber());
       }
       for (int i = 0; i < childs_.size(); i++) {
         output.writeMessage(20, childs_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDisplayBytes());
       }
-      if (testInt32_ != 0) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, testInt32_);
       }
-      if (testInt64_ != 0L) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, testInt64_);
       }
-      if (testUint32_ != 0) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, testUint32_);
       }
-      if (testUint64_ != 0L) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(6, testUint64_);
       }
-      if (testSint32_ != 0) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt32Size(7, testSint32_);
       }
-      if (testSint64_ != 0L) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt64Size(8, testSint64_);
       }
-      if (testFixed32_ != 0) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFixed32Size(9, testFixed32_);
       }
-      if (testFixed64_ != 0L) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFixed64Size(10, testFixed64_);
       }
-      if (testSfixed32_ != 0) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSFixed32Size(11, testSfixed32_);
       }
-      if (testSfixed64_ != 0L) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSFixed64Size(12, testSfixed64_);
       }
-      if (testBool_ != false) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(13, testBool_);
       }
-      if (!testBytes_.isEmpty()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(14, testBytes_);
       }
-      if (testDouble_ != 0D) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(15, testDouble_);
       }
-      if (testFloat_ != 0F) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(16, testFloat_);
       }
-      if (coolType_ != org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.TEST.getNumber()) {
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(17, coolType_);
+          .computeEnumSize(17, coolType_.getNumber());
       }
-      if (child_ != null) {
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(18, getChild());
+          .computeMessageSize(18, child_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < coolTypes_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeEnumSizeNoTag(coolTypes_.get(i));
+            .computeEnumSizeNoTag(coolTypes_.get(i).getNumber());
         }
         size += dataSize;
-        if (!getCoolTypesList().isEmpty()) {  size += 2;
-          size += com.google.protobuf.CodedOutputStream
-            .computeRawVarint32Size(dataSize);
-        }coolTypesMemoizedSerializedSize = dataSize;
+        size += 2 * coolTypes_.size();
       }
       for (int i = 0; i < childs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(20, childs_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.SimpleInsertTest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1380,17 +1511,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.SimpleInsertTest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -1429,51 +1555,56 @@ public final class TestingModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getChildFieldBuilder();
           getChildsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         display_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         testInt32_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         testInt64_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         testUint32_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         testUint64_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         testSint32_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         testSint64_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000080);
         testFixed32_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000100);
         testFixed64_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000200);
         testSfixed32_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000400);
         testSfixed64_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000800);
         testBool_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00001000);
         testBytes_ = com.google.protobuf.ByteString.EMPTY;
-
+        bitField0_ = (bitField0_ & ~0x00002000);
         testDouble_ = 0D;
-
+        bitField0_ = (bitField0_ & ~0x00004000);
         testFloat_ = 0F;
-
-        coolType_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00008000);
+        coolType_ = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.TEST;
+        bitField0_ = (bitField0_ & ~0x00010000);
         if (childBuilder_ == null) {
-          child_ = null;
+          child_ = org.roylance.yaorm.TestingModel.Child.getDefaultInstance();
         } else {
-          child_ = null;
-          childBuilder_ = null;
+          childBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00020000);
         coolTypes_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00040000);
         if (childsBuilder_ == null) {
@@ -1483,6 +1614,10 @@ public final class TestingModel {
           childsBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1506,23 +1641,77 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.SimpleInsertTest result = new org.roylance.yaorm.TestingModel.SimpleInsertTest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.display_ = display_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.testInt32_ = testInt32_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.testInt64_ = testInt64_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.testUint32_ = testUint32_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.testUint64_ = testUint64_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.testSint32_ = testSint32_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.testSint64_ = testSint64_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
         result.testFixed32_ = testFixed32_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.testFixed64_ = testFixed64_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
         result.testSfixed32_ = testSfixed32_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
         result.testSfixed64_ = testSfixed64_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
         result.testBool_ = testBool_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
         result.testBytes_ = testBytes_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
         result.testDouble_ = testDouble_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
         result.testFloat_ = testFloat_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
+        }
         result.coolType_ = coolType_;
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00020000;
+        }
         if (childBuilder_ == null) {
           result.child_ = child_;
         } else {
@@ -1558,58 +1747,60 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.SimpleInsertTest other) {
         if (other == org.roylance.yaorm.TestingModel.SimpleInsertTest.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getDisplay().isEmpty()) {
+        if (other.hasDisplay()) {
+          bitField0_ |= 0x00000002;
           display_ = other.display_;
           onChanged();
         }
-        if (other.getTestInt32() != 0) {
+        if (other.hasTestInt32()) {
           setTestInt32(other.getTestInt32());
         }
-        if (other.getTestInt64() != 0L) {
+        if (other.hasTestInt64()) {
           setTestInt64(other.getTestInt64());
         }
-        if (other.getTestUint32() != 0) {
+        if (other.hasTestUint32()) {
           setTestUint32(other.getTestUint32());
         }
-        if (other.getTestUint64() != 0L) {
+        if (other.hasTestUint64()) {
           setTestUint64(other.getTestUint64());
         }
-        if (other.getTestSint32() != 0) {
+        if (other.hasTestSint32()) {
           setTestSint32(other.getTestSint32());
         }
-        if (other.getTestSint64() != 0L) {
+        if (other.hasTestSint64()) {
           setTestSint64(other.getTestSint64());
         }
-        if (other.getTestFixed32() != 0) {
+        if (other.hasTestFixed32()) {
           setTestFixed32(other.getTestFixed32());
         }
-        if (other.getTestFixed64() != 0L) {
+        if (other.hasTestFixed64()) {
           setTestFixed64(other.getTestFixed64());
         }
-        if (other.getTestSfixed32() != 0) {
+        if (other.hasTestSfixed32()) {
           setTestSfixed32(other.getTestSfixed32());
         }
-        if (other.getTestSfixed64() != 0L) {
+        if (other.hasTestSfixed64()) {
           setTestSfixed64(other.getTestSfixed64());
         }
-        if (other.getTestBool() != false) {
+        if (other.hasTestBool()) {
           setTestBool(other.getTestBool());
         }
-        if (other.getTestBytes() != com.google.protobuf.ByteString.EMPTY) {
+        if (other.hasTestBytes()) {
           setTestBytes(other.getTestBytes());
         }
-        if (other.getTestDouble() != 0D) {
+        if (other.hasTestDouble()) {
           setTestDouble(other.getTestDouble());
         }
-        if (other.getTestFloat() != 0F) {
+        if (other.hasTestFloat()) {
           setTestFloat(other.getTestFloat());
         }
-        if (other.coolType_ != 0) {
-          setCoolTypeValue(other.getCoolTypeValue());
+        if (other.hasCoolType()) {
+          setCoolType(other.getCoolType());
         }
         if (other.hasChild()) {
           mergeChild(other.getChild());
@@ -1650,7 +1841,7 @@ public final class TestingModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -1681,13 +1872,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1717,7 +1916,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -1726,7 +1925,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -1739,8 +1938,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -1750,13 +1948,21 @@ public final class TestingModel {
       /**
        * <code>optional string display = 2;</code>
        */
+      public boolean hasDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          display_ = s;
+          if (bs.isValidUtf8()) {
+            display_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1786,7 +1992,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
@@ -1795,7 +2001,7 @@ public final class TestingModel {
        * <code>optional string display = 2;</code>
        */
       public Builder clearDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -1808,14 +2014,19 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
       }
 
       private int testInt32_ ;
+      /**
+       * <code>optional int32 test_int32 = 3;</code>
+       */
+      public boolean hasTestInt32() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
       /**
        * <code>optional int32 test_int32 = 3;</code>
        */
@@ -1826,7 +2037,7 @@ public final class TestingModel {
        * <code>optional int32 test_int32 = 3;</code>
        */
       public Builder setTestInt32(int value) {
-        
+        bitField0_ |= 0x00000004;
         testInt32_ = value;
         onChanged();
         return this;
@@ -1835,13 +2046,19 @@ public final class TestingModel {
        * <code>optional int32 test_int32 = 3;</code>
        */
       public Builder clearTestInt32() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         testInt32_ = 0;
         onChanged();
         return this;
       }
 
       private long testInt64_ ;
+      /**
+       * <code>optional int64 test_int64 = 4;</code>
+       */
+      public boolean hasTestInt64() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
       /**
        * <code>optional int64 test_int64 = 4;</code>
        */
@@ -1852,7 +2069,7 @@ public final class TestingModel {
        * <code>optional int64 test_int64 = 4;</code>
        */
       public Builder setTestInt64(long value) {
-        
+        bitField0_ |= 0x00000008;
         testInt64_ = value;
         onChanged();
         return this;
@@ -1861,13 +2078,19 @@ public final class TestingModel {
        * <code>optional int64 test_int64 = 4;</code>
        */
       public Builder clearTestInt64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         testInt64_ = 0L;
         onChanged();
         return this;
       }
 
       private int testUint32_ ;
+      /**
+       * <code>optional uint32 test_uint32 = 5;</code>
+       */
+      public boolean hasTestUint32() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
       /**
        * <code>optional uint32 test_uint32 = 5;</code>
        */
@@ -1878,7 +2101,7 @@ public final class TestingModel {
        * <code>optional uint32 test_uint32 = 5;</code>
        */
       public Builder setTestUint32(int value) {
-        
+        bitField0_ |= 0x00000010;
         testUint32_ = value;
         onChanged();
         return this;
@@ -1887,13 +2110,19 @@ public final class TestingModel {
        * <code>optional uint32 test_uint32 = 5;</code>
        */
       public Builder clearTestUint32() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         testUint32_ = 0;
         onChanged();
         return this;
       }
 
       private long testUint64_ ;
+      /**
+       * <code>optional uint64 test_uint64 = 6;</code>
+       */
+      public boolean hasTestUint64() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
       /**
        * <code>optional uint64 test_uint64 = 6;</code>
        */
@@ -1904,7 +2133,7 @@ public final class TestingModel {
        * <code>optional uint64 test_uint64 = 6;</code>
        */
       public Builder setTestUint64(long value) {
-        
+        bitField0_ |= 0x00000020;
         testUint64_ = value;
         onChanged();
         return this;
@@ -1913,13 +2142,19 @@ public final class TestingModel {
        * <code>optional uint64 test_uint64 = 6;</code>
        */
       public Builder clearTestUint64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         testUint64_ = 0L;
         onChanged();
         return this;
       }
 
       private int testSint32_ ;
+      /**
+       * <code>optional sint32 test_sint32 = 7;</code>
+       */
+      public boolean hasTestSint32() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
       /**
        * <code>optional sint32 test_sint32 = 7;</code>
        */
@@ -1930,7 +2165,7 @@ public final class TestingModel {
        * <code>optional sint32 test_sint32 = 7;</code>
        */
       public Builder setTestSint32(int value) {
-        
+        bitField0_ |= 0x00000040;
         testSint32_ = value;
         onChanged();
         return this;
@@ -1939,13 +2174,19 @@ public final class TestingModel {
        * <code>optional sint32 test_sint32 = 7;</code>
        */
       public Builder clearTestSint32() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         testSint32_ = 0;
         onChanged();
         return this;
       }
 
       private long testSint64_ ;
+      /**
+       * <code>optional sint64 test_sint64 = 8;</code>
+       */
+      public boolean hasTestSint64() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
       /**
        * <code>optional sint64 test_sint64 = 8;</code>
        */
@@ -1956,7 +2197,7 @@ public final class TestingModel {
        * <code>optional sint64 test_sint64 = 8;</code>
        */
       public Builder setTestSint64(long value) {
-        
+        bitField0_ |= 0x00000080;
         testSint64_ = value;
         onChanged();
         return this;
@@ -1965,13 +2206,19 @@ public final class TestingModel {
        * <code>optional sint64 test_sint64 = 8;</code>
        */
       public Builder clearTestSint64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         testSint64_ = 0L;
         onChanged();
         return this;
       }
 
       private int testFixed32_ ;
+      /**
+       * <code>optional fixed32 test_fixed32 = 9;</code>
+       */
+      public boolean hasTestFixed32() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
       /**
        * <code>optional fixed32 test_fixed32 = 9;</code>
        */
@@ -1982,7 +2229,7 @@ public final class TestingModel {
        * <code>optional fixed32 test_fixed32 = 9;</code>
        */
       public Builder setTestFixed32(int value) {
-        
+        bitField0_ |= 0x00000100;
         testFixed32_ = value;
         onChanged();
         return this;
@@ -1991,13 +2238,19 @@ public final class TestingModel {
        * <code>optional fixed32 test_fixed32 = 9;</code>
        */
       public Builder clearTestFixed32() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         testFixed32_ = 0;
         onChanged();
         return this;
       }
 
       private long testFixed64_ ;
+      /**
+       * <code>optional fixed64 test_fixed64 = 10;</code>
+       */
+      public boolean hasTestFixed64() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
       /**
        * <code>optional fixed64 test_fixed64 = 10;</code>
        */
@@ -2008,7 +2261,7 @@ public final class TestingModel {
        * <code>optional fixed64 test_fixed64 = 10;</code>
        */
       public Builder setTestFixed64(long value) {
-        
+        bitField0_ |= 0x00000200;
         testFixed64_ = value;
         onChanged();
         return this;
@@ -2017,13 +2270,19 @@ public final class TestingModel {
        * <code>optional fixed64 test_fixed64 = 10;</code>
        */
       public Builder clearTestFixed64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         testFixed64_ = 0L;
         onChanged();
         return this;
       }
 
       private int testSfixed32_ ;
+      /**
+       * <code>optional sfixed32 test_sfixed32 = 11;</code>
+       */
+      public boolean hasTestSfixed32() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
       /**
        * <code>optional sfixed32 test_sfixed32 = 11;</code>
        */
@@ -2034,7 +2293,7 @@ public final class TestingModel {
        * <code>optional sfixed32 test_sfixed32 = 11;</code>
        */
       public Builder setTestSfixed32(int value) {
-        
+        bitField0_ |= 0x00000400;
         testSfixed32_ = value;
         onChanged();
         return this;
@@ -2043,13 +2302,19 @@ public final class TestingModel {
        * <code>optional sfixed32 test_sfixed32 = 11;</code>
        */
       public Builder clearTestSfixed32() {
-        
+        bitField0_ = (bitField0_ & ~0x00000400);
         testSfixed32_ = 0;
         onChanged();
         return this;
       }
 
       private long testSfixed64_ ;
+      /**
+       * <code>optional sfixed64 test_sfixed64 = 12;</code>
+       */
+      public boolean hasTestSfixed64() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
       /**
        * <code>optional sfixed64 test_sfixed64 = 12;</code>
        */
@@ -2060,7 +2325,7 @@ public final class TestingModel {
        * <code>optional sfixed64 test_sfixed64 = 12;</code>
        */
       public Builder setTestSfixed64(long value) {
-        
+        bitField0_ |= 0x00000800;
         testSfixed64_ = value;
         onChanged();
         return this;
@@ -2069,13 +2334,19 @@ public final class TestingModel {
        * <code>optional sfixed64 test_sfixed64 = 12;</code>
        */
       public Builder clearTestSfixed64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000800);
         testSfixed64_ = 0L;
         onChanged();
         return this;
       }
 
       private boolean testBool_ ;
+      /**
+       * <code>optional bool test_bool = 13;</code>
+       */
+      public boolean hasTestBool() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
       /**
        * <code>optional bool test_bool = 13;</code>
        */
@@ -2086,7 +2357,7 @@ public final class TestingModel {
        * <code>optional bool test_bool = 13;</code>
        */
       public Builder setTestBool(boolean value) {
-        
+        bitField0_ |= 0x00001000;
         testBool_ = value;
         onChanged();
         return this;
@@ -2095,13 +2366,19 @@ public final class TestingModel {
        * <code>optional bool test_bool = 13;</code>
        */
       public Builder clearTestBool() {
-        
+        bitField0_ = (bitField0_ & ~0x00001000);
         testBool_ = false;
         onChanged();
         return this;
       }
 
       private com.google.protobuf.ByteString testBytes_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes test_bytes = 14;</code>
+       */
+      public boolean hasTestBytes() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
       /**
        * <code>optional bytes test_bytes = 14;</code>
        */
@@ -2115,7 +2392,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00002000;
         testBytes_ = value;
         onChanged();
         return this;
@@ -2124,13 +2401,19 @@ public final class TestingModel {
        * <code>optional bytes test_bytes = 14;</code>
        */
       public Builder clearTestBytes() {
-        
+        bitField0_ = (bitField0_ & ~0x00002000);
         testBytes_ = getDefaultInstance().getTestBytes();
         onChanged();
         return this;
       }
 
       private double testDouble_ ;
+      /**
+       * <code>optional double test_double = 15;</code>
+       */
+      public boolean hasTestDouble() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
       /**
        * <code>optional double test_double = 15;</code>
        */
@@ -2141,7 +2424,7 @@ public final class TestingModel {
        * <code>optional double test_double = 15;</code>
        */
       public Builder setTestDouble(double value) {
-        
+        bitField0_ |= 0x00004000;
         testDouble_ = value;
         onChanged();
         return this;
@@ -2150,13 +2433,19 @@ public final class TestingModel {
        * <code>optional double test_double = 15;</code>
        */
       public Builder clearTestDouble() {
-        
+        bitField0_ = (bitField0_ & ~0x00004000);
         testDouble_ = 0D;
         onChanged();
         return this;
       }
 
       private float testFloat_ ;
+      /**
+       * <code>optional float test_float = 16;</code>
+       */
+      public boolean hasTestFloat() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
       /**
        * <code>optional float test_float = 16;</code>
        */
@@ -2167,7 +2456,7 @@ public final class TestingModel {
        * <code>optional float test_float = 16;</code>
        */
       public Builder setTestFloat(float value) {
-        
+        bitField0_ |= 0x00008000;
         testFloat_ = value;
         onChanged();
         return this;
@@ -2176,33 +2465,24 @@ public final class TestingModel {
        * <code>optional float test_float = 16;</code>
        */
       public Builder clearTestFloat() {
-        
+        bitField0_ = (bitField0_ & ~0x00008000);
         testFloat_ = 0F;
         onChanged();
         return this;
       }
 
-      private int coolType_ = 0;
+      private org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType coolType_ = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.TEST;
       /**
        * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
        */
-      public int getCoolTypeValue() {
-        return coolType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
-       */
-      public Builder setCoolTypeValue(int value) {
-        coolType_ = value;
-        onChanged();
-        return this;
+      public boolean hasCoolType() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
        */
       public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolType() {
-        org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.valueOf(coolType_);
-        return result == null ? org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
+        return coolType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
@@ -2211,8 +2491,8 @@ public final class TestingModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        coolType_ = value.getNumber();
+        bitField0_ |= 0x00010000;
+        coolType_ = value;
         onChanged();
         return this;
       }
@@ -2220,27 +2500,27 @@ public final class TestingModel {
        * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
        */
       public Builder clearCoolType() {
-        
-        coolType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00010000);
+        coolType_ = org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType.TEST;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.TestingModel.Child child_ = null;
+      private org.roylance.yaorm.TestingModel.Child child_ = org.roylance.yaorm.TestingModel.Child.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.Child, org.roylance.yaorm.TestingModel.Child.Builder, org.roylance.yaorm.TestingModel.ChildOrBuilder> childBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Child child = 18;</code>
        */
       public boolean hasChild() {
-        return childBuilder_ != null || child_ != null;
+        return ((bitField0_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .org.roylance.yaorm.Child child = 18;</code>
        */
       public org.roylance.yaorm.TestingModel.Child getChild() {
         if (childBuilder_ == null) {
-          return child_ == null ? org.roylance.yaorm.TestingModel.Child.getDefaultInstance() : child_;
+          return child_;
         } else {
           return childBuilder_.getMessage();
         }
@@ -2258,7 +2538,7 @@ public final class TestingModel {
         } else {
           childBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00020000;
         return this;
       }
       /**
@@ -2272,7 +2552,7 @@ public final class TestingModel {
         } else {
           childBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00020000;
         return this;
       }
       /**
@@ -2280,7 +2560,8 @@ public final class TestingModel {
        */
       public Builder mergeChild(org.roylance.yaorm.TestingModel.Child value) {
         if (childBuilder_ == null) {
-          if (child_ != null) {
+          if (((bitField0_ & 0x00020000) == 0x00020000) &&
+              child_ != org.roylance.yaorm.TestingModel.Child.getDefaultInstance()) {
             child_ =
               org.roylance.yaorm.TestingModel.Child.newBuilder(child_).mergeFrom(value).buildPartial();
           } else {
@@ -2290,7 +2571,7 @@ public final class TestingModel {
         } else {
           childBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00020000;
         return this;
       }
       /**
@@ -2298,20 +2579,19 @@ public final class TestingModel {
        */
       public Builder clearChild() {
         if (childBuilder_ == null) {
-          child_ = null;
+          child_ = org.roylance.yaorm.TestingModel.Child.getDefaultInstance();
           onChanged();
         } else {
-          child_ = null;
-          childBuilder_ = null;
+          childBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Child child = 18;</code>
        */
       public org.roylance.yaorm.TestingModel.Child.Builder getChildBuilder() {
-        
+        bitField0_ |= 0x00020000;
         onChanged();
         return getChildFieldBuilder().getBuilder();
       }
@@ -2322,8 +2602,7 @@ public final class TestingModel {
         if (childBuilder_ != null) {
           return childBuilder_.getMessageOrBuilder();
         } else {
-          return child_ == null ?
-              org.roylance.yaorm.TestingModel.Child.getDefaultInstance() : child_;
+          return child_;
         }
       }
       /**
@@ -2343,11 +2622,11 @@ public final class TestingModel {
         return childBuilder_;
       }
 
-      private java.util.List<java.lang.Integer> coolTypes_ =
+      private java.util.List<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType> coolTypes_ =
         java.util.Collections.emptyList();
       private void ensureCoolTypesIsMutable() {
         if (!((bitField0_ & 0x00040000) == 0x00040000)) {
-          coolTypes_ = new java.util.ArrayList<java.lang.Integer>(coolTypes_);
+          coolTypes_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>(coolTypes_);
           bitField0_ |= 0x00040000;
         }
       }
@@ -2355,8 +2634,7 @@ public final class TestingModel {
        * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
        */
       public java.util.List<org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType> getCoolTypesList() {
-        return new com.google.protobuf.Internal.ListAdapter<
-            java.lang.Integer, org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType>(coolTypes_, coolTypes_converter_);
+        return java.util.Collections.unmodifiableList(coolTypes_);
       }
       /**
        * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
@@ -2368,7 +2646,7 @@ public final class TestingModel {
        * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
        */
       public org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType getCoolTypes(int index) {
-        return coolTypes_converter_.convert(coolTypes_.get(index));
+        return coolTypes_.get(index);
       }
       /**
        * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
@@ -2379,7 +2657,7 @@ public final class TestingModel {
           throw new NullPointerException();
         }
         ensureCoolTypesIsMutable();
-        coolTypes_.set(index, value.getNumber());
+        coolTypes_.set(index, value);
         onChanged();
         return this;
       }
@@ -2391,7 +2669,7 @@ public final class TestingModel {
           throw new NullPointerException();
         }
         ensureCoolTypesIsMutable();
-        coolTypes_.add(value.getNumber());
+        coolTypes_.add(value);
         onChanged();
         return this;
       }
@@ -2401,9 +2679,8 @@ public final class TestingModel {
       public Builder addAllCoolTypes(
           java.lang.Iterable<? extends org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType> values) {
         ensureCoolTypesIsMutable();
-        for (org.roylance.yaorm.TestingModel.SimpleInsertTest.CoolType value : values) {
-          coolTypes_.add(value.getNumber());
-        }
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, coolTypes_);
         onChanged();
         return this;
       }
@@ -2413,50 +2690,6 @@ public final class TestingModel {
       public Builder clearCoolTypes() {
         coolTypes_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00040000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-       */
-      public java.util.List<java.lang.Integer>
-      getCoolTypesValueList() {
-        return java.util.Collections.unmodifiableList(coolTypes_);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-       */
-      public int getCoolTypesValue(int index) {
-        return coolTypes_.get(index);
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-       */
-      public Builder setCoolTypesValue(
-          int index, int value) {
-        ensureCoolTypesIsMutable();
-        coolTypes_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-       */
-      public Builder addCoolTypesValue(int value) {
-        ensureCoolTypesIsMutable();
-        coolTypes_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated .org.roylance.yaorm.SimpleInsertTest.CoolType cool_types = 19;</code>
-       */
-      public Builder addAllCoolTypesValue(
-          java.lang.Iterable<java.lang.Integer> values) {
-        ensureCoolTypesIsMutable();
-        for (int value : values) {
-          coolTypes_.add(value);
-        }
         onChanged();
         return this;
       }
@@ -2700,68 +2933,26 @@ public final class TestingModel {
         }
         return childsBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SimpleInsertTest)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SimpleInsertTest)
-    private static final org.roylance.yaorm.TestingModel.SimpleInsertTest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.SimpleInsertTest();
+      defaultInstance = new SimpleInsertTest(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.SimpleInsertTest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SimpleInsertTest>
-        PARSER = new com.google.protobuf.AbstractParser<SimpleInsertTest>() {
-      public SimpleInsertTest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new SimpleInsertTest(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<SimpleInsertTest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SimpleInsertTest> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.SimpleInsertTest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SimpleInsertTest)
   }
 
   public interface ChildOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Child)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -2772,6 +2963,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
+    /**
+     * <code>optional string test_display = 2;</code>
+     */
+    boolean hasTestDisplay();
     /**
      * <code>optional string test_display = 2;</code>
      */
@@ -2822,30 +3017,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Child}
    */
-  public  static final class Child extends
+  public static final class Child extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Child)
       ChildOrBuilder {
     // Use Child.newBuilder() to construct.
     private Child(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Child() {
-      id_ = "";
-      testDisplay_ = "";
-      subChild_ = java.util.Collections.emptyList();
+    private Child(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Child defaultInstance;
+    public static Child getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Child getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Child(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2855,21 +3060,22 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              testDisplay_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              testDisplay_ = bs;
               break;
             }
             case 26: {
@@ -2877,34 +3083,34 @@ public final class TestingModel {
                 subChild_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.SubChild>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              subChild_.add(input.readMessage(org.roylance.yaorm.TestingModel.SubChild.parser(), extensionRegistry));
+              subChild_.add(input.readMessage(org.roylance.yaorm.TestingModel.SubChild.PARSER, extensionRegistry));
               break;
             }
             case 34: {
               org.roylance.yaorm.TestingModel.SubSubSubChild.Builder subBuilder = null;
-              if (subSubSubChild_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = subSubSubChild_.toBuilder();
               }
-              subSubSubChild_ = input.readMessage(org.roylance.yaorm.TestingModel.SubSubSubChild.parser(), extensionRegistry);
+              subSubSubChild_ = input.readMessage(org.roylance.yaorm.TestingModel.SubSubSubChild.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(subSubSubChild_);
                 subSubSubChild_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           subChild_ = java.util.Collections.unmodifiableList(subChild_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2920,9 +3126,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Child.class, org.roylance.yaorm.TestingModel.Child.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Child> PARSER =
+        new com.google.protobuf.AbstractParser<Child>() {
+      public Child parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Child(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Child> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -2934,7 +3161,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -2956,7 +3185,13 @@ public final class TestingModel {
     }
 
     public static final int TEST_DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object testDisplay_;
+    private java.lang.Object testDisplay_;
+    /**
+     * <code>optional string test_display = 2;</code>
+     */
+    public boolean hasTestDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string test_display = 2;</code>
      */
@@ -2968,7 +3203,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        testDisplay_ = s;
+        if (bs.isValidUtf8()) {
+          testDisplay_ = s;
+        }
         return s;
       }
     }
@@ -3030,21 +3267,27 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
      */
     public boolean hasSubSubSubChild() {
-      return subSubSubChild_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
      */
     public org.roylance.yaorm.TestingModel.SubSubSubChild getSubSubSubChild() {
-      return subSubSubChild_ == null ? org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance() : subSubSubChild_;
+      return subSubSubChild_;
     }
     /**
      * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
      */
     public org.roylance.yaorm.TestingModel.SubSubSubChildOrBuilder getSubSubSubChildOrBuilder() {
-      return getSubSubSubChild();
+      return subSubSubChild_;
     }
 
+    private void initFields() {
+      id_ = "";
+      testDisplay_ = "";
+      subChild_ = java.util.Collections.emptyList();
+      subSubSubChild_ = org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3057,44 +3300,56 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getTestDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, testDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getTestDisplayBytes());
       }
       for (int i = 0; i < subChild_.size(); i++) {
         output.writeMessage(3, subChild_.get(i));
       }
-      if (subSubSubChild_ != null) {
-        output.writeMessage(4, getSubSubSubChild());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(4, subSubSubChild_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getTestDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, testDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getTestDisplayBytes());
       }
       for (int i = 0; i < subChild_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, subChild_.get(i));
       }
-      if (subSubSubChild_ != null) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getSubSubSubChild());
+          .computeMessageSize(4, subSubSubChild_);
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Child parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3148,17 +3403,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Child prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -3198,14 +3448,19 @@ public final class TestingModel {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getSubChildFieldBuilder();
+          getSubSubSubChildFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         testDisplay_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (subChildBuilder_ == null) {
           subChild_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
@@ -3213,12 +3468,16 @@ public final class TestingModel {
           subChildBuilder_.clear();
         }
         if (subSubSubChildBuilder_ == null) {
-          subSubSubChild_ = null;
+          subSubSubChild_ = org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance();
         } else {
-          subSubSubChild_ = null;
-          subSubSubChildBuilder_ = null;
+          subSubSubChildBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -3242,7 +3501,13 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.Child result = new org.roylance.yaorm.TestingModel.Child(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.testDisplay_ = testDisplay_;
         if (subChildBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004)) {
@@ -3252,6 +3517,9 @@ public final class TestingModel {
           result.subChild_ = subChild_;
         } else {
           result.subChild_ = subChildBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
         }
         if (subSubSubChildBuilder_ == null) {
           result.subSubSubChild_ = subSubSubChild_;
@@ -3274,11 +3542,13 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Child other) {
         if (other == org.roylance.yaorm.TestingModel.Child.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getTestDisplay().isEmpty()) {
+        if (other.hasTestDisplay()) {
+          bitField0_ |= 0x00000002;
           testDisplay_ = other.testDisplay_;
           onChanged();
         }
@@ -3311,7 +3581,7 @@ public final class TestingModel {
         if (other.hasSubSubSubChild()) {
           mergeSubSubSubChild(other.getSubSubSubChild());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -3342,13 +3612,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -3378,7 +3656,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -3387,7 +3665,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -3400,8 +3678,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -3411,13 +3688,21 @@ public final class TestingModel {
       /**
        * <code>optional string test_display = 2;</code>
        */
+      public boolean hasTestDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string test_display = 2;</code>
+       */
       public java.lang.String getTestDisplay() {
         java.lang.Object ref = testDisplay_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          testDisplay_ = s;
+          if (bs.isValidUtf8()) {
+            testDisplay_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -3447,7 +3732,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         testDisplay_ = value;
         onChanged();
         return this;
@@ -3456,7 +3741,7 @@ public final class TestingModel {
        * <code>optional string test_display = 2;</code>
        */
       public Builder clearTestDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         testDisplay_ = getDefaultInstance().getTestDisplay();
         onChanged();
         return this;
@@ -3469,8 +3754,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         testDisplay_ = value;
         onChanged();
         return this;
@@ -3716,21 +4000,21 @@ public final class TestingModel {
         return subChildBuilder_;
       }
 
-      private org.roylance.yaorm.TestingModel.SubSubSubChild subSubSubChild_ = null;
+      private org.roylance.yaorm.TestingModel.SubSubSubChild subSubSubChild_ = org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.SubSubSubChild, org.roylance.yaorm.TestingModel.SubSubSubChild.Builder, org.roylance.yaorm.TestingModel.SubSubSubChildOrBuilder> subSubSubChildBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
        */
       public boolean hasSubSubSubChild() {
-        return subSubSubChildBuilder_ != null || subSubSubChild_ != null;
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
        */
       public org.roylance.yaorm.TestingModel.SubSubSubChild getSubSubSubChild() {
         if (subSubSubChildBuilder_ == null) {
-          return subSubSubChild_ == null ? org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance() : subSubSubChild_;
+          return subSubSubChild_;
         } else {
           return subSubSubChildBuilder_.getMessage();
         }
@@ -3748,7 +4032,7 @@ public final class TestingModel {
         } else {
           subSubSubChildBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -3762,7 +4046,7 @@ public final class TestingModel {
         } else {
           subSubSubChildBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -3770,7 +4054,8 @@ public final class TestingModel {
        */
       public Builder mergeSubSubSubChild(org.roylance.yaorm.TestingModel.SubSubSubChild value) {
         if (subSubSubChildBuilder_ == null) {
-          if (subSubSubChild_ != null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              subSubSubChild_ != org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance()) {
             subSubSubChild_ =
               org.roylance.yaorm.TestingModel.SubSubSubChild.newBuilder(subSubSubChild_).mergeFrom(value).buildPartial();
           } else {
@@ -3780,7 +4065,7 @@ public final class TestingModel {
         } else {
           subSubSubChildBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -3788,20 +4073,19 @@ public final class TestingModel {
        */
       public Builder clearSubSubSubChild() {
         if (subSubSubChildBuilder_ == null) {
-          subSubSubChild_ = null;
+          subSubSubChild_ = org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance();
           onChanged();
         } else {
-          subSubSubChild_ = null;
-          subSubSubChildBuilder_ = null;
+          subSubSubChildBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
        */
       public org.roylance.yaorm.TestingModel.SubSubSubChild.Builder getSubSubSubChildBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getSubSubSubChildFieldBuilder().getBuilder();
       }
@@ -3812,8 +4096,7 @@ public final class TestingModel {
         if (subSubSubChildBuilder_ != null) {
           return subSubSubChildBuilder_.getMessageOrBuilder();
         } else {
-          return subSubSubChild_ == null ?
-              org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance() : subSubSubChild_;
+          return subSubSubChild_;
         }
       }
       /**
@@ -3832,68 +4115,26 @@ public final class TestingModel {
         }
         return subSubSubChildBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Child)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Child)
-    private static final org.roylance.yaorm.TestingModel.Child DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Child();
+      defaultInstance = new Child(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Child getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Child>
-        PARSER = new com.google.protobuf.AbstractParser<Child>() {
-      public Child parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Child(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Child> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Child> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Child getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Child)
   }
 
   public interface SubChildOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SubChild)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -3907,6 +4148,10 @@ public final class TestingModel {
     /**
      * <code>optional string another_test_display = 2;</code>
      */
+    boolean hasAnotherTestDisplay();
+    /**
+     * <code>optional string another_test_display = 2;</code>
+     */
     java.lang.String getAnotherTestDisplay();
     /**
      * <code>optional string another_test_display = 2;</code>
@@ -3914,6 +4159,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getAnotherTestDisplayBytes();
 
+    /**
+     * <code>optional bool cool_test = 3;</code>
+     */
+    boolean hasCoolTest();
     /**
      * <code>optional bool cool_test = 3;</code>
      */
@@ -3946,31 +4195,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.SubChild}
    */
-  public  static final class SubChild extends
+  public static final class SubChild extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubChild)
       SubChildOrBuilder {
     // Use SubChild.newBuilder() to construct.
     private SubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SubChild() {
-      id_ = "";
-      anotherTestDisplay_ = "";
-      coolTest_ = false;
-      subSubChild_ = java.util.Collections.emptyList();
+    private SubChild(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SubChild defaultInstance;
+    public static SubChild getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public SubChild getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private SubChild(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3980,25 +4238,26 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              anotherTestDisplay_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              anotherTestDisplay_ = bs;
               break;
             }
             case 24: {
-
+              bitField0_ |= 0x00000004;
               coolTest_ = input.readBool();
               break;
             }
@@ -4007,21 +4266,21 @@ public final class TestingModel {
                 subSubChild_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.SubSubChild>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              subSubChild_.add(input.readMessage(org.roylance.yaorm.TestingModel.SubSubChild.parser(), extensionRegistry));
+              subSubChild_.add(input.readMessage(org.roylance.yaorm.TestingModel.SubSubChild.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           subSubChild_ = java.util.Collections.unmodifiableList(subSubChild_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -4037,9 +4296,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.SubChild.class, org.roylance.yaorm.TestingModel.SubChild.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<SubChild> PARSER =
+        new com.google.protobuf.AbstractParser<SubChild>() {
+      public SubChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubChild(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubChild> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -4051,7 +4331,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -4073,7 +4355,13 @@ public final class TestingModel {
     }
 
     public static final int ANOTHER_TEST_DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object anotherTestDisplay_;
+    private java.lang.Object anotherTestDisplay_;
+    /**
+     * <code>optional string another_test_display = 2;</code>
+     */
+    public boolean hasAnotherTestDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string another_test_display = 2;</code>
      */
@@ -4085,7 +4373,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        anotherTestDisplay_ = s;
+        if (bs.isValidUtf8()) {
+          anotherTestDisplay_ = s;
+        }
         return s;
       }
     }
@@ -4108,6 +4398,12 @@ public final class TestingModel {
 
     public static final int COOL_TEST_FIELD_NUMBER = 3;
     private boolean coolTest_;
+    /**
+     * <code>optional bool cool_test = 3;</code>
+     */
+    public boolean hasCoolTest() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional bool cool_test = 3;</code>
      */
@@ -4150,6 +4446,12 @@ public final class TestingModel {
       return subSubChild_.get(index);
     }
 
+    private void initFields() {
+      id_ = "";
+      anotherTestDisplay_ = "";
+      coolTest_ = false;
+      subSubChild_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4162,32 +4464,37 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getAnotherTestDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, anotherTestDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getAnotherTestDisplayBytes());
       }
-      if (coolTest_ != false) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBool(3, coolTest_);
       }
       for (int i = 0; i < subSubChild_.size(); i++) {
         output.writeMessage(4, subSubChild_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getAnotherTestDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, anotherTestDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getAnotherTestDisplayBytes());
       }
-      if (coolTest_ != false) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(3, coolTest_);
       }
@@ -4195,11 +4502,18 @@ public final class TestingModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, subSubChild_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.SubChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4253,17 +4567,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.SubChild prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -4305,14 +4614,18 @@ public final class TestingModel {
           getSubSubChildFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         anotherTestDisplay_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         coolTest_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (subSubChildBuilder_ == null) {
           subSubChild_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
@@ -4320,6 +4633,10 @@ public final class TestingModel {
           subSubChildBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -4343,8 +4660,17 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.SubChild result = new org.roylance.yaorm.TestingModel.SubChild(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.anotherTestDisplay_ = anotherTestDisplay_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.coolTest_ = coolTest_;
         if (subSubChildBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008)) {
@@ -4371,15 +4697,17 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.SubChild other) {
         if (other == org.roylance.yaorm.TestingModel.SubChild.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getAnotherTestDisplay().isEmpty()) {
+        if (other.hasAnotherTestDisplay()) {
+          bitField0_ |= 0x00000002;
           anotherTestDisplay_ = other.anotherTestDisplay_;
           onChanged();
         }
-        if (other.getCoolTest() != false) {
+        if (other.hasCoolTest()) {
           setCoolTest(other.getCoolTest());
         }
         if (subSubChildBuilder_ == null) {
@@ -4408,7 +4736,7 @@ public final class TestingModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -4439,13 +4767,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -4475,7 +4811,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -4484,7 +4820,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -4497,8 +4833,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -4508,13 +4843,21 @@ public final class TestingModel {
       /**
        * <code>optional string another_test_display = 2;</code>
        */
+      public boolean hasAnotherTestDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string another_test_display = 2;</code>
+       */
       public java.lang.String getAnotherTestDisplay() {
         java.lang.Object ref = anotherTestDisplay_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          anotherTestDisplay_ = s;
+          if (bs.isValidUtf8()) {
+            anotherTestDisplay_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -4544,7 +4887,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         anotherTestDisplay_ = value;
         onChanged();
         return this;
@@ -4553,7 +4896,7 @@ public final class TestingModel {
        * <code>optional string another_test_display = 2;</code>
        */
       public Builder clearAnotherTestDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         anotherTestDisplay_ = getDefaultInstance().getAnotherTestDisplay();
         onChanged();
         return this;
@@ -4566,14 +4909,19 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         anotherTestDisplay_ = value;
         onChanged();
         return this;
       }
 
       private boolean coolTest_ ;
+      /**
+       * <code>optional bool cool_test = 3;</code>
+       */
+      public boolean hasCoolTest() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
       /**
        * <code>optional bool cool_test = 3;</code>
        */
@@ -4584,7 +4932,7 @@ public final class TestingModel {
        * <code>optional bool cool_test = 3;</code>
        */
       public Builder setCoolTest(boolean value) {
-        
+        bitField0_ |= 0x00000004;
         coolTest_ = value;
         onChanged();
         return this;
@@ -4593,7 +4941,7 @@ public final class TestingModel {
        * <code>optional bool cool_test = 3;</code>
        */
       public Builder clearCoolTest() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         coolTest_ = false;
         onChanged();
         return this;
@@ -4838,68 +5186,26 @@ public final class TestingModel {
         }
         return subSubChildBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SubChild)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubChild)
-    private static final org.roylance.yaorm.TestingModel.SubChild DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.SubChild();
+      defaultInstance = new SubChild(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.SubChild getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SubChild>
-        PARSER = new com.google.protobuf.AbstractParser<SubChild>() {
-      public SubChild parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new SubChild(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<SubChild> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SubChild> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.SubChild getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubChild)
   }
 
   public interface SubSubChildOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SubSubChild)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -4910,6 +5216,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
+    /**
+     * <code>optional string sub_sub_display = 2;</code>
+     */
+    boolean hasSubSubDisplay();
     /**
      * <code>optional string sub_sub_display = 2;</code>
      */
@@ -4947,30 +5257,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.SubSubChild}
    */
-  public  static final class SubSubChild extends
+  public static final class SubSubChild extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubSubChild)
       SubSubChildOrBuilder {
     // Use SubSubChild.newBuilder() to construct.
     private SubSubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SubSubChild() {
-      id_ = "";
-      subSubDisplay_ = "";
-      subSubSubChilds_ = java.util.Collections.emptyList();
+    private SubSubChild(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SubSubChild defaultInstance;
+    public static SubSubChild getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public SubSubChild getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private SubSubChild(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4980,21 +5300,22 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              subSubDisplay_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              subSubDisplay_ = bs;
               break;
             }
             case 26: {
@@ -5002,21 +5323,21 @@ public final class TestingModel {
                 subSubSubChilds_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.SubSubSubChild>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              subSubSubChilds_.add(input.readMessage(org.roylance.yaorm.TestingModel.SubSubSubChild.parser(), extensionRegistry));
+              subSubSubChilds_.add(input.readMessage(org.roylance.yaorm.TestingModel.SubSubSubChild.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           subSubSubChilds_ = java.util.Collections.unmodifiableList(subSubSubChilds_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -5032,9 +5353,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.SubSubChild.class, org.roylance.yaorm.TestingModel.SubSubChild.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<SubSubChild> PARSER =
+        new com.google.protobuf.AbstractParser<SubSubChild>() {
+      public SubSubChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubSubChild(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubSubChild> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -5046,7 +5388,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -5068,7 +5412,13 @@ public final class TestingModel {
     }
 
     public static final int SUB_SUB_DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object subSubDisplay_;
+    private java.lang.Object subSubDisplay_;
+    /**
+     * <code>optional string sub_sub_display = 2;</code>
+     */
+    public boolean hasSubSubDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string sub_sub_display = 2;</code>
      */
@@ -5080,7 +5430,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        subSubDisplay_ = s;
+        if (bs.isValidUtf8()) {
+          subSubDisplay_ = s;
+        }
         return s;
       }
     }
@@ -5136,6 +5488,11 @@ public final class TestingModel {
       return subSubSubChilds_.get(index);
     }
 
+    private void initFields() {
+      id_ = "";
+      subSubDisplay_ = "";
+      subSubSubChilds_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5148,37 +5505,49 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getSubSubDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, subSubDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getSubSubDisplayBytes());
       }
       for (int i = 0; i < subSubSubChilds_.size(); i++) {
         output.writeMessage(3, subSubSubChilds_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getSubSubDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, subSubDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getSubSubDisplayBytes());
       }
       for (int i = 0; i < subSubSubChilds_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, subSubSubChilds_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.SubSubChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5232,17 +5601,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.SubSubChild prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -5284,12 +5648,16 @@ public final class TestingModel {
           getSubSubSubChildsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         subSubDisplay_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (subSubSubChildsBuilder_ == null) {
           subSubSubChilds_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
@@ -5297,6 +5665,10 @@ public final class TestingModel {
           subSubSubChildsBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -5320,7 +5692,13 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.SubSubChild result = new org.roylance.yaorm.TestingModel.SubSubChild(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.subSubDisplay_ = subSubDisplay_;
         if (subSubSubChildsBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004)) {
@@ -5347,11 +5725,13 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.SubSubChild other) {
         if (other == org.roylance.yaorm.TestingModel.SubSubChild.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getSubSubDisplay().isEmpty()) {
+        if (other.hasSubSubDisplay()) {
+          bitField0_ |= 0x00000002;
           subSubDisplay_ = other.subSubDisplay_;
           onChanged();
         }
@@ -5381,7 +5761,7 @@ public final class TestingModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -5412,13 +5792,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -5448,7 +5836,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -5457,7 +5845,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -5470,8 +5858,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -5481,13 +5868,21 @@ public final class TestingModel {
       /**
        * <code>optional string sub_sub_display = 2;</code>
        */
+      public boolean hasSubSubDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string sub_sub_display = 2;</code>
+       */
       public java.lang.String getSubSubDisplay() {
         java.lang.Object ref = subSubDisplay_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          subSubDisplay_ = s;
+          if (bs.isValidUtf8()) {
+            subSubDisplay_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -5517,7 +5912,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         subSubDisplay_ = value;
         onChanged();
         return this;
@@ -5526,7 +5921,7 @@ public final class TestingModel {
        * <code>optional string sub_sub_display = 2;</code>
        */
       public Builder clearSubSubDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         subSubDisplay_ = getDefaultInstance().getSubSubDisplay();
         onChanged();
         return this;
@@ -5539,8 +5934,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         subSubDisplay_ = value;
         onChanged();
         return this;
@@ -5785,68 +6179,26 @@ public final class TestingModel {
         }
         return subSubSubChildsBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SubSubChild)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubSubChild)
-    private static final org.roylance.yaorm.TestingModel.SubSubChild DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.SubSubChild();
+      defaultInstance = new SubSubChild(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.SubSubChild getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SubSubChild>
-        PARSER = new com.google.protobuf.AbstractParser<SubSubChild>() {
-      public SubSubChild parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new SubSubChild(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<SubSubChild> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SubSubChild> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.SubSubChild getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubSubChild)
   }
 
   public interface SubSubSubChildOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.SubSubSubChild)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -5860,6 +6212,10 @@ public final class TestingModel {
     /**
      * <code>optional string sub_sub_sub_display = 2;</code>
      */
+    boolean hasSubSubSubDisplay();
+    /**
+     * <code>optional string sub_sub_sub_display = 2;</code>
+     */
     java.lang.String getSubSubSubDisplay();
     /**
      * <code>optional string sub_sub_sub_display = 2;</code>
@@ -5870,29 +6226,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.SubSubSubChild}
    */
-  public  static final class SubSubSubChild extends
+  public static final class SubSubSubChild extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubSubSubChild)
       SubSubSubChildOrBuilder {
     // Use SubSubSubChild.newBuilder() to construct.
     private SubSubSubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SubSubSubChild() {
-      id_ = "";
-      subSubSubDisplay_ = "";
+    private SubSubSubChild(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SubSubSubChild defaultInstance;
+    public static SubSubSubChild getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public SubSubSubChild getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private SubSubSubChild(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5902,32 +6269,33 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              subSubSubDisplay_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              subSubSubDisplay_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -5943,8 +6311,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.SubSubSubChild.class, org.roylance.yaorm.TestingModel.SubSubSubChild.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<SubSubSubChild> PARSER =
+        new com.google.protobuf.AbstractParser<SubSubSubChild>() {
+      public SubSubSubChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubSubSubChild(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubSubSubChild> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -5956,7 +6346,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -5978,7 +6370,13 @@ public final class TestingModel {
     }
 
     public static final int SUB_SUB_SUB_DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object subSubSubDisplay_;
+    private java.lang.Object subSubSubDisplay_;
+    /**
+     * <code>optional string sub_sub_sub_display = 2;</code>
+     */
+    public boolean hasSubSubSubDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string sub_sub_sub_display = 2;</code>
      */
@@ -5990,7 +6388,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        subSubSubDisplay_ = s;
+        if (bs.isValidUtf8()) {
+          subSubSubDisplay_ = s;
+        }
         return s;
       }
     }
@@ -6011,6 +6411,10 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      subSubSubDisplay_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6023,30 +6427,42 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getSubSubSubDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, subSubSubDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getSubSubSubDisplayBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getSubSubSubDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, subSubSubDisplay_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getSubSubSubDisplayBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.SubSubSubChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6100,17 +6516,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.SubSubSubChild prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -6151,13 +6562,21 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         subSubSubDisplay_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -6179,8 +6598,17 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.SubSubSubChild buildPartial() {
         org.roylance.yaorm.TestingModel.SubSubSubChild result = new org.roylance.yaorm.TestingModel.SubSubSubChild(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.subSubSubDisplay_ = subSubSubDisplay_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6196,15 +6624,17 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.SubSubSubChild other) {
         if (other == org.roylance.yaorm.TestingModel.SubSubSubChild.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getSubSubSubDisplay().isEmpty()) {
+        if (other.hasSubSubSubDisplay()) {
+          bitField0_ |= 0x00000002;
           subSubSubDisplay_ = other.subSubSubDisplay_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -6229,8 +6659,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -6240,7 +6677,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -6270,7 +6709,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -6279,7 +6718,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -6292,8 +6731,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -6303,13 +6741,21 @@ public final class TestingModel {
       /**
        * <code>optional string sub_sub_sub_display = 2;</code>
        */
+      public boolean hasSubSubSubDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string sub_sub_sub_display = 2;</code>
+       */
       public java.lang.String getSubSubSubDisplay() {
         java.lang.Object ref = subSubSubDisplay_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          subSubSubDisplay_ = s;
+          if (bs.isValidUtf8()) {
+            subSubSubDisplay_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -6339,7 +6785,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         subSubSubDisplay_ = value;
         onChanged();
         return this;
@@ -6348,7 +6794,7 @@ public final class TestingModel {
        * <code>optional string sub_sub_sub_display = 2;</code>
        */
       public Builder clearSubSubSubDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         subSubSubDisplay_ = getDefaultInstance().getSubSubSubDisplay();
         onChanged();
         return this;
@@ -6361,74 +6807,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         subSubSubDisplay_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.SubSubSubChild)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubSubSubChild)
-    private static final org.roylance.yaorm.TestingModel.SubSubSubChild DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.SubSubSubChild();
+      defaultInstance = new SubSubSubChild(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.SubSubSubChild getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SubSubSubChild>
-        PARSER = new com.google.protobuf.AbstractParser<SubSubSubChild>() {
-      public SubSubSubChild parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new SubSubSubChild(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<SubSubSubChild> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SubSubSubChild> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.SubSubSubChild getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.SubSubSubChild)
   }
 
   public interface PersonOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Person)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -6442,6 +6845,10 @@ public final class TestingModel {
     /**
      * <code>optional string first_name = 2;</code>
      */
+    boolean hasFirstName();
+    /**
+     * <code>optional string first_name = 2;</code>
+     */
     java.lang.String getFirstName();
     /**
      * <code>optional string first_name = 2;</code>
@@ -6449,6 +6856,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getFirstNameBytes();
 
+    /**
+     * <code>optional string last_name = 3;</code>
+     */
+    boolean hasLastName();
     /**
      * <code>optional string last_name = 3;</code>
      */
@@ -6560,33 +6971,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Person}
    */
-  public  static final class Person extends
+  public static final class Person extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Person)
       PersonOrBuilder {
     // Use Person.newBuilder() to construct.
     private Person(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Person() {
-      id_ = "";
-      firstName_ = "";
-      lastName_ = "";
-      addresses_ = java.util.Collections.emptyList();
-      phoneNumbers_ = java.util.Collections.emptyList();
-      friends_ = java.util.Collections.emptyList();
+    private Person(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Person defaultInstance;
+    public static Person getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Person getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Person(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -6596,27 +7014,28 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              firstName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              firstName_ = bs;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              lastName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              lastName_ = bs;
               break;
             }
             case 34: {
@@ -6624,7 +7043,7 @@ public final class TestingModel {
                 addresses_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Address>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              addresses_.add(input.readMessage(org.roylance.yaorm.TestingModel.Address.parser(), extensionRegistry));
+              addresses_.add(input.readMessage(org.roylance.yaorm.TestingModel.Address.PARSER, extensionRegistry));
               break;
             }
             case 42: {
@@ -6632,33 +7051,33 @@ public final class TestingModel {
                 phoneNumbers_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Phone>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              phoneNumbers_.add(input.readMessage(org.roylance.yaorm.TestingModel.Phone.parser(), extensionRegistry));
+              phoneNumbers_.add(input.readMessage(org.roylance.yaorm.TestingModel.Phone.PARSER, extensionRegistry));
               break;
             }
             case 50: {
               org.roylance.yaorm.TestingModel.Person.Builder subBuilder = null;
-              if (mother_ != null) {
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = mother_.toBuilder();
               }
-              mother_ = input.readMessage(org.roylance.yaorm.TestingModel.Person.parser(), extensionRegistry);
+              mother_ = input.readMessage(org.roylance.yaorm.TestingModel.Person.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(mother_);
                 mother_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000008;
               break;
             }
             case 58: {
               org.roylance.yaorm.TestingModel.Person.Builder subBuilder = null;
-              if (father_ != null) {
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
                 subBuilder = father_.toBuilder();
               }
-              father_ = input.readMessage(org.roylance.yaorm.TestingModel.Person.parser(), extensionRegistry);
+              father_ = input.readMessage(org.roylance.yaorm.TestingModel.Person.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(father_);
                 father_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000010;
               break;
             }
             case 66: {
@@ -6666,17 +7085,16 @@ public final class TestingModel {
                 friends_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Person>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              friends_.add(input.readMessage(org.roylance.yaorm.TestingModel.Person.parser(), extensionRegistry));
+              friends_.add(input.readMessage(org.roylance.yaorm.TestingModel.Person.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           addresses_ = java.util.Collections.unmodifiableList(addresses_);
@@ -6687,6 +7105,7 @@ public final class TestingModel {
         if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           friends_ = java.util.Collections.unmodifiableList(friends_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -6702,9 +7121,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Person.class, org.roylance.yaorm.TestingModel.Person.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Person> PARSER =
+        new com.google.protobuf.AbstractParser<Person>() {
+      public Person parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Person(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Person> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -6716,7 +7156,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -6738,7 +7180,13 @@ public final class TestingModel {
     }
 
     public static final int FIRST_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object firstName_;
+    private java.lang.Object firstName_;
+    /**
+     * <code>optional string first_name = 2;</code>
+     */
+    public boolean hasFirstName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string first_name = 2;</code>
      */
@@ -6750,7 +7198,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        firstName_ = s;
+        if (bs.isValidUtf8()) {
+          firstName_ = s;
+        }
         return s;
       }
     }
@@ -6772,7 +7222,13 @@ public final class TestingModel {
     }
 
     public static final int LAST_NAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object lastName_;
+    private java.lang.Object lastName_;
+    /**
+     * <code>optional string last_name = 3;</code>
+     */
+    public boolean hasLastName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string last_name = 3;</code>
      */
@@ -6784,7 +7240,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        lastName_ = s;
+        if (bs.isValidUtf8()) {
+          lastName_ = s;
+        }
         return s;
       }
     }
@@ -6881,19 +7339,19 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
      */
     public boolean hasMother() {
-      return mother_ != null;
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
      */
     public org.roylance.yaorm.TestingModel.Person getMother() {
-      return mother_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : mother_;
+      return mother_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
      */
     public org.roylance.yaorm.TestingModel.PersonOrBuilder getMotherOrBuilder() {
-      return getMother();
+      return mother_;
     }
 
     public static final int FATHER_FIELD_NUMBER = 7;
@@ -6902,19 +7360,19 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.Person father = 7;</code>
      */
     public boolean hasFather() {
-      return father_ != null;
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .org.roylance.yaorm.Person father = 7;</code>
      */
     public org.roylance.yaorm.TestingModel.Person getFather() {
-      return father_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : father_;
+      return father_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Person father = 7;</code>
      */
     public org.roylance.yaorm.TestingModel.PersonOrBuilder getFatherOrBuilder() {
-      return getFather();
+      return father_;
     }
 
     public static final int FRIENDS_FIELD_NUMBER = 8;
@@ -6952,6 +7410,16 @@ public final class TestingModel {
       return friends_.get(index);
     }
 
+    private void initFields() {
+      id_ = "";
+      firstName_ = "";
+      lastName_ = "";
+      addresses_ = java.util.Collections.emptyList();
+      phoneNumbers_ = java.util.Collections.emptyList();
+      mother_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
+      father_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
+      friends_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6964,14 +7432,15 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getFirstNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, firstName_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getFirstNameBytes());
       }
-      if (!getLastNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, lastName_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getLastNameBytes());
       }
       for (int i = 0; i < addresses_.size(); i++) {
         output.writeMessage(4, addresses_.get(i));
@@ -6979,30 +7448,35 @@ public final class TestingModel {
       for (int i = 0; i < phoneNumbers_.size(); i++) {
         output.writeMessage(5, phoneNumbers_.get(i));
       }
-      if (mother_ != null) {
-        output.writeMessage(6, getMother());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(6, mother_);
       }
-      if (father_ != null) {
-        output.writeMessage(7, getFather());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(7, father_);
       }
       for (int i = 0; i < friends_.size(); i++) {
         output.writeMessage(8, friends_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getFirstNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, firstName_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getFirstNameBytes());
       }
-      if (!getLastNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, lastName_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getLastNameBytes());
       }
       for (int i = 0; i < addresses_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -7012,23 +7486,30 @@ public final class TestingModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, phoneNumbers_.get(i));
       }
-      if (mother_ != null) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getMother());
+          .computeMessageSize(6, mother_);
       }
-      if (father_ != null) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getFather());
+          .computeMessageSize(7, father_);
       }
       for (int i = 0; i < friends_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, friends_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Person parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7082,17 +7563,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Person prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -7133,17 +7609,23 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getAddressesFieldBuilder();
           getPhoneNumbersFieldBuilder();
+          getMotherFieldBuilder();
+          getFatherFieldBuilder();
           getFriendsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         firstName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         lastName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (addressesBuilder_ == null) {
           addresses_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
@@ -7157,17 +7639,17 @@ public final class TestingModel {
           phoneNumbersBuilder_.clear();
         }
         if (motherBuilder_ == null) {
-          mother_ = null;
+          mother_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
         } else {
-          mother_ = null;
-          motherBuilder_ = null;
+          motherBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (fatherBuilder_ == null) {
-          father_ = null;
+          father_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
         } else {
-          father_ = null;
-          fatherBuilder_ = null;
+          fatherBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (friendsBuilder_ == null) {
           friends_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000080);
@@ -7175,6 +7657,10 @@ public final class TestingModel {
           friendsBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -7198,8 +7684,17 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.Person result = new org.roylance.yaorm.TestingModel.Person(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.firstName_ = firstName_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.lastName_ = lastName_;
         if (addressesBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008)) {
@@ -7219,10 +7714,16 @@ public final class TestingModel {
         } else {
           result.phoneNumbers_ = phoneNumbersBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000008;
+        }
         if (motherBuilder_ == null) {
           result.mother_ = mother_;
         } else {
           result.mother_ = motherBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000010;
         }
         if (fatherBuilder_ == null) {
           result.father_ = father_;
@@ -7254,15 +7755,18 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Person other) {
         if (other == org.roylance.yaorm.TestingModel.Person.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getFirstName().isEmpty()) {
+        if (other.hasFirstName()) {
+          bitField0_ |= 0x00000002;
           firstName_ = other.firstName_;
           onChanged();
         }
-        if (!other.getLastName().isEmpty()) {
+        if (other.hasLastName()) {
+          bitField0_ |= 0x00000004;
           lastName_ = other.lastName_;
           onChanged();
         }
@@ -7350,7 +7854,7 @@ public final class TestingModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -7381,13 +7885,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -7417,7 +7929,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -7426,7 +7938,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -7439,8 +7951,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -7450,13 +7961,21 @@ public final class TestingModel {
       /**
        * <code>optional string first_name = 2;</code>
        */
+      public boolean hasFirstName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string first_name = 2;</code>
+       */
       public java.lang.String getFirstName() {
         java.lang.Object ref = firstName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          firstName_ = s;
+          if (bs.isValidUtf8()) {
+            firstName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -7486,7 +8005,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         firstName_ = value;
         onChanged();
         return this;
@@ -7495,7 +8014,7 @@ public final class TestingModel {
        * <code>optional string first_name = 2;</code>
        */
       public Builder clearFirstName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         firstName_ = getDefaultInstance().getFirstName();
         onChanged();
         return this;
@@ -7508,8 +8027,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         firstName_ = value;
         onChanged();
         return this;
@@ -7519,13 +8037,21 @@ public final class TestingModel {
       /**
        * <code>optional string last_name = 3;</code>
        */
+      public boolean hasLastName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string last_name = 3;</code>
+       */
       public java.lang.String getLastName() {
         java.lang.Object ref = lastName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          lastName_ = s;
+          if (bs.isValidUtf8()) {
+            lastName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -7555,7 +8081,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         lastName_ = value;
         onChanged();
         return this;
@@ -7564,7 +8090,7 @@ public final class TestingModel {
        * <code>optional string last_name = 3;</code>
        */
       public Builder clearLastName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         lastName_ = getDefaultInstance().getLastName();
         onChanged();
         return this;
@@ -7577,8 +8103,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         lastName_ = value;
         onChanged();
         return this;
@@ -8064,21 +8589,21 @@ public final class TestingModel {
         return phoneNumbersBuilder_;
       }
 
-      private org.roylance.yaorm.TestingModel.Person mother_ = null;
+      private org.roylance.yaorm.TestingModel.Person mother_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> motherBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
        */
       public boolean hasMother() {
-        return motherBuilder_ != null || mother_ != null;
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
        */
       public org.roylance.yaorm.TestingModel.Person getMother() {
         if (motherBuilder_ == null) {
-          return mother_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : mother_;
+          return mother_;
         } else {
           return motherBuilder_.getMessage();
         }
@@ -8096,7 +8621,7 @@ public final class TestingModel {
         } else {
           motherBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -8110,7 +8635,7 @@ public final class TestingModel {
         } else {
           motherBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -8118,7 +8643,8 @@ public final class TestingModel {
        */
       public Builder mergeMother(org.roylance.yaorm.TestingModel.Person value) {
         if (motherBuilder_ == null) {
-          if (mother_ != null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              mother_ != org.roylance.yaorm.TestingModel.Person.getDefaultInstance()) {
             mother_ =
               org.roylance.yaorm.TestingModel.Person.newBuilder(mother_).mergeFrom(value).buildPartial();
           } else {
@@ -8128,7 +8654,7 @@ public final class TestingModel {
         } else {
           motherBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -8136,20 +8662,19 @@ public final class TestingModel {
        */
       public Builder clearMother() {
         if (motherBuilder_ == null) {
-          mother_ = null;
+          mother_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
           onChanged();
         } else {
-          mother_ = null;
-          motherBuilder_ = null;
+          motherBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
        */
       public org.roylance.yaorm.TestingModel.Person.Builder getMotherBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getMotherFieldBuilder().getBuilder();
       }
@@ -8160,8 +8685,7 @@ public final class TestingModel {
         if (motherBuilder_ != null) {
           return motherBuilder_.getMessageOrBuilder();
         } else {
-          return mother_ == null ?
-              org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : mother_;
+          return mother_;
         }
       }
       /**
@@ -8181,21 +8705,21 @@ public final class TestingModel {
         return motherBuilder_;
       }
 
-      private org.roylance.yaorm.TestingModel.Person father_ = null;
+      private org.roylance.yaorm.TestingModel.Person father_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.Person, org.roylance.yaorm.TestingModel.Person.Builder, org.roylance.yaorm.TestingModel.PersonOrBuilder> fatherBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Person father = 7;</code>
        */
       public boolean hasFather() {
-        return fatherBuilder_ != null || father_ != null;
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .org.roylance.yaorm.Person father = 7;</code>
        */
       public org.roylance.yaorm.TestingModel.Person getFather() {
         if (fatherBuilder_ == null) {
-          return father_ == null ? org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : father_;
+          return father_;
         } else {
           return fatherBuilder_.getMessage();
         }
@@ -8213,7 +8737,7 @@ public final class TestingModel {
         } else {
           fatherBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -8227,7 +8751,7 @@ public final class TestingModel {
         } else {
           fatherBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -8235,7 +8759,8 @@ public final class TestingModel {
        */
       public Builder mergeFather(org.roylance.yaorm.TestingModel.Person value) {
         if (fatherBuilder_ == null) {
-          if (father_ != null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+              father_ != org.roylance.yaorm.TestingModel.Person.getDefaultInstance()) {
             father_ =
               org.roylance.yaorm.TestingModel.Person.newBuilder(father_).mergeFrom(value).buildPartial();
           } else {
@@ -8245,7 +8770,7 @@ public final class TestingModel {
         } else {
           fatherBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -8253,20 +8778,19 @@ public final class TestingModel {
        */
       public Builder clearFather() {
         if (fatherBuilder_ == null) {
-          father_ = null;
+          father_ = org.roylance.yaorm.TestingModel.Person.getDefaultInstance();
           onChanged();
         } else {
-          father_ = null;
-          fatherBuilder_ = null;
+          fatherBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Person father = 7;</code>
        */
       public org.roylance.yaorm.TestingModel.Person.Builder getFatherBuilder() {
-        
+        bitField0_ |= 0x00000040;
         onChanged();
         return getFatherFieldBuilder().getBuilder();
       }
@@ -8277,8 +8801,7 @@ public final class TestingModel {
         if (fatherBuilder_ != null) {
           return fatherBuilder_.getMessageOrBuilder();
         } else {
-          return father_ == null ?
-              org.roylance.yaorm.TestingModel.Person.getDefaultInstance() : father_;
+          return father_;
         }
       }
       /**
@@ -8537,68 +9060,26 @@ public final class TestingModel {
         }
         return friendsBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Person)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Person)
-    private static final org.roylance.yaorm.TestingModel.Person DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Person();
+      defaultInstance = new Person(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Person getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Person>
-        PARSER = new com.google.protobuf.AbstractParser<Person>() {
-      public Person parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Person(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Person> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Person> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Person getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Person)
   }
 
   public interface AddressOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Address)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -8612,6 +9093,10 @@ public final class TestingModel {
     /**
      * <code>optional string address = 2;</code>
      */
+    boolean hasAddress();
+    /**
+     * <code>optional string address = 2;</code>
+     */
     java.lang.String getAddress();
     /**
      * <code>optional string address = 2;</code>
@@ -8619,6 +9104,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getAddressBytes();
 
+    /**
+     * <code>optional string city = 3;</code>
+     */
+    boolean hasCity();
     /**
      * <code>optional string city = 3;</code>
      */
@@ -8632,6 +9121,10 @@ public final class TestingModel {
     /**
      * <code>optional string state = 4;</code>
      */
+    boolean hasState();
+    /**
+     * <code>optional string state = 4;</code>
+     */
     java.lang.String getState();
     /**
      * <code>optional string state = 4;</code>
@@ -8639,6 +9132,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getStateBytes();
 
+    /**
+     * <code>optional string zip = 5;</code>
+     */
+    boolean hasZip();
     /**
      * <code>optional string zip = 5;</code>
      */
@@ -8652,32 +9149,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Address}
    */
-  public  static final class Address extends
+  public static final class Address extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Address)
       AddressOrBuilder {
     // Use Address.newBuilder() to construct.
     private Address(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Address() {
-      id_ = "";
-      address_ = "";
-      city_ = "";
-      state_ = "";
-      zip_ = "";
+    private Address(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Address defaultInstance;
+    public static Address getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Address getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Address(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -8687,50 +9192,51 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              address_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              address_ = bs;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              city_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              city_ = bs;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              state_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              state_ = bs;
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              zip_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              zip_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -8746,8 +9252,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Address.class, org.roylance.yaorm.TestingModel.Address.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Address> PARSER =
+        new com.google.protobuf.AbstractParser<Address>() {
+      public Address parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Address(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Address> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -8759,7 +9287,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -8781,7 +9311,13 @@ public final class TestingModel {
     }
 
     public static final int ADDRESS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object address_;
+    private java.lang.Object address_;
+    /**
+     * <code>optional string address = 2;</code>
+     */
+    public boolean hasAddress() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string address = 2;</code>
      */
@@ -8793,7 +9329,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        address_ = s;
+        if (bs.isValidUtf8()) {
+          address_ = s;
+        }
         return s;
       }
     }
@@ -8815,7 +9353,13 @@ public final class TestingModel {
     }
 
     public static final int CITY_FIELD_NUMBER = 3;
-    private volatile java.lang.Object city_;
+    private java.lang.Object city_;
+    /**
+     * <code>optional string city = 3;</code>
+     */
+    public boolean hasCity() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string city = 3;</code>
      */
@@ -8827,7 +9371,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        city_ = s;
+        if (bs.isValidUtf8()) {
+          city_ = s;
+        }
         return s;
       }
     }
@@ -8849,7 +9395,13 @@ public final class TestingModel {
     }
 
     public static final int STATE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object state_;
+    private java.lang.Object state_;
+    /**
+     * <code>optional string state = 4;</code>
+     */
+    public boolean hasState() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional string state = 4;</code>
      */
@@ -8861,7 +9413,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        state_ = s;
+        if (bs.isValidUtf8()) {
+          state_ = s;
+        }
         return s;
       }
     }
@@ -8883,7 +9437,13 @@ public final class TestingModel {
     }
 
     public static final int ZIP_FIELD_NUMBER = 5;
-    private volatile java.lang.Object zip_;
+    private java.lang.Object zip_;
+    /**
+     * <code>optional string zip = 5;</code>
+     */
+    public boolean hasZip() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
     /**
      * <code>optional string zip = 5;</code>
      */
@@ -8895,7 +9455,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        zip_ = s;
+        if (bs.isValidUtf8()) {
+          zip_ = s;
+        }
         return s;
       }
     }
@@ -8916,6 +9478,13 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      address_ = "";
+      city_ = "";
+      state_ = "";
+      zip_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -8928,48 +9497,63 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, address_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getAddressBytes());
       }
-      if (!getCityBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, city_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getCityBytes());
       }
-      if (!getStateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, state_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getStateBytes());
       }
-      if (!getZipBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, zip_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getZipBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, address_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getAddressBytes());
       }
-      if (!getCityBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, city_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getCityBytes());
       }
-      if (!getStateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, state_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getStateBytes());
       }
-      if (!getZipBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, zip_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getZipBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Address parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9023,17 +9607,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Address prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -9074,19 +9653,27 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         address_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         city_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         state_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         zip_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -9108,11 +9695,29 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.Address buildPartial() {
         org.roylance.yaorm.TestingModel.Address result = new org.roylance.yaorm.TestingModel.Address(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.address_ = address_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.city_ = city_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.state_ = state_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.zip_ = zip_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -9128,27 +9733,32 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Address other) {
         if (other == org.roylance.yaorm.TestingModel.Address.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getAddress().isEmpty()) {
+        if (other.hasAddress()) {
+          bitField0_ |= 0x00000002;
           address_ = other.address_;
           onChanged();
         }
-        if (!other.getCity().isEmpty()) {
+        if (other.hasCity()) {
+          bitField0_ |= 0x00000004;
           city_ = other.city_;
           onChanged();
         }
-        if (!other.getState().isEmpty()) {
+        if (other.hasState()) {
+          bitField0_ |= 0x00000008;
           state_ = other.state_;
           onChanged();
         }
-        if (!other.getZip().isEmpty()) {
+        if (other.hasZip()) {
+          bitField0_ |= 0x00000010;
           zip_ = other.zip_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -9173,8 +9783,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -9184,7 +9801,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9214,7 +9833,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -9223,7 +9842,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -9236,8 +9855,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -9247,13 +9865,21 @@ public final class TestingModel {
       /**
        * <code>optional string address = 2;</code>
        */
+      public boolean hasAddress() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string address = 2;</code>
+       */
       public java.lang.String getAddress() {
         java.lang.Object ref = address_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          address_ = s;
+          if (bs.isValidUtf8()) {
+            address_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9283,7 +9909,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         address_ = value;
         onChanged();
         return this;
@@ -9292,7 +9918,7 @@ public final class TestingModel {
        * <code>optional string address = 2;</code>
        */
       public Builder clearAddress() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         address_ = getDefaultInstance().getAddress();
         onChanged();
         return this;
@@ -9305,8 +9931,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         address_ = value;
         onChanged();
         return this;
@@ -9316,13 +9941,21 @@ public final class TestingModel {
       /**
        * <code>optional string city = 3;</code>
        */
+      public boolean hasCity() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string city = 3;</code>
+       */
       public java.lang.String getCity() {
         java.lang.Object ref = city_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          city_ = s;
+          if (bs.isValidUtf8()) {
+            city_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9352,7 +9985,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         city_ = value;
         onChanged();
         return this;
@@ -9361,7 +9994,7 @@ public final class TestingModel {
        * <code>optional string city = 3;</code>
        */
       public Builder clearCity() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         city_ = getDefaultInstance().getCity();
         onChanged();
         return this;
@@ -9374,8 +10007,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         city_ = value;
         onChanged();
         return this;
@@ -9385,13 +10017,21 @@ public final class TestingModel {
       /**
        * <code>optional string state = 4;</code>
        */
+      public boolean hasState() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string state = 4;</code>
+       */
       public java.lang.String getState() {
         java.lang.Object ref = state_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          state_ = s;
+          if (bs.isValidUtf8()) {
+            state_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9421,7 +10061,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         state_ = value;
         onChanged();
         return this;
@@ -9430,7 +10070,7 @@ public final class TestingModel {
        * <code>optional string state = 4;</code>
        */
       public Builder clearState() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         state_ = getDefaultInstance().getState();
         onChanged();
         return this;
@@ -9443,8 +10083,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         state_ = value;
         onChanged();
         return this;
@@ -9454,13 +10093,21 @@ public final class TestingModel {
       /**
        * <code>optional string zip = 5;</code>
        */
+      public boolean hasZip() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string zip = 5;</code>
+       */
       public java.lang.String getZip() {
         java.lang.Object ref = zip_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          zip_ = s;
+          if (bs.isValidUtf8()) {
+            zip_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9490,7 +10137,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000010;
         zip_ = value;
         onChanged();
         return this;
@@ -9499,7 +10146,7 @@ public final class TestingModel {
        * <code>optional string zip = 5;</code>
        */
       public Builder clearZip() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         zip_ = getDefaultInstance().getZip();
         onChanged();
         return this;
@@ -9512,74 +10159,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000010;
         zip_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Address)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Address)
-    private static final org.roylance.yaorm.TestingModel.Address DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Address();
+      defaultInstance = new Address(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Address getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Address>
-        PARSER = new com.google.protobuf.AbstractParser<Address>() {
-      public Address parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Address(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Address> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Address> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Address getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Address)
   }
 
   public interface PhoneOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Phone)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -9593,6 +10197,10 @@ public final class TestingModel {
     /**
      * <code>optional string number = 2;</code>
      */
+    boolean hasNumber();
+    /**
+     * <code>optional string number = 2;</code>
+     */
     java.lang.String getNumber();
     /**
      * <code>optional string number = 2;</code>
@@ -9603,29 +10211,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Phone}
    */
-  public  static final class Phone extends
+  public static final class Phone extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Phone)
       PhoneOrBuilder {
     // Use Phone.newBuilder() to construct.
     private Phone(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Phone() {
-      id_ = "";
-      number_ = "";
+    private Phone(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Phone defaultInstance;
+    public static Phone getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Phone getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Phone(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -9635,32 +10254,33 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              number_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              number_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -9676,8 +10296,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Phone.class, org.roylance.yaorm.TestingModel.Phone.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Phone> PARSER =
+        new com.google.protobuf.AbstractParser<Phone>() {
+      public Phone parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Phone(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Phone> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -9689,7 +10331,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -9711,7 +10355,13 @@ public final class TestingModel {
     }
 
     public static final int NUMBER_FIELD_NUMBER = 2;
-    private volatile java.lang.Object number_;
+    private java.lang.Object number_;
+    /**
+     * <code>optional string number = 2;</code>
+     */
+    public boolean hasNumber() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string number = 2;</code>
      */
@@ -9723,7 +10373,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        number_ = s;
+        if (bs.isValidUtf8()) {
+          number_ = s;
+        }
         return s;
       }
     }
@@ -9744,6 +10396,10 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      number_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -9756,30 +10412,42 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getNumberBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, number_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNumberBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getNumberBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, number_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNumberBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Phone parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9833,17 +10501,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Phone prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -9884,13 +10547,21 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         number_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -9912,8 +10583,17 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.Phone buildPartial() {
         org.roylance.yaorm.TestingModel.Phone result = new org.roylance.yaorm.TestingModel.Phone(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.number_ = number_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -9929,15 +10609,17 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Phone other) {
         if (other == org.roylance.yaorm.TestingModel.Phone.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getNumber().isEmpty()) {
+        if (other.hasNumber()) {
+          bitField0_ |= 0x00000002;
           number_ = other.number_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -9962,8 +10644,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -9973,7 +10662,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -10003,7 +10694,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -10012,7 +10703,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -10025,8 +10716,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -10036,13 +10726,21 @@ public final class TestingModel {
       /**
        * <code>optional string number = 2;</code>
        */
+      public boolean hasNumber() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string number = 2;</code>
+       */
       public java.lang.String getNumber() {
         java.lang.Object ref = number_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          number_ = s;
+          if (bs.isValidUtf8()) {
+            number_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -10072,7 +10770,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         number_ = value;
         onChanged();
         return this;
@@ -10081,7 +10779,7 @@ public final class TestingModel {
        * <code>optional string number = 2;</code>
        */
       public Builder clearNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         number_ = getDefaultInstance().getNumber();
         onChanged();
         return this;
@@ -10094,74 +10792,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         number_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Phone)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Phone)
-    private static final org.roylance.yaorm.TestingModel.Phone DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Phone();
+      defaultInstance = new Phone(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Phone getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Phone>
-        PARSER = new com.google.protobuf.AbstractParser<Phone>() {
-      public Phone parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Phone(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Phone> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Phone> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Phone getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Phone)
   }
 
   public interface WorkerConfigurationOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.WorkerConfiguration)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -10175,6 +10830,10 @@ public final class TestingModel {
     /**
      * <code>optional string ip = 2;</code>
      */
+    boolean hasIp();
+    /**
+     * <code>optional string ip = 2;</code>
+     */
     java.lang.String getIp();
     /**
      * <code>optional string ip = 2;</code>
@@ -10182,6 +10841,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getIpBytes();
 
+    /**
+     * <code>optional string port = 3;</code>
+     */
+    boolean hasPort();
     /**
      * <code>optional string port = 3;</code>
      */
@@ -10195,6 +10858,10 @@ public final class TestingModel {
     /**
      * <code>optional string host = 4;</code>
      */
+    boolean hasHost();
+    /**
+     * <code>optional string host = 4;</code>
+     */
     java.lang.String getHost();
     /**
      * <code>optional string host = 4;</code>
@@ -10205,12 +10872,16 @@ public final class TestingModel {
     /**
      * <code>optional uint64 initialized_time = 5;</code>
      */
+    boolean hasInitializedTime();
+    /**
+     * <code>optional uint64 initialized_time = 5;</code>
+     */
     long getInitializedTime();
 
     /**
      * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
      */
-    int getStateValue();
+    boolean hasState();
     /**
      * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
      */
@@ -10219,33 +10890,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.WorkerConfiguration}
    */
-  public  static final class WorkerConfiguration extends
+  public static final class WorkerConfiguration extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.WorkerConfiguration)
       WorkerConfigurationOrBuilder {
     // Use WorkerConfiguration.newBuilder() to construct.
     private WorkerConfiguration(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private WorkerConfiguration() {
-      id_ = "";
-      ip_ = "";
-      port_ = "";
-      host_ = "";
-      initializedTime_ = 0L;
-      state_ = 0;
+    private WorkerConfiguration(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final WorkerConfiguration defaultInstance;
+    public static WorkerConfiguration getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public WorkerConfiguration getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private WorkerConfiguration(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -10255,55 +10933,61 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              ip_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              ip_ = bs;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              port_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              port_ = bs;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              host_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              host_ = bs;
               break;
             }
             case 40: {
-
+              bitField0_ |= 0x00000010;
               initializedTime_ = input.readUInt64();
               break;
             }
             case 48: {
               int rawValue = input.readEnum();
-
-              state_ = rawValue;
+              org.roylance.yaorm.TestingModel.WorkerState value = org.roylance.yaorm.TestingModel.WorkerState.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000020;
+                state_ = value;
+              }
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -10319,8 +11003,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.WorkerConfiguration.class, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<WorkerConfiguration> PARSER =
+        new com.google.protobuf.AbstractParser<WorkerConfiguration>() {
+      public WorkerConfiguration parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new WorkerConfiguration(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WorkerConfiguration> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -10332,7 +11038,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -10354,7 +11062,13 @@ public final class TestingModel {
     }
 
     public static final int IP_FIELD_NUMBER = 2;
-    private volatile java.lang.Object ip_;
+    private java.lang.Object ip_;
+    /**
+     * <code>optional string ip = 2;</code>
+     */
+    public boolean hasIp() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string ip = 2;</code>
      */
@@ -10366,7 +11080,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        ip_ = s;
+        if (bs.isValidUtf8()) {
+          ip_ = s;
+        }
         return s;
       }
     }
@@ -10388,7 +11104,13 @@ public final class TestingModel {
     }
 
     public static final int PORT_FIELD_NUMBER = 3;
-    private volatile java.lang.Object port_;
+    private java.lang.Object port_;
+    /**
+     * <code>optional string port = 3;</code>
+     */
+    public boolean hasPort() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string port = 3;</code>
      */
@@ -10400,7 +11122,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        port_ = s;
+        if (bs.isValidUtf8()) {
+          port_ = s;
+        }
         return s;
       }
     }
@@ -10422,7 +11146,13 @@ public final class TestingModel {
     }
 
     public static final int HOST_FIELD_NUMBER = 4;
-    private volatile java.lang.Object host_;
+    private java.lang.Object host_;
+    /**
+     * <code>optional string host = 4;</code>
+     */
+    public boolean hasHost() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional string host = 4;</code>
      */
@@ -10434,7 +11164,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        host_ = s;
+        if (bs.isValidUtf8()) {
+          host_ = s;
+        }
         return s;
       }
     }
@@ -10460,26 +11192,39 @@ public final class TestingModel {
     /**
      * <code>optional uint64 initialized_time = 5;</code>
      */
+    public boolean hasInitializedTime() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional uint64 initialized_time = 5;</code>
+     */
     public long getInitializedTime() {
       return initializedTime_;
     }
 
     public static final int STATE_FIELD_NUMBER = 6;
-    private int state_;
+    private org.roylance.yaorm.TestingModel.WorkerState state_;
     /**
      * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
      */
-    public int getStateValue() {
-      return state_;
+    public boolean hasState() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
      */
     public org.roylance.yaorm.TestingModel.WorkerState getState() {
-      org.roylance.yaorm.TestingModel.WorkerState result = org.roylance.yaorm.TestingModel.WorkerState.valueOf(state_);
-      return result == null ? org.roylance.yaorm.TestingModel.WorkerState.UNRECOGNIZED : result;
+      return state_;
     }
 
+    private void initFields() {
+      id_ = "";
+      ip_ = "";
+      port_ = "";
+      host_ = "";
+      initializedTime_ = 0L;
+      state_ = org.roylance.yaorm.TestingModel.WorkerState.WORKING;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -10492,56 +11237,70 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getIpBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, ip_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getIpBytes());
       }
-      if (!getPortBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, port_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getPortBytes());
       }
-      if (!getHostBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, host_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getHostBytes());
       }
-      if (initializedTime_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt64(5, initializedTime_);
       }
-      if (state_ != org.roylance.yaorm.TestingModel.WorkerState.WORKING.getNumber()) {
-        output.writeEnum(6, state_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeEnum(6, state_.getNumber());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getIpBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, ip_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getIpBytes());
       }
-      if (!getPortBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, port_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getPortBytes());
       }
-      if (!getHostBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, host_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getHostBytes());
       }
-      if (initializedTime_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(5, initializedTime_);
       }
-      if (state_ != org.roylance.yaorm.TestingModel.WorkerState.WORKING.getNumber()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, state_);
+          .computeEnumSize(6, state_.getNumber());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.WorkerConfiguration parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10595,17 +11354,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.WorkerConfiguration prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -10646,21 +11400,29 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         ip_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         port_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         host_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         initializedTime_ = 0L;
-
-        state_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000010);
+        state_ = org.roylance.yaorm.TestingModel.WorkerState.WORKING;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -10682,12 +11444,33 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.WorkerConfiguration buildPartial() {
         org.roylance.yaorm.TestingModel.WorkerConfiguration result = new org.roylance.yaorm.TestingModel.WorkerConfiguration(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.ip_ = ip_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.port_ = port_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.host_ = host_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.initializedTime_ = initializedTime_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.state_ = state_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -10703,29 +11486,33 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.WorkerConfiguration other) {
         if (other == org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getIp().isEmpty()) {
+        if (other.hasIp()) {
+          bitField0_ |= 0x00000002;
           ip_ = other.ip_;
           onChanged();
         }
-        if (!other.getPort().isEmpty()) {
+        if (other.hasPort()) {
+          bitField0_ |= 0x00000004;
           port_ = other.port_;
           onChanged();
         }
-        if (!other.getHost().isEmpty()) {
+        if (other.hasHost()) {
+          bitField0_ |= 0x00000008;
           host_ = other.host_;
           onChanged();
         }
-        if (other.getInitializedTime() != 0L) {
+        if (other.hasInitializedTime()) {
           setInitializedTime(other.getInitializedTime());
         }
-        if (other.state_ != 0) {
-          setStateValue(other.getStateValue());
+        if (other.hasState()) {
+          setState(other.getState());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -10750,8 +11537,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -10761,7 +11555,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -10791,7 +11587,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -10800,7 +11596,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -10813,8 +11609,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -10824,13 +11619,21 @@ public final class TestingModel {
       /**
        * <code>optional string ip = 2;</code>
        */
+      public boolean hasIp() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string ip = 2;</code>
+       */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          ip_ = s;
+          if (bs.isValidUtf8()) {
+            ip_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -10860,7 +11663,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         ip_ = value;
         onChanged();
         return this;
@@ -10869,7 +11672,7 @@ public final class TestingModel {
        * <code>optional string ip = 2;</code>
        */
       public Builder clearIp() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         ip_ = getDefaultInstance().getIp();
         onChanged();
         return this;
@@ -10882,8 +11685,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         ip_ = value;
         onChanged();
         return this;
@@ -10893,13 +11695,21 @@ public final class TestingModel {
       /**
        * <code>optional string port = 3;</code>
        */
+      public boolean hasPort() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string port = 3;</code>
+       */
       public java.lang.String getPort() {
         java.lang.Object ref = port_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          port_ = s;
+          if (bs.isValidUtf8()) {
+            port_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -10929,7 +11739,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         port_ = value;
         onChanged();
         return this;
@@ -10938,7 +11748,7 @@ public final class TestingModel {
        * <code>optional string port = 3;</code>
        */
       public Builder clearPort() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         port_ = getDefaultInstance().getPort();
         onChanged();
         return this;
@@ -10951,8 +11761,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         port_ = value;
         onChanged();
         return this;
@@ -10962,13 +11771,21 @@ public final class TestingModel {
       /**
        * <code>optional string host = 4;</code>
        */
+      public boolean hasHost() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string host = 4;</code>
+       */
       public java.lang.String getHost() {
         java.lang.Object ref = host_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          host_ = s;
+          if (bs.isValidUtf8()) {
+            host_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -10998,7 +11815,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         host_ = value;
         onChanged();
         return this;
@@ -11007,7 +11824,7 @@ public final class TestingModel {
        * <code>optional string host = 4;</code>
        */
       public Builder clearHost() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         host_ = getDefaultInstance().getHost();
         onChanged();
         return this;
@@ -11020,14 +11837,19 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         host_ = value;
         onChanged();
         return this;
       }
 
       private long initializedTime_ ;
+      /**
+       * <code>optional uint64 initialized_time = 5;</code>
+       */
+      public boolean hasInitializedTime() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
       /**
        * <code>optional uint64 initialized_time = 5;</code>
        */
@@ -11038,7 +11860,7 @@ public final class TestingModel {
        * <code>optional uint64 initialized_time = 5;</code>
        */
       public Builder setInitializedTime(long value) {
-        
+        bitField0_ |= 0x00000010;
         initializedTime_ = value;
         onChanged();
         return this;
@@ -11047,33 +11869,24 @@ public final class TestingModel {
        * <code>optional uint64 initialized_time = 5;</code>
        */
       public Builder clearInitializedTime() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         initializedTime_ = 0L;
         onChanged();
         return this;
       }
 
-      private int state_ = 0;
+      private org.roylance.yaorm.TestingModel.WorkerState state_ = org.roylance.yaorm.TestingModel.WorkerState.WORKING;
       /**
        * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
        */
-      public int getStateValue() {
-        return state_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
-       */
-      public Builder setStateValue(int value) {
-        state_ = value;
-        onChanged();
-        return this;
+      public boolean hasState() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public org.roylance.yaorm.TestingModel.WorkerState getState() {
-        org.roylance.yaorm.TestingModel.WorkerState result = org.roylance.yaorm.TestingModel.WorkerState.valueOf(state_);
-        return result == null ? org.roylance.yaorm.TestingModel.WorkerState.UNRECOGNIZED : result;
+        return state_;
       }
       /**
        * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
@@ -11082,8 +11895,8 @@ public final class TestingModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        state_ = value.getNumber();
+        bitField0_ |= 0x00000020;
+        state_ = value;
         onChanged();
         return this;
       }
@@ -11091,73 +11904,31 @@ public final class TestingModel {
        * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public Builder clearState() {
-        
-        state_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        state_ = org.roylance.yaorm.TestingModel.WorkerState.WORKING;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.WorkerConfiguration)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.WorkerConfiguration)
-    private static final org.roylance.yaorm.TestingModel.WorkerConfiguration DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.WorkerConfiguration();
+      defaultInstance = new WorkerConfiguration(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.WorkerConfiguration getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<WorkerConfiguration>
-        PARSER = new com.google.protobuf.AbstractParser<WorkerConfiguration>() {
-      public WorkerConfiguration parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new WorkerConfiguration(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<WorkerConfiguration> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<WorkerConfiguration> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.WorkerConfiguration getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.WorkerConfiguration)
   }
 
   public interface LogOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Log)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -11171,6 +11942,10 @@ public final class TestingModel {
     /**
      * <code>optional string message = 2;</code>
      */
+    boolean hasMessage();
+    /**
+     * <code>optional string message = 2;</code>
+     */
     java.lang.String getMessage();
     /**
      * <code>optional string message = 2;</code>
@@ -11181,29 +11956,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Log}
    */
-  public  static final class Log extends
+  public static final class Log extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Log)
       LogOrBuilder {
     // Use Log.newBuilder() to construct.
     private Log(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Log() {
-      id_ = "";
-      message_ = "";
+    private Log(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Log defaultInstance;
+    public static Log getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Log getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Log(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -11213,32 +11999,33 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              message_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              message_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -11254,8 +12041,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Log.class, org.roylance.yaorm.TestingModel.Log.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Log> PARSER =
+        new com.google.protobuf.AbstractParser<Log>() {
+      public Log parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Log(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Log> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -11267,7 +12076,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -11289,7 +12100,13 @@ public final class TestingModel {
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object message_;
+    private java.lang.Object message_;
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    public boolean hasMessage() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string message = 2;</code>
      */
@@ -11301,7 +12118,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        message_ = s;
+        if (bs.isValidUtf8()) {
+          message_ = s;
+        }
         return s;
       }
     }
@@ -11322,6 +12141,10 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      message_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -11334,30 +12157,42 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getMessageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, message_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getMessageBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getMessageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, message_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getMessageBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Log parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11411,17 +12246,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Log prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -11462,13 +12292,21 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         message_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -11490,8 +12328,17 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.Log buildPartial() {
         org.roylance.yaorm.TestingModel.Log result = new org.roylance.yaorm.TestingModel.Log(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.message_ = message_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -11507,15 +12354,17 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Log other) {
         if (other == org.roylance.yaorm.TestingModel.Log.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getMessage().isEmpty()) {
+        if (other.hasMessage()) {
+          bitField0_ |= 0x00000002;
           message_ = other.message_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -11540,8 +12389,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -11551,7 +12407,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -11581,7 +12439,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -11590,7 +12448,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -11603,8 +12461,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -11614,13 +12471,21 @@ public final class TestingModel {
       /**
        * <code>optional string message = 2;</code>
        */
+      public boolean hasMessage() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string message = 2;</code>
+       */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          message_ = s;
+          if (bs.isValidUtf8()) {
+            message_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -11650,7 +12515,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         message_ = value;
         onChanged();
         return this;
@@ -11659,7 +12524,7 @@ public final class TestingModel {
        * <code>optional string message = 2;</code>
        */
       public Builder clearMessage() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         message_ = getDefaultInstance().getMessage();
         onChanged();
         return this;
@@ -11672,74 +12537,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         message_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Log)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Log)
-    private static final org.roylance.yaorm.TestingModel.Log DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Log();
+      defaultInstance = new Log(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Log getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Log>
-        PARSER = new com.google.protobuf.AbstractParser<Log>() {
-      public Log parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Log(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Log> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Log> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Log getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Log)
   }
 
   public interface DagOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Dag)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -11750,6 +12572,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    boolean hasDisplay();
     /**
      * <code>optional string display = 2;</code>
      */
@@ -11787,8 +12613,16 @@ public final class TestingModel {
     /**
      * <code>optional int64 execution_date = 4;</code>
      */
+    boolean hasExecutionDate();
+    /**
+     * <code>optional int64 execution_date = 4;</code>
+     */
     long getExecutionDate();
 
+    /**
+     * <code>optional int64 start_date = 5;</code>
+     */
+    boolean hasStartDate();
     /**
      * <code>optional int64 start_date = 5;</code>
      */
@@ -11797,8 +12631,16 @@ public final class TestingModel {
     /**
      * <code>optional int64 end_date = 6;</code>
      */
+    boolean hasEndDate();
+    /**
+     * <code>optional int64 end_date = 6;</code>
+     */
     long getEndDate();
 
+    /**
+     * <code>optional int64 duration = 7;</code>
+     */
+    boolean hasDuration();
     /**
      * <code>optional int64 duration = 7;</code>
      */
@@ -11903,38 +12745,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Dag}
    */
-  public  static final class Dag extends
+  public static final class Dag extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Dag)
       DagOrBuilder {
     // Use Dag.newBuilder() to construct.
     private Dag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Dag() {
-      id_ = "";
-      display_ = "";
-      flattenedTasks_ = java.util.Collections.emptyList();
-      executionDate_ = 0L;
-      startDate_ = 0L;
-      endDate_ = 0L;
-      duration_ = 0L;
-      uncompletedTasks_ = java.util.Collections.emptyList();
-      processingTasks_ = java.util.Collections.emptyList();
-      erroredTasks_ = java.util.Collections.emptyList();
-      completedTasks_ = java.util.Collections.emptyList();
+    private Dag(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Dag defaultInstance;
+    public static Dag getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Dag getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Dag(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -11944,21 +12788,22 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              display_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              display_ = bs;
               break;
             }
             case 26: {
@@ -11966,26 +12811,26 @@ public final class TestingModel {
                 flattenedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              flattenedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              flattenedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry));
               break;
             }
             case 32: {
-
+              bitField0_ |= 0x00000004;
               executionDate_ = input.readInt64();
               break;
             }
             case 40: {
-
+              bitField0_ |= 0x00000008;
               startDate_ = input.readInt64();
               break;
             }
             case 48: {
-
+              bitField0_ |= 0x00000010;
               endDate_ = input.readInt64();
               break;
             }
             case 56: {
-
+              bitField0_ |= 0x00000020;
               duration_ = input.readInt64();
               break;
             }
@@ -11994,7 +12839,7 @@ public final class TestingModel {
                 uncompletedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              uncompletedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              uncompletedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry));
               break;
             }
             case 74: {
@@ -12002,7 +12847,7 @@ public final class TestingModel {
                 processingTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
                 mutable_bitField0_ |= 0x00000100;
               }
-              processingTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              processingTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry));
               break;
             }
             case 82: {
@@ -12010,7 +12855,7 @@ public final class TestingModel {
                 erroredTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
                 mutable_bitField0_ |= 0x00000200;
               }
-              erroredTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              erroredTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry));
               break;
             }
             case 90: {
@@ -12018,17 +12863,16 @@ public final class TestingModel {
                 completedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Task>();
                 mutable_bitField0_ |= 0x00000400;
               }
-              completedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry));
+              completedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           flattenedTasks_ = java.util.Collections.unmodifiableList(flattenedTasks_);
@@ -12045,6 +12889,7 @@ public final class TestingModel {
         if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
           completedTasks_ = java.util.Collections.unmodifiableList(completedTasks_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -12060,9 +12905,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Dag.class, org.roylance.yaorm.TestingModel.Dag.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Dag> PARSER =
+        new com.google.protobuf.AbstractParser<Dag>() {
+      public Dag parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Dag(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Dag> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -12074,7 +12940,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -12096,7 +12964,13 @@ public final class TestingModel {
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object display_;
+    private java.lang.Object display_;
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public boolean hasDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string display = 2;</code>
      */
@@ -12108,7 +12982,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        display_ = s;
+        if (bs.isValidUtf8()) {
+          display_ = s;
+        }
         return s;
       }
     }
@@ -12169,12 +13045,24 @@ public final class TestingModel {
     /**
      * <code>optional int64 execution_date = 4;</code>
      */
+    public boolean hasExecutionDate() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int64 execution_date = 4;</code>
+     */
     public long getExecutionDate() {
       return executionDate_;
     }
 
     public static final int START_DATE_FIELD_NUMBER = 5;
     private long startDate_;
+    /**
+     * <code>optional int64 start_date = 5;</code>
+     */
+    public boolean hasStartDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional int64 start_date = 5;</code>
      */
@@ -12187,12 +13075,24 @@ public final class TestingModel {
     /**
      * <code>optional int64 end_date = 6;</code>
      */
+    public boolean hasEndDate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int64 end_date = 6;</code>
+     */
     public long getEndDate() {
       return endDate_;
     }
 
     public static final int DURATION_FIELD_NUMBER = 7;
     private long duration_;
+    /**
+     * <code>optional int64 duration = 7;</code>
+     */
+    public boolean hasDuration() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
     /**
      * <code>optional int64 duration = 7;</code>
      */
@@ -12340,6 +13240,19 @@ public final class TestingModel {
       return completedTasks_.get(index);
     }
 
+    private void initFields() {
+      id_ = "";
+      display_ = "";
+      flattenedTasks_ = java.util.Collections.emptyList();
+      executionDate_ = 0L;
+      startDate_ = 0L;
+      endDate_ = 0L;
+      duration_ = 0L;
+      uncompletedTasks_ = java.util.Collections.emptyList();
+      processingTasks_ = java.util.Collections.emptyList();
+      erroredTasks_ = java.util.Collections.emptyList();
+      completedTasks_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -12352,25 +13265,26 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDisplayBytes());
       }
       for (int i = 0; i < flattenedTasks_.size(); i++) {
         output.writeMessage(3, flattenedTasks_.get(i));
       }
-      if (executionDate_ != 0L) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt64(4, executionDate_);
       }
-      if (startDate_ != 0L) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt64(5, startDate_);
       }
-      if (endDate_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt64(6, endDate_);
       }
-      if (duration_ != 0L) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt64(7, duration_);
       }
       for (int i = 0; i < uncompletedTasks_.size(); i++) {
@@ -12385,36 +13299,40 @@ public final class TestingModel {
       for (int i = 0; i < completedTasks_.size(); i++) {
         output.writeMessage(11, completedTasks_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDisplayBytes());
       }
       for (int i = 0; i < flattenedTasks_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, flattenedTasks_.get(i));
       }
-      if (executionDate_ != 0L) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, executionDate_);
       }
-      if (startDate_ != 0L) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(5, startDate_);
       }
-      if (endDate_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(6, endDate_);
       }
-      if (duration_ != 0L) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(7, duration_);
       }
@@ -12434,11 +13352,18 @@ public final class TestingModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, completedTasks_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Dag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12492,17 +13417,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Dag prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -12548,12 +13468,16 @@ public final class TestingModel {
           getCompletedTasksFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         display_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (flattenedTasksBuilder_ == null) {
           flattenedTasks_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
@@ -12561,13 +13485,13 @@ public final class TestingModel {
           flattenedTasksBuilder_.clear();
         }
         executionDate_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         startDate_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         endDate_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         duration_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (uncompletedTasksBuilder_ == null) {
           uncompletedTasks_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000080);
@@ -12595,6 +13519,10 @@ public final class TestingModel {
         return this;
       }
 
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return org.roylance.yaorm.TestingModel.internal_static_org_roylance_yaorm_Dag_descriptor;
@@ -12616,7 +13544,13 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.Dag result = new org.roylance.yaorm.TestingModel.Dag(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.display_ = display_;
         if (flattenedTasksBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004)) {
@@ -12627,9 +13561,21 @@ public final class TestingModel {
         } else {
           result.flattenedTasks_ = flattenedTasksBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.executionDate_ = executionDate_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.startDate_ = startDate_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.endDate_ = endDate_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.duration_ = duration_;
         if (uncompletedTasksBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080)) {
@@ -12683,11 +13629,13 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Dag other) {
         if (other == org.roylance.yaorm.TestingModel.Dag.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getDisplay().isEmpty()) {
+        if (other.hasDisplay()) {
+          bitField0_ |= 0x00000002;
           display_ = other.display_;
           onChanged();
         }
@@ -12717,16 +13665,16 @@ public final class TestingModel {
             }
           }
         }
-        if (other.getExecutionDate() != 0L) {
+        if (other.hasExecutionDate()) {
           setExecutionDate(other.getExecutionDate());
         }
-        if (other.getStartDate() != 0L) {
+        if (other.hasStartDate()) {
           setStartDate(other.getStartDate());
         }
-        if (other.getEndDate() != 0L) {
+        if (other.hasEndDate()) {
           setEndDate(other.getEndDate());
         }
-        if (other.getDuration() != 0L) {
+        if (other.hasDuration()) {
           setDuration(other.getDuration());
         }
         if (uncompletedTasksBuilder_ == null) {
@@ -12833,7 +13781,7 @@ public final class TestingModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -12864,13 +13812,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -12900,7 +13856,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -12909,7 +13865,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -12922,8 +13878,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -12933,13 +13888,21 @@ public final class TestingModel {
       /**
        * <code>optional string display = 2;</code>
        */
+      public boolean hasDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          display_ = s;
+          if (bs.isValidUtf8()) {
+            display_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -12969,7 +13932,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
@@ -12978,7 +13941,7 @@ public final class TestingModel {
        * <code>optional string display = 2;</code>
        */
       public Builder clearDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -12991,8 +13954,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
@@ -13242,6 +14204,12 @@ public final class TestingModel {
       /**
        * <code>optional int64 execution_date = 4;</code>
        */
+      public boolean hasExecutionDate() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int64 execution_date = 4;</code>
+       */
       public long getExecutionDate() {
         return executionDate_;
       }
@@ -13249,7 +14217,7 @@ public final class TestingModel {
        * <code>optional int64 execution_date = 4;</code>
        */
       public Builder setExecutionDate(long value) {
-        
+        bitField0_ |= 0x00000008;
         executionDate_ = value;
         onChanged();
         return this;
@@ -13258,13 +14226,19 @@ public final class TestingModel {
        * <code>optional int64 execution_date = 4;</code>
        */
       public Builder clearExecutionDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         executionDate_ = 0L;
         onChanged();
         return this;
       }
 
       private long startDate_ ;
+      /**
+       * <code>optional int64 start_date = 5;</code>
+       */
+      public boolean hasStartDate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
       /**
        * <code>optional int64 start_date = 5;</code>
        */
@@ -13275,7 +14249,7 @@ public final class TestingModel {
        * <code>optional int64 start_date = 5;</code>
        */
       public Builder setStartDate(long value) {
-        
+        bitField0_ |= 0x00000010;
         startDate_ = value;
         onChanged();
         return this;
@@ -13284,13 +14258,19 @@ public final class TestingModel {
        * <code>optional int64 start_date = 5;</code>
        */
       public Builder clearStartDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         startDate_ = 0L;
         onChanged();
         return this;
       }
 
       private long endDate_ ;
+      /**
+       * <code>optional int64 end_date = 6;</code>
+       */
+      public boolean hasEndDate() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
       /**
        * <code>optional int64 end_date = 6;</code>
        */
@@ -13301,7 +14281,7 @@ public final class TestingModel {
        * <code>optional int64 end_date = 6;</code>
        */
       public Builder setEndDate(long value) {
-        
+        bitField0_ |= 0x00000020;
         endDate_ = value;
         onChanged();
         return this;
@@ -13310,13 +14290,19 @@ public final class TestingModel {
        * <code>optional int64 end_date = 6;</code>
        */
       public Builder clearEndDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         endDate_ = 0L;
         onChanged();
         return this;
       }
 
       private long duration_ ;
+      /**
+       * <code>optional int64 duration = 7;</code>
+       */
+      public boolean hasDuration() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
       /**
        * <code>optional int64 duration = 7;</code>
        */
@@ -13327,7 +14313,7 @@ public final class TestingModel {
        * <code>optional int64 duration = 7;</code>
        */
       public Builder setDuration(long value) {
-        
+        bitField0_ |= 0x00000040;
         duration_ = value;
         onChanged();
         return this;
@@ -13336,7 +14322,7 @@ public final class TestingModel {
        * <code>optional int64 duration = 7;</code>
        */
       public Builder clearDuration() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         duration_ = 0L;
         onChanged();
         return this;
@@ -14301,68 +15287,26 @@ public final class TestingModel {
         }
         return completedTasksBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Dag)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Dag)
-    private static final org.roylance.yaorm.TestingModel.Dag DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Dag();
+      defaultInstance = new Dag(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Dag getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Dag>
-        PARSER = new com.google.protobuf.AbstractParser<Dag>() {
-      public Dag parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Dag(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Dag> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Dag> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Dag getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Dag)
   }
 
   public interface TaskOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Task)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -14373,6 +15317,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    boolean hasDisplay();
     /**
      * <code>optional string display = 2;</code>
      */
@@ -14410,6 +15358,10 @@ public final class TestingModel {
     /**
      * <code>optional string dag_id = 4;</code>
      */
+    boolean hasDagId();
+    /**
+     * <code>optional string dag_id = 4;</code>
+     */
     java.lang.String getDagId();
     /**
      * <code>optional string dag_id = 4;</code>
@@ -14444,8 +15396,16 @@ public final class TestingModel {
     /**
      * <code>optional int64 execution_date = 6;</code>
      */
+    boolean hasExecutionDate();
+    /**
+     * <code>optional int64 execution_date = 6;</code>
+     */
     long getExecutionDate();
 
+    /**
+     * <code>optional int64 start_date = 7;</code>
+     */
+    boolean hasStartDate();
     /**
      * <code>optional int64 start_date = 7;</code>
      */
@@ -14454,13 +15414,25 @@ public final class TestingModel {
     /**
      * <code>optional int64 end_date = 8;</code>
      */
+    boolean hasEndDate();
+    /**
+     * <code>optional int64 end_date = 8;</code>
+     */
     long getEndDate();
 
     /**
      * <code>optional int64 duration = 9;</code>
      */
+    boolean hasDuration();
+    /**
+     * <code>optional int64 duration = 9;</code>
+     */
     long getDuration();
 
+    /**
+     * <code>optional string first_context_base_64 = 10;</code>
+     */
+    boolean hasFirstContextBase64();
     /**
      * <code>optional string first_context_base_64 = 10;</code>
      */
@@ -14474,6 +15446,10 @@ public final class TestingModel {
     /**
      * <code>optional string second_context_base_64 = 11;</code>
      */
+    boolean hasSecondContextBase64();
+    /**
+     * <code>optional string second_context_base_64 = 11;</code>
+     */
     java.lang.String getSecondContextBase64();
     /**
      * <code>optional string second_context_base_64 = 11;</code>
@@ -14481,6 +15457,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getSecondContextBase64Bytes();
 
+    /**
+     * <code>optional string third_context_base_64 = 12;</code>
+     */
+    boolean hasThirdContextBase64();
     /**
      * <code>optional string third_context_base_64 = 12;</code>
      */
@@ -14494,39 +15474,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Task}
    */
-  public  static final class Task extends
+  public static final class Task extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Task)
       TaskOrBuilder {
     // Use Task.newBuilder() to construct.
     private Task(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Task() {
-      id_ = "";
-      display_ = "";
-      dependencies_ = java.util.Collections.emptyList();
-      dagId_ = "";
-      logs_ = java.util.Collections.emptyList();
-      executionDate_ = 0L;
-      startDate_ = 0L;
-      endDate_ = 0L;
-      duration_ = 0L;
-      firstContextBase64_ = "";
-      secondContextBase64_ = "";
-      thirdContextBase64_ = "";
+    private Task(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Task defaultInstance;
+    public static Task getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Task getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Task(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -14536,21 +15517,22 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              display_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              display_ = bs;
               break;
             }
             case 26: {
@@ -14558,13 +15540,13 @@ public final class TestingModel {
                 dependencies_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.TaskDependency>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              dependencies_.add(input.readMessage(org.roylance.yaorm.TestingModel.TaskDependency.parser(), extensionRegistry));
+              dependencies_.add(input.readMessage(org.roylance.yaorm.TestingModel.TaskDependency.PARSER, extensionRegistry));
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              dagId_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              dagId_ = bs;
               break;
             }
             case 42: {
@@ -14572,55 +15554,54 @@ public final class TestingModel {
                 logs_ = new java.util.ArrayList<org.roylance.yaorm.TestingModel.Log>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              logs_.add(input.readMessage(org.roylance.yaorm.TestingModel.Log.parser(), extensionRegistry));
+              logs_.add(input.readMessage(org.roylance.yaorm.TestingModel.Log.PARSER, extensionRegistry));
               break;
             }
             case 48: {
-
+              bitField0_ |= 0x00000008;
               executionDate_ = input.readInt64();
               break;
             }
             case 56: {
-
+              bitField0_ |= 0x00000010;
               startDate_ = input.readInt64();
               break;
             }
             case 64: {
-
+              bitField0_ |= 0x00000020;
               endDate_ = input.readInt64();
               break;
             }
             case 72: {
-
+              bitField0_ |= 0x00000040;
               duration_ = input.readInt64();
               break;
             }
             case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              firstContextBase64_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000080;
+              firstContextBase64_ = bs;
               break;
             }
             case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              secondContextBase64_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000100;
+              secondContextBase64_ = bs;
               break;
             }
             case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              thirdContextBase64_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000200;
+              thirdContextBase64_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           dependencies_ = java.util.Collections.unmodifiableList(dependencies_);
@@ -14628,6 +15609,7 @@ public final class TestingModel {
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           logs_ = java.util.Collections.unmodifiableList(logs_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -14643,9 +15625,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.Task.class, org.roylance.yaorm.TestingModel.Task.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Task> PARSER =
+        new com.google.protobuf.AbstractParser<Task>() {
+      public Task parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Task(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Task> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -14657,7 +15660,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -14679,7 +15684,13 @@ public final class TestingModel {
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object display_;
+    private java.lang.Object display_;
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public boolean hasDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string display = 2;</code>
      */
@@ -14691,7 +15702,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        display_ = s;
+        if (bs.isValidUtf8()) {
+          display_ = s;
+        }
         return s;
       }
     }
@@ -14748,7 +15761,13 @@ public final class TestingModel {
     }
 
     public static final int DAG_ID_FIELD_NUMBER = 4;
-    private volatile java.lang.Object dagId_;
+    private java.lang.Object dagId_;
+    /**
+     * <code>optional string dag_id = 4;</code>
+     */
+    public boolean hasDagId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string dag_id = 4;</code>
      */
@@ -14760,7 +15779,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        dagId_ = s;
+        if (bs.isValidUtf8()) {
+          dagId_ = s;
+        }
         return s;
       }
     }
@@ -14821,12 +15842,24 @@ public final class TestingModel {
     /**
      * <code>optional int64 execution_date = 6;</code>
      */
+    public boolean hasExecutionDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int64 execution_date = 6;</code>
+     */
     public long getExecutionDate() {
       return executionDate_;
     }
 
     public static final int START_DATE_FIELD_NUMBER = 7;
     private long startDate_;
+    /**
+     * <code>optional int64 start_date = 7;</code>
+     */
+    public boolean hasStartDate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
     /**
      * <code>optional int64 start_date = 7;</code>
      */
@@ -14839,6 +15872,12 @@ public final class TestingModel {
     /**
      * <code>optional int64 end_date = 8;</code>
      */
+    public boolean hasEndDate() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int64 end_date = 8;</code>
+     */
     public long getEndDate() {
       return endDate_;
     }
@@ -14848,12 +15887,24 @@ public final class TestingModel {
     /**
      * <code>optional int64 duration = 9;</code>
      */
+    public boolean hasDuration() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int64 duration = 9;</code>
+     */
     public long getDuration() {
       return duration_;
     }
 
     public static final int FIRST_CONTEXT_BASE_64_FIELD_NUMBER = 10;
-    private volatile java.lang.Object firstContextBase64_;
+    private java.lang.Object firstContextBase64_;
+    /**
+     * <code>optional string first_context_base_64 = 10;</code>
+     */
+    public boolean hasFirstContextBase64() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
     /**
      * <code>optional string first_context_base_64 = 10;</code>
      */
@@ -14865,7 +15916,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        firstContextBase64_ = s;
+        if (bs.isValidUtf8()) {
+          firstContextBase64_ = s;
+        }
         return s;
       }
     }
@@ -14887,7 +15940,13 @@ public final class TestingModel {
     }
 
     public static final int SECOND_CONTEXT_BASE_64_FIELD_NUMBER = 11;
-    private volatile java.lang.Object secondContextBase64_;
+    private java.lang.Object secondContextBase64_;
+    /**
+     * <code>optional string second_context_base_64 = 11;</code>
+     */
+    public boolean hasSecondContextBase64() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
     /**
      * <code>optional string second_context_base_64 = 11;</code>
      */
@@ -14899,7 +15958,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        secondContextBase64_ = s;
+        if (bs.isValidUtf8()) {
+          secondContextBase64_ = s;
+        }
         return s;
       }
     }
@@ -14921,7 +15982,13 @@ public final class TestingModel {
     }
 
     public static final int THIRD_CONTEXT_BASE_64_FIELD_NUMBER = 12;
-    private volatile java.lang.Object thirdContextBase64_;
+    private java.lang.Object thirdContextBase64_;
+    /**
+     * <code>optional string third_context_base_64 = 12;</code>
+     */
+    public boolean hasThirdContextBase64() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
     /**
      * <code>optional string third_context_base_64 = 12;</code>
      */
@@ -14933,7 +16000,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        thirdContextBase64_ = s;
+        if (bs.isValidUtf8()) {
+          thirdContextBase64_ = s;
+        }
         return s;
       }
     }
@@ -14954,6 +16023,20 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      display_ = "";
+      dependencies_ = java.util.Collections.emptyList();
+      dagId_ = "";
+      logs_ = java.util.Collections.emptyList();
+      executionDate_ = 0L;
+      startDate_ = 0L;
+      endDate_ = 0L;
+      duration_ = 0L;
+      firstContextBase64_ = "";
+      secondContextBase64_ = "";
+      thirdContextBase64_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -14966,96 +16049,112 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDisplayBytes());
       }
       for (int i = 0; i < dependencies_.size(); i++) {
         output.writeMessage(3, dependencies_.get(i));
       }
-      if (!getDagIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, dagId_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(4, getDagIdBytes());
       }
       for (int i = 0; i < logs_.size(); i++) {
         output.writeMessage(5, logs_.get(i));
       }
-      if (executionDate_ != 0L) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt64(6, executionDate_);
       }
-      if (startDate_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt64(7, startDate_);
       }
-      if (endDate_ != 0L) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt64(8, endDate_);
       }
-      if (duration_ != 0L) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt64(9, duration_);
       }
-      if (!getFirstContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 10, firstContextBase64_);
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(10, getFirstContextBase64Bytes());
       }
-      if (!getSecondContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 11, secondContextBase64_);
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(11, getSecondContextBase64Bytes());
       }
-      if (!getThirdContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 12, thirdContextBase64_);
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBytes(12, getThirdContextBase64Bytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDisplayBytes());
       }
       for (int i = 0; i < dependencies_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, dependencies_.get(i));
       }
-      if (!getDagIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, dagId_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getDagIdBytes());
       }
       for (int i = 0; i < logs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, logs_.get(i));
       }
-      if (executionDate_ != 0L) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(6, executionDate_);
       }
-      if (startDate_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(7, startDate_);
       }
-      if (endDate_ != 0L) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(8, endDate_);
       }
-      if (duration_ != 0L) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(9, duration_);
       }
-      if (!getFirstContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, firstContextBase64_);
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getFirstContextBase64Bytes());
       }
-      if (!getSecondContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(11, secondContextBase64_);
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getSecondContextBase64Bytes());
       }
-      if (!getThirdContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(12, thirdContextBase64_);
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(12, getThirdContextBase64Bytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.Task parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15109,17 +16208,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.Task prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -15162,12 +16256,16 @@ public final class TestingModel {
           getLogsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         display_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (dependenciesBuilder_ == null) {
           dependencies_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
@@ -15175,7 +16273,7 @@ public final class TestingModel {
           dependenciesBuilder_.clear();
         }
         dagId_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (logsBuilder_ == null) {
           logs_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000010);
@@ -15183,20 +16281,24 @@ public final class TestingModel {
           logsBuilder_.clear();
         }
         executionDate_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         startDate_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         endDate_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000080);
         duration_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000100);
         firstContextBase64_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000200);
         secondContextBase64_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000400);
         thirdContextBase64_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -15220,7 +16322,13 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.Task result = new org.roylance.yaorm.TestingModel.Task(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.display_ = display_;
         if (dependenciesBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004)) {
@@ -15230,6 +16338,9 @@ public final class TestingModel {
           result.dependencies_ = dependencies_;
         } else {
           result.dependencies_ = dependenciesBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.dagId_ = dagId_;
         if (logsBuilder_ == null) {
@@ -15241,12 +16352,33 @@ public final class TestingModel {
         } else {
           result.logs_ = logsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.executionDate_ = executionDate_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.startDate_ = startDate_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.endDate_ = endDate_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.duration_ = duration_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.firstContextBase64_ = firstContextBase64_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000100;
+        }
         result.secondContextBase64_ = secondContextBase64_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.thirdContextBase64_ = thirdContextBase64_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -15264,11 +16396,13 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.Task other) {
         if (other == org.roylance.yaorm.TestingModel.Task.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getDisplay().isEmpty()) {
+        if (other.hasDisplay()) {
+          bitField0_ |= 0x00000002;
           display_ = other.display_;
           onChanged();
         }
@@ -15298,7 +16432,8 @@ public final class TestingModel {
             }
           }
         }
-        if (!other.getDagId().isEmpty()) {
+        if (other.hasDagId()) {
+          bitField0_ |= 0x00000008;
           dagId_ = other.dagId_;
           onChanged();
         }
@@ -15328,31 +16463,34 @@ public final class TestingModel {
             }
           }
         }
-        if (other.getExecutionDate() != 0L) {
+        if (other.hasExecutionDate()) {
           setExecutionDate(other.getExecutionDate());
         }
-        if (other.getStartDate() != 0L) {
+        if (other.hasStartDate()) {
           setStartDate(other.getStartDate());
         }
-        if (other.getEndDate() != 0L) {
+        if (other.hasEndDate()) {
           setEndDate(other.getEndDate());
         }
-        if (other.getDuration() != 0L) {
+        if (other.hasDuration()) {
           setDuration(other.getDuration());
         }
-        if (!other.getFirstContextBase64().isEmpty()) {
+        if (other.hasFirstContextBase64()) {
+          bitField0_ |= 0x00000200;
           firstContextBase64_ = other.firstContextBase64_;
           onChanged();
         }
-        if (!other.getSecondContextBase64().isEmpty()) {
+        if (other.hasSecondContextBase64()) {
+          bitField0_ |= 0x00000400;
           secondContextBase64_ = other.secondContextBase64_;
           onChanged();
         }
-        if (!other.getThirdContextBase64().isEmpty()) {
+        if (other.hasThirdContextBase64()) {
+          bitField0_ |= 0x00000800;
           thirdContextBase64_ = other.thirdContextBase64_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -15383,13 +16521,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15419,7 +16565,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -15428,7 +16574,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -15441,8 +16587,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -15452,13 +16597,21 @@ public final class TestingModel {
       /**
        * <code>optional string display = 2;</code>
        */
+      public boolean hasDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          display_ = s;
+          if (bs.isValidUtf8()) {
+            display_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15488,7 +16641,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
@@ -15497,7 +16650,7 @@ public final class TestingModel {
        * <code>optional string display = 2;</code>
        */
       public Builder clearDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -15510,8 +16663,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
@@ -15761,13 +16913,21 @@ public final class TestingModel {
       /**
        * <code>optional string dag_id = 4;</code>
        */
+      public boolean hasDagId() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string dag_id = 4;</code>
+       */
       public java.lang.String getDagId() {
         java.lang.Object ref = dagId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          dagId_ = s;
+          if (bs.isValidUtf8()) {
+            dagId_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15797,7 +16957,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         dagId_ = value;
         onChanged();
         return this;
@@ -15806,7 +16966,7 @@ public final class TestingModel {
        * <code>optional string dag_id = 4;</code>
        */
       public Builder clearDagId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         dagId_ = getDefaultInstance().getDagId();
         onChanged();
         return this;
@@ -15819,8 +16979,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         dagId_ = value;
         onChanged();
         return this;
@@ -16070,6 +17229,12 @@ public final class TestingModel {
       /**
        * <code>optional int64 execution_date = 6;</code>
        */
+      public boolean hasExecutionDate() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int64 execution_date = 6;</code>
+       */
       public long getExecutionDate() {
         return executionDate_;
       }
@@ -16077,7 +17242,7 @@ public final class TestingModel {
        * <code>optional int64 execution_date = 6;</code>
        */
       public Builder setExecutionDate(long value) {
-        
+        bitField0_ |= 0x00000020;
         executionDate_ = value;
         onChanged();
         return this;
@@ -16086,13 +17251,19 @@ public final class TestingModel {
        * <code>optional int64 execution_date = 6;</code>
        */
       public Builder clearExecutionDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         executionDate_ = 0L;
         onChanged();
         return this;
       }
 
       private long startDate_ ;
+      /**
+       * <code>optional int64 start_date = 7;</code>
+       */
+      public boolean hasStartDate() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
       /**
        * <code>optional int64 start_date = 7;</code>
        */
@@ -16103,7 +17274,7 @@ public final class TestingModel {
        * <code>optional int64 start_date = 7;</code>
        */
       public Builder setStartDate(long value) {
-        
+        bitField0_ |= 0x00000040;
         startDate_ = value;
         onChanged();
         return this;
@@ -16112,13 +17283,19 @@ public final class TestingModel {
        * <code>optional int64 start_date = 7;</code>
        */
       public Builder clearStartDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         startDate_ = 0L;
         onChanged();
         return this;
       }
 
       private long endDate_ ;
+      /**
+       * <code>optional int64 end_date = 8;</code>
+       */
+      public boolean hasEndDate() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
       /**
        * <code>optional int64 end_date = 8;</code>
        */
@@ -16129,7 +17306,7 @@ public final class TestingModel {
        * <code>optional int64 end_date = 8;</code>
        */
       public Builder setEndDate(long value) {
-        
+        bitField0_ |= 0x00000080;
         endDate_ = value;
         onChanged();
         return this;
@@ -16138,13 +17315,19 @@ public final class TestingModel {
        * <code>optional int64 end_date = 8;</code>
        */
       public Builder clearEndDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         endDate_ = 0L;
         onChanged();
         return this;
       }
 
       private long duration_ ;
+      /**
+       * <code>optional int64 duration = 9;</code>
+       */
+      public boolean hasDuration() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
       /**
        * <code>optional int64 duration = 9;</code>
        */
@@ -16155,7 +17338,7 @@ public final class TestingModel {
        * <code>optional int64 duration = 9;</code>
        */
       public Builder setDuration(long value) {
-        
+        bitField0_ |= 0x00000100;
         duration_ = value;
         onChanged();
         return this;
@@ -16164,7 +17347,7 @@ public final class TestingModel {
        * <code>optional int64 duration = 9;</code>
        */
       public Builder clearDuration() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         duration_ = 0L;
         onChanged();
         return this;
@@ -16174,13 +17357,21 @@ public final class TestingModel {
       /**
        * <code>optional string first_context_base_64 = 10;</code>
        */
+      public boolean hasFirstContextBase64() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional string first_context_base_64 = 10;</code>
+       */
       public java.lang.String getFirstContextBase64() {
         java.lang.Object ref = firstContextBase64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          firstContextBase64_ = s;
+          if (bs.isValidUtf8()) {
+            firstContextBase64_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -16210,7 +17401,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000200;
         firstContextBase64_ = value;
         onChanged();
         return this;
@@ -16219,7 +17410,7 @@ public final class TestingModel {
        * <code>optional string first_context_base_64 = 10;</code>
        */
       public Builder clearFirstContextBase64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         firstContextBase64_ = getDefaultInstance().getFirstContextBase64();
         onChanged();
         return this;
@@ -16232,8 +17423,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000200;
         firstContextBase64_ = value;
         onChanged();
         return this;
@@ -16243,13 +17433,21 @@ public final class TestingModel {
       /**
        * <code>optional string second_context_base_64 = 11;</code>
        */
+      public boolean hasSecondContextBase64() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional string second_context_base_64 = 11;</code>
+       */
       public java.lang.String getSecondContextBase64() {
         java.lang.Object ref = secondContextBase64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          secondContextBase64_ = s;
+          if (bs.isValidUtf8()) {
+            secondContextBase64_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -16279,7 +17477,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000400;
         secondContextBase64_ = value;
         onChanged();
         return this;
@@ -16288,7 +17486,7 @@ public final class TestingModel {
        * <code>optional string second_context_base_64 = 11;</code>
        */
       public Builder clearSecondContextBase64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000400);
         secondContextBase64_ = getDefaultInstance().getSecondContextBase64();
         onChanged();
         return this;
@@ -16301,8 +17499,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000400;
         secondContextBase64_ = value;
         onChanged();
         return this;
@@ -16312,13 +17509,21 @@ public final class TestingModel {
       /**
        * <code>optional string third_context_base_64 = 12;</code>
        */
+      public boolean hasThirdContextBase64() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional string third_context_base_64 = 12;</code>
+       */
       public java.lang.String getThirdContextBase64() {
         java.lang.Object ref = thirdContextBase64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          thirdContextBase64_ = s;
+          if (bs.isValidUtf8()) {
+            thirdContextBase64_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -16348,7 +17553,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000800;
         thirdContextBase64_ = value;
         onChanged();
         return this;
@@ -16357,7 +17562,7 @@ public final class TestingModel {
        * <code>optional string third_context_base_64 = 12;</code>
        */
       public Builder clearThirdContextBase64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000800);
         thirdContextBase64_ = getDefaultInstance().getThirdContextBase64();
         onChanged();
         return this;
@@ -16370,74 +17575,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000800;
         thirdContextBase64_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Task)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Task)
-    private static final org.roylance.yaorm.TestingModel.Task DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.Task();
+      defaultInstance = new Task(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.Task getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Task>
-        PARSER = new com.google.protobuf.AbstractParser<Task>() {
-      public Task parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Task(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Task> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Task> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.Task getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Task)
   }
 
   public interface TaskDependencyOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.TaskDependency)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -16451,6 +17613,10 @@ public final class TestingModel {
     /**
      * <code>optional string parent_task_id = 2;</code>
      */
+    boolean hasParentTaskId();
+    /**
+     * <code>optional string parent_task_id = 2;</code>
+     */
     java.lang.String getParentTaskId();
     /**
      * <code>optional string parent_task_id = 2;</code>
@@ -16461,29 +17627,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.TaskDependency}
    */
-  public  static final class TaskDependency extends
+  public static final class TaskDependency extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TaskDependency)
       TaskDependencyOrBuilder {
     // Use TaskDependency.newBuilder() to construct.
     private TaskDependency(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TaskDependency() {
-      id_ = "";
-      parentTaskId_ = "";
+    private TaskDependency(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TaskDependency defaultInstance;
+    public static TaskDependency getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public TaskDependency getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private TaskDependency(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -16493,32 +17670,33 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              parentTaskId_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              parentTaskId_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -16534,8 +17712,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.TaskDependency.class, org.roylance.yaorm.TestingModel.TaskDependency.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<TaskDependency> PARSER =
+        new com.google.protobuf.AbstractParser<TaskDependency>() {
+      public TaskDependency parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TaskDependency(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TaskDependency> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -16547,7 +17747,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -16569,7 +17771,13 @@ public final class TestingModel {
     }
 
     public static final int PARENT_TASK_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object parentTaskId_;
+    private java.lang.Object parentTaskId_;
+    /**
+     * <code>optional string parent_task_id = 2;</code>
+     */
+    public boolean hasParentTaskId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string parent_task_id = 2;</code>
      */
@@ -16581,7 +17789,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        parentTaskId_ = s;
+        if (bs.isValidUtf8()) {
+          parentTaskId_ = s;
+        }
         return s;
       }
     }
@@ -16602,6 +17812,10 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      parentTaskId_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -16614,30 +17828,42 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getParentTaskIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, parentTaskId_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getParentTaskIdBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getParentTaskIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, parentTaskId_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getParentTaskIdBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.TaskDependency parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16691,17 +17917,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.TaskDependency prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -16742,13 +17963,21 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         parentTaskId_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -16770,8 +17999,17 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.TaskDependency buildPartial() {
         org.roylance.yaorm.TestingModel.TaskDependency result = new org.roylance.yaorm.TestingModel.TaskDependency(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.parentTaskId_ = parentTaskId_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -16787,15 +18025,17 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.TaskDependency other) {
         if (other == org.roylance.yaorm.TestingModel.TaskDependency.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getParentTaskId().isEmpty()) {
+        if (other.hasParentTaskId()) {
+          bitField0_ |= 0x00000002;
           parentTaskId_ = other.parentTaskId_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -16820,8 +18060,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -16831,7 +18078,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -16861,7 +18110,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -16870,7 +18119,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -16883,8 +18132,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -16894,13 +18142,21 @@ public final class TestingModel {
       /**
        * <code>optional string parent_task_id = 2;</code>
        */
+      public boolean hasParentTaskId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string parent_task_id = 2;</code>
+       */
       public java.lang.String getParentTaskId() {
         java.lang.Object ref = parentTaskId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          parentTaskId_ = s;
+          if (bs.isValidUtf8()) {
+            parentTaskId_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -16930,7 +18186,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         parentTaskId_ = value;
         onChanged();
         return this;
@@ -16939,7 +18195,7 @@ public final class TestingModel {
        * <code>optional string parent_task_id = 2;</code>
        */
       public Builder clearParentTaskId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         parentTaskId_ = getDefaultInstance().getParentTaskId();
         onChanged();
         return this;
@@ -16952,74 +18208,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         parentTaskId_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.TaskDependency)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.TaskDependency)
-    private static final org.roylance.yaorm.TestingModel.TaskDependency DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.TaskDependency();
+      defaultInstance = new TaskDependency(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.TaskDependency getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TaskDependency>
-        PARSER = new com.google.protobuf.AbstractParser<TaskDependency>() {
-      public TaskDependency parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TaskDependency(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TaskDependency> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TaskDependency> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.TaskDependency getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.TaskDependency)
   }
 
   public interface AddTaskToDagOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.AddTaskToDag)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -17059,6 +18272,10 @@ public final class TestingModel {
     /**
      * <code>optional string first_context_base_64 = 4;</code>
      */
+    boolean hasFirstContextBase64();
+    /**
+     * <code>optional string first_context_base_64 = 4;</code>
+     */
     java.lang.String getFirstContextBase64();
     /**
      * <code>optional string first_context_base_64 = 4;</code>
@@ -17066,6 +18283,10 @@ public final class TestingModel {
     com.google.protobuf.ByteString
         getFirstContextBase64Bytes();
 
+    /**
+     * <code>optional string second_context_base_64 = 5;</code>
+     */
+    boolean hasSecondContextBase64();
     /**
      * <code>optional string second_context_base_64 = 5;</code>
      */
@@ -17079,6 +18300,10 @@ public final class TestingModel {
     /**
      * <code>optional string third_context_base_64 = 6;</code>
      */
+    boolean hasThirdContextBase64();
+    /**
+     * <code>optional string third_context_base_64 = 6;</code>
+     */
     java.lang.String getThirdContextBase64();
     /**
      * <code>optional string third_context_base_64 = 6;</code>
@@ -17089,31 +18314,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.AddTaskToDag}
    */
-  public  static final class AddTaskToDag extends
+  public static final class AddTaskToDag extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.AddTaskToDag)
       AddTaskToDagOrBuilder {
     // Use AddTaskToDag.newBuilder() to construct.
     private AddTaskToDag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private AddTaskToDag() {
-      id_ = "";
-      firstContextBase64_ = "";
-      secondContextBase64_ = "";
-      thirdContextBase64_ = "";
+    private AddTaskToDag(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AddTaskToDag defaultInstance;
+    public static AddTaskToDag getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public AddTaskToDag getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private AddTaskToDag(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -17123,70 +18357,71 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
               org.roylance.yaorm.TestingModel.Task.Builder subBuilder = null;
-              if (parentTask_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = parentTask_.toBuilder();
               }
-              parentTask_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry);
+              parentTask_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(parentTask_);
                 parentTask_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
             case 26: {
               org.roylance.yaorm.TestingModel.Task.Builder subBuilder = null;
-              if (newTask_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = newTask_.toBuilder();
               }
-              newTask_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry);
+              newTask_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(newTask_);
                 newTask_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              firstContextBase64_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              firstContextBase64_ = bs;
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              secondContextBase64_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              secondContextBase64_ = bs;
               break;
             }
             case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              thirdContextBase64_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              thirdContextBase64_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -17202,8 +18437,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.AddTaskToDag.class, org.roylance.yaorm.TestingModel.AddTaskToDag.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<AddTaskToDag> PARSER =
+        new com.google.protobuf.AbstractParser<AddTaskToDag>() {
+      public AddTaskToDag parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AddTaskToDag(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddTaskToDag> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -17215,7 +18472,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -17242,19 +18501,19 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
      */
     public boolean hasParentTask() {
-      return parentTask_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
      */
     public org.roylance.yaorm.TestingModel.Task getParentTask() {
-      return parentTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : parentTask_;
+      return parentTask_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
      */
     public org.roylance.yaorm.TestingModel.TaskOrBuilder getParentTaskOrBuilder() {
-      return getParentTask();
+      return parentTask_;
     }
 
     public static final int NEW_TASK_FIELD_NUMBER = 3;
@@ -17263,23 +18522,29 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
      */
     public boolean hasNewTask() {
-      return newTask_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
      */
     public org.roylance.yaorm.TestingModel.Task getNewTask() {
-      return newTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : newTask_;
+      return newTask_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
      */
     public org.roylance.yaorm.TestingModel.TaskOrBuilder getNewTaskOrBuilder() {
-      return getNewTask();
+      return newTask_;
     }
 
     public static final int FIRST_CONTEXT_BASE_64_FIELD_NUMBER = 4;
-    private volatile java.lang.Object firstContextBase64_;
+    private java.lang.Object firstContextBase64_;
+    /**
+     * <code>optional string first_context_base_64 = 4;</code>
+     */
+    public boolean hasFirstContextBase64() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional string first_context_base_64 = 4;</code>
      */
@@ -17291,7 +18556,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        firstContextBase64_ = s;
+        if (bs.isValidUtf8()) {
+          firstContextBase64_ = s;
+        }
         return s;
       }
     }
@@ -17313,7 +18580,13 @@ public final class TestingModel {
     }
 
     public static final int SECOND_CONTEXT_BASE_64_FIELD_NUMBER = 5;
-    private volatile java.lang.Object secondContextBase64_;
+    private java.lang.Object secondContextBase64_;
+    /**
+     * <code>optional string second_context_base_64 = 5;</code>
+     */
+    public boolean hasSecondContextBase64() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
     /**
      * <code>optional string second_context_base_64 = 5;</code>
      */
@@ -17325,7 +18598,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        secondContextBase64_ = s;
+        if (bs.isValidUtf8()) {
+          secondContextBase64_ = s;
+        }
         return s;
       }
     }
@@ -17347,7 +18622,13 @@ public final class TestingModel {
     }
 
     public static final int THIRD_CONTEXT_BASE_64_FIELD_NUMBER = 6;
-    private volatile java.lang.Object thirdContextBase64_;
+    private java.lang.Object thirdContextBase64_;
+    /**
+     * <code>optional string third_context_base_64 = 6;</code>
+     */
+    public boolean hasThirdContextBase64() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
     /**
      * <code>optional string third_context_base_64 = 6;</code>
      */
@@ -17359,7 +18640,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        thirdContextBase64_ = s;
+        if (bs.isValidUtf8()) {
+          thirdContextBase64_ = s;
+        }
         return s;
       }
     }
@@ -17380,6 +18663,14 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      parentTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
+      newTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
+      firstContextBase64_ = "";
+      secondContextBase64_ = "";
+      thirdContextBase64_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -17392,56 +18683,70 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (parentTask_ != null) {
-        output.writeMessage(2, getParentTask());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, parentTask_);
       }
-      if (newTask_ != null) {
-        output.writeMessage(3, getNewTask());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, newTask_);
       }
-      if (!getFirstContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, firstContextBase64_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getFirstContextBase64Bytes());
       }
-      if (!getSecondContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, secondContextBase64_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getSecondContextBase64Bytes());
       }
-      if (!getThirdContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 6, thirdContextBase64_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getThirdContextBase64Bytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
-      }
-      if (parentTask_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getParentTask());
+          .computeBytesSize(1, getIdBytes());
       }
-      if (newTask_ != null) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getNewTask());
+          .computeMessageSize(2, parentTask_);
       }
-      if (!getFirstContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, firstContextBase64_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, newTask_);
       }
-      if (!getSecondContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, secondContextBase64_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getFirstContextBase64Bytes());
       }
-      if (!getThirdContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, thirdContextBase64_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getSecondContextBase64Bytes());
       }
-      memoizedSize = size;
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getThirdContextBase64Bytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.AddTaskToDag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17495,17 +18800,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.AddTaskToDag prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -17544,31 +18844,41 @@ public final class TestingModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getParentTaskFieldBuilder();
+          getNewTaskFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (parentTaskBuilder_ == null) {
-          parentTask_ = null;
+          parentTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
         } else {
-          parentTask_ = null;
-          parentTaskBuilder_ = null;
+          parentTaskBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (newTaskBuilder_ == null) {
-          newTask_ = null;
+          newTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
         } else {
-          newTask_ = null;
-          newTaskBuilder_ = null;
+          newTaskBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         firstContextBase64_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         secondContextBase64_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         thirdContextBase64_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -17590,20 +18900,41 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.AddTaskToDag buildPartial() {
         org.roylance.yaorm.TestingModel.AddTaskToDag result = new org.roylance.yaorm.TestingModel.AddTaskToDag(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         if (parentTaskBuilder_ == null) {
           result.parentTask_ = parentTask_;
         } else {
           result.parentTask_ = parentTaskBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         if (newTaskBuilder_ == null) {
           result.newTask_ = newTask_;
         } else {
           result.newTask_ = newTaskBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.firstContextBase64_ = firstContextBase64_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.secondContextBase64_ = secondContextBase64_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.thirdContextBase64_ = thirdContextBase64_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -17619,7 +18950,8 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.AddTaskToDag other) {
         if (other == org.roylance.yaorm.TestingModel.AddTaskToDag.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
@@ -17629,19 +18961,22 @@ public final class TestingModel {
         if (other.hasNewTask()) {
           mergeNewTask(other.getNewTask());
         }
-        if (!other.getFirstContextBase64().isEmpty()) {
+        if (other.hasFirstContextBase64()) {
+          bitField0_ |= 0x00000008;
           firstContextBase64_ = other.firstContextBase64_;
           onChanged();
         }
-        if (!other.getSecondContextBase64().isEmpty()) {
+        if (other.hasSecondContextBase64()) {
+          bitField0_ |= 0x00000010;
           secondContextBase64_ = other.secondContextBase64_;
           onChanged();
         }
-        if (!other.getThirdContextBase64().isEmpty()) {
+        if (other.hasThirdContextBase64()) {
+          bitField0_ |= 0x00000020;
           thirdContextBase64_ = other.thirdContextBase64_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -17666,8 +19001,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -17677,7 +19019,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17707,7 +19051,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -17716,7 +19060,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -17729,28 +19073,27 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.TestingModel.Task parentTask_ = null;
+      private org.roylance.yaorm.TestingModel.Task parentTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> parentTaskBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public boolean hasParentTask() {
-        return parentTaskBuilder_ != null || parentTask_ != null;
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public org.roylance.yaorm.TestingModel.Task getParentTask() {
         if (parentTaskBuilder_ == null) {
-          return parentTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : parentTask_;
+          return parentTask_;
         } else {
           return parentTaskBuilder_.getMessage();
         }
@@ -17768,7 +19111,7 @@ public final class TestingModel {
         } else {
           parentTaskBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -17782,7 +19125,7 @@ public final class TestingModel {
         } else {
           parentTaskBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -17790,7 +19133,8 @@ public final class TestingModel {
        */
       public Builder mergeParentTask(org.roylance.yaorm.TestingModel.Task value) {
         if (parentTaskBuilder_ == null) {
-          if (parentTask_ != null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              parentTask_ != org.roylance.yaorm.TestingModel.Task.getDefaultInstance()) {
             parentTask_ =
               org.roylance.yaorm.TestingModel.Task.newBuilder(parentTask_).mergeFrom(value).buildPartial();
           } else {
@@ -17800,7 +19144,7 @@ public final class TestingModel {
         } else {
           parentTaskBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -17808,20 +19152,19 @@ public final class TestingModel {
        */
       public Builder clearParentTask() {
         if (parentTaskBuilder_ == null) {
-          parentTask_ = null;
+          parentTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
           onChanged();
         } else {
-          parentTask_ = null;
-          parentTaskBuilder_ = null;
+          parentTaskBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public org.roylance.yaorm.TestingModel.Task.Builder getParentTaskBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getParentTaskFieldBuilder().getBuilder();
       }
@@ -17832,8 +19175,7 @@ public final class TestingModel {
         if (parentTaskBuilder_ != null) {
           return parentTaskBuilder_.getMessageOrBuilder();
         } else {
-          return parentTask_ == null ?
-              org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : parentTask_;
+          return parentTask_;
         }
       }
       /**
@@ -17853,21 +19195,21 @@ public final class TestingModel {
         return parentTaskBuilder_;
       }
 
-      private org.roylance.yaorm.TestingModel.Task newTask_ = null;
+      private org.roylance.yaorm.TestingModel.Task newTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> newTaskBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
        */
       public boolean hasNewTask() {
-        return newTaskBuilder_ != null || newTask_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
        */
       public org.roylance.yaorm.TestingModel.Task getNewTask() {
         if (newTaskBuilder_ == null) {
-          return newTask_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : newTask_;
+          return newTask_;
         } else {
           return newTaskBuilder_.getMessage();
         }
@@ -17885,7 +19227,7 @@ public final class TestingModel {
         } else {
           newTaskBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -17899,7 +19241,7 @@ public final class TestingModel {
         } else {
           newTaskBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -17907,7 +19249,8 @@ public final class TestingModel {
        */
       public Builder mergeNewTask(org.roylance.yaorm.TestingModel.Task value) {
         if (newTaskBuilder_ == null) {
-          if (newTask_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              newTask_ != org.roylance.yaorm.TestingModel.Task.getDefaultInstance()) {
             newTask_ =
               org.roylance.yaorm.TestingModel.Task.newBuilder(newTask_).mergeFrom(value).buildPartial();
           } else {
@@ -17917,7 +19260,7 @@ public final class TestingModel {
         } else {
           newTaskBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -17925,20 +19268,19 @@ public final class TestingModel {
        */
       public Builder clearNewTask() {
         if (newTaskBuilder_ == null) {
-          newTask_ = null;
+          newTask_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
           onChanged();
         } else {
-          newTask_ = null;
-          newTaskBuilder_ = null;
+          newTaskBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
        */
       public org.roylance.yaorm.TestingModel.Task.Builder getNewTaskBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getNewTaskFieldBuilder().getBuilder();
       }
@@ -17949,8 +19291,7 @@ public final class TestingModel {
         if (newTaskBuilder_ != null) {
           return newTaskBuilder_.getMessageOrBuilder();
         } else {
-          return newTask_ == null ?
-              org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : newTask_;
+          return newTask_;
         }
       }
       /**
@@ -17974,13 +19315,21 @@ public final class TestingModel {
       /**
        * <code>optional string first_context_base_64 = 4;</code>
        */
+      public boolean hasFirstContextBase64() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string first_context_base_64 = 4;</code>
+       */
       public java.lang.String getFirstContextBase64() {
         java.lang.Object ref = firstContextBase64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          firstContextBase64_ = s;
+          if (bs.isValidUtf8()) {
+            firstContextBase64_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -18010,7 +19359,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         firstContextBase64_ = value;
         onChanged();
         return this;
@@ -18019,7 +19368,7 @@ public final class TestingModel {
        * <code>optional string first_context_base_64 = 4;</code>
        */
       public Builder clearFirstContextBase64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         firstContextBase64_ = getDefaultInstance().getFirstContextBase64();
         onChanged();
         return this;
@@ -18032,8 +19381,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         firstContextBase64_ = value;
         onChanged();
         return this;
@@ -18043,13 +19391,21 @@ public final class TestingModel {
       /**
        * <code>optional string second_context_base_64 = 5;</code>
        */
+      public boolean hasSecondContextBase64() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string second_context_base_64 = 5;</code>
+       */
       public java.lang.String getSecondContextBase64() {
         java.lang.Object ref = secondContextBase64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          secondContextBase64_ = s;
+          if (bs.isValidUtf8()) {
+            secondContextBase64_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -18079,7 +19435,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000010;
         secondContextBase64_ = value;
         onChanged();
         return this;
@@ -18088,7 +19444,7 @@ public final class TestingModel {
        * <code>optional string second_context_base_64 = 5;</code>
        */
       public Builder clearSecondContextBase64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         secondContextBase64_ = getDefaultInstance().getSecondContextBase64();
         onChanged();
         return this;
@@ -18101,8 +19457,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000010;
         secondContextBase64_ = value;
         onChanged();
         return this;
@@ -18112,13 +19467,21 @@ public final class TestingModel {
       /**
        * <code>optional string third_context_base_64 = 6;</code>
        */
+      public boolean hasThirdContextBase64() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional string third_context_base_64 = 6;</code>
+       */
       public java.lang.String getThirdContextBase64() {
         java.lang.Object ref = thirdContextBase64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          thirdContextBase64_ = s;
+          if (bs.isValidUtf8()) {
+            thirdContextBase64_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -18148,7 +19511,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000020;
         thirdContextBase64_ = value;
         onChanged();
         return this;
@@ -18157,7 +19520,7 @@ public final class TestingModel {
        * <code>optional string third_context_base_64 = 6;</code>
        */
       public Builder clearThirdContextBase64() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         thirdContextBase64_ = getDefaultInstance().getThirdContextBase64();
         onChanged();
         return this;
@@ -18170,74 +19533,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000020;
         thirdContextBase64_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.AddTaskToDag)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.AddTaskToDag)
-    private static final org.roylance.yaorm.TestingModel.AddTaskToDag DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.AddTaskToDag();
+      defaultInstance = new AddTaskToDag(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.AddTaskToDag getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<AddTaskToDag>
-        PARSER = new com.google.protobuf.AbstractParser<AddTaskToDag>() {
-      public AddTaskToDag parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new AddTaskToDag(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<AddTaskToDag> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<AddTaskToDag> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.AddTaskToDag getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.AddTaskToDag)
   }
 
   public interface CompleteTaskOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.CompleteTask)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -18296,35 +19616,49 @@ public final class TestingModel {
     /**
      * <code>optional bool is_error = 5;</code>
      */
+    boolean hasIsError();
+    /**
+     * <code>optional bool is_error = 5;</code>
+     */
     boolean getIsError();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.CompleteTask}
    */
-  public  static final class CompleteTask extends
+  public static final class CompleteTask extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.CompleteTask)
       CompleteTaskOrBuilder {
     // Use CompleteTask.newBuilder() to construct.
     private CompleteTask(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private CompleteTask() {
-      id_ = "";
-      logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      isError_ = false;
+    private CompleteTask(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CompleteTask defaultInstance;
+    public static CompleteTask getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public CompleteTask getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private CompleteTask(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -18334,69 +19668,70 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
               org.roylance.yaorm.TestingModel.Task.Builder subBuilder = null;
-              if (task_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = task_.toBuilder();
               }
-              task_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.parser(), extensionRegistry);
+              task_ = input.readMessage(org.roylance.yaorm.TestingModel.Task.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(task_);
                 task_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
             case 26: {
               org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder subBuilder = null;
-              if (workerConfiguration_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = workerConfiguration_.toBuilder();
               }
-              workerConfiguration_ = input.readMessage(org.roylance.yaorm.TestingModel.WorkerConfiguration.parser(), extensionRegistry);
+              workerConfiguration_ = input.readMessage(org.roylance.yaorm.TestingModel.WorkerConfiguration.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(workerConfiguration_);
                 workerConfiguration_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+              com.google.protobuf.ByteString bs = input.readBytes();
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 logs_ = new com.google.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000008;
               }
-              logs_.add(s);
+              logs_.add(bs);
               break;
             }
             case 40: {
-
+              bitField0_ |= 0x00000008;
               isError_ = input.readBool();
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           logs_ = logs_.getUnmodifiableView();
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -18412,9 +19747,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.CompleteTask.class, org.roylance.yaorm.TestingModel.CompleteTask.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<CompleteTask> PARSER =
+        new com.google.protobuf.AbstractParser<CompleteTask>() {
+      public CompleteTask parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CompleteTask(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CompleteTask> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -18426,7 +19782,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -18453,19 +19811,19 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.Task task = 2;</code>
      */
     public boolean hasTask() {
-      return task_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.Task task = 2;</code>
      */
     public org.roylance.yaorm.TestingModel.Task getTask() {
-      return task_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : task_;
+      return task_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Task task = 2;</code>
      */
     public org.roylance.yaorm.TestingModel.TaskOrBuilder getTaskOrBuilder() {
-      return getTask();
+      return task_;
     }
 
     public static final int WORKER_CONFIGURATION_FIELD_NUMBER = 3;
@@ -18474,19 +19832,19 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     public boolean hasWorkerConfiguration() {
-      return workerConfiguration_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     public org.roylance.yaorm.TestingModel.WorkerConfiguration getWorkerConfiguration() {
-      return workerConfiguration_ == null ? org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
+      return workerConfiguration_;
     }
     /**
      * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     public org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder() {
-      return getWorkerConfiguration();
+      return workerConfiguration_;
     }
 
     public static final int LOGS_FIELD_NUMBER = 4;
@@ -18523,10 +19881,23 @@ public final class TestingModel {
     /**
      * <code>optional bool is_error = 5;</code>
      */
+    public boolean hasIsError() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bool is_error = 5;</code>
+     */
     public boolean getIsError() {
       return isError_;
     }
 
+    private void initFields() {
+      id_ = "";
+      task_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
+      workerConfiguration_ = org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance();
+      logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      isError_ = false;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -18539,56 +19910,68 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (task_ != null) {
-        output.writeMessage(2, getTask());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, task_);
       }
-      if (workerConfiguration_ != null) {
-        output.writeMessage(3, getWorkerConfiguration());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, workerConfiguration_);
       }
       for (int i = 0; i < logs_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, logs_.getRaw(i));
+        output.writeBytes(4, logs_.getByteString(i));
       }
-      if (isError_ != false) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBool(5, isError_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
-      }
-      if (task_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getTask());
+          .computeBytesSize(1, getIdBytes());
       }
-      if (workerConfiguration_ != null) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getWorkerConfiguration());
+          .computeMessageSize(2, task_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, workerConfiguration_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < logs_.size(); i++) {
-          dataSize += computeStringSizeNoTag(logs_.getRaw(i));
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(logs_.getByteString(i));
         }
         size += dataSize;
         size += 1 * getLogsList().size();
       }
-      if (isError_ != false) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, isError_);
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.CompleteTask parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18642,17 +20025,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.CompleteTask prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -18691,29 +20069,39 @@ public final class TestingModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTaskFieldBuilder();
+          getWorkerConfigurationFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (taskBuilder_ == null) {
-          task_ = null;
+          task_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
         } else {
-          task_ = null;
-          taskBuilder_ = null;
+          taskBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (workerConfigurationBuilder_ == null) {
-          workerConfiguration_ = null;
+          workerConfiguration_ = org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance();
         } else {
-          workerConfiguration_ = null;
-          workerConfigurationBuilder_ = null;
+          workerConfigurationBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         logs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
         isError_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -18737,11 +20125,20 @@ public final class TestingModel {
         org.roylance.yaorm.TestingModel.CompleteTask result = new org.roylance.yaorm.TestingModel.CompleteTask(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         if (taskBuilder_ == null) {
           result.task_ = task_;
         } else {
           result.task_ = taskBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         if (workerConfigurationBuilder_ == null) {
           result.workerConfiguration_ = workerConfiguration_;
@@ -18753,6 +20150,9 @@ public final class TestingModel {
           bitField0_ = (bitField0_ & ~0x00000008);
         }
         result.logs_ = logs_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.isError_ = isError_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -18770,7 +20170,8 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.CompleteTask other) {
         if (other == org.roylance.yaorm.TestingModel.CompleteTask.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
@@ -18790,10 +20191,10 @@ public final class TestingModel {
           }
           onChanged();
         }
-        if (other.getIsError() != false) {
+        if (other.hasIsError()) {
           setIsError(other.getIsError());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -18824,13 +20225,21 @@ public final class TestingModel {
       /**
        * <code>optional string id = 1;</code>
        */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -18860,7 +20269,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -18869,7 +20278,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -18882,28 +20291,27 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.TestingModel.Task task_ = null;
+      private org.roylance.yaorm.TestingModel.Task task_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.Task, org.roylance.yaorm.TestingModel.Task.Builder, org.roylance.yaorm.TestingModel.TaskOrBuilder> taskBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Task task = 2;</code>
        */
       public boolean hasTask() {
-        return taskBuilder_ != null || task_ != null;
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.Task task = 2;</code>
        */
       public org.roylance.yaorm.TestingModel.Task getTask() {
         if (taskBuilder_ == null) {
-          return task_ == null ? org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : task_;
+          return task_;
         } else {
           return taskBuilder_.getMessage();
         }
@@ -18921,7 +20329,7 @@ public final class TestingModel {
         } else {
           taskBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -18935,7 +20343,7 @@ public final class TestingModel {
         } else {
           taskBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -18943,7 +20351,8 @@ public final class TestingModel {
        */
       public Builder mergeTask(org.roylance.yaorm.TestingModel.Task value) {
         if (taskBuilder_ == null) {
-          if (task_ != null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              task_ != org.roylance.yaorm.TestingModel.Task.getDefaultInstance()) {
             task_ =
               org.roylance.yaorm.TestingModel.Task.newBuilder(task_).mergeFrom(value).buildPartial();
           } else {
@@ -18953,7 +20362,7 @@ public final class TestingModel {
         } else {
           taskBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -18961,20 +20370,19 @@ public final class TestingModel {
        */
       public Builder clearTask() {
         if (taskBuilder_ == null) {
-          task_ = null;
+          task_ = org.roylance.yaorm.TestingModel.Task.getDefaultInstance();
           onChanged();
         } else {
-          task_ = null;
-          taskBuilder_ = null;
+          taskBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Task task = 2;</code>
        */
       public org.roylance.yaorm.TestingModel.Task.Builder getTaskBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getTaskFieldBuilder().getBuilder();
       }
@@ -18985,8 +20393,7 @@ public final class TestingModel {
         if (taskBuilder_ != null) {
           return taskBuilder_.getMessageOrBuilder();
         } else {
-          return task_ == null ?
-              org.roylance.yaorm.TestingModel.Task.getDefaultInstance() : task_;
+          return task_;
         }
       }
       /**
@@ -19006,21 +20413,21 @@ public final class TestingModel {
         return taskBuilder_;
       }
 
-      private org.roylance.yaorm.TestingModel.WorkerConfiguration workerConfiguration_ = null;
+      private org.roylance.yaorm.TestingModel.WorkerConfiguration workerConfiguration_ = org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.WorkerConfiguration, org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModel.WorkerConfigurationOrBuilder> workerConfigurationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public boolean hasWorkerConfiguration() {
-        return workerConfigurationBuilder_ != null || workerConfiguration_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public org.roylance.yaorm.TestingModel.WorkerConfiguration getWorkerConfiguration() {
         if (workerConfigurationBuilder_ == null) {
-          return workerConfiguration_ == null ? org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
+          return workerConfiguration_;
         } else {
           return workerConfigurationBuilder_.getMessage();
         }
@@ -19038,7 +20445,7 @@ public final class TestingModel {
         } else {
           workerConfigurationBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -19052,7 +20459,7 @@ public final class TestingModel {
         } else {
           workerConfigurationBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -19060,7 +20467,8 @@ public final class TestingModel {
        */
       public Builder mergeWorkerConfiguration(org.roylance.yaorm.TestingModel.WorkerConfiguration value) {
         if (workerConfigurationBuilder_ == null) {
-          if (workerConfiguration_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              workerConfiguration_ != org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance()) {
             workerConfiguration_ =
               org.roylance.yaorm.TestingModel.WorkerConfiguration.newBuilder(workerConfiguration_).mergeFrom(value).buildPartial();
           } else {
@@ -19070,7 +20478,7 @@ public final class TestingModel {
         } else {
           workerConfigurationBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -19078,20 +20486,19 @@ public final class TestingModel {
        */
       public Builder clearWorkerConfiguration() {
         if (workerConfigurationBuilder_ == null) {
-          workerConfiguration_ = null;
+          workerConfiguration_ = org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance();
           onChanged();
         } else {
-          workerConfiguration_ = null;
-          workerConfigurationBuilder_ = null;
+          workerConfigurationBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public org.roylance.yaorm.TestingModel.WorkerConfiguration.Builder getWorkerConfigurationBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getWorkerConfigurationFieldBuilder().getBuilder();
       }
@@ -19102,8 +20509,7 @@ public final class TestingModel {
         if (workerConfigurationBuilder_ != null) {
           return workerConfigurationBuilder_.getMessageOrBuilder();
         } else {
-          return workerConfiguration_ == null ?
-              org.roylance.yaorm.TestingModel.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
+          return workerConfiguration_;
         }
       }
       /**
@@ -19210,14 +20616,19 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        ensureLogsIsMutable();
+  ensureLogsIsMutable();
         logs_.add(value);
         onChanged();
         return this;
       }
 
       private boolean isError_ ;
+      /**
+       * <code>optional bool is_error = 5;</code>
+       */
+      public boolean hasIsError() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
       /**
        * <code>optional bool is_error = 5;</code>
        */
@@ -19228,7 +20639,7 @@ public final class TestingModel {
        * <code>optional bool is_error = 5;</code>
        */
       public Builder setIsError(boolean value) {
-        
+        bitField0_ |= 0x00000010;
         isError_ = value;
         onChanged();
         return this;
@@ -19237,73 +20648,31 @@ public final class TestingModel {
        * <code>optional bool is_error = 5;</code>
        */
       public Builder clearIsError() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         isError_ = false;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.CompleteTask)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.CompleteTask)
-    private static final org.roylance.yaorm.TestingModel.CompleteTask DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.CompleteTask();
+      defaultInstance = new CompleteTask(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.CompleteTask getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<CompleteTask>
-        PARSER = new com.google.protobuf.AbstractParser<CompleteTask>() {
-      public CompleteTask parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new CompleteTask(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<CompleteTask> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CompleteTask> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.CompleteTask getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.CompleteTask)
   }
 
   public interface UserOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.User)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -19317,6 +20686,10 @@ public final class TestingModel {
     /**
      * <code>optional string display = 2;</code>
      */
+    boolean hasDisplay();
+    /**
+     * <code>optional string display = 2;</code>
+     */
     java.lang.String getDisplay();
     /**
      * <code>optional string display = 2;</code>
@@ -19327,29 +20700,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.User}
    */
-  public  static final class User extends
+  public static final class User extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.User)
       UserOrBuilder {
     // Use User.newBuilder() to construct.
     private User(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private User() {
-      id_ = "";
-      display_ = "";
+    private User(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final User defaultInstance;
+    public static User getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public User getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private User(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -19359,32 +20743,33 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              display_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              display_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -19400,8 +20785,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.User.class, org.roylance.yaorm.TestingModel.User.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<User> PARSER =
+        new com.google.protobuf.AbstractParser<User>() {
+      public User parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new User(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<User> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -19413,7 +20820,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -19435,7 +20844,13 @@ public final class TestingModel {
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object display_;
+    private java.lang.Object display_;
+    /**
+     * <code>optional string display = 2;</code>
+     */
+    public boolean hasDisplay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string display = 2;</code>
      */
@@ -19447,7 +20862,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        display_ = s;
+        if (bs.isValidUtf8()) {
+          display_ = s;
+        }
         return s;
       }
     }
@@ -19468,6 +20885,10 @@ public final class TestingModel {
       }
     }
 
+    private void initFields() {
+      id_ = "";
+      display_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -19480,30 +20901,42 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDisplayBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
       }
-      if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDisplayBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.User parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19557,17 +20990,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.User prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -19608,13 +21036,21 @@ public final class TestingModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         display_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -19636,8 +21072,17 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.User buildPartial() {
         org.roylance.yaorm.TestingModel.User result = new org.roylance.yaorm.TestingModel.User(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.display_ = display_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -19653,15 +21098,17 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.User other) {
         if (other == org.roylance.yaorm.TestingModel.User.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
-        if (!other.getDisplay().isEmpty()) {
+        if (other.hasDisplay()) {
+          bitField0_ |= 0x00000002;
           display_ = other.display_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -19686,8 +21133,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -19697,7 +21151,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -19727,7 +21183,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -19736,7 +21192,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -19749,8 +21205,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -19760,13 +21215,21 @@ public final class TestingModel {
       /**
        * <code>optional string display = 2;</code>
        */
+      public boolean hasDisplay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string display = 2;</code>
+       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          display_ = s;
+          if (bs.isValidUtf8()) {
+            display_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -19796,7 +21259,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
@@ -19805,7 +21268,7 @@ public final class TestingModel {
        * <code>optional string display = 2;</code>
        */
       public Builder clearDisplay() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -19818,74 +21281,31 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         display_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.User)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.User)
-    private static final org.roylance.yaorm.TestingModel.User DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.User();
+      defaultInstance = new User(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.User getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<User>
-        PARSER = new com.google.protobuf.AbstractParser<User>() {
-      public User parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new User(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<User> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<User> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.User getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.User)
   }
 
   public interface UserDeviceOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.UserDevice)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -19912,28 +21332,40 @@ public final class TestingModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.UserDevice}
    */
-  public  static final class UserDevice extends
+  public static final class UserDevice extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UserDevice)
       UserDeviceOrBuilder {
     // Use UserDevice.newBuilder() to construct.
     private UserDevice(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private UserDevice() {
-      id_ = "";
+    private UserDevice(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final UserDevice defaultInstance;
+    public static UserDevice getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public UserDevice getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private UserDevice(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -19943,39 +21375,40 @@ public final class TestingModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              id_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
               break;
             }
             case 18: {
               org.roylance.yaorm.TestingModel.User.Builder subBuilder = null;
-              if (user_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = user_.toBuilder();
               }
-              user_ = input.readMessage(org.roylance.yaorm.TestingModel.User.parser(), extensionRegistry);
+              user_ = input.readMessage(org.roylance.yaorm.TestingModel.User.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(user_);
                 user_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -19991,8 +21424,30 @@ public final class TestingModel {
               org.roylance.yaorm.TestingModel.UserDevice.class, org.roylance.yaorm.TestingModel.UserDevice.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<UserDevice> PARSER =
+        new com.google.protobuf.AbstractParser<UserDevice>() {
+      public UserDevice parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserDevice(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserDevice> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string id = 1;</code>
      */
@@ -20004,7 +21459,9 @@ public final class TestingModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
         return s;
       }
     }
@@ -20031,21 +21488,25 @@ public final class TestingModel {
      * <code>optional .org.roylance.yaorm.User user = 2;</code>
      */
     public boolean hasUser() {
-      return user_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.User user = 2;</code>
      */
     public org.roylance.yaorm.TestingModel.User getUser() {
-      return user_ == null ? org.roylance.yaorm.TestingModel.User.getDefaultInstance() : user_;
+      return user_;
     }
     /**
      * <code>optional .org.roylance.yaorm.User user = 2;</code>
      */
     public org.roylance.yaorm.TestingModel.UserOrBuilder getUserOrBuilder() {
-      return getUser();
+      return user_;
     }
 
+    private void initFields() {
+      id_ = "";
+      user_ = org.roylance.yaorm.TestingModel.User.getDefaultInstance();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -20058,31 +21519,42 @@ public final class TestingModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
       }
-      if (user_ != null) {
-        output.writeMessage(2, getUser());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, user_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
-      }
-      if (user_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getUser());
+          .computeBytesSize(1, getIdBytes());
       }
-      memoizedSize = size;
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, user_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.TestingModel.UserDevice parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20136,17 +21608,12 @@ public final class TestingModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.TestingModel.UserDevice prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -20185,19 +21652,28 @@ public final class TestingModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUserFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         id_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (userBuilder_ == null) {
-          user_ = null;
+          user_ = org.roylance.yaorm.TestingModel.User.getDefaultInstance();
         } else {
-          user_ = null;
-          userBuilder_ = null;
+          userBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -20219,12 +21695,21 @@ public final class TestingModel {
 
       public org.roylance.yaorm.TestingModel.UserDevice buildPartial() {
         org.roylance.yaorm.TestingModel.UserDevice result = new org.roylance.yaorm.TestingModel.UserDevice(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         if (userBuilder_ == null) {
           result.user_ = user_;
         } else {
           result.user_ = userBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -20240,14 +21725,15 @@ public final class TestingModel {
 
       public Builder mergeFrom(org.roylance.yaorm.TestingModel.UserDevice other) {
         if (other == org.roylance.yaorm.TestingModel.UserDevice.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
           id_ = other.id_;
           onChanged();
         }
         if (other.hasUser()) {
           mergeUser(other.getUser());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -20272,8 +21758,15 @@ public final class TestingModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -20283,7 +21776,9 @@ public final class TestingModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -20313,7 +21808,7 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
@@ -20322,7 +21817,7 @@ public final class TestingModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -20335,28 +21830,27 @@ public final class TestingModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.TestingModel.User user_ = null;
+      private org.roylance.yaorm.TestingModel.User user_ = org.roylance.yaorm.TestingModel.User.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.TestingModel.User, org.roylance.yaorm.TestingModel.User.Builder, org.roylance.yaorm.TestingModel.UserOrBuilder> userBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.User user = 2;</code>
        */
       public boolean hasUser() {
-        return userBuilder_ != null || user_ != null;
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.User user = 2;</code>
        */
       public org.roylance.yaorm.TestingModel.User getUser() {
         if (userBuilder_ == null) {
-          return user_ == null ? org.roylance.yaorm.TestingModel.User.getDefaultInstance() : user_;
+          return user_;
         } else {
           return userBuilder_.getMessage();
         }
@@ -20374,7 +21868,7 @@ public final class TestingModel {
         } else {
           userBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -20388,7 +21882,7 @@ public final class TestingModel {
         } else {
           userBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -20396,7 +21890,8 @@ public final class TestingModel {
        */
       public Builder mergeUser(org.roylance.yaorm.TestingModel.User value) {
         if (userBuilder_ == null) {
-          if (user_ != null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              user_ != org.roylance.yaorm.TestingModel.User.getDefaultInstance()) {
             user_ =
               org.roylance.yaorm.TestingModel.User.newBuilder(user_).mergeFrom(value).buildPartial();
           } else {
@@ -20406,7 +21901,7 @@ public final class TestingModel {
         } else {
           userBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -20414,20 +21909,19 @@ public final class TestingModel {
        */
       public Builder clearUser() {
         if (userBuilder_ == null) {
-          user_ = null;
+          user_ = org.roylance.yaorm.TestingModel.User.getDefaultInstance();
           onChanged();
         } else {
-          user_ = null;
-          userBuilder_ = null;
+          userBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.User user = 2;</code>
        */
       public org.roylance.yaorm.TestingModel.User.Builder getUserBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getUserFieldBuilder().getBuilder();
       }
@@ -20438,8 +21932,7 @@ public final class TestingModel {
         if (userBuilder_ != null) {
           return userBuilder_.getMessageOrBuilder();
         } else {
-          return user_ == null ?
-              org.roylance.yaorm.TestingModel.User.getDefaultInstance() : user_;
+          return user_;
         }
       }
       /**
@@ -20458,145 +21951,99 @@ public final class TestingModel {
         }
         return userBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.UserDevice)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UserDevice)
-    private static final org.roylance.yaorm.TestingModel.UserDevice DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.TestingModel.UserDevice();
+      defaultInstance = new UserDevice(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.TestingModel.UserDevice getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<UserDevice>
-        PARSER = new com.google.protobuf.AbstractParser<UserDevice>() {
-      public UserDevice parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new UserDevice(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<UserDevice> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UserDevice> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.TestingModel.UserDevice getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UserDevice)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Child_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Child_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubChild_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubSubChild_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Person_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Person_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Address_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Address_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Phone_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Phone_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Log_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Log_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Dag_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Dag_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Task_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Task_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_TaskDependency_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_CompleteTask_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_User_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_User_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UserDevice_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -20688,7 +22135,7 @@ public final class TestingModel {
       "ManagerMessageType\022\020\n\014REGISTRATION\020\000*9\n\033" +
       "ManagerToManagerMessageType\022\032\n\026ENSURE_WO" +
       "RKERS_WORKING\020\000*$\n\tActorRole\022\013\n\007MANAGER\020" +
-      "\000\022\n\n\006WORKER\020\001b\006proto3"
+      "\000\022\n\n\006WORKER\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

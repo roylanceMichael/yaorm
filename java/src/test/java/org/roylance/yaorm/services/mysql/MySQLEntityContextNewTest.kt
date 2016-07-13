@@ -52,14 +52,13 @@ class MySQLEntityContextNewTest {
             val definitions = testEntityContext.getDefinitions()
 
             //assert
-            Assert.assertTrue(definitions.tableDefinitions.size == 2)
+            Assert.assertTrue(definitions.tableDefinitionsList.size == 2)
 
-            val anotherTestModelDefinition = definitions.tableDefinitions.values.first()
+            val anotherTestModelDefinition = definitions.tableDefinitionsList.first()
             Assert.assertEquals(AnotherTestModel::class.java.simpleName, anotherTestModelDefinition.name)
 
             anotherTestModelDefinition
-                    .columnDefinitions
-                    .values
+                    .columnDefinitionsList
                     .forEach {
                         Assert.assertTrue(
                                 (AnotherTestModel.DescriptionName.equals(it.name) ||
@@ -71,12 +70,11 @@ class MySQLEntityContextNewTest {
 
             Assert.assertFalse(anotherTestModelDefinition.hasIndex())
 
-            val beaconBroadcastDefinition = definitions.tableDefinitions.values.elementAt(1)
+            val beaconBroadcastDefinition = definitions.tableDefinitionsList.elementAt(1)
             Assert.assertEquals(BeaconBroadcastModel::class.java.simpleName, beaconBroadcastDefinition.name)
 
             beaconBroadcastDefinition
-                    .columnDefinitions
-                    .values
+                    .columnDefinitionsList
                     .forEach {
                         Assert.assertTrue(
                                 (BeaconBroadcastModel.ActiveName.equals(it.name) &&

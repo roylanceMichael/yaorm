@@ -35,10 +35,9 @@ internal class GetProtoObject(
                 .fields
                 .filter { !it.isRepeated }
                 .forEach { fieldKey ->
-                    if (!foundRecord.columns.containsKey(fieldKey.name)) {
-                        return@forEach
-                    }
-                    val foundColumn = foundRecord.columns[fieldKey.name]!!
+                    val foundColumn = foundRecord.columnsList.firstOrNull { it.definition.name.equals(fieldKey.name) }
+                            ?: return@forEach
+
                     if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.SCALAR)) {
                         builderForType.setField(fieldKey, CommonUtils.getAnyObject(foundColumn))
                     }
@@ -76,8 +75,8 @@ internal class GetProtoObject(
 
                     val foundRecords = entityService.where(customWhereClause, definitionForLinkerTable.linkerTableTable)
                     foundRecords.recordsList.forEach { record ->
-                        if (record.columns.containsKey(fieldKey.enumType.name)) {
-                            val nameColumn = record.columns[fieldKey.enumType.name]!!
+                        val nameColumn = record.columnsList.firstOrNull { fieldKey.enumType.name.equals(it.definition.name) }
+                        if (nameColumn != null) {
                             val enumToAdd = fieldKey.enumType.findValueByName(nameColumn.stringHolder.toUpperCase())
                             builderForType.addRepeatedField(fieldKey, enumToAdd)
                         }
@@ -115,8 +114,8 @@ internal class GetProtoObject(
 
                     foundRecords.recordsList
                             .forEach { record ->
-                                if (record.columns.containsKey(otherColumnName)) {
-                                    val nameColumn = record.columns[otherColumnName]!!
+                                val nameColumn = record.columnsList.firstOrNull { otherColumnName.equals(it.definition.name) }
+                                if (nameColumn != null) {
                                     if (nameColumn.stringHolder.length > 0) {
                                         val constructedMessage = this.build(childBuilder, nameColumn.stringHolder)
                                         builderForType.addRepeatedField(fieldKey, constructedMessage)

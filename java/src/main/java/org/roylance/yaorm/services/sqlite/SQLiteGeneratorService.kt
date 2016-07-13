@@ -121,7 +121,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         val whereClauseStr = CommonUtils.buildWhereClause(whereClauseItem, this)
         val newValuesWorkspace = StringBuilder()
 
-        record.columns.values.forEach {
+        record.columnsList.forEach {
             if (newValuesWorkspace.length > 0) {
                 newValuesWorkspace.append(CommonUtils.Comma)
             }
@@ -144,7 +144,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
     override fun buildBulkInsert(
             definition: YaormModel.TableDefinition,
             records: YaormModel.Records) : String {
-        val columnNames = definition.columnDefinitions.values.sortedBy { it.name } .map { this.buildKeyword(it.name) }
+        val columnNames = definition.columnDefinitionsList.sortedBy { it.name } .map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "insert into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
@@ -156,8 +156,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                 val valueColumnPairs = ArrayList<String>()
 
                 instance
-                    .columns
-                    .values
+                    .columnsList
                     .sortedBy { it.definition.name }
                     .forEach {
                         val formattedValue = CommonUtils.getFormattedString(it)
@@ -223,8 +222,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
 
             val updateKvp = ArrayList<String>()
             record
-                .columns
-                .values
+                .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
                     val formattedValue = CommonUtils.getFormattedString(it)
@@ -261,8 +259,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
             val values = ArrayList<String>()
 
             record
-                .columns
-                .values
+                .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
                     columnNames.add(this.buildKeyword(it.definition.name))

@@ -168,7 +168,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
     override fun buildBulkInsert(
             definition: YaormModel.TableDefinition,
             records: YaormModel.Records): String {
-        val columnNames = definition.columnDefinitions.values.sortedBy { it.name }.map { this.buildKeyword(it.name) }
+        val columnNames = definition.columnDefinitionsList.sortedBy { it.name }.map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
         val initialStatement = "replace into ${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
@@ -179,8 +179,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
                 .forEach { instance ->
                     val valueColumnPairs = ArrayList<String>()
                     instance
-                        .columns
-                        .values
+                        .columnsList
                         .sortedBy { it.definition.name }
                         .forEach {
                             val formattedString = CommonUtils.getFormattedString(it)
@@ -208,8 +207,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
             val values = ArrayList<String>()
 
             record
-                .columns
-                .values
+                .columnsList
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
                     columnNames.add(this.buildKeyword(it.definition.name))
@@ -247,8 +245,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
             val updateKvp = ArrayList<String>()
 
             record
-                .columns
-                .values
+                .columnsList
                 .forEach {
                     val formattedString = CommonUtils.getFormattedString(it)
                     if (it.definition.name.equals(CommonUtils.IdName)) {
@@ -295,8 +292,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
             val criteriaString: String = CommonUtils.buildWhereClause(whereClauseItem, this)
             val updateKvp = ArrayList<String>()
 
-            record.columns
-                .values
+            record.columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
                     updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + CommonUtils.getFormattedString(it))

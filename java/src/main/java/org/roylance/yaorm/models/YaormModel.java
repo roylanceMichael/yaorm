@@ -81,7 +81,6 @@ public final class YaormModel {
      * <code>PROTO = 16;</code>
      */
     PROTO(16, 16),
-    UNRECOGNIZED(-1, -1),
     ;
 
     /**
@@ -154,13 +153,7 @@ public final class YaormModel {
     public static final int PROTO_VALUE = 16;
 
 
-    public final int getNumber() {
-      if (index == -1) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
+    public final int getNumber() { return value; }
 
     public static ProtobufType valueOf(int value) {
       switch (value) {
@@ -189,8 +182,8 @@ public final class YaormModel {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        ProtobufType> internalValueMap =
+    private static com.google.protobuf.Internal.EnumLiteMap<ProtobufType>
+        internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<ProtobufType>() {
             public ProtobufType findValueByNumber(int number) {
               return ProtobufType.valueOf(number);
@@ -217,9 +210,6 @@ public final class YaormModel {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
       }
       return VALUES[desc.getIndex()];
     }
@@ -255,7 +245,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
      */
-    int getOperatorTypeValue();
+    boolean hasOperatorType();
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
      */
@@ -264,7 +254,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
-    int getConnectingAndOrValue();
+    boolean hasConnectingAndOr();
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
@@ -286,29 +276,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.WhereClause}
    */
-  public  static final class WhereClause extends
+  public static final class WhereClause extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.WhereClause)
       WhereClauseOrBuilder {
     // Use WhereClause.newBuilder() to construct.
     private WhereClause(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private WhereClause() {
-      operatorType_ = 0;
-      connectingAndOr_ = 0;
+    private WhereClause(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final WhereClause defaultInstance;
+    public static WhereClause getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public WhereClause getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private WhereClause(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -318,58 +319,69 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               org.roylance.yaorm.models.YaormModel.Column.Builder subBuilder = null;
-              if (nameAndProperty_ != null) {
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = nameAndProperty_.toBuilder();
               }
-              nameAndProperty_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Column.parser(), extensionRegistry);
+              nameAndProperty_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Column.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(nameAndProperty_);
                 nameAndProperty_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000001;
               break;
             }
             case 16: {
               int rawValue = input.readEnum();
-
-              operatorType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType value = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                operatorType_ = value;
+              }
               break;
             }
             case 24: {
               int rawValue = input.readEnum();
-
-              connectingAndOr_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr value = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(3, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                connectingAndOr_ = value;
+              }
               break;
             }
             case 34: {
               org.roylance.yaorm.models.YaormModel.WhereClause.Builder subBuilder = null;
-              if (connectingWhereClause_ != null) {
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = connectingWhereClause_.toBuilder();
               }
-              connectingWhereClause_ = input.readMessage(org.roylance.yaorm.models.YaormModel.WhereClause.parser(), extensionRegistry);
+              connectingWhereClause_ = input.readMessage(org.roylance.yaorm.models.YaormModel.WhereClause.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(connectingWhereClause_);
                 connectingWhereClause_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000008;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -383,6 +395,21 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_WhereClause_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.WhereClause.class, org.roylance.yaorm.models.YaormModel.WhereClause.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<WhereClause> PARSER =
+        new com.google.protobuf.AbstractParser<WhereClause>() {
+      public WhereClause parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new WhereClause(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WhereClause> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -406,7 +433,6 @@ public final class YaormModel {
        * <code>NOT_EQUALS = 3;</code>
        */
       NOT_EQUALS(3, 3),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -427,13 +453,7 @@ public final class YaormModel {
       public static final int NOT_EQUALS_VALUE = 3;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static OperatorType valueOf(int value) {
         switch (value) {
@@ -449,8 +469,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          OperatorType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<OperatorType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<OperatorType>() {
               public OperatorType findValueByNumber(int number) {
                 return OperatorType.valueOf(number);
@@ -477,9 +497,6 @@ public final class YaormModel {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
         }
         return VALUES[desc.getIndex()];
       }
@@ -512,7 +529,6 @@ public final class YaormModel {
        * <code>OR = 2;</code>
        */
       OR(2, 2),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -529,13 +545,7 @@ public final class YaormModel {
       public static final int OR_VALUE = 2;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static ConnectingAndOr valueOf(int value) {
         switch (value) {
@@ -550,8 +560,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          ConnectingAndOr> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<ConnectingAndOr>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<ConnectingAndOr>() {
               public ConnectingAndOr findValueByNumber(int number) {
                 return ConnectingAndOr.valueOf(number);
@@ -579,9 +589,6 @@ public final class YaormModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -596,57 +603,56 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.WhereClause.ConnectingAndOr)
     }
 
+    private int bitField0_;
     public static final int NAME_AND_PROPERTY_FIELD_NUMBER = 1;
     private org.roylance.yaorm.models.YaormModel.Column nameAndProperty_;
     /**
      * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
     public boolean hasNameAndProperty() {
-      return nameAndProperty_ != null;
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Column getNameAndProperty() {
-      return nameAndProperty_ == null ? org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
+      return nameAndProperty_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder() {
-      return getNameAndProperty();
+      return nameAndProperty_;
     }
 
     public static final int OPERATOR_TYPE_FIELD_NUMBER = 2;
-    private int operatorType_;
+    private org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType operatorType_;
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
      */
-    public int getOperatorTypeValue() {
-      return operatorType_;
+    public boolean hasOperatorType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType getOperatorType() {
-      org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType result = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.valueOf(operatorType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.UNRECOGNIZED : result;
+      return operatorType_;
     }
 
     public static final int CONNECTING_AND_OR_FIELD_NUMBER = 3;
-    private int connectingAndOr_;
+    private org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr connectingAndOr_;
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
-    public int getConnectingAndOrValue() {
-      return connectingAndOr_;
+    public boolean hasConnectingAndOr() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr getConnectingAndOr() {
-      org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr result = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.valueOf(connectingAndOr_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.UNRECOGNIZED : result;
+      return connectingAndOr_;
     }
 
     public static final int CONNECTING_WHERE_CLAUSE_FIELD_NUMBER = 4;
@@ -655,21 +661,27 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.WhereClause connecting_where_clause = 4;</code>
      */
     public boolean hasConnectingWhereClause() {
-      return connectingWhereClause_ != null;
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause connecting_where_clause = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.WhereClause getConnectingWhereClause() {
-      return connectingWhereClause_ == null ? org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance() : connectingWhereClause_;
+      return connectingWhereClause_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause connecting_where_clause = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.WhereClauseOrBuilder getConnectingWhereClauseOrBuilder() {
-      return getConnectingWhereClause();
+      return connectingWhereClause_;
     }
 
+    private void initFields() {
+      nameAndProperty_ = org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance();
+      operatorType_ = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.EQUALS;
+      connectingAndOr_ = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.NONE;
+      connectingWhereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -682,46 +694,56 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (nameAndProperty_ != null) {
-        output.writeMessage(1, getNameAndProperty());
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, nameAndProperty_);
       }
-      if (operatorType_ != org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.EQUALS.getNumber()) {
-        output.writeEnum(2, operatorType_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, operatorType_.getNumber());
       }
-      if (connectingAndOr_ != org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.NONE.getNumber()) {
-        output.writeEnum(3, connectingAndOr_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(3, connectingAndOr_.getNumber());
       }
-      if (connectingWhereClause_ != null) {
-        output.writeMessage(4, getConnectingWhereClause());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, connectingWhereClause_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (nameAndProperty_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getNameAndProperty());
+          .computeMessageSize(1, nameAndProperty_);
       }
-      if (operatorType_ != org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.EQUALS.getNumber()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, operatorType_);
+          .computeEnumSize(2, operatorType_.getNumber());
       }
-      if (connectingAndOr_ != org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.NONE.getNumber()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, connectingAndOr_);
+          .computeEnumSize(3, connectingAndOr_.getNumber());
       }
-      if (connectingWhereClause_ != null) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getConnectingWhereClause());
+          .computeMessageSize(4, connectingWhereClause_);
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.WhereClause parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -775,17 +797,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.WhereClause prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -824,27 +841,37 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getNameAndPropertyFieldBuilder();
+          getConnectingWhereClauseFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (nameAndPropertyBuilder_ == null) {
-          nameAndProperty_ = null;
+          nameAndProperty_ = org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance();
         } else {
-          nameAndProperty_ = null;
-          nameAndPropertyBuilder_ = null;
+          nameAndPropertyBuilder_.clear();
         }
-        operatorType_ = 0;
-
-        connectingAndOr_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000001);
+        operatorType_ = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.EQUALS;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        connectingAndOr_ = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.NONE;
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (connectingWhereClauseBuilder_ == null) {
-          connectingWhereClause_ = null;
+          connectingWhereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
         } else {
-          connectingWhereClause_ = null;
-          connectingWhereClauseBuilder_ = null;
+          connectingWhereClauseBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -866,18 +893,33 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.WhereClause buildPartial() {
         org.roylance.yaorm.models.YaormModel.WhereClause result = new org.roylance.yaorm.models.YaormModel.WhereClause(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         if (nameAndPropertyBuilder_ == null) {
           result.nameAndProperty_ = nameAndProperty_;
         } else {
           result.nameAndProperty_ = nameAndPropertyBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.operatorType_ = operatorType_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.connectingAndOr_ = connectingAndOr_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         if (connectingWhereClauseBuilder_ == null) {
           result.connectingWhereClause_ = connectingWhereClause_;
         } else {
           result.connectingWhereClause_ = connectingWhereClauseBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -896,16 +938,16 @@ public final class YaormModel {
         if (other.hasNameAndProperty()) {
           mergeNameAndProperty(other.getNameAndProperty());
         }
-        if (other.operatorType_ != 0) {
-          setOperatorTypeValue(other.getOperatorTypeValue());
+        if (other.hasOperatorType()) {
+          setOperatorType(other.getOperatorType());
         }
-        if (other.connectingAndOr_ != 0) {
-          setConnectingAndOrValue(other.getConnectingAndOrValue());
+        if (other.hasConnectingAndOr()) {
+          setConnectingAndOr(other.getConnectingAndOr());
         }
         if (other.hasConnectingWhereClause()) {
           mergeConnectingWhereClause(other.getConnectingWhereClause());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -930,22 +972,23 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
-      private org.roylance.yaorm.models.YaormModel.Column nameAndProperty_ = null;
+      private org.roylance.yaorm.models.YaormModel.Column nameAndProperty_ = org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> nameAndPropertyBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       public boolean hasNameAndProperty() {
-        return nameAndPropertyBuilder_ != null || nameAndProperty_ != null;
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Column getNameAndProperty() {
         if (nameAndPropertyBuilder_ == null) {
-          return nameAndProperty_ == null ? org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
+          return nameAndProperty_;
         } else {
           return nameAndPropertyBuilder_.getMessage();
         }
@@ -963,7 +1006,7 @@ public final class YaormModel {
         } else {
           nameAndPropertyBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -977,7 +1020,7 @@ public final class YaormModel {
         } else {
           nameAndPropertyBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -985,7 +1028,8 @@ public final class YaormModel {
        */
       public Builder mergeNameAndProperty(org.roylance.yaorm.models.YaormModel.Column value) {
         if (nameAndPropertyBuilder_ == null) {
-          if (nameAndProperty_ != null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              nameAndProperty_ != org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance()) {
             nameAndProperty_ =
               org.roylance.yaorm.models.YaormModel.Column.newBuilder(nameAndProperty_).mergeFrom(value).buildPartial();
           } else {
@@ -995,7 +1039,7 @@ public final class YaormModel {
         } else {
           nameAndPropertyBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -1003,20 +1047,19 @@ public final class YaormModel {
        */
       public Builder clearNameAndProperty() {
         if (nameAndPropertyBuilder_ == null) {
-          nameAndProperty_ = null;
+          nameAndProperty_ = org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance();
           onChanged();
         } else {
-          nameAndProperty_ = null;
-          nameAndPropertyBuilder_ = null;
+          nameAndPropertyBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Column name_and_property = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Column.Builder getNameAndPropertyBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getNameAndPropertyFieldBuilder().getBuilder();
       }
@@ -1027,8 +1070,7 @@ public final class YaormModel {
         if (nameAndPropertyBuilder_ != null) {
           return nameAndPropertyBuilder_.getMessageOrBuilder();
         } else {
-          return nameAndProperty_ == null ?
-              org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
+          return nameAndProperty_;
         }
       }
       /**
@@ -1048,27 +1090,18 @@ public final class YaormModel {
         return nameAndPropertyBuilder_;
       }
 
-      private int operatorType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType operatorType_ = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.EQUALS;
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
        */
-      public int getOperatorTypeValue() {
-        return operatorType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
-       */
-      public Builder setOperatorTypeValue(int value) {
-        operatorType_ = value;
-        onChanged();
-        return this;
+      public boolean hasOperatorType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType getOperatorType() {
-        org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType result = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.valueOf(operatorType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.UNRECOGNIZED : result;
+        return operatorType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
@@ -1077,8 +1110,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        operatorType_ = value.getNumber();
+        bitField0_ |= 0x00000002;
+        operatorType_ = value;
         onChanged();
         return this;
       }
@@ -1086,33 +1119,24 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.WhereClause.OperatorType operator_type = 2;</code>
        */
       public Builder clearOperatorType() {
-        
-        operatorType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        operatorType_ = org.roylance.yaorm.models.YaormModel.WhereClause.OperatorType.EQUALS;
         onChanged();
         return this;
       }
 
-      private int connectingAndOr_ = 0;
+      private org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr connectingAndOr_ = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.NONE;
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
-      public int getConnectingAndOrValue() {
-        return connectingAndOr_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
-       */
-      public Builder setConnectingAndOrValue(int value) {
-        connectingAndOr_ = value;
-        onChanged();
-        return this;
+      public boolean hasConnectingAndOr() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr getConnectingAndOr() {
-        org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr result = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.valueOf(connectingAndOr_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.UNRECOGNIZED : result;
+        return connectingAndOr_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
@@ -1121,8 +1145,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        connectingAndOr_ = value.getNumber();
+        bitField0_ |= 0x00000004;
+        connectingAndOr_ = value;
         onChanged();
         return this;
       }
@@ -1130,27 +1154,27 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public Builder clearConnectingAndOr() {
-        
-        connectingAndOr_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        connectingAndOr_ = org.roylance.yaorm.models.YaormModel.WhereClause.ConnectingAndOr.NONE;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.models.YaormModel.WhereClause connectingWhereClause_ = null;
+      private org.roylance.yaorm.models.YaormModel.WhereClause connectingWhereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.WhereClause, org.roylance.yaorm.models.YaormModel.WhereClause.Builder, org.roylance.yaorm.models.YaormModel.WhereClauseOrBuilder> connectingWhereClauseBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause connecting_where_clause = 4;</code>
        */
       public boolean hasConnectingWhereClause() {
-        return connectingWhereClauseBuilder_ != null || connectingWhereClause_ != null;
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause connecting_where_clause = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.WhereClause getConnectingWhereClause() {
         if (connectingWhereClauseBuilder_ == null) {
-          return connectingWhereClause_ == null ? org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance() : connectingWhereClause_;
+          return connectingWhereClause_;
         } else {
           return connectingWhereClauseBuilder_.getMessage();
         }
@@ -1168,7 +1192,7 @@ public final class YaormModel {
         } else {
           connectingWhereClauseBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -1182,7 +1206,7 @@ public final class YaormModel {
         } else {
           connectingWhereClauseBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -1190,7 +1214,8 @@ public final class YaormModel {
        */
       public Builder mergeConnectingWhereClause(org.roylance.yaorm.models.YaormModel.WhereClause value) {
         if (connectingWhereClauseBuilder_ == null) {
-          if (connectingWhereClause_ != null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              connectingWhereClause_ != org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance()) {
             connectingWhereClause_ =
               org.roylance.yaorm.models.YaormModel.WhereClause.newBuilder(connectingWhereClause_).mergeFrom(value).buildPartial();
           } else {
@@ -1200,7 +1225,7 @@ public final class YaormModel {
         } else {
           connectingWhereClauseBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -1208,20 +1233,19 @@ public final class YaormModel {
        */
       public Builder clearConnectingWhereClause() {
         if (connectingWhereClauseBuilder_ == null) {
-          connectingWhereClause_ = null;
+          connectingWhereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
           onChanged();
         } else {
-          connectingWhereClause_ = null;
-          connectingWhereClauseBuilder_ = null;
+          connectingWhereClauseBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause connecting_where_clause = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.WhereClause.Builder getConnectingWhereClauseBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getConnectingWhereClauseFieldBuilder().getBuilder();
       }
@@ -1232,8 +1256,7 @@ public final class YaormModel {
         if (connectingWhereClauseBuilder_ != null) {
           return connectingWhereClauseBuilder_.getMessageOrBuilder();
         } else {
-          return connectingWhereClause_ == null ?
-              org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance() : connectingWhereClause_;
+          return connectingWhereClause_;
         }
       }
       /**
@@ -1252,68 +1275,26 @@ public final class YaormModel {
         }
         return connectingWhereClauseBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.WhereClause)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.WhereClause)
-    private static final org.roylance.yaorm.models.YaormModel.WhereClause DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.WhereClause();
+      defaultInstance = new WhereClause(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.WhereClause getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<WhereClause>
-        PARSER = new com.google.protobuf.AbstractParser<WhereClause>() {
-      public WhereClause parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new WhereClause(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<WhereClause> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<WhereClause> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.WhereClause getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.WhereClause)
   }
 
   public interface ColumnDefinitionOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.ColumnDefinition)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    boolean hasName();
     /**
      * <code>optional string name = 1;</code>
      */
@@ -1327,7 +1308,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
      */
-    int getTypeValue();
+    boolean hasType();
     /**
      * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
      */
@@ -1336,12 +1317,16 @@ public final class YaormModel {
     /**
      * <code>optional bool is_key = 3;</code>
      */
+    boolean hasIsKey();
+    /**
+     * <code>optional bool is_key = 3;</code>
+     */
     boolean getIsKey();
 
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
      */
-    int getColumnTypeValue();
+    boolean hasColumnType();
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
      */
@@ -1350,7 +1335,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
-    int getLinkerTypeValue();
+    boolean hasLinkerType();
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
@@ -1359,32 +1344,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.ColumnDefinition}
    */
-  public  static final class ColumnDefinition extends
+  public static final class ColumnDefinition extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.ColumnDefinition)
       ColumnDefinitionOrBuilder {
     // Use ColumnDefinition.newBuilder() to construct.
     private ColumnDefinition(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ColumnDefinition() {
-      name_ = "";
-      type_ = 0;
-      isKey_ = false;
-      columnType_ = 0;
-      linkerType_ = 0;
+    private ColumnDefinition(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ColumnDefinition defaultInstance;
+    public static ColumnDefinition getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public ColumnDefinition getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private ColumnDefinition(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1394,49 +1387,65 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              name_ = bs;
               break;
             }
             case 16: {
               int rawValue = input.readEnum();
-
-              type_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.ProtobufType value = org.roylance.yaorm.models.YaormModel.ProtobufType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                type_ = value;
+              }
               break;
             }
             case 24: {
-
+              bitField0_ |= 0x00000004;
               isKey_ = input.readBool();
               break;
             }
             case 32: {
               int rawValue = input.readEnum();
-
-              columnType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType value = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(4, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                columnType_ = value;
+              }
               break;
             }
             case 40: {
               int rawValue = input.readEnum();
-
-              linkerType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType value = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                linkerType_ = value;
+              }
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1450,6 +1459,21 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_ColumnDefinition_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.class, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ColumnDefinition> PARSER =
+        new com.google.protobuf.AbstractParser<ColumnDefinition>() {
+      public ColumnDefinition parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ColumnDefinition(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ColumnDefinition> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -1473,7 +1497,6 @@ public final class YaormModel {
        * <code>MESSAGE_KEY = 3;</code>
        */
       MESSAGE_KEY(3, 3),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -1494,13 +1517,7 @@ public final class YaormModel {
       public static final int MESSAGE_KEY_VALUE = 3;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static ColumnType valueOf(int value) {
         switch (value) {
@@ -1516,8 +1533,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          ColumnType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<ColumnType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<ColumnType>() {
               public ColumnType findValueByNumber(int number) {
                 return ColumnType.valueOf(number);
@@ -1544,9 +1561,6 @@ public final class YaormModel {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
         }
         return VALUES[desc.getIndex()];
       }
@@ -1583,7 +1597,6 @@ public final class YaormModel {
        * <code>NEITHER = 3;</code>
        */
       NEITHER(3, 3),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -1604,13 +1617,7 @@ public final class YaormModel {
       public static final int NEITHER_VALUE = 3;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static LinkerType valueOf(int value) {
         switch (value) {
@@ -1626,8 +1633,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          LinkerType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<LinkerType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<LinkerType>() {
               public LinkerType findValueByNumber(int number) {
                 return LinkerType.valueOf(number);
@@ -1655,9 +1662,6 @@ public final class YaormModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -1672,8 +1676,15 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.ColumnDefinition.LinkerType)
     }
 
+    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string name = 1;</code>
      */
@@ -1685,7 +1696,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       }
     }
@@ -1707,23 +1720,28 @@ public final class YaormModel {
     }
 
     public static final int TYPE_FIELD_NUMBER = 2;
-    private int type_;
+    private org.roylance.yaorm.models.YaormModel.ProtobufType type_;
     /**
      * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
      */
-    public int getTypeValue() {
-      return type_;
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ProtobufType getType() {
-      org.roylance.yaorm.models.YaormModel.ProtobufType result = org.roylance.yaorm.models.YaormModel.ProtobufType.valueOf(type_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.ProtobufType.UNRECOGNIZED : result;
+      return type_;
     }
 
     public static final int IS_KEY_FIELD_NUMBER = 3;
     private boolean isKey_;
+    /**
+     * <code>optional bool is_key = 3;</code>
+     */
+    public boolean hasIsKey() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional bool is_key = 3;</code>
      */
@@ -1732,37 +1750,42 @@ public final class YaormModel {
     }
 
     public static final int COLUMN_TYPE_FIELD_NUMBER = 4;
-    private int columnType_;
+    private org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType columnType_;
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
      */
-    public int getColumnTypeValue() {
-      return columnType_;
+    public boolean hasColumnType() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType getColumnType() {
-      org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType result = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.valueOf(columnType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.UNRECOGNIZED : result;
+      return columnType_;
     }
 
     public static final int LINKER_TYPE_FIELD_NUMBER = 5;
-    private int linkerType_;
+    private org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType linkerType_;
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
-    public int getLinkerTypeValue() {
-      return linkerType_;
+    public boolean hasLinkerType() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType getLinkerType() {
-      org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType result = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.valueOf(linkerType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.UNRECOGNIZED : result;
+      return linkerType_;
     }
 
+    private void initFields() {
+      name_ = "";
+      type_ = org.roylance.yaorm.models.YaormModel.ProtobufType.NONE;
+      isKey_ = false;
+      columnType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR;
+      linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1775,52 +1798,63 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNameBytes());
       }
-      if (type_ != org.roylance.yaorm.models.YaormModel.ProtobufType.NONE.getNumber()) {
-        output.writeEnum(2, type_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, type_.getNumber());
       }
-      if (isKey_ != false) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBool(3, isKey_);
       }
-      if (columnType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR.getNumber()) {
-        output.writeEnum(4, columnType_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(4, columnType_.getNumber());
       }
-      if (linkerType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE.getNumber()) {
-        output.writeEnum(5, linkerType_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, linkerType_.getNumber());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
-      }
-      if (type_ != org.roylance.yaorm.models.YaormModel.ProtobufType.NONE.getNumber()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, type_);
+          .computeBytesSize(1, getNameBytes());
       }
-      if (isKey_ != false) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(3, isKey_);
       }
-      if (columnType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR.getNumber()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, columnType_);
+          .computeEnumSize(4, columnType_.getNumber());
       }
-      if (linkerType_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE.getNumber()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, linkerType_);
+          .computeEnumSize(5, linkerType_.getNumber());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.ColumnDefinition parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1874,17 +1908,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.ColumnDefinition prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -1925,19 +1954,27 @@ public final class YaormModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         name_ = "";
-
-        type_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = org.roylance.yaorm.models.YaormModel.ProtobufType.NONE;
+        bitField0_ = (bitField0_ & ~0x00000002);
         isKey_ = false;
-
-        columnType_ = 0;
-
-        linkerType_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
+        columnType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1959,11 +1996,29 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition buildPartial() {
         org.roylance.yaorm.models.YaormModel.ColumnDefinition result = new org.roylance.yaorm.models.YaormModel.ColumnDefinition(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.name_ = name_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.isKey_ = isKey_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.columnType_ = columnType_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.linkerType_ = linkerType_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1979,23 +2034,24 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.ColumnDefinition other) {
         if (other == org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
+        if (other.hasName()) {
+          bitField0_ |= 0x00000001;
           name_ = other.name_;
           onChanged();
         }
-        if (other.type_ != 0) {
-          setTypeValue(other.getTypeValue());
+        if (other.hasType()) {
+          setType(other.getType());
         }
-        if (other.getIsKey() != false) {
+        if (other.hasIsKey()) {
           setIsKey(other.getIsKey());
         }
-        if (other.columnType_ != 0) {
-          setColumnTypeValue(other.getColumnTypeValue());
+        if (other.hasColumnType()) {
+          setColumnType(other.getColumnType());
         }
-        if (other.linkerType_ != 0) {
-          setLinkerTypeValue(other.getLinkerTypeValue());
+        if (other.hasLinkerType()) {
+          setLinkerType(other.getLinkerType());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -2020,8 +2076,15 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string name = 1;</code>
        */
@@ -2031,7 +2094,9 @@ public final class YaormModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          name_ = s;
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -2061,7 +2126,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
         return this;
@@ -2070,7 +2135,7 @@ public final class YaormModel {
        * <code>optional string name = 1;</code>
        */
       public Builder clearName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -2083,34 +2148,24 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
         return this;
       }
 
-      private int type_ = 0;
+      private org.roylance.yaorm.models.YaormModel.ProtobufType type_ = org.roylance.yaorm.models.YaormModel.ProtobufType.NONE;
       /**
        * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
        */
-      public int getTypeValue() {
-        return type_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
-       */
-      public Builder setTypeValue(int value) {
-        type_ = value;
-        onChanged();
-        return this;
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ProtobufType getType() {
-        org.roylance.yaorm.models.YaormModel.ProtobufType result = org.roylance.yaorm.models.YaormModel.ProtobufType.valueOf(type_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.ProtobufType.UNRECOGNIZED : result;
+        return type_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
@@ -2119,8 +2174,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        type_ = value.getNumber();
+        bitField0_ |= 0x00000002;
+        type_ = value;
         onChanged();
         return this;
       }
@@ -2128,13 +2183,19 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.ProtobufType type = 2;</code>
        */
       public Builder clearType() {
-        
-        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = org.roylance.yaorm.models.YaormModel.ProtobufType.NONE;
         onChanged();
         return this;
       }
 
       private boolean isKey_ ;
+      /**
+       * <code>optional bool is_key = 3;</code>
+       */
+      public boolean hasIsKey() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
       /**
        * <code>optional bool is_key = 3;</code>
        */
@@ -2145,7 +2206,7 @@ public final class YaormModel {
        * <code>optional bool is_key = 3;</code>
        */
       public Builder setIsKey(boolean value) {
-        
+        bitField0_ |= 0x00000004;
         isKey_ = value;
         onChanged();
         return this;
@@ -2154,33 +2215,24 @@ public final class YaormModel {
        * <code>optional bool is_key = 3;</code>
        */
       public Builder clearIsKey() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         isKey_ = false;
         onChanged();
         return this;
       }
 
-      private int columnType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType columnType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR;
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
        */
-      public int getColumnTypeValue() {
-        return columnType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
-       */
-      public Builder setColumnTypeValue(int value) {
-        columnType_ = value;
-        onChanged();
-        return this;
+      public boolean hasColumnType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType getColumnType() {
-        org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType result = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.valueOf(columnType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.UNRECOGNIZED : result;
+        return columnType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
@@ -2189,8 +2241,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        columnType_ = value.getNumber();
+        bitField0_ |= 0x00000008;
+        columnType_ = value;
         onChanged();
         return this;
       }
@@ -2198,33 +2250,24 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public Builder clearColumnType() {
-        
-        columnType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        columnType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR;
         onChanged();
         return this;
       }
 
-      private int linkerType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
-      public int getLinkerTypeValue() {
-        return linkerType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
-       */
-      public Builder setLinkerTypeValue(int value) {
-        linkerType_ = value;
-        onChanged();
-        return this;
+      public boolean hasLinkerType() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType getLinkerType() {
-        org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType result = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.valueOf(linkerType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.UNRECOGNIZED : result;
+        return linkerType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
@@ -2233,8 +2276,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        linkerType_ = value.getNumber();
+        bitField0_ |= 0x00000010;
+        linkerType_ = value;
         onChanged();
         return this;
       }
@@ -2242,67 +2285,21 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public Builder clearLinkerType() {
-        
-        linkerType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.ColumnDefinition)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.ColumnDefinition)
-    private static final org.roylance.yaorm.models.YaormModel.ColumnDefinition DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.ColumnDefinition();
+      defaultInstance = new ColumnDefinition(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.ColumnDefinition getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ColumnDefinition>
-        PARSER = new com.google.protobuf.AbstractParser<ColumnDefinition>() {
-      public ColumnDefinition parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new ColumnDefinition(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<ColumnDefinition> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ColumnDefinition> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.ColumnDefinition)
   }
 
   public interface IndexOrBuilder extends
@@ -2310,41 +2307,90 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
      */
-    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-    getColumnNames();
+    java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> 
+        getColumnNamesList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnNames(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    int getColumnNamesCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+        getColumnNamesOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnNamesOrBuilder(
+        int index);
 
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
      */
-    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-    getIncludeNames();
+    java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> 
+        getIncludeNamesList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinition getIncludeNames(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    int getIncludeNamesCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+        getIncludeNamesOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getIncludeNamesOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Index}
    */
-  public  static final class Index extends
+  public static final class Index extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Index)
       IndexOrBuilder {
     // Use Index.newBuilder() to construct.
     private Index(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Index() {
+    private Index(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Index defaultInstance;
+    public static Index getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Index getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Index(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2354,44 +2400,43 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                columnNames_ = com.google.protobuf.MapField.newMapField(
-                    ColumnNamesDefaultEntryHolder.defaultEntry);
+                columnNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-              columnNames = input.readMessage(
-                  ColumnNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              columnNames_.getMutableMap().put(columnNames.getKey(), columnNames.getValue());
+              columnNames_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.PARSER, extensionRegistry));
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                includeNames_ = com.google.protobuf.MapField.newMapField(
-                    IncludeNamesDefaultEntryHolder.defaultEntry);
+                includeNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-              includeNames = input.readMessage(
-                  IncludeNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              includeNames_.getMutableMap().put(includeNames.getKey(), includeNames.getValue());
+              includeNames_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          columnNames_ = java.util.Collections.unmodifiableList(columnNames_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          includeNames_ = java.util.Collections.unmodifiableList(includeNames_);
+        }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2400,19 +2445,6 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 1:
-          return internalGetColumnNames();
-        case 2:
-          return internalGetIncludeNames();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable
@@ -2420,66 +2452,95 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.Index.class, org.roylance.yaorm.models.YaormModel.Index.Builder.class);
     }
 
-    public static final int COLUMN_NAMES_FIELD_NUMBER = 1;
-    private static final class ColumnNamesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>newDefaultInstance(
-                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+    public static com.google.protobuf.Parser<Index> PARSER =
+        new com.google.protobuf.AbstractParser<Index>() {
+      public Index parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Index(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Index> getParserForType() {
+      return PARSER;
     }
-    private com.google.protobuf.MapField<
-        java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_;
-    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-    internalGetColumnNames() {
-      if (columnNames_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ColumnNamesDefaultEntryHolder.defaultEntry);
-     }
+
+    public static final int COLUMN_NAMES_FIELD_NUMBER = 1;
+    private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_;
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNamesList() {
       return columnNames_;
     }
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
      */
-
-    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNames() {
-      return internalGetColumnNames().getMap();
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+        getColumnNamesOrBuilderList() {
+      return columnNames_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    public int getColumnNamesCount() {
+      return columnNames_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnNames(int index) {
+      return columnNames_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnNamesOrBuilder(
+        int index) {
+      return columnNames_.get(index);
     }
 
     public static final int INCLUDE_NAMES_FIELD_NUMBER = 2;
-    private static final class IncludeNamesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>newDefaultInstance(
-                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-    }
-    private com.google.protobuf.MapField<
-        java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_;
-    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-    internalGetIncludeNames() {
-      if (includeNames_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            IncludeNamesDefaultEntryHolder.defaultEntry);
-     }
+    private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_;
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNamesList() {
       return includeNames_;
     }
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
      */
-
-    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNames() {
-      return internalGetIncludeNames().getMap();
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+        getIncludeNamesOrBuilderList() {
+      return includeNames_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    public int getIncludeNamesCount() {
+      return includeNames_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getIncludeNames(int index) {
+      return includeNames_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getIncludeNamesOrBuilder(
+        int index) {
+      return includeNames_.get(index);
     }
 
+    private void initFields() {
+      columnNames_ = java.util.Collections.emptyList();
+      includeNames_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2492,56 +2553,42 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
-           : internalGetColumnNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-        columnNames = ColumnNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(1, columnNames);
+      getSerializedSize();
+      for (int i = 0; i < columnNames_.size(); i++) {
+        output.writeMessage(1, columnNames_.get(i));
       }
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
-           : internalGetIncludeNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-        includeNames = IncludeNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(2, includeNames);
+      for (int i = 0; i < includeNames_.size(); i++) {
+        output.writeMessage(2, includeNames_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
-           : internalGetColumnNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-        columnNames = ColumnNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < columnNames_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, columnNames);
+          .computeMessageSize(1, columnNames_.get(i));
       }
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
-           : internalGetIncludeNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-        includeNames = IncludeNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < includeNames_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, includeNames);
+          .computeMessageSize(2, includeNames_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.Index parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2595,17 +2642,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Index prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -2625,32 +2667,6 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetColumnNames();
-          case 2:
-            return internalGetIncludeNames();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetMutableColumnNames();
-          case 2:
-            return internalGetMutableIncludeNames();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable
@@ -2670,13 +2686,33 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getColumnNamesFieldBuilder();
+          getIncludeNamesFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
-        internalGetMutableColumnNames().clear();
-        internalGetMutableIncludeNames().clear();
+        if (columnNamesBuilder_ == null) {
+          columnNames_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          columnNamesBuilder_.clear();
+        }
+        if (includeNamesBuilder_ == null) {
+          includeNames_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          includeNamesBuilder_.clear();
+        }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2699,10 +2735,24 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.Index buildPartial() {
         org.roylance.yaorm.models.YaormModel.Index result = new org.roylance.yaorm.models.YaormModel.Index(this);
         int from_bitField0_ = bitField0_;
-        result.columnNames_ = internalGetColumnNames();
-        result.columnNames_.makeImmutable();
-        result.includeNames_ = internalGetIncludeNames();
-        result.includeNames_.makeImmutable();
+        if (columnNamesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            columnNames_ = java.util.Collections.unmodifiableList(columnNames_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.columnNames_ = columnNames_;
+        } else {
+          result.columnNames_ = columnNamesBuilder_.build();
+        }
+        if (includeNamesBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            includeNames_ = java.util.Collections.unmodifiableList(includeNames_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.includeNames_ = includeNames_;
+        } else {
+          result.includeNames_ = includeNamesBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2718,11 +2768,59 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Index other) {
         if (other == org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance()) return this;
-        internalGetMutableColumnNames().mergeFrom(
-            other.internalGetColumnNames());
-        internalGetMutableIncludeNames().mergeFrom(
-            other.internalGetIncludeNames());
-        onChanged();
+        if (columnNamesBuilder_ == null) {
+          if (!other.columnNames_.isEmpty()) {
+            if (columnNames_.isEmpty()) {
+              columnNames_ = other.columnNames_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureColumnNamesIsMutable();
+              columnNames_.addAll(other.columnNames_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.columnNames_.isEmpty()) {
+            if (columnNamesBuilder_.isEmpty()) {
+              columnNamesBuilder_.dispose();
+              columnNamesBuilder_ = null;
+              columnNames_ = other.columnNames_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              columnNamesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getColumnNamesFieldBuilder() : null;
+            } else {
+              columnNamesBuilder_.addAllMessages(other.columnNames_);
+            }
+          }
+        }
+        if (includeNamesBuilder_ == null) {
+          if (!other.includeNames_.isEmpty()) {
+            if (includeNames_.isEmpty()) {
+              includeNames_ = other.includeNames_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureIncludeNamesIsMutable();
+              includeNames_.addAll(other.includeNames_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.includeNames_.isEmpty()) {
+            if (includeNamesBuilder_.isEmpty()) {
+              includeNamesBuilder_.dispose();
+              includeNamesBuilder_ = null;
+              includeNames_ = other.includeNames_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              includeNamesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getIncludeNamesFieldBuilder() : null;
+            } else {
+              includeNamesBuilder_.addAllMessages(other.includeNames_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -2749,149 +2847,495 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_;
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      internalGetColumnNames() {
-        if (columnNames_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              ColumnNamesDefaultEntryHolder.defaultEntry);
-       }
-        return columnNames_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      internalGetMutableColumnNames() {
-        onChanged();;
-        if (columnNames_ == null) {
-          columnNames_ = com.google.protobuf.MapField.newMapField(
-              ColumnNamesDefaultEntryHolder.defaultEntry);
-        }
-        if (!columnNames_.isMutable()) {
-          columnNames_ = columnNames_.copy();
-        }
-        return columnNames_;
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNames() {
-        return internalGetColumnNames().getMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      getMutableColumnNames() {
-        return internalGetMutableColumnNames().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_names = 1;</code>
-       */
-      public Builder putAllColumnNames(
-          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
-        getMutableColumnNames().putAll(values);
-        return this;
+      private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnNames_ =
+        java.util.Collections.emptyList();
+      private void ensureColumnNamesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          columnNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>(columnNames_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
-      private com.google.protobuf.MapField<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_;
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      internalGetIncludeNames() {
-        if (includeNames_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              IncludeNamesDefaultEntryHolder.defaultEntry);
-       }
-        return includeNames_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      internalGetMutableIncludeNames() {
-        onChanged();;
-        if (includeNames_ == null) {
-          includeNames_ = com.google.protobuf.MapField.newMapField(
-              IncludeNamesDefaultEntryHolder.defaultEntry);
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> columnNamesBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnNamesList() {
+        if (columnNamesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(columnNames_);
+        } else {
+          return columnNamesBuilder_.getMessageList();
         }
-        if (!includeNames_.isMutable()) {
-          includeNames_ = includeNames_.copy();
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public int getColumnNamesCount() {
+        if (columnNamesBuilder_ == null) {
+          return columnNames_.size();
+        } else {
+          return columnNamesBuilder_.getCount();
         }
-        return includeNames_;
       }
       /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
        */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNames() {
-        return internalGetIncludeNames().getMap();
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnNames(int index) {
+        if (columnNamesBuilder_ == null) {
+          return columnNames_.get(index);
+        } else {
+          return columnNamesBuilder_.getMessage(index);
+        }
       }
       /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
        */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      getMutableIncludeNames() {
-        return internalGetMutableIncludeNames().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; include_names = 2;</code>
-       */
-      public Builder putAllIncludeNames(
-          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
-        getMutableIncludeNames().putAll(values);
+      public Builder setColumnNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (columnNamesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnNamesIsMutable();
+          columnNames_.set(index, value);
+          onChanged();
+        } else {
+          columnNamesBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder setColumnNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (columnNamesBuilder_ == null) {
+          ensureColumnNamesIsMutable();
+          columnNames_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          columnNamesBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder addColumnNames(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (columnNamesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnNamesIsMutable();
+          columnNames_.add(value);
+          onChanged();
+        } else {
+          columnNamesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder addColumnNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (columnNamesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnNamesIsMutable();
+          columnNames_.add(index, value);
+          onChanged();
+        } else {
+          columnNamesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder addColumnNames(
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (columnNamesBuilder_ == null) {
+          ensureColumnNamesIsMutable();
+          columnNames_.add(builderForValue.build());
+          onChanged();
+        } else {
+          columnNamesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder addColumnNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (columnNamesBuilder_ == null) {
+          ensureColumnNamesIsMutable();
+          columnNames_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          columnNamesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder addAllColumnNames(
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
+        if (columnNamesBuilder_ == null) {
+          ensureColumnNamesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, columnNames_);
+          onChanged();
+        } else {
+          columnNamesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder clearColumnNames() {
+        if (columnNamesBuilder_ == null) {
+          columnNames_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          columnNamesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public Builder removeColumnNames(int index) {
+        if (columnNamesBuilder_ == null) {
+          ensureColumnNamesIsMutable();
+          columnNames_.remove(index);
+          onChanged();
+        } else {
+          columnNamesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getColumnNamesBuilder(
+          int index) {
+        return getColumnNamesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnNamesOrBuilder(
+          int index) {
+        if (columnNamesBuilder_ == null) {
+          return columnNames_.get(index);  } else {
+          return columnNamesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+           getColumnNamesOrBuilderList() {
+        if (columnNamesBuilder_ != null) {
+          return columnNamesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(columnNames_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnNamesBuilder() {
+        return getColumnNamesFieldBuilder().addBuilder(
+            org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnNamesBuilder(
+          int index) {
+        return getColumnNamesFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_names = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder> 
+           getColumnNamesBuilderList() {
+        return getColumnNamesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+          getColumnNamesFieldBuilder() {
+        if (columnNamesBuilder_ == null) {
+          columnNamesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder>(
+                  columnNames_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          columnNames_ = null;
+        }
+        return columnNamesBuilder_;
       }
 
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+      private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> includeNames_ =
+        java.util.Collections.emptyList();
+      private void ensureIncludeNamesIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          includeNames_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>(includeNames_);
+          bitField0_ |= 0x00000002;
+         }
       }
 
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> includeNamesBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getIncludeNamesList() {
+        if (includeNamesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(includeNames_);
+        } else {
+          return includeNamesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public int getIncludeNamesCount() {
+        if (includeNamesBuilder_ == null) {
+          return includeNames_.size();
+        } else {
+          return includeNamesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition getIncludeNames(int index) {
+        if (includeNamesBuilder_ == null) {
+          return includeNames_.get(index);
+        } else {
+          return includeNamesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder setIncludeNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (includeNamesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIncludeNamesIsMutable();
+          includeNames_.set(index, value);
+          onChanged();
+        } else {
+          includeNamesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder setIncludeNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (includeNamesBuilder_ == null) {
+          ensureIncludeNamesIsMutable();
+          includeNames_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          includeNamesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder addIncludeNames(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (includeNamesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIncludeNamesIsMutable();
+          includeNames_.add(value);
+          onChanged();
+        } else {
+          includeNamesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder addIncludeNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (includeNamesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIncludeNamesIsMutable();
+          includeNames_.add(index, value);
+          onChanged();
+        } else {
+          includeNamesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder addIncludeNames(
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (includeNamesBuilder_ == null) {
+          ensureIncludeNamesIsMutable();
+          includeNames_.add(builderForValue.build());
+          onChanged();
+        } else {
+          includeNamesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder addIncludeNames(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (includeNamesBuilder_ == null) {
+          ensureIncludeNamesIsMutable();
+          includeNames_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          includeNamesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder addAllIncludeNames(
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
+        if (includeNamesBuilder_ == null) {
+          ensureIncludeNamesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, includeNames_);
+          onChanged();
+        } else {
+          includeNamesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder clearIncludeNames() {
+        if (includeNamesBuilder_ == null) {
+          includeNames_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          includeNamesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public Builder removeIncludeNames(int index) {
+        if (includeNamesBuilder_ == null) {
+          ensureIncludeNamesIsMutable();
+          includeNames_.remove(index);
+          onChanged();
+        } else {
+          includeNamesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getIncludeNamesBuilder(
+          int index) {
+        return getIncludeNamesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getIncludeNamesOrBuilder(
+          int index) {
+        if (includeNamesBuilder_ == null) {
+          return includeNames_.get(index);  } else {
+          return includeNamesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+           getIncludeNamesOrBuilderList() {
+        if (includeNamesBuilder_ != null) {
+          return includeNamesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(includeNames_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addIncludeNamesBuilder() {
+        return getIncludeNamesFieldBuilder().addBuilder(
+            org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addIncludeNamesBuilder(
+          int index) {
+        return getIncludeNamesFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition include_names = 2;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder> 
+           getIncludeNamesBuilderList() {
+        return getIncludeNamesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+          getIncludeNamesFieldBuilder() {
+        if (includeNamesBuilder_ == null) {
+          includeNamesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder>(
+                  includeNames_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          includeNames_ = null;
+        }
+        return includeNamesBuilder_;
+      }
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Index)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Index)
-    private static final org.roylance.yaorm.models.YaormModel.Index DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.Index();
+      defaultInstance = new Index(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.Index getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Index>
-        PARSER = new com.google.protobuf.AbstractParser<Index>() {
-      public Index parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Index(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Index> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Index> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.Index getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Index)
   }
 
   public interface DifferenceOrBuilder extends
@@ -2901,7 +3345,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
      */
-    int getEntityTypeValue();
+    boolean hasEntityType();
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
      */
@@ -2910,12 +3354,16 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
      */
-    int getOperationValue();
+    boolean hasOperation();
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
      */
     org.roylance.yaorm.models.YaormModel.Difference.Operation getOperation();
 
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    boolean hasName();
     /**
      * <code>optional string name = 3;</code>
      */
@@ -2968,30 +3416,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Difference}
    */
-  public  static final class Difference extends
+  public static final class Difference extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Difference)
       DifferenceOrBuilder {
     // Use Difference.newBuilder() to construct.
     private Difference(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Difference() {
-      entityType_ = 0;
-      operation_ = 0;
-      name_ = "";
+    private Difference(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Difference defaultInstance;
+    public static Difference getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Difference getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Difference(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3001,77 +3459,88 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 8: {
               int rawValue = input.readEnum();
-
-              entityType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.Difference.EntityType value = org.roylance.yaorm.models.YaormModel.Difference.EntityType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                entityType_ = value;
+              }
               break;
             }
             case 16: {
               int rawValue = input.readEnum();
-
-              operation_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.Difference.Operation value = org.roylance.yaorm.models.YaormModel.Difference.Operation.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                operation_ = value;
+              }
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              name_ = bs;
               break;
             }
             case 34: {
               org.roylance.yaorm.models.YaormModel.Index.Builder subBuilder = null;
-              if (index_ != null) {
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = index_.toBuilder();
               }
-              index_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Index.parser(), extensionRegistry);
+              index_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Index.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(index_);
                 index_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000008;
               break;
             }
             case 42: {
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder subBuilder = null;
-              if (propertyDefinition_ != null) {
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
                 subBuilder = propertyDefinition_.toBuilder();
               }
-              propertyDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.parser(), extensionRegistry);
+              propertyDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(propertyDefinition_);
                 propertyDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000010;
               break;
             }
             case 50: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (tableDefinition_ != null) {
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
                 subBuilder = tableDefinition_.toBuilder();
               }
-              tableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              tableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(tableDefinition_);
                 tableDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000020;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -3085,6 +3554,21 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Difference_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.Difference.class, org.roylance.yaorm.models.YaormModel.Difference.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Difference> PARSER =
+        new com.google.protobuf.AbstractParser<Difference>() {
+      public Difference parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Difference(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Difference> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -3104,7 +3588,6 @@ public final class YaormModel {
        * <code>TABLE = 2;</code>
        */
       TABLE(2, 2),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -3121,13 +3604,7 @@ public final class YaormModel {
       public static final int TABLE_VALUE = 2;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static EntityType valueOf(int value) {
         switch (value) {
@@ -3142,8 +3619,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          EntityType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<EntityType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<EntityType>() {
               public EntityType findValueByNumber(int number) {
                 return EntityType.valueOf(number);
@@ -3170,9 +3647,6 @@ public final class YaormModel {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
         }
         return VALUES[desc.getIndex()];
       }
@@ -3201,7 +3675,6 @@ public final class YaormModel {
        * <code>DROP = 1;</code>
        */
       DROP(1, 1),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -3214,13 +3687,7 @@ public final class YaormModel {
       public static final int DROP_VALUE = 1;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static Operation valueOf(int value) {
         switch (value) {
@@ -3234,8 +3701,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          Operation> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<Operation>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Operation>() {
               public Operation findValueByNumber(int number) {
                 return Operation.valueOf(number);
@@ -3263,9 +3730,6 @@ public final class YaormModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -3280,40 +3744,45 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.Difference.Operation)
     }
 
+    private int bitField0_;
     public static final int ENTITY_TYPE_FIELD_NUMBER = 1;
-    private int entityType_;
+    private org.roylance.yaorm.models.YaormModel.Difference.EntityType entityType_;
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
      */
-    public int getEntityTypeValue() {
-      return entityType_;
+    public boolean hasEntityType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Difference.EntityType getEntityType() {
-      org.roylance.yaorm.models.YaormModel.Difference.EntityType result = org.roylance.yaorm.models.YaormModel.Difference.EntityType.valueOf(entityType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.Difference.EntityType.UNRECOGNIZED : result;
+      return entityType_;
     }
 
     public static final int OPERATION_FIELD_NUMBER = 2;
-    private int operation_;
+    private org.roylance.yaorm.models.YaormModel.Difference.Operation operation_;
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
      */
-    public int getOperationValue() {
-      return operation_;
+    public boolean hasOperation() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Difference.Operation getOperation() {
-      org.roylance.yaorm.models.YaormModel.Difference.Operation result = org.roylance.yaorm.models.YaormModel.Difference.Operation.valueOf(operation_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.Difference.Operation.UNRECOGNIZED : result;
+      return operation_;
     }
 
     public static final int NAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object name_;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string name = 3;</code>
      */
@@ -3325,7 +3794,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       }
     }
@@ -3352,19 +3823,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Index index = 4;</code>
      */
     public boolean hasIndex() {
-      return index_ != null;
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Index getIndex() {
-      return index_ == null ? org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+      return index_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.IndexOrBuilder getIndexOrBuilder() {
-      return getIndex();
+      return index_;
     }
 
     public static final int PROPERTY_DEFINITION_FIELD_NUMBER = 5;
@@ -3373,19 +3844,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition property_definition = 5;</code>
      */
     public boolean hasPropertyDefinition() {
-      return propertyDefinition_ != null;
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition property_definition = 5;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinition getPropertyDefinition() {
-      return propertyDefinition_ == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : propertyDefinition_;
+      return propertyDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition property_definition = 5;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getPropertyDefinitionOrBuilder() {
-      return getPropertyDefinition();
+      return propertyDefinition_;
     }
 
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 6;
@@ -3394,21 +3865,29 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 6;</code>
      */
     public boolean hasTableDefinition() {
-      return tableDefinition_ != null;
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 6;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinition() {
-      return tableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+      return tableDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 6;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
-      return getTableDefinition();
+      return tableDefinition_;
     }
 
+    private void initFields() {
+      entityType_ = org.roylance.yaorm.models.YaormModel.Difference.EntityType.INDEX;
+      operation_ = org.roylance.yaorm.models.YaormModel.Difference.Operation.CREATE;
+      name_ = "";
+      index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
+      propertyDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
+      tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3421,59 +3900,70 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (entityType_ != org.roylance.yaorm.models.YaormModel.Difference.EntityType.INDEX.getNumber()) {
-        output.writeEnum(1, entityType_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, entityType_.getNumber());
       }
-      if (operation_ != org.roylance.yaorm.models.YaormModel.Difference.Operation.CREATE.getNumber()) {
-        output.writeEnum(2, operation_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, operation_.getNumber());
       }
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, name_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getNameBytes());
       }
-      if (index_ != null) {
-        output.writeMessage(4, getIndex());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, index_);
       }
-      if (propertyDefinition_ != null) {
-        output.writeMessage(5, getPropertyDefinition());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, propertyDefinition_);
       }
-      if (tableDefinition_ != null) {
-        output.writeMessage(6, getTableDefinition());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, tableDefinition_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (entityType_ != org.roylance.yaorm.models.YaormModel.Difference.EntityType.INDEX.getNumber()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, entityType_);
+          .computeEnumSize(1, entityType_.getNumber());
       }
-      if (operation_ != org.roylance.yaorm.models.YaormModel.Difference.Operation.CREATE.getNumber()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, operation_);
+          .computeEnumSize(2, operation_.getNumber());
       }
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, name_);
-      }
-      if (index_ != null) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getIndex());
+          .computeBytesSize(3, getNameBytes());
       }
-      if (propertyDefinition_ != null) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getPropertyDefinition());
+          .computeMessageSize(4, index_);
       }
-      if (tableDefinition_ != null) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getTableDefinition());
+          .computeMessageSize(5, propertyDefinition_);
       }
-      memoizedSize = size;
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, tableDefinition_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.Difference parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3527,17 +4017,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Difference prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -3576,35 +4061,46 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIndexFieldBuilder();
+          getPropertyDefinitionFieldBuilder();
+          getTableDefinitionFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
-        entityType_ = 0;
-
-        operation_ = 0;
-
+        entityType_ = org.roylance.yaorm.models.YaormModel.Difference.EntityType.INDEX;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        operation_ = org.roylance.yaorm.models.YaormModel.Difference.Operation.CREATE;
+        bitField0_ = (bitField0_ & ~0x00000002);
         name_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (indexBuilder_ == null) {
-          index_ = null;
+          index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
         } else {
-          index_ = null;
-          indexBuilder_ = null;
+          indexBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (propertyDefinitionBuilder_ == null) {
-          propertyDefinition_ = null;
+          propertyDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
         } else {
-          propertyDefinition_ = null;
-          propertyDefinitionBuilder_ = null;
+          propertyDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (tableDefinitionBuilder_ == null) {
-          tableDefinition_ = null;
+          tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          tableDefinition_ = null;
-          tableDefinitionBuilder_ = null;
+          tableDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -3626,24 +4122,45 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.Difference buildPartial() {
         org.roylance.yaorm.models.YaormModel.Difference result = new org.roylance.yaorm.models.YaormModel.Difference(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.entityType_ = entityType_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.operation_ = operation_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.name_ = name_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         if (indexBuilder_ == null) {
           result.index_ = index_;
         } else {
           result.index_ = indexBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         if (propertyDefinitionBuilder_ == null) {
           result.propertyDefinition_ = propertyDefinition_;
         } else {
           result.propertyDefinition_ = propertyDefinitionBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         if (tableDefinitionBuilder_ == null) {
           result.tableDefinition_ = tableDefinition_;
         } else {
           result.tableDefinition_ = tableDefinitionBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3659,13 +4176,14 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Difference other) {
         if (other == org.roylance.yaorm.models.YaormModel.Difference.getDefaultInstance()) return this;
-        if (other.entityType_ != 0) {
-          setEntityTypeValue(other.getEntityTypeValue());
+        if (other.hasEntityType()) {
+          setEntityType(other.getEntityType());
         }
-        if (other.operation_ != 0) {
-          setOperationValue(other.getOperationValue());
+        if (other.hasOperation()) {
+          setOperation(other.getOperation());
         }
-        if (!other.getName().isEmpty()) {
+        if (other.hasName()) {
+          bitField0_ |= 0x00000004;
           name_ = other.name_;
           onChanged();
         }
@@ -3678,7 +4196,7 @@ public final class YaormModel {
         if (other.hasTableDefinition()) {
           mergeTableDefinition(other.getTableDefinition());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -3703,28 +4221,20 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
-      private int entityType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.Difference.EntityType entityType_ = org.roylance.yaorm.models.YaormModel.Difference.EntityType.INDEX;
       /**
        * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
        */
-      public int getEntityTypeValue() {
-        return entityType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
-       */
-      public Builder setEntityTypeValue(int value) {
-        entityType_ = value;
-        onChanged();
-        return this;
+      public boolean hasEntityType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Difference.EntityType getEntityType() {
-        org.roylance.yaorm.models.YaormModel.Difference.EntityType result = org.roylance.yaorm.models.YaormModel.Difference.EntityType.valueOf(entityType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.Difference.EntityType.UNRECOGNIZED : result;
+        return entityType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
@@ -3733,8 +4243,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        entityType_ = value.getNumber();
+        bitField0_ |= 0x00000001;
+        entityType_ = value;
         onChanged();
         return this;
       }
@@ -3742,33 +4252,24 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.Difference.EntityType entity_type = 1;</code>
        */
       public Builder clearEntityType() {
-        
-        entityType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        entityType_ = org.roylance.yaorm.models.YaormModel.Difference.EntityType.INDEX;
         onChanged();
         return this;
       }
 
-      private int operation_ = 0;
+      private org.roylance.yaorm.models.YaormModel.Difference.Operation operation_ = org.roylance.yaorm.models.YaormModel.Difference.Operation.CREATE;
       /**
        * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
        */
-      public int getOperationValue() {
-        return operation_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
-       */
-      public Builder setOperationValue(int value) {
-        operation_ = value;
-        onChanged();
-        return this;
+      public boolean hasOperation() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Difference.Operation getOperation() {
-        org.roylance.yaorm.models.YaormModel.Difference.Operation result = org.roylance.yaorm.models.YaormModel.Difference.Operation.valueOf(operation_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.Difference.Operation.UNRECOGNIZED : result;
+        return operation_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
@@ -3777,8 +4278,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        operation_ = value.getNumber();
+        bitField0_ |= 0x00000002;
+        operation_ = value;
         onChanged();
         return this;
       }
@@ -3786,13 +4287,19 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.Difference.Operation operation = 2;</code>
        */
       public Builder clearOperation() {
-        
-        operation_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        operation_ = org.roylance.yaorm.models.YaormModel.Difference.Operation.CREATE;
         onChanged();
         return this;
       }
 
       private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
       /**
        * <code>optional string name = 3;</code>
        */
@@ -3802,7 +4309,9 @@ public final class YaormModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          name_ = s;
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -3832,7 +4341,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
         return this;
@@ -3841,7 +4350,7 @@ public final class YaormModel {
        * <code>optional string name = 3;</code>
        */
       public Builder clearName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -3854,28 +4363,27 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.models.YaormModel.Index index_ = null;
+      private org.roylance.yaorm.models.YaormModel.Index index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Index, org.roylance.yaorm.models.YaormModel.Index.Builder, org.roylance.yaorm.models.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 4;</code>
        */
       public boolean hasIndex() {
-        return indexBuilder_ != null || index_ != null;
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
-          return index_ == null ? org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+          return index_;
         } else {
           return indexBuilder_.getMessage();
         }
@@ -3893,7 +4401,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -3907,7 +4415,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -3915,7 +4423,8 @@ public final class YaormModel {
        */
       public Builder mergeIndex(org.roylance.yaorm.models.YaormModel.Index value) {
         if (indexBuilder_ == null) {
-          if (index_ != null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              index_ != org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance()) {
             index_ =
               org.roylance.yaorm.models.YaormModel.Index.newBuilder(index_).mergeFrom(value).buildPartial();
           } else {
@@ -3925,7 +4434,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -3933,20 +4442,19 @@ public final class YaormModel {
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
-          index_ = null;
+          index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
           onChanged();
         } else {
-          index_ = null;
-          indexBuilder_ = null;
+          indexBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Index.Builder getIndexBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getIndexFieldBuilder().getBuilder();
       }
@@ -3957,8 +4465,7 @@ public final class YaormModel {
         if (indexBuilder_ != null) {
           return indexBuilder_.getMessageOrBuilder();
         } else {
-          return index_ == null ?
-              org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+          return index_;
         }
       }
       /**
@@ -3978,21 +4485,21 @@ public final class YaormModel {
         return indexBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.ColumnDefinition propertyDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.ColumnDefinition propertyDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> propertyDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition property_definition = 5;</code>
        */
       public boolean hasPropertyDefinition() {
-        return propertyDefinitionBuilder_ != null || propertyDefinition_ != null;
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition property_definition = 5;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition getPropertyDefinition() {
         if (propertyDefinitionBuilder_ == null) {
-          return propertyDefinition_ == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : propertyDefinition_;
+          return propertyDefinition_;
         } else {
           return propertyDefinitionBuilder_.getMessage();
         }
@@ -4010,7 +4517,7 @@ public final class YaormModel {
         } else {
           propertyDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
@@ -4024,7 +4531,7 @@ public final class YaormModel {
         } else {
           propertyDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
@@ -4032,7 +4539,8 @@ public final class YaormModel {
        */
       public Builder mergePropertyDefinition(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
         if (propertyDefinitionBuilder_ == null) {
-          if (propertyDefinition_ != null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              propertyDefinition_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance()) {
             propertyDefinition_ =
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.newBuilder(propertyDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -4042,7 +4550,7 @@ public final class YaormModel {
         } else {
           propertyDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
@@ -4050,20 +4558,19 @@ public final class YaormModel {
        */
       public Builder clearPropertyDefinition() {
         if (propertyDefinitionBuilder_ == null) {
-          propertyDefinition_ = null;
+          propertyDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
           onChanged();
         } else {
-          propertyDefinition_ = null;
-          propertyDefinitionBuilder_ = null;
+          propertyDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition property_definition = 5;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getPropertyDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000010;
         onChanged();
         return getPropertyDefinitionFieldBuilder().getBuilder();
       }
@@ -4074,8 +4581,7 @@ public final class YaormModel {
         if (propertyDefinitionBuilder_ != null) {
           return propertyDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return propertyDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : propertyDefinition_;
+          return propertyDefinition_;
         }
       }
       /**
@@ -4095,21 +4601,21 @@ public final class YaormModel {
         return propertyDefinitionBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 6;</code>
        */
       public boolean hasTableDefinition() {
-        return tableDefinitionBuilder_ != null || tableDefinition_ != null;
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 6;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
-          return tableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+          return tableDefinition_;
         } else {
           return tableDefinitionBuilder_.getMessage();
         }
@@ -4127,7 +4633,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -4141,7 +4647,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -4149,7 +4655,8 @@ public final class YaormModel {
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
-          if (tableDefinition_ != null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              tableDefinition_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             tableDefinition_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(tableDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -4159,7 +4666,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -4167,20 +4674,19 @@ public final class YaormModel {
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
-          tableDefinition_ = null;
+          tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          tableDefinition_ = null;
-          tableDefinitionBuilder_ = null;
+          tableDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 6;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getTableDefinitionFieldBuilder().getBuilder();
       }
@@ -4191,8 +4697,7 @@ public final class YaormModel {
         if (tableDefinitionBuilder_ != null) {
           return tableDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return tableDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+          return tableDefinition_;
         }
       }
       /**
@@ -4211,68 +4716,26 @@ public final class YaormModel {
         }
         return tableDefinitionBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Difference)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Difference)
-    private static final org.roylance.yaorm.models.YaormModel.Difference DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.Difference();
+      defaultInstance = new Difference(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.Difference getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Difference>
-        PARSER = new com.google.protobuf.AbstractParser<Difference>() {
-      public Difference parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Difference(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Difference> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Difference> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.Difference getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Difference)
   }
 
   public interface TableDefinitionOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.TableDefinition)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    boolean hasName();
     /**
      * <code>optional string name = 1;</code>
      */
@@ -4284,10 +4747,28 @@ public final class YaormModel {
         getNameBytes();
 
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
      */
-    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-    getColumnDefinitions();
+    java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> 
+        getColumnDefinitionsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinitions(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    int getColumnDefinitionsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+        getColumnDefinitionsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionsOrBuilder(
+        int index);
 
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
@@ -4305,7 +4786,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
      */
-    int getTableTypeValue();
+    boolean hasTableType();
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
      */
@@ -4314,29 +4795,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableDefinition}
    */
-  public  static final class TableDefinition extends
+  public static final class TableDefinition extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.TableDefinition)
       TableDefinitionOrBuilder {
     // Use TableDefinition.newBuilder() to construct.
     private TableDefinition(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TableDefinition() {
-      name_ = "";
-      tableType_ = 0;
+    private TableDefinition(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TableDefinition defaultInstance;
+    public static TableDefinition getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public TableDefinition getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private TableDefinition(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4346,57 +4838,62 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              name_ = bs;
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                columnDefinitions_ = com.google.protobuf.MapField.newMapField(
-                    ColumnDefinitionsDefaultEntryHolder.defaultEntry);
+                columnDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-              columnDefinitions = input.readMessage(
-                  ColumnDefinitionsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              columnDefinitions_.getMutableMap().put(columnDefinitions.getKey(), columnDefinitions.getValue());
+              columnDefinitions_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.PARSER, extensionRegistry));
               break;
             }
             case 26: {
               org.roylance.yaorm.models.YaormModel.Index.Builder subBuilder = null;
-              if (index_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = index_.toBuilder();
               }
-              index_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Index.parser(), extensionRegistry);
+              index_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Index.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(index_);
                 index_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
             case 32: {
               int rawValue = input.readEnum();
-
-              tableType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.TableDefinition.TableType value = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(4, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                tableType_ = value;
+              }
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          columnDefinitions_ = java.util.Collections.unmodifiableList(columnDefinitions_);
+        }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -4405,22 +4902,26 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 2:
-          return internalGetColumnDefinitions();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.TableDefinition.class, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<TableDefinition> PARSER =
+        new com.google.protobuf.AbstractParser<TableDefinition>() {
+      public TableDefinition parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TableDefinition(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TableDefinition> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -4440,7 +4941,6 @@ public final class YaormModel {
        * <code>LINKER_ENUM = 2;</code>
        */
       LINKER_ENUM(2, 2),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -4457,13 +4957,7 @@ public final class YaormModel {
       public static final int LINKER_ENUM_VALUE = 2;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static TableType valueOf(int value) {
         switch (value) {
@@ -4478,8 +4972,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          TableType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<TableType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<TableType>() {
               public TableType findValueByNumber(int number) {
                 return TableType.valueOf(number);
@@ -4507,9 +5001,6 @@ public final class YaormModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -4526,7 +5017,13 @@ public final class YaormModel {
 
     private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string name = 1;</code>
      */
@@ -4538,7 +5035,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       }
     }
@@ -4560,33 +5059,38 @@ public final class YaormModel {
     }
 
     public static final int COLUMN_DEFINITIONS_FIELD_NUMBER = 2;
-    private static final class ColumnDefinitionsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>newDefaultInstance(
-                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
-    }
-    private com.google.protobuf.MapField<
-        java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_;
-    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-    internalGetColumnDefinitions() {
-      if (columnDefinitions_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ColumnDefinitionsDefaultEntryHolder.defaultEntry);
-     }
+    private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_;
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitionsList() {
       return columnDefinitions_;
     }
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
      */
-
-    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitions() {
-      return internalGetColumnDefinitions().getMap();
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+        getColumnDefinitionsOrBuilderList() {
+      return columnDefinitions_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    public int getColumnDefinitionsCount() {
+      return columnDefinitions_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinitions(int index) {
+      return columnDefinitions_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionsOrBuilder(
+        int index) {
+      return columnDefinitions_.get(index);
     }
 
     public static final int INDEX_FIELD_NUMBER = 3;
@@ -4595,37 +5099,42 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     public boolean hasIndex() {
-      return index_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Index getIndex() {
-      return index_ == null ? org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+      return index_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.IndexOrBuilder getIndexOrBuilder() {
-      return getIndex();
+      return index_;
     }
 
     public static final int TABLE_TYPE_FIELD_NUMBER = 4;
-    private int tableType_;
+    private org.roylance.yaorm.models.YaormModel.TableDefinition.TableType tableType_;
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
      */
-    public int getTableTypeValue() {
-      return tableType_;
+    public boolean hasTableType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition.TableType getTableType() {
-      org.roylance.yaorm.models.YaormModel.TableDefinition.TableType result = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.valueOf(tableType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.UNRECOGNIZED : result;
+      return tableType_;
     }
 
+    private void initFields() {
+      name_ = "";
+      columnDefinitions_ = java.util.Collections.emptyList();
+      index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
+      tableType_ = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4638,57 +5147,56 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNameBytes());
       }
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
-           : internalGetColumnDefinitions().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-        columnDefinitions = ColumnDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(2, columnDefinitions);
+      for (int i = 0; i < columnDefinitions_.size(); i++) {
+        output.writeMessage(2, columnDefinitions_.get(i));
       }
-      if (index_ != null) {
-        output.writeMessage(3, getIndex());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(3, index_);
       }
-      if (tableType_ != org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL.getNumber()) {
-        output.writeEnum(4, tableType_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(4, tableType_.getNumber());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
-      }
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> entry
-           : internalGetColumnDefinitions().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-        columnDefinitions = ColumnDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, columnDefinitions);
+          .computeBytesSize(1, getNameBytes());
       }
-      if (index_ != null) {
+      for (int i = 0; i < columnDefinitions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getIndex());
+          .computeMessageSize(2, columnDefinitions_.get(i));
       }
-      if (tableType_ != org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL.getNumber()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, tableType_);
+          .computeMessageSize(3, index_);
       }
-      memoizedSize = size;
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, tableType_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.TableDefinition parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4742,17 +5250,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.TableDefinition prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -4772,28 +5275,6 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 2:
-            return internalGetColumnDefinitions();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 2:
-            return internalGetMutableColumnDefinitions();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable
@@ -4813,22 +5294,37 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getColumnDefinitionsFieldBuilder();
+          getIndexFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         name_ = "";
-
-        internalGetMutableColumnDefinitions().clear();
-        if (indexBuilder_ == null) {
-          index_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (columnDefinitionsBuilder_ == null) {
+          columnDefinitions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          index_ = null;
-          indexBuilder_ = null;
+          columnDefinitionsBuilder_.clear();
         }
-        tableType_ = 0;
-
+        if (indexBuilder_ == null) {
+          index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
+        } else {
+          indexBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        tableType_ = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -4852,13 +5348,29 @@ public final class YaormModel {
         org.roylance.yaorm.models.YaormModel.TableDefinition result = new org.roylance.yaorm.models.YaormModel.TableDefinition(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.name_ = name_;
-        result.columnDefinitions_ = internalGetColumnDefinitions();
-        result.columnDefinitions_.makeImmutable();
+        if (columnDefinitionsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            columnDefinitions_ = java.util.Collections.unmodifiableList(columnDefinitions_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.columnDefinitions_ = columnDefinitions_;
+        } else {
+          result.columnDefinitions_ = columnDefinitionsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
         if (indexBuilder_ == null) {
           result.index_ = index_;
         } else {
           result.index_ = indexBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.tableType_ = tableType_;
         result.bitField0_ = to_bitField0_;
@@ -4877,19 +5389,44 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.TableDefinition other) {
         if (other == org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
+        if (other.hasName()) {
+          bitField0_ |= 0x00000001;
           name_ = other.name_;
           onChanged();
         }
-        internalGetMutableColumnDefinitions().mergeFrom(
-            other.internalGetColumnDefinitions());
+        if (columnDefinitionsBuilder_ == null) {
+          if (!other.columnDefinitions_.isEmpty()) {
+            if (columnDefinitions_.isEmpty()) {
+              columnDefinitions_ = other.columnDefinitions_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureColumnDefinitionsIsMutable();
+              columnDefinitions_.addAll(other.columnDefinitions_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.columnDefinitions_.isEmpty()) {
+            if (columnDefinitionsBuilder_.isEmpty()) {
+              columnDefinitionsBuilder_.dispose();
+              columnDefinitionsBuilder_ = null;
+              columnDefinitions_ = other.columnDefinitions_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              columnDefinitionsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getColumnDefinitionsFieldBuilder() : null;
+            } else {
+              columnDefinitionsBuilder_.addAllMessages(other.columnDefinitions_);
+            }
+          }
+        }
         if (other.hasIndex()) {
           mergeIndex(other.getIndex());
         }
-        if (other.tableType_ != 0) {
-          setTableTypeValue(other.getTableTypeValue());
+        if (other.hasTableType()) {
+          setTableType(other.getTableType());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -4920,13 +5457,21 @@ public final class YaormModel {
       /**
        * <code>optional string name = 1;</code>
        */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          name_ = s;
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -4956,7 +5501,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
         return this;
@@ -4965,7 +5510,7 @@ public final class YaormModel {
        * <code>optional string name = 1;</code>
        */
       public Builder clearName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -4978,72 +5523,267 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.MapField<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_;
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      internalGetColumnDefinitions() {
-        if (columnDefinitions_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              ColumnDefinitionsDefaultEntryHolder.defaultEntry);
-       }
-        return columnDefinitions_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      internalGetMutableColumnDefinitions() {
-        onChanged();;
-        if (columnDefinitions_ == null) {
-          columnDefinitions_ = com.google.protobuf.MapField.newMapField(
-              ColumnDefinitionsDefaultEntryHolder.defaultEntry);
-        }
-        if (!columnDefinitions_.isMutable()) {
-          columnDefinitions_ = columnDefinitions_.copy();
-        }
-        return columnDefinitions_;
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitions() {
-        return internalGetColumnDefinitions().getMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition>
-      getMutableColumnDefinitions() {
-        return internalGetMutableColumnDefinitions().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.ColumnDefinition&gt; column_definitions = 2;</code>
-       */
-      public Builder putAllColumnDefinitions(
-          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
-        getMutableColumnDefinitions().putAll(values);
-        return this;
+      private java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> columnDefinitions_ =
+        java.util.Collections.emptyList();
+      private void ensureColumnDefinitionsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          columnDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.ColumnDefinition>(columnDefinitions_);
+          bitField0_ |= 0x00000002;
+         }
       }
 
-      private org.roylance.yaorm.models.YaormModel.Index index_ = null;
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> columnDefinitionsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition> getColumnDefinitionsList() {
+        if (columnDefinitionsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(columnDefinitions_);
+        } else {
+          return columnDefinitionsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public int getColumnDefinitionsCount() {
+        if (columnDefinitionsBuilder_ == null) {
+          return columnDefinitions_.size();
+        } else {
+          return columnDefinitionsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinitions(int index) {
+        if (columnDefinitionsBuilder_ == null) {
+          return columnDefinitions_.get(index);
+        } else {
+          return columnDefinitionsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder setColumnDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (columnDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.set(index, value);
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder setColumnDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (columnDefinitionsBuilder_ == null) {
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder addColumnDefinitions(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (columnDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.add(value);
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder addColumnDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
+        if (columnDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.add(index, value);
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder addColumnDefinitions(
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (columnDefinitionsBuilder_ == null) {
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.add(builderForValue.build());
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder addColumnDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder builderForValue) {
+        if (columnDefinitionsBuilder_ == null) {
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder addAllColumnDefinitions(
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinition> values) {
+        if (columnDefinitionsBuilder_ == null) {
+          ensureColumnDefinitionsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, columnDefinitions_);
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder clearColumnDefinitions() {
+        if (columnDefinitionsBuilder_ == null) {
+          columnDefinitions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public Builder removeColumnDefinitions(int index) {
+        if (columnDefinitionsBuilder_ == null) {
+          ensureColumnDefinitionsIsMutable();
+          columnDefinitions_.remove(index);
+          onChanged();
+        } else {
+          columnDefinitionsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getColumnDefinitionsBuilder(
+          int index) {
+        return getColumnDefinitionsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionsOrBuilder(
+          int index) {
+        if (columnDefinitionsBuilder_ == null) {
+          return columnDefinitions_.get(index);  } else {
+          return columnDefinitionsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+           getColumnDefinitionsOrBuilderList() {
+        if (columnDefinitionsBuilder_ != null) {
+          return columnDefinitionsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(columnDefinitions_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnDefinitionsBuilder() {
+        return getColumnDefinitionsFieldBuilder().addBuilder(
+            org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder addColumnDefinitionsBuilder(
+          int index) {
+        return getColumnDefinitionsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.ColumnDefinition column_definitions = 2;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder> 
+           getColumnDefinitionsBuilderList() {
+        return getColumnDefinitionsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> 
+          getColumnDefinitionsFieldBuilder() {
+        if (columnDefinitionsBuilder_ == null) {
+          columnDefinitionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder>(
+                  columnDefinitions_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          columnDefinitions_ = null;
+        }
+        return columnDefinitionsBuilder_;
+      }
+
+      private org.roylance.yaorm.models.YaormModel.Index index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Index, org.roylance.yaorm.models.YaormModel.Index.Builder, org.roylance.yaorm.models.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
        */
       public boolean hasIndex() {
-        return indexBuilder_ != null || index_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
-          return index_ == null ? org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+          return index_;
         } else {
           return indexBuilder_.getMessage();
         }
@@ -5061,7 +5801,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -5075,7 +5815,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -5083,7 +5823,8 @@ public final class YaormModel {
        */
       public Builder mergeIndex(org.roylance.yaorm.models.YaormModel.Index value) {
         if (indexBuilder_ == null) {
-          if (index_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              index_ != org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance()) {
             index_ =
               org.roylance.yaorm.models.YaormModel.Index.newBuilder(index_).mergeFrom(value).buildPartial();
           } else {
@@ -5093,7 +5834,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -5101,20 +5842,19 @@ public final class YaormModel {
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
-          index_ = null;
+          index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
           onChanged();
         } else {
-          index_ = null;
-          indexBuilder_ = null;
+          indexBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Index.Builder getIndexBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getIndexFieldBuilder().getBuilder();
       }
@@ -5125,8 +5865,7 @@ public final class YaormModel {
         if (indexBuilder_ != null) {
           return indexBuilder_.getMessageOrBuilder();
         } else {
-          return index_ == null ?
-              org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+          return index_;
         }
       }
       /**
@@ -5146,27 +5885,18 @@ public final class YaormModel {
         return indexBuilder_;
       }
 
-      private int tableType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition.TableType tableType_ = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
        */
-      public int getTableTypeValue() {
-        return tableType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
-       */
-      public Builder setTableTypeValue(int value) {
-        tableType_ = value;
-        onChanged();
-        return this;
+      public boolean hasTableType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.TableType getTableType() {
-        org.roylance.yaorm.models.YaormModel.TableDefinition.TableType result = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.valueOf(tableType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.UNRECOGNIZED : result;
+        return tableType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
@@ -5175,8 +5905,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        tableType_ = value.getNumber();
+        bitField0_ |= 0x00000008;
+        tableType_ = value;
         onChanged();
         return this;
       }
@@ -5184,67 +5914,21 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.TableDefinition.TableType table_type = 4;</code>
        */
       public Builder clearTableType() {
-        
-        tableType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        tableType_ = org.roylance.yaorm.models.YaormModel.TableDefinition.TableType.NORMAL;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.TableDefinition)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinition)
-    private static final org.roylance.yaorm.models.YaormModel.TableDefinition DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.TableDefinition();
+      defaultInstance = new TableDefinition(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.TableDefinition getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TableDefinition>
-        PARSER = new com.google.protobuf.AbstractParser<TableDefinition>() {
-      public TableDefinition parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TableDefinition(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TableDefinition> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TableDefinition> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.TableDefinition getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinition)
   }
 
   public interface TableDefinitionsOrBuilder extends
@@ -5252,35 +5936,66 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
      */
-    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-    getTableDefinitions();
+    java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> 
+        getTableDefinitionsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    int getTableDefinitionsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
+        getTableDefinitionsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableDefinitions}
    */
-  public  static final class TableDefinitions extends
+  public static final class TableDefinitions extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.TableDefinitions)
       TableDefinitionsOrBuilder {
     // Use TableDefinitions.newBuilder() to construct.
     private TableDefinitions(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TableDefinitions() {
+    private TableDefinitions(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TableDefinitions defaultInstance;
+    public static TableDefinitions getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public TableDefinitions getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private TableDefinitions(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5290,32 +6005,32 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                tableDefinitions_ = com.google.protobuf.MapField.newMapField(
-                    TableDefinitionsDefaultEntryHolder.defaultEntry);
+                tableDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinition>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-              tableDefinitions = input.readMessage(
-                  TableDefinitionsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              tableDefinitions_.getMutableMap().put(tableDefinitions.getKey(), tableDefinitions.getValue());
+              tableDefinitions_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
+        }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -5324,17 +6039,6 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 1:
-          return internalGetTableDefinitions();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable
@@ -5342,36 +6046,59 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.TableDefinitions.class, org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder.class);
     }
 
-    public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 1;
-    private static final class TableDefinitionsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>newDefaultInstance(
-                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
+    public static com.google.protobuf.Parser<TableDefinitions> PARSER =
+        new com.google.protobuf.AbstractParser<TableDefinitions>() {
+      public TableDefinitions parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TableDefinitions(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TableDefinitions> getParserForType() {
+      return PARSER;
     }
-    private com.google.protobuf.MapField<
-        java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
-    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-    internalGetTableDefinitions() {
-      if (tableDefinitions_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            TableDefinitionsDefaultEntryHolder.defaultEntry);
-     }
+
+    public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 1;
+    private java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitionsList() {
       return tableDefinitions_;
     }
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
      */
-
-    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitions() {
-      return internalGetTableDefinitions().getMap();
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
+        getTableDefinitionsOrBuilderList() {
+      return tableDefinitions_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    public int getTableDefinitionsCount() {
+      return tableDefinitions_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index) {
+      return tableDefinitions_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
+        int index) {
+      return tableDefinitions_.get(index);
     }
 
+    private void initFields() {
+      tableDefinitions_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5384,37 +6111,35 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> entry
-           : internalGetTableDefinitions().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-        tableDefinitions = TableDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(1, tableDefinitions);
+      getSerializedSize();
+      for (int i = 0; i < tableDefinitions_.size(); i++) {
+        output.writeMessage(1, tableDefinitions_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> entry
-           : internalGetTableDefinitions().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-        tableDefinitions = TableDefinitionsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < tableDefinitions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, tableDefinitions);
+          .computeMessageSize(1, tableDefinitions_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.TableDefinitions parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5468,17 +6193,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.TableDefinitions prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -5498,28 +6218,6 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetTableDefinitions();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetMutableTableDefinitions();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable
@@ -5539,12 +6237,26 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTableDefinitionsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
-        internalGetMutableTableDefinitions().clear();
+        if (tableDefinitionsBuilder_ == null) {
+          tableDefinitions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          tableDefinitionsBuilder_.clear();
+        }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -5567,8 +6279,15 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.TableDefinitions buildPartial() {
         org.roylance.yaorm.models.YaormModel.TableDefinitions result = new org.roylance.yaorm.models.YaormModel.TableDefinitions(this);
         int from_bitField0_ = bitField0_;
-        result.tableDefinitions_ = internalGetTableDefinitions();
-        result.tableDefinitions_.makeImmutable();
+        if (tableDefinitionsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.tableDefinitions_ = tableDefinitions_;
+        } else {
+          result.tableDefinitions_ = tableDefinitionsBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -5584,9 +6303,33 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.TableDefinitions other) {
         if (other == org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance()) return this;
-        internalGetMutableTableDefinitions().mergeFrom(
-            other.internalGetTableDefinitions());
-        onChanged();
+        if (tableDefinitionsBuilder_ == null) {
+          if (!other.tableDefinitions_.isEmpty()) {
+            if (tableDefinitions_.isEmpty()) {
+              tableDefinitions_ = other.tableDefinitions_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureTableDefinitionsIsMutable();
+              tableDefinitions_.addAll(other.tableDefinitions_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tableDefinitions_.isEmpty()) {
+            if (tableDefinitionsBuilder_.isEmpty()) {
+              tableDefinitionsBuilder_.dispose();
+              tableDefinitionsBuilder_ = null;
+              tableDefinitions_ = other.tableDefinitions_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              tableDefinitionsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTableDefinitionsFieldBuilder() : null;
+            } else {
+              tableDefinitionsBuilder_.addAllMessages(other.tableDefinitions_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -5613,111 +6356,265 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_;
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-      internalGetTableDefinitions() {
-        if (tableDefinitions_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              TableDefinitionsDefaultEntryHolder.defaultEntry);
-       }
-        return tableDefinitions_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-      internalGetMutableTableDefinitions() {
-        onChanged();;
-        if (tableDefinitions_ == null) {
-          tableDefinitions_ = com.google.protobuf.MapField.newMapField(
-              TableDefinitionsDefaultEntryHolder.defaultEntry);
-        }
-        if (!tableDefinitions_.isMutable()) {
-          tableDefinitions_ = tableDefinitions_.copy();
-        }
-        return tableDefinitions_;
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitions() {
-        return internalGetTableDefinitions().getMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition>
-      getMutableTableDefinitions() {
-        return internalGetMutableTableDefinitions().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.TableDefinition&gt; table_definitions = 1;</code>
-       */
-      public Builder putAllTableDefinitions(
-          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableDefinition> values) {
-        getMutableTableDefinitions().putAll(values);
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+      private java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> tableDefinitions_ =
+        java.util.Collections.emptyList();
+      private void ensureTableDefinitionsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          tableDefinitions_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinition>(tableDefinitions_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> tableDefinitionsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition> getTableDefinitionsList() {
+        if (tableDefinitionsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tableDefinitions_);
+        } else {
+          return tableDefinitionsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public int getTableDefinitionsCount() {
+        if (tableDefinitionsBuilder_ == null) {
+          return tableDefinitions_.size();
+        } else {
+          return tableDefinitionsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinitions(int index) {
+        if (tableDefinitionsBuilder_ == null) {
+          return tableDefinitions_.get(index);
+        } else {
+          return tableDefinitionsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder setTableDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.TableDefinition value) {
+        if (tableDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.set(index, value);
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.setMessage(index, value);
+        }
         return this;
       }
-
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder setTableDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
+        if (tableDefinitionsBuilder_ == null) {
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder addTableDefinitions(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
+        if (tableDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.add(value);
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder addTableDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.TableDefinition value) {
+        if (tableDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.add(index, value);
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder addTableDefinitions(
+          org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
+        if (tableDefinitionsBuilder_ == null) {
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder addTableDefinitions(
+          int index, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder builderForValue) {
+        if (tableDefinitionsBuilder_ == null) {
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder addAllTableDefinitions(
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.TableDefinition> values) {
+        if (tableDefinitionsBuilder_ == null) {
+          ensureTableDefinitionsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, tableDefinitions_);
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder clearTableDefinitions() {
+        if (tableDefinitionsBuilder_ == null) {
+          tableDefinitions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public Builder removeTableDefinitions(int index) {
+        if (tableDefinitionsBuilder_ == null) {
+          ensureTableDefinitionsIsMutable();
+          tableDefinitions_.remove(index);
+          onChanged();
+        } else {
+          tableDefinitionsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getTableDefinitionsBuilder(
+          int index) {
+        return getTableDefinitionsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionsOrBuilder(
+          int index) {
+        if (tableDefinitionsBuilder_ == null) {
+          return tableDefinitions_.get(index);  } else {
+          return tableDefinitionsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
+           getTableDefinitionsOrBuilderList() {
+        if (tableDefinitionsBuilder_ != null) {
+          return tableDefinitionsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tableDefinitions_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder addTableDefinitionsBuilder() {
+        return getTableDefinitionsFieldBuilder().addBuilder(
+            org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder addTableDefinitionsBuilder(
+          int index) {
+        return getTableDefinitionsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableDefinition table_definitions = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.TableDefinition.Builder> 
+           getTableDefinitionsBuilderList() {
+        return getTableDefinitionsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> 
+          getTableDefinitionsFieldBuilder() {
+        if (tableDefinitionsBuilder_ == null) {
+          tableDefinitionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder>(
+                  tableDefinitions_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          tableDefinitions_ = null;
+        }
+        return tableDefinitionsBuilder_;
+      }
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.TableDefinitions)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinitions)
-    private static final org.roylance.yaorm.models.YaormModel.TableDefinitions DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.TableDefinitions();
+      defaultInstance = new TableDefinitions(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.TableDefinitions getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TableDefinitions>
-        PARSER = new com.google.protobuf.AbstractParser<TableDefinitions>() {
-      public TableDefinitions parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TableDefinitions(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TableDefinitions> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TableDefinitions> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.TableDefinitions getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinitions)
   }
 
   public interface DifferenceReportOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.DifferenceReport)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional bool migration_exists = 1;</code>
+     */
+    boolean hasMigrationExists();
     /**
      * <code>optional bool migration_exists = 1;</code>
      */
@@ -5750,29 +6647,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.DifferenceReport}
    */
-  public  static final class DifferenceReport extends
+  public static final class DifferenceReport extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.DifferenceReport)
       DifferenceReportOrBuilder {
     // Use DifferenceReport.newBuilder() to construct.
     private DifferenceReport(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private DifferenceReport() {
-      migrationExists_ = false;
-      differences_ = java.util.Collections.emptyList();
+    private DifferenceReport(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DifferenceReport defaultInstance;
+    public static DifferenceReport getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public DifferenceReport getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private DifferenceReport(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5782,13 +6690,14 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 8: {
-
+              bitField0_ |= 0x00000001;
               migrationExists_ = input.readBool();
               break;
             }
@@ -5797,21 +6706,21 @@ public final class YaormModel {
                 differences_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Difference>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              differences_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Difference.parser(), extensionRegistry));
+              differences_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Difference.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           differences_ = java.util.Collections.unmodifiableList(differences_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -5827,9 +6736,30 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.DifferenceReport.class, org.roylance.yaorm.models.YaormModel.DifferenceReport.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<DifferenceReport> PARSER =
+        new com.google.protobuf.AbstractParser<DifferenceReport>() {
+      public DifferenceReport parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DifferenceReport(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DifferenceReport> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int MIGRATION_EXISTS_FIELD_NUMBER = 1;
     private boolean migrationExists_;
+    /**
+     * <code>optional bool migration_exists = 1;</code>
+     */
+    public boolean hasMigrationExists() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional bool migration_exists = 1;</code>
      */
@@ -5872,6 +6802,10 @@ public final class YaormModel {
       return differences_.get(index);
     }
 
+    private void initFields() {
+      migrationExists_ = false;
+      differences_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5884,20 +6818,23 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (migrationExists_ != false) {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBool(1, migrationExists_);
       }
       for (int i = 0; i < differences_.size(); i++) {
         output.writeMessage(2, differences_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (migrationExists_ != false) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, migrationExists_);
       }
@@ -5905,11 +6842,18 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, differences_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.DifferenceReport parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5963,17 +6907,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.DifferenceReport prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -6015,10 +6954,14 @@ public final class YaormModel {
           getDifferencesFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         migrationExists_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (differencesBuilder_ == null) {
           differences_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -6026,6 +6969,10 @@ public final class YaormModel {
           differencesBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -6049,6 +6996,9 @@ public final class YaormModel {
         org.roylance.yaorm.models.YaormModel.DifferenceReport result = new org.roylance.yaorm.models.YaormModel.DifferenceReport(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.migrationExists_ = migrationExists_;
         if (differencesBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002)) {
@@ -6075,7 +7025,7 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.DifferenceReport other) {
         if (other == org.roylance.yaorm.models.YaormModel.DifferenceReport.getDefaultInstance()) return this;
-        if (other.getMigrationExists() != false) {
+        if (other.hasMigrationExists()) {
           setMigrationExists(other.getMigrationExists());
         }
         if (differencesBuilder_ == null) {
@@ -6104,7 +7054,7 @@ public final class YaormModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -6135,6 +7085,12 @@ public final class YaormModel {
       /**
        * <code>optional bool migration_exists = 1;</code>
        */
+      public boolean hasMigrationExists() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bool migration_exists = 1;</code>
+       */
       public boolean getMigrationExists() {
         return migrationExists_;
       }
@@ -6142,7 +7098,7 @@ public final class YaormModel {
        * <code>optional bool migration_exists = 1;</code>
        */
       public Builder setMigrationExists(boolean value) {
-        
+        bitField0_ |= 0x00000001;
         migrationExists_ = value;
         onChanged();
         return this;
@@ -6151,7 +7107,7 @@ public final class YaormModel {
        * <code>optional bool migration_exists = 1;</code>
        */
       public Builder clearMigrationExists() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         migrationExists_ = false;
         onChanged();
         return this;
@@ -6396,62 +7352,16 @@ public final class YaormModel {
         }
         return differencesBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.DifferenceReport)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DifferenceReport)
-    private static final org.roylance.yaorm.models.YaormModel.DifferenceReport DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.DifferenceReport();
+      defaultInstance = new DifferenceReport(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.DifferenceReport getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<DifferenceReport>
-        PARSER = new com.google.protobuf.AbstractParser<DifferenceReport>() {
-      public DifferenceReport parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new DifferenceReport(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<DifferenceReport> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<DifferenceReport> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.DifferenceReport getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DifferenceReport)
   }
 
   public interface ColumnOrBuilder extends
@@ -6474,8 +7384,16 @@ public final class YaormModel {
     /**
      * <code>optional double double_holder = 2;</code>
      */
+    boolean hasDoubleHolder();
+    /**
+     * <code>optional double double_holder = 2;</code>
+     */
     double getDoubleHolder();
 
+    /**
+     * <code>optional float float_holder = 3;</code>
+     */
+    boolean hasFloatHolder();
     /**
      * <code>optional float float_holder = 3;</code>
      */
@@ -6484,8 +7402,16 @@ public final class YaormModel {
     /**
      * <code>optional int32 int32_holder = 4;</code>
      */
+    boolean hasInt32Holder();
+    /**
+     * <code>optional int32 int32_holder = 4;</code>
+     */
     int getInt32Holder();
 
+    /**
+     * <code>optional int64 int64_holder = 5;</code>
+     */
+    boolean hasInt64Holder();
     /**
      * <code>optional int64 int64_holder = 5;</code>
      */
@@ -6494,8 +7420,16 @@ public final class YaormModel {
     /**
      * <code>optional uint32 uint32_holder = 6;</code>
      */
+    boolean hasUint32Holder();
+    /**
+     * <code>optional uint32 uint32_holder = 6;</code>
+     */
     int getUint32Holder();
 
+    /**
+     * <code>optional uint64 uint64_holder = 7;</code>
+     */
+    boolean hasUint64Holder();
     /**
      * <code>optional uint64 uint64_holder = 7;</code>
      */
@@ -6504,8 +7438,16 @@ public final class YaormModel {
     /**
      * <code>optional sint32 sint32_holder = 8;</code>
      */
+    boolean hasSint32Holder();
+    /**
+     * <code>optional sint32 sint32_holder = 8;</code>
+     */
     int getSint32Holder();
 
+    /**
+     * <code>optional sint64 sint64_holder = 9;</code>
+     */
+    boolean hasSint64Holder();
     /**
      * <code>optional sint64 sint64_holder = 9;</code>
      */
@@ -6514,8 +7456,16 @@ public final class YaormModel {
     /**
      * <code>optional fixed32 fixed32_holder = 10;</code>
      */
+    boolean hasFixed32Holder();
+    /**
+     * <code>optional fixed32 fixed32_holder = 10;</code>
+     */
     int getFixed32Holder();
 
+    /**
+     * <code>optional fixed64 fixed64_holder = 11;</code>
+     */
+    boolean hasFixed64Holder();
     /**
      * <code>optional fixed64 fixed64_holder = 11;</code>
      */
@@ -6524,8 +7474,16 @@ public final class YaormModel {
     /**
      * <code>optional sfixed32 sfixed32_holder = 12;</code>
      */
+    boolean hasSfixed32Holder();
+    /**
+     * <code>optional sfixed32 sfixed32_holder = 12;</code>
+     */
     int getSfixed32Holder();
 
+    /**
+     * <code>optional sfixed64 sfixed64_holder = 13;</code>
+     */
+    boolean hasSfixed64Holder();
     /**
      * <code>optional sfixed64 sfixed64_holder = 13;</code>
      */
@@ -6534,8 +7492,16 @@ public final class YaormModel {
     /**
      * <code>optional bool bool_holder = 14;</code>
      */
+    boolean hasBoolHolder();
+    /**
+     * <code>optional bool bool_holder = 14;</code>
+     */
     boolean getBoolHolder();
 
+    /**
+     * <code>optional string string_holder = 15;</code>
+     */
+    boolean hasStringHolder();
     /**
      * <code>optional string string_holder = 15;</code>
      */
@@ -6549,47 +7515,49 @@ public final class YaormModel {
     /**
      * <code>optional bytes bytes_holder = 16;</code>
      */
+    boolean hasBytesHolder();
+    /**
+     * <code>optional bytes bytes_holder = 16;</code>
+     */
     com.google.protobuf.ByteString getBytesHolder();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Column}
    */
-  public  static final class Column extends
+  public static final class Column extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Column)
       ColumnOrBuilder {
     // Use Column.newBuilder() to construct.
     private Column(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Column() {
-      doubleHolder_ = 0D;
-      floatHolder_ = 0F;
-      int32Holder_ = 0;
-      int64Holder_ = 0L;
-      uint32Holder_ = 0;
-      uint64Holder_ = 0L;
-      sint32Holder_ = 0;
-      sint64Holder_ = 0L;
-      fixed32Holder_ = 0;
-      fixed64Holder_ = 0L;
-      sfixed32Holder_ = 0;
-      sfixed64Holder_ = 0L;
-      boolHolder_ = false;
-      stringHolder_ = "";
-      bytesHolder_ = com.google.protobuf.ByteString.EMPTY;
+    private Column(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Column defaultInstance;
+    public static Column getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Column getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Column(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -6599,109 +7567,110 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder subBuilder = null;
-              if (definition_ != null) {
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = definition_.toBuilder();
               }
-              definition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.parser(), extensionRegistry);
+              definition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(definition_);
                 definition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000001;
               break;
             }
             case 17: {
-
+              bitField0_ |= 0x00000002;
               doubleHolder_ = input.readDouble();
               break;
             }
             case 29: {
-
+              bitField0_ |= 0x00000004;
               floatHolder_ = input.readFloat();
               break;
             }
             case 32: {
-
+              bitField0_ |= 0x00000008;
               int32Holder_ = input.readInt32();
               break;
             }
             case 40: {
-
+              bitField0_ |= 0x00000010;
               int64Holder_ = input.readInt64();
               break;
             }
             case 48: {
-
+              bitField0_ |= 0x00000020;
               uint32Holder_ = input.readUInt32();
               break;
             }
             case 56: {
-
+              bitField0_ |= 0x00000040;
               uint64Holder_ = input.readUInt64();
               break;
             }
             case 64: {
-
+              bitField0_ |= 0x00000080;
               sint32Holder_ = input.readSInt32();
               break;
             }
             case 72: {
-
+              bitField0_ |= 0x00000100;
               sint64Holder_ = input.readSInt64();
               break;
             }
             case 85: {
-
+              bitField0_ |= 0x00000200;
               fixed32Holder_ = input.readFixed32();
               break;
             }
             case 89: {
-
+              bitField0_ |= 0x00000400;
               fixed64Holder_ = input.readFixed64();
               break;
             }
             case 101: {
-
+              bitField0_ |= 0x00000800;
               sfixed32Holder_ = input.readSFixed32();
               break;
             }
             case 105: {
-
+              bitField0_ |= 0x00001000;
               sfixed64Holder_ = input.readSFixed64();
               break;
             }
             case 112: {
-
+              bitField0_ |= 0x00002000;
               boolHolder_ = input.readBool();
               break;
             }
             case 122: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              stringHolder_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00004000;
+              stringHolder_ = bs;
               break;
             }
             case 130: {
-
+              bitField0_ |= 0x00008000;
               bytesHolder_ = input.readBytes();
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -6717,29 +7686,51 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.Column.class, org.roylance.yaorm.models.YaormModel.Column.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Column> PARSER =
+        new com.google.protobuf.AbstractParser<Column>() {
+      public Column parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Column(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Column> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.models.YaormModel.ColumnDefinition definition_;
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition definition = 1;</code>
      */
     public boolean hasDefinition() {
-      return definition_ != null;
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinition getDefinition() {
-      return definition_ == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : definition_;
+      return definition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getDefinitionOrBuilder() {
-      return getDefinition();
+      return definition_;
     }
 
     public static final int DOUBLE_HOLDER_FIELD_NUMBER = 2;
     private double doubleHolder_;
+    /**
+     * <code>optional double double_holder = 2;</code>
+     */
+    public boolean hasDoubleHolder() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional double double_holder = 2;</code>
      */
@@ -6752,12 +7743,24 @@ public final class YaormModel {
     /**
      * <code>optional float float_holder = 3;</code>
      */
+    public boolean hasFloatHolder() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional float float_holder = 3;</code>
+     */
     public float getFloatHolder() {
       return floatHolder_;
     }
 
     public static final int INT32_HOLDER_FIELD_NUMBER = 4;
     private int int32Holder_;
+    /**
+     * <code>optional int32 int32_holder = 4;</code>
+     */
+    public boolean hasInt32Holder() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional int32 int32_holder = 4;</code>
      */
@@ -6770,12 +7773,24 @@ public final class YaormModel {
     /**
      * <code>optional int64 int64_holder = 5;</code>
      */
+    public boolean hasInt64Holder() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int64 int64_holder = 5;</code>
+     */
     public long getInt64Holder() {
       return int64Holder_;
     }
 
     public static final int UINT32_HOLDER_FIELD_NUMBER = 6;
     private int uint32Holder_;
+    /**
+     * <code>optional uint32 uint32_holder = 6;</code>
+     */
+    public boolean hasUint32Holder() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
     /**
      * <code>optional uint32 uint32_holder = 6;</code>
      */
@@ -6788,12 +7803,24 @@ public final class YaormModel {
     /**
      * <code>optional uint64 uint64_holder = 7;</code>
      */
+    public boolean hasUint64Holder() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional uint64 uint64_holder = 7;</code>
+     */
     public long getUint64Holder() {
       return uint64Holder_;
     }
 
     public static final int SINT32_HOLDER_FIELD_NUMBER = 8;
     private int sint32Holder_;
+    /**
+     * <code>optional sint32 sint32_holder = 8;</code>
+     */
+    public boolean hasSint32Holder() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
     /**
      * <code>optional sint32 sint32_holder = 8;</code>
      */
@@ -6806,12 +7833,24 @@ public final class YaormModel {
     /**
      * <code>optional sint64 sint64_holder = 9;</code>
      */
+    public boolean hasSint64Holder() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional sint64 sint64_holder = 9;</code>
+     */
     public long getSint64Holder() {
       return sint64Holder_;
     }
 
     public static final int FIXED32_HOLDER_FIELD_NUMBER = 10;
     private int fixed32Holder_;
+    /**
+     * <code>optional fixed32 fixed32_holder = 10;</code>
+     */
+    public boolean hasFixed32Holder() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
     /**
      * <code>optional fixed32 fixed32_holder = 10;</code>
      */
@@ -6824,12 +7863,24 @@ public final class YaormModel {
     /**
      * <code>optional fixed64 fixed64_holder = 11;</code>
      */
+    public boolean hasFixed64Holder() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional fixed64 fixed64_holder = 11;</code>
+     */
     public long getFixed64Holder() {
       return fixed64Holder_;
     }
 
     public static final int SFIXED32_HOLDER_FIELD_NUMBER = 12;
     private int sfixed32Holder_;
+    /**
+     * <code>optional sfixed32 sfixed32_holder = 12;</code>
+     */
+    public boolean hasSfixed32Holder() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
     /**
      * <code>optional sfixed32 sfixed32_holder = 12;</code>
      */
@@ -6842,6 +7893,12 @@ public final class YaormModel {
     /**
      * <code>optional sfixed64 sfixed64_holder = 13;</code>
      */
+    public boolean hasSfixed64Holder() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional sfixed64 sfixed64_holder = 13;</code>
+     */
     public long getSfixed64Holder() {
       return sfixed64Holder_;
     }
@@ -6851,12 +7908,24 @@ public final class YaormModel {
     /**
      * <code>optional bool bool_holder = 14;</code>
      */
+    public boolean hasBoolHolder() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>optional bool bool_holder = 14;</code>
+     */
     public boolean getBoolHolder() {
       return boolHolder_;
     }
 
     public static final int STRING_HOLDER_FIELD_NUMBER = 15;
-    private volatile java.lang.Object stringHolder_;
+    private java.lang.Object stringHolder_;
+    /**
+     * <code>optional string string_holder = 15;</code>
+     */
+    public boolean hasStringHolder() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
     /**
      * <code>optional string string_holder = 15;</code>
      */
@@ -6868,7 +7937,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        stringHolder_ = s;
+        if (bs.isValidUtf8()) {
+          stringHolder_ = s;
+        }
         return s;
       }
     }
@@ -6894,10 +7965,34 @@ public final class YaormModel {
     /**
      * <code>optional bytes bytes_holder = 16;</code>
      */
+    public boolean hasBytesHolder() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional bytes bytes_holder = 16;</code>
+     */
     public com.google.protobuf.ByteString getBytesHolder() {
       return bytesHolder_;
     }
 
+    private void initFields() {
+      definition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
+      doubleHolder_ = 0D;
+      floatHolder_ = 0F;
+      int32Holder_ = 0;
+      int64Holder_ = 0L;
+      uint32Holder_ = 0;
+      uint64Holder_ = 0L;
+      sint32Holder_ = 0;
+      sint64Holder_ = 0L;
+      fixed32Holder_ = 0;
+      fixed64Holder_ = 0L;
+      sfixed32Holder_ = 0;
+      sfixed64Holder_ = 0L;
+      boolHolder_ = false;
+      stringHolder_ = "";
+      bytesHolder_ = com.google.protobuf.ByteString.EMPTY;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6910,129 +8005,140 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (definition_ != null) {
-        output.writeMessage(1, getDefinition());
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, definition_);
       }
-      if (doubleHolder_ != 0D) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeDouble(2, doubleHolder_);
       }
-      if (floatHolder_ != 0F) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeFloat(3, floatHolder_);
       }
-      if (int32Holder_ != 0) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, int32Holder_);
       }
-      if (int64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt64(5, int64Holder_);
       }
-      if (uint32Holder_ != 0) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(6, uint32Holder_);
       }
-      if (uint64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeUInt64(7, uint64Holder_);
       }
-      if (sint32Holder_ != 0) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeSInt32(8, sint32Holder_);
       }
-      if (sint64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeSInt64(9, sint64Holder_);
       }
-      if (fixed32Holder_ != 0) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeFixed32(10, fixed32Holder_);
       }
-      if (fixed64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeFixed64(11, fixed64Holder_);
       }
-      if (sfixed32Holder_ != 0) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeSFixed32(12, sfixed32Holder_);
       }
-      if (sfixed64Holder_ != 0L) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeSFixed64(13, sfixed64Holder_);
       }
-      if (boolHolder_ != false) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeBool(14, boolHolder_);
       }
-      if (!getStringHolderBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 15, stringHolder_);
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeBytes(15, getStringHolderBytes());
       }
-      if (!bytesHolder_.isEmpty()) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         output.writeBytes(16, bytesHolder_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (definition_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDefinition());
+          .computeMessageSize(1, definition_);
       }
-      if (doubleHolder_ != 0D) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(2, doubleHolder_);
       }
-      if (floatHolder_ != 0F) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(3, floatHolder_);
       }
-      if (int32Holder_ != 0) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, int32Holder_);
       }
-      if (int64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(5, int64Holder_);
       }
-      if (uint32Holder_ != 0) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, uint32Holder_);
       }
-      if (uint64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(7, uint64Holder_);
       }
-      if (sint32Holder_ != 0) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt32Size(8, sint32Holder_);
       }
-      if (sint64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt64Size(9, sint64Holder_);
       }
-      if (fixed32Holder_ != 0) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFixed32Size(10, fixed32Holder_);
       }
-      if (fixed64Holder_ != 0L) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFixed64Size(11, fixed64Holder_);
       }
-      if (sfixed32Holder_ != 0) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSFixed32Size(12, sfixed32Holder_);
       }
-      if (sfixed64Holder_ != 0L) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeSFixed64Size(13, sfixed64Holder_);
       }
-      if (boolHolder_ != false) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(14, boolHolder_);
       }
-      if (!getStringHolderBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(15, stringHolder_);
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(15, getStringHolderBytes());
       }
-      if (!bytesHolder_.isEmpty()) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(16, bytesHolder_);
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.Column parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7086,17 +8192,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Column prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -7135,47 +8236,56 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDefinitionFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (definitionBuilder_ == null) {
-          definition_ = null;
+          definition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
         } else {
-          definition_ = null;
-          definitionBuilder_ = null;
+          definitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         doubleHolder_ = 0D;
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         floatHolder_ = 0F;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         int32Holder_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         int64Holder_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         uint32Holder_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         uint64Holder_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         sint32Holder_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000080);
         sint64Holder_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000100);
         fixed32Holder_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000200);
         fixed64Holder_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000400);
         sfixed32Holder_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000800);
         sfixed64Holder_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00001000);
         boolHolder_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00002000);
         stringHolder_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00004000);
         bytesHolder_ = com.google.protobuf.ByteString.EMPTY;
-
+        bitField0_ = (bitField0_ & ~0x00008000);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -7197,26 +8307,77 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.Column buildPartial() {
         org.roylance.yaorm.models.YaormModel.Column result = new org.roylance.yaorm.models.YaormModel.Column(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         if (definitionBuilder_ == null) {
           result.definition_ = definition_;
         } else {
           result.definition_ = definitionBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.doubleHolder_ = doubleHolder_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.floatHolder_ = floatHolder_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.int32Holder_ = int32Holder_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.int64Holder_ = int64Holder_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.uint32Holder_ = uint32Holder_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.uint64Holder_ = uint64Holder_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.sint32Holder_ = sint32Holder_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
         result.sint64Holder_ = sint64Holder_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.fixed32Holder_ = fixed32Holder_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
         result.fixed64Holder_ = fixed64Holder_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
         result.sfixed32Holder_ = sfixed32Holder_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
         result.sfixed64Holder_ = sfixed64Holder_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
         result.boolHolder_ = boolHolder_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
         result.stringHolder_ = stringHolder_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
         result.bytesHolder_ = bytesHolder_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -7235,53 +8396,54 @@ public final class YaormModel {
         if (other.hasDefinition()) {
           mergeDefinition(other.getDefinition());
         }
-        if (other.getDoubleHolder() != 0D) {
+        if (other.hasDoubleHolder()) {
           setDoubleHolder(other.getDoubleHolder());
         }
-        if (other.getFloatHolder() != 0F) {
+        if (other.hasFloatHolder()) {
           setFloatHolder(other.getFloatHolder());
         }
-        if (other.getInt32Holder() != 0) {
+        if (other.hasInt32Holder()) {
           setInt32Holder(other.getInt32Holder());
         }
-        if (other.getInt64Holder() != 0L) {
+        if (other.hasInt64Holder()) {
           setInt64Holder(other.getInt64Holder());
         }
-        if (other.getUint32Holder() != 0) {
+        if (other.hasUint32Holder()) {
           setUint32Holder(other.getUint32Holder());
         }
-        if (other.getUint64Holder() != 0L) {
+        if (other.hasUint64Holder()) {
           setUint64Holder(other.getUint64Holder());
         }
-        if (other.getSint32Holder() != 0) {
+        if (other.hasSint32Holder()) {
           setSint32Holder(other.getSint32Holder());
         }
-        if (other.getSint64Holder() != 0L) {
+        if (other.hasSint64Holder()) {
           setSint64Holder(other.getSint64Holder());
         }
-        if (other.getFixed32Holder() != 0) {
+        if (other.hasFixed32Holder()) {
           setFixed32Holder(other.getFixed32Holder());
         }
-        if (other.getFixed64Holder() != 0L) {
+        if (other.hasFixed64Holder()) {
           setFixed64Holder(other.getFixed64Holder());
         }
-        if (other.getSfixed32Holder() != 0) {
+        if (other.hasSfixed32Holder()) {
           setSfixed32Holder(other.getSfixed32Holder());
         }
-        if (other.getSfixed64Holder() != 0L) {
+        if (other.hasSfixed64Holder()) {
           setSfixed64Holder(other.getSfixed64Holder());
         }
-        if (other.getBoolHolder() != false) {
+        if (other.hasBoolHolder()) {
           setBoolHolder(other.getBoolHolder());
         }
-        if (!other.getStringHolder().isEmpty()) {
+        if (other.hasStringHolder()) {
+          bitField0_ |= 0x00004000;
           stringHolder_ = other.stringHolder_;
           onChanged();
         }
-        if (other.getBytesHolder() != com.google.protobuf.ByteString.EMPTY) {
+        if (other.hasBytesHolder()) {
           setBytesHolder(other.getBytesHolder());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -7306,22 +8468,23 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
-      private org.roylance.yaorm.models.YaormModel.ColumnDefinition definition_ = null;
+      private org.roylance.yaorm.models.YaormModel.ColumnDefinition definition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> definitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition definition = 1;</code>
        */
       public boolean hasDefinition() {
-        return definitionBuilder_ != null || definition_ != null;
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition getDefinition() {
         if (definitionBuilder_ == null) {
-          return definition_ == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : definition_;
+          return definition_;
         } else {
           return definitionBuilder_.getMessage();
         }
@@ -7339,7 +8502,7 @@ public final class YaormModel {
         } else {
           definitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -7353,7 +8516,7 @@ public final class YaormModel {
         } else {
           definitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -7361,7 +8524,8 @@ public final class YaormModel {
        */
       public Builder mergeDefinition(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
         if (definitionBuilder_ == null) {
-          if (definition_ != null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              definition_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance()) {
             definition_ =
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.newBuilder(definition_).mergeFrom(value).buildPartial();
           } else {
@@ -7371,7 +8535,7 @@ public final class YaormModel {
         } else {
           definitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -7379,20 +8543,19 @@ public final class YaormModel {
        */
       public Builder clearDefinition() {
         if (definitionBuilder_ == null) {
-          definition_ = null;
+          definition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
           onChanged();
         } else {
-          definition_ = null;
-          definitionBuilder_ = null;
+          definitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getDefinitionFieldBuilder().getBuilder();
       }
@@ -7403,8 +8566,7 @@ public final class YaormModel {
         if (definitionBuilder_ != null) {
           return definitionBuilder_.getMessageOrBuilder();
         } else {
-          return definition_ == null ?
-              org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : definition_;
+          return definition_;
         }
       }
       /**
@@ -7428,6 +8590,12 @@ public final class YaormModel {
       /**
        * <code>optional double double_holder = 2;</code>
        */
+      public boolean hasDoubleHolder() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional double double_holder = 2;</code>
+       */
       public double getDoubleHolder() {
         return doubleHolder_;
       }
@@ -7435,7 +8603,7 @@ public final class YaormModel {
        * <code>optional double double_holder = 2;</code>
        */
       public Builder setDoubleHolder(double value) {
-        
+        bitField0_ |= 0x00000002;
         doubleHolder_ = value;
         onChanged();
         return this;
@@ -7444,13 +8612,19 @@ public final class YaormModel {
        * <code>optional double double_holder = 2;</code>
        */
       public Builder clearDoubleHolder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         doubleHolder_ = 0D;
         onChanged();
         return this;
       }
 
       private float floatHolder_ ;
+      /**
+       * <code>optional float float_holder = 3;</code>
+       */
+      public boolean hasFloatHolder() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
       /**
        * <code>optional float float_holder = 3;</code>
        */
@@ -7461,7 +8635,7 @@ public final class YaormModel {
        * <code>optional float float_holder = 3;</code>
        */
       public Builder setFloatHolder(float value) {
-        
+        bitField0_ |= 0x00000004;
         floatHolder_ = value;
         onChanged();
         return this;
@@ -7470,13 +8644,19 @@ public final class YaormModel {
        * <code>optional float float_holder = 3;</code>
        */
       public Builder clearFloatHolder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         floatHolder_ = 0F;
         onChanged();
         return this;
       }
 
       private int int32Holder_ ;
+      /**
+       * <code>optional int32 int32_holder = 4;</code>
+       */
+      public boolean hasInt32Holder() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
       /**
        * <code>optional int32 int32_holder = 4;</code>
        */
@@ -7487,7 +8667,7 @@ public final class YaormModel {
        * <code>optional int32 int32_holder = 4;</code>
        */
       public Builder setInt32Holder(int value) {
-        
+        bitField0_ |= 0x00000008;
         int32Holder_ = value;
         onChanged();
         return this;
@@ -7496,13 +8676,19 @@ public final class YaormModel {
        * <code>optional int32 int32_holder = 4;</code>
        */
       public Builder clearInt32Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         int32Holder_ = 0;
         onChanged();
         return this;
       }
 
       private long int64Holder_ ;
+      /**
+       * <code>optional int64 int64_holder = 5;</code>
+       */
+      public boolean hasInt64Holder() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
       /**
        * <code>optional int64 int64_holder = 5;</code>
        */
@@ -7513,7 +8699,7 @@ public final class YaormModel {
        * <code>optional int64 int64_holder = 5;</code>
        */
       public Builder setInt64Holder(long value) {
-        
+        bitField0_ |= 0x00000010;
         int64Holder_ = value;
         onChanged();
         return this;
@@ -7522,13 +8708,19 @@ public final class YaormModel {
        * <code>optional int64 int64_holder = 5;</code>
        */
       public Builder clearInt64Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         int64Holder_ = 0L;
         onChanged();
         return this;
       }
 
       private int uint32Holder_ ;
+      /**
+       * <code>optional uint32 uint32_holder = 6;</code>
+       */
+      public boolean hasUint32Holder() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
       /**
        * <code>optional uint32 uint32_holder = 6;</code>
        */
@@ -7539,7 +8731,7 @@ public final class YaormModel {
        * <code>optional uint32 uint32_holder = 6;</code>
        */
       public Builder setUint32Holder(int value) {
-        
+        bitField0_ |= 0x00000020;
         uint32Holder_ = value;
         onChanged();
         return this;
@@ -7548,13 +8740,19 @@ public final class YaormModel {
        * <code>optional uint32 uint32_holder = 6;</code>
        */
       public Builder clearUint32Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         uint32Holder_ = 0;
         onChanged();
         return this;
       }
 
       private long uint64Holder_ ;
+      /**
+       * <code>optional uint64 uint64_holder = 7;</code>
+       */
+      public boolean hasUint64Holder() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
       /**
        * <code>optional uint64 uint64_holder = 7;</code>
        */
@@ -7565,7 +8763,7 @@ public final class YaormModel {
        * <code>optional uint64 uint64_holder = 7;</code>
        */
       public Builder setUint64Holder(long value) {
-        
+        bitField0_ |= 0x00000040;
         uint64Holder_ = value;
         onChanged();
         return this;
@@ -7574,13 +8772,19 @@ public final class YaormModel {
        * <code>optional uint64 uint64_holder = 7;</code>
        */
       public Builder clearUint64Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         uint64Holder_ = 0L;
         onChanged();
         return this;
       }
 
       private int sint32Holder_ ;
+      /**
+       * <code>optional sint32 sint32_holder = 8;</code>
+       */
+      public boolean hasSint32Holder() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
       /**
        * <code>optional sint32 sint32_holder = 8;</code>
        */
@@ -7591,7 +8795,7 @@ public final class YaormModel {
        * <code>optional sint32 sint32_holder = 8;</code>
        */
       public Builder setSint32Holder(int value) {
-        
+        bitField0_ |= 0x00000080;
         sint32Holder_ = value;
         onChanged();
         return this;
@@ -7600,13 +8804,19 @@ public final class YaormModel {
        * <code>optional sint32 sint32_holder = 8;</code>
        */
       public Builder clearSint32Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         sint32Holder_ = 0;
         onChanged();
         return this;
       }
 
       private long sint64Holder_ ;
+      /**
+       * <code>optional sint64 sint64_holder = 9;</code>
+       */
+      public boolean hasSint64Holder() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
       /**
        * <code>optional sint64 sint64_holder = 9;</code>
        */
@@ -7617,7 +8827,7 @@ public final class YaormModel {
        * <code>optional sint64 sint64_holder = 9;</code>
        */
       public Builder setSint64Holder(long value) {
-        
+        bitField0_ |= 0x00000100;
         sint64Holder_ = value;
         onChanged();
         return this;
@@ -7626,13 +8836,19 @@ public final class YaormModel {
        * <code>optional sint64 sint64_holder = 9;</code>
        */
       public Builder clearSint64Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         sint64Holder_ = 0L;
         onChanged();
         return this;
       }
 
       private int fixed32Holder_ ;
+      /**
+       * <code>optional fixed32 fixed32_holder = 10;</code>
+       */
+      public boolean hasFixed32Holder() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
       /**
        * <code>optional fixed32 fixed32_holder = 10;</code>
        */
@@ -7643,7 +8859,7 @@ public final class YaormModel {
        * <code>optional fixed32 fixed32_holder = 10;</code>
        */
       public Builder setFixed32Holder(int value) {
-        
+        bitField0_ |= 0x00000200;
         fixed32Holder_ = value;
         onChanged();
         return this;
@@ -7652,13 +8868,19 @@ public final class YaormModel {
        * <code>optional fixed32 fixed32_holder = 10;</code>
        */
       public Builder clearFixed32Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         fixed32Holder_ = 0;
         onChanged();
         return this;
       }
 
       private long fixed64Holder_ ;
+      /**
+       * <code>optional fixed64 fixed64_holder = 11;</code>
+       */
+      public boolean hasFixed64Holder() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
       /**
        * <code>optional fixed64 fixed64_holder = 11;</code>
        */
@@ -7669,7 +8891,7 @@ public final class YaormModel {
        * <code>optional fixed64 fixed64_holder = 11;</code>
        */
       public Builder setFixed64Holder(long value) {
-        
+        bitField0_ |= 0x00000400;
         fixed64Holder_ = value;
         onChanged();
         return this;
@@ -7678,13 +8900,19 @@ public final class YaormModel {
        * <code>optional fixed64 fixed64_holder = 11;</code>
        */
       public Builder clearFixed64Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000400);
         fixed64Holder_ = 0L;
         onChanged();
         return this;
       }
 
       private int sfixed32Holder_ ;
+      /**
+       * <code>optional sfixed32 sfixed32_holder = 12;</code>
+       */
+      public boolean hasSfixed32Holder() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
       /**
        * <code>optional sfixed32 sfixed32_holder = 12;</code>
        */
@@ -7695,7 +8923,7 @@ public final class YaormModel {
        * <code>optional sfixed32 sfixed32_holder = 12;</code>
        */
       public Builder setSfixed32Holder(int value) {
-        
+        bitField0_ |= 0x00000800;
         sfixed32Holder_ = value;
         onChanged();
         return this;
@@ -7704,13 +8932,19 @@ public final class YaormModel {
        * <code>optional sfixed32 sfixed32_holder = 12;</code>
        */
       public Builder clearSfixed32Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00000800);
         sfixed32Holder_ = 0;
         onChanged();
         return this;
       }
 
       private long sfixed64Holder_ ;
+      /**
+       * <code>optional sfixed64 sfixed64_holder = 13;</code>
+       */
+      public boolean hasSfixed64Holder() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
       /**
        * <code>optional sfixed64 sfixed64_holder = 13;</code>
        */
@@ -7721,7 +8955,7 @@ public final class YaormModel {
        * <code>optional sfixed64 sfixed64_holder = 13;</code>
        */
       public Builder setSfixed64Holder(long value) {
-        
+        bitField0_ |= 0x00001000;
         sfixed64Holder_ = value;
         onChanged();
         return this;
@@ -7730,13 +8964,19 @@ public final class YaormModel {
        * <code>optional sfixed64 sfixed64_holder = 13;</code>
        */
       public Builder clearSfixed64Holder() {
-        
+        bitField0_ = (bitField0_ & ~0x00001000);
         sfixed64Holder_ = 0L;
         onChanged();
         return this;
       }
 
       private boolean boolHolder_ ;
+      /**
+       * <code>optional bool bool_holder = 14;</code>
+       */
+      public boolean hasBoolHolder() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
       /**
        * <code>optional bool bool_holder = 14;</code>
        */
@@ -7747,7 +8987,7 @@ public final class YaormModel {
        * <code>optional bool bool_holder = 14;</code>
        */
       public Builder setBoolHolder(boolean value) {
-        
+        bitField0_ |= 0x00002000;
         boolHolder_ = value;
         onChanged();
         return this;
@@ -7756,7 +8996,7 @@ public final class YaormModel {
        * <code>optional bool bool_holder = 14;</code>
        */
       public Builder clearBoolHolder() {
-        
+        bitField0_ = (bitField0_ & ~0x00002000);
         boolHolder_ = false;
         onChanged();
         return this;
@@ -7766,13 +9006,21 @@ public final class YaormModel {
       /**
        * <code>optional string string_holder = 15;</code>
        */
+      public boolean hasStringHolder() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional string string_holder = 15;</code>
+       */
       public java.lang.String getStringHolder() {
         java.lang.Object ref = stringHolder_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          stringHolder_ = s;
+          if (bs.isValidUtf8()) {
+            stringHolder_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -7802,7 +9050,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00004000;
         stringHolder_ = value;
         onChanged();
         return this;
@@ -7811,7 +9059,7 @@ public final class YaormModel {
        * <code>optional string string_holder = 15;</code>
        */
       public Builder clearStringHolder() {
-        
+        bitField0_ = (bitField0_ & ~0x00004000);
         stringHolder_ = getDefaultInstance().getStringHolder();
         onChanged();
         return this;
@@ -7824,14 +9072,19 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00004000;
         stringHolder_ = value;
         onChanged();
         return this;
       }
 
       private com.google.protobuf.ByteString bytesHolder_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes bytes_holder = 16;</code>
+       */
+      public boolean hasBytesHolder() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
       /**
        * <code>optional bytes bytes_holder = 16;</code>
        */
@@ -7845,7 +9098,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00008000;
         bytesHolder_ = value;
         onChanged();
         return this;
@@ -7854,67 +9107,21 @@ public final class YaormModel {
        * <code>optional bytes bytes_holder = 16;</code>
        */
       public Builder clearBytesHolder() {
-        
+        bitField0_ = (bitField0_ & ~0x00008000);
         bytesHolder_ = getDefaultInstance().getBytesHolder();
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Column)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Column)
-    private static final org.roylance.yaorm.models.YaormModel.Column DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.Column();
+      defaultInstance = new Column(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.Column getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Column>
-        PARSER = new com.google.protobuf.AbstractParser<Column>() {
-      public Column parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Column(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Column> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Column> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.Column getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Column)
   }
 
   public interface RecordOrBuilder extends
@@ -7922,35 +9129,66 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-    getColumns();
+    java.util.List<org.roylance.yaorm.models.YaormModel.Column> 
+        getColumnsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.Column getColumns(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    int getColumnsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
+        getColumnsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Record}
    */
-  public  static final class Record extends
+  public static final class Record extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Record)
       RecordOrBuilder {
     // Use Record.newBuilder() to construct.
     private Record(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Record() {
+    private Record(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Record defaultInstance;
+    public static Record getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Record getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Record(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7960,32 +9198,32 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                columns_ = com.google.protobuf.MapField.newMapField(
-                    ColumnsDefaultEntryHolder.defaultEntry);
+                columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Column>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-              columns = input.readMessage(
-                  ColumnsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              columns_.getMutableMap().put(columns.getKey(), columns.getValue());
+              columns_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Column.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          columns_ = java.util.Collections.unmodifiableList(columns_);
+        }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -7994,17 +9232,6 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 1:
-          return internalGetColumns();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_fieldAccessorTable
@@ -8012,36 +9239,59 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.Record.class, org.roylance.yaorm.models.YaormModel.Record.Builder.class);
     }
 
-    public static final int COLUMNS_FIELD_NUMBER = 1;
-    private static final class ColumnsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.Column> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>newDefaultInstance(
-                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
+    public static com.google.protobuf.Parser<Record> PARSER =
+        new com.google.protobuf.AbstractParser<Record>() {
+      public Record parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Record(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Record> getParserForType() {
+      return PARSER;
     }
-    private com.google.protobuf.MapField<
-        java.lang.String, org.roylance.yaorm.models.YaormModel.Column> columns_;
-    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-    internalGetColumns() {
-      if (columns_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ColumnsDefaultEntryHolder.defaultEntry);
-     }
+
+    public static final int COLUMNS_FIELD_NUMBER = 1;
+    private java.util.List<org.roylance.yaorm.models.YaormModel.Column> columns_;
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    public java.util.List<org.roylance.yaorm.models.YaormModel.Column> getColumnsList() {
       return columns_;
     }
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
      */
-
-    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> getColumns() {
-      return internalGetColumns().getMap();
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
+        getColumnsOrBuilderList() {
+      return columns_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    public int getColumnsCount() {
+      return columns_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.Column getColumns(int index) {
+      return columns_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
+        int index) {
+      return columns_.get(index);
     }
 
+    private void initFields() {
+      columns_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -8054,37 +9304,35 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> entry
-           : internalGetColumns().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-        columns = ColumnsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(1, columns);
+      getSerializedSize();
+      for (int i = 0; i < columns_.size(); i++) {
+        output.writeMessage(1, columns_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> entry
-           : internalGetColumns().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-        columns = ColumnsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < columns_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, columns);
+          .computeMessageSize(1, columns_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.Record parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8138,17 +9386,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Record prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -8168,28 +9411,6 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetColumns();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetMutableColumns();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Record_fieldAccessorTable
@@ -8209,12 +9430,26 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getColumnsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
-        internalGetMutableColumns().clear();
+        if (columnsBuilder_ == null) {
+          columns_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          columnsBuilder_.clear();
+        }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -8237,8 +9472,15 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.Record buildPartial() {
         org.roylance.yaorm.models.YaormModel.Record result = new org.roylance.yaorm.models.YaormModel.Record(this);
         int from_bitField0_ = bitField0_;
-        result.columns_ = internalGetColumns();
-        result.columns_.makeImmutable();
+        if (columnsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            columns_ = java.util.Collections.unmodifiableList(columns_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.columns_ = columns_;
+        } else {
+          result.columns_ = columnsBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -8254,9 +9496,33 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Record other) {
         if (other == org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance()) return this;
-        internalGetMutableColumns().mergeFrom(
-            other.internalGetColumns());
-        onChanged();
+        if (columnsBuilder_ == null) {
+          if (!other.columns_.isEmpty()) {
+            if (columns_.isEmpty()) {
+              columns_ = other.columns_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureColumnsIsMutable();
+              columns_.addAll(other.columns_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.columns_.isEmpty()) {
+            if (columnsBuilder_.isEmpty()) {
+              columnsBuilder_.dispose();
+              columnsBuilder_ = null;
+              columns_ = other.columns_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              columnsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getColumnsFieldBuilder() : null;
+            } else {
+              columnsBuilder_.addAllMessages(other.columns_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -8283,105 +9549,255 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.Column> columns_;
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-      internalGetColumns() {
-        if (columns_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              ColumnsDefaultEntryHolder.defaultEntry);
-       }
-        return columns_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-      internalGetMutableColumns() {
-        onChanged();;
-        if (columns_ == null) {
-          columns_ = com.google.protobuf.MapField.newMapField(
-              ColumnsDefaultEntryHolder.defaultEntry);
-        }
-        if (!columns_.isMutable()) {
-          columns_ = columns_.copy();
-        }
-        return columns_;
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> getColumns() {
-        return internalGetColumns().getMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column>
-      getMutableColumns() {
-        return internalGetMutableColumns().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.Column&gt; columns = 1;</code>
-       */
-      public Builder putAllColumns(
-          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.Column> values) {
-        getMutableColumns().putAll(values);
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+      private java.util.List<org.roylance.yaorm.models.YaormModel.Column> columns_ =
+        java.util.Collections.emptyList();
+      private void ensureColumnsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          columns_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Column>(columns_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> columnsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.Column> getColumnsList() {
+        if (columnsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(columns_);
+        } else {
+          return columnsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public int getColumnsCount() {
+        if (columnsBuilder_ == null) {
+          return columns_.size();
+        } else {
+          return columnsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.Column getColumns(int index) {
+        if (columnsBuilder_ == null) {
+          return columns_.get(index);
+        } else {
+          return columnsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder setColumns(
+          int index, org.roylance.yaorm.models.YaormModel.Column value) {
+        if (columnsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnsIsMutable();
+          columns_.set(index, value);
+          onChanged();
+        } else {
+          columnsBuilder_.setMessage(index, value);
+        }
         return this;
       }
-
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder setColumns(
+          int index, org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
+        if (columnsBuilder_ == null) {
+          ensureColumnsIsMutable();
+          columns_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          columnsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder addColumns(org.roylance.yaorm.models.YaormModel.Column value) {
+        if (columnsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnsIsMutable();
+          columns_.add(value);
+          onChanged();
+        } else {
+          columnsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder addColumns(
+          int index, org.roylance.yaorm.models.YaormModel.Column value) {
+        if (columnsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureColumnsIsMutable();
+          columns_.add(index, value);
+          onChanged();
+        } else {
+          columnsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder addColumns(
+          org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
+        if (columnsBuilder_ == null) {
+          ensureColumnsIsMutable();
+          columns_.add(builderForValue.build());
+          onChanged();
+        } else {
+          columnsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder addColumns(
+          int index, org.roylance.yaorm.models.YaormModel.Column.Builder builderForValue) {
+        if (columnsBuilder_ == null) {
+          ensureColumnsIsMutable();
+          columns_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          columnsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder addAllColumns(
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.Column> values) {
+        if (columnsBuilder_ == null) {
+          ensureColumnsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, columns_);
+          onChanged();
+        } else {
+          columnsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder clearColumns() {
+        if (columnsBuilder_ == null) {
+          columns_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          columnsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public Builder removeColumns(int index) {
+        if (columnsBuilder_ == null) {
+          ensureColumnsIsMutable();
+          columns_.remove(index);
+          onChanged();
+        } else {
+          columnsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.Column.Builder getColumnsBuilder(
+          int index) {
+        return getColumnsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.ColumnOrBuilder getColumnsOrBuilder(
+          int index) {
+        if (columnsBuilder_ == null) {
+          return columns_.get(index);  } else {
+          return columnsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
+           getColumnsOrBuilderList() {
+        if (columnsBuilder_ != null) {
+          return columnsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(columns_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.Column.Builder addColumnsBuilder() {
+        return getColumnsFieldBuilder().addBuilder(
+            org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.Column.Builder addColumnsBuilder(
+          int index) {
+        return getColumnsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.models.YaormModel.Column.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.Column columns = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.Column.Builder> 
+           getColumnsBuilderList() {
+        return getColumnsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder> 
+          getColumnsFieldBuilder() {
+        if (columnsBuilder_ == null) {
+          columnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.Column, org.roylance.yaorm.models.YaormModel.Column.Builder, org.roylance.yaorm.models.YaormModel.ColumnOrBuilder>(
+                  columns_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          columns_ = null;
+        }
+        return columnsBuilder_;
+      }
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Record)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Record)
-    private static final org.roylance.yaorm.models.YaormModel.Record DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.Record();
+      defaultInstance = new Record(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.Record getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Record>
-        PARSER = new com.google.protobuf.AbstractParser<Record>() {
-      public Record parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Record(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Record> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Record> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.Record getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Record)
   }
 
   public interface RecordsOrBuilder extends
@@ -8415,28 +9831,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.Records}
    */
-  public  static final class Records extends
+  public static final class Records extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Records)
       RecordsOrBuilder {
     // Use Records.newBuilder() to construct.
     private Records(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Records() {
-      records_ = java.util.Collections.emptyList();
+    private Records(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Records defaultInstance;
+    public static Records getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Records getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private Records(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -8446,7 +9874,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -8456,21 +9885,21 @@ public final class YaormModel {
                 records_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.Record>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              records_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Record.parser(), extensionRegistry));
+              records_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.Record.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           records_ = java.util.Collections.unmodifiableList(records_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -8484,6 +9913,21 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Records_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.Records.class, org.roylance.yaorm.models.YaormModel.Records.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Records> PARSER =
+        new com.google.protobuf.AbstractParser<Records>() {
+      public Records parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Records(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Records> getParserForType() {
+      return PARSER;
     }
 
     public static final int RECORDS_FIELD_NUMBER = 1;
@@ -8521,6 +9965,9 @@ public final class YaormModel {
       return records_.get(index);
     }
 
+    private void initFields() {
+      records_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -8533,13 +9980,16 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       for (int i = 0; i < records_.size(); i++) {
         output.writeMessage(1, records_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -8547,11 +9997,18 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, records_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.Records parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8605,17 +10062,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Records prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -8657,6 +10109,10 @@ public final class YaormModel {
           getRecordsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (recordsBuilder_ == null) {
@@ -8666,6 +10122,10 @@ public final class YaormModel {
           recordsBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -8738,7 +10198,7 @@ public final class YaormModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -9004,62 +10464,16 @@ public final class YaormModel {
         }
         return recordsBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Records)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Records)
-    private static final org.roylance.yaorm.models.YaormModel.Records DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.Records();
+      defaultInstance = new Records(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.Records getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Records>
-        PARSER = new com.google.protobuf.AbstractParser<Records>() {
-      public Records parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new Records(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<Records> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Records> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.Records getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Records)
   }
 
   public interface TableRecordsOrBuilder extends
@@ -9095,6 +10509,10 @@ public final class YaormModel {
     /**
      * <code>optional string table_name = 3;</code>
      */
+    boolean hasTableName();
+    /**
+     * <code>optional string table_name = 3;</code>
+     */
     java.lang.String getTableName();
     /**
      * <code>optional string table_name = 3;</code>
@@ -9124,29 +10542,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableRecords}
    */
-  public  static final class TableRecords extends
+  public static final class TableRecords extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.TableRecords)
       TableRecordsOrBuilder {
     // Use TableRecords.newBuilder() to construct.
     private TableRecords(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TableRecords() {
-      tableName_ = "";
-      knownParentIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private TableRecords(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TableRecords defaultInstance;
+    public static TableRecords getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public TableRecords getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private TableRecords(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -9156,64 +10585,65 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (tableDefinition_ != null) {
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = tableDefinition_.toBuilder();
               }
-              tableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              tableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(tableDefinition_);
                 tableDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000001;
               break;
             }
             case 18: {
               org.roylance.yaorm.models.YaormModel.Records.Builder subBuilder = null;
-              if (records_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = records_.toBuilder();
               }
-              records_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Records.parser(), extensionRegistry);
+              records_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Records.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(records_);
                 records_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              tableName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              tableName_ = bs;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+              com.google.protobuf.ByteString bs = input.readBytes();
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 knownParentIds_ = new com.google.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000008;
               }
-              knownParentIds_.add(s);
+              knownParentIds_.add(bs);
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           knownParentIds_ = knownParentIds_.getUnmodifiableView();
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -9229,6 +10659,21 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.TableRecords.class, org.roylance.yaorm.models.YaormModel.TableRecords.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<TableRecords> PARSER =
+        new com.google.protobuf.AbstractParser<TableRecords>() {
+      public TableRecords parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TableRecords(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TableRecords> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_;
@@ -9236,19 +10681,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
      */
     public boolean hasTableDefinition() {
-      return tableDefinition_ != null;
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinition() {
-      return tableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+      return tableDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
-      return getTableDefinition();
+      return tableDefinition_;
     }
 
     public static final int RECORDS_FIELD_NUMBER = 2;
@@ -9257,23 +10702,29 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
      */
     public boolean hasRecords() {
-      return records_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Records getRecords() {
-      return records_ == null ? org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : records_;
+      return records_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
-      return getRecords();
+      return records_;
     }
 
     public static final int TABLE_NAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object tableName_;
+    private java.lang.Object tableName_;
+    /**
+     * <code>optional string table_name = 3;</code>
+     */
+    public boolean hasTableName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string table_name = 3;</code>
      */
@@ -9285,7 +10736,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        tableName_ = s;
+        if (bs.isValidUtf8()) {
+          tableName_ = s;
+        }
         return s;
       }
     }
@@ -9335,6 +10788,12 @@ public final class YaormModel {
       return knownParentIds_.getByteString(index);
     }
 
+    private void initFields() {
+      tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+      records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
+      tableName_ = "";
+      knownParentIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -9347,49 +10806,61 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (tableDefinition_ != null) {
-        output.writeMessage(1, getTableDefinition());
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tableDefinition_);
       }
-      if (records_ != null) {
-        output.writeMessage(2, getRecords());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, records_);
       }
-      if (!getTableNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, tableName_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getTableNameBytes());
       }
       for (int i = 0; i < knownParentIds_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, knownParentIds_.getRaw(i));
+        output.writeBytes(4, knownParentIds_.getByteString(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (tableDefinition_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getTableDefinition());
+          .computeMessageSize(1, tableDefinition_);
       }
-      if (records_ != null) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRecords());
+          .computeMessageSize(2, records_);
       }
-      if (!getTableNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, tableName_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getTableNameBytes());
       }
       {
         int dataSize = 0;
         for (int i = 0; i < knownParentIds_.size(); i++) {
-          dataSize += computeStringSizeNoTag(knownParentIds_.getRaw(i));
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(knownParentIds_.getByteString(i));
         }
         size += dataSize;
         size += 1 * getKnownParentIdsList().size();
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.TableRecords parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9443,17 +10914,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.TableRecords prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -9492,27 +10958,37 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTableDefinitionFieldBuilder();
+          getRecordsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (tableDefinitionBuilder_ == null) {
-          tableDefinition_ = null;
+          tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          tableDefinition_ = null;
-          tableDefinitionBuilder_ = null;
+          tableDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (recordsBuilder_ == null) {
-          records_ = null;
+          records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
         } else {
-          records_ = null;
-          recordsBuilder_ = null;
+          recordsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         tableName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         knownParentIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -9536,15 +11012,24 @@ public final class YaormModel {
         org.roylance.yaorm.models.YaormModel.TableRecords result = new org.roylance.yaorm.models.YaormModel.TableRecords(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         if (tableDefinitionBuilder_ == null) {
           result.tableDefinition_ = tableDefinition_;
         } else {
           result.tableDefinition_ = tableDefinitionBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         if (recordsBuilder_ == null) {
           result.records_ = records_;
         } else {
           result.records_ = recordsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.tableName_ = tableName_;
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
@@ -9574,7 +11059,8 @@ public final class YaormModel {
         if (other.hasRecords()) {
           mergeRecords(other.getRecords());
         }
-        if (!other.getTableName().isEmpty()) {
+        if (other.hasTableName()) {
+          bitField0_ |= 0x00000004;
           tableName_ = other.tableName_;
           onChanged();
         }
@@ -9588,7 +11074,7 @@ public final class YaormModel {
           }
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -9615,21 +11101,21 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
        */
       public boolean hasTableDefinition() {
-        return tableDefinitionBuilder_ != null || tableDefinition_ != null;
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
-          return tableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+          return tableDefinition_;
         } else {
           return tableDefinitionBuilder_.getMessage();
         }
@@ -9647,7 +11133,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -9661,7 +11147,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -9669,7 +11155,8 @@ public final class YaormModel {
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
-          if (tableDefinition_ != null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tableDefinition_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             tableDefinition_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(tableDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -9679,7 +11166,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -9687,20 +11174,19 @@ public final class YaormModel {
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
-          tableDefinition_ = null;
+          tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          tableDefinition_ = null;
-          tableDefinitionBuilder_ = null;
+          tableDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getTableDefinitionFieldBuilder().getBuilder();
       }
@@ -9711,8 +11197,7 @@ public final class YaormModel {
         if (tableDefinitionBuilder_ != null) {
           return tableDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return tableDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+          return tableDefinition_;
         }
       }
       /**
@@ -9732,21 +11217,21 @@ public final class YaormModel {
         return tableDefinitionBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.Records records_ = null;
+      private org.roylance.yaorm.models.YaormModel.Records records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Records, org.roylance.yaorm.models.YaormModel.Records.Builder, org.roylance.yaorm.models.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
        */
       public boolean hasRecords() {
-        return recordsBuilder_ != null || records_ != null;
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
-          return records_ == null ? org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : records_;
+          return records_;
         } else {
           return recordsBuilder_.getMessage();
         }
@@ -9764,7 +11249,7 @@ public final class YaormModel {
         } else {
           recordsBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -9778,7 +11263,7 @@ public final class YaormModel {
         } else {
           recordsBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -9786,7 +11271,8 @@ public final class YaormModel {
        */
       public Builder mergeRecords(org.roylance.yaorm.models.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
-          if (records_ != null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              records_ != org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance()) {
             records_ =
               org.roylance.yaorm.models.YaormModel.Records.newBuilder(records_).mergeFrom(value).buildPartial();
           } else {
@@ -9796,7 +11282,7 @@ public final class YaormModel {
         } else {
           recordsBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -9804,20 +11290,19 @@ public final class YaormModel {
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
-          records_ = null;
+          records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
           onChanged();
         } else {
-          records_ = null;
-          recordsBuilder_ = null;
+          recordsBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Records.Builder getRecordsBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getRecordsFieldBuilder().getBuilder();
       }
@@ -9828,8 +11313,7 @@ public final class YaormModel {
         if (recordsBuilder_ != null) {
           return recordsBuilder_.getMessageOrBuilder();
         } else {
-          return records_ == null ?
-              org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : records_;
+          return records_;
         }
       }
       /**
@@ -9853,13 +11337,21 @@ public final class YaormModel {
       /**
        * <code>optional string table_name = 3;</code>
        */
+      public boolean hasTableName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string table_name = 3;</code>
+       */
       public java.lang.String getTableName() {
         java.lang.Object ref = tableName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          tableName_ = s;
+          if (bs.isValidUtf8()) {
+            tableName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9889,7 +11381,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         tableName_ = value;
         onChanged();
         return this;
@@ -9898,7 +11390,7 @@ public final class YaormModel {
        * <code>optional string table_name = 3;</code>
        */
       public Builder clearTableName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         tableName_ = getDefaultInstance().getTableName();
         onChanged();
         return this;
@@ -9911,8 +11403,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         tableName_ = value;
         onChanged();
         return this;
@@ -10005,68 +11496,21 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        ensureKnownParentIdsIsMutable();
+  ensureKnownParentIdsIsMutable();
         knownParentIds_.add(value);
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.TableRecords)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableRecords)
-    private static final org.roylance.yaorm.models.YaormModel.TableRecords DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.TableRecords();
+      defaultInstance = new TableRecords(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.TableRecords getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TableRecords>
-        PARSER = new com.google.protobuf.AbstractParser<TableRecords>() {
-      public TableRecords parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TableRecords(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TableRecords> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TableRecords> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.TableRecords getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableRecords)
   }
 
   public interface AllTableRecordsOrBuilder extends
@@ -10074,35 +11518,66 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
      */
-    java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-    getTableRecords();
+    java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> 
+        getTableRecordsList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.TableRecords getTableRecords(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    int getTableRecordsCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
+        getTableRecordsOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder getTableRecordsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.AllTableRecords}
    */
-  public  static final class AllTableRecords extends
+  public static final class AllTableRecords extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.AllTableRecords)
       AllTableRecordsOrBuilder {
     // Use AllTableRecords.newBuilder() to construct.
     private AllTableRecords(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private AllTableRecords() {
+    private AllTableRecords(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AllTableRecords defaultInstance;
+    public static AllTableRecords getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public AllTableRecords getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private AllTableRecords(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -10112,32 +11587,32 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                tableRecords_ = com.google.protobuf.MapField.newMapField(
-                    TableRecordsDefaultEntryHolder.defaultEntry);
+                tableRecords_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableRecords>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-              tableRecords = input.readMessage(
-                  TableRecordsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              tableRecords_.getMutableMap().put(tableRecords.getKey(), tableRecords.getValue());
+              tableRecords_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableRecords.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          tableRecords_ = java.util.Collections.unmodifiableList(tableRecords_);
+        }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -10146,17 +11621,6 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 1:
-          return internalGetTableRecords();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_fieldAccessorTable
@@ -10164,36 +11628,59 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.AllTableRecords.class, org.roylance.yaorm.models.YaormModel.AllTableRecords.Builder.class);
     }
 
-    public static final int TABLE_RECORDS_FIELD_NUMBER = 1;
-    private static final class TableRecordsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>newDefaultInstance(
-                  org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  org.roylance.yaorm.models.YaormModel.TableRecords.getDefaultInstance());
+    public static com.google.protobuf.Parser<AllTableRecords> PARSER =
+        new com.google.protobuf.AbstractParser<AllTableRecords>() {
+      public AllTableRecords parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AllTableRecords(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllTableRecords> getParserForType() {
+      return PARSER;
     }
-    private com.google.protobuf.MapField<
-        java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_;
-    private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-    internalGetTableRecords() {
-      if (tableRecords_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            TableRecordsDefaultEntryHolder.defaultEntry);
-     }
+
+    public static final int TABLE_RECORDS_FIELD_NUMBER = 1;
+    private java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_;
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    public java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecordsList() {
       return tableRecords_;
     }
     /**
-     * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
      */
-
-    public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecords() {
-      return internalGetTableRecords().getMap();
+    public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
+        getTableRecordsOrBuilderList() {
+      return tableRecords_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    public int getTableRecordsCount() {
+      return tableRecords_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.TableRecords getTableRecords(int index) {
+      return tableRecords_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+     */
+    public org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder getTableRecordsOrBuilder(
+        int index) {
+      return tableRecords_.get(index);
     }
 
+    private void initFields() {
+      tableRecords_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -10206,37 +11693,35 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> entry
-           : internalGetTableRecords().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-        tableRecords = TableRecordsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(1, tableRecords);
+      getSerializedSize();
+      for (int i = 0; i < tableRecords_.size(); i++) {
+        output.writeMessage(1, tableRecords_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> entry
-           : internalGetTableRecords().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-        tableRecords = TableRecordsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < tableRecords_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, tableRecords);
+          .computeMessageSize(1, tableRecords_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.AllTableRecords parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10290,17 +11775,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.AllTableRecords prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -10320,28 +11800,6 @@ public final class YaormModel {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetTableRecords();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetMutableTableRecords();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_AllTableRecords_fieldAccessorTable
@@ -10361,12 +11819,26 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTableRecordsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
-        internalGetMutableTableRecords().clear();
+        if (tableRecordsBuilder_ == null) {
+          tableRecords_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          tableRecordsBuilder_.clear();
+        }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -10389,8 +11861,15 @@ public final class YaormModel {
       public org.roylance.yaorm.models.YaormModel.AllTableRecords buildPartial() {
         org.roylance.yaorm.models.YaormModel.AllTableRecords result = new org.roylance.yaorm.models.YaormModel.AllTableRecords(this);
         int from_bitField0_ = bitField0_;
-        result.tableRecords_ = internalGetTableRecords();
-        result.tableRecords_.makeImmutable();
+        if (tableRecordsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            tableRecords_ = java.util.Collections.unmodifiableList(tableRecords_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.tableRecords_ = tableRecords_;
+        } else {
+          result.tableRecords_ = tableRecordsBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -10406,9 +11885,33 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.AllTableRecords other) {
         if (other == org.roylance.yaorm.models.YaormModel.AllTableRecords.getDefaultInstance()) return this;
-        internalGetMutableTableRecords().mergeFrom(
-            other.internalGetTableRecords());
-        onChanged();
+        if (tableRecordsBuilder_ == null) {
+          if (!other.tableRecords_.isEmpty()) {
+            if (tableRecords_.isEmpty()) {
+              tableRecords_ = other.tableRecords_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureTableRecordsIsMutable();
+              tableRecords_.addAll(other.tableRecords_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tableRecords_.isEmpty()) {
+            if (tableRecordsBuilder_.isEmpty()) {
+              tableRecordsBuilder_.dispose();
+              tableRecordsBuilder_ = null;
+              tableRecords_ = other.tableRecords_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              tableRecordsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTableRecordsFieldBuilder() : null;
+            } else {
+              tableRecordsBuilder_.addAllMessages(other.tableRecords_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -10435,105 +11938,255 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
-          java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_;
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-      internalGetTableRecords() {
-        if (tableRecords_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              TableRecordsDefaultEntryHolder.defaultEntry);
-       }
-        return tableRecords_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-      internalGetMutableTableRecords() {
-        onChanged();;
-        if (tableRecords_ == null) {
-          tableRecords_ = com.google.protobuf.MapField.newMapField(
-              TableRecordsDefaultEntryHolder.defaultEntry);
-        }
-        if (!tableRecords_.isMutable()) {
-          tableRecords_ = tableRecords_.copy();
-        }
-        return tableRecords_;
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecords() {
-        return internalGetTableRecords().getMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
-       */
-      public java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords>
-      getMutableTableRecords() {
-        return internalGetMutableTableRecords().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, .org.roylance.yaorm.models.TableRecords&gt; table_records = 1;</code>
-       */
-      public Builder putAllTableRecords(
-          java.util.Map<java.lang.String, org.roylance.yaorm.models.YaormModel.TableRecords> values) {
-        getMutableTableRecords().putAll(values);
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+      private java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> tableRecords_ =
+        java.util.Collections.emptyList();
+      private void ensureTableRecordsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          tableRecords_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableRecords>(tableRecords_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.TableRecords, org.roylance.yaorm.models.YaormModel.TableRecords.Builder, org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> tableRecordsBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords> getTableRecordsList() {
+        if (tableRecordsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tableRecords_);
+        } else {
+          return tableRecordsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public int getTableRecordsCount() {
+        if (tableRecordsBuilder_ == null) {
+          return tableRecords_.size();
+        } else {
+          return tableRecordsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableRecords getTableRecords(int index) {
+        if (tableRecordsBuilder_ == null) {
+          return tableRecords_.get(index);
+        } else {
+          return tableRecordsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder setTableRecords(
+          int index, org.roylance.yaorm.models.YaormModel.TableRecords value) {
+        if (tableRecordsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTableRecordsIsMutable();
+          tableRecords_.set(index, value);
+          onChanged();
+        } else {
+          tableRecordsBuilder_.setMessage(index, value);
+        }
         return this;
       }
-
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder setTableRecords(
+          int index, org.roylance.yaorm.models.YaormModel.TableRecords.Builder builderForValue) {
+        if (tableRecordsBuilder_ == null) {
+          ensureTableRecordsIsMutable();
+          tableRecords_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tableRecordsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder addTableRecords(org.roylance.yaorm.models.YaormModel.TableRecords value) {
+        if (tableRecordsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTableRecordsIsMutable();
+          tableRecords_.add(value);
+          onChanged();
+        } else {
+          tableRecordsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder addTableRecords(
+          int index, org.roylance.yaorm.models.YaormModel.TableRecords value) {
+        if (tableRecordsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTableRecordsIsMutable();
+          tableRecords_.add(index, value);
+          onChanged();
+        } else {
+          tableRecordsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder addTableRecords(
+          org.roylance.yaorm.models.YaormModel.TableRecords.Builder builderForValue) {
+        if (tableRecordsBuilder_ == null) {
+          ensureTableRecordsIsMutable();
+          tableRecords_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tableRecordsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder addTableRecords(
+          int index, org.roylance.yaorm.models.YaormModel.TableRecords.Builder builderForValue) {
+        if (tableRecordsBuilder_ == null) {
+          ensureTableRecordsIsMutable();
+          tableRecords_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tableRecordsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder addAllTableRecords(
+          java.lang.Iterable<? extends org.roylance.yaorm.models.YaormModel.TableRecords> values) {
+        if (tableRecordsBuilder_ == null) {
+          ensureTableRecordsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, tableRecords_);
+          onChanged();
+        } else {
+          tableRecordsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder clearTableRecords() {
+        if (tableRecordsBuilder_ == null) {
+          tableRecords_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          tableRecordsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public Builder removeTableRecords(int index) {
+        if (tableRecordsBuilder_ == null) {
+          ensureTableRecordsIsMutable();
+          tableRecords_.remove(index);
+          onChanged();
+        } else {
+          tableRecordsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableRecords.Builder getTableRecordsBuilder(
+          int index) {
+        return getTableRecordsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder getTableRecordsOrBuilder(
+          int index) {
+        if (tableRecordsBuilder_ == null) {
+          return tableRecords_.get(index);  } else {
+          return tableRecordsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
+           getTableRecordsOrBuilderList() {
+        if (tableRecordsBuilder_ != null) {
+          return tableRecordsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tableRecords_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableRecords.Builder addTableRecordsBuilder() {
+        return getTableRecordsFieldBuilder().addBuilder(
+            org.roylance.yaorm.models.YaormModel.TableRecords.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public org.roylance.yaorm.models.YaormModel.TableRecords.Builder addTableRecordsBuilder(
+          int index) {
+        return getTableRecordsFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.models.YaormModel.TableRecords.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.models.TableRecords table_records = 1;</code>
+       */
+      public java.util.List<org.roylance.yaorm.models.YaormModel.TableRecords.Builder> 
+           getTableRecordsBuilderList() {
+        return getTableRecordsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.roylance.yaorm.models.YaormModel.TableRecords, org.roylance.yaorm.models.YaormModel.TableRecords.Builder, org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder> 
+          getTableRecordsFieldBuilder() {
+        if (tableRecordsBuilder_ == null) {
+          tableRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.roylance.yaorm.models.YaormModel.TableRecords, org.roylance.yaorm.models.YaormModel.TableRecords.Builder, org.roylance.yaorm.models.YaormModel.TableRecordsOrBuilder>(
+                  tableRecords_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          tableRecords_ = null;
+        }
+        return tableRecordsBuilder_;
+      }
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.AllTableRecords)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.AllTableRecords)
-    private static final org.roylance.yaorm.models.YaormModel.AllTableRecords DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.AllTableRecords();
+      defaultInstance = new AllTableRecords(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.AllTableRecords getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<AllTableRecords>
-        PARSER = new com.google.protobuf.AbstractParser<AllTableRecords>() {
-      public AllTableRecords parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new AllTableRecords(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<AllTableRecords> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<AllTableRecords> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.AllTableRecords getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.AllTableRecords)
   }
 
   public interface DatabaseOperationOrBuilder extends
@@ -10608,7 +12261,7 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
-    int getDatabaseOperationTypeValue();
+    boolean hasDatabaseOperationType();
     /**
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
@@ -10617,28 +12270,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.DatabaseOperation}
    */
-  public  static final class DatabaseOperation extends
+  public static final class DatabaseOperation extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.DatabaseOperation)
       DatabaseOperationOrBuilder {
     // Use DatabaseOperation.newBuilder() to construct.
     private DatabaseOperation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private DatabaseOperation() {
-      databaseOperationType_ = 0;
+    private DatabaseOperation(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DatabaseOperation defaultInstance;
+    public static DatabaseOperation getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public DatabaseOperation getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private DatabaseOperation(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -10648,91 +12313,97 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (tableDefinition_ != null) {
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = tableDefinition_.toBuilder();
               }
-              tableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              tableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(tableDefinition_);
                 tableDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000001;
               break;
             }
             case 18: {
               org.roylance.yaorm.models.YaormModel.Records.Builder subBuilder = null;
-              if (records_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = records_.toBuilder();
               }
-              records_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Records.parser(), extensionRegistry);
+              records_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Records.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(records_);
                 records_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
             case 26: {
               org.roylance.yaorm.models.YaormModel.Index.Builder subBuilder = null;
-              if (index_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = index_.toBuilder();
               }
-              index_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Index.parser(), extensionRegistry);
+              index_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Index.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(index_);
                 index_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
             case 34: {
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder subBuilder = null;
-              if (columnDefinition_ != null) {
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = columnDefinition_.toBuilder();
               }
-              columnDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.parser(), extensionRegistry);
+              columnDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.ColumnDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(columnDefinition_);
                 columnDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000008;
               break;
             }
             case 42: {
               org.roylance.yaorm.models.YaormModel.WhereClause.Builder subBuilder = null;
-              if (whereClause_ != null) {
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
                 subBuilder = whereClause_.toBuilder();
               }
-              whereClause_ = input.readMessage(org.roylance.yaorm.models.YaormModel.WhereClause.parser(), extensionRegistry);
+              whereClause_ = input.readMessage(org.roylance.yaorm.models.YaormModel.WhereClause.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(whereClause_);
                 whereClause_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000010;
               break;
             }
             case 48: {
               int rawValue = input.readEnum();
-
-              databaseOperationType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType value = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000020;
+                databaseOperationType_ = value;
+              }
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -10746,6 +12417,21 @@ public final class YaormModel {
       return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_DatabaseOperation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.models.YaormModel.DatabaseOperation.class, org.roylance.yaorm.models.YaormModel.DatabaseOperation.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DatabaseOperation> PARSER =
+        new com.google.protobuf.AbstractParser<DatabaseOperation>() {
+      public DatabaseOperation parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DatabaseOperation(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DatabaseOperation> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -10829,7 +12515,6 @@ public final class YaormModel {
        * <code>DELETE_ALL = 18;</code>
        */
       DELETE_ALL(18, 18),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -10910,13 +12595,7 @@ public final class YaormModel {
       public static final int DELETE_ALL_VALUE = 18;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static DatabaseOperationType valueOf(int value) {
         switch (value) {
@@ -10947,8 +12626,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          DatabaseOperationType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<DatabaseOperationType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<DatabaseOperationType>() {
               public DatabaseOperationType findValueByNumber(int number) {
                 return DatabaseOperationType.valueOf(number);
@@ -10976,9 +12655,6 @@ public final class YaormModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -10993,25 +12669,26 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType)
     }
 
+    private int bitField0_;
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_;
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
      */
     public boolean hasTableDefinition() {
-      return tableDefinition_ != null;
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinition() {
-      return tableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+      return tableDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
-      return getTableDefinition();
+      return tableDefinition_;
     }
 
     public static final int RECORDS_FIELD_NUMBER = 2;
@@ -11020,19 +12697,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
      */
     public boolean hasRecords() {
-      return records_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Records getRecords() {
-      return records_ == null ? org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : records_;
+      return records_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
-      return getRecords();
+      return records_;
     }
 
     public static final int INDEX_FIELD_NUMBER = 3;
@@ -11041,19 +12718,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     public boolean hasIndex() {
-      return index_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Index getIndex() {
-      return index_ == null ? org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+      return index_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.IndexOrBuilder getIndexOrBuilder() {
-      return getIndex();
+      return index_;
     }
 
     public static final int COLUMN_DEFINITION_FIELD_NUMBER = 4;
@@ -11062,19 +12739,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition column_definition = 4;</code>
      */
     public boolean hasColumnDefinition() {
-      return columnDefinition_ != null;
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition column_definition = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinition() {
-      return columnDefinition_ == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : columnDefinition_;
+      return columnDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition column_definition = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder() {
-      return getColumnDefinition();
+      return columnDefinition_;
     }
 
     public static final int WHERE_CLAUSE_FIELD_NUMBER = 5;
@@ -11083,37 +12760,44 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.WhereClause where_clause = 5;</code>
      */
     public boolean hasWhereClause() {
-      return whereClause_ != null;
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.models.YaormModel.WhereClause getWhereClause() {
-      return whereClause_ == null ? org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
+      return whereClause_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.models.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
-      return getWhereClause();
+      return whereClause_;
     }
 
     public static final int DATABASE_OPERATION_TYPE_FIELD_NUMBER = 6;
-    private int databaseOperationType_;
+    private org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType databaseOperationType_;
     /**
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
-    public int getDatabaseOperationTypeValue() {
-      return databaseOperationType_;
+    public boolean hasDatabaseOperationType() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
     public org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType getDatabaseOperationType() {
-      org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType result = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.valueOf(databaseOperationType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.UNRECOGNIZED : result;
+      return databaseOperationType_;
     }
 
+    private void initFields() {
+      tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+      records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
+      index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
+      columnDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
+      whereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
+      databaseOperationType_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE;
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -11126,60 +12810,70 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (tableDefinition_ != null) {
-        output.writeMessage(1, getTableDefinition());
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tableDefinition_);
       }
-      if (records_ != null) {
-        output.writeMessage(2, getRecords());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, records_);
       }
-      if (index_ != null) {
-        output.writeMessage(3, getIndex());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, index_);
       }
-      if (columnDefinition_ != null) {
-        output.writeMessage(4, getColumnDefinition());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, columnDefinition_);
       }
-      if (whereClause_ != null) {
-        output.writeMessage(5, getWhereClause());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, whereClause_);
       }
-      if (databaseOperationType_ != org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE.getNumber()) {
-        output.writeEnum(6, databaseOperationType_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeEnum(6, databaseOperationType_.getNumber());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (tableDefinition_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getTableDefinition());
+          .computeMessageSize(1, tableDefinition_);
       }
-      if (records_ != null) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRecords());
+          .computeMessageSize(2, records_);
       }
-      if (index_ != null) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getIndex());
+          .computeMessageSize(3, index_);
       }
-      if (columnDefinition_ != null) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getColumnDefinition());
+          .computeMessageSize(4, columnDefinition_);
       }
-      if (whereClause_ != null) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getWhereClause());
+          .computeMessageSize(5, whereClause_);
       }
-      if (databaseOperationType_ != org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE.getNumber()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, databaseOperationType_);
+          .computeEnumSize(6, databaseOperationType_.getNumber());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.DatabaseOperation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11233,17 +12927,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.DatabaseOperation prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -11282,43 +12971,56 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTableDefinitionFieldBuilder();
+          getRecordsFieldBuilder();
+          getIndexFieldBuilder();
+          getColumnDefinitionFieldBuilder();
+          getWhereClauseFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (tableDefinitionBuilder_ == null) {
-          tableDefinition_ = null;
+          tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          tableDefinition_ = null;
-          tableDefinitionBuilder_ = null;
+          tableDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (recordsBuilder_ == null) {
-          records_ = null;
+          records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
         } else {
-          records_ = null;
-          recordsBuilder_ = null;
+          recordsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (indexBuilder_ == null) {
-          index_ = null;
+          index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
         } else {
-          index_ = null;
-          indexBuilder_ = null;
+          indexBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (columnDefinitionBuilder_ == null) {
-          columnDefinition_ = null;
+          columnDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
         } else {
-          columnDefinition_ = null;
-          columnDefinitionBuilder_ = null;
+          columnDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (whereClauseBuilder_ == null) {
-          whereClause_ = null;
+          whereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
         } else {
-          whereClause_ = null;
-          whereClauseBuilder_ = null;
+          whereClauseBuilder_.clear();
         }
-        databaseOperationType_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000010);
+        databaseOperationType_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -11340,32 +13042,53 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.DatabaseOperation buildPartial() {
         org.roylance.yaorm.models.YaormModel.DatabaseOperation result = new org.roylance.yaorm.models.YaormModel.DatabaseOperation(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         if (tableDefinitionBuilder_ == null) {
           result.tableDefinition_ = tableDefinition_;
         } else {
           result.tableDefinition_ = tableDefinitionBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
         if (recordsBuilder_ == null) {
           result.records_ = records_;
         } else {
           result.records_ = recordsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         if (indexBuilder_ == null) {
           result.index_ = index_;
         } else {
           result.index_ = indexBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         if (columnDefinitionBuilder_ == null) {
           result.columnDefinition_ = columnDefinition_;
         } else {
           result.columnDefinition_ = columnDefinitionBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         if (whereClauseBuilder_ == null) {
           result.whereClause_ = whereClause_;
         } else {
           result.whereClause_ = whereClauseBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.databaseOperationType_ = databaseOperationType_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -11396,10 +13119,10 @@ public final class YaormModel {
         if (other.hasWhereClause()) {
           mergeWhereClause(other.getWhereClause());
         }
-        if (other.databaseOperationType_ != 0) {
-          setDatabaseOperationTypeValue(other.getDatabaseOperationTypeValue());
+        if (other.hasDatabaseOperationType()) {
+          setDatabaseOperationType(other.getDatabaseOperationType());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -11424,22 +13147,23 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
        */
       public boolean hasTableDefinition() {
-        return tableDefinitionBuilder_ != null || tableDefinition_ != null;
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
-          return tableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+          return tableDefinition_;
         } else {
           return tableDefinitionBuilder_.getMessage();
         }
@@ -11457,7 +13181,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -11471,7 +13195,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -11479,7 +13203,8 @@ public final class YaormModel {
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
-          if (tableDefinition_ != null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tableDefinition_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             tableDefinition_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(tableDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -11489,7 +13214,7 @@ public final class YaormModel {
         } else {
           tableDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -11497,20 +13222,19 @@ public final class YaormModel {
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
-          tableDefinition_ = null;
+          tableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          tableDefinition_ = null;
-          tableDefinitionBuilder_ = null;
+          tableDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getTableDefinitionFieldBuilder().getBuilder();
       }
@@ -11521,8 +13245,7 @@ public final class YaormModel {
         if (tableDefinitionBuilder_ != null) {
           return tableDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return tableDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
+          return tableDefinition_;
         }
       }
       /**
@@ -11542,21 +13265,21 @@ public final class YaormModel {
         return tableDefinitionBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.Records records_ = null;
+      private org.roylance.yaorm.models.YaormModel.Records records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Records, org.roylance.yaorm.models.YaormModel.Records.Builder, org.roylance.yaorm.models.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
        */
       public boolean hasRecords() {
-        return recordsBuilder_ != null || records_ != null;
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
-          return records_ == null ? org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : records_;
+          return records_;
         } else {
           return recordsBuilder_.getMessage();
         }
@@ -11574,7 +13297,7 @@ public final class YaormModel {
         } else {
           recordsBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -11588,7 +13311,7 @@ public final class YaormModel {
         } else {
           recordsBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -11596,7 +13319,8 @@ public final class YaormModel {
        */
       public Builder mergeRecords(org.roylance.yaorm.models.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
-          if (records_ != null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              records_ != org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance()) {
             records_ =
               org.roylance.yaorm.models.YaormModel.Records.newBuilder(records_).mergeFrom(value).buildPartial();
           } else {
@@ -11606,7 +13330,7 @@ public final class YaormModel {
         } else {
           recordsBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -11614,20 +13338,19 @@ public final class YaormModel {
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
-          records_ = null;
+          records_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
           onChanged();
         } else {
-          records_ = null;
-          recordsBuilder_ = null;
+          recordsBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Records records = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Records.Builder getRecordsBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getRecordsFieldBuilder().getBuilder();
       }
@@ -11638,8 +13361,7 @@ public final class YaormModel {
         if (recordsBuilder_ != null) {
           return recordsBuilder_.getMessageOrBuilder();
         } else {
-          return records_ == null ?
-              org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : records_;
+          return records_;
         }
       }
       /**
@@ -11659,21 +13381,21 @@ public final class YaormModel {
         return recordsBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.Index index_ = null;
+      private org.roylance.yaorm.models.YaormModel.Index index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Index, org.roylance.yaorm.models.YaormModel.Index.Builder, org.roylance.yaorm.models.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
        */
       public boolean hasIndex() {
-        return indexBuilder_ != null || index_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
-          return index_ == null ? org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+          return index_;
         } else {
           return indexBuilder_.getMessage();
         }
@@ -11691,7 +13413,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -11705,7 +13427,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -11713,7 +13435,8 @@ public final class YaormModel {
        */
       public Builder mergeIndex(org.roylance.yaorm.models.YaormModel.Index value) {
         if (indexBuilder_ == null) {
-          if (index_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              index_ != org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance()) {
             index_ =
               org.roylance.yaorm.models.YaormModel.Index.newBuilder(index_).mergeFrom(value).buildPartial();
           } else {
@@ -11723,7 +13446,7 @@ public final class YaormModel {
         } else {
           indexBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -11731,20 +13454,19 @@ public final class YaormModel {
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
-          index_ = null;
+          index_ = org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance();
           onChanged();
         } else {
-          index_ = null;
-          indexBuilder_ = null;
+          indexBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Index index = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Index.Builder getIndexBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getIndexFieldBuilder().getBuilder();
       }
@@ -11755,8 +13477,7 @@ public final class YaormModel {
         if (indexBuilder_ != null) {
           return indexBuilder_.getMessageOrBuilder();
         } else {
-          return index_ == null ?
-              org.roylance.yaorm.models.YaormModel.Index.getDefaultInstance() : index_;
+          return index_;
         }
       }
       /**
@@ -11776,21 +13497,21 @@ public final class YaormModel {
         return indexBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.ColumnDefinition columnDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.ColumnDefinition columnDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.ColumnDefinition, org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.models.YaormModel.ColumnDefinitionOrBuilder> columnDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition column_definition = 4;</code>
        */
       public boolean hasColumnDefinition() {
-        return columnDefinitionBuilder_ != null || columnDefinition_ != null;
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition column_definition = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition getColumnDefinition() {
         if (columnDefinitionBuilder_ == null) {
-          return columnDefinition_ == null ? org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : columnDefinition_;
+          return columnDefinition_;
         } else {
           return columnDefinitionBuilder_.getMessage();
         }
@@ -11808,7 +13529,7 @@ public final class YaormModel {
         } else {
           columnDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -11822,7 +13543,7 @@ public final class YaormModel {
         } else {
           columnDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -11830,7 +13551,8 @@ public final class YaormModel {
        */
       public Builder mergeColumnDefinition(org.roylance.yaorm.models.YaormModel.ColumnDefinition value) {
         if (columnDefinitionBuilder_ == null) {
-          if (columnDefinition_ != null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              columnDefinition_ != org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance()) {
             columnDefinition_ =
               org.roylance.yaorm.models.YaormModel.ColumnDefinition.newBuilder(columnDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -11840,7 +13562,7 @@ public final class YaormModel {
         } else {
           columnDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -11848,20 +13570,19 @@ public final class YaormModel {
        */
       public Builder clearColumnDefinition() {
         if (columnDefinitionBuilder_ == null) {
-          columnDefinition_ = null;
+          columnDefinition_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance();
           onChanged();
         } else {
-          columnDefinition_ = null;
-          columnDefinitionBuilder_ = null;
+          columnDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.ColumnDefinition column_definition = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.ColumnDefinition.Builder getColumnDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getColumnDefinitionFieldBuilder().getBuilder();
       }
@@ -11872,8 +13593,7 @@ public final class YaormModel {
         if (columnDefinitionBuilder_ != null) {
           return columnDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return columnDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.ColumnDefinition.getDefaultInstance() : columnDefinition_;
+          return columnDefinition_;
         }
       }
       /**
@@ -11893,21 +13613,21 @@ public final class YaormModel {
         return columnDefinitionBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.WhereClause whereClause_ = null;
+      private org.roylance.yaorm.models.YaormModel.WhereClause whereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.WhereClause, org.roylance.yaorm.models.YaormModel.WhereClause.Builder, org.roylance.yaorm.models.YaormModel.WhereClauseOrBuilder> whereClauseBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause where_clause = 5;</code>
        */
       public boolean hasWhereClause() {
-        return whereClauseBuilder_ != null || whereClause_ != null;
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.models.YaormModel.WhereClause getWhereClause() {
         if (whereClauseBuilder_ == null) {
-          return whereClause_ == null ? org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
+          return whereClause_;
         } else {
           return whereClauseBuilder_.getMessage();
         }
@@ -11925,7 +13645,7 @@ public final class YaormModel {
         } else {
           whereClauseBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
@@ -11939,7 +13659,7 @@ public final class YaormModel {
         } else {
           whereClauseBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
@@ -11947,7 +13667,8 @@ public final class YaormModel {
        */
       public Builder mergeWhereClause(org.roylance.yaorm.models.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
-          if (whereClause_ != null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              whereClause_ != org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance()) {
             whereClause_ =
               org.roylance.yaorm.models.YaormModel.WhereClause.newBuilder(whereClause_).mergeFrom(value).buildPartial();
           } else {
@@ -11957,7 +13678,7 @@ public final class YaormModel {
         } else {
           whereClauseBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
@@ -11965,20 +13686,19 @@ public final class YaormModel {
        */
       public Builder clearWhereClause() {
         if (whereClauseBuilder_ == null) {
-          whereClause_ = null;
+          whereClause_ = org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance();
           onChanged();
         } else {
-          whereClause_ = null;
-          whereClauseBuilder_ = null;
+          whereClauseBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.models.YaormModel.WhereClause.Builder getWhereClauseBuilder() {
-        
+        bitField0_ |= 0x00000010;
         onChanged();
         return getWhereClauseFieldBuilder().getBuilder();
       }
@@ -11989,8 +13709,7 @@ public final class YaormModel {
         if (whereClauseBuilder_ != null) {
           return whereClauseBuilder_.getMessageOrBuilder();
         } else {
-          return whereClause_ == null ?
-              org.roylance.yaorm.models.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
+          return whereClause_;
         }
       }
       /**
@@ -12010,27 +13729,18 @@ public final class YaormModel {
         return whereClauseBuilder_;
       }
 
-      private int databaseOperationType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType databaseOperationType_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE;
       /**
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
-      public int getDatabaseOperationTypeValue() {
-        return databaseOperationType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
-       */
-      public Builder setDatabaseOperationTypeValue(int value) {
-        databaseOperationType_ = value;
-        onChanged();
-        return this;
+      public boolean hasDatabaseOperationType() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType getDatabaseOperationType() {
-        org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType result = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.valueOf(databaseOperationType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.UNRECOGNIZED : result;
+        return databaseOperationType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
@@ -12039,8 +13749,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        databaseOperationType_ = value.getNumber();
+        bitField0_ |= 0x00000020;
+        databaseOperationType_ = value;
         onChanged();
         return this;
       }
@@ -12048,67 +13758,21 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public Builder clearDatabaseOperationType() {
-        
-        databaseOperationType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        databaseOperationType_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.DatabaseOperation)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DatabaseOperation)
-    private static final org.roylance.yaorm.models.YaormModel.DatabaseOperation DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.DatabaseOperation();
+      defaultInstance = new DatabaseOperation(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.DatabaseOperation getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<DatabaseOperation>
-        PARSER = new com.google.protobuf.AbstractParser<DatabaseOperation>() {
-      public DatabaseOperation parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new DatabaseOperation(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<DatabaseOperation> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<DatabaseOperation> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.DatabaseOperation getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DatabaseOperation)
   }
 
   public interface DatabaseOperationResultOrBuilder extends
@@ -12118,8 +13782,16 @@ public final class YaormModel {
     /**
      * <code>optional bool bool_result = 1;</code>
      */
+    boolean hasBoolResult();
+    /**
+     * <code>optional bool bool_result = 1;</code>
+     */
     boolean getBoolResult();
 
+    /**
+     * <code>optional int64 count_result = 2;</code>
+     */
+    boolean hasCountResult();
     /**
      * <code>optional int64 count_result = 2;</code>
      */
@@ -12154,6 +13826,10 @@ public final class YaormModel {
     /**
      * <code>optional string error_message = 5;</code>
      */
+    boolean hasErrorMessage();
+    /**
+     * <code>optional string error_message = 5;</code>
+     */
     java.lang.String getErrorMessage();
     /**
      * <code>optional string error_message = 5;</code>
@@ -12177,30 +13853,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.DatabaseOperationResult}
    */
-  public  static final class DatabaseOperationResult extends
+  public static final class DatabaseOperationResult extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.DatabaseOperationResult)
       DatabaseOperationResultOrBuilder {
     // Use DatabaseOperationResult.newBuilder() to construct.
     private DatabaseOperationResult(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private DatabaseOperationResult() {
-      boolResult_ = false;
-      countResult_ = 0L;
-      errorMessage_ = "";
+    private DatabaseOperationResult(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DatabaseOperationResult defaultInstance;
+    public static DatabaseOperationResult getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public DatabaseOperationResult getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private DatabaseOperationResult(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12210,75 +13896,76 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 8: {
-
+              bitField0_ |= 0x00000001;
               boolResult_ = input.readBool();
               break;
             }
             case 16: {
-
+              bitField0_ |= 0x00000002;
               countResult_ = input.readInt64();
               break;
             }
             case 26: {
               org.roylance.yaorm.models.YaormModel.Record.Builder subBuilder = null;
-              if (recordResult_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = recordResult_.toBuilder();
               }
-              recordResult_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Record.parser(), extensionRegistry);
+              recordResult_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Record.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(recordResult_);
                 recordResult_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
             case 34: {
               org.roylance.yaorm.models.YaormModel.Records.Builder subBuilder = null;
-              if (recordsResult_ != null) {
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = recordsResult_.toBuilder();
               }
-              recordsResult_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Records.parser(), extensionRegistry);
+              recordsResult_ = input.readMessage(org.roylance.yaorm.models.YaormModel.Records.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(recordsResult_);
                 recordsResult_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000008;
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              errorMessage_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              errorMessage_ = bs;
               break;
             }
             case 50: {
               org.roylance.yaorm.models.YaormModel.DatabaseOperation.Builder subBuilder = null;
-              if (databaseOperation_ != null) {
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
                 subBuilder = databaseOperation_.toBuilder();
               }
-              databaseOperation_ = input.readMessage(org.roylance.yaorm.models.YaormModel.DatabaseOperation.parser(), extensionRegistry);
+              databaseOperation_ = input.readMessage(org.roylance.yaorm.models.YaormModel.DatabaseOperation.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(databaseOperation_);
                 databaseOperation_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000020;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -12294,8 +13981,30 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.DatabaseOperationResult.class, org.roylance.yaorm.models.YaormModel.DatabaseOperationResult.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<DatabaseOperationResult> PARSER =
+        new com.google.protobuf.AbstractParser<DatabaseOperationResult>() {
+      public DatabaseOperationResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DatabaseOperationResult(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DatabaseOperationResult> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int BOOL_RESULT_FIELD_NUMBER = 1;
     private boolean boolResult_;
+    /**
+     * <code>optional bool bool_result = 1;</code>
+     */
+    public boolean hasBoolResult() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional bool bool_result = 1;</code>
      */
@@ -12305,6 +14014,12 @@ public final class YaormModel {
 
     public static final int COUNT_RESULT_FIELD_NUMBER = 2;
     private long countResult_;
+    /**
+     * <code>optional int64 count_result = 2;</code>
+     */
+    public boolean hasCountResult() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional int64 count_result = 2;</code>
      */
@@ -12318,19 +14033,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Record record_result = 3;</code>
      */
     public boolean hasRecordResult() {
-      return recordResult_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Record record_result = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Record getRecordResult() {
-      return recordResult_ == null ? org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance() : recordResult_;
+      return recordResult_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Record record_result = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.RecordOrBuilder getRecordResultOrBuilder() {
-      return getRecordResult();
+      return recordResult_;
     }
 
     public static final int RECORDS_RESULT_FIELD_NUMBER = 4;
@@ -12339,23 +14054,29 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.Records records_result = 4;</code>
      */
     public boolean hasRecordsResult() {
-      return recordsResult_ != null;
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Records records_result = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.Records getRecordsResult() {
-      return recordsResult_ == null ? org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : recordsResult_;
+      return recordsResult_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.Records records_result = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.RecordsOrBuilder getRecordsResultOrBuilder() {
-      return getRecordsResult();
+      return recordsResult_;
     }
 
     public static final int ERROR_MESSAGE_FIELD_NUMBER = 5;
-    private volatile java.lang.Object errorMessage_;
+    private java.lang.Object errorMessage_;
+    /**
+     * <code>optional string error_message = 5;</code>
+     */
+    public boolean hasErrorMessage() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
     /**
      * <code>optional string error_message = 5;</code>
      */
@@ -12367,7 +14088,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        errorMessage_ = s;
+        if (bs.isValidUtf8()) {
+          errorMessage_ = s;
+        }
         return s;
       }
     }
@@ -12394,21 +14117,29 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation database_operation = 6;</code>
      */
     public boolean hasDatabaseOperation() {
-      return databaseOperation_ != null;
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation database_operation = 6;</code>
      */
     public org.roylance.yaorm.models.YaormModel.DatabaseOperation getDatabaseOperation() {
-      return databaseOperation_ == null ? org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance() : databaseOperation_;
+      return databaseOperation_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.DatabaseOperation database_operation = 6;</code>
      */
     public org.roylance.yaorm.models.YaormModel.DatabaseOperationOrBuilder getDatabaseOperationOrBuilder() {
-      return getDatabaseOperation();
+      return databaseOperation_;
     }
 
+    private void initFields() {
+      boolResult_ = false;
+      countResult_ = 0L;
+      recordResult_ = org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance();
+      recordsResult_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
+      errorMessage_ = "";
+      databaseOperation_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -12421,59 +14152,70 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (boolResult_ != false) {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBool(1, boolResult_);
       }
-      if (countResult_ != 0L) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt64(2, countResult_);
       }
-      if (recordResult_ != null) {
-        output.writeMessage(3, getRecordResult());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, recordResult_);
       }
-      if (recordsResult_ != null) {
-        output.writeMessage(4, getRecordsResult());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, recordsResult_);
       }
-      if (!getErrorMessageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, errorMessage_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getErrorMessageBytes());
       }
-      if (databaseOperation_ != null) {
-        output.writeMessage(6, getDatabaseOperation());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, databaseOperation_);
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (boolResult_ != false) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, boolResult_);
       }
-      if (countResult_ != 0L) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, countResult_);
       }
-      if (recordResult_ != null) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getRecordResult());
+          .computeMessageSize(3, recordResult_);
       }
-      if (recordsResult_ != null) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getRecordsResult());
+          .computeMessageSize(4, recordsResult_);
       }
-      if (!getErrorMessageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, errorMessage_);
-      }
-      if (databaseOperation_ != null) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getDatabaseOperation());
+          .computeBytesSize(5, getErrorMessageBytes());
       }
-      memoizedSize = size;
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, databaseOperation_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.DatabaseOperationResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12527,17 +14269,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.DatabaseOperationResult prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -12576,35 +14313,46 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRecordResultFieldBuilder();
+          getRecordsResultFieldBuilder();
+          getDatabaseOperationFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         boolResult_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         countResult_ = 0L;
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (recordResultBuilder_ == null) {
-          recordResult_ = null;
+          recordResult_ = org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance();
         } else {
-          recordResult_ = null;
-          recordResultBuilder_ = null;
+          recordResultBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (recordsResultBuilder_ == null) {
-          recordsResult_ = null;
+          recordsResult_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
         } else {
-          recordsResult_ = null;
-          recordsResultBuilder_ = null;
+          recordsResultBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000008);
         errorMessage_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (databaseOperationBuilder_ == null) {
-          databaseOperation_ = null;
+          databaseOperation_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance();
         } else {
-          databaseOperation_ = null;
-          databaseOperationBuilder_ = null;
+          databaseOperationBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -12626,24 +14374,45 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.DatabaseOperationResult buildPartial() {
         org.roylance.yaorm.models.YaormModel.DatabaseOperationResult result = new org.roylance.yaorm.models.YaormModel.DatabaseOperationResult(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.boolResult_ = boolResult_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.countResult_ = countResult_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         if (recordResultBuilder_ == null) {
           result.recordResult_ = recordResult_;
         } else {
           result.recordResult_ = recordResultBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         if (recordsResultBuilder_ == null) {
           result.recordsResult_ = recordsResult_;
         } else {
           result.recordsResult_ = recordsResultBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.errorMessage_ = errorMessage_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         if (databaseOperationBuilder_ == null) {
           result.databaseOperation_ = databaseOperation_;
         } else {
           result.databaseOperation_ = databaseOperationBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -12659,10 +14428,10 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.DatabaseOperationResult other) {
         if (other == org.roylance.yaorm.models.YaormModel.DatabaseOperationResult.getDefaultInstance()) return this;
-        if (other.getBoolResult() != false) {
+        if (other.hasBoolResult()) {
           setBoolResult(other.getBoolResult());
         }
-        if (other.getCountResult() != 0L) {
+        if (other.hasCountResult()) {
           setCountResult(other.getCountResult());
         }
         if (other.hasRecordResult()) {
@@ -12671,14 +14440,15 @@ public final class YaormModel {
         if (other.hasRecordsResult()) {
           mergeRecordsResult(other.getRecordsResult());
         }
-        if (!other.getErrorMessage().isEmpty()) {
+        if (other.hasErrorMessage()) {
+          bitField0_ |= 0x00000010;
           errorMessage_ = other.errorMessage_;
           onChanged();
         }
         if (other.hasDatabaseOperation()) {
           mergeDatabaseOperation(other.getDatabaseOperation());
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -12703,8 +14473,15 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private boolean boolResult_ ;
+      /**
+       * <code>optional bool bool_result = 1;</code>
+       */
+      public boolean hasBoolResult() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional bool bool_result = 1;</code>
        */
@@ -12715,7 +14492,7 @@ public final class YaormModel {
        * <code>optional bool bool_result = 1;</code>
        */
       public Builder setBoolResult(boolean value) {
-        
+        bitField0_ |= 0x00000001;
         boolResult_ = value;
         onChanged();
         return this;
@@ -12724,13 +14501,19 @@ public final class YaormModel {
        * <code>optional bool bool_result = 1;</code>
        */
       public Builder clearBoolResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         boolResult_ = false;
         onChanged();
         return this;
       }
 
       private long countResult_ ;
+      /**
+       * <code>optional int64 count_result = 2;</code>
+       */
+      public boolean hasCountResult() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
       /**
        * <code>optional int64 count_result = 2;</code>
        */
@@ -12741,7 +14524,7 @@ public final class YaormModel {
        * <code>optional int64 count_result = 2;</code>
        */
       public Builder setCountResult(long value) {
-        
+        bitField0_ |= 0x00000002;
         countResult_ = value;
         onChanged();
         return this;
@@ -12750,27 +14533,27 @@ public final class YaormModel {
        * <code>optional int64 count_result = 2;</code>
        */
       public Builder clearCountResult() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         countResult_ = 0L;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.models.YaormModel.Record recordResult_ = null;
+      private org.roylance.yaorm.models.YaormModel.Record recordResult_ = org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Record, org.roylance.yaorm.models.YaormModel.Record.Builder, org.roylance.yaorm.models.YaormModel.RecordOrBuilder> recordResultBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Record record_result = 3;</code>
        */
       public boolean hasRecordResult() {
-        return recordResultBuilder_ != null || recordResult_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Record record_result = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Record getRecordResult() {
         if (recordResultBuilder_ == null) {
-          return recordResult_ == null ? org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance() : recordResult_;
+          return recordResult_;
         } else {
           return recordResultBuilder_.getMessage();
         }
@@ -12788,7 +14571,7 @@ public final class YaormModel {
         } else {
           recordResultBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -12802,7 +14585,7 @@ public final class YaormModel {
         } else {
           recordResultBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -12810,7 +14593,8 @@ public final class YaormModel {
        */
       public Builder mergeRecordResult(org.roylance.yaorm.models.YaormModel.Record value) {
         if (recordResultBuilder_ == null) {
-          if (recordResult_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              recordResult_ != org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance()) {
             recordResult_ =
               org.roylance.yaorm.models.YaormModel.Record.newBuilder(recordResult_).mergeFrom(value).buildPartial();
           } else {
@@ -12820,7 +14604,7 @@ public final class YaormModel {
         } else {
           recordResultBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -12828,20 +14612,19 @@ public final class YaormModel {
        */
       public Builder clearRecordResult() {
         if (recordResultBuilder_ == null) {
-          recordResult_ = null;
+          recordResult_ = org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance();
           onChanged();
         } else {
-          recordResult_ = null;
-          recordResultBuilder_ = null;
+          recordResultBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Record record_result = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Record.Builder getRecordResultBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getRecordResultFieldBuilder().getBuilder();
       }
@@ -12852,8 +14635,7 @@ public final class YaormModel {
         if (recordResultBuilder_ != null) {
           return recordResultBuilder_.getMessageOrBuilder();
         } else {
-          return recordResult_ == null ?
-              org.roylance.yaorm.models.YaormModel.Record.getDefaultInstance() : recordResult_;
+          return recordResult_;
         }
       }
       /**
@@ -12873,21 +14655,21 @@ public final class YaormModel {
         return recordResultBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.Records recordsResult_ = null;
+      private org.roylance.yaorm.models.YaormModel.Records recordsResult_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.Records, org.roylance.yaorm.models.YaormModel.Records.Builder, org.roylance.yaorm.models.YaormModel.RecordsOrBuilder> recordsResultBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.Records records_result = 4;</code>
        */
       public boolean hasRecordsResult() {
-        return recordsResultBuilder_ != null || recordsResult_ != null;
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Records records_result = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Records getRecordsResult() {
         if (recordsResultBuilder_ == null) {
-          return recordsResult_ == null ? org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : recordsResult_;
+          return recordsResult_;
         } else {
           return recordsResultBuilder_.getMessage();
         }
@@ -12905,7 +14687,7 @@ public final class YaormModel {
         } else {
           recordsResultBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -12919,7 +14701,7 @@ public final class YaormModel {
         } else {
           recordsResultBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -12927,7 +14709,8 @@ public final class YaormModel {
        */
       public Builder mergeRecordsResult(org.roylance.yaorm.models.YaormModel.Records value) {
         if (recordsResultBuilder_ == null) {
-          if (recordsResult_ != null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              recordsResult_ != org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance()) {
             recordsResult_ =
               org.roylance.yaorm.models.YaormModel.Records.newBuilder(recordsResult_).mergeFrom(value).buildPartial();
           } else {
@@ -12937,7 +14720,7 @@ public final class YaormModel {
         } else {
           recordsResultBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
@@ -12945,20 +14728,19 @@ public final class YaormModel {
        */
       public Builder clearRecordsResult() {
         if (recordsResultBuilder_ == null) {
-          recordsResult_ = null;
+          recordsResult_ = org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance();
           onChanged();
         } else {
-          recordsResult_ = null;
-          recordsResultBuilder_ = null;
+          recordsResultBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.Records records_result = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.Records.Builder getRecordsResultBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getRecordsResultFieldBuilder().getBuilder();
       }
@@ -12969,8 +14751,7 @@ public final class YaormModel {
         if (recordsResultBuilder_ != null) {
           return recordsResultBuilder_.getMessageOrBuilder();
         } else {
-          return recordsResult_ == null ?
-              org.roylance.yaorm.models.YaormModel.Records.getDefaultInstance() : recordsResult_;
+          return recordsResult_;
         }
       }
       /**
@@ -12994,13 +14775,21 @@ public final class YaormModel {
       /**
        * <code>optional string error_message = 5;</code>
        */
+      public boolean hasErrorMessage() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string error_message = 5;</code>
+       */
       public java.lang.String getErrorMessage() {
         java.lang.Object ref = errorMessage_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          errorMessage_ = s;
+          if (bs.isValidUtf8()) {
+            errorMessage_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -13030,7 +14819,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000010;
         errorMessage_ = value;
         onChanged();
         return this;
@@ -13039,7 +14828,7 @@ public final class YaormModel {
        * <code>optional string error_message = 5;</code>
        */
       public Builder clearErrorMessage() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         errorMessage_ = getDefaultInstance().getErrorMessage();
         onChanged();
         return this;
@@ -13052,28 +14841,27 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000010;
         errorMessage_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.models.YaormModel.DatabaseOperation databaseOperation_ = null;
+      private org.roylance.yaorm.models.YaormModel.DatabaseOperation databaseOperation_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.DatabaseOperation, org.roylance.yaorm.models.YaormModel.DatabaseOperation.Builder, org.roylance.yaorm.models.YaormModel.DatabaseOperationOrBuilder> databaseOperationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation database_operation = 6;</code>
        */
       public boolean hasDatabaseOperation() {
-        return databaseOperationBuilder_ != null || databaseOperation_ != null;
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation database_operation = 6;</code>
        */
       public org.roylance.yaorm.models.YaormModel.DatabaseOperation getDatabaseOperation() {
         if (databaseOperationBuilder_ == null) {
-          return databaseOperation_ == null ? org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance() : databaseOperation_;
+          return databaseOperation_;
         } else {
           return databaseOperationBuilder_.getMessage();
         }
@@ -13091,7 +14879,7 @@ public final class YaormModel {
         } else {
           databaseOperationBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -13105,7 +14893,7 @@ public final class YaormModel {
         } else {
           databaseOperationBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -13113,7 +14901,8 @@ public final class YaormModel {
        */
       public Builder mergeDatabaseOperation(org.roylance.yaorm.models.YaormModel.DatabaseOperation value) {
         if (databaseOperationBuilder_ == null) {
-          if (databaseOperation_ != null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              databaseOperation_ != org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance()) {
             databaseOperation_ =
               org.roylance.yaorm.models.YaormModel.DatabaseOperation.newBuilder(databaseOperation_).mergeFrom(value).buildPartial();
           } else {
@@ -13123,7 +14912,7 @@ public final class YaormModel {
         } else {
           databaseOperationBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -13131,20 +14920,19 @@ public final class YaormModel {
        */
       public Builder clearDatabaseOperation() {
         if (databaseOperationBuilder_ == null) {
-          databaseOperation_ = null;
+          databaseOperation_ = org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance();
           onChanged();
         } else {
-          databaseOperation_ = null;
-          databaseOperationBuilder_ = null;
+          databaseOperationBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.DatabaseOperation database_operation = 6;</code>
        */
       public org.roylance.yaorm.models.YaormModel.DatabaseOperation.Builder getDatabaseOperationBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getDatabaseOperationFieldBuilder().getBuilder();
       }
@@ -13155,8 +14943,7 @@ public final class YaormModel {
         if (databaseOperationBuilder_ != null) {
           return databaseOperationBuilder_.getMessageOrBuilder();
         } else {
-          return databaseOperation_ == null ?
-              org.roylance.yaorm.models.YaormModel.DatabaseOperation.getDefaultInstance() : databaseOperation_;
+          return databaseOperation_;
         }
       }
       /**
@@ -13175,68 +14962,26 @@ public final class YaormModel {
         }
         return databaseOperationBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.DatabaseOperationResult)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DatabaseOperationResult)
-    private static final org.roylance.yaorm.models.YaormModel.DatabaseOperationResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.DatabaseOperationResult();
+      defaultInstance = new DatabaseOperationResult(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.DatabaseOperationResult getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<DatabaseOperationResult>
-        PARSER = new com.google.protobuf.AbstractParser<DatabaseOperationResult>() {
-      public DatabaseOperationResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new DatabaseOperationResult(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<DatabaseOperationResult> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<DatabaseOperationResult> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.DatabaseOperationResult getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DatabaseOperationResult)
   }
 
   public interface DatabaseDefinitionOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.DatabaseDefinition)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string schema = 1;</code>
+     */
+    boolean hasSchema();
     /**
      * <code>optional string schema = 1;</code>
      */
@@ -13247,6 +14992,10 @@ public final class YaormModel {
     com.google.protobuf.ByteString
         getSchemaBytes();
 
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    boolean hasName();
     /**
      * <code>optional string name = 2;</code>
      */
@@ -13297,30 +15046,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.DatabaseDefinition}
    */
-  public  static final class DatabaseDefinition extends
+  public static final class DatabaseDefinition extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.DatabaseDefinition)
       DatabaseDefinitionOrBuilder {
     // Use DatabaseDefinition.newBuilder() to construct.
     private DatabaseDefinition(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private DatabaseDefinition() {
-      schema_ = "";
-      name_ = "";
-      tableDefinitionGraphs_ = java.util.Collections.emptyList();
+    private DatabaseDefinition(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DatabaseDefinition defaultInstance;
+    public static DatabaseDefinition getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public DatabaseDefinition getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private DatabaseDefinition(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -13330,34 +15089,35 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              schema_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              schema_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              name_ = bs;
               break;
             }
             case 26: {
               org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder subBuilder = null;
-              if (tableDefinitions_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = tableDefinitions_.toBuilder();
               }
-              tableDefinitions_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitions.parser(), extensionRegistry);
+              tableDefinitions_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitions.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(tableDefinitions_);
                 tableDefinitions_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
             case 34: {
@@ -13365,21 +15125,21 @@ public final class YaormModel {
                 tableDefinitionGraphs_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              tableDefinitionGraphs_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs.parser(), extensionRegistry));
+              tableDefinitionGraphs_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           tableDefinitionGraphs_ = java.util.Collections.unmodifiableList(tableDefinitionGraphs_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -13395,9 +15155,30 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.DatabaseDefinition.class, org.roylance.yaorm.models.YaormModel.DatabaseDefinition.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<DatabaseDefinition> PARSER =
+        new com.google.protobuf.AbstractParser<DatabaseDefinition>() {
+      public DatabaseDefinition parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DatabaseDefinition(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DatabaseDefinition> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int SCHEMA_FIELD_NUMBER = 1;
-    private volatile java.lang.Object schema_;
+    private java.lang.Object schema_;
+    /**
+     * <code>optional string schema = 1;</code>
+     */
+    public boolean hasSchema() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string schema = 1;</code>
      */
@@ -13409,7 +15190,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        schema_ = s;
+        if (bs.isValidUtf8()) {
+          schema_ = s;
+        }
         return s;
       }
     }
@@ -13431,7 +15214,13 @@ public final class YaormModel {
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object name_;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string name = 2;</code>
      */
@@ -13443,7 +15232,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       }
     }
@@ -13470,19 +15261,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
     public boolean hasTableDefinitions() {
-      return tableDefinitions_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitions getTableDefinitions() {
-      return tableDefinitions_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
+      return tableDefinitions_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
-      return getTableDefinitions();
+      return tableDefinitions_;
     }
 
     public static final int TABLE_DEFINITION_GRAPHS_FIELD_NUMBER = 4;
@@ -13520,6 +15311,12 @@ public final class YaormModel {
       return tableDefinitionGraphs_.get(index);
     }
 
+    private void initFields() {
+      schema_ = "";
+      name_ = "";
+      tableDefinitions_ = org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance();
+      tableDefinitionGraphs_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -13532,44 +15329,56 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getSchemaBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, schema_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getSchemaBytes());
       }
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
       }
-      if (tableDefinitions_ != null) {
-        output.writeMessage(3, getTableDefinitions());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, tableDefinitions_);
       }
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         output.writeMessage(4, tableDefinitionGraphs_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getSchemaBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, schema_);
-      }
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
-      }
-      if (tableDefinitions_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getTableDefinitions());
+          .computeBytesSize(1, getSchemaBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, tableDefinitions_);
       }
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, tableDefinitionGraphs_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.DatabaseDefinition parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13623,17 +15432,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.DatabaseDefinition prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -13672,21 +15476,26 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTableDefinitionsFieldBuilder();
           getTableDefinitionGraphsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         schema_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (tableDefinitionsBuilder_ == null) {
-          tableDefinitions_ = null;
+          tableDefinitions_ = org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance();
         } else {
-          tableDefinitions_ = null;
-          tableDefinitionsBuilder_ = null;
+          tableDefinitionsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (tableDefinitionGraphsBuilder_ == null) {
           tableDefinitionGraphs_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
@@ -13694,6 +15503,10 @@ public final class YaormModel {
           tableDefinitionGraphsBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -13717,8 +15530,17 @@ public final class YaormModel {
         org.roylance.yaorm.models.YaormModel.DatabaseDefinition result = new org.roylance.yaorm.models.YaormModel.DatabaseDefinition(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.schema_ = schema_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.name_ = name_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         if (tableDefinitionsBuilder_ == null) {
           result.tableDefinitions_ = tableDefinitions_;
         } else {
@@ -13749,11 +15571,13 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.DatabaseDefinition other) {
         if (other == org.roylance.yaorm.models.YaormModel.DatabaseDefinition.getDefaultInstance()) return this;
-        if (!other.getSchema().isEmpty()) {
+        if (other.hasSchema()) {
+          bitField0_ |= 0x00000001;
           schema_ = other.schema_;
           onChanged();
         }
-        if (!other.getName().isEmpty()) {
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
           name_ = other.name_;
           onChanged();
         }
@@ -13786,7 +15610,7 @@ public final class YaormModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -13817,13 +15641,21 @@ public final class YaormModel {
       /**
        * <code>optional string schema = 1;</code>
        */
+      public boolean hasSchema() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string schema = 1;</code>
+       */
       public java.lang.String getSchema() {
         java.lang.Object ref = schema_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          schema_ = s;
+          if (bs.isValidUtf8()) {
+            schema_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -13853,7 +15685,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         schema_ = value;
         onChanged();
         return this;
@@ -13862,7 +15694,7 @@ public final class YaormModel {
        * <code>optional string schema = 1;</code>
        */
       public Builder clearSchema() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         schema_ = getDefaultInstance().getSchema();
         onChanged();
         return this;
@@ -13875,8 +15707,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         schema_ = value;
         onChanged();
         return this;
@@ -13886,13 +15717,21 @@ public final class YaormModel {
       /**
        * <code>optional string name = 2;</code>
        */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          name_ = s;
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -13922,7 +15761,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         name_ = value;
         onChanged();
         return this;
@@ -13931,7 +15770,7 @@ public final class YaormModel {
        * <code>optional string name = 2;</code>
        */
       public Builder clearName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -13944,28 +15783,27 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         name_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinitions tableDefinitions_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinitions tableDefinitions_ = org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinitions, org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionsOrBuilder> tableDefinitionsBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
       public boolean hasTableDefinitions() {
-        return tableDefinitionsBuilder_ != null || tableDefinitions_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinitions getTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
-          return tableDefinitions_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
+          return tableDefinitions_;
         } else {
           return tableDefinitionsBuilder_.getMessage();
         }
@@ -13983,7 +15821,7 @@ public final class YaormModel {
         } else {
           tableDefinitionsBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -13997,7 +15835,7 @@ public final class YaormModel {
         } else {
           tableDefinitionsBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -14005,7 +15843,8 @@ public final class YaormModel {
        */
       public Builder mergeTableDefinitions(org.roylance.yaorm.models.YaormModel.TableDefinitions value) {
         if (tableDefinitionsBuilder_ == null) {
-          if (tableDefinitions_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              tableDefinitions_ != org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance()) {
             tableDefinitions_ =
               org.roylance.yaorm.models.YaormModel.TableDefinitions.newBuilder(tableDefinitions_).mergeFrom(value).buildPartial();
           } else {
@@ -14015,7 +15854,7 @@ public final class YaormModel {
         } else {
           tableDefinitionsBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -14023,20 +15862,19 @@ public final class YaormModel {
        */
       public Builder clearTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
-          tableDefinitions_ = null;
+          tableDefinitions_ = org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance();
           onChanged();
         } else {
-          tableDefinitions_ = null;
-          tableDefinitionsBuilder_ = null;
+          tableDefinitionsBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinitions table_definitions = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinitions.Builder getTableDefinitionsBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getTableDefinitionsFieldBuilder().getBuilder();
       }
@@ -14047,8 +15885,7 @@ public final class YaormModel {
         if (tableDefinitionsBuilder_ != null) {
           return tableDefinitionsBuilder_.getMessageOrBuilder();
         } else {
-          return tableDefinitions_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
+          return tableDefinitions_;
         }
       }
       /**
@@ -14307,62 +16144,16 @@ public final class YaormModel {
         }
         return tableDefinitionGraphsBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.DatabaseDefinition)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DatabaseDefinition)
-    private static final org.roylance.yaorm.models.YaormModel.DatabaseDefinition DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.DatabaseDefinition();
+      defaultInstance = new DatabaseDefinition(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.DatabaseDefinition getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<DatabaseDefinition>
-        PARSER = new com.google.protobuf.AbstractParser<DatabaseDefinition>() {
-      public DatabaseDefinition parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new DatabaseDefinition(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<DatabaseDefinition> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<DatabaseDefinition> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.DatabaseDefinition getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.DatabaseDefinition)
   }
 
   public interface TableDefinitionGraphOrBuilder extends
@@ -14411,12 +16202,16 @@ public final class YaormModel {
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
-    int getDefinitionGraphTypeValue();
+    boolean hasDefinitionGraphType();
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
     org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType getDefinitionGraphType();
 
+    /**
+     * <code>optional string main_name = 5;</code>
+     */
+    boolean hasMainName();
     /**
      * <code>optional string main_name = 5;</code>
      */
@@ -14430,6 +16225,10 @@ public final class YaormModel {
     /**
      * <code>optional string other_name = 6;</code>
      */
+    boolean hasOtherName();
+    /**
+     * <code>optional string other_name = 6;</code>
+     */
     java.lang.String getOtherName();
     /**
      * <code>optional string other_name = 6;</code>
@@ -14437,6 +16236,10 @@ public final class YaormModel {
     com.google.protobuf.ByteString
         getOtherNameBytes();
 
+    /**
+     * <code>optional string column_name = 7;</code>
+     */
+    boolean hasColumnName();
     /**
      * <code>optional string column_name = 7;</code>
      */
@@ -14450,31 +16253,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableDefinitionGraph}
    */
-  public  static final class TableDefinitionGraph extends
+  public static final class TableDefinitionGraph extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.TableDefinitionGraph)
       TableDefinitionGraphOrBuilder {
     // Use TableDefinitionGraph.newBuilder() to construct.
     private TableDefinitionGraph(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TableDefinitionGraph() {
-      definitionGraphType_ = 0;
-      mainName_ = "";
-      otherName_ = "";
-      columnName_ = "";
+    private TableDefinitionGraph(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TableDefinitionGraph defaultInstance;
+    public static TableDefinitionGraph getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public TableDefinitionGraph getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private TableDefinitionGraph(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -14484,83 +16296,89 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (mainTableDefinition_ != null) {
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = mainTableDefinition_.toBuilder();
               }
-              mainTableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              mainTableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(mainTableDefinition_);
                 mainTableDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000001;
               break;
             }
             case 18: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (otherTableDefinition_ != null) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = otherTableDefinition_.toBuilder();
               }
-              otherTableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              otherTableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(otherTableDefinition_);
                 otherTableDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
             case 26: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (linkerTableTable_ != null) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = linkerTableTable_.toBuilder();
               }
-              linkerTableTable_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              linkerTableTable_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(linkerTableTable_);
                 linkerTableTable_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000004;
               break;
             }
             case 32: {
               int rawValue = input.readEnum();
-
-              definitionGraphType_ = rawValue;
+              org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType value = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(4, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                definitionGraphType_ = value;
+              }
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              mainName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              mainName_ = bs;
               break;
             }
             case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              otherName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              otherName_ = bs;
               break;
             }
             case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              columnName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000040;
+              columnName_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -14576,6 +16394,21 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.class, org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<TableDefinitionGraph> PARSER =
+        new com.google.protobuf.AbstractParser<TableDefinitionGraph>() {
+      public TableDefinitionGraph parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TableDefinitionGraph(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TableDefinitionGraph> getParserForType() {
+      return PARSER;
+    }
+
     /**
      * Protobuf enum {@code org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType}
      */
@@ -14589,7 +16422,6 @@ public final class YaormModel {
        * <code>MESSAGE_TYPE = 1;</code>
        */
       MESSAGE_TYPE(1, 1),
-      UNRECOGNIZED(-1, -1),
       ;
 
       /**
@@ -14602,13 +16434,7 @@ public final class YaormModel {
       public static final int MESSAGE_TYPE_VALUE = 1;
 
 
-      public final int getNumber() {
-        if (index == -1) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
+      public final int getNumber() { return value; }
 
       public static TableDefinitionGraphType valueOf(int value) {
         switch (value) {
@@ -14622,8 +16448,8 @@ public final class YaormModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          TableDefinitionGraphType> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<TableDefinitionGraphType>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<TableDefinitionGraphType>() {
               public TableDefinitionGraphType findValueByNumber(int number) {
                 return TableDefinitionGraphType.valueOf(number);
@@ -14651,9 +16477,6 @@ public final class YaormModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
         return VALUES[desc.getIndex()];
       }
 
@@ -14668,25 +16491,26 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType)
     }
 
+    private int bitField0_;
     public static final int MAIN_TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.models.YaormModel.TableDefinition mainTableDefinition_;
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
      */
     public boolean hasMainTableDefinition() {
-      return mainTableDefinition_ != null;
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getMainTableDefinition() {
-      return mainTableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
+      return mainTableDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder() {
-      return getMainTableDefinition();
+      return mainTableDefinition_;
     }
 
     public static final int OTHER_TABLE_DEFINITION_FIELD_NUMBER = 2;
@@ -14695,19 +16519,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.TableDefinition other_table_definition = 2;</code>
      */
     public boolean hasOtherTableDefinition() {
-      return otherTableDefinition_ != null;
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition other_table_definition = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getOtherTableDefinition() {
-      return otherTableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : otherTableDefinition_;
+      return otherTableDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition other_table_definition = 2;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getOtherTableDefinitionOrBuilder() {
-      return getOtherTableDefinition();
+      return otherTableDefinition_;
     }
 
     public static final int LINKER_TABLE_TABLE_FIELD_NUMBER = 3;
@@ -14716,39 +16540,44 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.TableDefinition linker_table_table = 3;</code>
      */
     public boolean hasLinkerTableTable() {
-      return linkerTableTable_ != null;
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition linker_table_table = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getLinkerTableTable() {
-      return linkerTableTable_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : linkerTableTable_;
+      return linkerTableTable_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition linker_table_table = 3;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getLinkerTableTableOrBuilder() {
-      return getLinkerTableTable();
+      return linkerTableTable_;
     }
 
     public static final int DEFINITION_GRAPH_TYPE_FIELD_NUMBER = 4;
-    private int definitionGraphType_;
+    private org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType definitionGraphType_;
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
-    public int getDefinitionGraphTypeValue() {
-      return definitionGraphType_;
+    public boolean hasDefinitionGraphType() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType getDefinitionGraphType() {
-      org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType result = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.valueOf(definitionGraphType_);
-      return result == null ? org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.UNRECOGNIZED : result;
+      return definitionGraphType_;
     }
 
     public static final int MAIN_NAME_FIELD_NUMBER = 5;
-    private volatile java.lang.Object mainName_;
+    private java.lang.Object mainName_;
+    /**
+     * <code>optional string main_name = 5;</code>
+     */
+    public boolean hasMainName() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
     /**
      * <code>optional string main_name = 5;</code>
      */
@@ -14760,7 +16589,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        mainName_ = s;
+        if (bs.isValidUtf8()) {
+          mainName_ = s;
+        }
         return s;
       }
     }
@@ -14782,7 +16613,13 @@ public final class YaormModel {
     }
 
     public static final int OTHER_NAME_FIELD_NUMBER = 6;
-    private volatile java.lang.Object otherName_;
+    private java.lang.Object otherName_;
+    /**
+     * <code>optional string other_name = 6;</code>
+     */
+    public boolean hasOtherName() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
     /**
      * <code>optional string other_name = 6;</code>
      */
@@ -14794,7 +16631,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        otherName_ = s;
+        if (bs.isValidUtf8()) {
+          otherName_ = s;
+        }
         return s;
       }
     }
@@ -14816,7 +16655,13 @@ public final class YaormModel {
     }
 
     public static final int COLUMN_NAME_FIELD_NUMBER = 7;
-    private volatile java.lang.Object columnName_;
+    private java.lang.Object columnName_;
+    /**
+     * <code>optional string column_name = 7;</code>
+     */
+    public boolean hasColumnName() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
     /**
      * <code>optional string column_name = 7;</code>
      */
@@ -14828,7 +16673,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        columnName_ = s;
+        if (bs.isValidUtf8()) {
+          columnName_ = s;
+        }
         return s;
       }
     }
@@ -14849,6 +16696,15 @@ public final class YaormModel {
       }
     }
 
+    private void initFields() {
+      mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+      otherTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+      linkerTableTable_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+      definitionGraphType_ = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE;
+      mainName_ = "";
+      otherName_ = "";
+      columnName_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -14861,64 +16717,77 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (mainTableDefinition_ != null) {
-        output.writeMessage(1, getMainTableDefinition());
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, mainTableDefinition_);
       }
-      if (otherTableDefinition_ != null) {
-        output.writeMessage(2, getOtherTableDefinition());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, otherTableDefinition_);
       }
-      if (linkerTableTable_ != null) {
-        output.writeMessage(3, getLinkerTableTable());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, linkerTableTable_);
       }
-      if (definitionGraphType_ != org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE.getNumber()) {
-        output.writeEnum(4, definitionGraphType_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(4, definitionGraphType_.getNumber());
       }
-      if (!getMainNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, mainName_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getMainNameBytes());
       }
-      if (!getOtherNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 6, otherName_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getOtherNameBytes());
       }
-      if (!getColumnNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 7, columnName_);
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(7, getColumnNameBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (mainTableDefinition_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getMainTableDefinition());
+          .computeMessageSize(1, mainTableDefinition_);
       }
-      if (otherTableDefinition_ != null) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getOtherTableDefinition());
+          .computeMessageSize(2, otherTableDefinition_);
       }
-      if (linkerTableTable_ != null) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getLinkerTableTable());
+          .computeMessageSize(3, linkerTableTable_);
       }
-      if (definitionGraphType_ != org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE.getNumber()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, definitionGraphType_);
+          .computeEnumSize(4, definitionGraphType_.getNumber());
       }
-      if (!getMainNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, mainName_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getMainNameBytes());
       }
-      if (!getOtherNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, otherName_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getOtherNameBytes());
       }
-      if (!getColumnNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(7, columnName_);
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getColumnNameBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.TableDefinitionGraph parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14972,17 +16841,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.TableDefinitionGraph prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -15021,37 +16885,48 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMainTableDefinitionFieldBuilder();
+          getOtherTableDefinitionFieldBuilder();
+          getLinkerTableTableFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (mainTableDefinitionBuilder_ == null) {
-          mainTableDefinition_ = null;
+          mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          mainTableDefinition_ = null;
-          mainTableDefinitionBuilder_ = null;
+          mainTableDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (otherTableDefinitionBuilder_ == null) {
-          otherTableDefinition_ = null;
+          otherTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          otherTableDefinition_ = null;
-          otherTableDefinitionBuilder_ = null;
+          otherTableDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (linkerTableTableBuilder_ == null) {
-          linkerTableTable_ = null;
+          linkerTableTable_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          linkerTableTable_ = null;
-          linkerTableTableBuilder_ = null;
+          linkerTableTableBuilder_.clear();
         }
-        definitionGraphType_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
+        definitionGraphType_ = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE;
+        bitField0_ = (bitField0_ & ~0x00000008);
         mainName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         otherName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         columnName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -15073,25 +16948,49 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.TableDefinitionGraph buildPartial() {
         org.roylance.yaorm.models.YaormModel.TableDefinitionGraph result = new org.roylance.yaorm.models.YaormModel.TableDefinitionGraph(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         if (mainTableDefinitionBuilder_ == null) {
           result.mainTableDefinition_ = mainTableDefinition_;
         } else {
           result.mainTableDefinition_ = mainTableDefinitionBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
         if (otherTableDefinitionBuilder_ == null) {
           result.otherTableDefinition_ = otherTableDefinition_;
         } else {
           result.otherTableDefinition_ = otherTableDefinitionBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         if (linkerTableTableBuilder_ == null) {
           result.linkerTableTable_ = linkerTableTable_;
         } else {
           result.linkerTableTable_ = linkerTableTableBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.definitionGraphType_ = definitionGraphType_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.mainName_ = mainName_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.otherName_ = otherName_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.columnName_ = columnName_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -15116,22 +17015,25 @@ public final class YaormModel {
         if (other.hasLinkerTableTable()) {
           mergeLinkerTableTable(other.getLinkerTableTable());
         }
-        if (other.definitionGraphType_ != 0) {
-          setDefinitionGraphTypeValue(other.getDefinitionGraphTypeValue());
+        if (other.hasDefinitionGraphType()) {
+          setDefinitionGraphType(other.getDefinitionGraphType());
         }
-        if (!other.getMainName().isEmpty()) {
+        if (other.hasMainName()) {
+          bitField0_ |= 0x00000010;
           mainName_ = other.mainName_;
           onChanged();
         }
-        if (!other.getOtherName().isEmpty()) {
+        if (other.hasOtherName()) {
+          bitField0_ |= 0x00000020;
           otherName_ = other.otherName_;
           onChanged();
         }
-        if (!other.getColumnName().isEmpty()) {
+        if (other.hasColumnName()) {
+          bitField0_ |= 0x00000040;
           columnName_ = other.columnName_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -15156,22 +17058,23 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition mainTableDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> mainTableDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
        */
       public boolean hasMainTableDefinition() {
-        return mainTableDefinitionBuilder_ != null || mainTableDefinition_ != null;
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
-          return mainTableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
+          return mainTableDefinition_;
         } else {
           return mainTableDefinitionBuilder_.getMessage();
         }
@@ -15189,7 +17092,7 @@ public final class YaormModel {
         } else {
           mainTableDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -15203,7 +17106,7 @@ public final class YaormModel {
         } else {
           mainTableDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -15211,7 +17114,8 @@ public final class YaormModel {
        */
       public Builder mergeMainTableDefinition(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (mainTableDefinitionBuilder_ == null) {
-          if (mainTableDefinition_ != null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              mainTableDefinition_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             mainTableDefinition_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(mainTableDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -15221,7 +17125,7 @@ public final class YaormModel {
         } else {
           mainTableDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -15229,20 +17133,19 @@ public final class YaormModel {
        */
       public Builder clearMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
-          mainTableDefinition_ = null;
+          mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          mainTableDefinition_ = null;
-          mainTableDefinitionBuilder_ = null;
+          mainTableDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getMainTableDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getMainTableDefinitionFieldBuilder().getBuilder();
       }
@@ -15253,8 +17156,7 @@ public final class YaormModel {
         if (mainTableDefinitionBuilder_ != null) {
           return mainTableDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return mainTableDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
+          return mainTableDefinition_;
         }
       }
       /**
@@ -15274,21 +17176,21 @@ public final class YaormModel {
         return mainTableDefinitionBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition otherTableDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition otherTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> otherTableDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition other_table_definition = 2;</code>
        */
       public boolean hasOtherTableDefinition() {
-        return otherTableDefinitionBuilder_ != null || otherTableDefinition_ != null;
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition other_table_definition = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getOtherTableDefinition() {
         if (otherTableDefinitionBuilder_ == null) {
-          return otherTableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : otherTableDefinition_;
+          return otherTableDefinition_;
         } else {
           return otherTableDefinitionBuilder_.getMessage();
         }
@@ -15306,7 +17208,7 @@ public final class YaormModel {
         } else {
           otherTableDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -15320,7 +17222,7 @@ public final class YaormModel {
         } else {
           otherTableDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -15328,7 +17230,8 @@ public final class YaormModel {
        */
       public Builder mergeOtherTableDefinition(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (otherTableDefinitionBuilder_ == null) {
-          if (otherTableDefinition_ != null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              otherTableDefinition_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             otherTableDefinition_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(otherTableDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -15338,7 +17241,7 @@ public final class YaormModel {
         } else {
           otherTableDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -15346,20 +17249,19 @@ public final class YaormModel {
        */
       public Builder clearOtherTableDefinition() {
         if (otherTableDefinitionBuilder_ == null) {
-          otherTableDefinition_ = null;
+          otherTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          otherTableDefinition_ = null;
-          otherTableDefinitionBuilder_ = null;
+          otherTableDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition other_table_definition = 2;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getOtherTableDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getOtherTableDefinitionFieldBuilder().getBuilder();
       }
@@ -15370,8 +17272,7 @@ public final class YaormModel {
         if (otherTableDefinitionBuilder_ != null) {
           return otherTableDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return otherTableDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : otherTableDefinition_;
+          return otherTableDefinition_;
         }
       }
       /**
@@ -15391,21 +17292,21 @@ public final class YaormModel {
         return otherTableDefinitionBuilder_;
       }
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition linkerTableTable_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition linkerTableTable_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> linkerTableTableBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition linker_table_table = 3;</code>
        */
       public boolean hasLinkerTableTable() {
-        return linkerTableTableBuilder_ != null || linkerTableTable_ != null;
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition linker_table_table = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getLinkerTableTable() {
         if (linkerTableTableBuilder_ == null) {
-          return linkerTableTable_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : linkerTableTable_;
+          return linkerTableTable_;
         } else {
           return linkerTableTableBuilder_.getMessage();
         }
@@ -15423,7 +17324,7 @@ public final class YaormModel {
         } else {
           linkerTableTableBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -15437,7 +17338,7 @@ public final class YaormModel {
         } else {
           linkerTableTableBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -15445,7 +17346,8 @@ public final class YaormModel {
        */
       public Builder mergeLinkerTableTable(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (linkerTableTableBuilder_ == null) {
-          if (linkerTableTable_ != null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              linkerTableTable_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             linkerTableTable_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(linkerTableTable_).mergeFrom(value).buildPartial();
           } else {
@@ -15455,7 +17357,7 @@ public final class YaormModel {
         } else {
           linkerTableTableBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -15463,20 +17365,19 @@ public final class YaormModel {
        */
       public Builder clearLinkerTableTable() {
         if (linkerTableTableBuilder_ == null) {
-          linkerTableTable_ = null;
+          linkerTableTable_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          linkerTableTable_ = null;
-          linkerTableTableBuilder_ = null;
+          linkerTableTableBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition linker_table_table = 3;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getLinkerTableTableBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getLinkerTableTableFieldBuilder().getBuilder();
       }
@@ -15487,8 +17388,7 @@ public final class YaormModel {
         if (linkerTableTableBuilder_ != null) {
           return linkerTableTableBuilder_.getMessageOrBuilder();
         } else {
-          return linkerTableTable_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : linkerTableTable_;
+          return linkerTableTable_;
         }
       }
       /**
@@ -15508,27 +17408,18 @@ public final class YaormModel {
         return linkerTableTableBuilder_;
       }
 
-      private int definitionGraphType_ = 0;
+      private org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType definitionGraphType_ = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
-      public int getDefinitionGraphTypeValue() {
-        return definitionGraphType_;
-      }
-      /**
-       * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
-       */
-      public Builder setDefinitionGraphTypeValue(int value) {
-        definitionGraphType_ = value;
-        onChanged();
-        return this;
+      public boolean hasDefinitionGraphType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType getDefinitionGraphType() {
-        org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType result = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.valueOf(definitionGraphType_);
-        return result == null ? org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.UNRECOGNIZED : result;
+        return definitionGraphType_;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
@@ -15537,8 +17428,8 @@ public final class YaormModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        
-        definitionGraphType_ = value.getNumber();
+        bitField0_ |= 0x00000008;
+        definitionGraphType_ = value;
         onChanged();
         return this;
       }
@@ -15546,13 +17437,19 @@ public final class YaormModel {
        * <code>optional .org.roylance.yaorm.models.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public Builder clearDefinitionGraphType() {
-        
-        definitionGraphType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        definitionGraphType_ = org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE;
         onChanged();
         return this;
       }
 
       private java.lang.Object mainName_ = "";
+      /**
+       * <code>optional string main_name = 5;</code>
+       */
+      public boolean hasMainName() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
       /**
        * <code>optional string main_name = 5;</code>
        */
@@ -15562,7 +17459,9 @@ public final class YaormModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          mainName_ = s;
+          if (bs.isValidUtf8()) {
+            mainName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15592,7 +17491,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000010;
         mainName_ = value;
         onChanged();
         return this;
@@ -15601,7 +17500,7 @@ public final class YaormModel {
        * <code>optional string main_name = 5;</code>
        */
       public Builder clearMainName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         mainName_ = getDefaultInstance().getMainName();
         onChanged();
         return this;
@@ -15614,8 +17513,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000010;
         mainName_ = value;
         onChanged();
         return this;
@@ -15625,13 +17523,21 @@ public final class YaormModel {
       /**
        * <code>optional string other_name = 6;</code>
        */
+      public boolean hasOtherName() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional string other_name = 6;</code>
+       */
       public java.lang.String getOtherName() {
         java.lang.Object ref = otherName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          otherName_ = s;
+          if (bs.isValidUtf8()) {
+            otherName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15661,7 +17567,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000020;
         otherName_ = value;
         onChanged();
         return this;
@@ -15670,7 +17576,7 @@ public final class YaormModel {
        * <code>optional string other_name = 6;</code>
        */
       public Builder clearOtherName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         otherName_ = getDefaultInstance().getOtherName();
         onChanged();
         return this;
@@ -15683,8 +17589,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000020;
         otherName_ = value;
         onChanged();
         return this;
@@ -15694,13 +17599,21 @@ public final class YaormModel {
       /**
        * <code>optional string column_name = 7;</code>
        */
+      public boolean hasColumnName() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string column_name = 7;</code>
+       */
       public java.lang.String getColumnName() {
         java.lang.Object ref = columnName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          columnName_ = s;
+          if (bs.isValidUtf8()) {
+            columnName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15730,7 +17643,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000040;
         columnName_ = value;
         onChanged();
         return this;
@@ -15739,7 +17652,7 @@ public final class YaormModel {
        * <code>optional string column_name = 7;</code>
        */
       public Builder clearColumnName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         columnName_ = getDefaultInstance().getColumnName();
         onChanged();
         return this;
@@ -15752,68 +17665,21 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000040;
         columnName_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.TableDefinitionGraph)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinitionGraph)
-    private static final org.roylance.yaorm.models.YaormModel.TableDefinitionGraph DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.TableDefinitionGraph();
+      defaultInstance = new TableDefinitionGraph(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.TableDefinitionGraph getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TableDefinitionGraph>
-        PARSER = new com.google.protobuf.AbstractParser<TableDefinitionGraph>() {
-      public TableDefinitionGraph parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TableDefinitionGraph(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TableDefinitionGraph> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TableDefinitionGraph> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.TableDefinitionGraph getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinitionGraph)
   }
 
   public interface TableDefinitionGraphsOrBuilder extends
@@ -15860,28 +17726,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.TableDefinitionGraphs}
    */
-  public  static final class TableDefinitionGraphs extends
+  public static final class TableDefinitionGraphs extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.TableDefinitionGraphs)
       TableDefinitionGraphsOrBuilder {
     // Use TableDefinitionGraphs.newBuilder() to construct.
     private TableDefinitionGraphs(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TableDefinitionGraphs() {
-      tableDefinitionGraphs_ = java.util.Collections.emptyList();
+    private TableDefinitionGraphs(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TableDefinitionGraphs defaultInstance;
+    public static TableDefinitionGraphs getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public TableDefinitionGraphs getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private TableDefinitionGraphs(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -15891,22 +17769,23 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               org.roylance.yaorm.models.YaormModel.TableDefinition.Builder subBuilder = null;
-              if (mainTableDefinition_ != null) {
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = mainTableDefinition_.toBuilder();
               }
-              mainTableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.parser(), extensionRegistry);
+              mainTableDefinition_ = input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinition.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(mainTableDefinition_);
                 mainTableDefinition_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000001;
               break;
             }
             case 18: {
@@ -15914,21 +17793,21 @@ public final class YaormModel {
                 tableDefinitionGraphs_ = new java.util.ArrayList<org.roylance.yaorm.models.YaormModel.TableDefinitionGraph>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              tableDefinitionGraphs_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.parser(), extensionRegistry));
+              tableDefinitionGraphs_.add(input.readMessage(org.roylance.yaorm.models.YaormModel.TableDefinitionGraph.PARSER, extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           tableDefinitionGraphs_ = java.util.Collections.unmodifiableList(tableDefinitionGraphs_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -15944,6 +17823,21 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs.class, org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<TableDefinitionGraphs> PARSER =
+        new com.google.protobuf.AbstractParser<TableDefinitionGraphs>() {
+      public TableDefinitionGraphs parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TableDefinitionGraphs(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TableDefinitionGraphs> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int MAIN_TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.models.YaormModel.TableDefinition mainTableDefinition_;
@@ -15951,19 +17845,19 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
      */
     public boolean hasMainTableDefinition() {
-      return mainTableDefinition_ != null;
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinition getMainTableDefinition() {
-      return mainTableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
+      return mainTableDefinition_;
     }
     /**
      * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder() {
-      return getMainTableDefinition();
+      return mainTableDefinition_;
     }
 
     public static final int TABLE_DEFINITION_GRAPHS_FIELD_NUMBER = 2;
@@ -16001,6 +17895,10 @@ public final class YaormModel {
       return tableDefinitionGraphs_.get(index);
     }
 
+    private void initFields() {
+      mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
+      tableDefinitionGraphs_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -16013,32 +17911,42 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (mainTableDefinition_ != null) {
-        output.writeMessage(1, getMainTableDefinition());
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, mainTableDefinition_);
       }
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         output.writeMessage(2, tableDefinitionGraphs_.get(i));
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (mainTableDefinition_ != null) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getMainTableDefinition());
+          .computeMessageSize(1, mainTableDefinition_);
       }
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, tableDefinitionGraphs_.get(i));
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16092,17 +18000,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -16141,17 +18044,22 @@ public final class YaormModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMainTableDefinitionFieldBuilder();
           getTableDefinitionGraphsFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (mainTableDefinitionBuilder_ == null) {
-          mainTableDefinition_ = null;
+          mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
         } else {
-          mainTableDefinition_ = null;
-          mainTableDefinitionBuilder_ = null;
+          mainTableDefinitionBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (tableDefinitionGraphsBuilder_ == null) {
           tableDefinitionGraphs_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -16159,6 +18067,10 @@ public final class YaormModel {
           tableDefinitionGraphsBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -16182,6 +18094,9 @@ public final class YaormModel {
         org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs result = new org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         if (mainTableDefinitionBuilder_ == null) {
           result.mainTableDefinition_ = mainTableDefinition_;
         } else {
@@ -16241,7 +18156,7 @@ public final class YaormModel {
             }
           }
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -16268,21 +18183,21 @@ public final class YaormModel {
       }
       private int bitField0_;
 
-      private org.roylance.yaorm.models.YaormModel.TableDefinition mainTableDefinition_ = null;
+      private org.roylance.yaorm.models.YaormModel.TableDefinition mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.models.YaormModel.TableDefinition, org.roylance.yaorm.models.YaormModel.TableDefinition.Builder, org.roylance.yaorm.models.YaormModel.TableDefinitionOrBuilder> mainTableDefinitionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
        */
       public boolean hasMainTableDefinition() {
-        return mainTableDefinitionBuilder_ != null || mainTableDefinition_ != null;
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition getMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
-          return mainTableDefinition_ == null ? org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
+          return mainTableDefinition_;
         } else {
           return mainTableDefinitionBuilder_.getMessage();
         }
@@ -16300,7 +18215,7 @@ public final class YaormModel {
         } else {
           mainTableDefinitionBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -16314,7 +18229,7 @@ public final class YaormModel {
         } else {
           mainTableDefinitionBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -16322,7 +18237,8 @@ public final class YaormModel {
        */
       public Builder mergeMainTableDefinition(org.roylance.yaorm.models.YaormModel.TableDefinition value) {
         if (mainTableDefinitionBuilder_ == null) {
-          if (mainTableDefinition_ != null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              mainTableDefinition_ != org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance()) {
             mainTableDefinition_ =
               org.roylance.yaorm.models.YaormModel.TableDefinition.newBuilder(mainTableDefinition_).mergeFrom(value).buildPartial();
           } else {
@@ -16332,7 +18248,7 @@ public final class YaormModel {
         } else {
           mainTableDefinitionBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -16340,20 +18256,19 @@ public final class YaormModel {
        */
       public Builder clearMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
-          mainTableDefinition_ = null;
+          mainTableDefinition_ = org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance();
           onChanged();
         } else {
-          mainTableDefinition_ = null;
-          mainTableDefinitionBuilder_ = null;
+          mainTableDefinitionBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.models.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.models.YaormModel.TableDefinition.Builder getMainTableDefinitionBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getMainTableDefinitionFieldBuilder().getBuilder();
       }
@@ -16364,8 +18279,7 @@ public final class YaormModel {
         if (mainTableDefinitionBuilder_ != null) {
           return mainTableDefinitionBuilder_.getMessageOrBuilder();
         } else {
-          return mainTableDefinition_ == null ?
-              org.roylance.yaorm.models.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
+          return mainTableDefinition_;
         }
       }
       /**
@@ -16624,68 +18538,26 @@ public final class YaormModel {
         }
         return tableDefinitionGraphsBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.TableDefinitionGraphs)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinitionGraphs)
-    private static final org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs();
+      defaultInstance = new TableDefinitionGraphs(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TableDefinitionGraphs>
-        PARSER = new com.google.protobuf.AbstractParser<TableDefinitionGraphs>() {
-      public TableDefinitionGraphs parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TableDefinitionGraphs(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TableDefinitionGraphs> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TableDefinitionGraphs> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.TableDefinitionGraphs getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.TableDefinitionGraphs)
   }
 
   public interface ConnectionInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.ConnectionInfo)
       com.google.protobuf.MessageOrBuilder {
 
+    /**
+     * <code>optional string host = 1;</code>
+     */
+    boolean hasHost();
     /**
      * <code>optional string host = 1;</code>
      */
@@ -16699,6 +18571,10 @@ public final class YaormModel {
     /**
      * <code>optional string user = 2;</code>
      */
+    boolean hasUser();
+    /**
+     * <code>optional string user = 2;</code>
+     */
     java.lang.String getUser();
     /**
      * <code>optional string user = 2;</code>
@@ -16706,6 +18582,10 @@ public final class YaormModel {
     com.google.protobuf.ByteString
         getUserBytes();
 
+    /**
+     * <code>optional string password = 3;</code>
+     */
+    boolean hasPassword();
     /**
      * <code>optional string password = 3;</code>
      */
@@ -16719,6 +18599,10 @@ public final class YaormModel {
     /**
      * <code>optional string schema = 4;</code>
      */
+    boolean hasSchema();
+    /**
+     * <code>optional string schema = 4;</code>
+     */
     java.lang.String getSchema();
     /**
      * <code>optional string schema = 4;</code>
@@ -16729,31 +18613,40 @@ public final class YaormModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.models.ConnectionInfo}
    */
-  public  static final class ConnectionInfo extends
+  public static final class ConnectionInfo extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.ConnectionInfo)
       ConnectionInfoOrBuilder {
     // Use ConnectionInfo.newBuilder() to construct.
     private ConnectionInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ConnectionInfo() {
-      host_ = "";
-      user_ = "";
-      password_ = "";
-      schema_ = "";
+    private ConnectionInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ConnectionInfo defaultInstance;
+    public static ConnectionInfo getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public ConnectionInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        getUnknownFields() {
+      return this.unknownFields;
     }
     private ConnectionInfo(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -16763,44 +18656,45 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              host_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              host_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              user_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              user_ = bs;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              password_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              password_ = bs;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              schema_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              schema_ = bs;
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -16816,8 +18710,30 @@ public final class YaormModel {
               org.roylance.yaorm.models.YaormModel.ConnectionInfo.class, org.roylance.yaorm.models.YaormModel.ConnectionInfo.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<ConnectionInfo> PARSER =
+        new com.google.protobuf.AbstractParser<ConnectionInfo>() {
+      public ConnectionInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ConnectionInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ConnectionInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
     public static final int HOST_FIELD_NUMBER = 1;
-    private volatile java.lang.Object host_;
+    private java.lang.Object host_;
+    /**
+     * <code>optional string host = 1;</code>
+     */
+    public boolean hasHost() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
     /**
      * <code>optional string host = 1;</code>
      */
@@ -16829,7 +18745,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        host_ = s;
+        if (bs.isValidUtf8()) {
+          host_ = s;
+        }
         return s;
       }
     }
@@ -16851,7 +18769,13 @@ public final class YaormModel {
     }
 
     public static final int USER_FIELD_NUMBER = 2;
-    private volatile java.lang.Object user_;
+    private java.lang.Object user_;
+    /**
+     * <code>optional string user = 2;</code>
+     */
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
     /**
      * <code>optional string user = 2;</code>
      */
@@ -16863,7 +18787,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        user_ = s;
+        if (bs.isValidUtf8()) {
+          user_ = s;
+        }
         return s;
       }
     }
@@ -16885,7 +18811,13 @@ public final class YaormModel {
     }
 
     public static final int PASSWORD_FIELD_NUMBER = 3;
-    private volatile java.lang.Object password_;
+    private java.lang.Object password_;
+    /**
+     * <code>optional string password = 3;</code>
+     */
+    public boolean hasPassword() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
     /**
      * <code>optional string password = 3;</code>
      */
@@ -16897,7 +18829,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        password_ = s;
+        if (bs.isValidUtf8()) {
+          password_ = s;
+        }
         return s;
       }
     }
@@ -16919,7 +18853,13 @@ public final class YaormModel {
     }
 
     public static final int SCHEMA_FIELD_NUMBER = 4;
-    private volatile java.lang.Object schema_;
+    private java.lang.Object schema_;
+    /**
+     * <code>optional string schema = 4;</code>
+     */
+    public boolean hasSchema() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
     /**
      * <code>optional string schema = 4;</code>
      */
@@ -16931,7 +18871,9 @@ public final class YaormModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        schema_ = s;
+        if (bs.isValidUtf8()) {
+          schema_ = s;
+        }
         return s;
       }
     }
@@ -16952,6 +18894,12 @@ public final class YaormModel {
       }
     }
 
+    private void initFields() {
+      host_ = "";
+      user_ = "";
+      password_ = "";
+      schema_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -16964,42 +18912,56 @@ public final class YaormModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getHostBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, host_);
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getHostBytes());
       }
-      if (!getUserBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, user_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getUserBytes());
       }
-      if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, password_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getPasswordBytes());
       }
-      if (!getSchemaBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, schema_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getSchemaBytes());
       }
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getHostBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, host_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getHostBytes());
       }
-      if (!getUserBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, user_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getUserBytes());
       }
-      if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, password_);
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getPasswordBytes());
       }
-      if (!getSchemaBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, schema_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getSchemaBytes());
       }
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
     public static org.roylance.yaorm.models.YaormModel.ConnectionInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17053,17 +19015,12 @@ public final class YaormModel {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.ConnectionInfo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -17104,17 +19061,25 @@ public final class YaormModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         host_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         user_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         password_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         schema_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -17136,10 +19101,25 @@ public final class YaormModel {
 
       public org.roylance.yaorm.models.YaormModel.ConnectionInfo buildPartial() {
         org.roylance.yaorm.models.YaormModel.ConnectionInfo result = new org.roylance.yaorm.models.YaormModel.ConnectionInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.host_ = host_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.user_ = user_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.password_ = password_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.schema_ = schema_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -17155,23 +19135,27 @@ public final class YaormModel {
 
       public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.ConnectionInfo other) {
         if (other == org.roylance.yaorm.models.YaormModel.ConnectionInfo.getDefaultInstance()) return this;
-        if (!other.getHost().isEmpty()) {
+        if (other.hasHost()) {
+          bitField0_ |= 0x00000001;
           host_ = other.host_;
           onChanged();
         }
-        if (!other.getUser().isEmpty()) {
+        if (other.hasUser()) {
+          bitField0_ |= 0x00000002;
           user_ = other.user_;
           onChanged();
         }
-        if (!other.getPassword().isEmpty()) {
+        if (other.hasPassword()) {
+          bitField0_ |= 0x00000004;
           password_ = other.password_;
           onChanged();
         }
-        if (!other.getSchema().isEmpty()) {
+        if (other.hasSchema()) {
+          bitField0_ |= 0x00000008;
           schema_ = other.schema_;
           onChanged();
         }
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
@@ -17196,8 +19180,15 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object host_ = "";
+      /**
+       * <code>optional string host = 1;</code>
+       */
+      public boolean hasHost() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
       /**
        * <code>optional string host = 1;</code>
        */
@@ -17207,7 +19198,9 @@ public final class YaormModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          host_ = s;
+          if (bs.isValidUtf8()) {
+            host_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17237,7 +19230,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         host_ = value;
         onChanged();
         return this;
@@ -17246,7 +19239,7 @@ public final class YaormModel {
        * <code>optional string host = 1;</code>
        */
       public Builder clearHost() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         host_ = getDefaultInstance().getHost();
         onChanged();
         return this;
@@ -17259,8 +19252,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         host_ = value;
         onChanged();
         return this;
@@ -17270,13 +19262,21 @@ public final class YaormModel {
       /**
        * <code>optional string user = 2;</code>
        */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string user = 2;</code>
+       */
       public java.lang.String getUser() {
         java.lang.Object ref = user_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          user_ = s;
+          if (bs.isValidUtf8()) {
+            user_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17306,7 +19306,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         user_ = value;
         onChanged();
         return this;
@@ -17315,7 +19315,7 @@ public final class YaormModel {
        * <code>optional string user = 2;</code>
        */
       public Builder clearUser() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         user_ = getDefaultInstance().getUser();
         onChanged();
         return this;
@@ -17328,8 +19328,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         user_ = value;
         onChanged();
         return this;
@@ -17339,13 +19338,21 @@ public final class YaormModel {
       /**
        * <code>optional string password = 3;</code>
        */
+      public boolean hasPassword() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string password = 3;</code>
+       */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          password_ = s;
+          if (bs.isValidUtf8()) {
+            password_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17375,7 +19382,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         password_ = value;
         onChanged();
         return this;
@@ -17384,7 +19391,7 @@ public final class YaormModel {
        * <code>optional string password = 3;</code>
        */
       public Builder clearPassword() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         password_ = getDefaultInstance().getPassword();
         onChanged();
         return this;
@@ -17397,8 +19404,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         password_ = value;
         onChanged();
         return this;
@@ -17408,13 +19414,21 @@ public final class YaormModel {
       /**
        * <code>optional string schema = 4;</code>
        */
+      public boolean hasSchema() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string schema = 4;</code>
+       */
       public java.lang.String getSchema() {
         java.lang.Object ref = schema_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          schema_ = s;
+          if (bs.isValidUtf8()) {
+            schema_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17444,7 +19458,7 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         schema_ = value;
         onChanged();
         return this;
@@ -17453,7 +19467,7 @@ public final class YaormModel {
        * <code>optional string schema = 4;</code>
        */
       public Builder clearSchema() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         schema_ = getDefaultInstance().getSchema();
         onChanged();
         return this;
@@ -17466,186 +19480,109 @@ public final class YaormModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         schema_ = value;
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.ConnectionInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.ConnectionInfo)
-    private static final org.roylance.yaorm.models.YaormModel.ConnectionInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.roylance.yaorm.models.YaormModel.ConnectionInfo();
+      defaultInstance = new ConnectionInfo(true);
+      defaultInstance.initFields();
     }
 
-    public static org.roylance.yaorm.models.YaormModel.ConnectionInfo getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ConnectionInfo>
-        PARSER = new com.google.protobuf.AbstractParser<ConnectionInfo>() {
-      public ConnectionInfo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new ConnectionInfo(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<ConnectionInfo> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ConnectionInfo> getParserForType() {
-      return PARSER;
-    }
-
-    public org.roylance.yaorm.models.YaormModel.ConnectionInfo getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.ConnectionInfo)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_WhereClause_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_WhereClause_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_ColumnDefinition_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_ColumnDefinition_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Index_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Difference_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Difference_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_TableDefinition_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableDefinition_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_DifferenceReport_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_DifferenceReport_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Column_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Column_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Record_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Record_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_Records_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_Records_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_TableRecords_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableRecords_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_AllTableRecords_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_DatabaseOperation_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_DatabaseOperation_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_DatabaseOperationResult_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_DatabaseOperationResult_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_DatabaseDefinition_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_DatabaseDefinition_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_TableDefinitionGraph_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableDefinitionGraph_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_TableDefinitionGraphs_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_TableDefinitionGraphs_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_ConnectionInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -17680,127 +19617,110 @@ public final class YaormModel {
       "inition.LinkerType\"H\n\nColumnType\022\n\n\006SCAL" +
       "AR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nENUM_VALUE\020\002\022\017\n\013M",
       "ESSAGE_KEY\020\003\":\n\nLinkerType\022\010\n\004NONE\020\000\022\n\n\006" +
-      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\336\002\n\005Ind" +
-      "ex\022G\n\014column_names\030\001 \003(\01321.org.roylance." +
-      "yaorm.models.Index.ColumnNamesEntry\022I\n\ri" +
-      "nclude_names\030\002 \003(\01322.org.roylance.yaorm." +
-      "models.Index.IncludeNamesEntry\032_\n\020Column" +
-      "NamesEntry\022\013\n\003key\030\001 \001(\t\022:\n\005value\030\002 \001(\0132+" +
-      ".org.roylance.yaorm.models.ColumnDefinit" +
-      "ion:\0028\001\032`\n\021IncludeNamesEntry\022\013\n\003key\030\001 \001(" +
-      "\t\022:\n\005value\030\002 \001(\0132+.org.roylance.yaorm.mo",
-      "dels.ColumnDefinition:\0028\001\"\271\003\n\nDifference" +
-      "\022E\n\013entity_type\030\001 \001(\01620.org.roylance.yao" +
-      "rm.models.Difference.EntityType\022B\n\topera" +
-      "tion\030\002 \001(\0162/.org.roylance.yaorm.models.D" +
-      "ifference.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005ind" +
-      "ex\030\004 \001(\0132 .org.roylance.yaorm.models.Ind" +
-      "ex\022H\n\023property_definition\030\005 \001(\0132+.org.ro" +
-      "ylance.yaorm.models.ColumnDefinition\022D\n\020" +
-      "table_definition\030\006 \001(\0132*.org.roylance.ya" +
-      "orm.models.TableDefinition\".\n\nEntityType",
-      "\022\t\n\005INDEX\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOp" +
-      "eration\022\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\236\003\n\017TableD" +
-      "efinition\022\014\n\004name\030\001 \001(\t\022]\n\022column_defini" +
-      "tions\030\002 \003(\0132A.org.roylance.yaorm.models." +
-      "TableDefinition.ColumnDefinitionsEntry\022/" +
-      "\n\005index\030\003 \001(\0132 .org.roylance.yaorm.model" +
-      "s.Index\022H\n\ntable_type\030\004 \001(\01624.org.roylan" +
-      "ce.yaorm.models.TableDefinition.TableTyp" +
-      "e\032e\n\026ColumnDefinitionsEntry\022\013\n\003key\030\001 \001(\t" +
-      "\022:\n\005value\030\002 \001(\0132+.org.roylance.yaorm.mod",
-      "els.ColumnDefinition:\0028\001\"<\n\tTableType\022\n\n" +
-      "\006NORMAL\020\000\022\022\n\016LINKER_MESSAGE\020\001\022\017\n\013LINKER_" +
-      "ENUM\020\002\"\325\001\n\020TableDefinitions\022\\\n\021table_def" +
-      "initions\030\001 \003(\0132A.org.roylance.yaorm.mode" +
-      "ls.TableDefinitions.TableDefinitionsEntr" +
-      "y\032c\n\025TableDefinitionsEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "9\n\005value\030\002 \001(\0132*.org.roylance.yaorm.mode" +
-      "ls.TableDefinition:\0028\001\"h\n\020DifferenceRepo" +
-      "rt\022\030\n\020migration_exists\030\001 \001(\010\022:\n\013differen" +
-      "ces\030\002 \003(\0132%.org.roylance.yaorm.models.Di",
-      "fference\"\242\003\n\006Column\022?\n\ndefinition\030\001 \001(\0132" +
-      "+.org.roylance.yaorm.models.ColumnDefini" +
-      "tion\022\025\n\rdouble_holder\030\002 \001(\001\022\024\n\014float_hol" +
-      "der\030\003 \001(\002\022\024\n\014int32_holder\030\004 \001(\005\022\024\n\014int64" +
-      "_holder\030\005 \001(\003\022\025\n\ruint32_holder\030\006 \001(\r\022\025\n\r" +
-      "uint64_holder\030\007 \001(\004\022\025\n\rsint32_holder\030\010 \001" +
-      "(\021\022\025\n\rsint64_holder\030\t \001(\022\022\026\n\016fixed32_hol" +
-      "der\030\n \001(\007\022\026\n\016fixed64_holder\030\013 \001(\006\022\027\n\017sfi" +
-      "xed32_holder\030\014 \001(\017\022\027\n\017sfixed64_holder\030\r " +
-      "\001(\020\022\023\n\013bool_holder\030\016 \001(\010\022\025\n\rstring_holde",
-      "r\030\017 \001(\t\022\024\n\014bytes_holder\030\020 \001(\014\"\234\001\n\006Record" +
-      "\022?\n\007columns\030\001 \003(\0132..org.roylance.yaorm.m" +
-      "odels.Record.ColumnsEntry\032Q\n\014ColumnsEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\0220\n\005value\030\002 \001(\0132!.org.royl" +
-      "ance.yaorm.models.Column:\0028\001\"=\n\007Records\022" +
-      "2\n\007records\030\001 \003(\0132!.org.roylance.yaorm.mo" +
-      "dels.Record\"\267\001\n\014TableRecords\022D\n\020table_de" +
-      "finition\030\001 \001(\0132*.org.roylance.yaorm.mode" +
-      "ls.TableDefinition\0223\n\007records\030\002 \001(\0132\".or" +
-      "g.roylance.yaorm.models.Records\022\022\n\ntable",
-      "_name\030\003 \001(\t\022\030\n\020known_parent_ids\030\004 \003(\t\"\304\001" +
-      "\n\017AllTableRecords\022S\n\rtable_records\030\001 \003(\013" +
-      "2<.org.roylance.yaorm.models.AllTableRec" +
-      "ords.TableRecordsEntry\032\\\n\021TableRecordsEn" +
-      "try\022\013\n\003key\030\001 \001(\t\0226\n\005value\030\002 \001(\0132\'.org.ro" +
-      "ylance.yaorm.models.TableRecords:\0028\001\"\371\005\n" +
-      "\021DatabaseOperation\022D\n\020table_definition\030\001" +
-      " \001(\0132*.org.roylance.yaorm.models.TableDe" +
-      "finition\0223\n\007records\030\002 \001(\0132\".org.roylance" +
-      ".yaorm.models.Records\022/\n\005index\030\003 \001(\0132 .o",
-      "rg.roylance.yaorm.models.Index\022F\n\021column" +
-      "_definition\030\004 \001(\0132+.org.roylance.yaorm.m" +
-      "odels.ColumnDefinition\022<\n\014where_clause\030\005" +
-      " \001(\0132&.org.roylance.yaorm.models.WhereCl" +
-      "ause\022c\n\027database_operation_type\030\006 \001(\0162B." +
-      "org.roylance.yaorm.models.DatabaseOperat" +
-      "ion.DatabaseOperationType\"\314\002\n\025DatabaseOp" +
-      "erationType\022\020\n\014CREATE_TABLE\020\000\022\016\n\nDROP_TA" +
-      "BLE\020\001\022\020\n\014CREATE_INDEX\020\002\022\016\n\nDROP_INDEX\020\003\022" +
-      "\021\n\rCREATE_COLUMN\020\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\tG",
-      "ET_COUNT\020\006\022\016\n\nGET_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010G" +
-      "ET_MANY\020\t\022\r\n\tGET_WHERE\020\n\022\017\n\013BULK_INSERT\020" +
-      "\013\022\024\n\020CREATE_OR_UPDATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006U" +
-      "PDATE\020\016\022\030\n\024UPDATE_WITH_CRITERIA\020\017\022\021\n\rUPD" +
-      "ATE_CUSTOM\020\020\022\n\n\006DELETE\020\021\022\016\n\nDELETE_ALL\020\022" +
-      "\"\233\002\n\027DatabaseOperationResult\022\023\n\013bool_res" +
-      "ult\030\001 \001(\010\022\024\n\014count_result\030\002 \001(\003\0228\n\rrecor" +
-      "d_result\030\003 \001(\0132!.org.roylance.yaorm.mode" +
-      "ls.Record\022:\n\016records_result\030\004 \001(\0132\".org." +
-      "roylance.yaorm.models.Records\022\025\n\rerror_m",
-      "essage\030\005 \001(\t\022H\n\022database_operation\030\006 \001(\013" +
-      "2,.org.roylance.yaorm.models.DatabaseOpe" +
-      "ration\"\315\001\n\022DatabaseDefinition\022\016\n\006schema\030" +
-      "\001 \001(\t\022\014\n\004name\030\002 \001(\t\022F\n\021table_definitions" +
-      "\030\003 \001(\0132+.org.roylance.yaorm.models.Table" +
-      "Definitions\022Q\n\027table_definition_graphs\030\004" +
-      " \003(\01320.org.roylance.yaorm.models.TableDe" +
-      "finitionGraphs\"\327\003\n\024TableDefinitionGraph\022" +
-      "I\n\025main_table_definition\030\001 \001(\0132*.org.roy" +
-      "lance.yaorm.models.TableDefinition\022J\n\026ot",
-      "her_table_definition\030\002 \001(\0132*.org.roylanc" +
-      "e.yaorm.models.TableDefinition\022F\n\022linker" +
-      "_table_table\030\003 \001(\0132*.org.roylance.yaorm." +
-      "models.TableDefinition\022g\n\025definition_gra" +
-      "ph_type\030\004 \001(\0162H.org.roylance.yaorm.model" +
-      "s.TableDefinitionGraph.TableDefinitionGr" +
-      "aphType\022\021\n\tmain_name\030\005 \001(\t\022\022\n\nother_name" +
-      "\030\006 \001(\t\022\023\n\013column_name\030\007 \001(\t\";\n\030TableDefi" +
-      "nitionGraphType\022\r\n\tENUM_TYPE\020\000\022\020\n\014MESSAG" +
-      "E_TYPE\020\001\"\264\001\n\025TableDefinitionGraphs\022I\n\025ma",
-      "in_table_definition\030\001 \001(\0132*.org.roylance" +
-      ".yaorm.models.TableDefinition\022P\n\027table_d" +
-      "efinition_graphs\030\002 \003(\0132/.org.roylance.ya" +
-      "orm.models.TableDefinitionGraph\"N\n\016Conne" +
-      "ctionInfo\022\014\n\004host\030\001 \001(\t\022\014\n\004user\030\002 \001(\t\022\020\n" +
-      "\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t*\327\001\n\014Prot" +
-      "obufType\022\010\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020" +
-      "\002\022\t\n\005INT32\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006U" +
-      "INT64\020\006\022\n\n\006SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED" +
-      "32\020\t\022\013\n\007FIXED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXE",
-      "D64\020\014\022\010\n\004BOOL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t" +
-      "\n\005PROTO\020\020b\006proto3"
+      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\216\001\n\005Ind" +
+      "ex\022A\n\014column_names\030\001 \003(\0132+.org.roylance." +
+      "yaorm.models.ColumnDefinition\022B\n\rinclude" +
+      "_names\030\002 \003(\0132+.org.roylance.yaorm.models" +
+      ".ColumnDefinition\"\271\003\n\nDifference\022E\n\013enti" +
+      "ty_type\030\001 \001(\01620.org.roylance.yaorm.model" +
+      "s.Difference.EntityType\022B\n\toperation\030\002 \001" +
+      "(\0162/.org.roylance.yaorm.models.Differenc" +
+      "e.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005index\030\004 \001(\013",
+      "2 .org.roylance.yaorm.models.Index\022H\n\023pr" +
+      "operty_definition\030\005 \001(\0132+.org.roylance.y" +
+      "aorm.models.ColumnDefinition\022D\n\020table_de" +
+      "finition\030\006 \001(\0132*.org.roylance.yaorm.mode" +
+      "ls.TableDefinition\".\n\nEntityType\022\t\n\005INDE" +
+      "X\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation\022" +
+      "\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\241\002\n\017TableDefinitio" +
+      "n\022\014\n\004name\030\001 \001(\t\022G\n\022column_definitions\030\002 " +
+      "\003(\0132+.org.roylance.yaorm.models.ColumnDe" +
+      "finition\022/\n\005index\030\003 \001(\0132 .org.roylance.y",
+      "aorm.models.Index\022H\n\ntable_type\030\004 \001(\01624." +
+      "org.roylance.yaorm.models.TableDefinitio" +
+      "n.TableType\"<\n\tTableType\022\n\n\006NORMAL\020\000\022\022\n\016" +
+      "LINKER_MESSAGE\020\001\022\017\n\013LINKER_ENUM\020\002\"Y\n\020Tab" +
+      "leDefinitions\022E\n\021table_definitions\030\001 \003(\013" +
+      "2*.org.roylance.yaorm.models.TableDefini" +
+      "tion\"h\n\020DifferenceReport\022\030\n\020migration_ex" +
+      "ists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132%.org.ro" +
+      "ylance.yaorm.models.Difference\"\242\003\n\006Colum" +
+      "n\022?\n\ndefinition\030\001 \001(\0132+.org.roylance.yao",
+      "rm.models.ColumnDefinition\022\025\n\rdouble_hol" +
+      "der\030\002 \001(\001\022\024\n\014float_holder\030\003 \001(\002\022\024\n\014int32" +
+      "_holder\030\004 \001(\005\022\024\n\014int64_holder\030\005 \001(\003\022\025\n\ru" +
+      "int32_holder\030\006 \001(\r\022\025\n\ruint64_holder\030\007 \001(" +
+      "\004\022\025\n\rsint32_holder\030\010 \001(\021\022\025\n\rsint64_holde" +
+      "r\030\t \001(\022\022\026\n\016fixed32_holder\030\n \001(\007\022\026\n\016fixed" +
+      "64_holder\030\013 \001(\006\022\027\n\017sfixed32_holder\030\014 \001(\017" +
+      "\022\027\n\017sfixed64_holder\030\r \001(\020\022\023\n\013bool_holder" +
+      "\030\016 \001(\010\022\025\n\rstring_holder\030\017 \001(\t\022\024\n\014bytes_h" +
+      "older\030\020 \001(\014\"<\n\006Record\0222\n\007columns\030\001 \003(\0132!",
+      ".org.roylance.yaorm.models.Column\"=\n\007Rec" +
+      "ords\0222\n\007records\030\001 \003(\0132!.org.roylance.yao" +
+      "rm.models.Record\"\267\001\n\014TableRecords\022D\n\020tab" +
+      "le_definition\030\001 \001(\0132*.org.roylance.yaorm" +
+      ".models.TableDefinition\0223\n\007records\030\002 \001(\013" +
+      "2\".org.roylance.yaorm.models.Records\022\022\n\n" +
+      "table_name\030\003 \001(\t\022\030\n\020known_parent_ids\030\004 \003" +
+      "(\t\"Q\n\017AllTableRecords\022>\n\rtable_records\030\001" +
+      " \003(\0132\'.org.roylance.yaorm.models.TableRe" +
+      "cords\"\371\005\n\021DatabaseOperation\022D\n\020table_def",
+      "inition\030\001 \001(\0132*.org.roylance.yaorm.model" +
+      "s.TableDefinition\0223\n\007records\030\002 \001(\0132\".org" +
+      ".roylance.yaorm.models.Records\022/\n\005index\030" +
+      "\003 \001(\0132 .org.roylance.yaorm.models.Index\022" +
+      "F\n\021column_definition\030\004 \001(\0132+.org.roylanc" +
+      "e.yaorm.models.ColumnDefinition\022<\n\014where" +
+      "_clause\030\005 \001(\0132&.org.roylance.yaorm.model" +
+      "s.WhereClause\022c\n\027database_operation_type" +
+      "\030\006 \001(\0162B.org.roylance.yaorm.models.Datab" +
+      "aseOperation.DatabaseOperationType\"\314\002\n\025D",
+      "atabaseOperationType\022\020\n\014CREATE_TABLE\020\000\022\016" +
+      "\n\nDROP_TABLE\020\001\022\020\n\014CREATE_INDEX\020\002\022\016\n\nDROP" +
+      "_INDEX\020\003\022\021\n\rCREATE_COLUMN\020\004\022\017\n\013DROP_COLU" +
+      "MN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n\nGET_CUSTOM\020\007\022\007\n\003G" +
+      "ET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\tGET_WHERE\020\n\022\017\n\013BUL" +
+      "K_INSERT\020\013\022\024\n\020CREATE_OR_UPDATE\020\014\022\n\n\006CREA" +
+      "TE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UPDATE_WITH_CRITERIA" +
+      "\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022\n\n\006DELETE\020\021\022\016\n\nDEL" +
+      "ETE_ALL\020\022\"\233\002\n\027DatabaseOperationResult\022\023\n" +
+      "\013bool_result\030\001 \001(\010\022\024\n\014count_result\030\002 \001(\003",
+      "\0228\n\rrecord_result\030\003 \001(\0132!.org.roylance.y" +
+      "aorm.models.Record\022:\n\016records_result\030\004 \001" +
+      "(\0132\".org.roylance.yaorm.models.Records\022\025" +
+      "\n\rerror_message\030\005 \001(\t\022H\n\022database_operat" +
+      "ion\030\006 \001(\0132,.org.roylance.yaorm.models.Da" +
+      "tabaseOperation\"\315\001\n\022DatabaseDefinition\022\016" +
+      "\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022F\n\021table_de" +
+      "finitions\030\003 \001(\0132+.org.roylance.yaorm.mod" +
+      "els.TableDefinitions\022Q\n\027table_definition" +
+      "_graphs\030\004 \003(\01320.org.roylance.yaorm.model",
+      "s.TableDefinitionGraphs\"\327\003\n\024TableDefinit" +
+      "ionGraph\022I\n\025main_table_definition\030\001 \001(\0132" +
+      "*.org.roylance.yaorm.models.TableDefinit" +
+      "ion\022J\n\026other_table_definition\030\002 \001(\0132*.or" +
+      "g.roylance.yaorm.models.TableDefinition\022" +
+      "F\n\022linker_table_table\030\003 \001(\0132*.org.roylan" +
+      "ce.yaorm.models.TableDefinition\022g\n\025defin" +
+      "ition_graph_type\030\004 \001(\0162H.org.roylance.ya" +
+      "orm.models.TableDefinitionGraph.TableDef" +
+      "initionGraphType\022\021\n\tmain_name\030\005 \001(\t\022\022\n\no",
+      "ther_name\030\006 \001(\t\022\023\n\013column_name\030\007 \001(\t\";\n\030" +
+      "TableDefinitionGraphType\022\r\n\tENUM_TYPE\020\000\022" +
+      "\020\n\014MESSAGE_TYPE\020\001\"\264\001\n\025TableDefinitionGra" +
+      "phs\022I\n\025main_table_definition\030\001 \001(\0132*.org" +
+      ".roylance.yaorm.models.TableDefinition\022P" +
+      "\n\027table_definition_graphs\030\002 \003(\0132/.org.ro" +
+      "ylance.yaorm.models.TableDefinitionGraph" +
+      "\"N\n\016ConnectionInfo\022\014\n\004host\030\001 \001(\t\022\014\n\004user" +
+      "\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t" +
+      "*\327\001\n\014ProtobufType\022\010\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022",
+      "\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT" +
+      "32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020\007\022\n\n\006SINT64\020\010" +
+      "\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64\020\n\022\014\n\010SFIXED32\020\013" +
+      "\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n\006STRING\020\016\022\t\n\005" +
+      "BYTES\020\017\022\t\n\005PROTO\020\020"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -17832,18 +19752,6 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_Index_descriptor,
         new java.lang.String[] { "ColumnNames", "IncludeNames", });
-    internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor =
-      internal_static_org_roylance_yaorm_models_Index_descriptor.getNestedTypes().get(0);
-    internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_Index_ColumnNamesEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor =
-      internal_static_org_roylance_yaorm_models_Index_descriptor.getNestedTypes().get(1);
-    internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_Index_IncludeNamesEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_Difference_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_org_roylance_yaorm_models_Difference_fieldAccessorTable = new
@@ -17856,24 +19764,12 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_TableDefinition_descriptor,
         new java.lang.String[] { "Name", "ColumnDefinitions", "Index", "TableType", });
-    internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor =
-      internal_static_org_roylance_yaorm_models_TableDefinition_descriptor.getNestedTypes().get(0);
-    internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_TableDefinition_ColumnDefinitionsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_org_roylance_yaorm_models_TableDefinitions_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor,
         new java.lang.String[] { "TableDefinitions", });
-    internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor =
-      internal_static_org_roylance_yaorm_models_TableDefinitions_descriptor.getNestedTypes().get(0);
-    internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_TableDefinitions_TableDefinitionsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_DifferenceReport_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_org_roylance_yaorm_models_DifferenceReport_fieldAccessorTable = new
@@ -17892,12 +19788,6 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_Record_descriptor,
         new java.lang.String[] { "Columns", });
-    internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor =
-      internal_static_org_roylance_yaorm_models_Record_descriptor.getNestedTypes().get(0);
-    internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_Record_ColumnsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_Records_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_org_roylance_yaorm_models_Records_fieldAccessorTable = new
@@ -17916,12 +19806,6 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor,
         new java.lang.String[] { "TableRecords", });
-    internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor =
-      internal_static_org_roylance_yaorm_models_AllTableRecords_descriptor.getNestedTypes().get(0);
-    internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_org_roylance_yaorm_models_AllTableRecords_TableRecordsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_org_roylance_yaorm_models_DatabaseOperation_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_org_roylance_yaorm_models_DatabaseOperation_fieldAccessorTable = new
