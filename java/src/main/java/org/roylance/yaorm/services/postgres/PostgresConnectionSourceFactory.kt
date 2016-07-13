@@ -7,11 +7,12 @@ import java.sql.SQLException
 import java.util.*
 
 class PostgresConnectionSourceFactory(
-        val host:String,
-        val port:String,
-        val database:String,
-        val userName:String,
-        val password:String): IConnectionSourceFactory {
+        host:String,
+        port:String,
+        database:String,
+        userName:String,
+        password:String,
+        useSSL:Boolean = true): IConnectionSourceFactory {
     private val commonConnection: Connection
     private var isClosed: Boolean = false
 
@@ -20,8 +21,11 @@ class PostgresConnectionSourceFactory(
         val props = Properties()
         props.setProperty("user", userName)
         props.setProperty("password", password)
-        props.setProperty("ssl", "true")
-        props.setProperty("sslfactory", "org.postgresql.ssl.NonValidatingFactory")
+        if (useSSL) {
+            props.setProperty("ssl", "true")
+            props.setProperty("sslfactory", "org.postgresql.ssl.NonValidatingFactory")
+        }
+
         this.commonConnection = DriverManager.getConnection(url, props)
     }
     override fun getConnectionSource(): Connection {

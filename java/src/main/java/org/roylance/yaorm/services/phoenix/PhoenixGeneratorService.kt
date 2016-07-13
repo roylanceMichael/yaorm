@@ -80,7 +80,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
     override fun buildDeleteWithCriteria(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String {
-        val whereClause = CommonUtils.buildWhereClause(whereClauseItem)
+        val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
         return "delete from ${definition.name} where $whereClause"
     }
 
@@ -117,7 +117,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 definition.name,
-                CommonUtils.buildWhereClause(whereClauseItem))
+                CommonUtils.buildWhereClause(whereClauseItem, this))
 
         return whereSql
     }
@@ -214,5 +214,9 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
                 workspace.toString())
 
         return createTableSql
+    }
+
+    override fun buildKeyword(keyword: String): String {
+        return "$keyword"
     }
 }

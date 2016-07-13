@@ -110,8 +110,7 @@ internal class GetProtoObject(
                         return@forEach
                     }
 
-                    val foundRecords = entityService.where(customWhereClause,
-                            definitionForLinkerTable.linkerTableTable)
+                    val foundRecords = entityService.where(customWhereClause, definitionForLinkerTable.linkerTableTable)
                     val otherColumnName = ProtobufUtils.buildLinkerMessageOtherTableColumnName(fieldKey.messageType.name)
 
                     foundRecords.recordsList

@@ -3,14 +3,16 @@ package org.roylance.yaorm.utilities
 import com.google.protobuf.ByteString
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.services.IKeywordHandler
 import java.util.*
 
 object CommonUtils {
-    private val SingleQuote = "'"
-    private val DoubleSingleQuote = "''"
-
+    private const val DoubleSingleQuote = "''"
     const val IdName = "id"
 
+    const val SingleQuote = "'"
+    const val DoubleQuote = "\""
+    const val AccentQuote = "`"
     const val Null = "null"
     const val Space = " "
     const val Comma = ","
@@ -18,10 +20,12 @@ object CommonUtils {
     const val SemiColon = ";"
     const val CarriageReturn = '\n'
     const val SpacedUnion = "${CarriageReturn}union "
+    const val Underscore = "_"
+
     const val SpacedAnd = " and "
     const val And = "and"
     const val Or = "or"
-    const val Underscore = "_"
+
     const val Is = "is"
     const val LeftParen = "("
     const val RightParen = ")"
@@ -48,7 +52,7 @@ object CommonUtils {
     const val Set:String = "set"
     const val GetSetLength = Get.length
 
-    val JavaToProtoMap = object: HashMap<Class<*>, YaormModel.ProtobufType>() {
+    val JavaToProtoMap: HashMap<Class<*>, YaormModel.ProtobufType> = object: HashMap<Class<*>, YaormModel.ProtobufType>() {
         init {
             put(String::class.java, YaormModel.ProtobufType.STRING)
             put(Any::class.java, YaormModel.ProtobufType.STRING)
@@ -434,7 +438,7 @@ object CommonUtils {
         return nameTypes
     }
 
-    fun buildWhereClause(whereClauseItem: YaormModel.WhereClause):String {
+    fun buildWhereClause(whereClauseItem: YaormModel.WhereClause, keywordHandler:IKeywordHandler):String {
         val filterItems = StringBuilder()
         var currentWhereClauseItem: YaormModel.WhereClause? = whereClauseItem
 
@@ -442,7 +446,7 @@ object CommonUtils {
             val stringValue = CommonUtils
                     .getFormattedString(currentWhereClauseItem.nameAndProperty)
             filterItems.append(
-                    currentWhereClauseItem.nameAndProperty.definition.name +
+                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
                             SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
                             stringValue +
                             CommonUtils.Space)

@@ -192,6 +192,39 @@ class SQLiteEntityMessageServiceTest {
     }
 
     @Test
+    fun simpleUserAndUserDeviceTestTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath, "mike", "testing")
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = TestModelGeneratedMessageBuilder()
+            val entityMessageService = EntityMessageService(protoService, entityService)
+            entityMessageService.createEntireSchema(TestingModel.getDescriptor())
+
+            val newUser = TestingModel.User.newBuilder().setId(UUID.randomUUID().toString()).setDisplay("ok")
+            val userDevice = TestingModel.UserDevice.newBuilder().setId(UUID.randomUUID().toString()).setUser(newUser)
+
+            // act
+            entityMessageService.merge(userDevice.build())
+
+            // assert
+            val users = entityMessageService.getMany(TestingModel.User.getDefaultInstance())
+
+            Assert.assertTrue(users.size == 1)
+            Assert.assertTrue(users.first().id.equals(newUser.id))
+            Assert.assertTrue(users.first().display.equals(newUser.display))
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
     fun simpleGetTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))

@@ -6,9 +6,9 @@ import java.sql.DriverManager
 import java.sql.SQLException
 
 class HiveConnectionSourceFactory(
-        private val host:String,
-        private val port:String,
-        private val database:String) : IConnectionSourceFactory {
+        host:String,
+        port:String,
+        database:String) : IConnectionSourceFactory {
 
     private val connection:Connection
     private var isClosed:Boolean=false

@@ -9,6 +9,7 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService;
 import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory;
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService;
 import org.roylance.yaorm.testmodels.TestModel;
+import org.roylance.yaorm.services.ISQLGeneratorService;
 
 import java.io.File;
 import java.util.List;

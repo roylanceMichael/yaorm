@@ -101,7 +101,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             }
 
             val criteriaString: String = CommonUtils
-                    .buildWhereClause(whereClauseItem)
+                    .buildWhereClause(whereClauseItem, this)
             val updateKvp = ArrayList<String>()
 
             record
@@ -139,7 +139,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     override fun buildDeleteWithCriteria(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String {
-        val whereClause = CommonUtils.buildWhereClause(whereClauseItem)
+        val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
         return "delete from ${definition.name} where $whereClause"
     }
 
@@ -203,7 +203,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     override fun buildWhereClause(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String? {
-        val whereClauseItems = CommonUtils.buildWhereClause(whereClauseItem)
+        val whereClauseItems = CommonUtils.buildWhereClause(whereClauseItem, this)
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
@@ -336,5 +336,9 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             10)
 
         return createTableSql
+    }
+
+    override fun buildKeyword(keyword: String): String {
+        return keyword
     }
 }

@@ -23,7 +23,8 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPort!!,
                     ConnectionUtilities.postgresDatabase!!,
                     ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!)
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
@@ -75,7 +76,8 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPort!!,
                     ConnectionUtilities.postgresDatabase!!,
                     ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!)
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
@@ -131,7 +133,8 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPort!!,
                     ConnectionUtilities.postgresDatabase!!,
                     ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!)
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
@@ -213,7 +216,8 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPort!!,
                     ConnectionUtilities.postgresDatabase!!,
                     ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!)
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,
@@ -282,7 +286,8 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPort!!,
                     ConnectionUtilities.postgresDatabase!!,
                     ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!)
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
                     sourceConnection.connectionSource,

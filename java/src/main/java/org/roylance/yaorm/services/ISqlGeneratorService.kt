@@ -2,7 +2,7 @@ package org.roylance.yaorm.services
 
 import org.roylance.yaorm.models.YaormModel
 
-interface ISQLGeneratorService {
+interface ISQLGeneratorService: IKeywordHandler {
     val protoTypeToSqlType: Map<YaormModel.ProtobufType, String>
     val bulkInsertSize:Int
 

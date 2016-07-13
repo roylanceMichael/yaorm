@@ -7,10 +7,13 @@ import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
+import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.DagBuilder
 import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
+import java.io.File
 import java.util.*
 
 class MySQLEntityMessageServiceTest {
@@ -484,6 +487,43 @@ class MySQLEntityMessageServiceTest {
             val secondDag = moreDags.first { it.id.equals(builder.id) }
             Assert.assertTrue(secondDag.uncompletedTasksCount == 9)
             Assert.assertTrue(secondDag.processingTasksCount == 1)
+        }
+        finally {
+            ConnectionUtilities.dropMySQLSchema()
+        }
+    }
+
+    @Test
+    fun simpleUserAndUserDeviceTestTest() {
+        // arrange
+        ConnectionUtilities.getMySQLConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val sqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(granularDatabaseService, sqlGeneratorService)
+            val protoService = TestModelGeneratedMessageBuilder()
+            val entityMessageService = EntityMessageService(protoService, entityService)
+            entityMessageService.createEntireSchema(TestingModel.getDescriptor())
+
+            val newUser = TestingModel.User.newBuilder().setId(UUID.randomUUID().toString()).setDisplay("ok")
+            val userDevice = TestingModel.UserDevice.newBuilder().setId(UUID.randomUUID().toString()).setUser(newUser)
+
+            // act
+            entityMessageService.merge(userDevice.build())
+
+            // assert
+            val users = entityMessageService.getMany(TestingModel.User.getDefaultInstance())
+
+            Assert.assertTrue(users.size == 1)
+            Assert.assertTrue(users.first().id.equals(newUser.id))
+            Assert.assertTrue(users.first().display.equals(newUser.display))
         }
         finally {
             ConnectionUtilities.dropMySQLSchema()
