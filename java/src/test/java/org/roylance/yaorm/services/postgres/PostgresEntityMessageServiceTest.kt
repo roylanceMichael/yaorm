@@ -35,7 +35,7 @@ class PostgresEntityMessageServiceTest {
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -107,7 +107,7 @@ class PostgresEntityMessageServiceTest {
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -167,7 +167,7 @@ class PostgresEntityMessageServiceTest {
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -225,7 +225,7 @@ class PostgresEntityMessageServiceTest {
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
 
             testModel.id = UUID.randomUUID().toString()
             testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
@@ -288,7 +288,7 @@ class PostgresEntityMessageServiceTest {
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
-            entityProtoMessageService.dropAndRecreateEntireSchema(testModel.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
             entityProtoMessageService.merge(testModel.build())
             val newFirstDisplay = "new first display"
 
@@ -339,7 +339,7 @@ class PostgresEntityMessageServiceTest {
                     .addPhoneNumbers(TestingModel.Phone.newBuilder().setId(UUID.randomUUID().toString()).setNumber("555-555-55555"))
                     .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
 
-            entityProtoMessageService.dropAndRecreateEntireSchema(person.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(person.build())
             entityProtoMessageService.merge(person.build())
 
             // act
@@ -399,7 +399,7 @@ class PostgresEntityMessageServiceTest {
                     .addAddresses(TestingModel.Address.newBuilder().setId(UUID.randomUUID().toString()).setAddress("555").setCity("SLC").setState("UT").setZip("84101"))
                     .addFriends(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("James").setLastName("Hu"))
 
-            entityProtoMessageService.dropAndRecreateEntireSchema(person.build())
+            entityProtoMessageService.dropAndCreateEntireSchema(person.build())
             entityProtoMessageService.merge(person.build())
 
             // act
@@ -436,7 +436,7 @@ class PostgresEntityMessageServiceTest {
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
-            entityProtoMessageService.dropAndRecreateEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
             entityProtoMessageService.merge(newDag)
 
@@ -473,7 +473,7 @@ class PostgresEntityMessageServiceTest {
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
 
-            entityProtoMessageService.dropAndRecreateEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
             entityProtoMessageService.merge(newDag)
 

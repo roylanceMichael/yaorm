@@ -29,7 +29,7 @@ class EntityMessageService(
         return true
     }
 
-    override fun <T : Message> dropAndRecreateEntireSchema(message: T): Boolean {
+    override fun <T : Message> dropAndCreateEntireSchema(message: T): Boolean {
         if (!ProtobufUtils.isMessageOk(message)) {
             return false
         }
@@ -334,26 +334,34 @@ class EntityMessageService(
                 if (shouldDelete) {
                     this.entityService.dropTable(definitions.mainTableDefinition)
                 }
-                this.entityService.createTable(definitions.mainTableDefinition)
-                seenTables.add(definitions.mainTableDefinition.name)
+
+                if (CommonUtils.checkIfOk(definitions.mainTableDefinition)) {
+                    this.entityService.createTable(definitions.mainTableDefinition)
+                    seenTables.add(definitions.mainTableDefinition.name)
+                }
             }
 
             definitions.tableDefinitionGraphsList.forEach { graph ->
-                if (!seenTables.contains(graph.mainName)) {
+                if (!seenTables.contains(graph.mainName) &&
+                    CommonUtils.checkIfOk(graph.mainTableDefinition)) {
                     if (shouldDelete) {
                         this.entityService.dropTable(graph.mainTableDefinition)
                     }
                     this.entityService.createTable(graph.mainTableDefinition)
                     seenTables.add(graph.mainName)
                 }
-                if (graph.hasLinkerTableTable() && !seenTables.contains(graph.linkerTableTable.name)) {
+                if (graph.hasLinkerTableTable() &&
+                        CommonUtils.checkIfOk(graph.linkerTableTable) &&
+                        !seenTables.contains(graph.linkerTableTable.name)) {
                     if (shouldDelete) {
                         this.entityService.dropTable(graph.linkerTableTable)
                     }
                     this.entityService.createTable(graph.linkerTableTable)
                     seenTables.add(graph.linkerTableTable.name)
                 }
-                if (graph.hasOtherTableDefinition() && !seenTables.contains(graph.otherName)) {
+                if (graph.hasOtherTableDefinition() &&
+                        CommonUtils.checkIfOk(graph.otherTableDefinition) &&
+                        !seenTables.contains(graph.otherName)) {
                     if (shouldDelete) {
                         this.entityService.dropTable(graph.otherTableDefinition)
                     }
