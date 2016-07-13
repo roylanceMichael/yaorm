@@ -330,15 +330,13 @@ class EntityMessageService(
 
         fun handleMessage(descriptor: Descriptors.Descriptor, shouldDelete: Boolean) {
             val definitions = ProtobufUtils.buildDefinitionGraph(descriptor)
-            if (!seenTables.contains(definitions.mainTableDefinition.name)) {
+            if (!seenTables.contains(definitions.mainTableDefinition.name) &&
+                    CommonUtils.checkIfOk(definitions.mainTableDefinition)) {
                 if (shouldDelete) {
                     this.entityService.dropTable(definitions.mainTableDefinition)
                 }
-
-                if (CommonUtils.checkIfOk(definitions.mainTableDefinition)) {
-                    this.entityService.createTable(definitions.mainTableDefinition)
-                    seenTables.add(definitions.mainTableDefinition.name)
-                }
+                this.entityService.createTable(definitions.mainTableDefinition)
+                seenTables.add(definitions.mainTableDefinition.name)
             }
 
             definitions.tableDefinitionGraphsList.forEach { graph ->
