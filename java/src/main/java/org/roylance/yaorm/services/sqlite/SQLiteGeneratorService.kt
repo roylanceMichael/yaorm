@@ -8,7 +8,7 @@ import java.util.*
 
 class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGeneratorService {
     private val CreateInitialTableTemplate = "create table if not exists %s (%s);"
-    private val InsertIntoTableSingleTemplate = "insert into %s (%s) values (%s);"
+    private val InsertIntoTableSingleTemplate = "replace into %s (%s) values (%s);"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s;"
     private val DeleteTableTemplate = "delete from %s where \"id\"=%s;"
     private val WhereClauseTemplate = "select * from %s where %s;"
@@ -78,7 +78,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                 .joinToString(CommonUtils.Comma)
 
         val selectIntoStatement =
-                "insert into ${this.buildKeyword(definition.name)} ($columnsWithoutId) select $columnsWithoutId from temp_${definition.name}"
+                "replace into ${this.buildKeyword(definition.name)} ($columnsWithoutId) select $columnsWithoutId from temp_${definition.name}"
         returnList.add(selectIntoStatement)
         return returnList.joinToString(CommonUtils.SemiColon) + CommonUtils.SemiColon
     }
@@ -147,7 +147,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         val columnNames = definition.columnDefinitionsList.sortedBy { it.name } .map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
-        val initialStatement = "insert into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
+        val initialStatement = "replace into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
         val selectStatements = ArrayList<String>()
 
         records

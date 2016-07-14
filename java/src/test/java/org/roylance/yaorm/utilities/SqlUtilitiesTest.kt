@@ -109,7 +109,7 @@ class SqlUtilitiesTest {
     fun bulkInsertTest() {
         // arrange
         val sqliteGeneratorService = SQLiteGeneratorService()
-        val expectedSql = """insert into "BeaconBroadcastModel" ("active","beaconId","cachedName","id","lastSeen","majorId","minorId")  select 0 as "active",'test1' as "beaconId",'test1' as "cachedName",'0' as "id",0 as "lastSeen",0 as "majorId",0 as "minorId"
+        val expectedSql = """replace into "BeaconBroadcastModel" ("active","beaconId","cachedName","id","lastSeen","majorId","minorId")  select 0 as "active",'test1' as "beaconId",'test1' as "cachedName",'0' as "id",0 as "lastSeen",0 as "majorId",0 as "minorId"
 union select 0 as "active",'test2' as "beaconId",'test2' as "cachedName",'1' as "id",0 as "lastSeen",0 as "majorId",1 as "minorId"
 union select 0 as "active",'test3' as "beaconId",'test3' as "cachedName",'2' as "id",0 as "lastSeen",0 as "majorId",2 as "minorId";""".trim()
 
