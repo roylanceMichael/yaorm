@@ -29,7 +29,7 @@ class ClassEqualityUtilsTest {
         secondRootModel.commonChildTests.add(secondChildEntity1)
 
         // act
-        val result = ClassEqualityUtils.areBothObjectsEqual(firstRootModel, secondRootModel)
+        val result = YaormUtils.areBothObjectsEqual(firstRootModel, secondRootModel)
 
         // assert
         Assert.assertEquals(true, result)
@@ -56,7 +56,7 @@ class ClassEqualityUtilsTest {
         secondRootModel.commonChildTests.add(secondChildEntity1)
 
         // act
-        val result = ClassEqualityUtils.areBothObjectsEqual(firstRootModel, secondRootModel)
+        val result = YaormUtils.areBothObjectsEqual(firstRootModel, secondRootModel)
 
         // assert
         Assert.assertEquals(false, result)
@@ -86,7 +86,7 @@ class ClassEqualityUtilsTest {
         secondRootModel.commonChildTests.add(secondChildEntity1)
 
         // act
-        val result = ClassEqualityUtils.areBothObjectsEqual(firstRootModel, secondRootModel)
+        val result = YaormUtils.areBothObjectsEqual(firstRootModel, secondRootModel)
 
         // assert
         Assert.assertEquals(false, result)
