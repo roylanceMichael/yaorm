@@ -3,12 +3,12 @@ package org.roylance.yaorm.services.hive
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGeneratorService {
 
-    private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by (${CommonUtils.IdName})\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
+    private val CreateInitialTableTemplate = "create table if not exists %s (%s)\nclustered by (${YaormUtils.IdName})\ninto %s buckets\nstored as orc TBLPROPERTIES ('transactional'='true')"
     private val InsertIntoTableSingleTemplate = "insert into %s values (%s)"
     private val UpdateTableSingleTemplate = "update %s set %s where id=%s"
     private val UpdateTableMultipleTemplate = "update %s set %s where %s"
@@ -59,14 +59,14 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
     override fun buildDropColumn(
             definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String? {
-        val columnNames = CommonUtils.getNameTypes(
+        val columnNames = YaormUtils.getNameTypes(
                 definition,
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
                 .map {
                     "${this.buildKeyword(it.sqlColumnName)} ${it.dataType}"
                 }
-                .joinToString(CommonUtils.Comma)
+                .joinToString(YaormUtils.Comma)
 
         return "alter table ${this.buildKeyword(definition.name)} replace columns ($columnNames)"
     }
@@ -90,7 +90,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             whereClauseItem: YaormModel.WhereClause): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            CommonUtils.getNameTypes(
+            YaormUtils.getNameTypes(
                     definition,
                     YaormModel.ProtobufType.STRING,
                     this.protoTypeToSqlType)
@@ -100,14 +100,14 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 return null
             }
 
-            val criteriaString: String = CommonUtils
+            val criteriaString: String = YaormUtils
                     .buildWhereClause(whereClauseItem, this)
             val updateKvp = ArrayList<String>()
 
             record
                 .columnsList
                 .forEach {
-                    updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + CommonUtils.getFormattedString(it))
+                    updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + YaormUtils.getFormattedString(it))
                 }
 
             // nope, not updating entire table
@@ -118,7 +118,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             val updateSql = java.lang.String.format(
                     UpdateTableMultipleTemplate,
                     this.buildKeyword(definition.name),
-                    updateKvp.joinToString(CommonUtils.Comma + CommonUtils.Space),
+                    updateKvp.joinToString(YaormUtils.Comma + YaormUtils.Space),
                     criteriaString)
 
             return updateSql
@@ -139,7 +139,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     override fun buildDeleteWithCriteria(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String {
-        val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
+        val whereClause = YaormUtils.buildWhereClause(whereClauseItem, this)
         return "delete from ${this.buildKeyword(definition.name)} where $whereClause"
     }
 
@@ -148,7 +148,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             records: YaormModel.Records): String {
         val tableName = definition.name
         val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-        CommonUtils.getNameTypes(
+        YaormUtils.getNameTypes(
                 definition,
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
@@ -177,7 +177,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                     .columnsList
                     .sortedBy { it.definition.name }
                     .forEach {
-                        val formattedString = CommonUtils.getFormattedString(it)
+                        val formattedString = YaormUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {
                             valueColumnPairs.add("select $formattedString as ${this.buildKeyword(it.definition.name)}")
                         }
@@ -186,10 +186,10 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                         }
                     }
 
-                selectStatements.add(valueColumnPairs.joinToString(CommonUtils.Comma))
+                selectStatements.add(valueColumnPairs.joinToString(YaormUtils.Comma))
             }
 
-        val carriageReturnSeparatedRows = selectStatements.joinToString("${CommonUtils.Comma}${CommonUtils.CarriageReturn}")
+        val carriageReturnSeparatedRows = selectStatements.joinToString("${YaormUtils.Comma}${YaormUtils.CarriageReturn}")
 
         return "$initialStatement(\nselect stack(\n ${selectStatements.size},\n $carriageReturnSeparatedRows)) s"
     }
@@ -201,7 +201,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     override fun buildWhereClause(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String? {
-        val whereClauseItems = CommonUtils.buildWhereClause(whereClauseItem, this)
+        val whereClauseItems = YaormUtils.buildWhereClause(whereClauseItem, this)
 
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
@@ -215,7 +215,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 this.buildKeyword(definition.name),
-                CommonUtils.getFormattedString(primaryKey))
+                YaormUtils.getFormattedString(primaryKey))
 
         return deleteSql
     }
@@ -223,7 +223,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     override fun buildUpdateTable(definition: YaormModel.TableDefinition, record: YaormModel.Record): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            CommonUtils.getNameTypes(
+            YaormUtils.getNameTypes(
                     definition,
                     YaormModel.ProtobufType.STRING,
                     this.protoTypeToSqlType)
@@ -241,12 +241,12 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
-                    val formattedString = CommonUtils.getFormattedString(it)
-                    if (it.definition.name.equals(CommonUtils.IdName)) {
+                    val formattedString = YaormUtils.getFormattedString(it)
+                    if (it.definition.name.equals(YaormUtils.IdName)) {
                         stringId = formattedString
                     }
                     else {
-                        updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + formattedString)
+                        updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + formattedString)
                     }
                 }
 
@@ -257,7 +257,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             val updateSql = java.lang.String.format(
                     UpdateTableSingleTemplate,
                     this.buildKeyword(definition.name),
-                    updateKvp.joinToString(CommonUtils.Comma + CommonUtils.Space),
+                    updateKvp.joinToString(YaormUtils.Comma + YaormUtils.Space),
                     stringId!!)
 
             return updateSql
@@ -277,13 +277,13 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
-                    values.add(CommonUtils.getFormattedString(it))
+                    values.add(YaormUtils.getFormattedString(it))
                 }
 
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     this.buildKeyword(definition.name),
-                    values.joinToString(CommonUtils.Comma))
+                    values.joinToString(YaormUtils.Comma))
 
             return insertSql
         } catch (e: Exception) {
@@ -293,7 +293,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
     }
 
     override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
-        val nameTypes = CommonUtils.getNameTypes(
+        val nameTypes = YaormUtils.getNameTypes(
                 definition,
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
@@ -307,17 +307,17 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
         for (nameType in nameTypes) {
             if (workspace.length == 0) {
                 workspace
-                    .append(CommonUtils.Space)
+                    .append(YaormUtils.Space)
                     .append(this.buildKeyword(nameType.sqlColumnName))
-                    .append(CommonUtils.Space)
+                    .append(YaormUtils.Space)
                     .append(nameType.dataType)
             }
             else {
                 workspace
-                    .append(CommonUtils.Comma)
-                    .append(CommonUtils.Space)
+                    .append(YaormUtils.Comma)
+                    .append(YaormUtils.Space)
                     .append(this.buildKeyword(nameType.sqlColumnName))
-                    .append(CommonUtils.Space)
+                    .append(YaormUtils.Space)
                     .append(nameType.dataType)
             }
         }

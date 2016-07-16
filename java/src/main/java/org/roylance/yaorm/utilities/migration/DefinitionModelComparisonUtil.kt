@@ -1,42 +1,43 @@
-package org.roylance.yaorm.utilities
+package org.roylance.yaorm.utilities.migration
 
 import org.roylance.yaorm.models.YaormModel
 import java.util.*
 
 object DefinitionModelComparisonUtil {
     fun addDifferenceIfDifferent(
-            currentDefinitionModel: YaormModel.TableDefinition,
-            otherDefinitionModel: YaormModel.TableDefinition?,
+            currentDefinition: YaormModel.TableDefinition,
+            otherDefinition: YaormModel.TableDefinition?,
             differenceReports: MutableList<YaormModel.Difference>) {
 
-        if (otherDefinitionModel == null) {
+        if (otherDefinition == null) {
             val newDifferenceModel = YaormModel.Difference.newBuilder()
                 .setEntityType(YaormModel.Difference.EntityType.TABLE)
                 .setOperation(YaormModel.Difference.Operation.CREATE)
-                .setName(currentDefinitionModel.name)
-                .setTableDefinition(currentDefinitionModel)
+                .setName(currentDefinition.name)
+                .setTableDefinition(currentDefinition)
 
             differenceReports.add(newDifferenceModel.build())
             return
         }
 
         IndexModelComparisonUtil.addDifferenceIfDifference(
-                currentDefinitionModel.name,
-                currentDefinitionModel.index,
-                otherDefinitionModel.index,
-                differenceReports)
+                currentDefinition.name,
+                currentDefinition.index,
+                otherDefinition.index,
+                differenceReports,
+                currentDefinition)
 
         // convert both to dictionaries
         val currentDictionary = HashMap<String, YaormModel.ColumnDefinition>()
         val otherDictionary = HashMap<String, YaormModel.ColumnDefinition>()
 
-        currentDefinitionModel
+        currentDefinition
             .columnDefinitionsList
             .forEach {
                 currentDictionary.put(it.name, it)
             }
 
-        otherDefinitionModel
+        otherDefinition
             .columnDefinitionsList
             .forEach {
                 otherDictionary.put(it.name, it)
@@ -49,18 +50,20 @@ object DefinitionModelComparisonUtil {
                 if (otherDictionary.containsKey(it)) {
                     PropertyModelComparisonUtil
                         .addDifferenceIfDifferent(
-                                currentDefinitionModel.name,
+                                currentDefinition.name,
                                 currentDictionary[it],
                                 otherDictionary[it],
-                                differenceReports)
+                                differenceReports,
+                                currentDefinition)
                 }
                 else {
                     PropertyModelComparisonUtil
                             .addDifferenceIfDifferent(
-                                currentDefinitionModel.name,
+                                currentDefinition.name,
                                 currentDictionary[it],
                                 null,
-                                differenceReports)
+                                differenceReports,
+                                    currentDefinition)
                 }
             }
 
@@ -70,10 +73,11 @@ object DefinitionModelComparisonUtil {
             .forEach {
                 PropertyModelComparisonUtil
                         .addDifferenceIfDifferent(
-                                currentDefinitionModel.name,
+                                currentDefinition.name,
                                 null,
                                 otherDictionary[it],
-                                differenceReports)
+                                differenceReports,
+                                currentDefinition)
             }
     }
 }

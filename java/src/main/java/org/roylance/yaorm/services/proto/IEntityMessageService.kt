@@ -8,11 +8,11 @@ interface IEntityMessageService {
     fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor):Boolean
     fun dropAndCreateEntireSchema(fileDescriptor: Descriptors.FileDescriptor):Boolean
 
-    fun <T: Message> createEntireSchema(message:T): Boolean
-    fun <T: Message> dropAndCreateEntireSchema(message:T): Boolean
+    fun <T: Message> createEntireSchema(messageType:T): Boolean
+    fun <T: Message> dropAndCreateEntireSchema(messageType:T): Boolean
 
-    fun <T: Message> merge(sourceOfTruthMessage:T): Boolean
-    fun <T: Message> delete(sourceOfTruthMessage:T): Boolean
+    fun <T: Message> merge(message:T): Boolean
+    fun <T: Message> delete(message:T): Boolean
 
     fun <T: Message> get(messageType:T, id:String):T?
     fun <T: Message> getKeys(messageType:T):List<String>

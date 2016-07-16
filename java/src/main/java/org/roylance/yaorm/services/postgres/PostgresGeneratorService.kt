@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.postgres
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGeneratorService {
@@ -78,7 +78,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
     }
 
     override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
-        val nameTypes = CommonUtils.getNameTypes(
+        val nameTypes = YaormUtils.getNameTypes(
                 definition,
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
@@ -90,7 +90,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
         val workspace = StringBuilder()
 
         for (nameType in nameTypes) {
-            if (CommonUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName.equals(nameType.sqlColumnName)) {
                 var dataType = nameType.dataType
                 if (SqlTextName.equals(dataType)) {
                     dataType = SqlTextIdName
@@ -98,25 +98,25 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
 
                 workspace
                         .append(this.buildKeyword(nameType.sqlColumnName))
-                        .append(CommonUtils.Space)
+                        .append(YaormUtils.Space)
                         .append(dataType)
-                        .append(CommonUtils.Space)
+                        .append(YaormUtils.Space)
                         .append(PrimaryKey)
             }
         }
 
         for (nameType in nameTypes) {
-            if (!CommonUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (!YaormUtils.IdName.equals(nameType.sqlColumnName)) {
                 var dataType = nameType.dataType
                 if (nameType.isForeignKey && SqlTextName.equals(dataType)) {
                     dataType = SqlTextIdName
 
                 }
                 workspace
-                        .append(CommonUtils.Comma)
-                        .append(CommonUtils.Space)
+                        .append(YaormUtils.Comma)
+                        .append(YaormUtils.Space)
                         .append(this.buildKeyword(nameType.sqlColumnName))
-                        .append(CommonUtils.Space)
+                        .append(YaormUtils.Space)
                         .append(dataType)
             }
         }
@@ -139,14 +139,14 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 this.buildKeyword(definition.name),
-                CommonUtils.getFormattedString(primaryKey))
+                YaormUtils.getFormattedString(primaryKey))
 
         return deleteSql
     }
 
     override fun buildDeleteWithCriteria(definition: YaormModel.TableDefinition,
                                          whereClauseItem: YaormModel.WhereClause): String {
-        val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
+        val whereClause = YaormUtils.buildWhereClause(whereClauseItem, this)
         return "delete from ${this.buildKeyword(definition.name)} where $whereClause"
     }
 
@@ -154,7 +154,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                                  records: YaormModel.Records): String {
         val columnNames = definition.columnDefinitionsList.sortedBy { it.name }.map { this.buildKeyword(it.name) }
 
-        val commaSeparatedColumnNames = columnNames.joinToString(CommonUtils.Comma)
+        val commaSeparatedColumnNames = columnNames.joinToString(YaormUtils.Comma)
         val initialStatement = "insert into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
         val selectStatements = ArrayList<String>()
 
@@ -166,7 +166,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                             .columnsList
                             .sortedBy { it.definition.name }
                             .forEach {
-                                val formattedString = CommonUtils.getFormattedString(it)
+                                val formattedString = YaormUtils.getFormattedString(it)
                                 if (valueColumnPairs.isEmpty()) {
                                     valueColumnPairs.add("select $formattedString as ${this.buildKeyword(it.definition.name)}")
                                 }
@@ -175,12 +175,12 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                                 }
                             }
 
-                    selectStatements.add(valueColumnPairs.joinToString(CommonUtils.Comma))
+                    selectStatements.add(valueColumnPairs.joinToString(YaormUtils.Comma))
                 }
 
-        val unionSeparatedStatements = selectStatements.joinToString(CommonUtils.SpacedUnion)
+        val unionSeparatedStatements = selectStatements.joinToString(YaormUtils.SpacedUnion)
 
-        return "$initialStatement $unionSeparatedStatements${CommonUtils.SemiColon}"    }
+        return "$initialStatement $unionSeparatedStatements${YaormUtils.SemiColon}"    }
 
     override fun buildInsertIntoTable(definition: YaormModel.TableDefinition,
                                       record: YaormModel.Record): String? {
@@ -191,7 +191,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             record
                     .columnsList
                     .forEach {
-                        val formattedString = CommonUtils.getFormattedString(it)
+                        val formattedString = YaormUtils.getFormattedString(it)
                         columnNames.add(this.buildKeyword(it.definition.name))
                         values.add(formattedString)
                     }
@@ -199,8 +199,8 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     this.buildKeyword(definition.name),
-                    columnNames.joinToString(CommonUtils.Comma),
-                    values.joinToString(CommonUtils.Comma))
+                    columnNames.joinToString(YaormUtils.Comma),
+                    values.joinToString(YaormUtils.Comma))
 
             return insertSql
         } catch (e: Exception) {
@@ -213,7 +213,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                                   record: YaormModel.Record): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            CommonUtils.getNameTypes(
+            YaormUtils.getNameTypes(
                     definition,
                     YaormModel.ProtobufType.STRING,
                     this.protoTypeToSqlType)
@@ -229,12 +229,12 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             record
                     .columnsList
                     .forEach {
-                        val formattedString = CommonUtils.getFormattedString(it)
-                        if (it.definition.name.equals(CommonUtils.IdName)) {
+                        val formattedString = YaormUtils.getFormattedString(it)
+                        if (it.definition.name.equals(YaormUtils.IdName)) {
                             stringId = formattedString
                         }
                         else {
-                            updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + formattedString)
+                            updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + formattedString)
                         }
                     }
 
@@ -246,8 +246,8 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                     UpdateTableSingleTemplate,
                     this.buildKeyword(definition.name),
                     updateKvp.joinToString(
-                            CommonUtils.Comma +
-                                    CommonUtils.Space),
+                            YaormUtils.Comma +
+                                    YaormUtils.Space),
                     stringId!!)
 
             return updateSql
@@ -262,7 +262,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                                          whereClauseItem: YaormModel.WhereClause): String? {
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
-            CommonUtils.getNameTypes(
+            YaormUtils.getNameTypes(
                     definition,
                     YaormModel.ProtobufType.STRING,
                     this.protoTypeToSqlType)
@@ -272,13 +272,13 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                 return null
             }
 
-            val criteriaString: String = CommonUtils.buildWhereClause(whereClauseItem, this)
+            val criteriaString: String = YaormUtils.buildWhereClause(whereClauseItem, this)
             val updateKvp = ArrayList<String>()
 
             record.columnsList
                     .sortedBy { it.definition.name }
                     .forEach {
-                        updateKvp.add(this.buildKeyword(it.definition.name) + CommonUtils.Equals + CommonUtils.getFormattedString(it))
+                        updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + YaormUtils.getFormattedString(it))
                     }
 
             // nope, not updating entire table
@@ -289,7 +289,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
             val updateSql = java.lang.String.format(
                     UpdateTableMultipleTemplate,
                     this.buildKeyword(definition.name),
-                    updateKvp.joinToString(CommonUtils.Comma + CommonUtils.Space),
+                    updateKvp.joinToString(YaormUtils.Comma + YaormUtils.Space),
                     criteriaString)
 
             return updateSql
@@ -307,7 +307,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
 
     override fun buildWhereClause(definition: YaormModel.TableDefinition,
                                   whereClauseItem: YaormModel.WhereClause): String? {
-        val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
+        val whereClause = YaormUtils.buildWhereClause(whereClauseItem, this)
         return "select * from " +
                 "${this.buildKeyword(definition.name)} " +
                 "where $whereClause"
@@ -318,6 +318,6 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
     }
 
     override fun buildKeyword(keyword: String): String {
-        return "${CommonUtils.DoubleQuote}${keyword.toLowerCase()}${CommonUtils.DoubleQuote}"
+        return "${YaormUtils.DoubleQuote}${keyword.toLowerCase()}${YaormUtils.DoubleQuote}"
     }
 }

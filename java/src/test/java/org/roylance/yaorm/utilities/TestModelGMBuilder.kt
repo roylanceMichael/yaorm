@@ -2,10 +2,9 @@ package org.roylance.yaorm.utilities
 
 import com.google.protobuf.GeneratedMessage
 import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
-import java.io.InvalidClassException
+import org.roylance.yaorm.services.proto.BaseProtoGeneratedMessageBuilder
 
-class TestModelGeneratedMessageBuilder: IProtoGeneratedMessageBuilder {
+class TestModelGMBuilder : BaseProtoGeneratedMessageBuilder() {
     override fun buildGeneratedMessage(name: String): GeneratedMessage {
         if (TestingModel.Child.getDescriptor().name.equals(name)) {
             return TestingModel.Child.getDefaultInstance()
@@ -53,6 +52,6 @@ class TestModelGeneratedMessageBuilder: IProtoGeneratedMessageBuilder {
             return TestingModel.TaskDependency.getDefaultInstance()
         }
 
-        throw InvalidClassException("bad class name given")
+        return super.buildGeneratedMessage(name)
     }
 }

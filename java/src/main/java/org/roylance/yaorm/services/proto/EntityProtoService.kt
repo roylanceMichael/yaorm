@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.proto
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class EntityProtoService(private val granularDatabaseService: IGranularDatabaseProtoService,
@@ -27,7 +27,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
 
         return this.granularDatabaseService.executeSelectQuery(definition, selectSql)
                 .getRecords().recordsList.map {
-            CommonUtils.getIdColumn(it.columnsList)!!.stringHolder
+            YaormUtils.getIdColumn(it.columnsList)!!.stringHolder
         }
     }
 
@@ -172,7 +172,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
             .setStringHolder(id)
             .setDefinition(YaormModel.ColumnDefinition.newBuilder()
                     .setType(YaormModel.ProtobufType.STRING)
-                    .setName(CommonUtils.IdName).setIsKey(true))
+                    .setName(YaormUtils.IdName).setIsKey(true))
             .build()
 
         val whereClause = YaormModel.WhereClause.newBuilder()
@@ -260,7 +260,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun createOrUpdate(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = CommonUtils.getIdColumn(entity.columnsList) ?: return false
+        val idColumn = YaormUtils.getIdColumn(entity.columnsList) ?: return false
 
         if (!this.granularDatabaseService.isAvailable()) {
             return false
@@ -275,7 +275,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun create(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = CommonUtils.getIdColumn(entity.columnsList) ?: return false
+        val idColumn = YaormUtils.getIdColumn(entity.columnsList) ?: return false
 
         if (!this.granularDatabaseService.isAvailable()) {
             return false
@@ -292,7 +292,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun update(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        if (CommonUtils.getIdColumn(entity.columnsList) == null) {
+        if (YaormUtils.getIdColumn(entity.columnsList) == null) {
             return false
         }
 
@@ -344,7 +344,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
                 .setStringHolder(id)
                 .setDefinition(YaormModel.ColumnDefinition.newBuilder()
                         .setType(YaormModel.ProtobufType.STRING)
-                        .setName(CommonUtils.IdName).setIsKey(true))
+                        .setName(YaormUtils.IdName).setIsKey(true))
                 .build()
 
 

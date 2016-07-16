@@ -8,8 +8,8 @@ import java.util.*
 
 internal class GetProtoObject(
         private val entityService: IEntityProtoService,
-        private val generatedMessageBuilder: IProtoGeneratedMessageBuilder) {
-    private val tableDefinitionGraphs = HashMap<String, YaormModel.TableDefinitionGraphs>()
+        private val generatedMessageBuilder: IProtoGeneratedMessageBuilder,
+        private val definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>) {
     private val typeNameMap = HashMap<String, Message.Builder>()
 
     internal fun <T: Message> build(builder: T, entityId:String):T? {
@@ -18,10 +18,10 @@ internal class GetProtoObject(
             return this.typeNameMap[uniqueKey]!!.build() as T
         }
 
-        if (!tableDefinitionGraphs.containsKey(builder.descriptorForType.name)) {
-            tableDefinitionGraphs[builder.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(builder.descriptorForType)
+        if (!definitions.containsKey(builder.descriptorForType.name)) {
+            definitions[builder.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(builder.descriptorForType)
         }
-        val tableDefinitionGraph = tableDefinitionGraphs[builder.descriptorForType.name]!!
+        val tableDefinitionGraph = definitions[builder.descriptorForType.name]!!
         val builderForType = builder.newBuilderForType()
 
         val foundRecord = this.entityService.get(entityId, tableDefinitionGraph.mainTableDefinition)
@@ -39,7 +39,7 @@ internal class GetProtoObject(
                             ?: return@forEach
 
                     if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.SCALAR)) {
-                        builderForType.setField(fieldKey, CommonUtils.getAnyObject(foundColumn))
+                        builderForType.setField(fieldKey, YaormUtils.getAnyObject(foundColumn))
                     }
                     else if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME)) {
                         builderForType.setField(fieldKey, fieldKey.enumType.findValueByName(foundColumn.stringHolder.toUpperCase()))

@@ -10,7 +10,7 @@ import org.roylance.yaorm.testmodels.*
 import org.roylance.yaorm.testmodels.after.AfterSimpleTestContext
 import org.roylance.yaorm.testmodels.before.BeforeSimpleTestContext
 import org.roylance.yaorm.testmodels.before.SimpleTestModel
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import java.io.File
 import java.util.*
 
@@ -76,7 +76,7 @@ class SQLiteEntityContextTest {
                     .forEach {
                         Assert.assertTrue(
                                 (BeaconBroadcastModel.ActiveName.equals(it.name) &&
-                                        CommonUtils.JavaStringName.equals(it.type)) ||
+                                        YaormUtils.JavaStringName.equals(it.type)) ||
                                         (BeaconBroadcastModel.IdName.equals(it.name) &&
                                                 YaormModel.ProtobufType.STRING.equals(it.type)) ||
                                         (BeaconBroadcastModel.LastSeenName.equals(it.name) &&

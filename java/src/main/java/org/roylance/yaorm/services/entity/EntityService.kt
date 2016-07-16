@@ -6,7 +6,7 @@ import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.EntityUtils
 import java.util.*
 
@@ -192,7 +192,7 @@ class EntityService<T: IEntity>(
 
         val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
-                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(YaormUtils.IdName).setIsKey(true))
                 .build()
 
         val whereClause = YaormModel.WhereClause.newBuilder()
@@ -438,7 +438,7 @@ class EntityService<T: IEntity>(
 
         val propertyHolder = YaormModel.Column.newBuilder()
                 .setStringHolder(id)
-                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(CommonUtils.IdName).setIsKey(true))
+                .setDefinition(YaormModel.ColumnDefinition.newBuilder().setType(YaormModel.ProtobufType.STRING).setName(YaormUtils.IdName).setIsKey(true))
                 .build()
 
         val deleteSql =
@@ -484,18 +484,18 @@ class EntityService<T: IEntity>(
                                 .getForeignService(firstObject.javaClass) ?: return@forEach
 
                         // get the setter method for the child
-                        val commonFirstWord = CommonUtils.getFirstWordInProperty(it.propertyName)
+                        val commonFirstWord = YaormUtils.getFirstWordInProperty(it.propertyName)
 
                         val foundSetter = firstObject.javaClass
                                 .methods
                                 .filter {
-                                    if(!it.name.startsWith(CommonUtils.Set)) {
+                                    if(!it.name.startsWith(YaormUtils.Set)) {
                                         false
                                     }
                                     else {
                                         val nameWithoutSet = it.name.substring(
-                                                CommonUtils.GetSetLength)
-                                        val commonWord = CommonUtils.getFirstWordInProperty(nameWithoutSet)
+                                                YaormUtils.GetSetLength)
+                                        val commonWord = YaormUtils.getFirstWordInProperty(nameWithoutSet)
                                         if (commonFirstWord.equals(commonWord)) {
                                             true
                                         }
@@ -576,29 +576,29 @@ class EntityService<T: IEntity>(
                         // the children will have a reference to this id
                         // but what name...
                         // let's enforce a common string between then
-                        val propertyToLookFor = CommonUtils
+                        val propertyToLookFor = YaormUtils
                                 .getFirstWordInProperty(it.propertyName)
 
                         val foundCorrespondingProperty = foreignObject.entityDefinition
                                 .methods
                                 .filter {
-                                    val containsGet = it.name.startsWith(CommonUtils.Get)
+                                    val containsGet = it.name.startsWith(YaormUtils.Get)
                                     if (!containsGet) {
                                         false
                                     } else {
                                         val propertyName = it.name
-                                                .substring(CommonUtils.GetSetLength)
+                                                .substring(YaormUtils.GetSetLength)
                                         propertyToLookFor.equals(
-                                                CommonUtils
+                                                YaormUtils
                                                         .getFirstWordInProperty(propertyName))
                                     }
                                 }
                                 .firstOrNull() ?: return@forEach
 
-                        val cleansedPropertyName = CommonUtils.lowercaseFirstChar(
+                        val cleansedPropertyName = YaormUtils.lowercaseFirstChar(
                                 foundCorrespondingProperty
                                 .name
-                                .substring(CommonUtils.GetSetLength))
+                                .substring(YaormUtils.GetSetLength))
 
                         // need to get the name of this property
                         val propertyHolder = YaormModel.Column.newBuilder()

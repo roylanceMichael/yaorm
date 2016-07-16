@@ -9,7 +9,7 @@ import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.DagBuilder
-import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestModelGMBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.util.*
 
@@ -32,7 +32,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -104,7 +104,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -164,7 +164,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -222,7 +222,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -285,7 +285,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -328,7 +328,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val person = TestingModel.Person.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -387,7 +387,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val person = TestingModel.Person.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -434,7 +434,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
@@ -471,7 +471,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
@@ -516,7 +516,7 @@ class PostgresEntityMessageServiceTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
 

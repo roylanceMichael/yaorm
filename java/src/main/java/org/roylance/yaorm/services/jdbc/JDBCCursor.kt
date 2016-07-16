@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.services.entity.ICursor
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.EntityUtils
 import java.lang.reflect.Method
 import java.sql.ResultSet
@@ -21,37 +21,37 @@ class JDBCCursor<T> (
 
     private val typeToAction = object: HashMap<String, (label: String, resultSet: ResultSet) -> Any?>() {
         init {
-            put(CommonUtils.JavaAlt1DoubleName,
+            put(YaormUtils.JavaAlt1DoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(CommonUtils.JavaAlt1IntegerName,
+            put(YaormUtils.JavaAlt1IntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(CommonUtils.JavaAlt1LongName,
+            put(YaormUtils.JavaAlt1LongName,
                     { label, resultSet -> resultSet.getLong(label) })
-            put(CommonUtils.JavaAlt1BooleanName,
+            put(YaormUtils.JavaAlt1BooleanName,
                     { label, resultSet -> resultSet.getBoolean(label) })
-            put(CommonUtils.JavaAltDoubleName,
+            put(YaormUtils.JavaAltDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(CommonUtils.JavaAltLongName,
+            put(YaormUtils.JavaAltLongName,
                     { label, resultSet -> resultSet.getLong(label) })
-            put(CommonUtils.JavaAltIntegerName,
+            put(YaormUtils.JavaAltIntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(CommonUtils.JavaStringName,
+            put(YaormUtils.JavaStringName,
                     { label, resultSet -> resultSet.getString(label) })
-            put(CommonUtils.JavaFullyQualifiedStringName,
+            put(YaormUtils.JavaFullyQualifiedStringName,
                     { label, resultSet -> resultSet.getString(label) })
-            put(CommonUtils.JavaIntegerName,
+            put(YaormUtils.JavaIntegerName,
                     { label, resultSet -> resultSet.getInt(label) })
-            put(CommonUtils.JavaDoubleName,
+            put(YaormUtils.JavaDoubleName,
                     { label, resultSet -> resultSet.getDouble(label) })
-            put(CommonUtils.JavaByteName,
+            put(YaormUtils.JavaByteName,
                     { label, resultSet -> resultSet.getBlob(label) })
-            put(CommonUtils.JavaBooleanName, {
+            put(YaormUtils.JavaBooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(CommonUtils.JavaAltBooleanName, {
+            put(YaormUtils.JavaAltBooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(CommonUtils.JavaAlt1BooleanName, {
+            put(YaormUtils.JavaAlt1BooleanName, {
                 label, resultSet -> resultSet.getInt(label) == 1 })
-            put(CommonUtils.JavaLongName,
+            put(YaormUtils.JavaLongName,
                     { label, resultSet -> resultSet.getLong(label) })
         }
     }
@@ -69,7 +69,7 @@ class JDBCCursor<T> (
             var iter = 1
             while (iter <= totalColumns) {
                 // let's make sure we get the last one
-                val lowercaseName = CommonUtils.getLastWord(this.resultSet
+                val lowercaseName = YaormUtils.getLastWord(this.resultSet
                         .metaData
                         .getColumnName(iter))
                         .toLowerCase()
@@ -82,10 +82,10 @@ class JDBCCursor<T> (
         if (this.cachedGetMethods.isEmpty()) {
             this.classModel
                 .methods
-                .filter { it.name.startsWith(CommonUtils.Get) }
+                .filter { it.name.startsWith(YaormUtils.Get) }
                 .forEach {
-                    val actualName = CommonUtils.lowercaseFirstChar(
-                            it.name.substring(CommonUtils.Get.length))
+                    val actualName = YaormUtils.lowercaseFirstChar(
+                            it.name.substring(YaormUtils.Get.length))
 
                     val lowercaseName = actualName.toLowerCase()
 
@@ -98,11 +98,11 @@ class JDBCCursor<T> (
 
                         val foundIdGetter = it.returnType
                             .methods
-                            .first { "${CommonUtils.Get}Id".equals(it.name) }
+                            .first { "${YaormUtils.Get}Id".equals(it.name) }
 
                         val foundIdSetter = it.returnType
                             .methods
-                            .first { "${CommonUtils.Set}Id".equals(it.name) }
+                            .first { "${YaormUtils.Set}Id".equals(it.name) }
 
                         this.cachedGetMethods.put(actualName, it)
 
@@ -115,10 +115,10 @@ class JDBCCursor<T> (
         // set all the properties that we can
         classModel
             .methods
-            .filter { it.name.startsWith(CommonUtils.Set) }
+            .filter { it.name.startsWith(YaormUtils.Set) }
             .forEach {
-                val actualName = CommonUtils.lowercaseFirstChar(
-                        it.name.substring(CommonUtils.Set.length))
+                val actualName = YaormUtils.lowercaseFirstChar(
+                        it.name.substring(YaormUtils.Set.length))
 
                 if (!this.cachedGetMethods.containsKey(actualName)) {
                     return@forEach

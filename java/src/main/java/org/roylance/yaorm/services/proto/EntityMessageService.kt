@@ -3,37 +3,38 @@ package org.roylance.yaorm.services.proto
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.models.YaormModel
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.ProtobufUtils
 import java.util.*
 
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService):IEntityMessageService {
+    private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
     override fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
-        CreateSchema(this.entityService).handleFile(fileDescriptor, false)
+        CreateSchema(this, this.entityService).handleFile(fileDescriptor, false)
         return true
     }
 
     override fun dropAndCreateEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
-        CreateSchema(this.entityService).handleFile(fileDescriptor, true)
+        CreateSchema(this, this.entityService).handleFile(fileDescriptor, true)
         return true
     }
 
-    override fun <T : Message> createEntireSchema(message: T): Boolean {
-        if (!ProtobufUtils.isMessageOk(message)) {
+    override fun <T : Message> createEntireSchema(messageType: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(messageType)) {
             return false
         }
-        CreateSchema(this.entityService).handleMessage(message.descriptorForType, false)
+        CreateSchema(this, this.entityService).handleMessage(messageType.descriptorForType, false)
         return true
     }
 
-    override fun <T : Message> dropAndCreateEntireSchema(message: T): Boolean {
-        if (!ProtobufUtils.isMessageOk(message)) {
+    override fun <T : Message> dropAndCreateEntireSchema(messageType: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(messageType)) {
             return false
         }
-        CreateSchema(this.entityService).handleMessage(message.descriptorForType, true)
+        CreateSchema(this, this.entityService).handleMessage(messageType.descriptorForType, true)
         return true
     }
 
@@ -42,12 +43,12 @@ class EntityMessageService(
             return
         }
 
-        val idField = messageType.descriptorForType.fields.first { it.name.equals(CommonUtils.IdName) }
+        val idField = messageType.descriptorForType.fields.first { it.name.equals(YaormUtils.IdName) }
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.getIdsStream(tableDefinition, object: IProtoStreamer {
             override fun stream(record: YaormModel.Record) {
                 val builder = protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name).toBuilder()
-                builder.setField(idField, record.columnsList.first { it.definition.name.equals(CommonUtils.IdName) }!!.stringHolder)
+                builder.setField(idField, record.columnsList.first { it.definition.name.equals(YaormUtils.IdName) }!!.stringHolder)
                 streamer.stream(builder.build())
             }
         })
@@ -63,21 +64,20 @@ class EntityMessageService(
         return this.entityService.getIds(tableDefinition)
     }
 
-    override fun <T : Message> merge(sourceOfTruthMessage: T): Boolean {
-        if (!ProtobufUtils.isMessageOk(sourceOfTruthMessage)) {
+    override fun <T : Message> merge(message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
             return false
         }
 
         // build records
-        val records = ProtobufUtils.convertProtobufObjectToRecords(sourceOfTruthMessage)
+        val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions)
 
         // create the main one
-        if (!records.tableRecordsList.any { sourceOfTruthMessage.descriptorForType.name.equals(it.tableName) }) {
+        if (!records.tableRecordsList.any { message.descriptorForType.name.equals(it.tableName) }) {
             return false
         }
 
-        val mainRecords = records.tableRecordsList.first { it.tableName.equals(sourceOfTruthMessage.descriptorForType.name) }!!
-
+        val mainRecords = records.tableRecordsList.first { it.tableName.equals(message.descriptorForType.name) }!!
         if (!mainRecords.hasRecords()) {
             return false
         }
@@ -91,7 +91,7 @@ class EntityMessageService(
 
                     // where clause with all the ids
                     tableRecords.records.recordsList.forEach {
-                        val idColumn = it.columnsList.firstOrNull { it.definition.name.equals(CommonUtils.IdName) }
+                        val idColumn = it.columnsList.firstOrNull { it.definition.name.equals(YaormUtils.IdName) }
                         if (idColumn != null) {
                             recordsFromClientMap[idColumn.stringHolder] = it
                         }
@@ -111,7 +111,7 @@ class EntityMessageService(
                     }
 
                     recordsFromDatabaseMap.keys.forEach {
-                        val idColumn = recordsFromDatabaseMap[it]!!.columnsList.firstOrNull { it.definition.name.equals(CommonUtils.IdName) }
+                        val idColumn = recordsFromDatabaseMap[it]!!.columnsList.firstOrNull { it.definition.name.equals(YaormUtils.IdName) }
                         if (!recordsFromClientMap.containsKey(it) && idColumn != null) {
                             // delete
                             entityService.delete(
@@ -124,23 +124,55 @@ class EntityMessageService(
         return true
     }
 
-    override fun <T : Message> delete(sourceOfTruthMessage: T): Boolean {
-        if (!ProtobufUtils.isMessageOk(sourceOfTruthMessage)) {
+    override fun <T : Message> delete(message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
             return false
         }
 
-        val tableDefinition = ProtobufUtils.buildDefinitionFromDescriptor(sourceOfTruthMessage.descriptorForType) ?:
-                return false
+        val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions)
+        // todo - order this as a dag, also create relational constraints between the tables
+        // go through children now, this is the source of truth
+        records.tableRecordsList
+                .forEach { tableRecords ->
+                    val recordsFromClientMap = HashMap<String, YaormModel.Record>()
+                    val recordsFromDatabaseMap:HashMap<String, YaormModel.Record>
 
-        val id = ProtobufUtils.getIdFromMessage(sourceOfTruthMessage)
-        return this.entityService.delete(id, tableDefinition)
+                    // where clause with all the ids
+                    tableRecords.records.recordsList.forEach {
+                        val idColumn = it.columnsList.firstOrNull { it.definition.name.equals(YaormUtils.IdName) }
+                        if (idColumn != null) {
+                            recordsFromClientMap[idColumn.stringHolder] = it
+                        }
+                    }
+
+                    // if this is a linker table, then we want to compare all the items with parent vs what we have
+                    if (tableRecords.tableDefinition.tableType.equals(YaormModel.TableDefinition.TableType.NORMAL)) {
+                        recordsFromDatabaseMap = this.handleNormalCase(tableRecords)
+                    }
+                    else {
+                        recordsFromDatabaseMap = this.handleLinkerMessageCase(tableRecords)
+                    }
+
+                    recordsFromDatabaseMap.keys.forEach {
+                        val idColumn = YaormUtils.getIdColumn(recordsFromDatabaseMap[it]!!.columnsList)
+                        if (idColumn != null) {
+                            // delete
+                            entityService.delete(
+                                    idColumn.stringHolder,
+                                    tableRecords.tableDefinition)
+                        }
+                    }
+                }
+
+        return true
     }
 
     override fun <T : Message> get(messageType:T, id: String): T? {
         return ProtobufUtils.getProtoObjectFromBuilderSingle(messageType,
                 this.entityService,
                 id,
-                this.protoGeneratedMessageBuilder)
+                this.protoGeneratedMessageBuilder,
+                definitions)
     }
 
     override fun <T : Message> getMany(messageType: T, limit: Int, offset: Int): List<T> {
@@ -150,10 +182,10 @@ class EntityMessageService(
         }
 
         // get ids first
-        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.getMany(tableDefinition, limit, offset).recordsList
                 .forEach { record ->
-                    val idColumn = CommonUtils.getIdColumn(record.columnsList)
+                    val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
                         if (completedMessage != null) {
@@ -162,7 +194,7 @@ class EntityMessageService(
                     }
         }
 
-        // get message and all children
+        // get messageType and all children
         return returnList
     }
 
@@ -170,10 +202,10 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return
         }
-        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.getMany(definition = tableDefinition, limit = limit, offset = offset).recordsList
                 .forEach { record ->
-                    val idColumn = CommonUtils.getIdColumn(record.columnsList)
+                    val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
                         if (completedMessage != null) {
@@ -188,10 +220,10 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return returnList
         }
-        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.where(whereClause, tableDefinition).recordsList
                 .forEach { record ->
-                    val idColumn = CommonUtils.getIdColumn(record.columnsList)
+                    val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
                         if (completedMessage != null) {
@@ -209,10 +241,10 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return
         }
-        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.where(whereClause, tableDefinition).recordsList
                 .forEach { record ->
-                    val idColumn = CommonUtils.getIdColumn(record.columnsList)
+                    val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
                         val completedMessage = this.get(messageType, idColumn.stringHolder)
                         if (completedMessage != null) {
@@ -226,7 +258,7 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return -1L
         }
-        val tableDefinition = ProtobufUtils.buildIdOnlyTableDefinition(messageType.descriptorForType)
+        val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         return this.entityService.getCount(tableDefinition)
     }
 
@@ -266,7 +298,7 @@ class EntityMessageService(
 
         entityService.where(firstWhereClause!!.build(), tableRecords.tableDefinition)
                 .recordsList.forEach {
-            val idColumn = CommonUtils.getIdColumn(it.columnsList)
+            val idColumn = YaormUtils.getIdColumn(it.columnsList)
             if (idColumn != null) {
                 recordsFromDatabaseMap[idColumn.stringHolder] = it
             }
@@ -283,7 +315,7 @@ class EntityMessageService(
 
         var firstWhereClause:YaormModel.WhereClause.Builder? = null
         tableRecords.records.recordsList.forEach { record ->
-            val idColumn = CommonUtils.getIdColumn(record.columnsList)
+            val idColumn = YaormUtils.getIdColumn(record.columnsList)
             if (idColumn != null) {
                 customWhereClause.nameAndProperty = idColumn
                 val newWhereClause = YaormModel.WhereClause.newBuilder()
@@ -305,7 +337,7 @@ class EntityMessageService(
 
         entityService.where(firstWhereClause!!.build(), tableRecords.tableDefinition)
                 .recordsList.forEach {
-            val idColumn = CommonUtils.getIdColumn(it.columnsList)
+            val idColumn = YaormUtils.getIdColumn(it.columnsList)
             if (idColumn != null) {
                 recordsFromDatabaseMap[idColumn.stringHolder] = it
             }
@@ -319,29 +351,33 @@ class EntityMessageService(
         tableDefinition.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder()
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR)
                 .setIsKey(true)
-                .setName(CommonUtils.IdName)
+                .setName(YaormUtils.IdName)
                 .setType(YaormModel.ProtobufType.STRING)
                 .build())
         return tableDefinition.build()
     }
 
-    private class CreateSchema(private val entityService: IEntityProtoService) {
+    private class CreateSchema(
+            private val entityMessageService: EntityMessageService,
+            private val entityService: IEntityProtoService) {
         private val seenTables = HashSet<String>()
 
         fun handleMessage(descriptor: Descriptors.Descriptor, shouldDelete: Boolean) {
-            val definitions = ProtobufUtils.buildDefinitionGraph(descriptor)
-            if (!seenTables.contains(definitions.mainTableDefinition.name) &&
-                    CommonUtils.checkIfOk(definitions.mainTableDefinition)) {
+            val foundDefinitions = ProtobufUtils.buildDefinitionGraph(descriptor)
+            entityMessageService.definitions[descriptor.name] = foundDefinitions
+
+            if (!seenTables.contains(foundDefinitions.mainTableDefinition.name) &&
+                    YaormUtils.checkIfOk(foundDefinitions.mainTableDefinition)) {
                 if (shouldDelete) {
-                    this.entityService.dropTable(definitions.mainTableDefinition)
+                    this.entityService.dropTable(foundDefinitions.mainTableDefinition)
                 }
-                this.entityService.createTable(definitions.mainTableDefinition)
-                seenTables.add(definitions.mainTableDefinition.name)
+                this.entityService.createTable(foundDefinitions.mainTableDefinition)
+                seenTables.add(foundDefinitions.mainTableDefinition.name)
             }
 
-            definitions.tableDefinitionGraphsList.forEach { graph ->
+            foundDefinitions.tableDefinitionGraphsList.forEach { graph ->
                 if (!seenTables.contains(graph.mainName) &&
-                    CommonUtils.checkIfOk(graph.mainTableDefinition)) {
+                    YaormUtils.checkIfOk(graph.mainTableDefinition)) {
                     if (shouldDelete) {
                         this.entityService.dropTable(graph.mainTableDefinition)
                     }
@@ -349,7 +385,7 @@ class EntityMessageService(
                     seenTables.add(graph.mainName)
                 }
                 if (graph.hasLinkerTableTable() &&
-                        CommonUtils.checkIfOk(graph.linkerTableTable) &&
+                        YaormUtils.checkIfOk(graph.linkerTableTable) &&
                         !seenTables.contains(graph.linkerTableTable.name)) {
                     if (shouldDelete) {
                         this.entityService.dropTable(graph.linkerTableTable)
@@ -358,7 +394,7 @@ class EntityMessageService(
                     seenTables.add(graph.linkerTableTable.name)
                 }
                 if (graph.hasOtherTableDefinition() &&
-                        CommonUtils.checkIfOk(graph.otherTableDefinition) &&
+                        YaormUtils.checkIfOk(graph.otherTableDefinition) &&
                         !seenTables.contains(graph.otherName)) {
                     if (shouldDelete) {
                         this.entityService.dropTable(graph.otherTableDefinition)
@@ -374,6 +410,5 @@ class EntityMessageService(
                 handleMessage(messageDescriptor, shouldDelete)
             }
         }
-
     }
 }

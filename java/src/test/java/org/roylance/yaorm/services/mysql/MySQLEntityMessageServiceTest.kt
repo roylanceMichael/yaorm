@@ -11,7 +11,7 @@ import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.DagBuilder
-import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestModelGMBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.io.File
 import java.util.*
@@ -33,7 +33,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.createEntireSchema(testModel.build())
@@ -104,7 +104,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.createEntireSchema(testModel.build())
@@ -163,7 +163,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.createEntireSchema(testModel.build())
@@ -220,7 +220,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.createEntireSchema(testModel.build())
@@ -282,7 +282,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
             entityProtoMessageService.createEntireSchema(testModel.build())
@@ -324,7 +324,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val person = TestingModel.Person.newBuilder()
                 .setId(UUID.randomUUID().toString())
@@ -382,7 +382,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             val person = TestingModel.Person.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -428,7 +428,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             entityProtoMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
@@ -464,7 +464,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGeneratedMessageBuilder(), entityService)
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService)
 
             entityProtoMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
@@ -508,7 +508,7 @@ class MySQLEntityMessageServiceTest {
                     false)
             val sqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, sqlGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.getDescriptor())
 

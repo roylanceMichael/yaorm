@@ -6,7 +6,7 @@ import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.IKeywordHandler
 import java.util.*
 
-object CommonUtils {
+object YaormUtils {
     private const val DoubleSingleQuote = "''"
     const val IdName = "id"
 
@@ -411,7 +411,7 @@ object CommonUtils {
                 .forEach {
                     val columnName = it.name
                     val javaType = it.type
-                    val sqlColumnName = CommonUtils.lowercaseFirstChar(it.name)
+                    val sqlColumnName = YaormUtils.lowercaseFirstChar(it.name)
                     val javaColumnName = columnName
 
                     if (javaTypeToSqlType.containsKey(javaType)) {
@@ -442,17 +442,17 @@ object CommonUtils {
         var currentWhereClauseItem: YaormModel.WhereClause? = whereClauseItem
 
         while (currentWhereClauseItem != null) {
-            val stringValue = CommonUtils
+            val stringValue = YaormUtils
                     .getFormattedString(currentWhereClauseItem.nameAndProperty)
             filterItems.append(
                             keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
                             SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
                             stringValue +
-                            CommonUtils.Space)
+                            YaormUtils.Space)
 
             if (!currentWhereClauseItem.connectingAndOr.equals(YaormModel.WhereClause.ConnectingAndOr.NONE) &&
                 currentWhereClauseItem.hasConnectingWhereClause()) {
-                filterItems.append(currentWhereClauseItem.connectingAndOr.name + CommonUtils.Space)
+                filterItems.append(currentWhereClauseItem.connectingAndOr.name + YaormUtils.Space)
                 currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
             }
             else {

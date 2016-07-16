@@ -4,8 +4,8 @@ import com.google.protobuf.ByteString
 import org.roylance.yaorm.models.IEntity
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.models.db.migration.MigrationModel
-import org.roylance.yaorm.utilities.CommonUtils
-import org.roylance.yaorm.utilities.DefinitionModelComparisonUtil
+import org.roylance.yaorm.utilities.YaormUtils
+import org.roylance.yaorm.utilities.migration.DefinitionModelComparisonUtil
 import java.util.*
 
 abstract class EntityContext(
@@ -49,7 +49,7 @@ abstract class EntityContext(
     fun handleMigrations(newId:String=UUID.randomUUID().toString()) {
         val differenceReport = this.getDifferenceReport()
 
-        if (!differenceReport.migrationExists || differenceReport.migrationExists) {
+        if (!differenceReport.migrationExists || differenceReport.differencesCount > 0) {
             this.applyMigrations(differenceReport)
             this.createNewMigration(newId)
         }
@@ -84,7 +84,6 @@ abstract class EntityContext(
 
     fun createNewMigration(id:String) {
         val definitionsModels = this.getDefinitions()
-        definitionsModels.toByteString().toStringUtf8()
 
         val migrationModel = MigrationModel(
                 id,
@@ -162,8 +161,8 @@ abstract class EntityContext(
         this.entityServices.forEach {
             val propertyNames = it.entityDefinition
                     .methods
-                    .filter { it.name.startsWith(CommonUtils.Set) }
-                    .map { it.name.substring(CommonUtils.GetSetLength) }
+                    .filter { it.name.startsWith(YaormUtils.Set) }
+                    .map { it.name.substring(YaormUtils.GetSetLength) }
                     .toHashSet()
 
             val newDefinition = YaormModel.TableDefinition.newBuilder()
@@ -174,17 +173,17 @@ abstract class EntityContext(
 
             it.entityDefinition
                     .methods
-                    .filter { it.name.startsWith(CommonUtils.Get) &&
-                            propertyNames.contains(it.name.substring(CommonUtils.GetSetLength)) &&
-                            !CommonUtils.JavaObjectName.equals(it.returnType.name) }
+                    .filter { it.name.startsWith(YaormUtils.Get) &&
+                            propertyNames.contains(it.name.substring(YaormUtils.GetSetLength)) &&
+                            !YaormUtils.JavaObjectName.equals(it.returnType.name) }
                     .forEach {
-                        val name = CommonUtils.lowercaseFirstChar(
-                                it.name.substring(CommonUtils.GetSetLength))
+                        val name = YaormUtils.lowercaseFirstChar(
+                                it.name.substring(YaormUtils.GetSetLength))
                         val property = YaormModel.ColumnDefinition.newBuilder()
                                 .setName(name)
-                                .setIsKey(it.name.equals(CommonUtils.IdName))
-                        if (CommonUtils.JavaToProtoMap.containsKey(it.returnType)) {
-                            property.type = CommonUtils.JavaToProtoMap[it.returnType]
+                                .setIsKey(it.name.equals(YaormUtils.IdName))
+                        if (YaormUtils.JavaToProtoMap.containsKey(it.returnType)) {
+                            property.type = YaormUtils.JavaToProtoMap[it.returnType]
                         }
                         else {
                             property.type = YaormModel.ProtobufType.STRING
@@ -208,28 +207,28 @@ abstract class EntityContext(
     }
 
     private fun createIndex(entityService: IEntityService<*>, differenceModel: YaormModel.Difference):Boolean {
-        if (differenceModel.index != null) {
+        if (differenceModel.hasIndex()) {
             return entityService.createIndex(differenceModel.index)
         }
         return false
     }
 
     private fun dropIndex(entityService: IEntityService<*>, differenceModel: YaormModel.Difference):Boolean {
-        if (differenceModel.index != null) {
+        if (differenceModel.hasIndex()) {
             return entityService.dropIndex(differenceModel.index)
         }
         return false
     }
 
     private fun createColumn(entityService: IEntityService<*>, differenceModel: YaormModel.Difference):Boolean {
-        if (differenceModel.propertyDefinition != null) {
+        if (differenceModel.hasPropertyDefinition()) {
             return entityService.createColumn(differenceModel.propertyDefinition)
         }
         return false
     }
 
     private fun dropColumn(entityService: IEntityService<*>, differenceModel: YaormModel.Difference):Boolean {
-        if (differenceModel.propertyDefinition != null) {
+        if (differenceModel.hasPropertyDefinition()) {
             return entityService.dropColumn(differenceModel.propertyDefinition)
         }
         return false

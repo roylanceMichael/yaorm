@@ -19497,6 +19497,874 @@ public final class YaormModel {
     // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.ConnectionInfo)
   }
 
+  public interface MigrationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.models.Migration)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string context_name = 2;</code>
+     */
+    boolean hasContextName();
+    /**
+     * <code>optional string context_name = 2;</code>
+     */
+    java.lang.String getContextName();
+    /**
+     * <code>optional string context_name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getContextNameBytes();
+
+    /**
+     * <code>optional string model_definition_base64 = 3;</code>
+     */
+    boolean hasModelDefinitionBase64();
+    /**
+     * <code>optional string model_definition_base64 = 3;</code>
+     */
+    java.lang.String getModelDefinitionBase64();
+    /**
+     * <code>optional string model_definition_base64 = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getModelDefinitionBase64Bytes();
+
+    /**
+     * <code>optional int64 insert_date = 4;</code>
+     */
+    boolean hasInsertDate();
+    /**
+     * <code>optional int64 insert_date = 4;</code>
+     */
+    long getInsertDate();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.models.Migration}
+   */
+  public static final class Migration extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.models.Migration)
+      MigrationOrBuilder {
+    // Use Migration.newBuilder() to construct.
+    private Migration(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Migration(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Migration defaultInstance;
+    public static Migration getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Migration getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Migration(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              id_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              contextName_ = bs;
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              modelDefinitionBase64_ = bs;
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              insertDate_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Migration_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Migration_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.models.YaormModel.Migration.class, org.roylance.yaorm.models.YaormModel.Migration.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Migration> PARSER =
+        new com.google.protobuf.AbstractParser<Migration>() {
+      public Migration parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Migration(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Migration> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CONTEXT_NAME_FIELD_NUMBER = 2;
+    private java.lang.Object contextName_;
+    /**
+     * <code>optional string context_name = 2;</code>
+     */
+    public boolean hasContextName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string context_name = 2;</code>
+     */
+    public java.lang.String getContextName() {
+      java.lang.Object ref = contextName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          contextName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string context_name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContextNameBytes() {
+      java.lang.Object ref = contextName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        contextName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODEL_DEFINITION_BASE64_FIELD_NUMBER = 3;
+    private java.lang.Object modelDefinitionBase64_;
+    /**
+     * <code>optional string model_definition_base64 = 3;</code>
+     */
+    public boolean hasModelDefinitionBase64() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string model_definition_base64 = 3;</code>
+     */
+    public java.lang.String getModelDefinitionBase64() {
+      java.lang.Object ref = modelDefinitionBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          modelDefinitionBase64_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string model_definition_base64 = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getModelDefinitionBase64Bytes() {
+      java.lang.Object ref = modelDefinitionBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        modelDefinitionBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int INSERT_DATE_FIELD_NUMBER = 4;
+    private long insertDate_;
+    /**
+     * <code>optional int64 insert_date = 4;</code>
+     */
+    public boolean hasInsertDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int64 insert_date = 4;</code>
+     */
+    public long getInsertDate() {
+      return insertDate_;
+    }
+
+    private void initFields() {
+      id_ = "";
+      contextName_ = "";
+      modelDefinitionBase64_ = "";
+      insertDate_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getContextNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getModelDefinitionBase64Bytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(4, insertDate_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getContextNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getModelDefinitionBase64Bytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, insertDate_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.roylance.yaorm.models.YaormModel.Migration parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.roylance.yaorm.models.YaormModel.Migration prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.models.Migration}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.models.Migration)
+        org.roylance.yaorm.models.YaormModel.MigrationOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Migration_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Migration_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.models.YaormModel.Migration.class, org.roylance.yaorm.models.YaormModel.Migration.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.models.YaormModel.Migration.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        contextName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        modelDefinitionBase64_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        insertDate_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.models.YaormModel.internal_static_org_roylance_yaorm_models_Migration_descriptor;
+      }
+
+      public org.roylance.yaorm.models.YaormModel.Migration getDefaultInstanceForType() {
+        return org.roylance.yaorm.models.YaormModel.Migration.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.models.YaormModel.Migration build() {
+        org.roylance.yaorm.models.YaormModel.Migration result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.models.YaormModel.Migration buildPartial() {
+        org.roylance.yaorm.models.YaormModel.Migration result = new org.roylance.yaorm.models.YaormModel.Migration(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.contextName_ = contextName_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.modelDefinitionBase64_ = modelDefinitionBase64_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.insertDate_ = insertDate_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.models.YaormModel.Migration) {
+          return mergeFrom((org.roylance.yaorm.models.YaormModel.Migration)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.models.YaormModel.Migration other) {
+        if (other == org.roylance.yaorm.models.YaormModel.Migration.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          bitField0_ |= 0x00000001;
+          id_ = other.id_;
+          onChanged();
+        }
+        if (other.hasContextName()) {
+          bitField0_ |= 0x00000002;
+          contextName_ = other.contextName_;
+          onChanged();
+        }
+        if (other.hasModelDefinitionBase64()) {
+          bitField0_ |= 0x00000004;
+          modelDefinitionBase64_ = other.modelDefinitionBase64_;
+          onChanged();
+        }
+        if (other.hasInsertDate()) {
+          setInsertDate(other.getInsertDate());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.models.YaormModel.Migration parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.models.YaormModel.Migration) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object contextName_ = "";
+      /**
+       * <code>optional string context_name = 2;</code>
+       */
+      public boolean hasContextName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string context_name = 2;</code>
+       */
+      public java.lang.String getContextName() {
+        java.lang.Object ref = contextName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            contextName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string context_name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContextNameBytes() {
+        java.lang.Object ref = contextName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contextName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string context_name = 2;</code>
+       */
+      public Builder setContextName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        contextName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string context_name = 2;</code>
+       */
+      public Builder clearContextName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        contextName_ = getDefaultInstance().getContextName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string context_name = 2;</code>
+       */
+      public Builder setContextNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        contextName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object modelDefinitionBase64_ = "";
+      /**
+       * <code>optional string model_definition_base64 = 3;</code>
+       */
+      public boolean hasModelDefinitionBase64() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string model_definition_base64 = 3;</code>
+       */
+      public java.lang.String getModelDefinitionBase64() {
+        java.lang.Object ref = modelDefinitionBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            modelDefinitionBase64_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string model_definition_base64 = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getModelDefinitionBase64Bytes() {
+        java.lang.Object ref = modelDefinitionBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          modelDefinitionBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string model_definition_base64 = 3;</code>
+       */
+      public Builder setModelDefinitionBase64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        modelDefinitionBase64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string model_definition_base64 = 3;</code>
+       */
+      public Builder clearModelDefinitionBase64() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        modelDefinitionBase64_ = getDefaultInstance().getModelDefinitionBase64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string model_definition_base64 = 3;</code>
+       */
+      public Builder setModelDefinitionBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        modelDefinitionBase64_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long insertDate_ ;
+      /**
+       * <code>optional int64 insert_date = 4;</code>
+       */
+      public boolean hasInsertDate() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int64 insert_date = 4;</code>
+       */
+      public long getInsertDate() {
+        return insertDate_;
+      }
+      /**
+       * <code>optional int64 insert_date = 4;</code>
+       */
+      public Builder setInsertDate(long value) {
+        bitField0_ |= 0x00000008;
+        insertDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 insert_date = 4;</code>
+       */
+      public Builder clearInsertDate() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        insertDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.models.Migration)
+    }
+
+    static {
+      defaultInstance = new Migration(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.models.Migration)
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_models_WhereClause_descriptor;
   private static
@@ -19587,6 +20455,11 @@ public final class YaormModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_models_ConnectionInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_models_Migration_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_roylance_yaorm_models_Migration_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -19715,12 +20588,14 @@ public final class YaormModel {
       "ylance.yaorm.models.TableDefinitionGraph" +
       "\"N\n\016ConnectionInfo\022\014\n\004host\030\001 \001(\t\022\014\n\004user" +
       "\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t" +
-      "*\327\001\n\014ProtobufType\022\010\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022",
-      "\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT" +
-      "32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020\007\022\n\n\006SINT64\020\010" +
-      "\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64\020\n\022\014\n\010SFIXED32\020\013" +
-      "\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n\006STRING\020\016\022\t\n\005" +
-      "BYTES\020\017\022\t\n\005PROTO\020\020"
+      "\"c\n\tMigration\022\n\n\002id\030\001 \001(\t\022\024\n\014context_nam",
+      "e\030\002 \001(\t\022\037\n\027model_definition_base64\030\003 \001(\t" +
+      "\022\023\n\013insert_date\030\004 \001(\003*\327\001\n\014ProtobufType\022\010" +
+      "\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32" +
+      "\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n" +
+      "\006SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FI" +
+      "XED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004B" +
+      "OOL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -19842,6 +20717,12 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_ConnectionInfo_descriptor,
         new java.lang.String[] { "Host", "User", "Password", "Schema", });
+    internal_static_org_roylance_yaorm_models_Migration_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_org_roylance_yaorm_models_Migration_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_models_Migration_descriptor,
+        new java.lang.String[] { "Id", "ContextName", "ModelDefinitionBase64", "InsertDate", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

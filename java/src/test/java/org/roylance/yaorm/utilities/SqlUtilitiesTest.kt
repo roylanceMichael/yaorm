@@ -64,7 +64,7 @@ class SqlUtilitiesTest {
         val sqliteGeneratorService = SQLiteGeneratorService()
         val expectedSql = "delete from \"BeaconBroadcastModel\" where \"id\"='1';"
 
-        val property = YaormModel.ColumnDefinition.newBuilder().setName(CommonUtils.IdName).setType(YaormModel.ProtobufType.STRING)
+        val property = YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName).setType(YaormModel.ProtobufType.STRING)
         val holder = YaormModel.Column.newBuilder().setStringHolder(1.toString()).setDefinition(property).build()
 
         // act

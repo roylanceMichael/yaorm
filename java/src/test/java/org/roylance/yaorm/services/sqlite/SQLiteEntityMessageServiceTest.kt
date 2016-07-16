@@ -7,7 +7,7 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.DagBuilder
-import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestModelGMBuilder
 import java.io.File
 import java.util.*
 
@@ -23,7 +23,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
@@ -49,7 +49,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
@@ -82,7 +82,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
@@ -120,7 +120,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
@@ -161,7 +161,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
@@ -202,7 +202,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.getDescriptor())
 
@@ -235,7 +235,7 @@ class SQLiteEntityMessageServiceTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 

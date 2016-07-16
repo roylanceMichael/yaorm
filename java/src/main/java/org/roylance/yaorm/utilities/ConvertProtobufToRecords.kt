@@ -5,9 +5,9 @@ import com.google.protobuf.Message
 import org.roylance.yaorm.models.YaormModel
 import java.util.*
 
-internal class ConvertProtobufToRecords {
-    internal val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
-
+internal class ConvertProtobufToRecords(
+        internal val definitions:MutableMap<String, YaormModel.TableDefinitionGraphs>
+) {
     internal fun build(message:Message):MutableMap<String, YaormModel.TableRecords.Builder> {
         if (!ProtobufUtils.isMessageOk(message)) {
             return HashMap()
@@ -50,11 +50,11 @@ internal class ConvertProtobufToRecords {
                 .forEach { column ->
                     val foundField = message.allFields.keys.firstOrNull { column.name.equals(it.name) }
                     if (foundField == null) {
-                        val generatedColumn = CommonUtils.buildColumn(null, column)
+                        val generatedColumn = YaormUtils.buildColumn(null, column)
                         baseRecord.addColumns(generatedColumn)
                     }
                     else {
-                        val generatedColumn = CommonUtils.buildColumn(message.allFields[foundField], column)
+                        val generatedColumn = YaormUtils.buildColumn(message.allFields[foundField], column)
                         baseRecord.addColumns(generatedColumn)
                     }
                 }
@@ -67,17 +67,17 @@ internal class ConvertProtobufToRecords {
                 .forEach { columnDefinition ->
                     val foundMessageField = message.allFields.keys.firstOrNull { it.name.equals(columnDefinition.name) }
                     if (foundMessageField == null) {
-                        val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
+                        val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
                         baseRecord.addColumns(generatedNameColumn)
                     }
                     else {
                         val foundField = message.allFields[foundMessageField]
                         if (foundField is Descriptors.EnumValueDescriptor) {
-                            val generatedNameColumn = CommonUtils.buildColumn(foundField.name, columnDefinition)
+                            val generatedNameColumn = YaormUtils.buildColumn(foundField.name, columnDefinition)
                             baseRecord.addColumns(generatedNameColumn)
                         }
                         else {
-                            val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
+                            val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
                             baseRecord.addColumns(generatedNameColumn)
                         }
                     }
@@ -91,13 +91,13 @@ internal class ConvertProtobufToRecords {
                 .forEach { columnDefinition ->
                     val foundMessageField = message.allFields.keys.firstOrNull { it.name.equals(columnDefinition.name) }
                     if (foundMessageField == null) {
-                        val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
+                        val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
                         baseRecord.addColumns(generatedNameColumn)
                     }
                     else {
                         val foundField = message.allFields[foundMessageField]
                         if (foundField is Message && ProtobufUtils.isMessageOk(foundField)) {
-                            val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.getIdFromMessage(foundField), columnDefinition)
+                            val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.getIdFromMessage(foundField), columnDefinition)
                             baseRecord.addColumns(generatedNameColumn)
 
 
@@ -112,7 +112,7 @@ internal class ConvertProtobufToRecords {
                             }
                         }
                         else {
-                            val generatedNameColumn = CommonUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
+                            val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
                             baseRecord.addColumns(generatedNameColumn)
                         }
                     }
@@ -143,7 +143,7 @@ internal class ConvertProtobufToRecords {
             }
         }
 
-        // add in message children now
+        // add in messageType children now
         val repeatedMessageMap = ProtobufUtils.handleRepeatedMessageFields(message, mainMessageId, this)
         repeatedMessageMap.keys.forEach {
             if (recordsMap.containsKey(it)) {

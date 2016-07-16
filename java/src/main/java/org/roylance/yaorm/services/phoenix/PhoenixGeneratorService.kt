@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.phoenix
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGeneratorService {
@@ -61,26 +61,26 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
     }
 
     override fun buildDropIndex(definition: YaormModel.TableDefinition, columns: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(columns.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(columns.values.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
     override fun buildCreateIndex(definition: YaormModel.TableDefinition, properties: Map<String, YaormModel.ColumnDefinition>, includes: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = CommonUtils.buildIndexName(properties.values.map { it.name })
-        val joinedColumnNames = properties.values.joinToString(CommonUtils.Comma)
+        val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
+        val joinedColumnNames = properties.values.joinToString(YaormUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
 
         if (includes.isEmpty()) {
             return sqlStatement
         }
-        val joinedIncludeColumnNames = includes.values.joinToString(CommonUtils.Comma)
+        val joinedIncludeColumnNames = includes.values.joinToString(YaormUtils.Comma)
         return "$sqlStatement include ($joinedIncludeColumnNames)"
     }
 
     override fun buildDeleteWithCriteria(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String {
-        val whereClause = CommonUtils.buildWhereClause(whereClauseItem, this)
+        val whereClause = YaormUtils.buildWhereClause(whereClauseItem, this)
         return "delete from ${definition.name} where $whereClause"
     }
 
@@ -117,7 +117,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 definition.name,
-                CommonUtils.buildWhereClause(whereClauseItem, this))
+                YaormUtils.buildWhereClause(whereClauseItem, this))
 
         return whereSql
     }
@@ -128,7 +128,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 tableName,
-                CommonUtils.getFormattedString(primaryKey))
+                YaormUtils.getFormattedString(primaryKey))
 
         return deleteSql
     }
@@ -145,7 +145,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
         try {
             val nameTypeMap = HashMap<String, ColumnNameTuple<String>>()
 
-            CommonUtils.getNameTypes(
+            YaormUtils.getNameTypes(
                     definition,
                     YaormModel.ProtobufType.STRING,
                     this.protoTypeToSqlType)
@@ -158,7 +158,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
                 .columnsList
                 .sortedBy { it.definition.name }
                 .forEach {
-                    val formattedValue = CommonUtils.getFormattedString(it)
+                    val formattedValue = YaormUtils.getFormattedString(it)
                     columnNames.add(it.definition.name)
                     values.add(formattedValue)
                 }
@@ -166,8 +166,8 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
             val insertSql = java.lang.String.format(
                     InsertIntoTableSingleTemplate,
                     definition.name,
-                    columnNames.joinToString(CommonUtils.Comma),
-                    values.joinToString(CommonUtils.Comma))
+                    columnNames.joinToString(YaormUtils.Comma),
+                    values.joinToString(YaormUtils.Comma))
 
             return insertSql
         } catch (e: Exception) {
@@ -177,7 +177,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
     }
 
     override fun buildCreateTable(definition: YaormModel.TableDefinition): String? {
-        val nameTypes = CommonUtils.getNameTypes(
+        val nameTypes = YaormUtils.getNameTypes(
                 definition,
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
@@ -188,22 +188,22 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
 
         val workspace = StringBuilder()
 
-        val foundId = nameTypes.firstOrNull { CommonUtils.IdName.equals(it.sqlColumnName) } ?: return null
+        val foundId = nameTypes.firstOrNull { YaormUtils.IdName.equals(it.sqlColumnName) } ?: return null
 
-        workspace.append(CommonUtils.IdName)
-            .append(CommonUtils.Space)
+        workspace.append(YaormUtils.IdName)
+            .append(YaormUtils.Space)
             .append(foundId.dataType)
-            .append(CommonUtils.Space)
+            .append(YaormUtils.Space)
             .append(NotNull)
-            .append(CommonUtils.Space)
+            .append(YaormUtils.Space)
             .append(PrimaryKey)
 
-        for (nameType in nameTypes.filter { !CommonUtils.IdName.equals(it.sqlColumnName) }) {
+        for (nameType in nameTypes.filter { !YaormUtils.IdName.equals(it.sqlColumnName) }) {
             workspace
-                .append(CommonUtils.Comma)
-                .append(CommonUtils.Space)
+                .append(YaormUtils.Comma)
+                .append(YaormUtils.Space)
                 .append(nameType.sqlColumnName)
-                .append(CommonUtils.Space)
+                .append(YaormUtils.Space)
                 .append(nameType.dataType)
         }
 

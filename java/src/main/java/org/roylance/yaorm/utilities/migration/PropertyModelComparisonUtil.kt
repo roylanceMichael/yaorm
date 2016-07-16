@@ -1,4 +1,4 @@
-package org.roylance.yaorm.utilities
+package org.roylance.yaorm.utilities.migration
 
 import org.roylance.yaorm.models.YaormModel
 
@@ -7,13 +7,15 @@ object PropertyModelComparisonUtil {
             name:String,
             currentProperty: YaormModel.ColumnDefinition?,
             otherProperty: YaormModel.ColumnDefinition?,
-            differenceReports: MutableList<YaormModel.Difference>) {
+            differenceReports: MutableList<YaormModel.Difference>,
+            tableDefinition: YaormModel.TableDefinition) {
         if (currentProperty == null && otherProperty != null) {
             val difference = YaormModel.Difference.newBuilder()
                     .setEntityType(YaormModel.Difference.EntityType.COLUMN)
                     .setOperation(YaormModel.Difference.Operation.DROP)
                     .setName(name)
                     .setPropertyDefinition(otherProperty)
+                    .setTableDefinition(tableDefinition)
                     .build()
 
             differenceReports.add(difference)
@@ -25,6 +27,7 @@ object PropertyModelComparisonUtil {
                     .setOperation(YaormModel.Difference.Operation.CREATE)
                     .setName(name)
                     .setPropertyDefinition(currentProperty)
+                    .setTableDefinition(tableDefinition)
                     .build()
 
             differenceReports.add(difference)
@@ -38,6 +41,7 @@ object PropertyModelComparisonUtil {
                     .setOperation(YaormModel.Difference.Operation.DROP)
                     .setName(name)
                     .setPropertyDefinition(otherProperty)
+                    .setTableDefinition(tableDefinition)
                     .build()
             differenceReports.add(dropDifference)
 
@@ -46,6 +50,7 @@ object PropertyModelComparisonUtil {
                     .setOperation(YaormModel.Difference.Operation.CREATE)
                     .setName(name)
                     .setPropertyDefinition(currentProperty)
+                    .setTableDefinition(tableDefinition)
                     .build()
 
             differenceReports.add(createDifference)

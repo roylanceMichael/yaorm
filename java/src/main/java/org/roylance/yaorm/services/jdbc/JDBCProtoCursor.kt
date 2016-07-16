@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.jdbc
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.proto.IProtoCursor
 import org.roylance.yaorm.services.proto.IProtoStreamer
-import org.roylance.yaorm.utilities.CommonUtils
+import org.roylance.yaorm.utilities.YaormUtils
 import java.sql.ResultSet
 import java.sql.SQLException
 import java.sql.Statement
@@ -27,20 +27,20 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
                 .distinctBy { it.name }
                 .forEach {
                     if (this.namesToAvoid.contains(it.name)) {
-                        val propertyHolder = CommonUtils.buildColumn(null, it)
+                        val propertyHolder = YaormUtils.buildColumn(null, it)
                         newInstance.addColumns(propertyHolder)
                     }
                     else {
                         try {
                             val newValue = resultSet.getString(it.name)
-                            val propertyHolder = CommonUtils.buildColumn(newValue, it)
+                            val propertyHolder = YaormUtils.buildColumn(newValue, it)
                             newInstance.addColumns(propertyHolder)
                         }
                         catch (e:SQLException) {
                             // if we can't see this name for w/e reason, we'll print to the console, but continue on
                             e.printStackTrace()
                             this.namesToAvoid.add(it.name)
-                            val propertyHolder = CommonUtils.buildColumn(null, it)
+                            val propertyHolder = YaormUtils.buildColumn(null, it)
                             newInstance.addColumns(propertyHolder)
                         }
                     }

@@ -212,3 +212,10 @@ message ConnectionInfo {
     optional string password = 3;
     optional string schema = 4;
 }
+
+message Migration {
+    optional string id = 1;
+    optional string context_name = 2;
+    optional string model_definition_base64 = 3;
+    optional int64 insert_date = 4;
+}

@@ -17,7 +17,7 @@ class ProtobufUtilsTest {
         // assert
         definition!!
         Assert.assertTrue(definition.name?.equals("SimpleInsertTest")!!)
-        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals(CommonUtils.IdName) && it.type.name.equals(ProtobufUtils.ProtoStringName) })
+        Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals(YaormUtils.IdName) && it.type.name.equals(ProtobufUtils.ProtoStringName) })
         Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("display") && it.type.name.equals(ProtobufUtils.ProtoStringName) })
         Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_int32") && it.type.name.equals(ProtobufUtils.ProtoInt32Name) })
         Assert.assertTrue(definition.columnDefinitionsList.any { it.name.equals("test_int64") && it.type.name.equals(ProtobufUtils.ProtoInt64Name) })
@@ -51,7 +51,7 @@ class ProtobufUtilsTest {
         Assert.assertTrue(foundEnumLinkerDefinition.hasLinkerTableTable())
         foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.forEach { System.out.println(it.name) }
         Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.name.equals("${definition.mainTableDefinition.name}_CoolType_cool_types"))
-        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { YaormUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
         Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "${definition.mainTableDefinition.name}".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
         Assert.assertTrue(foundEnumLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "CoolType".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
 
@@ -60,12 +60,12 @@ class ProtobufUtilsTest {
         Assert.assertTrue(foundMessageLinkerDefinition.hasOtherTableDefinition())
 
         Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.name.equals("${definition.mainTableDefinition.name}_Child_childs"))
-        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { YaormUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
         Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "${definition.mainTableDefinition.name}_main".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
         Assert.assertTrue(foundMessageLinkerDefinition.linkerTableTable.columnDefinitionsList.any { "Child_other".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
 
         Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.name.equals("Child"))
-        Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitionsList.any { CommonUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
+        Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitionsList.any { YaormUtils.IdName.equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
         Assert.assertTrue(foundMessageLinkerDefinition.otherTableDefinition.columnDefinitionsList.any { "test_display".equals(it.name) && it.type.equals(YaormModel.ProtobufType.STRING) })
     }
 
@@ -79,7 +79,7 @@ class ProtobufUtilsTest {
         testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).build()
 
         // act
-        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
 
         // assert
         Assert.assertTrue(records.tableRecordsList.size.equals(10))
@@ -122,7 +122,7 @@ class ProtobufUtilsTest {
         testModel.addCoolTypes(secondCoolType)
 
         // act
-        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
 
         // assert
         Assert.assertTrue(records.tableRecordsList.size.equals(10))
@@ -192,7 +192,7 @@ class ProtobufUtilsTest {
         testModel.addChilds(subTestChild)
 
         // act
-        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
 
         // assert
         Assert.assertTrue(records.tableRecordsList.size.equals(10))
@@ -273,13 +273,13 @@ class ProtobufUtilsTest {
                 .setFather(TestingModel.Person.newBuilder().setId(UUID.randomUUID().toString()).setFirstName("Paul").setLastName("Roylance"))
 
         // act
-        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+        val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
 
         // assert
         Assert.assertTrue(true)
         val personRecords = records.tableRecordsList.first { it.tableName.equals(TestingModel.Person.getDescriptor().name) }!!
-        Assert.assertTrue(personRecords.records.recordsList.any { CommonUtils.getIdColumn(it.columnsList)!!.stringHolder.equals(testModel.id) })
-        Assert.assertTrue(personRecords.records.recordsList.any { CommonUtils.getIdColumn(it.columnsList)!!.stringHolder.equals(testModel.mother.id) })
-        Assert.assertTrue(personRecords.records.recordsList.any { CommonUtils.getIdColumn(it.columnsList)!!.stringHolder.equals(testModel.father.id) })
+        Assert.assertTrue(personRecords.records.recordsList.any { YaormUtils.getIdColumn(it.columnsList)!!.stringHolder.equals(testModel.id) })
+        Assert.assertTrue(personRecords.records.recordsList.any { YaormUtils.getIdColumn(it.columnsList)!!.stringHolder.equals(testModel.mother.id) })
+        Assert.assertTrue(personRecords.records.recordsList.any { YaormUtils.getIdColumn(it.columnsList)!!.stringHolder.equals(testModel.father.id) })
     }
 }

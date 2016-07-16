@@ -1,55 +1,59 @@
-package org.roylance.yaorm.utilities
+package org.roylance.yaorm.utilities.migration
 
 import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.utilities.YaormUtils
 
 object IndexModelComparisonUtil {
     fun addDifferenceIfDifference(
-        name:String,
-        currentIndexModel: YaormModel.Index?,
-        otherIndexModel: YaormModel.Index?,
-        differenceReports: MutableList<YaormModel.Difference>) {
-        if (currentIndexModel == null && otherIndexModel != null) {
+            name:String,
+            currentIndex: YaormModel.Index?,
+            otherIndex: YaormModel.Index?,
+            differenceReports: MutableList<YaormModel.Difference>,
+            tableDefinition: YaormModel.TableDefinition) {
+        if (currentIndex == null && otherIndex != null) {
             val difference = YaormModel.Difference.newBuilder()
                 .setEntityType(YaormModel.Difference.EntityType.INDEX)
                 .setOperation(YaormModel.Difference.Operation.DROP)
                 .setName(name)
-                .setIndex(otherIndexModel)
+                .setIndex(otherIndex)
+                .setTableDefinition(tableDefinition)
                 .build()
 
             differenceReports.add(difference)
         }
 
-        if (currentIndexModel != null && otherIndexModel == null) {
+        if (currentIndex != null && otherIndex == null) {
             val difference = YaormModel.Difference.newBuilder()
                     .setEntityType(YaormModel.Difference.EntityType.INDEX)
                     .setOperation(YaormModel.Difference.Operation.CREATE)
                     .setName(name)
-                    .setIndex(currentIndexModel)
+                    .setIndex(currentIndex)
+                    .setTableDefinition(tableDefinition)
                     .build()
 
             differenceReports.add(difference)
         }
 
-        if (currentIndexModel != null && otherIndexModel != null) {
-            val currentColumnNames =  currentIndexModel
+        if (currentIndex != null && otherIndex != null) {
+            val currentColumnNames =  currentIndex
                     .columnNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonUtils.Comma)
+                    .joinToString(YaormUtils.Comma)
 
-            val currentIncludeNames = currentIndexModel
+            val currentIncludeNames = currentIndex
                     .includeNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonUtils.Comma)
+                    .joinToString(YaormUtils.Comma)
 
-            val otherColumnNames = otherIndexModel
+            val otherColumnNames = otherIndex
                     .columnNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonUtils.Comma)
+                    .joinToString(YaormUtils.Comma)
 
-            val otherIncludeNames = otherIndexModel
+            val otherIncludeNames = otherIndex
                     .includeNamesList
                     .sortedBy { it.name }
-                    .joinToString(CommonUtils.Comma)
+                    .joinToString(YaormUtils.Comma)
 
             if (!currentColumnNames.equals(otherColumnNames) ||
                 !currentIncludeNames.equals(otherIncludeNames)) {
@@ -57,7 +61,8 @@ object IndexModelComparisonUtil {
                         .setEntityType(YaormModel.Difference.EntityType.INDEX)
                         .setOperation(YaormModel.Difference.Operation.DROP)
                         .setName(name)
-                        .setIndex(otherIndexModel)
+                        .setIndex(otherIndex)
+                        .setTableDefinition(tableDefinition)
                         .build()
 
                 differenceReports.add(dropIndexDifference)
@@ -66,7 +71,8 @@ object IndexModelComparisonUtil {
                         .setEntityType(YaormModel.Difference.EntityType.INDEX)
                         .setOperation(YaormModel.Difference.Operation.CREATE)
                         .setName(name)
-                        .setIndex(currentIndexModel)
+                        .setIndex(currentIndex)
+                        .setTableDefinition(tableDefinition)
                         .build()
 
                 differenceReports.add(createIndexDifference)

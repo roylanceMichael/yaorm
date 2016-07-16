@@ -8,7 +8,7 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.ProtobufUtils
-import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestModelGMBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.util.*
 
@@ -51,7 +51,7 @@ class PostgresProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             // act
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
@@ -84,7 +84,7 @@ class PostgresProtoTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -105,7 +105,7 @@ class PostgresProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -113,7 +113,7 @@ class PostgresProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
@@ -141,7 +141,7 @@ class PostgresProtoTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -173,7 +173,7 @@ class PostgresProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -181,7 +181,7 @@ class PostgresProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -224,7 +224,7 @@ class PostgresProtoTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -256,7 +256,7 @@ class PostgresProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -264,7 +264,7 @@ class PostgresProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -294,11 +294,11 @@ class PostgresProtoTest {
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -310,7 +310,8 @@ class PostgresProtoTest {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService)
+                    protoService,
+                    HashMap())
 
             // assert
             Assert.assertTrue(insertedRecord is TestingModel.SimpleInsertTest)

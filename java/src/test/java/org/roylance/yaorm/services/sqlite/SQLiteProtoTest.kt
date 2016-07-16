@@ -7,7 +7,7 @@ import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.ProtobufUtils
-import org.roylance.yaorm.utilities.TestModelGeneratedMessageBuilder
+import org.roylance.yaorm.utilities.TestModelGMBuilder
 import java.io.File
 import java.util.*
 
@@ -40,7 +40,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             // act
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
@@ -67,7 +67,7 @@ class SQLiteProtoTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -84,7 +84,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -92,7 +92,7 @@ class SQLiteProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
@@ -114,7 +114,7 @@ class SQLiteProtoTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -146,7 +146,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -154,7 +154,7 @@ class SQLiteProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -191,7 +191,7 @@ class SQLiteProtoTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -223,7 +223,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -231,7 +231,7 @@ class SQLiteProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -255,7 +255,7 @@ class SQLiteProtoTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGeneratedMessageBuilder()
+            val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -291,7 +291,7 @@ class SQLiteProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
                 entityService.createTable(it.tableDefinition)
@@ -299,7 +299,7 @@ class SQLiteProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService)
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
