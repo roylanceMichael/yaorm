@@ -68,7 +68,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
         val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
         val joinedColumnNames = properties.values.map { this.buildKeyword(it.name) }.joinToString(YaormUtils.Comma)
 
-        return "create index ${definition.name}_$indexName on ${definition.name} ($joinedColumnNames)"
+        return "create index ${definition.name}_$indexName on ${this.buildKeyword(definition.name)} ($joinedColumnNames)"
     }
 
     override fun buildDropIndex(definition: YaormModel.TableDefinition,
