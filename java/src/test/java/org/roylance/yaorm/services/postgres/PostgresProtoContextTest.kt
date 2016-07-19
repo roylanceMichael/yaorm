@@ -39,7 +39,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel")
+                    "TestingModel", HashMap())
 
             protoContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
             protoContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -83,7 +83,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
             firstContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -94,7 +94,7 @@ class PostgresProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName)
+                    contextName, HashMap())
 
             secondContext.handleMigrations()
 
@@ -140,7 +140,7 @@ class PostgresProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName)
+                    contextName, HashMap())
 
             secondContext.entityMessageService.dropAndCreateEntireSchema(TestingModelv2.getDescriptor())
             secondContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -158,7 +158,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstContext.handleMigrations()
 
@@ -197,7 +197,7 @@ class PostgresProtoContextTest {
                     TestingModelv3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName)
+                    contextName, HashMap())
 
             thirdVersion.entityMessageService.dropAndCreateEntireSchema(TestingModelv3.getDescriptor())
             thirdVersion.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -215,7 +215,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstVersion.handleMigrations()
 

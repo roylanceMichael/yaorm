@@ -32,7 +32,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel")
+                    "TestingModel", HashMap())
 
             protoContext.handleMigrations()
 
@@ -67,7 +67,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstContext.handleMigrations()
 
@@ -75,7 +75,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             secondContext.handleMigrations()
 
@@ -115,7 +115,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             secondContext.handleMigrations()
 
@@ -130,7 +130,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstContext.handleMigrations()
 
@@ -163,7 +163,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModelv3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             thirdVersion.handleMigrations()
 
@@ -178,7 +178,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstVersion.handleMigrations()
 

@@ -48,11 +48,17 @@ object ProtobufUtils {
         }
     }
 
-    fun buildDefinitionFromDescriptor(descriptor:Descriptors.Descriptor):YaormModel.TableDefinition? {
+    fun buildDefinitionFromDescriptor(descriptor:Descriptors.Descriptor,
+                                      customIndexes: MutableMap<String, YaormModel.Index>):YaormModel.TableDefinition? {
         // make sure we have an id, or return nothing
         descriptor.fields.firstOrNull { YaormUtils.IdName.equals(it.name) && ProtoStringName.equals(it.type.name) } ?: return null
 
-        val definition = YaormModel.TableDefinition.newBuilder().setName(descriptor.name)
+        val definition = YaormModel.TableDefinition.newBuilder()
+                .setName(descriptor.name)
+
+        if (customIndexes.containsKey(descriptor.name)) {
+            definition.index = customIndexes[descriptor.name]
+        }
         descriptor.fields
                 .forEach {
                     if (ProtoNameToProtoTypeMap.containsKey(it.type.name)) {
@@ -79,10 +85,11 @@ object ProtobufUtils {
     }
 
     fun buildDefinitionGraph(descriptor:Descriptors.Descriptor,
-                             seenTables:MutableSet<String> = HashSet()):YaormModel.TableDefinitionGraphs {
+                             customIndexes: MutableMap<String, YaormModel.Index>,
+                             seenTables: MutableSet<String> = HashSet()):YaormModel.TableDefinitionGraphs {
         seenTables.add(descriptor.name)
 
-        val mainDefinition = buildDefinitionFromDescriptor(descriptor) ?: return YaormModel.TableDefinitionGraphs.getDefaultInstance()
+        val mainDefinition = buildDefinitionFromDescriptor(descriptor, customIndexes) ?: return YaormModel.TableDefinitionGraphs.getDefaultInstance()
         val returnGraph = YaormModel.TableDefinitionGraphs.newBuilder().setMainTableDefinition(mainDefinition)
 
         descriptor.fields
@@ -100,7 +107,7 @@ object ProtobufUtils {
                     returnGraph.addTableDefinitionGraphs(definitionGraph)
                 }
                 else if (ProtoMessageType.equals(it.type.name)) {
-                    val otherDefinition = buildDefinitionFromDescriptor(it.messageType) ?: return@forEach
+                    val otherDefinition = buildDefinitionFromDescriptor(it.messageType, customIndexes) ?: return@forEach
                     val definitionGraph = YaormModel.TableDefinitionGraph.newBuilder()
                             .setDefinitionGraphType(YaormModel.TableDefinitionGraph.TableDefinitionGraphType.MESSAGE_TYPE)
                             .setMainName(mainDefinition.name)
@@ -116,7 +123,7 @@ object ProtobufUtils {
 
                     if (!seenTables.contains(it.messageType.name)) {
                         seenTables.add(it.messageType.name)
-                        val childDefinitions = buildDefinitionGraph(it.messageType, seenTables)
+                        val childDefinitions = buildDefinitionGraph(it.messageType, customIndexes, seenTables)
                         returnGraph.addAllTableDefinitionGraphs(childDefinitions.tableDefinitionGraphsList)
                     }
                 }
@@ -130,14 +137,16 @@ object ProtobufUtils {
                                                     entityService: IEntityProtoService,
                                                     entityId:String,
                                                     generatedMessageBuilder: IProtoGeneratedMessageBuilder,
-                                                    definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>): T? {
-        return GetProtoObject(entityService, generatedMessageBuilder, definitions)
+                                                    definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
+                                                    customIndexes: MutableMap<String, YaormModel.Index>): T? {
+        return GetProtoObject(entityService, generatedMessageBuilder, definitions, customIndexes)
                 .build(builder, entityId)
     }
 
     fun convertProtobufObjectToRecords(message:Message,
-                                       definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>):YaormModel.AllTableRecords {
-        val resultMap = ConvertProtobufToRecords(definitions).build(message)
+                                       definitions: MutableMap<String, YaormModel.TableDefinitionGraphs> = HashMap(),
+                                       customIndexes: MutableMap<String, YaormModel.Index> = HashMap()): YaormModel.AllTableRecords {
+        val resultMap = ConvertProtobufToRecords(definitions, customIndexes).build(message)
         val returnRecords = YaormModel.AllTableRecords.newBuilder()
 
         resultMap.keys.forEach {

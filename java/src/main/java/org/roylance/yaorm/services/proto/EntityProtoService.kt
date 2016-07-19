@@ -14,7 +14,11 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
         }
         val selectSql = this.sqlGeneratorService.buildSelectIds(definition)
 
-        this.granularDatabaseService.executeSelectQuery(definition, selectSql).getRecords().recordsList.map {
+        this.granularDatabaseService
+                .executeSelectQuery(definition, selectSql)
+                .getRecords()
+                .recordsList
+                .map {
             streamer.stream(it)
         }
     }
@@ -82,6 +86,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
                 indexModel.columnNamesList.associateBy { it.name },
                 indexModel.includeNamesList.associateBy { it.name }) ?: return false
 
+        System.out.println(createIndexSql)
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
                 .successful

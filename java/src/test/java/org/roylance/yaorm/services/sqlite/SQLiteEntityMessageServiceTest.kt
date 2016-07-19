@@ -3,11 +3,13 @@ package org.roylance.yaorm.services.sqlite
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
+import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.DagBuilder
 import org.roylance.yaorm.utilities.TestModelGMBuilder
+import org.roylance.yaorm.utilities.YaormUtils
 import java.io.File
 import java.util.*
 
@@ -24,7 +26,7 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
@@ -50,7 +52,7 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -83,7 +85,7 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -121,7 +123,7 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -162,7 +164,7 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -203,7 +205,7 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.getDescriptor())
 
             val newUser = TestingModel.User.newBuilder().setId(UUID.randomUUID().toString()).setDisplay("ok")
@@ -236,7 +238,46 @@ class SQLiteEntityMessageServiceTest {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService)
+            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+
+            // act
+            val foundDag = entityMessageService.get(TestingModel.Dag.getDefaultInstance(), UUID.randomUUID().toString())
+
+            // assert
+            Assert.assertTrue(foundDag == null)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    fun simpleIndexTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(
+                    database.absolutePath,
+                    "mike",
+                    "testing")
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = TestModelGMBuilder()
+
+            val customIndexes = HashMap<String, YaormModel.Index>()
+            val index = YaormModel.Index
+                    .newBuilder()
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .build()
+            customIndexes[TestingModel.Dag.getDescriptor().name] = index
+
+            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act

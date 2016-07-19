@@ -73,7 +73,9 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
             properties: Map<String, YaormModel.ColumnDefinition>,
             includes: Map<String, YaormModel.ColumnDefinition>): String? {
         val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
-        val joinedColumnNames = properties.values.map { this.buildKeyword(it.name) }.joinToString(YaormUtils.Comma)
+        val joinedColumnNames = properties.values
+                .map { this.buildIndexColumnName(it) }
+                .joinToString(YaormUtils.Comma)
         val sqlStatement = "create index $indexName on " +
                 "${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)} " +
                 "($joinedColumnNames) using BTREE"
@@ -334,5 +336,14 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
 
     override fun buildKeyword(keyword: String): String {
         return "${YaormUtils.AccentQuote}$keyword${YaormUtils.AccentQuote}"
+    }
+
+    private fun buildIndexColumnName(columnName:YaormModel.ColumnDefinition): String {
+        if ((columnName.type.equals(YaormModel.ProtobufType.STRING) ||
+                columnName.type.equals(YaormModel.ProtobufType.BYTES)) &&
+            !columnName.name.equals(YaormUtils.IdName)) {
+            return "${columnName.name}(100)"
+        }
+        return this.buildKeyword(columnName.name)
     }
 }

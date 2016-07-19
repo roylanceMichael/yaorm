@@ -9,13 +9,10 @@ import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.TestModelGMBuilder
 import org.roylance.yaorm.utilities.TestModelGMv2Builder
 import org.roylance.yaorm.utilities.TestModelGMv3Builder
-import java.io.File
 import java.util.*
 
 class MySQLProtoContextTest {
@@ -40,7 +37,8 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel")
+                    "TestingModel",
+                    HashMap())
 
             protoContext.handleMigrations()
 
@@ -80,7 +78,7 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstContext.handleMigrations()
 
@@ -88,7 +86,7 @@ class MySQLProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             secondContext.handleMigrations()
 
@@ -133,7 +131,7 @@ class MySQLProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             secondContext.handleMigrations()
 
@@ -148,7 +146,7 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstContext.handleMigrations()
 
@@ -186,7 +184,7 @@ class MySQLProtoContextTest {
                     TestingModelv3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             thirdVersion.handleMigrations()
 
@@ -201,7 +199,7 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName)
+                    contextName, HashMap())
 
             firstVersion.handleMigrations()
 

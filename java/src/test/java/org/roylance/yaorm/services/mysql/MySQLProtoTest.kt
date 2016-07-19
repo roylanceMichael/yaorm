@@ -45,7 +45,7 @@ class MySQLProtoTest {
             testModel.addCoolTypes(firstCoolType)
             testModel.addCoolTypes(secondCoolType)
 
-            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
             // act
             records.tableRecordsList.forEach {
                 entityService.dropTable(it.tableDefinition)
@@ -102,7 +102,13 @@ class MySQLProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService, HashMap())
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(
+                    TestingModel.Child.getDefaultInstance(),
+                    entityService,
+                    subTestChild.id,
+                    protoService,
+                    HashMap(),
+                    HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
@@ -169,7 +175,13 @@ class MySQLProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(
+                    TestingModel.SimpleInsertTest.getDefaultInstance(),
+                    entityService,
+                    testModel.id,
+                    protoService,
+                    HashMap(),
+                    HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -251,7 +263,13 @@ class MySQLProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(
+                    TestingModel.SimpleInsertTest.getDefaultInstance(),
+                    entityService,
+                    testModel.id,
+                    protoService,
+                    HashMap(),
+                    HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -297,6 +315,7 @@ class MySQLProtoTest {
                     entityService,
                     testModel.id,
                     protoService,
+                    HashMap(),
                     HashMap())
 
             // assert

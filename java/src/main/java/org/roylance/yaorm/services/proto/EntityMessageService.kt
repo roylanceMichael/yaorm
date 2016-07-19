@@ -9,16 +9,17 @@ import java.util.*
 
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
-        private val entityService: IEntityProtoService):IEntityMessageService {
+        private val entityService: IEntityProtoService,
+        private val customIndexes: HashMap<String, YaormModel.Index>):IEntityMessageService {
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
     override fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
-        CreateSchema(this, this.entityService).handleFile(fileDescriptor, false)
+        CreateSchema(this, this.entityService, this.customIndexes).handleFile(fileDescriptor, false)
         return true
     }
 
     override fun dropAndCreateEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
-        CreateSchema(this, this.entityService).handleFile(fileDescriptor, true)
+        CreateSchema(this, this.entityService, this.customIndexes).handleFile(fileDescriptor, true)
         return true
     }
 
@@ -26,7 +27,7 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return false
         }
-        CreateSchema(this, this.entityService).handleMessage(messageType.descriptorForType, false)
+        CreateSchema(this, this.entityService, customIndexes).handleMessage(messageType.descriptorForType, false)
         return true
     }
 
@@ -34,7 +35,7 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return false
         }
-        CreateSchema(this, this.entityService).handleMessage(messageType.descriptorForType, true)
+        CreateSchema(this, this.entityService, customIndexes).handleMessage(messageType.descriptorForType, true)
         return true
     }
 
@@ -70,7 +71,7 @@ class EntityMessageService(
         }
 
         // build records
-        val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions)
+        val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions, this.customIndexes)
 
         // create the main one
         if (!records.tableRecordsList.any { message.descriptorForType.name.equals(it.tableName) }) {
@@ -129,7 +130,7 @@ class EntityMessageService(
             return false
         }
 
-        val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions)
+        val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions, this.customIndexes)
         // todo - order this as a dag, also create relational constraints between the tables
         // go through children now, this is the source of truth
         records.tableRecordsList
@@ -172,7 +173,8 @@ class EntityMessageService(
                 this.entityService,
                 id,
                 this.protoGeneratedMessageBuilder,
-                definitions)
+                definitions,
+                this.customIndexes)
     }
 
     override fun <T : Message> getMany(messageType: T, limit: Int, offset: Int): List<T> {
@@ -359,11 +361,12 @@ class EntityMessageService(
 
     private class CreateSchema(
             private val entityMessageService: EntityMessageService,
-            private val entityService: IEntityProtoService) {
+            private val entityService: IEntityProtoService,
+            private val customIndexes: HashMap<String, YaormModel.Index>) {
         private val seenTables = HashSet<String>()
 
         fun handleMessage(descriptor: Descriptors.Descriptor, shouldDelete: Boolean) {
-            val foundDefinitions = ProtobufUtils.buildDefinitionGraph(descriptor)
+            val foundDefinitions = ProtobufUtils.buildDefinitionGraph(descriptor, this.customIndexes)
             entityMessageService.definitions[descriptor.name] = foundDefinitions
 
             if (!seenTables.contains(foundDefinitions.mainTableDefinition.name) &&
@@ -372,6 +375,12 @@ class EntityMessageService(
                     this.entityService.dropTable(foundDefinitions.mainTableDefinition)
                 }
                 this.entityService.createTable(foundDefinitions.mainTableDefinition)
+
+                if (foundDefinitions.mainTableDefinition.hasIndex()) {
+                    this.entityService.createIndex(
+                            foundDefinitions.mainTableDefinition.index,
+                            foundDefinitions.mainTableDefinition)
+                }
                 seenTables.add(foundDefinitions.mainTableDefinition.name)
             }
 
@@ -382,6 +391,10 @@ class EntityMessageService(
                         this.entityService.dropTable(graph.mainTableDefinition)
                     }
                     this.entityService.createTable(graph.mainTableDefinition)
+                    if (graph.mainTableDefinition.hasIndex()) {
+                        this.entityService.createIndex(graph.mainTableDefinition.index,
+                                graph.mainTableDefinition)
+                    }
                     seenTables.add(graph.mainName)
                 }
                 if (graph.hasLinkerTableTable() &&
@@ -391,6 +404,10 @@ class EntityMessageService(
                         this.entityService.dropTable(graph.linkerTableTable)
                     }
                     this.entityService.createTable(graph.linkerTableTable)
+                    if (graph.linkerTableTable.hasIndex()) {
+                        this.entityService.createIndex(graph.linkerTableTable.index,
+                                graph.linkerTableTable)
+                    }
                     seenTables.add(graph.linkerTableTable.name)
                 }
                 if (graph.hasOtherTableDefinition() &&
@@ -400,6 +417,10 @@ class EntityMessageService(
                         this.entityService.dropTable(graph.otherTableDefinition)
                     }
                     this.entityService.createTable(graph.otherTableDefinition)
+                    if (graph.otherTableDefinition.hasIndex()) {
+                        this.entityService.createIndex(graph.otherTableDefinition.index,
+                                graph.otherTableDefinition)
+                    }
                     seenTables.add(graph.otherName)
                 }
             }

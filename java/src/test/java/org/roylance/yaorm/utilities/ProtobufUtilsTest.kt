@@ -12,7 +12,7 @@ class ProtobufUtilsTest {
     fun simplePassThroughTest() {
         // arrange
         // act
-        val definition = ProtobufUtils.buildDefinitionFromDescriptor(TestingModel.SimpleInsertTest.getDescriptor())
+        val definition = ProtobufUtils.buildDefinitionFromDescriptor(TestingModel.SimpleInsertTest.getDescriptor(), HashMap())
 
         // assert
         definition!!
@@ -41,7 +41,7 @@ class ProtobufUtilsTest {
     fun moreComplexPassThroughTest() {
         // arrange
         // act
-        val definition = ProtobufUtils.buildDefinitionGraph(TestingModel.SimpleInsertTest.getDescriptor())
+        val definition = ProtobufUtils.buildDefinitionGraph(TestingModel.SimpleInsertTest.getDescriptor(), HashMap())
 
         // assert
         Assert.assertTrue(definition.mainTableDefinition.name.equals("SimpleInsertTest"))

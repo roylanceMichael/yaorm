@@ -6,7 +6,8 @@ import org.roylance.yaorm.models.YaormModel
 import java.util.*
 
 internal class ConvertProtobufToRecords(
-        internal val definitions:MutableMap<String, YaormModel.TableDefinitionGraphs>
+        internal val definitions:MutableMap<String, YaormModel.TableDefinitionGraphs>,
+        internal val customIndexes: MutableMap<String, YaormModel.Index>
 ) {
     internal fun build(message:Message):MutableMap<String, YaormModel.TableRecords.Builder> {
         if (!ProtobufUtils.isMessageOk(message)) {
@@ -17,7 +18,9 @@ internal class ConvertProtobufToRecords(
         val recordsMap = HashMap<String, YaormModel.TableRecords.Builder>()
 
         if (!definitions.containsKey(message.descriptorForType.name)) {
-            definitions[message.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(message.descriptorForType)
+            definitions[message.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(
+                    message.descriptorForType,
+                    this.customIndexes)
         }
 
         this.definitions[message.descriptorForType.name]!!

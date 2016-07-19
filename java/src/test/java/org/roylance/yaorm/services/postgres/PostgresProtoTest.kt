@@ -113,7 +113,7 @@ class PostgresProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService, HashMap())
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.Child>(TestingModel.Child.getDefaultInstance(), entityService, subTestChild.id, protoService, HashMap(), HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
@@ -181,7 +181,7 @@ class PostgresProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap(), HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -264,7 +264,7 @@ class PostgresProtoTest {
             }
 
             // act
-            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap())
+            val record = ProtobufUtils.getProtoObjectFromBuilderSingle<TestingModel.SimpleInsertTest>(TestingModel.SimpleInsertTest.getDefaultInstance(), entityService, testModel.id, protoService, HashMap(), HashMap())
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
@@ -311,7 +311,7 @@ class PostgresProtoTest {
                     entityService,
                     testModel.id,
                     protoService,
-                    HashMap())
+                    HashMap(), HashMap())
 
             // assert
             Assert.assertTrue(insertedRecord is TestingModel.SimpleInsertTest)

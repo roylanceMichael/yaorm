@@ -9,7 +9,8 @@ import java.util.*
 internal class GetProtoObject(
         private val entityService: IEntityProtoService,
         private val generatedMessageBuilder: IProtoGeneratedMessageBuilder,
-        private val definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>) {
+        private val definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
+        private val customIndexes: MutableMap<String, YaormModel.Index>) {
     private val typeNameMap = HashMap<String, Message.Builder>()
 
     internal fun <T: Message> build(builder: T, entityId:String):T? {
@@ -19,7 +20,7 @@ internal class GetProtoObject(
         }
 
         if (!definitions.containsKey(builder.descriptorForType.name)) {
-            definitions[builder.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(builder.descriptorForType)
+            definitions[builder.descriptorForType.name] = ProtobufUtils.buildDefinitionGraph(builder.descriptorForType, this.customIndexes)
         }
         val tableDefinitionGraph = definitions[builder.descriptorForType.name]!!
         val builderForType = builder.newBuilderForType()

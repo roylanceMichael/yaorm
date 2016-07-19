@@ -11,7 +11,8 @@ class EntityProtoContext(
         val fileDescriptor: Descriptors.FileDescriptor,
         val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         val protoService: IEntityProtoService,
-        val contextName:String) {
+        val contextName:String,
+        val customIndexes: HashMap<String, YaormModel.Index>) {
     val entityMessageService: IEntityMessageService
 
     private val typeToAction = object: HashMap<
@@ -34,7 +35,9 @@ class EntityProtoContext(
     }
 
     init {
-        this.entityMessageService = EntityMessageService(this.protoGeneratedMessageBuilder, this.protoService)
+        this.entityMessageService = EntityMessageService(this.protoGeneratedMessageBuilder,
+                this.protoService,
+                this.customIndexes)
         this.entityMessageService.createEntireSchema(YaormModel.Migration.getDefaultInstance())
     }
 
@@ -79,7 +82,7 @@ class EntityProtoContext(
         val actualDefinitions = HashMap<String, YaormModel.TableDefinition>()
 
         this.fileDescriptor.messageTypes.forEach { messageDescriptor ->
-            val foundDefinitions = ProtobufUtils.buildDefinitionGraph(messageDescriptor)
+            val foundDefinitions = ProtobufUtils.buildDefinitionGraph(messageDescriptor, this.customIndexes)
 
             if (YaormUtils.checkIfOk(foundDefinitions.mainTableDefinition)) {
                 actualDefinitions[foundDefinitions.mainTableDefinition.name] = foundDefinitions.mainTableDefinition
