@@ -86,7 +86,6 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
                 indexModel.columnNamesList.associateBy { it.name },
                 indexModel.includeNamesList.associateBy { it.name }) ?: return false
 
-        System.out.println(createIndexSql)
         return this.granularDatabaseService
                 .executeUpdateQuery(createIndexSql)
                 .successful
