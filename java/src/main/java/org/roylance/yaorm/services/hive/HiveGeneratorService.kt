@@ -156,9 +156,9 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
 
         val columnNames = ArrayList<String>()
 
-        definition
-            .columnDefinitionsList
-            .sortedBy { it.order }
+        val sortedColumns = definition.columnDefinitionsList.sortedBy { it.order }
+
+        sortedColumns
             .forEach {
                 if (nameTypeMap.containsKey(it.name)) {
                     columnNames.add(this.buildKeyword(it.name))
@@ -173,18 +173,19 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             .forEach { instance ->
                 val valueColumnPairs = ArrayList<String>()
 
-                instance
-                    .columnsList
-                    .sortedBy { it.definition.order }
-                    .forEach {
-                        val formattedString = YaormUtils.getFormattedString(it)
+                sortedColumns.forEach { columnDefinition ->
+                    val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name.equals(columnDefinition.name) }
+
+                    if (foundColumn != null) {
+                        val formattedString = YaormUtils.getFormattedString(foundColumn)
                         if (valueColumnPairs.isEmpty()) {
-                            valueColumnPairs.add("select $formattedString as ${this.buildKeyword(it.definition.name)}")
+                            valueColumnPairs.add("select $formattedString as ${this.buildKeyword(foundColumn.definition.name)}")
                         }
                         else {
-                            valueColumnPairs.add("$formattedString as ${this.buildKeyword(it.definition.name)}")
+                            valueColumnPairs.add("$formattedString as ${this.buildKeyword(foundColumn.definition.name)}")
                         }
                     }
+                }
 
                 selectStatements.add(valueColumnPairs.joinToString(YaormUtils.Comma))
             }

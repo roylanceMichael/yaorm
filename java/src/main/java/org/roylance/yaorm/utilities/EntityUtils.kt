@@ -36,7 +36,6 @@ object EntityUtils {
                 .methods
                 .filter { it.name.startsWith(YaormUtils.Set) }
                 .map { it.name.substring(YaormUtils.GetSetLength) }
-                .toHashSet()
 
         val definition = YaormModel.TableDefinition.newBuilder().setName(classType.simpleName)
         var i = 0
@@ -45,6 +44,7 @@ object EntityUtils {
                 .filter { it.name.startsWith(YaormUtils.Get) &&
                         propertyNames.contains(it.name.substring(YaormUtils.GetSetLength)) &&
                         !YaormUtils.JavaObjectName.equals(it.returnType.name) }
+                .sortedBy { it.name }
                 .map {
                     val name = YaormUtils.lowercaseFirstChar(
                             it.name.substring(YaormUtils.GetSetLength))

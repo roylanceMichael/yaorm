@@ -59,14 +59,13 @@ object ProtobufUtils {
         if (customIndexes.containsKey(descriptor.name)) {
             definition.index = customIndexes[descriptor.name]
         }
-        var i = 0
         descriptor.fields
                 .forEach {
                     if (ProtoNameToProtoTypeMap.containsKey(it.type.name)) {
                         val newProperty = YaormModel.ColumnDefinition.newBuilder()
                                 .setName(it.name)
                                 .setType(ProtoNameToProtoTypeMap[it.type.name])
-                                .setOrder(i)
+                                .setOrder(it.number)
                         definition.addColumnDefinitions(newProperty)
                     }
                     else {
@@ -75,13 +74,12 @@ object ProtobufUtils {
                             return@forEach
                         }
                         else if (ProtoEnumType.equals(it.type.name)) {
-                            definition.addColumnDefinitions(buildEnumNameColumnName(it.name, i))
+                            definition.addColumnDefinitions(buildEnumNameColumnName(it.name, it.number))
                         }
                         else if (ProtoMessageType.equals(it.type.name)) {
-                            definition.addColumnDefinitions(buildMessageColumnName(it.name, i))
+                            definition.addColumnDefinitions(buildMessageColumnName(it.name, it.number))
                         }
                     }
-                    i++
         }
 
         return definition.build()

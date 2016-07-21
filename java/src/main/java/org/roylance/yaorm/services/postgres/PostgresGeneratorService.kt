@@ -156,7 +156,8 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
 
     override fun buildBulkInsert(definition: YaormModel.TableDefinition,
                                  records: YaormModel.Records): String {
-        val columnNames = definition.columnDefinitionsList.sortedBy { it.order }.map { this.buildKeyword(it.name) }
+        val sortedColumns = definition.columnDefinitionsList.sortedBy { it.order }
+        val columnNames = sortedColumns.map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(YaormUtils.Comma)
         val initialStatement = "insert into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
@@ -166,16 +167,18 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                 .recordsList
                 .forEach { instance ->
                     val valueColumnPairs = ArrayList<String>()
-                    instance
-                            .columnsList
-                            .sortedBy { it.definition.order }
-                            .forEach {
-                                val formattedString = YaormUtils.getFormattedString(it)
-                                if (valueColumnPairs.isEmpty()) {
-                                    valueColumnPairs.add("select $formattedString as ${this.buildKeyword(it.definition.name)}")
-                                }
-                                else {
-                                    valueColumnPairs.add("$formattedString as ${this.buildKeyword(it.definition.name)}")
+                    sortedColumns
+                            .forEach { columnDefinition ->
+                                val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name.equals(columnDefinition.name) }
+
+                                if (foundColumn != null) {
+                                    val formattedString = YaormUtils.getFormattedString(foundColumn)
+                                    if (valueColumnPairs.isEmpty()) {
+                                        valueColumnPairs.add("select $formattedString as ${this.buildKeyword(foundColumn.definition.name)}")
+                                    }
+                                    else {
+                                        valueColumnPairs.add("$formattedString as ${this.buildKeyword(foundColumn.definition.name)}")
+                                    }
                                 }
                             }
 

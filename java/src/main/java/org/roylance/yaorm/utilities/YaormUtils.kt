@@ -410,7 +410,7 @@ object YaormUtils {
         // let's handle the types now
         definition
                 .columnDefinitionsList
-                .sortedBy { it.name }
+                .sortedBy { it.order }
                 .forEach {
                     val columnName = it.name
                     val javaType = it.type
