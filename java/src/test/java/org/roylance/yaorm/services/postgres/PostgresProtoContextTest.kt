@@ -9,10 +9,7 @@ import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.utilities.ConnectionUtilities
-import org.roylance.yaorm.utilities.TestModelGMBuilder
-import org.roylance.yaorm.utilities.TestModelGMv2Builder
-import org.roylance.yaorm.utilities.TestModelGMv3Builder
+import org.roylance.yaorm.utilities.*
 import java.util.*
 
 class PostgresProtoContextTest {
@@ -39,7 +36,8 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel", HashMap())
+                    "TestingModel", HashMap(),
+                    TestBase64Service())
 
             protoContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
             protoContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -83,7 +81,8 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap())
+                    contextName, HashMap(),
+                    TestBase64Service())
 
             firstContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
             firstContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -94,7 +93,8 @@ class PostgresProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap())
+                    contextName, HashMap(),
+                    TestBase64Service())
 
             secondContext.handleMigrations()
 
@@ -140,7 +140,8 @@ class PostgresProtoContextTest {
                     TestingModelv2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap())
+                    contextName, HashMap(),
+                    TestBase64Service())
 
             secondContext.entityMessageService.dropAndCreateEntireSchema(TestingModelv2.getDescriptor())
             secondContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -158,7 +159,8 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap())
+                    contextName, HashMap(),
+                    TestBase64Service())
 
             firstContext.handleMigrations()
 
@@ -197,7 +199,8 @@ class PostgresProtoContextTest {
                     TestingModelv3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap())
+                    contextName, HashMap(),
+                    TestBase64Service())
 
             thirdVersion.entityMessageService.dropAndCreateEntireSchema(TestingModelv3.getDescriptor())
             thirdVersion.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -215,7 +218,8 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap())
+                    contextName, HashMap(),
+                    TestBase64Service())
 
             firstVersion.handleMigrations()
 

@@ -1340,6 +1340,15 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.models.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
     org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType getLinkerType();
+
+    /**
+     * <code>optional int32 order = 6;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional int32 order = 6;</code>
+     */
+    int getOrder();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.models.ColumnDefinition}
@@ -1435,6 +1444,11 @@ public final class YaormModel {
                 bitField0_ |= 0x00000010;
                 linkerType_ = value;
               }
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              order_ = input.readInt32();
               break;
             }
           }
@@ -1779,12 +1793,28 @@ public final class YaormModel {
       return linkerType_;
     }
 
+    public static final int ORDER_FIELD_NUMBER = 6;
+    private int order_;
+    /**
+     * <code>optional int32 order = 6;</code>
+     */
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 order = 6;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
     private void initFields() {
       name_ = "";
       type_ = org.roylance.yaorm.models.YaormModel.ProtobufType.NONE;
       isKey_ = false;
       columnType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.ColumnType.SCALAR;
       linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
+      order_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1814,6 +1844,9 @@ public final class YaormModel {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(5, linkerType_.getNumber());
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, order_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1842,6 +1875,10 @@ public final class YaormModel {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, linkerType_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, order_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1970,6 +2007,8 @@ public final class YaormModel {
         bitField0_ = (bitField0_ & ~0x00000008);
         linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
         bitField0_ = (bitField0_ & ~0x00000010);
+        order_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -2018,6 +2057,10 @@ public final class YaormModel {
           to_bitField0_ |= 0x00000010;
         }
         result.linkerType_ = linkerType_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.order_ = order_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2050,6 +2093,9 @@ public final class YaormModel {
         }
         if (other.hasLinkerType()) {
           setLinkerType(other.getLinkerType());
+        }
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2287,6 +2333,38 @@ public final class YaormModel {
       public Builder clearLinkerType() {
         bitField0_ = (bitField0_ & ~0x00000010);
         linkerType_ = org.roylance.yaorm.models.YaormModel.ColumnDefinition.LinkerType.NONE;
+        onChanged();
+        return this;
+      }
+
+      private int order_ ;
+      /**
+       * <code>optional int32 order = 6;</code>
+       */
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 order = 6;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>optional int32 order = 6;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000020;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 order = 6;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        order_ = 0;
         onChanged();
         return this;
       }
@@ -20480,122 +20558,123 @@ public final class YaormModel {
       "g.roylance.yaorm.models.WhereClause\"K\n\014O" +
       "peratorType\022\n\n\006EQUALS\020\000\022\020\n\014GREATER_THAN\020",
       "\001\022\r\n\tLESS_THAN\020\002\022\016\n\nNOT_EQUALS\020\003\",\n\017Conn" +
-      "ectingAndOr\022\010\n\004NONE\020\000\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\207" +
+      "ectingAndOr\022\010\n\004NONE\020\000\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\226" +
       "\003\n\020ColumnDefinition\022\014\n\004name\030\001 \001(\t\0225\n\004typ" +
       "e\030\002 \001(\0162\'.org.roylance.yaorm.models.Prot" +
       "obufType\022\016\n\006is_key\030\003 \001(\010\022K\n\013column_type\030" +
       "\004 \001(\01626.org.roylance.yaorm.models.Column" +
       "Definition.ColumnType\022K\n\013linker_type\030\005 \001" +
       "(\01626.org.roylance.yaorm.models.ColumnDef" +
-      "inition.LinkerType\"H\n\nColumnType\022\n\n\006SCAL" +
-      "AR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nENUM_VALUE\020\002\022\017\n\013M",
-      "ESSAGE_KEY\020\003\":\n\nLinkerType\022\010\n\004NONE\020\000\022\n\n\006" +
-      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\216\001\n\005Ind" +
-      "ex\022A\n\014column_names\030\001 \003(\0132+.org.roylance." +
-      "yaorm.models.ColumnDefinition\022B\n\rinclude" +
-      "_names\030\002 \003(\0132+.org.roylance.yaorm.models" +
-      ".ColumnDefinition\"\271\003\n\nDifference\022E\n\013enti" +
-      "ty_type\030\001 \001(\01620.org.roylance.yaorm.model" +
-      "s.Difference.EntityType\022B\n\toperation\030\002 \001" +
-      "(\0162/.org.roylance.yaorm.models.Differenc" +
-      "e.Operation\022\014\n\004name\030\003 \001(\t\022/\n\005index\030\004 \001(\013",
-      "2 .org.roylance.yaorm.models.Index\022H\n\023pr" +
-      "operty_definition\030\005 \001(\0132+.org.roylance.y" +
-      "aorm.models.ColumnDefinition\022D\n\020table_de" +
-      "finition\030\006 \001(\0132*.org.roylance.yaorm.mode" +
-      "ls.TableDefinition\".\n\nEntityType\022\t\n\005INDE" +
-      "X\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation\022" +
-      "\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\241\002\n\017TableDefinitio" +
-      "n\022\014\n\004name\030\001 \001(\t\022G\n\022column_definitions\030\002 " +
-      "\003(\0132+.org.roylance.yaorm.models.ColumnDe" +
-      "finition\022/\n\005index\030\003 \001(\0132 .org.roylance.y",
-      "aorm.models.Index\022H\n\ntable_type\030\004 \001(\01624." +
+      "inition.LinkerType\022\r\n\005order\030\006 \001(\005\"H\n\nCol" +
+      "umnType\022\n\n\006SCALAR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nEN",
+      "UM_VALUE\020\002\022\017\n\013MESSAGE_KEY\020\003\":\n\nLinkerTyp" +
+      "e\022\010\n\004NONE\020\000\022\n\n\006PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NE" +
+      "ITHER\020\003\"\216\001\n\005Index\022A\n\014column_names\030\001 \003(\0132" +
+      "+.org.roylance.yaorm.models.ColumnDefini" +
+      "tion\022B\n\rinclude_names\030\002 \003(\0132+.org.roylan" +
+      "ce.yaorm.models.ColumnDefinition\"\271\003\n\nDif" +
+      "ference\022E\n\013entity_type\030\001 \001(\01620.org.royla" +
+      "nce.yaorm.models.Difference.EntityType\022B" +
+      "\n\toperation\030\002 \001(\0162/.org.roylance.yaorm.m" +
+      "odels.Difference.Operation\022\014\n\004name\030\003 \001(\t",
+      "\022/\n\005index\030\004 \001(\0132 .org.roylance.yaorm.mod" +
+      "els.Index\022H\n\023property_definition\030\005 \001(\0132+" +
+      ".org.roylance.yaorm.models.ColumnDefinit" +
+      "ion\022D\n\020table_definition\030\006 \001(\0132*.org.royl" +
+      "ance.yaorm.models.TableDefinition\".\n\nEnt" +
+      "ityType\022\t\n\005INDEX\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABLE\020" +
+      "\002\"!\n\tOperation\022\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\241\002\n" +
+      "\017TableDefinition\022\014\n\004name\030\001 \001(\t\022G\n\022column" +
+      "_definitions\030\002 \003(\0132+.org.roylance.yaorm." +
+      "models.ColumnDefinition\022/\n\005index\030\003 \001(\0132 ",
+      ".org.roylance.yaorm.models.Index\022H\n\ntabl" +
+      "e_type\030\004 \001(\01624.org.roylance.yaorm.models" +
+      ".TableDefinition.TableType\"<\n\tTableType\022" +
+      "\n\n\006NORMAL\020\000\022\022\n\016LINKER_MESSAGE\020\001\022\017\n\013LINKE" +
+      "R_ENUM\020\002\"Y\n\020TableDefinitions\022E\n\021table_de" +
+      "finitions\030\001 \003(\0132*.org.roylance.yaorm.mod" +
+      "els.TableDefinition\"h\n\020DifferenceReport\022" +
+      "\030\n\020migration_exists\030\001 \001(\010\022:\n\013differences" +
+      "\030\002 \003(\0132%.org.roylance.yaorm.models.Diffe" +
+      "rence\"\242\003\n\006Column\022?\n\ndefinition\030\001 \001(\0132+.o",
+      "rg.roylance.yaorm.models.ColumnDefinitio" +
+      "n\022\025\n\rdouble_holder\030\002 \001(\001\022\024\n\014float_holder" +
+      "\030\003 \001(\002\022\024\n\014int32_holder\030\004 \001(\005\022\024\n\014int64_ho" +
+      "lder\030\005 \001(\003\022\025\n\ruint32_holder\030\006 \001(\r\022\025\n\ruin" +
+      "t64_holder\030\007 \001(\004\022\025\n\rsint32_holder\030\010 \001(\021\022" +
+      "\025\n\rsint64_holder\030\t \001(\022\022\026\n\016fixed32_holder" +
+      "\030\n \001(\007\022\026\n\016fixed64_holder\030\013 \001(\006\022\027\n\017sfixed" +
+      "32_holder\030\014 \001(\017\022\027\n\017sfixed64_holder\030\r \001(\020" +
+      "\022\023\n\013bool_holder\030\016 \001(\010\022\025\n\rstring_holder\030\017" +
+      " \001(\t\022\024\n\014bytes_holder\030\020 \001(\014\"<\n\006Record\0222\n\007",
+      "columns\030\001 \003(\0132!.org.roylance.yaorm.model" +
+      "s.Column\"=\n\007Records\0222\n\007records\030\001 \003(\0132!.o" +
+      "rg.roylance.yaorm.models.Record\"\267\001\n\014Tabl" +
+      "eRecords\022D\n\020table_definition\030\001 \001(\0132*.org" +
+      ".roylance.yaorm.models.TableDefinition\0223" +
+      "\n\007records\030\002 \001(\0132\".org.roylance.yaorm.mod" +
+      "els.Records\022\022\n\ntable_name\030\003 \001(\t\022\030\n\020known" +
+      "_parent_ids\030\004 \003(\t\"Q\n\017AllTableRecords\022>\n\r" +
+      "table_records\030\001 \003(\0132\'.org.roylance.yaorm" +
+      ".models.TableRecords\"\371\005\n\021DatabaseOperati",
+      "on\022D\n\020table_definition\030\001 \001(\0132*.org.royla" +
+      "nce.yaorm.models.TableDefinition\0223\n\007reco" +
+      "rds\030\002 \001(\0132\".org.roylance.yaorm.models.Re" +
+      "cords\022/\n\005index\030\003 \001(\0132 .org.roylance.yaor" +
+      "m.models.Index\022F\n\021column_definition\030\004 \001(" +
+      "\0132+.org.roylance.yaorm.models.ColumnDefi" +
+      "nition\022<\n\014where_clause\030\005 \001(\0132&.org.royla" +
+      "nce.yaorm.models.WhereClause\022c\n\027database" +
+      "_operation_type\030\006 \001(\0162B.org.roylance.yao" +
+      "rm.models.DatabaseOperation.DatabaseOper",
+      "ationType\"\314\002\n\025DatabaseOperationType\022\020\n\014C" +
+      "REATE_TABLE\020\000\022\016\n\nDROP_TABLE\020\001\022\020\n\014CREATE_" +
+      "INDEX\020\002\022\016\n\nDROP_INDEX\020\003\022\021\n\rCREATE_COLUMN" +
+      "\020\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n\nGE" +
+      "T_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\tGET" +
+      "_WHERE\020\n\022\017\n\013BULK_INSERT\020\013\022\024\n\020CREATE_OR_U" +
+      "PDATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UPDAT" +
+      "E_WITH_CRITERIA\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022\n\n\006" +
+      "DELETE\020\021\022\016\n\nDELETE_ALL\020\022\"\233\002\n\027DatabaseOpe" +
+      "rationResult\022\023\n\013bool_result\030\001 \001(\010\022\024\n\014cou",
+      "nt_result\030\002 \001(\003\0228\n\rrecord_result\030\003 \001(\0132!" +
+      ".org.roylance.yaorm.models.Record\022:\n\016rec" +
+      "ords_result\030\004 \001(\0132\".org.roylance.yaorm.m" +
+      "odels.Records\022\025\n\rerror_message\030\005 \001(\t\022H\n\022" +
+      "database_operation\030\006 \001(\0132,.org.roylance." +
+      "yaorm.models.DatabaseOperation\"\315\001\n\022Datab" +
+      "aseDefinition\022\016\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 " +
+      "\001(\t\022F\n\021table_definitions\030\003 \001(\0132+.org.roy" +
+      "lance.yaorm.models.TableDefinitions\022Q\n\027t" +
+      "able_definition_graphs\030\004 \003(\01320.org.royla",
+      "nce.yaorm.models.TableDefinitionGraphs\"\327" +
+      "\003\n\024TableDefinitionGraph\022I\n\025main_table_de" +
+      "finition\030\001 \001(\0132*.org.roylance.yaorm.mode" +
+      "ls.TableDefinition\022J\n\026other_table_defini" +
+      "tion\030\002 \001(\0132*.org.roylance.yaorm.models.T" +
+      "ableDefinition\022F\n\022linker_table_table\030\003 \001" +
+      "(\0132*.org.roylance.yaorm.models.TableDefi" +
+      "nition\022g\n\025definition_graph_type\030\004 \001(\0162H." +
       "org.roylance.yaorm.models.TableDefinitio" +
-      "n.TableType\"<\n\tTableType\022\n\n\006NORMAL\020\000\022\022\n\016" +
-      "LINKER_MESSAGE\020\001\022\017\n\013LINKER_ENUM\020\002\"Y\n\020Tab" +
-      "leDefinitions\022E\n\021table_definitions\030\001 \003(\013" +
-      "2*.org.roylance.yaorm.models.TableDefini" +
-      "tion\"h\n\020DifferenceReport\022\030\n\020migration_ex" +
-      "ists\030\001 \001(\010\022:\n\013differences\030\002 \003(\0132%.org.ro" +
-      "ylance.yaorm.models.Difference\"\242\003\n\006Colum" +
-      "n\022?\n\ndefinition\030\001 \001(\0132+.org.roylance.yao",
-      "rm.models.ColumnDefinition\022\025\n\rdouble_hol" +
-      "der\030\002 \001(\001\022\024\n\014float_holder\030\003 \001(\002\022\024\n\014int32" +
-      "_holder\030\004 \001(\005\022\024\n\014int64_holder\030\005 \001(\003\022\025\n\ru" +
-      "int32_holder\030\006 \001(\r\022\025\n\ruint64_holder\030\007 \001(" +
-      "\004\022\025\n\rsint32_holder\030\010 \001(\021\022\025\n\rsint64_holde" +
-      "r\030\t \001(\022\022\026\n\016fixed32_holder\030\n \001(\007\022\026\n\016fixed" +
-      "64_holder\030\013 \001(\006\022\027\n\017sfixed32_holder\030\014 \001(\017" +
-      "\022\027\n\017sfixed64_holder\030\r \001(\020\022\023\n\013bool_holder" +
-      "\030\016 \001(\010\022\025\n\rstring_holder\030\017 \001(\t\022\024\n\014bytes_h" +
-      "older\030\020 \001(\014\"<\n\006Record\0222\n\007columns\030\001 \003(\0132!",
-      ".org.roylance.yaorm.models.Column\"=\n\007Rec" +
-      "ords\0222\n\007records\030\001 \003(\0132!.org.roylance.yao" +
-      "rm.models.Record\"\267\001\n\014TableRecords\022D\n\020tab" +
-      "le_definition\030\001 \001(\0132*.org.roylance.yaorm" +
-      ".models.TableDefinition\0223\n\007records\030\002 \001(\013" +
-      "2\".org.roylance.yaorm.models.Records\022\022\n\n" +
-      "table_name\030\003 \001(\t\022\030\n\020known_parent_ids\030\004 \003" +
-      "(\t\"Q\n\017AllTableRecords\022>\n\rtable_records\030\001" +
-      " \003(\0132\'.org.roylance.yaorm.models.TableRe" +
-      "cords\"\371\005\n\021DatabaseOperation\022D\n\020table_def",
-      "inition\030\001 \001(\0132*.org.roylance.yaorm.model" +
-      "s.TableDefinition\0223\n\007records\030\002 \001(\0132\".org" +
-      ".roylance.yaorm.models.Records\022/\n\005index\030" +
-      "\003 \001(\0132 .org.roylance.yaorm.models.Index\022" +
-      "F\n\021column_definition\030\004 \001(\0132+.org.roylanc" +
-      "e.yaorm.models.ColumnDefinition\022<\n\014where" +
-      "_clause\030\005 \001(\0132&.org.roylance.yaorm.model" +
-      "s.WhereClause\022c\n\027database_operation_type" +
-      "\030\006 \001(\0162B.org.roylance.yaorm.models.Datab" +
-      "aseOperation.DatabaseOperationType\"\314\002\n\025D",
-      "atabaseOperationType\022\020\n\014CREATE_TABLE\020\000\022\016" +
-      "\n\nDROP_TABLE\020\001\022\020\n\014CREATE_INDEX\020\002\022\016\n\nDROP" +
-      "_INDEX\020\003\022\021\n\rCREATE_COLUMN\020\004\022\017\n\013DROP_COLU" +
-      "MN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n\nGET_CUSTOM\020\007\022\007\n\003G" +
-      "ET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\tGET_WHERE\020\n\022\017\n\013BUL" +
-      "K_INSERT\020\013\022\024\n\020CREATE_OR_UPDATE\020\014\022\n\n\006CREA" +
-      "TE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UPDATE_WITH_CRITERIA" +
-      "\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022\n\n\006DELETE\020\021\022\016\n\nDEL" +
-      "ETE_ALL\020\022\"\233\002\n\027DatabaseOperationResult\022\023\n" +
-      "\013bool_result\030\001 \001(\010\022\024\n\014count_result\030\002 \001(\003",
-      "\0228\n\rrecord_result\030\003 \001(\0132!.org.roylance.y" +
-      "aorm.models.Record\022:\n\016records_result\030\004 \001" +
-      "(\0132\".org.roylance.yaorm.models.Records\022\025" +
-      "\n\rerror_message\030\005 \001(\t\022H\n\022database_operat" +
-      "ion\030\006 \001(\0132,.org.roylance.yaorm.models.Da" +
-      "tabaseOperation\"\315\001\n\022DatabaseDefinition\022\016" +
-      "\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022F\n\021table_de" +
-      "finitions\030\003 \001(\0132+.org.roylance.yaorm.mod" +
-      "els.TableDefinitions\022Q\n\027table_definition" +
-      "_graphs\030\004 \003(\01320.org.roylance.yaorm.model",
-      "s.TableDefinitionGraphs\"\327\003\n\024TableDefinit" +
-      "ionGraph\022I\n\025main_table_definition\030\001 \001(\0132" +
-      "*.org.roylance.yaorm.models.TableDefinit" +
-      "ion\022J\n\026other_table_definition\030\002 \001(\0132*.or" +
-      "g.roylance.yaorm.models.TableDefinition\022" +
-      "F\n\022linker_table_table\030\003 \001(\0132*.org.roylan" +
-      "ce.yaorm.models.TableDefinition\022g\n\025defin" +
-      "ition_graph_type\030\004 \001(\0162H.org.roylance.ya" +
-      "orm.models.TableDefinitionGraph.TableDef" +
-      "initionGraphType\022\021\n\tmain_name\030\005 \001(\t\022\022\n\no",
-      "ther_name\030\006 \001(\t\022\023\n\013column_name\030\007 \001(\t\";\n\030" +
-      "TableDefinitionGraphType\022\r\n\tENUM_TYPE\020\000\022" +
-      "\020\n\014MESSAGE_TYPE\020\001\"\264\001\n\025TableDefinitionGra" +
-      "phs\022I\n\025main_table_definition\030\001 \001(\0132*.org" +
-      ".roylance.yaorm.models.TableDefinition\022P" +
-      "\n\027table_definition_graphs\030\002 \003(\0132/.org.ro" +
-      "ylance.yaorm.models.TableDefinitionGraph" +
-      "\"N\n\016ConnectionInfo\022\014\n\004host\030\001 \001(\t\022\014\n\004user" +
-      "\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t" +
-      "\"c\n\tMigration\022\n\n\002id\030\001 \001(\t\022\024\n\014context_nam",
-      "e\030\002 \001(\t\022\037\n\027model_definition_base64\030\003 \001(\t" +
-      "\022\023\n\013insert_date\030\004 \001(\003*\327\001\n\014ProtobufType\022\010" +
-      "\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32" +
-      "\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n" +
-      "\006SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FI" +
-      "XED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004B" +
-      "OOL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020"
+      "nGraph.TableDefinitionGraphType\022\021\n\tmain_",
+      "name\030\005 \001(\t\022\022\n\nother_name\030\006 \001(\t\022\023\n\013column" +
+      "_name\030\007 \001(\t\";\n\030TableDefinitionGraphType\022" +
+      "\r\n\tENUM_TYPE\020\000\022\020\n\014MESSAGE_TYPE\020\001\"\264\001\n\025Tab" +
+      "leDefinitionGraphs\022I\n\025main_table_definit" +
+      "ion\030\001 \001(\0132*.org.roylance.yaorm.models.Ta" +
+      "bleDefinition\022P\n\027table_definition_graphs" +
+      "\030\002 \003(\0132/.org.roylance.yaorm.models.Table" +
+      "DefinitionGraph\"N\n\016ConnectionInfo\022\014\n\004hos" +
+      "t\030\001 \001(\t\022\014\n\004user\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022" +
+      "\016\n\006schema\030\004 \001(\t\"c\n\tMigration\022\n\n\002id\030\001 \001(\t",
+      "\022\024\n\014context_name\030\002 \001(\t\022\037\n\027model_definiti" +
+      "on_base64\030\003 \001(\t\022\023\n\013insert_date\030\004 \001(\003*\327\001\n" +
+      "\014ProtobufType\022\010\n\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005F" +
+      "LOAT\020\002\022\t\n\005INT32\020\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005" +
+      "\022\n\n\006UINT64\020\006\022\n\n\006SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007" +
+      "FIXED32\020\t\022\013\n\007FIXED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010" +
+      "SFIXED64\020\014\022\010\n\004BOOL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTE" +
+      "S\020\017\022\t\n\005PROTO\020\020"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -20620,7 +20699,7 @@ public final class YaormModel {
     internal_static_org_roylance_yaorm_models_ColumnDefinition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_models_ColumnDefinition_descriptor,
-        new java.lang.String[] { "Name", "Type", "IsKey", "ColumnType", "LinkerType", });
+        new java.lang.String[] { "Name", "Type", "IsKey", "ColumnType", "LinkerType", "Order", });
     internal_static_org_roylance_yaorm_models_Index_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_roylance_yaorm_models_Index_fieldAccessorTable = new

@@ -156,7 +156,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
 
             record
                 .columnsList
-                .sortedBy { it.definition.name }
+                .sortedBy { it.definition.order }
                 .forEach {
                     val formattedValue = YaormUtils.getFormattedString(it)
                     columnNames.add(it.definition.name)

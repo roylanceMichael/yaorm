@@ -57,6 +57,7 @@ message ColumnDefinition {
         NEITHER = 3;
     }
     optional LinkerType linker_type = 5;
+    optional int32 order = 6;
 }
 
 message Index {

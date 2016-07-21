@@ -1,6 +1,7 @@
 package org.roylance.yaorm.services.proto
 
 import com.google.protobuf.Descriptors
+import org.roylance.common.service.IBase64Service
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.YaormUtils
@@ -12,7 +13,8 @@ class EntityProtoContext(
         val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         val protoService: IEntityProtoService,
         val contextName:String,
-        val customIndexes: HashMap<String, YaormModel.Index>) {
+        val customIndexes: HashMap<String, YaormModel.Index>,
+        val base64Service: IBase64Service) {
     val entityMessageService: IEntityMessageService
 
     private val typeToAction = object: HashMap<
@@ -52,11 +54,11 @@ class EntityProtoContext(
 
     fun createNewMigration(id:String) {
         val definitionsModels = this.getDefinitions()
-
+        val string64 = this.base64Service.serialize(definitionsModels.toByteArray())
         val migrationModel = YaormModel.Migration.newBuilder()
             .setId(id)
             .setContextName(this.contextName)
-            .setModelDefinitionBase64(Base64.getEncoder().encodeToString(definitionsModels.toByteArray()))
+            .setModelDefinitionBase64(string64)
             .build()
 
         this.entityMessageService.merge(migrationModel)
@@ -162,7 +164,7 @@ class EntityProtoContext(
             val lastMigration =  migrations
                     .sortedByDescending { it.insertDate }
                     .first()
-            val bytes = Base64.getDecoder().decode(lastMigration.modelDefinitionBase64)
+            val bytes = this.base64Service.deserialize(lastMigration.modelDefinitionBase64)
             return YaormModel.TableDefinitions.parseFrom(bytes)
         }
 

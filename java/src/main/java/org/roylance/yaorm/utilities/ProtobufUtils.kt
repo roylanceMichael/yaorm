@@ -59,12 +59,14 @@ object ProtobufUtils {
         if (customIndexes.containsKey(descriptor.name)) {
             definition.index = customIndexes[descriptor.name]
         }
+        var i = 0
         descriptor.fields
                 .forEach {
                     if (ProtoNameToProtoTypeMap.containsKey(it.type.name)) {
                         val newProperty = YaormModel.ColumnDefinition.newBuilder()
                                 .setName(it.name)
                                 .setType(ProtoNameToProtoTypeMap[it.type.name])
+                                .setOrder(i)
                         definition.addColumnDefinitions(newProperty)
                     }
                     else {
@@ -73,12 +75,13 @@ object ProtobufUtils {
                             return@forEach
                         }
                         else if (ProtoEnumType.equals(it.type.name)) {
-                            definition.addColumnDefinitions(buildEnumNameColumnName(it.name))
+                            definition.addColumnDefinitions(buildEnumNameColumnName(it.name, i))
                         }
                         else if (ProtoMessageType.equals(it.type.name)) {
-                            definition.addColumnDefinitions(buildMessageColumnName(it.name))
+                            definition.addColumnDefinitions(buildMessageColumnName(it.name, i))
                         }
                     }
+                    i++
         }
 
         return definition.build()
@@ -421,19 +424,21 @@ object ProtobufUtils {
         return returnDefinition.build()
     }
 
-    internal fun buildMessageColumnName(name: String):YaormModel.ColumnDefinition {
+    internal fun buildMessageColumnName(name: String, order:Int):YaormModel.ColumnDefinition {
         return YaormModel.ColumnDefinition.newBuilder()
                 .setName(name)
                 .setType(YaormModel.ProtobufType.STRING)
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)
+                .setOrder(order)
                 .build()
     }
 
-    internal fun buildEnumNameColumnName(name:String):YaormModel.ColumnDefinition {
+    internal fun buildEnumNameColumnName(name:String, order:Int):YaormModel.ColumnDefinition {
         return YaormModel.ColumnDefinition.newBuilder()
                 .setName(name)
                 .setType(YaormModel.ProtobufType.STRING)
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME)
+                .setOrder(order)
                 .build()
     }
 

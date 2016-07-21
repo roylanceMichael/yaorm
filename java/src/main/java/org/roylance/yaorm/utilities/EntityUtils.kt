@@ -39,6 +39,7 @@ object EntityUtils {
                 .toHashSet()
 
         val definition = YaormModel.TableDefinition.newBuilder().setName(classType.simpleName)
+        var i = 0
         classType
                 .methods
                 .filter { it.name.startsWith(YaormUtils.Get) &&
@@ -53,6 +54,7 @@ object EntityUtils {
                             .setType(YaormUtils.JavaToProtoMap[it.returnType])
                             .setName(name)
                             .setIsKey(name == YaormUtils.IdName)
+                            .setOrder(i)
                         definition.addColumnDefinitions(property)
                     }
                     else {
@@ -60,8 +62,10 @@ object EntityUtils {
                                 .setType(YaormModel.ProtobufType.STRING)
                                 .setName(name)
                                 .setIsKey(name == YaormUtils.IdName)
+                                .setOrder(i)
                         definition.addColumnDefinitions(property)
                     }
+                    i++
                 }
 
         return definition.build()

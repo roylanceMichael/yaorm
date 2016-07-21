@@ -170,7 +170,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
     override fun buildBulkInsert(
             definition: YaormModel.TableDefinition,
             records: YaormModel.Records): String {
-        val columnNames = definition.columnDefinitionsList.sortedBy { it.name }.map { this.buildKeyword(it.name) }
+        val columnNames = definition.columnDefinitionsList.sortedBy { it.order }.map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(YaormUtils.Comma)
         val initialStatement = "replace into ${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
@@ -182,7 +182,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
                     val valueColumnPairs = ArrayList<String>()
                     instance
                         .columnsList
-                        .sortedBy { it.definition.name }
+                        .sortedBy { it.definition.order }
                         .forEach {
                             val formattedString = YaormUtils.getFormattedString(it)
                             if (valueColumnPairs.isEmpty()) {
@@ -295,7 +295,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
             val updateKvp = ArrayList<String>()
 
             record.columnsList
-                .sortedBy { it.definition.name }
+                .sortedBy { it.definition.order }
                 .forEach {
                     updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + YaormUtils.getFormattedString(it))
                 }

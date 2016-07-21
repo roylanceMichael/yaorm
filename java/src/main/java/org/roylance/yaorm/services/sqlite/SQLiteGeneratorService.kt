@@ -143,7 +143,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
     override fun buildBulkInsert(
             definition: YaormModel.TableDefinition,
             records: YaormModel.Records) : String {
-        val columnNames = definition.columnDefinitionsList.sortedBy { it.name } .map { this.buildKeyword(it.name) }
+        val columnNames = definition.columnDefinitionsList.sortedBy { it.order }.map { this.buildKeyword(it.name) }
 
         val commaSeparatedColumnNames = columnNames.joinToString(YaormUtils.Comma)
         val initialStatement = "replace into ${this.buildKeyword(definition.name)} ($commaSeparatedColumnNames) "
@@ -156,7 +156,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
 
                 instance
                     .columnsList
-                    .sortedBy { it.definition.name }
+                    .sortedBy { it.definition.order }
                     .forEach {
                         val formattedValue = YaormUtils.getFormattedString(it)
                         if (valueColumnPairs.isEmpty()) {
@@ -222,7 +222,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
             val updateKvp = ArrayList<String>()
             record
                 .columnsList
-                .sortedBy { it.definition.name }
+                .sortedBy { it.definition.order }
                 .forEach {
                     val formattedValue = YaormUtils.getFormattedString(it)
                     if (it.definition.name.equals(YaormUtils.IdName)) {
@@ -259,7 +259,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
 
             record
                 .columnsList
-                .sortedBy { it.definition.name }
+                .sortedBy { it.definition.order }
                 .forEach {
                     columnNames.add(this.buildKeyword(it.definition.name))
                     values.add(YaormUtils.getFormattedString(it))

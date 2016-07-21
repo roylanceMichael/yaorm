@@ -279,7 +279,10 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun create(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = YaormUtils.getIdColumn(entity.columnsList) ?: return false
+        val idColumn = YaormUtils.getIdColumn(entity.columnsList)
+        if (idColumn == null) {
+            return false
+        }
 
         if (!this.granularDatabaseService.isAvailable()) {
             return false

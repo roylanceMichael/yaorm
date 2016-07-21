@@ -563,7 +563,7 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundDag == null)
         }
         finally {
-//            ConnectionUtilities.dropMySQLSchema()
+            ConnectionUtilities.dropMySQLSchema()
         }
     }
 }
