@@ -27,4 +27,7 @@ interface IEntityMessageService {
                            streamer: IMessageStreamer)
 
     fun <T: Message> getCount(messageType: T):Long
+
+    fun <T: Message> getCustomSingleLevel(messageType: T, customSql: String): List<T>
+    fun <T: Message> getCustomSingleLevelStream(messageType: T, customSql: String, stream: IMessageStreamer)
 }

@@ -1,5 +1,6 @@
 package org.roylance.yaorm.utilities
 
+import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.proto.IEntityProtoService
@@ -14,7 +15,7 @@ internal class GetProtoObject(
     private val typeNameMap = HashMap<String, Message.Builder>()
 
     internal fun <T: Message> build(builder: T, entityId:String):T? {
-        val uniqueKey = this.buildUniqueKey(builder, entityId)
+        val uniqueKey = ProtobufUtils.buildUniqueKey(builder, entityId)
         if (this.typeNameMap.containsKey(uniqueKey)) {
             return this.typeNameMap[uniqueKey]!!.build() as T
         }
@@ -31,29 +32,19 @@ internal class GetProtoObject(
             return null
         }
 
-        // main fields
-        builder.descriptorForType
-                .fields
-                .filter { !it.isRepeated }
-                .forEach { fieldKey ->
-                    val foundColumn = foundRecord.columnsList.firstOrNull { it.definition.name.equals(fieldKey.name) }
-                            ?: return@forEach
-
-                    if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.SCALAR)) {
-                        builderForType.setField(fieldKey, YaormUtils.getAnyObject(foundColumn))
-                    }
-                    else if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME)) {
-                        builderForType.setField(fieldKey, fieldKey.enumType.findValueByName(foundColumn.stringHolder.toUpperCase()))
-                    }
-                    else if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)) {
-                        // recursively get the child object
-                        val childObject = generatedMessageBuilder.buildGeneratedMessage(fieldKey.messageType.name)
-                        if (foundColumn.stringHolder.length > 0) {
-                            val reconciledObject = this.build(childObject, foundColumn.stringHolder)
-                            builderForType.setField(fieldKey, reconciledObject)
-                        }
-                    }
+        val childMessageHandler = object: IChildMessageHandler {
+            override fun handle(fieldKey: Descriptors.FieldDescriptor, idColumn: YaormModel.Column, builder: Message.Builder) {
+                // recursively get the child object
+                val childObject = generatedMessageBuilder.buildGeneratedMessage(fieldKey.messageType.name)
+                if (idColumn.stringHolder.length > 0) {
+                    val reconciledObject = build(childObject, idColumn.stringHolder)
+                    builder.setField(fieldKey, reconciledObject)
                 }
+            }
+        }
+
+        // main fields
+        ConvertRecordsToProtobuf.build(builderForType, foundRecord, childMessageHandler)
 
         // repeated enums
         builder.descriptorForType
@@ -84,7 +75,7 @@ internal class GetProtoObject(
                     }
                 }
 
-        this.typeNameMap[this.buildUniqueKey(builder, entityId)] = builderForType
+        this.typeNameMap[ProtobufUtils.buildUniqueKey(builder, entityId)] = builderForType
 
         // repeated messages
         builder.descriptorForType
@@ -125,10 +116,6 @@ internal class GetProtoObject(
                             }
                 }
 
-        return this.typeNameMap[this.buildUniqueKey(builder, entityId)]!!.build() as T
-    }
-
-    private fun buildUniqueKey(builder: Message, entityId:String):String {
-        return "${builder.descriptorForType.name}~$entityId"
+        return this.typeNameMap[ProtobufUtils.buildUniqueKey(builder, entityId)]!!.build() as T
     }
 }

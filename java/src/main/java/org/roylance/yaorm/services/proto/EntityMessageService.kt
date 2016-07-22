@@ -3,6 +3,7 @@ package org.roylance.yaorm.services.proto
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.utilities.ConvertRecordsToProtobuf
 import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.ProtobufUtils
 import java.util.*
@@ -11,7 +12,34 @@ class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService,
         private val customIndexes: HashMap<String, YaormModel.Index>):IEntityMessageService {
+
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
+
+    override fun <T : Message> getCustomSingleLevel(messageType: T, customSql: String): List<T> {
+        val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
+                ?: return ArrayList()
+
+        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
+        val records = this.entityService.getCustom(customSql, definition)
+        return records.recordsList.map {
+            val newBuilder = builder.newBuilderForType()
+            ConvertRecordsToProtobuf.build(newBuilder, it)
+            newBuilder.build() as T
+        }
+    }
+
+    override fun <T : Message> getCustomSingleLevelStream(messageType: T, customSql: String, stream: IMessageStreamer) {
+        val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
+                ?: return
+
+        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
+        val records = this.entityService.getCustom(customSql, definition)
+        records.recordsList.forEach {
+            val newBuilder = builder.newBuilderForType()
+            ConvertRecordsToProtobuf.build(newBuilder, it)
+            stream.stream(newBuilder.build())
+        }
+    }
 
     override fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {
         CreateSchema(this, this.entityService, this.customIndexes).handleFile(fileDescriptor, false)

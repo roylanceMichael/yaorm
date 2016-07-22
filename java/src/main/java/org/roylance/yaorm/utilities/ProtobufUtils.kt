@@ -452,6 +452,10 @@ object ProtobufUtils {
         return "$tableName$OtherSuffix"
     }
 
+    internal fun buildUniqueKey(builder: Message, entityId:String):String {
+        return "${builder.descriptorForType.name}~$entityId"
+    }
+
     const val MainSuffix = "_main"
     const val OtherSuffix = "_other"
 }

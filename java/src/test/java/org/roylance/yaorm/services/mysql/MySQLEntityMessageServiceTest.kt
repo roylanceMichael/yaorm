@@ -8,10 +8,7 @@ import org.roylance.yaorm.models.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.*
-import java.io.File
 import java.util.*
 
 class MySQLEntityMessageServiceTest {
