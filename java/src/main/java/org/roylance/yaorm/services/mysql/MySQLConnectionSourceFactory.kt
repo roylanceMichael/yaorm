@@ -9,7 +9,8 @@ class MySQLConnectionSourceFactory(
         val host:String,
         val schema:String,
         val userName:String,
-        val password:String
+        val password:String,
+        createDatabaseIfNotExists: Boolean = true
 ) : IConnectionSourceFactory {
     private val MySQLDriverClass = "com.mysql.jdbc.Driver"
     private val commonConnection: Connection
@@ -17,7 +18,9 @@ class MySQLConnectionSourceFactory(
 
     init {
         Class.forName(MySQLDriverClass)
-        this.createSchemaIfNotExists()
+        if (createDatabaseIfNotExists) {
+            this.createSchemaIfNotExists()
+        }
         this.commonConnection = DriverManager.getConnection(
                 "jdbc:mysql://$host/$schema?user=$userName&password=$password&autoReconnect=true")
     }
@@ -39,8 +42,12 @@ class MySQLConnectionSourceFactory(
         val tempConnection = DriverManager.getConnection(
                 "jdbc:mysql://$host?user=$userName&password=$password")
         val statement = tempConnection.createStatement()
-        statement.executeUpdate("create database if not exists ${this.schema}")
-        statement.close()
-        tempConnection.close()
+        try {
+            statement.executeUpdate("create database if not exists ${this.schema}")
+        }
+        finally {
+            statement?.close()
+            tempConnection?.close()
+        }
     }
 }

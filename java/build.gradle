@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.91-SNAPSHOT'
+version '0.92-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
