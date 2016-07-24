@@ -290,4 +290,51 @@ class SQLiteEntityMessageServiceTest {
             database.deleteOnExit()
         }
     }
+
+    @Test
+    fun bulkInsertTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(
+                    database.absolutePath,
+                    "mike",
+                    "testing")
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = TestModelGMBuilder()
+
+            val customIndexes = HashMap<String, YaormModel.Index>()
+            val index = YaormModel.Index
+                    .newBuilder()
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .build()
+            customIndexes[TestingModel.Dag.getDescriptor().name] = index
+
+            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+
+            // act
+            val manyDags = ArrayList<TestingModel.Dag>()
+            var i = 0
+            while (i < 100) {
+                manyDags.add(DagBuilder().build())
+                i++
+            }
+
+            entityMessageService.bulkInsert(manyDags)
+
+            // assert
+            val foundDags = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
+            Assert.assertTrue(foundDags.size == 100)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
 }

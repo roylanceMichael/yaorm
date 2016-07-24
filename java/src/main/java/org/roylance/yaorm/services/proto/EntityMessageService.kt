@@ -15,6 +15,51 @@ class EntityMessageService(
 
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
+    override fun <T : Message> bulkInsert(messages: List<T>): Boolean {
+        if (messages.size == 0) {
+            return false
+        }
+
+        val firstMessage = messages.first()
+        if (!ProtobufUtils.isMessageOk(firstMessage)) {
+            return false
+        }
+
+        // build records
+        val recordsMap = HashMap<String, YaormModel.Records.Builder>()
+        val recordsDefinitions = HashMap<String, YaormModel.TableDefinition>()
+        messages.forEach { message ->
+            val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions, this.customIndexes)
+
+            records.tableRecordsList.forEach { tableRecord ->
+                if (recordsMap.containsKey(tableRecord.tableName)) {
+                    recordsMap[tableRecord.tableName]!!.addAllRecords(tableRecord.records.recordsList)
+                }
+                else {
+                    recordsMap[tableRecord.tableName] = tableRecord.records.toBuilder()
+                    recordsDefinitions[tableRecord.tableName] = tableRecord.tableDefinition
+                }
+            }
+        }
+
+        // todo: build a dag of dependencies and execute in order
+        recordsMap.keys.forEach { recordsKey ->
+            val uniqueRecords = HashMap<String, YaormModel.Record>()
+            recordsMap[recordsKey]!!.recordsList.forEach { record ->
+                val idColumn = YaormUtils.getIdColumn(record.columnsList)
+                if (idColumn != null) {
+                    uniqueRecords[idColumn.stringHolder] = record
+                }
+            }
+
+            val actualInsertRecords = YaormModel.Records.newBuilder().addAllRecords(uniqueRecords.values).build()
+            this.entityService.bulkInsert(actualInsertRecords,
+                    recordsDefinitions[recordsKey]!!)
+        }
+
+        return true
+    }
+
     override fun <T : Message> getCustomSingleLevel(messageType: T, customSql: String): List<T> {
         val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
                 ?: return ArrayList()

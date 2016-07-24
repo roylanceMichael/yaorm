@@ -11,6 +11,7 @@ interface IEntityMessageService {
     fun <T: Message> createEntireSchema(messageType:T): Boolean
     fun <T: Message> dropAndCreateEntireSchema(messageType:T): Boolean
 
+    fun <T: Message> bulkInsert(messages: List<T>): Boolean
     fun <T: Message> merge(message:T): Boolean
     fun <T: Message> delete(message:T): Boolean
 

@@ -577,4 +577,52 @@ class PostgresEntityMessageServiceTest {
         finally {
         }
     }
+
+    @Test
+    fun bulkInsertTest() {
+        // arrange
+        ConnectionUtilities.getPostgresConnectionInfo()
+        try {
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection.connectionSource,
+                    false)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val protoService = TestModelGMBuilder()
+
+            val customIndexes = HashMap<String, YaormModel.Index>()
+            val index = YaormModel.Index
+                    .newBuilder()
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .build()
+            customIndexes[TestingModel.Dag.getDescriptor().name] = index
+
+            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
+
+            // act
+            val manyDags = ArrayList<TestingModel.Dag>()
+            var i = 0
+            while (i < 100) {
+                manyDags.add(DagBuilder().build())
+                i++
+            }
+
+            entityMessageService.bulkInsert(manyDags)
+
+            // assert
+            val foundDags = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
+            Assert.assertTrue(foundDags.size == 100)
+        }
+        finally {
+        }
+    }
 }
