@@ -59,6 +59,7 @@ class EntityProtoContext(
             .setId(id)
             .setContextName(this.contextName)
             .setModelDefinitionBase64(string64)
+            .setInsertDate(Date().time)
             .build()
 
         this.entityMessageService.merge(migrationModel)
