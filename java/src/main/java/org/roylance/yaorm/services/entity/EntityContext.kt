@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.entity
 
 import com.google.protobuf.ByteString
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.db.migration.MigrationModel
 import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.migration.DefinitionModelComparisonUtil

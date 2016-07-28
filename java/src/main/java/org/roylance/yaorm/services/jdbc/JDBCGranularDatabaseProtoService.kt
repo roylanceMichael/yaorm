@@ -1,6 +1,6 @@
 package org.roylance.yaorm.services.jdbc
 
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.IProtoCursor

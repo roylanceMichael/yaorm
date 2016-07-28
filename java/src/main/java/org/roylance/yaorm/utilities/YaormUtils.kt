@@ -4,7 +4,7 @@ import com.google.protobuf.ByteString
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.models.EntityCollection
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import org.roylance.yaorm.services.IKeywordHandler
 import java.util.*

@@ -1,7 +1,7 @@
 package org.roylance.yaorm.utilities
 
 import com.google.protobuf.Message
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 
 object ConvertRecordsToProtobuf {
     fun <T: Message.Builder> build(builder: T,

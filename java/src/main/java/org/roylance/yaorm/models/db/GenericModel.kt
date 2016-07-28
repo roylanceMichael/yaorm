@@ -1,7 +1,7 @@
 package org.roylance.yaorm.models.db
 
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.YaormModel
 
 class GenericModel(
         override var id: String = "",
@@ -18,7 +18,7 @@ class GenericModel(
         const val DoubleValName = "doubleVal"
         const val BoolValName = "boolVal"
 
-        fun buildProtoDefinitionModel():YaormModel.TableDefinition {
+        fun buildProtoDefinitionModel(): YaormModel.TableDefinition {
             val returnModel = YaormModel.TableDefinition.newBuilder()
             returnModel.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder().setName(IdName).setType(YaormModel.ProtobufType.STRING).build())
             returnModel.addColumnDefinitions((YaormModel.ColumnDefinition.newBuilder().setName(StrValName).setType(YaormModel.ProtobufType.STRING)).build())

@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.entity
 
 import org.roylance.yaorm.models.EntityCollection
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import org.roylance.yaorm.services.ISQLGeneratorService

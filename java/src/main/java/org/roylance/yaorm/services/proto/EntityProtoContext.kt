@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.proto
 
 import com.google.protobuf.Descriptors
 import org.roylance.common.service.IBase64Service
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.migration.DefinitionModelComparisonUtil

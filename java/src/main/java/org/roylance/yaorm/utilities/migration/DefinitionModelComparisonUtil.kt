@@ -1,6 +1,6 @@
 package org.roylance.yaorm.utilities.migration
 
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import java.util.*
 
 object DefinitionModelComparisonUtil {

@@ -1,7 +1,7 @@
 package org.roylance.yaorm.services.phoenix
 
 import org.roylance.yaorm.models.ColumnNameTuple
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*

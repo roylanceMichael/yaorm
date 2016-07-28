@@ -3,9 +3,9 @@ package org.roylance.yaorm.services.sqlite
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.TestingModelv2
-import org.roylance.yaorm.TestingModelv3
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.TestingModelV2
+import org.roylance.yaorm.TestingModelV3
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
@@ -75,7 +75,7 @@ class SQLiteEntityProtoContextTest {
             firstContext.handleMigrations()
 
             val secondContext = EntityProtoContext(
-                    TestingModelv2.getDescriptor(),
+                    TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
                     contextName, HashMap(),
@@ -83,7 +83,7 @@ class SQLiteEntityProtoContextTest {
 
             secondContext.handleMigrations()
 
-            val simpleDag = TestingModelv2.Dag.newBuilder()
+            val simpleDag = TestingModelV2.Dag.newBuilder()
                     .setId(UUID.randomUUID().toString())
                     .setNewField1("WOW, THIS IS NEW")
 
@@ -116,7 +116,7 @@ class SQLiteEntityProtoContextTest {
 
             // act
             val secondContext = EntityProtoContext(
-                    TestingModelv2.getDescriptor(),
+                    TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
                     contextName, HashMap(),
@@ -124,7 +124,7 @@ class SQLiteEntityProtoContextTest {
 
             secondContext.handleMigrations()
 
-            val simpleDag = TestingModelv2.Dag.newBuilder()
+            val simpleDag = TestingModelV2.Dag.newBuilder()
                     .setId(UUID.randomUUID().toString())
                     .setDisplay("awesome display")
                     .setNewField1("WOW, THIS IS NEW")
@@ -166,7 +166,7 @@ class SQLiteEntityProtoContextTest {
 
             // act
             val thirdVersion = EntityProtoContext(
-                    TestingModelv3.getDescriptor(),
+                    TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
                     contextName, HashMap(),
@@ -174,7 +174,7 @@ class SQLiteEntityProtoContextTest {
 
             thirdVersion.handleMigrations()
 
-            val simpleDag = TestingModelv3.Dag.newBuilder()
+            val simpleDag = TestingModelV3.Dag.newBuilder()
                     .setId(UUID.randomUUID().toString())
                     .setDisplay("awesome display")
                     .setNewField1("WOW, THIS IS NEW")

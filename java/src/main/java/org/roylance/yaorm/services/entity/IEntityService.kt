@@ -1,7 +1,7 @@
 package org.roylance.yaorm.services.entity
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 
 interface IEntityService<T: IEntity> {
     var entityContext:EntityContext?

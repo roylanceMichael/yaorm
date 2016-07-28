@@ -2,7 +2,7 @@ package org.roylance.yaorm.utilities
 
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import java.util.*
 
 internal class ConvertProtobufToRecords(

@@ -1,7 +1,7 @@
 package org.roylance.yaorm.utilities
 
 import org.roylance.yaorm.models.IEntity
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.entity.EntityDefinitionModel
 import java.lang.reflect.Method
 import java.util.*

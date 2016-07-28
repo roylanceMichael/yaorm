@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.sqlite
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.utilities.EntityUtils
 import java.io.File

@@ -2,7 +2,7 @@ package org.roylance.yaorm.utilities
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.testmodels.BeaconBroadcastModel
 import org.roylance.yaorm.testmodels.ChildTestModel

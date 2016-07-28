@@ -4,7 +4,7 @@ import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.models.YaormModel
+import org.roylance.yaorm.YaormModel
 import java.util.*
 
 class ProtobufUtilsTest {
