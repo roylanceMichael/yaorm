@@ -12,6 +12,33 @@ class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService,
         private val customIndexes: HashMap<String, YaormModel.Index>):IEntityMessageService {
+    override fun <T : Message> mergeTable(messages: List<T>): Boolean {
+        if (messages.size == 0) {
+            return false
+        }
+
+        val firstMessage = messages.first()
+        if (!ProtobufUtils.isMessageOk(firstMessage)) {
+            return false
+        }
+
+        val existingMessagesHash = this.getKeys(firstMessage).toHashSet()
+        val currentMessagesHash = HashSet<String>()
+        messages.forEach { message ->
+            val id = ProtobufUtils.getIdFromMessage(message)
+            currentMessagesHash.add(id)
+            this.merge(message)
+        }
+
+        existingMessagesHash
+                .filter { !currentMessagesHash.contains(it) }
+                .forEach { key ->
+                    val foundMessage = this.get(firstMessage, key)
+                    this.delete(foundMessage as Message)
+                }
+
+        return true
+    }
 
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
