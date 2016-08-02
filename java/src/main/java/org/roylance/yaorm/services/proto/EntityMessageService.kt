@@ -11,18 +11,13 @@ import java.util.*
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val entityService: IEntityProtoService,
-        private val customIndexes: HashMap<String, YaormModel.Index>):IEntityMessageService {
-    override fun <T : Message> mergeTable(messages: List<T>): Boolean {
-        if (messages.size == 0) {
+        private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
+    override fun <T : Message> mergeTable(messages: List<T>, message: T): Boolean {
+        if (!ProtobufUtils.isMessageOk(message)) {
             return false
         }
 
-        val firstMessage = messages.first()
-        if (!ProtobufUtils.isMessageOk(firstMessage)) {
-            return false
-        }
-
-        val existingMessagesHash = this.getKeys(firstMessage).toHashSet()
+        val existingMessagesHash = this.getKeys(message).toHashSet()
         val currentMessagesHash = HashSet<String>()
         messages.forEach { message ->
             val id = ProtobufUtils.getIdFromMessage(message)
@@ -33,7 +28,7 @@ class EntityMessageService(
         existingMessagesHash
                 .filter { !currentMessagesHash.contains(it) }
                 .forEach { key ->
-                    val foundMessage = this.get(firstMessage, key)
+                    val foundMessage = this.get(message, key)
                     this.delete(foundMessage as Message)
                 }
 

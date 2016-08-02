@@ -13,7 +13,7 @@ interface IEntityMessageService {
 
     fun <T: Message> bulkInsert(messages: List<T>): Boolean
     fun <T: Message> merge(message:T): Boolean
-    fun <T: Message> mergeTable(messages: List<T>): Boolean
+    fun <T: Message> mergeTable(messages: List<T>, message: T): Boolean
     fun <T: Message> delete(message:T): Boolean
 
     fun <T: Message> get(messageType:T, id:String):T?
