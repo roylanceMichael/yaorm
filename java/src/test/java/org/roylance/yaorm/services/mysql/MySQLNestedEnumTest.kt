@@ -19,7 +19,7 @@ class MySQLNestedEnumTest {
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
                     ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
@@ -32,7 +32,8 @@ class MySQLNestedEnumTest {
                     NestedEnumTest.getDescriptor(),
                     NestedEnumGMBuilder(),
                     entityService,
-                    "NestedModel", HashMap(),
+                    "NestedModel",
+                    HashMap(),
                     TestBase64Service())
 
             protoContext.handleMigrations()

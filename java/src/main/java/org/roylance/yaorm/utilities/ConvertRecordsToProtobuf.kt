@@ -19,7 +19,12 @@ object ConvertRecordsToProtobuf {
                         builder.setField(fieldKey, YaormUtils.getAnyObject(foundColumn))
                     }
                     else if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME)) {
-                        builder.setField(fieldKey, fieldKey.enumType.findValueByName(foundColumn.stringHolder.toUpperCase()))
+                        if (foundColumn.stringHolder != null) {
+                            val foundValue = fieldKey.enumType.values.firstOrNull { it.name.equals(foundColumn.stringHolder.toUpperCase()) }
+                            if (foundValue != null) {
+                                builder.setField(fieldKey, foundValue)
+                            }
+                        }
                     }
                     else if (foundColumn.definition.columnType.equals(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)) {
                         childMessageHandler?.handle(fieldKey, foundColumn, builder)
