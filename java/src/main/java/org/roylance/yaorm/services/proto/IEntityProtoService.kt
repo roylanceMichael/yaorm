@@ -2,7 +2,7 @@ package org.roylance.yaorm.services.proto
 
 import org.roylance.yaorm.YaormModel
 
-interface IEntityProtoService {
+interface IEntityProtoService: AutoCloseable {
     fun createTable(definition: YaormModel.TableDefinition): Boolean
     fun dropTable(definition: YaormModel.TableDefinition): Boolean
 

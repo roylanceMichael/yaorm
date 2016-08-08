@@ -25,7 +25,7 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
@@ -73,7 +73,7 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
@@ -131,7 +131,7 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
@@ -219,7 +219,7 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
@@ -294,7 +294,7 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)

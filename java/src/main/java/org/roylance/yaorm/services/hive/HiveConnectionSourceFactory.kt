@@ -25,10 +25,12 @@ class HiveConnectionSourceFactory(
         this.isClosed = true
     }
 
-    override fun getConnectionSource(): Connection {
-        if (this.connection.isClosed) {
-            throw SQLException("already closed...")
+    override val connectionSource: Connection
+        @Throws(SQLException::class)
+        get() {
+            if (this.isClosed) {
+                throw SQLException("already closed...")
+            }
+            return this.connectionSource
         }
-        return this.connection
-    }
 }

@@ -2,17 +2,19 @@ package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.entity.EntityResultModel
+import org.roylance.yaorm.services.IConnectionSourceFactory
 import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.IProtoCursor
 import org.roylance.yaorm.services.proto.IProtoStreamer
 import java.sql.Connection
 import java.util.*
 
-class JDBCGranularDatabaseProtoService(private val connection: Connection,
-                                       private val shouldManuallyCommitAfterUpdate: Boolean):IGranularDatabaseProtoService {
+class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: IConnectionSourceFactory,
+                                       private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseProtoService {
+
     override fun isAvailable(): Boolean {
         try {
-            return this.connection.isValid(TenSeconds)
+            return this.connectionSourceFactory.connectionSource.isValid(TenSeconds)
         }
         catch(e: UnsupportedOperationException) {
             e.printStackTrace()
@@ -26,7 +28,7 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
     }
 
     override fun executeUpdateQuery(query: String): EntityResultModel {
-        val statement = this.connection.createStatement()
+        val statement = this.connectionSourceFactory.connectionSource.createStatement()
         val returnObject = EntityResultModel()
         try {
             val result = statement.executeUpdate(query)
@@ -43,14 +45,14 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
         }
         finally {
             if (this.shouldManuallyCommitAfterUpdate) {
-                this.connection.commit()
+                this.connectionSourceFactory.connectionSource.commit()
             }
             statement.close()
         }
     }
 
     override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): IProtoCursor {
-        val statement = this.connection.prepareStatement(query)
+        val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
         try {
             val resultSet = statement.executeQuery()
             return JDBCProtoCursor(definition, resultSet, statement)
@@ -64,7 +66,7 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
     }
 
     override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IProtoStreamer) {
-        val statement = this.connection.prepareStatement(query)
+        val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
         try {
             val resultSet = statement.executeQuery()
             JDBCProtoCursor(definition, resultSet, statement)
@@ -76,9 +78,12 @@ class JDBCGranularDatabaseProtoService(private val connection: Connection,
     }
 
     override fun commit() {
-        this.connection.commit()
+        this.connectionSourceFactory.connectionSource.commit()
     }
 
+    override fun close() {
+        this.connectionSourceFactory.close()
+    }
 
     companion object {
         const private val TenSeconds = 10

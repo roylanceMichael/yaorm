@@ -27,7 +27,7 @@ class PostgresProtoContextTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -70,7 +70,7 @@ class PostgresProtoContextTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
 
@@ -129,7 +129,7 @@ class PostgresProtoContextTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
 
@@ -189,7 +189,7 @@ class PostgresProtoContextTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val contextName = "TestingModel"

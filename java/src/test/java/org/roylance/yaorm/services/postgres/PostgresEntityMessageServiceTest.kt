@@ -8,10 +8,7 @@ import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.*
-import java.io.File
 import java.util.*
 
 class PostgresEntityMessageServiceTest {
@@ -29,7 +26,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -101,7 +98,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -161,7 +158,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -219,7 +216,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -282,7 +279,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -325,7 +322,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -384,7 +381,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -431,7 +428,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -468,7 +465,7 @@ class PostgresEntityMessageServiceTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -513,7 +510,7 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -551,7 +548,7 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -591,7 +588,7 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)

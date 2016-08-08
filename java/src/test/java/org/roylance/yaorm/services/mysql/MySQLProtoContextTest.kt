@@ -25,7 +25,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
@@ -65,7 +65,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
@@ -120,7 +120,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
@@ -176,7 +176,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlPassword!!)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
             val contextName = "TestingModel"

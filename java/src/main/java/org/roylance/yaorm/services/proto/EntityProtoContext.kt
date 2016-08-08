@@ -14,7 +14,8 @@ class EntityProtoContext(
         val protoService: IEntityProtoService,
         val contextName:String,
         val customIndexes: HashMap<String, YaormModel.Index>,
-        val base64Service: IBase64Service) {
+        val base64Service: IBase64Service): AutoCloseable {
+
     val entityMessageService: IEntityMessageService
 
     private val typeToAction = object: HashMap<
@@ -212,5 +213,9 @@ class EntityProtoContext(
             return this.protoService.dropTable(difference.tableDefinition)
         }
         return false
+    }
+
+    override fun close() {
+        this.entityMessageService.close()
     }
 }

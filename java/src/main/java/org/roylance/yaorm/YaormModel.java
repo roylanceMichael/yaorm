@@ -18687,6 +18687,24 @@ public final class YaormModel {
      */
     com.google.protobuf.ByteString
         getSchemaBytes();
+
+    /**
+     * <code>optional bool should_create_schema = 5;</code>
+     */
+    boolean hasShouldCreateSchema();
+    /**
+     * <code>optional bool should_create_schema = 5;</code>
+     */
+    boolean getShouldCreateSchema();
+
+    /**
+     * <code>optional int32 port = 6;</code>
+     */
+    boolean hasPort();
+    /**
+     * <code>optional int32 port = 6;</code>
+     */
+    int getPort();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.ConnectionInfo}
@@ -18762,6 +18780,16 @@ public final class YaormModel {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000008;
               schema_ = bs;
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              shouldCreateSchema_ = input.readBool();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              port_ = input.readInt32();
               break;
             }
           }
@@ -18972,11 +19000,43 @@ public final class YaormModel {
       }
     }
 
+    public static final int SHOULD_CREATE_SCHEMA_FIELD_NUMBER = 5;
+    private boolean shouldCreateSchema_;
+    /**
+     * <code>optional bool should_create_schema = 5;</code>
+     */
+    public boolean hasShouldCreateSchema() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool should_create_schema = 5;</code>
+     */
+    public boolean getShouldCreateSchema() {
+      return shouldCreateSchema_;
+    }
+
+    public static final int PORT_FIELD_NUMBER = 6;
+    private int port_;
+    /**
+     * <code>optional int32 port = 6;</code>
+     */
+    public boolean hasPort() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 port = 6;</code>
+     */
+    public int getPort() {
+      return port_;
+    }
+
     private void initFields() {
       host_ = "";
       user_ = "";
       password_ = "";
       schema_ = "";
+      shouldCreateSchema_ = false;
+      port_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -19003,6 +19063,12 @@ public final class YaormModel {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(4, getSchemaBytes());
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, shouldCreateSchema_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, port_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -19027,6 +19093,14 @@ public final class YaormModel {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, getSchemaBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, shouldCreateSchema_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, port_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19153,6 +19227,10 @@ public final class YaormModel {
         bitField0_ = (bitField0_ & ~0x00000004);
         schema_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        shouldCreateSchema_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        port_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -19197,6 +19275,14 @@ public final class YaormModel {
           to_bitField0_ |= 0x00000008;
         }
         result.schema_ = schema_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.shouldCreateSchema_ = shouldCreateSchema_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.port_ = port_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -19232,6 +19318,12 @@ public final class YaormModel {
           bitField0_ |= 0x00000008;
           schema_ = other.schema_;
           onChanged();
+        }
+        if (other.hasShouldCreateSchema()) {
+          setShouldCreateSchema(other.getShouldCreateSchema());
+        }
+        if (other.hasPort()) {
+          setPort(other.getPort());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -19560,6 +19652,70 @@ public final class YaormModel {
   }
   bitField0_ |= 0x00000008;
         schema_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean shouldCreateSchema_ ;
+      /**
+       * <code>optional bool should_create_schema = 5;</code>
+       */
+      public boolean hasShouldCreateSchema() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bool should_create_schema = 5;</code>
+       */
+      public boolean getShouldCreateSchema() {
+        return shouldCreateSchema_;
+      }
+      /**
+       * <code>optional bool should_create_schema = 5;</code>
+       */
+      public Builder setShouldCreateSchema(boolean value) {
+        bitField0_ |= 0x00000010;
+        shouldCreateSchema_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool should_create_schema = 5;</code>
+       */
+      public Builder clearShouldCreateSchema() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        shouldCreateSchema_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int port_ ;
+      /**
+       * <code>optional int32 port = 6;</code>
+       */
+      public boolean hasPort() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 port = 6;</code>
+       */
+      public int getPort() {
+        return port_;
+      }
+      /**
+       * <code>optional int32 port = 6;</code>
+       */
+      public Builder setPort(int value) {
+        bitField0_ |= 0x00000020;
+        port_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 port = 6;</code>
+       */
+      public Builder clearPort() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        port_ = 0;
         onChanged();
         return this;
       }
@@ -20656,17 +20812,18 @@ public final class YaormModel {
       "nitionGraphs\022B\n\025main_table_definition\030\001 " +
       "\001(\0132#.org.roylance.yaorm.TableDefinition" +
       "\022I\n\027table_definition_graphs\030\002 \003(\0132(.org." +
-      "roylance.yaorm.TableDefinitionGraph\"N\n\016C",
+      "roylance.yaorm.TableDefinitionGraph\"z\n\016C",
       "onnectionInfo\022\014\n\004host\030\001 \001(\t\022\014\n\004user\030\002 \001(" +
-      "\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t\"c\n\tM" +
-      "igration\022\n\n\002id\030\001 \001(\t\022\024\n\014context_name\030\002 \001" +
-      "(\t\022\037\n\027model_definition_base64\030\003 \001(\t\022\023\n\013i" +
-      "nsert_date\030\004 \001(\003*\327\001\n\014ProtobufType\022\010\n\004NON" +
-      "E\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020\003\022\t\n" +
-      "\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006SINT" +
-      "32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIXED64" +
-      "\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BOOL\020\r" +
-      "\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020"
+      "\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t\022\034\n\024s" +
+      "hould_create_schema\030\005 \001(\010\022\014\n\004port\030\006 \001(\005\"" +
+      "c\n\tMigration\022\n\n\002id\030\001 \001(\t\022\024\n\014context_name" +
+      "\030\002 \001(\t\022\037\n\027model_definition_base64\030\003 \001(\t\022" +
+      "\023\n\013insert_date\030\004 \001(\003*\327\001\n\014ProtobufType\022\010\n" +
+      "\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020" +
+      "\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006" +
+      "SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIX" +
+      "ED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BO",
+      "OL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -20787,7 +20944,7 @@ public final class YaormModel {
     internal_static_org_roylance_yaorm_ConnectionInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ConnectionInfo_descriptor,
-        new java.lang.String[] { "Host", "User", "Password", "Schema", });
+        new java.lang.String[] { "Host", "User", "Password", "Schema", "ShouldCreateSchema", "Port", });
     internal_static_org_roylance_yaorm_Migration_descriptor =
       getDescriptor().getMessageTypes().get(18);
     internal_static_org_roylance_yaorm_Migration_fieldAccessorTable = new

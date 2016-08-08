@@ -27,7 +27,7 @@ class PostgresProtoTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -80,7 +80,7 @@ class PostgresProtoTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -137,7 +137,7 @@ class PostgresProtoTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -220,7 +220,7 @@ class PostgresProtoTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)
@@ -290,7 +290,7 @@ class PostgresProtoTest {
                     false)
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, generatorService)

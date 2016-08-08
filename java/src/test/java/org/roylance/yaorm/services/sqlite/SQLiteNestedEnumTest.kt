@@ -21,7 +21,7 @@ class SQLiteNestedEnumTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)

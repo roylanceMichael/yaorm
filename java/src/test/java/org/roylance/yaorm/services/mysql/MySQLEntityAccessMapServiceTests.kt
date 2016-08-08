@@ -30,7 +30,7 @@ class MySQLEntityAccessMapServiceTests {
 
         val mysqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
         val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                sourceConnection.connectionSource,
+                sourceConnection,
                 false)
 
         val entityService = EntityProtoService(

@@ -24,7 +24,7 @@ class SQLiteEntityProtoContextTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -58,7 +58,7 @@ class SQLiteEntityProtoContextTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
@@ -108,7 +108,7 @@ class SQLiteEntityProtoContextTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
@@ -159,7 +159,7 @@ class SQLiteEntityProtoContextTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val contextName = "TestingModel"

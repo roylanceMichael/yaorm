@@ -21,7 +21,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -47,7 +47,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -80,7 +80,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -118,7 +118,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -159,7 +159,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath, "mike", "testing")
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -200,7 +200,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath, "mike", "testing")
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -233,7 +233,7 @@ class SQLiteEntityMessageServiceTest {
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath, "mike", "testing")
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -263,7 +263,7 @@ class SQLiteEntityMessageServiceTest {
                     "testing")
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
@@ -302,7 +302,7 @@ class SQLiteEntityMessageServiceTest {
                     "testing")
 
             val granularDatabaseService = JDBCGranularDatabaseProtoService(
-                    sourceConnection.connectionSource,
+                    sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)

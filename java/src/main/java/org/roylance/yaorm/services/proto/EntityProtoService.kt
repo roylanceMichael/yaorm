@@ -8,6 +8,7 @@ import java.util.*
 
 class EntityProtoService(private val granularDatabaseService: IGranularDatabaseProtoService,
                          private val sqlGeneratorService: ISQLGeneratorService) : IEntityProtoService {
+
     override fun getIdsStream(definition: YaormModel.TableDefinition,
                               streamer: IProtoStreamer) {
         if (!this.granularDatabaseService.isAvailable()) {
@@ -374,5 +375,8 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
         return this.granularDatabaseService
                 .executeUpdateQuery(sql)
                 .successful
+    }
+    override fun close() {
+        this.granularDatabaseService.close()
     }
 }

@@ -10,8 +10,9 @@ import java.util.*
 
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
-        private val entityService: IEntityProtoService,
+        override val entityService: IEntityProtoService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
+
     override fun <T : Message> mergeTable(messages: List<T>, message: T): Boolean {
         if (!ProtobufUtils.isMessageOk(message)) {
             return false
@@ -526,5 +527,9 @@ class EntityMessageService(
                 handleMessage(messageDescriptor, shouldDelete)
             }
         }
+    }
+
+    override fun close() {
+        this.entityService.close()
     }
 }

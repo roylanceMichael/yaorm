@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.proto
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.entity.EntityResultModel
 
-interface IGranularDatabaseProtoService {
+interface IGranularDatabaseProtoService: AutoCloseable {
     fun isAvailable(): Boolean
     fun executeUpdateQuery(query:String): EntityResultModel
     fun executeSelectQuery(definition: YaormModel.TableDefinition, query:String): IProtoCursor

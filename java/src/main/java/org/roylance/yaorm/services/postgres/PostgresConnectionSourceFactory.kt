@@ -28,12 +28,15 @@ class PostgresConnectionSourceFactory(
 
         this.commonConnection = DriverManager.getConnection(url, props)
     }
-    override fun getConnectionSource(): Connection {
-        if (this.isClosed) {
-            throw SQLException("already closed")
+
+    override val connectionSource: Connection
+        @Throws(SQLException::class)
+        get() {
+            if (this.isClosed) {
+                throw SQLException("already closed...")
+            }
+            return this.commonConnection
         }
-        return this.commonConnection
-    }
 
     override fun close() {
         if (!this.isClosed) {

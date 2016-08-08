@@ -4,7 +4,9 @@ import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
 
-interface IEntityMessageService {
+interface IEntityMessageService: AutoCloseable {
+    val entityService: IEntityProtoService
+
     fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor):Boolean
     fun dropAndCreateEntireSchema(fileDescriptor: Descriptors.FileDescriptor):Boolean
 
