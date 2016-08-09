@@ -168,6 +168,16 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                                 valueColumnPairs.add("$formattedValue as ${this.buildKeyword(foundColumn.definition.name)}")
                             }
                         }
+                        else {
+                            val actualColumn = YaormUtils.buildColumn("", columnDefinition)
+                            val formattedValue = YaormUtils.getFormattedString(actualColumn)
+                            if (valueColumnPairs.isEmpty()) {
+                                valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")
+                            }
+                            else {
+                                valueColumnPairs.add("$formattedValue as ${this.buildKeyword(columnDefinition.name)}")
+                            }
+                        }
                     }
 
                 selectStatements.add(valueColumnPairs.joinToString(YaormUtils.Comma))
@@ -188,6 +198,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
     override fun buildWhereClause(
             definition: YaormModel.TableDefinition,
             whereClauseItem: YaormModel.WhereClause): String? {
+
         val whereSql = java.lang.String.format(
                 WhereClauseTemplate,
                 this.buildKeyword(definition.name),

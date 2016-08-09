@@ -180,6 +180,16 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                                         valueColumnPairs.add("$formattedString as ${this.buildKeyword(foundColumn.definition.name)}")
                                     }
                                 }
+                                else {
+                                    val actualColumn = YaormUtils.buildColumn("", columnDefinition)
+                                    val formattedValue = YaormUtils.getFormattedString(actualColumn)
+                                    if (valueColumnPairs.isEmpty()) {
+                                        valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")
+                                    }
+                                    else {
+                                        valueColumnPairs.add("$formattedValue as ${this.buildKeyword(columnDefinition.name)}")
+                                    }
+                                }
                             }
 
                     selectStatements.add(valueColumnPairs.joinToString(YaormUtils.Comma))

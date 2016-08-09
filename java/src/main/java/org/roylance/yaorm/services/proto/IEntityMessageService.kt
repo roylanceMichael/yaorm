@@ -22,7 +22,7 @@ interface IEntityMessageService: AutoCloseable {
     fun <T: Message> getKeys(messageType:T):List<String>
     fun <T: Message> getKeysStream(messageType:T, streamer: IMessageStreamer)
     fun <T: Message> getMany(messageType:T, limit:Int=10000, offset:Int = 0):List<T>
-    fun <T: Message> getManyStream(messageType: T, streamer: IMessageStreamer, limit:Int=10000, offset: Int  = 0)
+    fun <T: Message> getManyStream(messageType: T, streamer: IMessageStreamer, limit:Int=10000, offset: Int=0)
 
     fun <T: Message> where(messageType: T,
                            whereClause:YaormModel.WhereClause):List<T>
