@@ -65,7 +65,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         val returnList = ArrayList<String>()
         returnList.add("drop table if exists temp_${definition.name}")
         returnList.add("alter table ${this.buildKeyword(definition.name)} rename to temp_${definition.name}")
-        returnList.add(createTableSql.replace(YaormUtils.SemiColon, ""))
+        returnList.add(createTableSql.replace(YaormUtils.SemiColon, YaormUtils.EmptyString))
 
         val nameTypes = YaormUtils.getNameTypes(
                 definition,
@@ -169,7 +169,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                             }
                         }
                         else {
-                            val actualColumn = YaormUtils.buildColumn("", columnDefinition)
+                            val actualColumn = YaormUtils.buildColumn(YaormUtils.EmptyString, columnDefinition)
                             val formattedValue = YaormUtils.getFormattedString(actualColumn)
                             if (valueColumnPairs.isEmpty()) {
                                 valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")

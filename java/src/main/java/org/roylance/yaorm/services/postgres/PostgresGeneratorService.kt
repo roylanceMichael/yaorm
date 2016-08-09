@@ -181,7 +181,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                                     }
                                 }
                                 else {
-                                    val actualColumn = YaormUtils.buildColumn("", columnDefinition)
+                                    val actualColumn = YaormUtils.buildColumn(YaormUtils.EmptyString, columnDefinition)
                                     val formattedValue = YaormUtils.getFormattedString(actualColumn)
                                     if (valueColumnPairs.isEmpty()) {
                                         valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")

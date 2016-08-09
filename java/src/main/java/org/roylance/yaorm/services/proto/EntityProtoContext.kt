@@ -12,7 +12,6 @@ class EntityProtoContext(
         val fileDescriptor: Descriptors.FileDescriptor,
         val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         val protoService: IEntityProtoService,
-        val contextName:String,
         val customIndexes: HashMap<String, YaormModel.Index>,
         val base64Service: IBase64Service): AutoCloseable {
 
@@ -58,7 +57,7 @@ class EntityProtoContext(
         val string64 = this.base64Service.serialize(definitionsModels.toByteArray())
         val migrationModel = YaormModel.Migration.newBuilder()
             .setId(id)
-            .setContextName(this.contextName)
+            .setContextName(this.protoGeneratedMessageBuilder.name)
             .setModelDefinitionBase64(string64)
             .setInsertDate(Date().time)
             .build()
@@ -147,7 +146,7 @@ class EntityProtoContext(
     }
 
     fun getLatestMigrationDefinition() : YaormModel.TableDefinitions? {
-        val propertyHolder = YaormModel.Column.newBuilder().setStringHolder(this.contextName)
+        val propertyHolder = YaormModel.Column.newBuilder().setStringHolder(this.protoGeneratedMessageBuilder.name)
 
         val propertyDefinition = YaormModel.ColumnDefinition.newBuilder()
                 .setName(YaormModel.Migration.getDescriptor().findFieldByNumber(YaormModel.Migration.CONTEXT_NAME_FIELD_NUMBER).name)

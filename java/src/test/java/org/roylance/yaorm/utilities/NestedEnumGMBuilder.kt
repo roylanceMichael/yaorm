@@ -5,6 +5,9 @@ import org.roylance.yaorm.NestedEnumTest
 import org.roylance.yaorm.services.proto.BaseProtoGeneratedMessageBuilder
 
 class NestedEnumGMBuilder: BaseProtoGeneratedMessageBuilder() {
+    override val name: String
+        get() = "NestedEnumTest"
+
     override fun buildGeneratedMessage(name: String): GeneratedMessage {
         if (NestedEnumTest.Customer.getDescriptor().name.equals(name)) {
             return NestedEnumTest.Customer.getDefaultInstance()

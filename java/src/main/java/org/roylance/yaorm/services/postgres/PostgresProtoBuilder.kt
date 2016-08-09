@@ -17,14 +17,12 @@ class PostgresProtoBuilder: IEntityProtoBuilder {
     override fun buildProtoContext(connectionInfo: YaormModel.ConnectionInfo,
                                    fileDescriptor: Descriptors.FileDescriptor,
                                    messageBuilder: IProtoGeneratedMessageBuilder,
-                                   entityMessageName: String,
                                    customIndexes: HashMap<String, YaormModel.Index>,
                                    base64Service: IBase64Service): EntityProtoContext {
         return EntityProtoContext(
                 fileDescriptor,
                 messageBuilder,
                 this.buildProtoService(connectionInfo),
-                entityMessageName,
                 customIndexes,
                 base64Service)
     }

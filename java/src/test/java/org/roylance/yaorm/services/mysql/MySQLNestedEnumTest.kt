@@ -32,7 +32,6 @@ class MySQLNestedEnumTest {
                     NestedEnumTest.getDescriptor(),
                     NestedEnumGMBuilder(),
                     entityService,
-                    "NestedModel",
                     HashMap(),
                     TestBase64Service())
 

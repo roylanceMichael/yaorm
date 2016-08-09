@@ -1,6 +1,5 @@
 package org.roylance.yaorm.utilities
 
-import org.roylance.yaorm.services.mysql.MySQLProtoTest
 import org.roylance.yaorm.services.postgres.PostgresProtoTest
 import java.sql.DriverManager
 import java.util.*

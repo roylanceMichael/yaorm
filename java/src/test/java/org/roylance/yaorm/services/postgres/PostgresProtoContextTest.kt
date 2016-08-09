@@ -36,7 +36,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel", HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             protoContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
@@ -74,14 +74,12 @@ class PostgresProtoContextTest {
                     false)
             val generatorService = PostgresGeneratorService()
 
-            val contextName = "TestingModel"
-
             // act
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
@@ -93,7 +91,7 @@ class PostgresProtoContextTest {
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             secondContext.handleMigrations()
@@ -133,14 +131,12 @@ class PostgresProtoContextTest {
                     false)
             val generatorService = PostgresGeneratorService()
 
-            val contextName = "TestingModel"
-
             // act
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             secondContext.entityMessageService.dropAndCreateEntireSchema(TestingModelV2.getDescriptor())
@@ -159,7 +155,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstContext.handleMigrations()
@@ -192,14 +188,13 @@ class PostgresProtoContextTest {
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val contextName = "TestingModel"
 
             // act
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             thirdVersion.entityMessageService.dropAndCreateEntireSchema(TestingModelV3.getDescriptor())
@@ -218,7 +213,7 @@ class PostgresProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, generatorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstVersion.handleMigrations()

@@ -30,7 +30,7 @@ class SQLiteNestedEnumTest {
                     NestedEnumTest.getDescriptor(),
                     protoService,
                     entityService,
-                    "NestedEnum", HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             protoContext.handleMigrations()

@@ -34,7 +34,6 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel",
                     HashMap(),
                     TestBase64Service())
 
@@ -69,14 +68,12 @@ class MySQLProtoContextTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
-            val contextName = "TestingModel"
-
             // act
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstContext.handleMigrations()
@@ -85,7 +82,7 @@ class MySQLProtoContextTest {
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             secondContext.handleMigrations()
@@ -124,14 +121,12 @@ class MySQLProtoContextTest {
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
-            val contextName = "TestingModel"
-
             // act
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             secondContext.handleMigrations()
@@ -147,7 +142,7 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstContext.handleMigrations()
@@ -179,14 +174,13 @@ class MySQLProtoContextTest {
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val contextName = "TestingModel"
 
             // act
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             thirdVersion.handleMigrations()
@@ -202,7 +196,7 @@ class MySQLProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, mySqlGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstVersion.handleMigrations()

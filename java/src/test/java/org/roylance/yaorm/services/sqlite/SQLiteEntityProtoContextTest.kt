@@ -33,7 +33,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     protoService,
                     entityService,
-                    "TestingModel", HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             protoContext.handleMigrations()
@@ -62,14 +62,12 @@ class SQLiteEntityProtoContextTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
-            val contextName = "TestingModel"
-
             // act
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstContext.handleMigrations()
@@ -78,7 +76,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             secondContext.handleMigrations()
@@ -112,14 +110,12 @@ class SQLiteEntityProtoContextTest {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
 
-            val contextName = "TestingModel"
-
             // act
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             secondContext.handleMigrations()
@@ -135,7 +131,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstContext.handleMigrations()
@@ -162,14 +158,13 @@ class SQLiteEntityProtoContextTest {
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val contextName = "TestingModel"
 
             // act
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             thirdVersion.handleMigrations()
@@ -185,7 +180,7 @@ class SQLiteEntityProtoContextTest {
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
                     EntityProtoService(granularDatabaseService, sqliteGeneratorService),
-                    contextName, HashMap(),
+                    HashMap(),
                     TestBase64Service())
 
             firstVersion.handleMigrations()

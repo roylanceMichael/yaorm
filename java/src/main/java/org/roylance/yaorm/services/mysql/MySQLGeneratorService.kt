@@ -194,7 +194,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
                                     }
                                 }
                                 else {
-                                    val actualColumn = YaormUtils.buildColumn("", columnDefinition)
+                                    val actualColumn = YaormUtils.buildColumn(YaormUtils.EmptyString, columnDefinition)
                                     val formattedValue = YaormUtils.getFormattedString(actualColumn)
                                     if (valueColumnPairs.isEmpty()) {
                                         valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")

@@ -27,7 +27,7 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
                 .distinctBy { it.name }
                 .forEach {
                     if (this.namesToAvoid.contains(it.name)) {
-                        val propertyHolder = YaormUtils.buildColumn(null, it)
+                        val propertyHolder = YaormUtils.buildColumn(YaormUtils.EmptyString, it)
                         newInstance.addColumns(propertyHolder)
                     }
                     else {
@@ -38,9 +38,9 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
                         }
                         catch (e:SQLException) {
                             // if we can't see this name for w/e reason, we'll print to the console, but continue on
-                            e.printStackTrace()
+                            // e.printStackTrace()
                             this.namesToAvoid.add(it.name)
-                            val propertyHolder = YaormUtils.buildColumn(null, it)
+                            val propertyHolder = YaormUtils.buildColumn(YaormUtils.EmptyString, it)
                             newInstance.addColumns(propertyHolder)
                         }
                     }
