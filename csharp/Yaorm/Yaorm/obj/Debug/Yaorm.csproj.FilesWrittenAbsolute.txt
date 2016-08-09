@@ -1,6 +1,0 @@
-/Users/mikeroylance/src/github.com/artemishealth/yaorm/csharp/Yaorm/Yaorm/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile78.AssemblyAttribute.cs
-/Users/mikeroylance/src/github.com/artemishealth/yaorm/csharp/Yaorm/Yaorm/bin/Debug/Google.Protobuf.dll
-/Users/mikeroylance/src/github.com/artemishealth/yaorm/csharp/Yaorm/Yaorm/bin/Debug/Yaorm.dll.mdb
-/Users/mikeroylance/src/github.com/artemishealth/yaorm/csharp/Yaorm/Yaorm/bin/Debug/Yaorm.dll
-/Users/mikeroylance/src/github.com/artemishealth/yaorm/csharp/Yaorm/Yaorm/obj/Debug/Yaorm.dll
-/Users/mikeroylance/src/github.com/artemishealth/yaorm/csharp/Yaorm/Yaorm/obj/Debug/Yaorm.dll.mdb
