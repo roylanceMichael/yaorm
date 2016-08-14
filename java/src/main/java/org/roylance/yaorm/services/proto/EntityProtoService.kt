@@ -8,6 +8,9 @@ import java.util.*
 
 class EntityProtoService(private val granularDatabaseService: IGranularDatabaseProtoService,
                          private val sqlGeneratorService: ISQLGeneratorService) : IEntityProtoService {
+    override fun buildDefinitionFromSql(customSql: String): YaormModel.TableDefinition {
+        return this.granularDatabaseService.buildTableDefinitionFromQuery(customSql)
+    }
 
     override fun getIdsStream(definition: YaormModel.TableDefinition,
                               streamer: IProtoStreamer) {

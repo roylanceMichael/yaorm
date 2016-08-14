@@ -36,4 +36,6 @@ interface IEntityProtoService: AutoCloseable {
     fun getManyStream(definition: YaormModel.TableDefinition, streamer: IProtoStreamer, limit: Int=100000, offset: Int=0)
 
     fun where(whereClauseItem: YaormModel.WhereClause, definition: YaormModel.TableDefinition): YaormModel.Records
+
+    fun buildDefinitionFromSql(customSql: String): YaormModel.TableDefinition
 }

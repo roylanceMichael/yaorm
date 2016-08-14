@@ -1,16 +1,52 @@
 package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.models.TypeModel
 import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.services.IConnectionSourceFactory
 import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.IProtoCursor
 import org.roylance.yaorm.services.proto.IProtoStreamer
-import java.sql.Connection
 import java.util.*
 
 class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: IConnectionSourceFactory,
                                        private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseProtoService {
+
+    override fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition {
+        val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
+        try {
+            val resultSet = statement.executeQuery()
+            val types = HashMap<String, TypeModel>()
+
+            var i = 0
+            while (i < resultSet.metaData.columnCount) {
+                val columnName = resultSet.metaData.getColumnName(i)
+                types[columnName] = TypeModel(columnName, i)
+                i++
+            }
+
+            while (resultSet.next()) {
+                types.keys.forEach {
+                    val item = resultSet.getString(it)
+                    types[it]!!.addTest(item)
+                }
+            }
+
+            val returnTable = YaormModel.TableDefinition.newBuilder()
+            types.keys.forEach {
+                returnTable.addColumnDefinitions(types[it]!!.buildColumnDefinition())
+            }
+
+            return returnTable.build()
+        }
+        catch(e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+        finally {
+            statement.close()
+        }
+    }
 
     override fun isAvailable(): Boolean {
         try {

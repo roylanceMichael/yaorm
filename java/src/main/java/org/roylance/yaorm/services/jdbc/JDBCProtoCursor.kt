@@ -1,6 +1,7 @@
 package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.models.TypeModel
 import org.roylance.yaorm.services.proto.IProtoCursor
 import org.roylance.yaorm.services.proto.IProtoStreamer
 import org.roylance.yaorm.utilities.YaormUtils
