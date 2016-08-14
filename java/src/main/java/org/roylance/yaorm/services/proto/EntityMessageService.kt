@@ -13,6 +13,8 @@ class EntityMessageService(
         override val entityService: IEntityProtoService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
 
+    private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
+
     override fun <T : Message> mergeTable(messages: List<T>, message: T): Boolean {
         if (!ProtobufUtils.isMessageOk(message)) {
             return false
@@ -35,8 +37,6 @@ class EntityMessageService(
 
         return true
     }
-
-    private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
     override fun <T : Message> bulkInsert(messages: List<T>): Boolean {
         if (messages.size == 0) {
@@ -101,12 +101,16 @@ class EntityMessageService(
                 ?: return
 
         val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
-        val records = this.entityService.getCustom(customSql, definition)
-        records.recordsList.forEach {
-            val newBuilder = builder.newBuilderForType()
-            ConvertRecordsToProtobuf.build(newBuilder, it)
-            stream.stream(newBuilder.build())
+
+        val protoStream = object: IProtoStreamer {
+            override fun stream(record: YaormModel.Record) {
+                val newBuilder = builder.newBuilderForType()
+                ConvertRecordsToProtobuf.build(newBuilder, record)
+                stream.stream(newBuilder.build())
+            }
         }
+
+        this.entityService.getCustomStream(customSql, definition, protoStream)
     }
 
     override fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor): Boolean {

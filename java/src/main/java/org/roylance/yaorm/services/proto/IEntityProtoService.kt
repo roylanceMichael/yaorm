@@ -32,6 +32,8 @@ interface IEntityProtoService: AutoCloseable {
     fun getIdsStream(definition:YaormModel.TableDefinition, streamer: IProtoStreamer)
 
     fun getCustom(customSql: String, definition: YaormModel.TableDefinition): YaormModel.Records
+    fun getCustomStream(customSql: String, definition: YaormModel.TableDefinition, streamer: IProtoStreamer)
+
     fun getMany(definition: YaormModel.TableDefinition, limit: Int=1000, offset: Int=0): YaormModel.Records
     fun getManyStream(definition: YaormModel.TableDefinition, streamer: IProtoStreamer, limit: Int=100000, offset: Int=0)
 

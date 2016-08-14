@@ -172,6 +172,14 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
                 .getRecords()
     }
 
+    override fun getCustomStream(customSql: String, definition: YaormModel.TableDefinition, streamer: IProtoStreamer) {
+        if (!this.granularDatabaseService.isAvailable()) {
+            return
+        }
+
+        this.granularDatabaseService.executeSelectQueryStream(definition, customSql, streamer)
+    }
+
     override fun get(id: String, definition: YaormModel.TableDefinition): YaormModel.Record? {
         if (!this.granularDatabaseService.isAvailable()) {
             return YaormModel.Record.getDefaultInstance()
