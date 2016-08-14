@@ -18,14 +18,18 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
             val resultSet = statement.executeQuery()
             val types = HashMap<String, TypeModel>()
 
-            var i = 0
-            while (i < resultSet.metaData.columnCount) {
-                val columnName = resultSet.metaData.getColumnName(i)
-                types[columnName] = TypeModel(columnName, i)
-                i++
-            }
-
             while (resultSet.next()) {
+
+                if (types.size == 0) {
+                    //
+                    var i = 1
+                    while (i < statement.metaData.columnCount) {
+                        val columnName = statement.metaData.getColumnLabel(i)
+                        types[columnName] = TypeModel(columnName, i)
+                        i++
+                    }
+                }
+
                 types.keys.forEach {
                     val item = resultSet.getString(it)
                     types[it]!!.addTest(item)

@@ -312,4 +312,72 @@ class SQLiteProtoTest {
             database.deleteOnExit()
         }
     }
+
+    @Test
+    fun getMetaDataTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+
+            val testModel = TestingModel.SimpleInsertTest.newBuilder()
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+            testModel.display = "random display"
+            testModel.testInt32 = 1
+            testModel.testInt64 = 2
+            testModel.testUint32 = 3
+            testModel.testUint64 = 4
+            testModel.testSint32 = 5
+            testModel.testSint64 = 6
+            testModel.testFixed32 = 7
+            testModel.testFixed64 = 8
+            testModel.testSfixed32 = 9
+            testModel.testSfixed64 = 10
+            testModel.testBool = true
+            testModel.testBytes = ByteString.copyFromUtf8("what is this")
+            testModel.testDouble = 11.0
+            testModel.testFloat = 12.0F
+
+            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+            val subTestChild2 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("third display")
+            val subTestChild3 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("fourth display")
+            testModel.addChilds(subTestChild)
+            testModel.addChilds(subTestChild2)
+            testModel.addChilds(subTestChild3)
+
+            val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
+
+            testModel.addCoolTypes(firstCoolType)
+            testModel.addCoolTypes(secondCoolType)
+
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
+            records.tableRecordsList.forEach {
+                entityService.dropTable(it.tableDefinition)
+                entityService.createTable(it.tableDefinition)
+                entityService.bulkInsert(it.records, it.tableDefinition)
+            }
+
+            // act
+            val tableDefinition = entityService.buildDefinitionFromSql("select * from SimpleInsertTest;")
+
+            // assert
+            System.out.println(tableDefinition.columnDefinitionsCount)
+            tableDefinition.columnDefinitionsList.sortedBy { it.order }.forEach {
+                System.out.println("${it.name}\t${it.type}\t${it.order}")
+            }
+            Assert.assertTrue(tableDefinition.columnDefinitionsCount == 17)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
 }

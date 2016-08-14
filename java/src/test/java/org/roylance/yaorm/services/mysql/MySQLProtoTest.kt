@@ -342,4 +342,106 @@ class MySQLProtoTest {
             ConnectionUtilities.dropMySQLSchema()
         }
     }
+
+    @Test
+    fun simplePassThroughDefinitionTest() {
+        // arrange
+        ConnectionUtilities.getMySQLConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+
+            val testModel = TestingModel.SimpleInsertTest.newBuilder()
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+
+            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+            testModel.addChilds(subTestChild)
+
+            val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
+
+            testModel.addCoolTypes(firstCoolType)
+            testModel.addCoolTypes(secondCoolType)
+
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build())
+            // act
+            records.tableRecordsList.forEach {
+                entityService.dropTable(it.tableDefinition)
+                entityService.createTable(it.tableDefinition)
+                entityService.bulkInsert(it.records, it.tableDefinition)
+            }
+
+            // assert
+            Assert.assertTrue(true)
+        }
+        finally {
+            ConnectionUtilities.dropMySQLSchema()
+        }
+    }
+
+    @Test
+    fun simpleDefinitionBuilderTest() {
+        // arrange
+        ConnectionUtilities.getMySQLConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+
+            val testModel = TestingModel.SimpleInsertTest.newBuilder()
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+
+            val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
+            testModel.addChilds(subTestChild)
+
+            val firstCoolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            val secondCoolType = TestingModel.SimpleInsertTest.CoolType.TEST
+
+            testModel.addCoolTypes(firstCoolType)
+            testModel.addCoolTypes(secondCoolType)
+
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
+            records.tableRecordsList.forEach {
+                entityService.dropTable(it.tableDefinition)
+                entityService.createTable(it.tableDefinition)
+                entityService.bulkInsert(it.records, it.tableDefinition)
+            }
+
+            // act
+            val tableDefinition = entityService.buildDefinitionFromSql("select * from SimpleInsertTest;")
+
+            // assert
+            System.out.println(tableDefinition.columnDefinitionsCount)
+            tableDefinition.columnDefinitionsList.sortedBy { it.order }.forEach {
+                System.out.println("${it.name}\t${it.type}\t${it.order}")
+            }
+            Assert.assertTrue(tableDefinition.columnDefinitionsCount == 17)
+        }
+        finally {
+            ConnectionUtilities.dropMySQLSchema()
+        }
+    }
 }

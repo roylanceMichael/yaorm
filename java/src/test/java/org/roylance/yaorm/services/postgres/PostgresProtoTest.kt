@@ -336,4 +336,46 @@ class PostgresProtoTest {
         finally {
         }
     }
+
+    @Test
+    fun metaDataTest() {
+        // arrange
+        ConnectionUtilities.getPostgresConnectionInfo()
+        try {
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val generatorService = PostgresGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+
+            val testModel = TestingModelUtilities.buildSampleRootObject()
+
+            val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
+            records.tableRecordsList.forEach {
+                entityService.dropTable(it.tableDefinition)
+                entityService.createTable(it.tableDefinition)
+                entityService.bulkInsert(it.records, it.tableDefinition)
+            }
+
+            // act
+            val tableDefinition = entityService.buildDefinitionFromSql("select * from SimpleInsertTest;")
+
+            // assert
+            System.out.println(tableDefinition.columnDefinitionsCount)
+            tableDefinition.columnDefinitionsList.sortedBy { it.order }.forEach {
+                System.out.println("${it.name}\t${it.type}\t${it.order}")
+            }
+            Assert.assertTrue(tableDefinition.columnDefinitionsCount == 17)
+        }
+        finally {
+        }
+    }
 }

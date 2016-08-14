@@ -5,8 +5,8 @@ import org.apache.commons.lang3.math.NumberUtils
 import org.roylance.yaorm.YaormModel
 
 class TypeModel(
-        private val columnName: String,
-        private val index: Int) {
+        val columnName: String,
+        val index: Int) {
     private var boolCount: Int = 0
     private var doubleCount: Int = 0
     private var intCount: Int = 0
