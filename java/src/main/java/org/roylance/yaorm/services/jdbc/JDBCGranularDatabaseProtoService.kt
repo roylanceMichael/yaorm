@@ -21,9 +21,9 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
             while (resultSet.next()) {
 
                 if (types.size == 0) {
-                    //
+                    // this starts at index 1 for some reason... tests for sqlite, mysql, and postgres
                     var i = 1
-                    while (i < statement.metaData.columnCount) {
+                    while (i <= statement.metaData.columnCount) {
                         val columnName = statement.metaData.getColumnLabel(i)
                         types[columnName] = TypeModel(columnName, i)
                         i++

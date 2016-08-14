@@ -374,7 +374,7 @@ class SQLiteProtoTest {
             tableDefinition.columnDefinitionsList.sortedBy { it.order }.forEach {
                 System.out.println("${it.name}\t${it.type}\t${it.order}")
             }
-            Assert.assertTrue(tableDefinition.columnDefinitionsCount == 17)
+            Assert.assertTrue(tableDefinition.columnDefinitionsCount == 18)
         }
         finally {
             database.deleteOnExit()
