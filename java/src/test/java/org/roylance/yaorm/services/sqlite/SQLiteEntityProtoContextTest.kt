@@ -2,17 +2,11 @@ package org.roylance.yaorm.services.sqlite
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.TestingModelV2
-import org.roylance.yaorm.TestingModelV3
-import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.*
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.utilities.TestBase64Service
-import org.roylance.yaorm.utilities.TestModelGMBuilder
-import org.roylance.yaorm.utilities.TestModelGMv2Builder
-import org.roylance.yaorm.utilities.TestModelGMv3Builder
+import org.roylance.yaorm.utilities.*
 import java.io.File
 import java.util.*
 
@@ -194,6 +188,127 @@ class SQLiteEntityProtoContextTest {
 
             val migrationsFound = firstVersion.entityMessageService.getMany(YaormModel.Migration.getDefaultInstance())
             Assert.assertTrue(migrationsFound.size == 2)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    fun complexMergeTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+
+            val complexModelContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    ComplexModelBuilder,
+                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    HashMap(),
+                    TestBase64Service())
+
+            complexModelContext.handleMigrations()
+
+            val firstView = ComplexModel.View.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setTitle("cool title")
+
+            val firstForm = ComplexModel.Form.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setDisplay("cool display")
+
+            val firstQuestion = ComplexModel.Question.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setDisplay("first question")
+
+            val secondQuestion = ComplexModel.Question.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setDisplay("second question")
+
+            firstForm.addQuestions(firstQuestion)
+            firstForm.addQuestions(secondQuestion)
+            firstView.addForms(firstForm)
+
+            // act
+            complexModelContext.entityMessageService.merge(firstView.build())
+
+            // assert
+            val foundViews = complexModelContext.entityMessageService.getMany(ComplexModel.View.getDefaultInstance())
+
+            Assert.assertTrue(foundViews.size == 1)
+            Assert.assertTrue(foundViews[0].formsCount == 1)
+
+            val foundForm = foundViews[0].formsList[0]
+            Assert.assertTrue(foundForm.questionsCount == 2)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    fun complexMerge2Test() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+
+            val complexModelContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    ComplexModelBuilder,
+                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    HashMap(),
+                    TestBase64Service())
+
+            complexModelContext.handleMigrations()
+
+            val firstView = ComplexModel.View.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTitle("cool title")
+
+            val firstForm = ComplexModel.Form.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("cool display")
+
+            val firstQuestion = ComplexModel.Question.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("first question")
+
+            val secondQuestion = ComplexModel.Question.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("second question")
+
+            firstForm.addQuestions(firstQuestion)
+            firstForm.addQuestions(secondQuestion)
+            firstView.addForms(firstForm)
+
+            complexModelContext.entityMessageService.merge(firstView.build())
+
+            // act
+            firstView.clearForms()
+            firstForm.clearQuestions()
+            firstForm.addQuestions(firstQuestion)
+            firstView.addForms(firstForm)
+
+            complexModelContext.entityMessageService.merge(firstView.build())
+
+            // assert
+            val foundViews = complexModelContext.entityMessageService.getMany(ComplexModel.View.getDefaultInstance())
+
+            Assert.assertTrue(foundViews.size == 1)
+            Assert.assertTrue(foundViews[0].formsCount == 1)
+
+            val foundForm = foundViews[0].formsList[0]
+            Assert.assertTrue(foundForm.questionsCount == 1)
         }
         finally {
             database.deleteOnExit()

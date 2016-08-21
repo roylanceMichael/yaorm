@@ -1,0 +1,133 @@
+syntax = "proto2";
+package org.roylance.yaorm;
+
+message Beacon {
+    optional string id = 1;
+    optional string id1 = 2;
+    optional string id2 = 3;
+    optional string id3 = 4;
+}
+
+message ClientBeacon {
+    optional string id = 1;
+    optional string user_id = 2;
+    optional Beacon beacon = 3;
+    optional Request request = 4;
+}
+
+message RequestImage {
+    optional string id = 1;
+    optional string description = 2;
+    optional string base64 = 3;
+}
+
+message ExpectedAnswer {
+    optional string id = 1;
+    optional string value = 2;
+}
+
+message Question {
+    optional string id = 1;
+    optional int32 form_order = 2;
+    optional string display = 3;
+    optional RequestImage image = 4;
+    repeated ExpectedAnswer expected_answers = 5;
+}
+
+message Validation {
+    optional string id = 1;
+    optional string name = 2;
+    optional string value = 3;
+}
+
+message HeuristicCombiner {
+    optional string id = 1;
+    enum Type {
+        AND = 0;
+        OR = 1;
+    }
+    optional Type type = 2;
+    optional Question first_question = 3;
+    optional Validation first_validation = 4;
+    optional HeuristicCombiner first_combiner = 5;
+    optional Question second_question = 6;
+    optional Validation second_validation = 7;
+    optional HeuristicCombiner second_combiner = 8;
+    optional string display = 9;
+}
+
+message Form {
+    optional string id = 1;
+    optional string display = 2;
+    optional RequestImage image = 3;
+    repeated Question questions = 4;
+}
+
+message View {
+    optional string id = 1;
+    optional RequestImage background_image = 2;
+    optional string title = 3;
+    optional string description = 4;
+    repeated Form forms = 5;
+    repeated Heuristic heuristics = 6;
+    repeated Validation validations = 7;
+}
+
+message Heuristic {
+    optional string id = 1;
+    optional string description = 2;
+    optional View next_view = 3;
+    repeated HeuristicCombiner heuristic_combiners = 4;
+    enum HeuristicGroupType {
+        BUTTON = 0;
+    }
+    optional HeuristicGroupType heuristic_group_type = 5;
+}
+
+message Request {
+    optional string id = 1;
+    optional string name = 2;
+    optional View view = 3;
+}
+
+message Response {
+    optional string id = 1;
+    optional Request request = 2;
+    repeated Answer answers = 3;
+}
+
+message Answer {
+    optional string id = 1;
+    optional string user_id = 2;
+    optional Question question = 3;
+    optional string value = 4;
+    optional Request request = 5;
+    optional Response response = 6;
+}
+
+message UINaruRequest {
+    optional string token = 1;
+    optional Response response = 2;
+    optional Beacon beacon = 3;
+    optional string user_id = 4;
+}
+
+message UINaruResponse {
+    optional bool successful = 1;
+    optional Request request = 2;
+}
+
+message UINaruAdminRequest {
+    optional string token = 1;
+    optional Response response = 2;
+    optional Beacon beacon = 3;
+    optional Request request = 4;
+    optional string user_id = 5;
+    optional View view = 6;
+}
+
+message UINaruAdminResponse {
+    repeated Request requests = 1;
+    repeated Beacon beacons = 2;
+    repeated View views = 3;
+}

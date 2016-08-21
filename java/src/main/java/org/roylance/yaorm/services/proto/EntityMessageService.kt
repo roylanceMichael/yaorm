@@ -370,35 +370,37 @@ class EntityMessageService(
         val parentColumn = tableRecords.tableDefinition.columnDefinitionsList
                 .firstOrNull { it.name.endsWith(ProtobufUtils.MainSuffix) } ?: return recordsFromDatabaseMap
 
-        var customWhereClauseLinker = YaormModel.WhereClause.newBuilder()
-                .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
-                .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
-
-        var firstWhereClause:YaormModel.WhereClause.Builder? = null
+        var customWhereClauseLinker: YaormModel.WhereClause.Builder? = null
 
         tableRecords.knownParentIdsList.forEach { id ->
-            customWhereClauseLinker.nameAndProperty = YaormModel.Column.newBuilder()
-                .setDefinition(parentColumn)
-                .setStringHolder(id)
-                .build()
-
-            val newWhereClause = YaormModel.WhereClause.newBuilder()
-                    .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
-                    .setConnectingWhereClause(customWhereClauseLinker)
-                    .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
-
-            if (firstWhereClause == null) {
-                firstWhereClause = customWhereClauseLinker
+            if (customWhereClauseLinker == null) {
+                customWhereClauseLinker = YaormModel.WhereClause.newBuilder()
+                        .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                        .setConnectingAndOr(org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr.OR)
+                        .setNameAndProperty(YaormModel.Column.newBuilder()
+                                .setDefinition(parentColumn)
+                                .setStringHolder(id)
+                                .build())
             }
+            else {
+                val newWhereClause = YaormModel.WhereClause.newBuilder()
+                        .setOperatorType(YaormModel.WhereClause.OperatorType.EQUALS)
+                        .setConnectingWhereClause(customWhereClauseLinker)
+                        .setConnectingAndOr(YaormModel.WhereClause.ConnectingAndOr.OR)
+                        .setNameAndProperty(YaormModel.Column.newBuilder()
+                                .setDefinition(parentColumn)
+                                .setStringHolder(id)
+                                .build())
 
-            customWhereClauseLinker = newWhereClause
+                customWhereClauseLinker = newWhereClause
+            }
         }
 
-        if (firstWhereClause == null) {
+        if (customWhereClauseLinker == null) {
             return recordsFromDatabaseMap
         }
 
-        entityService.where(firstWhereClause!!.build(), tableRecords.tableDefinition)
+        entityService.where(customWhereClauseLinker!!.build(), tableRecords.tableDefinition)
                 .recordsList.forEach {
             val idColumn = YaormUtils.getIdColumn(it.columnsList)
             if (idColumn != null) {

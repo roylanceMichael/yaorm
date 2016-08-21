@@ -2,14 +2,14 @@ package org.roylance.yaorm.services.postgres
 
 import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.TestingModelV2
-import org.roylance.yaorm.TestingModelV3
-import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.*
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
+import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.*
+import java.io.File
 import java.util.*
 
 class PostgresProtoContextTest {
@@ -227,6 +227,145 @@ class PostgresProtoContextTest {
 
             val migrationsFound = firstVersion.entityMessageService.getMany(YaormModel.Migration.getDefaultInstance())
             Assert.assertTrue(migrationsFound.size == 2)
+        }
+        finally {
+        }
+    }
+
+    @Test
+    fun complexMergeTest() {
+        // arrange
+        ConnectionUtilities.getPostgresConnectionInfo()
+        try {
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val generatorService = PostgresGeneratorService()
+
+            val complexModelContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    ComplexModelBuilder,
+                    EntityProtoService(granularDatabaseService, generatorService),
+                    HashMap(),
+                    TestBase64Service())
+
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(ComplexModel.getDescriptor())
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
+
+            complexModelContext.handleMigrations()
+
+            val firstView = ComplexModel.View.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTitle("cool title")
+
+            val firstForm = ComplexModel.Form.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("cool display")
+
+            val firstQuestion = ComplexModel.Question.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("first question")
+
+            val secondQuestion = ComplexModel.Question.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("second question")
+
+            firstForm.addQuestions(firstQuestion)
+            firstForm.addQuestions(secondQuestion)
+            firstView.addForms(firstForm)
+
+            // act
+            complexModelContext.entityMessageService.merge(firstView.build())
+
+            // assert
+            val foundViews = complexModelContext.entityMessageService.getMany(ComplexModel.View.getDefaultInstance())
+
+            Assert.assertTrue(foundViews.size == 1)
+            Assert.assertTrue(foundViews[0].formsCount == 1)
+
+            val foundForm = foundViews[0].formsList[0]
+            Assert.assertTrue(foundForm.questionsCount == 2)
+        }
+        finally {
+        }
+    }
+
+    @Test
+    fun complexMerge2Test() {
+        // arrange
+        ConnectionUtilities.getPostgresConnectionInfo()
+        try {
+            val sourceConnection = PostgresConnectionSourceFactory(
+                    ConnectionUtilities.postgresHost!!,
+                    ConnectionUtilities.postgresPort!!,
+                    ConnectionUtilities.postgresDatabase!!,
+                    ConnectionUtilities.postgresUserName!!,
+                    ConnectionUtilities.postgresPassword!!,
+                    false)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val generatorService = PostgresGeneratorService()
+
+            val complexModelContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    ComplexModelBuilder,
+                    EntityProtoService(granularDatabaseService, generatorService),
+                    HashMap(),
+                    TestBase64Service())
+
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(ComplexModel.getDescriptor())
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
+
+            complexModelContext.handleMigrations()
+
+            val firstView = ComplexModel.View.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setTitle("cool title")
+
+            val firstForm = ComplexModel.Form.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("cool display")
+
+            val firstQuestion = ComplexModel.Question.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("first question")
+
+            val secondQuestion = ComplexModel.Question.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDisplay("second question")
+
+            firstForm.addQuestions(firstQuestion)
+            firstForm.addQuestions(secondQuestion)
+            firstView.addForms(firstForm)
+
+            complexModelContext.entityMessageService.merge(firstView.build())
+
+            // act
+            firstView.clearForms()
+            firstForm.clearQuestions()
+            firstForm.addQuestions(firstQuestion)
+            firstView.addForms(firstForm)
+
+            complexModelContext.entityMessageService.merge(firstView.build())
+
+            // assert
+            val foundViews = complexModelContext.entityMessageService.getMany(ComplexModel.View.getDefaultInstance())
+
+            Assert.assertTrue(foundViews.size == 1)
+            Assert.assertTrue(foundViews[0].formsCount == 1)
+
+            val foundForm = foundViews[0].formsList[0]
+            Assert.assertTrue(foundForm.questionsCount == 1)
         }
         finally {
         }
