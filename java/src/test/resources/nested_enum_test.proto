@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 package org.roylance.yaorm;
 
 enum ProtobufType {
@@ -30,114 +30,114 @@ enum DelimiterType {
 }
 
 message Customer {
-    optional string id = 1;
-    optional string name = 2;
-    optional ConnectionInformation staging_connection = 3;
+    string id = 1;
+    string name = 2;
+    ConnectionInformation staging_connection = 3;
     repeated Projection projections = 4;
     repeated DataSet datasets = 5;
     repeated Transformation transformations = 6;
-    optional bool build_landing_dag = 7;
+    bool build_landing_dag = 7;
 }
 
 message Projection {
-    optional string id = 1;
-    optional string destination_database_key = 2;
-    optional string ecr_start_date = 3;
-    optional string ecr_end_date = 4;
-    optional string acg_start_date = 5;
-    optional string acg_end_date = 6;
-    optional ConnectionInformation destination_database_connection = 7;
-    optional ConnectionInformation redshift_connection = 8;
-    optional ConnectionInformation s3_connection = 9;
-    optional string hermes = 10;
-    optional bool build_redshift_dag = 11;
-    optional bool build_dag = 12;
-    optional bool is_demo = 13;
+    string id = 1;
+    string destination_database_key = 2;
+    string ecr_start_date = 3;
+    string ecr_end_date = 4;
+    string acg_start_date = 5;
+    string acg_end_date = 6;
+    ConnectionInformation destination_database_connection = 7;
+    ConnectionInformation redshift_connection = 8;
+    ConnectionInformation s3_connection = 9;
+    string hermes = 10;
+    bool build_redshift_dag = 11;
+    bool build_dag = 12;
+    bool is_demo = 13;
     repeated ProjectionTable tables  = 14;
 }
 
 message ProjectionTable {
-    optional string id = 1;
-    optional Projection projection = 2;
-    optional MySQLRedshiftTable mysql_redshift_table = 3;
-    optional string table_name = 4;
+    string id = 1;
+    Projection projection = 2;
+    MySQLRedshiftTable mysql_redshift_table = 3;
+    string table_name = 4;
 }
 
 message Transformation {
-    optional string id = 1;
-    optional string name = 2;
-    optional string raw_sql = 3;
+    string id = 1;
+    string name = 2;
+    string raw_sql = 3;
     repeated Input inputs = 4;
     repeated Output outputs = 5;
-    optional Customer customer = 6;
+    Customer customer = 6;
 }
 
 message Input {
-    optional string id = 1;
-    optional Transformation transformation = 2;
-    optional Transformation input_transformation = 3;
-    optional DataSet dataset = 4;
-    optional string display = 5;
+    string id = 1;
+    Transformation transformation = 2;
+    Transformation input_transformation = 3;
+    DataSet dataset = 4;
+    string display = 5;
 }
 
 message Output {
-    optional string id = 1;
-    optional Transformation transformation = 2;
-    optional string column_name = 3;
-    optional ProtobufType column_type = 4;
+    string id = 1;
+    Transformation transformation = 2;
+    string column_name = 3;
+    ProtobufType column_type = 4;
 }
 
 message DataSet {
-    optional string id = 1;
-    optional string destination_name = 2;
-    optional DelimiterType column_delimiter = 3;
-    optional DelimiterType row_delimiter = 4;
-    optional string directory_location = 5;
+    string id = 1;
+    string destination_name = 2;
+    DelimiterType column_delimiter = 3;
+    DelimiterType row_delimiter = 4;
+    string directory_location = 5;
     repeated ColumnInfo column_infos = 6;
     repeated ReceivedDataSet received_datasets = 7;
-    optional bool has_headers = 8;
-    optional bool is_fixed_width = 9;
+    bool has_headers = 8;
+    bool is_fixed_width = 9;
 }
 
 message ReceivedDataSet {
-    optional string id = 1;
-    optional int64 received_date = 3;
-    optional string compressed_base64 = 4;
-    optional bool has_processed = 5;
+    string id = 1;
+    int64 received_date = 3;
+    string compressed_base64 = 4;
+    bool has_processed = 5;
 }
 
 message ColumnInfo {
-    optional string id = 1;
-    optional string source_name = 2;
-    optional ProtobufType source_type = 3;
-    optional int64 source_index = 4;
-    optional string destination_name = 5;
-    optional ProtobufType destination_type = 6;
-    optional int64 destination_index = 7;
-    optional int64 fixed_width_start = 8;
-    optional int64 fixed_width_end = 9;
-    optional bool is_overpunch = 10;
-    optional bool has_special_instructions = 11;
-    optional string special_instructions_equals = 12;
-    optional string special_instructions_not_equals = 13;
+    string id = 1;
+    string source_name = 2;
+    ProtobufType source_type = 3;
+    int64 source_index = 4;
+    string destination_name = 5;
+    ProtobufType destination_type = 6;
+    int64 destination_index = 7;
+    int64 fixed_width_start = 8;
+    int64 fixed_width_end = 9;
+    bool is_overpunch = 10;
+    bool has_special_instructions = 11;
+    string special_instructions_equals = 12;
+    string special_instructions_not_equals = 13;
 }
 
 message MySQLRedshiftTable {
-    optional string id = 1;
-    optional string table_name = 2;
+    string id = 1;
+    string table_name = 2;
 }
 
 message ConnectionInformation {
-    optional string id = 1;
-    optional string name = 2;
-    optional string user = 3;
-    optional string password = 4;
-    optional string host = 5;
-    optional int32 port = 6;
-    optional string database = 7;
-    optional string extra = 8;
-    optional string aws_access = 9;
-    optional string aws_secret = 10;
+    string id = 1;
+    string name = 2;
+    string user = 3;
+    string password = 4;
+    string host = 5;
+    int32 port = 6;
+    string database = 7;
+    string extra = 8;
+    string aws_access = 9;
+    string aws_secret = 10;
 
     enum DBType {
         MYSQL = 0;
@@ -146,122 +146,122 @@ message ConnectionInformation {
         S3 = 3;
     }
 
-    optional DBType dbtype = 11;
+    DBType dbtype = 11;
 }
 
 message RegularExpression {
-    optional string id = 1;
-    optional string name = 2;
-    optional string value = 3;
+    string id = 1;
+    string name = 2;
+    string value = 3;
 }
 
 message Validation {
-    optional string id = 1;
-    optional string name = 2;
-    optional Transformation transformation = 3;
+    string id = 1;
+    string name = 2;
+    Transformation transformation = 3;
     repeated OutputValidation validations = 4;
     repeated ValidationReport reports = 5;
 }
 
 message OutputValidation {
-    optional string id = 1;
-    optional string name = 2;
-    optional Output output = 3;
-    optional RegularExpression regular_expression = 4;
-    optional Validation validation = 5;
+    string id = 1;
+    string name = 2;
+    Output output = 3;
+    RegularExpression regular_expression = 4;
+    Validation validation = 5;
 }
 
 message ValidationReport {
-    optional string id = 1;
-    optional int64 date_run = 2;
-    optional string date_run_display = 3;
-    optional int64 number_passed = 4;
-    optional int64 number_failed = 5;
-    optional Validation validation = 6;
+    string id = 1;
+    int64 date_run = 2;
+    string date_run_display = 3;
+    int64 number_passed = 4;
+    int64 number_failed = 5;
+    Validation validation = 6;
 }
 
 message DataWarehouseColumn {
-    optional string id = 1;
-    optional string column_name = 2;
-    optional string column_description = 3;
-    optional ProtobufType column_type = 4;
-    optional float discovery_weight = 5;
-    optional bool is_numeric = 6;
-    optional bool is_date = 7;
+    string id = 1;
+    string column_name = 2;
+    string column_description = 3;
+    ProtobufType column_type = 4;
+    float discovery_weight = 5;
+    bool is_numeric = 6;
+    bool is_date = 7;
     repeated DataWarehouseColumnValidation validations = 8;
     repeated DataWarehouseTableColumn table_columns = 9;
 }
 
 message DataWarehouseColumnValidation {
-    optional string id = 1;
-    optional string name = 2;
-    optional RegularExpression regular_expression = 3;
-    optional DataWarehouseColumn column = 4;
+    string id = 1;
+    string name = 2;
+    RegularExpression regular_expression = 3;
+    DataWarehouseColumn column = 4;
 }
 
 message DataWarehouseTable {
-    optional string id = 1;
-    optional string name = 2;
-    optional string description = 3;
+    string id = 1;
+    string name = 2;
+    string description = 3;
     repeated DataWarehouseTableColumn table_columns = 9;
 }
 
 message DataWarehouseTableColumn {
-    optional string id = 1;
-    optional string column_name = 2;
-    optional ProtobufType column_type = 3;
-    optional DataWarehouseTable table = 4;
-    optional DataWarehouseColumn column = 5;
+    string id = 1;
+    string column_name = 2;
+    ProtobufType column_type = 3;
+    DataWarehouseTable table = 4;
+    DataWarehouseColumn column = 5;
     repeated Mapping mappings = 6;
 }
 
 message Mapping {
-    optional string id = 1;
-    optional string from_name = 2;
-    optional ProtobufType from_type = 3;
-    optional string to_name = 4;
-    optional ProtobufType to_type = 5;
-    optional Output output = 6;
-    optional DataWarehouseTableColumn table_column = 7;
-    optional DataWarehouseTable table = 8;
+    string id = 1;
+    string from_name = 2;
+    ProtobufType from_type = 3;
+    string to_name = 4;
+    ProtobufType to_type = 5;
+    Output output = 6;
+    DataWarehouseTableColumn table_column = 7;
+    DataWarehouseTable table = 8;
 }
 
 message DataSetTemplate {
-    optional string id = 1;
-    optional string destination_name = 2;
-    optional DelimiterType column_delimiter = 3;
-    optional DelimiterType row_delimiter = 4;
+    string id = 1;
+    string destination_name = 2;
+    DelimiterType column_delimiter = 3;
+    DelimiterType row_delimiter = 4;
     repeated ColumnInfoTemplate column_infos = 5;
-    optional bool has_headers = 6;
-    optional bool is_fixed_width = 7;
+    bool has_headers = 6;
+    bool is_fixed_width = 7;
 }
 
 message ColumnInfoTemplate {
-    optional string id = 1;
-    optional string source_name = 2;
-    optional ProtobufType source_datatype = 3;
-    optional int64 source_index = 4;
-    optional string destination_name = 5;
-    optional ProtobufType destination_type = 6;
-    optional int64 destination_index = 7;
-    optional int64 fixed_width_start = 8;
-    optional int64 fixed_width_end = 9;
-    optional bool is_overpunch = 10;
-    optional bool has_special_instructions = 11;
-    optional string special_instructions_equals = 12;
-    optional string special_instructions_not_equals = 13;
+    string id = 1;
+    string source_name = 2;
+    ProtobufType source_datatype = 3;
+    int64 source_index = 4;
+    string destination_name = 5;
+    ProtobufType destination_type = 6;
+    int64 destination_index = 7;
+    int64 fixed_width_start = 8;
+    int64 fixed_width_end = 9;
+    bool is_overpunch = 10;
+    bool has_special_instructions = 11;
+    string special_instructions_equals = 12;
+    string special_instructions_not_equals = 13;
 }
 
 message RestCustomers {
     repeated Customer customers = 1;
     repeated ConnectionInformation connections = 2;
-    optional string acg_java_home = 3;
-    optional string ecr_java_home = 4;
-    optional ConnectionInformation s3_file_retrieve_connection = 5;
+    string acg_java_home = 3;
+    string ecr_java_home = 4;
+    ConnectionInformation s3_file_retrieve_connection = 5;
     repeated MySQLRedshiftTable mysql_redshift_tables = 6;
     repeated RegularExpression regular_expressions = 7;
     repeated DataSetTemplate dataset_templates = 8;
-    optional bool license_exists = 9;
+    bool license_exists = 9;
 }
 
 message RestDataWarehouseInfo {
@@ -270,33 +270,33 @@ message RestDataWarehouseInfo {
 }
 
 message UILetoRequest {
-    optional string token = 1;
-    optional RestCustomers rest_customers = 2;
-    optional RestDataWarehouseInfo data_warehouse_info = 3;
+    string token = 1;
+    RestCustomers rest_customers = 2;
+    RestDataWarehouseInfo data_warehouse_info = 3;
 }
 
 message UILetoResponse {
-    optional bool successful = 1;
-    optional RestCustomers rest_customers = 2;
-    optional RestDataWarehouseInfo data_warehouse_info = 3;
+    bool successful = 1;
+    RestCustomers rest_customers = 2;
+    RestDataWarehouseInfo data_warehouse_info = 3;
 }
 
 message ReportEligibility {
-    optional string month = 1;
-    optional double medical_eligibile = 2;
-    optional double ineligibile_all = 3;
+    string month = 1;
+    double medical_eligibile = 2;
+    double ineligibile_all = 3;
 }
 
 message ClaimsTriangle {
-    optional string paid_date = 1;
-    optional string service_date = 2;
-    optional double medical_allowed_amount = 3;
+    string paid_date = 1;
+    string service_date = 2;
+    double medical_allowed_amount = 3;
 }
 
 message ServiceCategory {
-    optional string l1 = 1;
-    optional string l2 = 2;
-    optional string art_tos_code = 3;
-    optional string scg_l2 = 4;
-    optional double medical_allowed_amount = 5;
+    string l1 = 1;
+    string l2 = 2;
+    string art_tos_code = 3;
+    string scg_l2 = 4;
+    double medical_allowed_amount = 5;
 }

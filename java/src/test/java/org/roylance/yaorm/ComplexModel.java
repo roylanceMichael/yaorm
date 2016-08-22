@@ -15,10 +15,6 @@ public final class ComplexModel {
     /**
      * <code>optional string id = 1;</code>
      */
-    boolean hasId();
-    /**
-     * <code>optional string id = 1;</code>
-     */
     java.lang.String getId();
     /**
      * <code>optional string id = 1;</code>
@@ -26,10 +22,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
-    /**
-     * <code>optional string id1 = 2;</code>
-     */
-    boolean hasId1();
     /**
      * <code>optional string id1 = 2;</code>
      */
@@ -43,10 +35,6 @@ public final class ComplexModel {
     /**
      * <code>optional string id2 = 3;</code>
      */
-    boolean hasId2();
-    /**
-     * <code>optional string id2 = 3;</code>
-     */
     java.lang.String getId2();
     /**
      * <code>optional string id2 = 3;</code>
@@ -54,10 +42,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getId2Bytes();
 
-    /**
-     * <code>optional string id3 = 4;</code>
-     */
-    boolean hasId3();
     /**
      * <code>optional string id3 = 4;</code>
      */
@@ -71,40 +55,32 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Beacon}
    */
-  public static final class Beacon extends
+  public  static final class Beacon extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Beacon)
       BeaconOrBuilder {
     // Use Beacon.newBuilder() to construct.
     private Beacon(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Beacon(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Beacon defaultInstance;
-    public static Beacon getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Beacon getDefaultInstanceForType() {
-      return defaultInstance;
+    private Beacon() {
+      id_ = "";
+      id1_ = "";
+      id2_ = "";
+      id3_ = "";
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Beacon(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -114,34 +90,33 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              id1_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id1_ = s;
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              id2_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id2_ = s;
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              id3_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id3_ = s;
               break;
             }
           }
@@ -150,9 +125,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -168,30 +142,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Beacon.class, org.roylance.yaorm.ComplexModel.Beacon.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Beacon> PARSER =
-        new com.google.protobuf.AbstractParser<Beacon>() {
-      public Beacon parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Beacon(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Beacon> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -203,9 +155,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -227,13 +177,7 @@ public final class ComplexModel {
     }
 
     public static final int ID1_FIELD_NUMBER = 2;
-    private java.lang.Object id1_;
-    /**
-     * <code>optional string id1 = 2;</code>
-     */
-    public boolean hasId1() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object id1_;
     /**
      * <code>optional string id1 = 2;</code>
      */
@@ -245,9 +189,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id1_ = s;
-        }
+        id1_ = s;
         return s;
       }
     }
@@ -269,13 +211,7 @@ public final class ComplexModel {
     }
 
     public static final int ID2_FIELD_NUMBER = 3;
-    private java.lang.Object id2_;
-    /**
-     * <code>optional string id2 = 3;</code>
-     */
-    public boolean hasId2() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
+    private volatile java.lang.Object id2_;
     /**
      * <code>optional string id2 = 3;</code>
      */
@@ -287,9 +223,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id2_ = s;
-        }
+        id2_ = s;
         return s;
       }
     }
@@ -311,13 +245,7 @@ public final class ComplexModel {
     }
 
     public static final int ID3_FIELD_NUMBER = 4;
-    private java.lang.Object id3_;
-    /**
-     * <code>optional string id3 = 4;</code>
-     */
-    public boolean hasId3() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
+    private volatile java.lang.Object id3_;
     /**
      * <code>optional string id3 = 4;</code>
      */
@@ -329,9 +257,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id3_ = s;
-        }
+        id3_ = s;
         return s;
       }
     }
@@ -352,12 +278,6 @@ public final class ComplexModel {
       }
     }
 
-    private void initFields() {
-      id_ = "";
-      id1_ = "";
-      id2_ = "";
-      id3_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -370,56 +290,42 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getId1Bytes());
+      if (!getId1Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, id1_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getId2Bytes());
+      if (!getId2Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, id2_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getId3Bytes());
+      if (!getId3Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, id3_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getId1Bytes());
+      if (!getId1Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, id1_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getId2Bytes());
+      if (!getId2Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, id2_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getId3Bytes());
+      if (!getId3Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, id3_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -443,42 +349,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Beacon parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Beacon parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Beacon prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Beacon prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -519,25 +436,17 @@ public final class ComplexModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id1_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        id2_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        id3_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        id1_ = "";
+
+        id2_ = "";
+
+        id3_ = "";
+
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -559,25 +468,10 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.Beacon buildPartial() {
         org.roylance.yaorm.ComplexModel.Beacon result = new org.roylance.yaorm.ComplexModel.Beacon(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.id1_ = id1_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.id2_ = id2_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.id3_ = id3_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -593,27 +487,23 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Beacon other) {
         if (other == org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasId1()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getId1().isEmpty()) {
           id1_ = other.id1_;
           onChanged();
         }
-        if (other.hasId2()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getId2().isEmpty()) {
           id2_ = other.id2_;
           onChanged();
         }
-        if (other.hasId3()) {
-          bitField0_ |= 0x00000008;
+        if (!other.getId3().isEmpty()) {
           id3_ = other.id3_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -630,7 +520,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Beacon) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -638,15 +528,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -656,9 +539,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -688,7 +569,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -697,7 +578,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -710,7 +591,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -720,21 +602,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id1 = 2;</code>
        */
-      public boolean hasId1() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string id1 = 2;</code>
-       */
       public java.lang.String getId1() {
         java.lang.Object ref = id1_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id1_ = s;
-          }
+          id1_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -764,7 +638,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         id1_ = value;
         onChanged();
         return this;
@@ -773,7 +647,7 @@ public final class ComplexModel {
        * <code>optional string id1 = 2;</code>
        */
       public Builder clearId1() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         id1_ = getDefaultInstance().getId1();
         onChanged();
         return this;
@@ -786,7 +660,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         id1_ = value;
         onChanged();
         return this;
@@ -796,21 +671,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id2 = 3;</code>
        */
-      public boolean hasId2() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string id2 = 3;</code>
-       */
       public java.lang.String getId2() {
         java.lang.Object ref = id2_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id2_ = s;
-          }
+          id2_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -840,7 +707,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         id2_ = value;
         onChanged();
         return this;
@@ -849,7 +716,7 @@ public final class ComplexModel {
        * <code>optional string id2 = 3;</code>
        */
       public Builder clearId2() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         id2_ = getDefaultInstance().getId2();
         onChanged();
         return this;
@@ -862,7 +729,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         id2_ = value;
         onChanged();
         return this;
@@ -872,21 +740,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id3 = 4;</code>
        */
-      public boolean hasId3() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional string id3 = 4;</code>
-       */
       public java.lang.String getId3() {
         java.lang.Object ref = id3_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id3_ = s;
-          }
+          id3_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -916,7 +776,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  
         id3_ = value;
         onChanged();
         return this;
@@ -925,7 +785,7 @@ public final class ComplexModel {
        * <code>optional string id3 = 4;</code>
        */
       public Builder clearId3() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        
         id3_ = getDefaultInstance().getId3();
         onChanged();
         return this;
@@ -938,31 +798,65 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  checkByteStringIsUtf8(value);
+        
         id3_ = value;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Beacon)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Beacon)
+    private static final org.roylance.yaorm.ComplexModel.Beacon DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Beacon(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Beacon();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Beacon)
+    public static org.roylance.yaorm.ComplexModel.Beacon getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Beacon>
+        PARSER = new com.google.protobuf.AbstractParser<Beacon>() {
+      public Beacon parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Beacon(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Beacon> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Beacon> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Beacon getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface ClientBeaconOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.ClientBeacon)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -973,10 +867,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
-    /**
-     * <code>optional string user_id = 2;</code>
-     */
-    boolean hasUserId();
     /**
      * <code>optional string user_id = 2;</code>
      */
@@ -1016,40 +906,30 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.ClientBeacon}
    */
-  public static final class ClientBeacon extends
+  public  static final class ClientBeacon extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ClientBeacon)
       ClientBeaconOrBuilder {
     // Use ClientBeacon.newBuilder() to construct.
     private ClientBeacon(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private ClientBeacon(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final ClientBeacon defaultInstance;
-    public static ClientBeacon getDefaultInstance() {
-      return defaultInstance;
+    private ClientBeacon() {
+      id_ = "";
+      userId_ = "";
     }
 
-    public ClientBeacon getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private ClientBeacon(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1059,48 +939,47 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              userId_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userId_ = s;
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.Beacon.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (beacon_ != null) {
                 subBuilder = beacon_.toBuilder();
               }
-              beacon_ = input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.PARSER, extensionRegistry);
+              beacon_ = input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(beacon_);
                 beacon_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
               org.roylance.yaorm.ComplexModel.Request.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (request_ != null) {
                 subBuilder = request_.toBuilder();
               }
-              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.PARSER, extensionRegistry);
+              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(request_);
                 request_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+
               break;
             }
           }
@@ -1109,9 +988,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1127,30 +1005,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.ClientBeacon.class, org.roylance.yaorm.ComplexModel.ClientBeacon.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<ClientBeacon> PARSER =
-        new com.google.protobuf.AbstractParser<ClientBeacon>() {
-      public ClientBeacon parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientBeacon(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ClientBeacon> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -1162,9 +1018,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -1186,13 +1040,7 @@ public final class ComplexModel {
     }
 
     public static final int USER_ID_FIELD_NUMBER = 2;
-    private java.lang.Object userId_;
-    /**
-     * <code>optional string user_id = 2;</code>
-     */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object userId_;
     /**
      * <code>optional string user_id = 2;</code>
      */
@@ -1204,9 +1052,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          userId_ = s;
-        }
+        userId_ = s;
         return s;
       }
     }
@@ -1233,19 +1079,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return beacon_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
-      return beacon_;
+      return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
-      return beacon_;
+      return getBeacon();
     }
 
     public static final int REQUEST_FIELD_NUMBER = 4;
@@ -1254,27 +1100,21 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     public boolean hasRequest() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return request_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
-      return request_;
+      return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
-      return request_;
+      return getRequest();
     }
 
-    private void initFields() {
-      id_ = "";
-      userId_ = "";
-      beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
-      request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1287,56 +1127,44 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, userId_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, beacon_);
+      if (beacon_ != null) {
+        output.writeMessage(3, getBeacon());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, request_);
+      if (request_ != null) {
+        output.writeMessage(4, getRequest());
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, userId_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (beacon_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, beacon_);
+          .computeMessageSize(3, getBeacon());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (request_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, request_);
+          .computeMessageSize(4, getRequest());
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1360,42 +1188,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.ClientBeacon prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.ClientBeacon prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -1434,37 +1273,27 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getBeaconFieldBuilder();
-          getRequestFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        userId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (beaconBuilder_ == null) {
-          beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
-        } else {
-          beaconBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-        } else {
-          requestBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        userId_ = "";
+
+        if (beaconBuilder_ == null) {
+          beacon_ = null;
+        } else {
+          beacon_ = null;
+          beaconBuilder_ = null;
+        }
+        if (requestBuilder_ == null) {
+          request_ = null;
+        } else {
+          request_ = null;
+          requestBuilder_ = null;
+        }
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1486,33 +1315,18 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.ClientBeacon buildPartial() {
         org.roylance.yaorm.ComplexModel.ClientBeacon result = new org.roylance.yaorm.ComplexModel.ClientBeacon(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.userId_ = userId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (beaconBuilder_ == null) {
           result.beacon_ = beacon_;
         } else {
           result.beacon_ = beaconBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
         }
         if (requestBuilder_ == null) {
           result.request_ = request_;
         } else {
           result.request_ = requestBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1528,13 +1342,11 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.ClientBeacon other) {
         if (other == org.roylance.yaorm.ComplexModel.ClientBeacon.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasUserId()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getUserId().isEmpty()) {
           userId_ = other.userId_;
           onChanged();
         }
@@ -1544,7 +1356,7 @@ public final class ComplexModel {
         if (other.hasRequest()) {
           mergeRequest(other.getRequest());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -1561,7 +1373,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.ClientBeacon) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1569,15 +1381,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -1587,9 +1392,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1619,7 +1422,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -1628,7 +1431,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -1641,7 +1444,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -1651,21 +1455,13 @@ public final class ComplexModel {
       /**
        * <code>optional string user_id = 2;</code>
        */
-      public boolean hasUserId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string user_id = 2;</code>
-       */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            userId_ = s;
-          }
+          userId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1695,7 +1491,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         userId_ = value;
         onChanged();
         return this;
@@ -1704,7 +1500,7 @@ public final class ComplexModel {
        * <code>optional string user_id = 2;</code>
        */
       public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         userId_ = getDefaultInstance().getUserId();
         onChanged();
         return this;
@@ -1717,27 +1513,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         userId_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Beacon beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Beacon beacon_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return beaconBuilder_ != null || beacon_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
-          return beacon_;
+          return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
         } else {
           return beaconBuilder_.getMessage();
         }
@@ -1755,7 +1552,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -1769,7 +1566,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -1777,8 +1574,7 @@ public final class ComplexModel {
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              beacon_ != org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance()) {
+          if (beacon_ != null) {
             beacon_ =
               org.roylance.yaorm.ComplexModel.Beacon.newBuilder(beacon_).mergeFrom(value).buildPartial();
           } else {
@@ -1788,7 +1584,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -1796,19 +1592,20 @@ public final class ComplexModel {
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
-          beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
+          beacon_ = null;
           onChanged();
         } else {
-          beaconBuilder_.clear();
+          beacon_ = null;
+          beaconBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getBeaconFieldBuilder().getBuilder();
       }
@@ -1819,7 +1616,8 @@ public final class ComplexModel {
         if (beaconBuilder_ != null) {
           return beaconBuilder_.getMessageOrBuilder();
         } else {
-          return beacon_;
+          return beacon_ == null ?
+              org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
         }
       }
       /**
@@ -1839,21 +1637,21 @@ public final class ComplexModel {
         return beaconBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Request request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Request request_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Request request = 4;</code>
        */
       public boolean hasRequest() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return requestBuilder_ != null || request_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
-          return request_;
+          return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         } else {
           return requestBuilder_.getMessage();
         }
@@ -1871,7 +1669,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -1885,7 +1683,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -1893,8 +1691,7 @@ public final class ComplexModel {
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              request_ != org.roylance.yaorm.ComplexModel.Request.getDefaultInstance()) {
+          if (request_ != null) {
             request_ =
               org.roylance.yaorm.ComplexModel.Request.newBuilder(request_).mergeFrom(value).buildPartial();
           } else {
@@ -1904,7 +1701,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -1912,19 +1709,20 @@ public final class ComplexModel {
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+          request_ = null;
           onChanged();
         } else {
-          requestBuilder_.clear();
+          request_ = null;
+          requestBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
-        bitField0_ |= 0x00000008;
+        
         onChanged();
         return getRequestFieldBuilder().getBuilder();
       }
@@ -1935,7 +1733,8 @@ public final class ComplexModel {
         if (requestBuilder_ != null) {
           return requestBuilder_.getMessageOrBuilder();
         } else {
-          return request_;
+          return request_ == null ?
+              org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         }
       }
       /**
@@ -1954,26 +1753,59 @@ public final class ComplexModel {
         }
         return requestBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.ClientBeacon)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.ClientBeacon)
+    private static final org.roylance.yaorm.ComplexModel.ClientBeacon DEFAULT_INSTANCE;
     static {
-      defaultInstance = new ClientBeacon(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.ClientBeacon();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.ClientBeacon)
+    public static org.roylance.yaorm.ComplexModel.ClientBeacon getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientBeacon>
+        PARSER = new com.google.protobuf.AbstractParser<ClientBeacon>() {
+      public ClientBeacon parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ClientBeacon(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientBeacon> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientBeacon> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.ClientBeacon getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface RequestImageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.RequestImage)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -1987,10 +1819,6 @@ public final class ComplexModel {
     /**
      * <code>optional string description = 2;</code>
      */
-    boolean hasDescription();
-    /**
-     * <code>optional string description = 2;</code>
-     */
     java.lang.String getDescription();
     /**
      * <code>optional string description = 2;</code>
@@ -1998,10 +1826,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
-    /**
-     * <code>optional string base64 = 3;</code>
-     */
-    boolean hasBase64();
     /**
      * <code>optional string base64 = 3;</code>
      */
@@ -2015,40 +1839,31 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.RequestImage}
    */
-  public static final class RequestImage extends
+  public  static final class RequestImage extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.RequestImage)
       RequestImageOrBuilder {
     // Use RequestImage.newBuilder() to construct.
     private RequestImage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private RequestImage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final RequestImage defaultInstance;
-    public static RequestImage getDefaultInstance() {
-      return defaultInstance;
+    private RequestImage() {
+      id_ = "";
+      description_ = "";
+      base64_ = "";
     }
 
-    public RequestImage getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private RequestImage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2058,28 +1873,27 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              description_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              base64_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              base64_ = s;
               break;
             }
           }
@@ -2088,9 +1902,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2106,30 +1919,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.RequestImage.class, org.roylance.yaorm.ComplexModel.RequestImage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<RequestImage> PARSER =
-        new com.google.protobuf.AbstractParser<RequestImage>() {
-      public RequestImage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RequestImage(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RequestImage> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -2141,9 +1932,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -2165,13 +1954,7 @@ public final class ComplexModel {
     }
 
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
-    private java.lang.Object description_;
-    /**
-     * <code>optional string description = 2;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object description_;
     /**
      * <code>optional string description = 2;</code>
      */
@@ -2183,9 +1966,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
+        description_ = s;
         return s;
       }
     }
@@ -2207,13 +1988,7 @@ public final class ComplexModel {
     }
 
     public static final int BASE64_FIELD_NUMBER = 3;
-    private java.lang.Object base64_;
-    /**
-     * <code>optional string base64 = 3;</code>
-     */
-    public boolean hasBase64() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
+    private volatile java.lang.Object base64_;
     /**
      * <code>optional string base64 = 3;</code>
      */
@@ -2225,9 +2000,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          base64_ = s;
-        }
+        base64_ = s;
         return s;
       }
     }
@@ -2248,11 +2021,6 @@ public final class ComplexModel {
       }
     }
 
-    private void initFields() {
-      id_ = "";
-      description_ = "";
-      base64_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2265,49 +2033,36 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getDescriptionBytes());
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, description_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getBase64Bytes());
+      if (!getBase64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, base64_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getDescriptionBytes());
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, description_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getBase64Bytes());
+      if (!getBase64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, base64_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2331,42 +2086,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.RequestImage prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.RequestImage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -2407,23 +2173,15 @@ public final class ComplexModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        base64_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        description_ = "";
+
+        base64_ = "";
+
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2445,21 +2203,9 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.RequestImage buildPartial() {
         org.roylance.yaorm.ComplexModel.RequestImage result = new org.roylance.yaorm.ComplexModel.RequestImage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.description_ = description_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.base64_ = base64_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2475,22 +2221,19 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.RequestImage other) {
         if (other == org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
         }
-        if (other.hasBase64()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getBase64().isEmpty()) {
           base64_ = other.base64_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -2507,7 +2250,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.RequestImage) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2515,15 +2258,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -2533,9 +2269,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -2565,7 +2299,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -2574,7 +2308,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -2587,7 +2321,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -2597,21 +2332,13 @@ public final class ComplexModel {
       /**
        * <code>optional string description = 2;</code>
        */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string description = 2;</code>
-       */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            description_ = s;
-          }
+          description_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -2641,7 +2368,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         description_ = value;
         onChanged();
         return this;
@@ -2650,7 +2377,7 @@ public final class ComplexModel {
        * <code>optional string description = 2;</code>
        */
       public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
@@ -2663,7 +2390,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         description_ = value;
         onChanged();
         return this;
@@ -2673,21 +2401,13 @@ public final class ComplexModel {
       /**
        * <code>optional string base64 = 3;</code>
        */
-      public boolean hasBase64() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string base64 = 3;</code>
-       */
       public java.lang.String getBase64() {
         java.lang.Object ref = base64_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            base64_ = s;
-          }
+          base64_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -2717,7 +2437,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         base64_ = value;
         onChanged();
         return this;
@@ -2726,7 +2446,7 @@ public final class ComplexModel {
        * <code>optional string base64 = 3;</code>
        */
       public Builder clearBase64() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         base64_ = getDefaultInstance().getBase64();
         onChanged();
         return this;
@@ -2739,31 +2459,65 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         base64_ = value;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.RequestImage)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.RequestImage)
+    private static final org.roylance.yaorm.ComplexModel.RequestImage DEFAULT_INSTANCE;
     static {
-      defaultInstance = new RequestImage(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.RequestImage();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.RequestImage)
+    public static org.roylance.yaorm.ComplexModel.RequestImage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RequestImage>
+        PARSER = new com.google.protobuf.AbstractParser<RequestImage>() {
+      public RequestImage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new RequestImage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RequestImage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestImage> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.RequestImage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface ExpectedAnswerOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.ExpectedAnswer)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -2777,10 +2531,6 @@ public final class ComplexModel {
     /**
      * <code>optional string value = 2;</code>
      */
-    boolean hasValue();
-    /**
-     * <code>optional string value = 2;</code>
-     */
     java.lang.String getValue();
     /**
      * <code>optional string value = 2;</code>
@@ -2791,40 +2541,30 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.ExpectedAnswer}
    */
-  public static final class ExpectedAnswer extends
+  public  static final class ExpectedAnswer extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ExpectedAnswer)
       ExpectedAnswerOrBuilder {
     // Use ExpectedAnswer.newBuilder() to construct.
     private ExpectedAnswer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private ExpectedAnswer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final ExpectedAnswer defaultInstance;
-    public static ExpectedAnswer getDefaultInstance() {
-      return defaultInstance;
+    private ExpectedAnswer() {
+      id_ = "";
+      value_ = "";
     }
 
-    public ExpectedAnswer getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private ExpectedAnswer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2834,22 +2574,21 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              value_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              value_ = s;
               break;
             }
           }
@@ -2858,9 +2597,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2876,30 +2614,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.ExpectedAnswer.class, org.roylance.yaorm.ComplexModel.ExpectedAnswer.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<ExpectedAnswer> PARSER =
-        new com.google.protobuf.AbstractParser<ExpectedAnswer>() {
-      public ExpectedAnswer parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ExpectedAnswer(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ExpectedAnswer> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -2911,9 +2627,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -2935,13 +2649,7 @@ public final class ComplexModel {
     }
 
     public static final int VALUE_FIELD_NUMBER = 2;
-    private java.lang.Object value_;
-    /**
-     * <code>optional string value = 2;</code>
-     */
-    public boolean hasValue() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object value_;
     /**
      * <code>optional string value = 2;</code>
      */
@@ -2953,9 +2661,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          value_ = s;
-        }
+        value_ = s;
         return s;
       }
     }
@@ -2976,10 +2682,6 @@ public final class ComplexModel {
       }
     }
 
-    private void initFields() {
-      id_ = "";
-      value_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2992,42 +2694,30 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getValueBytes());
+      if (!getValueBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, value_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getValueBytes());
+      if (!getValueBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, value_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3051,42 +2741,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.ExpectedAnswer prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.ExpectedAnswer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -3127,21 +2828,13 @@ public final class ComplexModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        value_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        value_ = "";
+
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -3163,17 +2856,8 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.ExpectedAnswer buildPartial() {
         org.roylance.yaorm.ComplexModel.ExpectedAnswer result = new org.roylance.yaorm.ComplexModel.ExpectedAnswer(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.value_ = value_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3189,17 +2873,15 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.ExpectedAnswer other) {
         if (other == org.roylance.yaorm.ComplexModel.ExpectedAnswer.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasValue()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getValue().isEmpty()) {
           value_ = other.value_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -3216,7 +2898,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.ExpectedAnswer) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -3224,15 +2906,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -3242,9 +2917,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -3274,7 +2947,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -3283,7 +2956,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -3296,7 +2969,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -3306,21 +2980,13 @@ public final class ComplexModel {
       /**
        * <code>optional string value = 2;</code>
        */
-      public boolean hasValue() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string value = 2;</code>
-       */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            value_ = s;
-          }
+          value_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -3350,7 +3016,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         value_ = value;
         onChanged();
         return this;
@@ -3359,7 +3025,7 @@ public final class ComplexModel {
        * <code>optional string value = 2;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         value_ = getDefaultInstance().getValue();
         onChanged();
         return this;
@@ -3372,31 +3038,65 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         value_ = value;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.ExpectedAnswer)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.ExpectedAnswer)
+    private static final org.roylance.yaorm.ComplexModel.ExpectedAnswer DEFAULT_INSTANCE;
     static {
-      defaultInstance = new ExpectedAnswer(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.ExpectedAnswer();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.ExpectedAnswer)
+    public static org.roylance.yaorm.ComplexModel.ExpectedAnswer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ExpectedAnswer>
+        PARSER = new com.google.protobuf.AbstractParser<ExpectedAnswer>() {
+      public ExpectedAnswer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ExpectedAnswer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ExpectedAnswer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ExpectedAnswer> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.ExpectedAnswer getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface QuestionOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Question)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -3410,16 +3110,8 @@ public final class ComplexModel {
     /**
      * <code>optional int32 form_order = 2;</code>
      */
-    boolean hasFormOrder();
-    /**
-     * <code>optional int32 form_order = 2;</code>
-     */
     int getFormOrder();
 
-    /**
-     * <code>optional string display = 3;</code>
-     */
-    boolean hasDisplay();
     /**
      * <code>optional string display = 3;</code>
      */
@@ -3470,40 +3162,32 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Question}
    */
-  public static final class Question extends
+  public  static final class Question extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Question)
       QuestionOrBuilder {
     // Use Question.newBuilder() to construct.
     private Question(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Question(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Question defaultInstance;
-    public static Question getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Question getDefaultInstanceForType() {
-      return defaultInstance;
+    private Question() {
+      id_ = "";
+      formOrder_ = 0;
+      display_ = "";
+      expectedAnswers_ = java.util.Collections.emptyList();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Question(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3513,40 +3197,39 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+
               formOrder_ = input.readInt32();
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              display_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              display_ = s;
               break;
             }
             case 34: {
               org.roylance.yaorm.ComplexModel.RequestImage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (image_ != null) {
                 subBuilder = image_.toBuilder();
               }
-              image_ = input.readMessage(org.roylance.yaorm.ComplexModel.RequestImage.PARSER, extensionRegistry);
+              image_ = input.readMessage(org.roylance.yaorm.ComplexModel.RequestImage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(image_);
                 image_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+
               break;
             }
             case 42: {
@@ -3554,7 +3237,7 @@ public final class ComplexModel {
                 expectedAnswers_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.ExpectedAnswer>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              expectedAnswers_.add(input.readMessage(org.roylance.yaorm.ComplexModel.ExpectedAnswer.PARSER, extensionRegistry));
+              expectedAnswers_.add(input.readMessage(org.roylance.yaorm.ComplexModel.ExpectedAnswer.parser(), extensionRegistry));
               break;
             }
           }
@@ -3563,12 +3246,11 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           expectedAnswers_ = java.util.Collections.unmodifiableList(expectedAnswers_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -3584,30 +3266,9 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Question.class, org.roylance.yaorm.ComplexModel.Question.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Question> PARSER =
-        new com.google.protobuf.AbstractParser<Question>() {
-      public Question parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Question(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Question> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -3619,9 +3280,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -3647,24 +3306,12 @@ public final class ComplexModel {
     /**
      * <code>optional int32 form_order = 2;</code>
      */
-    public boolean hasFormOrder() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 form_order = 2;</code>
-     */
     public int getFormOrder() {
       return formOrder_;
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 3;
-    private java.lang.Object display_;
-    /**
-     * <code>optional string display = 3;</code>
-     */
-    public boolean hasDisplay() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
+    private volatile java.lang.Object display_;
     /**
      * <code>optional string display = 3;</code>
      */
@@ -3676,9 +3323,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          display_ = s;
-        }
+        display_ = s;
         return s;
       }
     }
@@ -3705,19 +3350,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
      */
     public boolean hasImage() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return image_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
-      return image_;
+      return image_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
     }
     /**
      * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder() {
-      return image_;
+      return getImage();
     }
 
     public static final int EXPECTED_ANSWERS_FIELD_NUMBER = 5;
@@ -3755,13 +3400,6 @@ public final class ComplexModel {
       return expectedAnswers_.get(index);
     }
 
-    private void initFields() {
-      id_ = "";
-      formOrder_ = 0;
-      display_ = "";
-      image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
-      expectedAnswers_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3774,63 +3412,51 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (formOrder_ != 0) {
         output.writeInt32(2, formOrder_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getDisplayBytes());
+      if (!getDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, display_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, image_);
+      if (image_ != null) {
+        output.writeMessage(4, getImage());
       }
       for (int i = 0; i < expectedAnswers_.size(); i++) {
         output.writeMessage(5, expectedAnswers_.get(i));
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (formOrder_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, formOrder_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getDisplayBytes());
+      if (!getDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, display_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (image_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, image_);
+          .computeMessageSize(4, getImage());
       }
       for (int i = 0; i < expectedAnswers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, expectedAnswers_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Question parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3854,42 +3480,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Question parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Question parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Question parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Question parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Question parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Question parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Question prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Question prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -3928,28 +3565,23 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getImageFieldBuilder();
           getExpectedAnswersFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         formOrder_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         display_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         if (imageBuilder_ == null) {
-          image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+          image_ = null;
         } else {
-          imageBuilder_.clear();
+          image_ = null;
+          imageBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
         if (expectedAnswersBuilder_ == null) {
           expectedAnswers_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000010);
@@ -3957,10 +3589,6 @@ public final class ComplexModel {
           expectedAnswersBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -3984,21 +3612,9 @@ public final class ComplexModel {
         org.roylance.yaorm.ComplexModel.Question result = new org.roylance.yaorm.ComplexModel.Question(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.formOrder_ = formOrder_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.display_ = display_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         if (imageBuilder_ == null) {
           result.image_ = image_;
         } else {
@@ -4029,16 +3645,14 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Question other) {
         if (other == org.roylance.yaorm.ComplexModel.Question.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasFormOrder()) {
+        if (other.getFormOrder() != 0) {
           setFormOrder(other.getFormOrder());
         }
-        if (other.hasDisplay()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getDisplay().isEmpty()) {
           display_ = other.display_;
           onChanged();
         }
@@ -4071,7 +3685,7 @@ public final class ComplexModel {
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -4088,7 +3702,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Question) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -4102,21 +3716,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id = 1;</code>
        */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -4146,7 +3752,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -4155,7 +3761,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -4168,19 +3774,14 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
       }
 
       private int formOrder_ ;
-      /**
-       * <code>optional int32 form_order = 2;</code>
-       */
-      public boolean hasFormOrder() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
       /**
        * <code>optional int32 form_order = 2;</code>
        */
@@ -4191,7 +3792,7 @@ public final class ComplexModel {
        * <code>optional int32 form_order = 2;</code>
        */
       public Builder setFormOrder(int value) {
-        bitField0_ |= 0x00000002;
+        
         formOrder_ = value;
         onChanged();
         return this;
@@ -4200,7 +3801,7 @@ public final class ComplexModel {
        * <code>optional int32 form_order = 2;</code>
        */
       public Builder clearFormOrder() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         formOrder_ = 0;
         onChanged();
         return this;
@@ -4210,21 +3811,13 @@ public final class ComplexModel {
       /**
        * <code>optional string display = 3;</code>
        */
-      public boolean hasDisplay() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string display = 3;</code>
-       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            display_ = s;
-          }
+          display_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -4254,7 +3847,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         display_ = value;
         onChanged();
         return this;
@@ -4263,7 +3856,7 @@ public final class ComplexModel {
        * <code>optional string display = 3;</code>
        */
       public Builder clearDisplay() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -4276,27 +3869,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         display_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.RequestImage image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.RequestImage image_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> imageBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public boolean hasImage() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return imageBuilder_ != null || image_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
         if (imageBuilder_ == null) {
-          return image_;
+          return image_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
         } else {
           return imageBuilder_.getMessage();
         }
@@ -4314,7 +3908,7 @@ public final class ComplexModel {
         } else {
           imageBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -4328,7 +3922,7 @@ public final class ComplexModel {
         } else {
           imageBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -4336,8 +3930,7 @@ public final class ComplexModel {
        */
       public Builder mergeImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (imageBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              image_ != org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance()) {
+          if (image_ != null) {
             image_ =
               org.roylance.yaorm.ComplexModel.RequestImage.newBuilder(image_).mergeFrom(value).buildPartial();
           } else {
@@ -4347,7 +3940,7 @@ public final class ComplexModel {
         } else {
           imageBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -4355,19 +3948,20 @@ public final class ComplexModel {
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
-          image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+          image_ = null;
           onChanged();
         } else {
-          imageBuilder_.clear();
+          image_ = null;
+          imageBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage.Builder getImageBuilder() {
-        bitField0_ |= 0x00000008;
+        
         onChanged();
         return getImageFieldBuilder().getBuilder();
       }
@@ -4378,7 +3972,8 @@ public final class ComplexModel {
         if (imageBuilder_ != null) {
           return imageBuilder_.getMessageOrBuilder();
         } else {
-          return image_;
+          return image_ == null ?
+              org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
         }
       }
       /**
@@ -4637,26 +4232,59 @@ public final class ComplexModel {
         }
         return expectedAnswersBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Question)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Question)
+    private static final org.roylance.yaorm.ComplexModel.Question DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Question(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Question();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Question)
+    public static org.roylance.yaorm.ComplexModel.Question getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Question>
+        PARSER = new com.google.protobuf.AbstractParser<Question>() {
+      public Question parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Question(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Question> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Question> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Question getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface ValidationOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Validation)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -4670,10 +4298,6 @@ public final class ComplexModel {
     /**
      * <code>optional string name = 2;</code>
      */
-    boolean hasName();
-    /**
-     * <code>optional string name = 2;</code>
-     */
     java.lang.String getName();
     /**
      * <code>optional string name = 2;</code>
@@ -4681,10 +4305,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    /**
-     * <code>optional string value = 3;</code>
-     */
-    boolean hasValue();
     /**
      * <code>optional string value = 3;</code>
      */
@@ -4698,40 +4318,31 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Validation}
    */
-  public static final class Validation extends
+  public  static final class Validation extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Validation)
       ValidationOrBuilder {
     // Use Validation.newBuilder() to construct.
     private Validation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Validation(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Validation defaultInstance;
-    public static Validation getDefaultInstance() {
-      return defaultInstance;
+    private Validation() {
+      id_ = "";
+      name_ = "";
+      value_ = "";
     }
 
-    public Validation getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Validation(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4741,28 +4352,27 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              name_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              value_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              value_ = s;
               break;
             }
           }
@@ -4771,9 +4381,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -4789,30 +4398,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Validation.class, org.roylance.yaorm.ComplexModel.Validation.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Validation> PARSER =
-        new com.google.protobuf.AbstractParser<Validation>() {
-      public Validation parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Validation(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Validation> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -4824,9 +4411,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -4848,13 +4433,7 @@ public final class ComplexModel {
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object name_;
     /**
      * <code>optional string name = 2;</code>
      */
@@ -4866,9 +4445,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
+        name_ = s;
         return s;
       }
     }
@@ -4890,13 +4467,7 @@ public final class ComplexModel {
     }
 
     public static final int VALUE_FIELD_NUMBER = 3;
-    private java.lang.Object value_;
-    /**
-     * <code>optional string value = 3;</code>
-     */
-    public boolean hasValue() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
+    private volatile java.lang.Object value_;
     /**
      * <code>optional string value = 3;</code>
      */
@@ -4908,9 +4479,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          value_ = s;
-        }
+        value_ = s;
         return s;
       }
     }
@@ -4931,11 +4500,6 @@ public final class ComplexModel {
       }
     }
 
-    private void initFields() {
-      id_ = "";
-      name_ = "";
-      value_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4948,49 +4512,36 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getValueBytes());
+      if (!getValueBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, value_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getValueBytes());
+      if (!getValueBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, value_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5014,42 +4565,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Validation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Validation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Validation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Validation prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Validation prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -5090,23 +4652,15 @@ public final class ComplexModel {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        value_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        name_ = "";
+
+        value_ = "";
+
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -5128,21 +4682,9 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.Validation buildPartial() {
         org.roylance.yaorm.ComplexModel.Validation result = new org.roylance.yaorm.ComplexModel.Validation(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.value_ = value_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5158,22 +4700,19 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Validation other) {
         if (other == org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasValue()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getValue().isEmpty()) {
           value_ = other.value_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -5190,7 +4729,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Validation) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -5198,15 +4737,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -5216,9 +4748,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -5248,7 +4778,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -5257,7 +4787,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -5270,7 +4800,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -5280,21 +4811,13 @@ public final class ComplexModel {
       /**
        * <code>optional string name = 2;</code>
        */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            name_ = s;
-          }
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -5324,7 +4847,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         name_ = value;
         onChanged();
         return this;
@@ -5333,7 +4856,7 @@ public final class ComplexModel {
        * <code>optional string name = 2;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -5346,7 +4869,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         name_ = value;
         onChanged();
         return this;
@@ -5356,21 +4880,13 @@ public final class ComplexModel {
       /**
        * <code>optional string value = 3;</code>
        */
-      public boolean hasValue() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string value = 3;</code>
-       */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            value_ = s;
-          }
+          value_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -5400,7 +4916,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         value_ = value;
         onChanged();
         return this;
@@ -5409,7 +4925,7 @@ public final class ComplexModel {
        * <code>optional string value = 3;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         value_ = getDefaultInstance().getValue();
         onChanged();
         return this;
@@ -5422,31 +4938,65 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         value_ = value;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Validation)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Validation)
+    private static final org.roylance.yaorm.ComplexModel.Validation DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Validation(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Validation();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Validation)
+    public static org.roylance.yaorm.ComplexModel.Validation getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Validation>
+        PARSER = new com.google.protobuf.AbstractParser<Validation>() {
+      public Validation parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Validation(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Validation> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Validation> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Validation getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface HeuristicCombinerOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.HeuristicCombiner)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -5460,7 +5010,7 @@ public final class ComplexModel {
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
-    boolean hasType();
+    int getTypeValue();
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
@@ -5547,10 +5097,6 @@ public final class ComplexModel {
     /**
      * <code>optional string display = 9;</code>
      */
-    boolean hasDisplay();
-    /**
-     * <code>optional string display = 9;</code>
-     */
     java.lang.String getDisplay();
     /**
      * <code>optional string display = 9;</code>
@@ -5561,40 +5107,31 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.HeuristicCombiner}
    */
-  public static final class HeuristicCombiner extends
+  public  static final class HeuristicCombiner extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.HeuristicCombiner)
       HeuristicCombinerOrBuilder {
     // Use HeuristicCombiner.newBuilder() to construct.
     private HeuristicCombiner(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private HeuristicCombiner(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final HeuristicCombiner defaultInstance;
-    public static HeuristicCombiner getDefaultInstance() {
-      return defaultInstance;
+    private HeuristicCombiner() {
+      id_ = "";
+      type_ = 0;
+      display_ = "";
     }
 
-    public HeuristicCombiner getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private HeuristicCombiner(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5604,111 +5141,105 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 16: {
               int rawValue = input.readEnum();
-              org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type value = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                type_ = value;
-              }
+
+              type_ = rawValue;
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.Question.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (firstQuestion_ != null) {
                 subBuilder = firstQuestion_.toBuilder();
               }
-              firstQuestion_ = input.readMessage(org.roylance.yaorm.ComplexModel.Question.PARSER, extensionRegistry);
+              firstQuestion_ = input.readMessage(org.roylance.yaorm.ComplexModel.Question.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(firstQuestion_);
                 firstQuestion_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
               org.roylance.yaorm.ComplexModel.Validation.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (firstValidation_ != null) {
                 subBuilder = firstValidation_.toBuilder();
               }
-              firstValidation_ = input.readMessage(org.roylance.yaorm.ComplexModel.Validation.PARSER, extensionRegistry);
+              firstValidation_ = input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(firstValidation_);
                 firstValidation_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+
               break;
             }
             case 42: {
               org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              if (firstCombiner_ != null) {
                 subBuilder = firstCombiner_.toBuilder();
               }
-              firstCombiner_ = input.readMessage(org.roylance.yaorm.ComplexModel.HeuristicCombiner.PARSER, extensionRegistry);
+              firstCombiner_ = input.readMessage(org.roylance.yaorm.ComplexModel.HeuristicCombiner.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(firstCombiner_);
                 firstCombiner_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000010;
+
               break;
             }
             case 50: {
               org.roylance.yaorm.ComplexModel.Question.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (secondQuestion_ != null) {
                 subBuilder = secondQuestion_.toBuilder();
               }
-              secondQuestion_ = input.readMessage(org.roylance.yaorm.ComplexModel.Question.PARSER, extensionRegistry);
+              secondQuestion_ = input.readMessage(org.roylance.yaorm.ComplexModel.Question.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(secondQuestion_);
                 secondQuestion_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+
               break;
             }
             case 58: {
               org.roylance.yaorm.ComplexModel.Validation.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+              if (secondValidation_ != null) {
                 subBuilder = secondValidation_.toBuilder();
               }
-              secondValidation_ = input.readMessage(org.roylance.yaorm.ComplexModel.Validation.PARSER, extensionRegistry);
+              secondValidation_ = input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(secondValidation_);
                 secondValidation_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000040;
+
               break;
             }
             case 66: {
               org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+              if (secondCombiner_ != null) {
                 subBuilder = secondCombiner_.toBuilder();
               }
-              secondCombiner_ = input.readMessage(org.roylance.yaorm.ComplexModel.HeuristicCombiner.PARSER, extensionRegistry);
+              secondCombiner_ = input.readMessage(org.roylance.yaorm.ComplexModel.HeuristicCombiner.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(secondCombiner_);
                 secondCombiner_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000080;
+
               break;
             }
             case 74: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000100;
-              display_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              display_ = s;
               break;
             }
           }
@@ -5717,9 +5248,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -5735,21 +5265,6 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.HeuristicCombiner.class, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HeuristicCombiner> PARSER =
-        new com.google.protobuf.AbstractParser<HeuristicCombiner>() {
-      public HeuristicCombiner parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HeuristicCombiner(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HeuristicCombiner> getParserForType() {
-      return PARSER;
-    }
-
     /**
      * Protobuf enum {@code org.roylance.yaorm.HeuristicCombiner.Type}
      */
@@ -5758,11 +5273,12 @@ public final class ComplexModel {
       /**
        * <code>AND = 0;</code>
        */
-      AND(0, 0),
+      AND(0),
       /**
        * <code>OR = 1;</code>
        */
-      OR(1, 1),
+      OR(1),
+      UNRECOGNIZED(-1),
       ;
 
       /**
@@ -5775,9 +5291,23 @@ public final class ComplexModel {
       public static final int OR_VALUE = 1;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
 
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static Type valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static Type forNumber(int value) {
         switch (value) {
           case 0: return AND;
           case 1: return OR;
@@ -5789,17 +5319,17 @@ public final class ComplexModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Type>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Type> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Type>() {
               public Type findValueByNumber(int number) {
-                return Type.valueOf(number);
+                return Type.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -5818,29 +5348,23 @@ public final class ComplexModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private Type(int index, int value) {
-        this.index = index;
+      private Type(int value) {
         this.value = value;
       }
 
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.HeuristicCombiner.Type)
     }
 
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -5852,9 +5376,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -5876,18 +5398,19 @@ public final class ComplexModel {
     }
 
     public static final int TYPE_FIELD_NUMBER = 2;
-    private org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type type_;
+    private int type_;
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public int getTypeValue() {
+      return type_;
     }
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type getType() {
-      return type_;
+      org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type result = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.forNumber(type_);
+      return result == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.UNRECOGNIZED : result;
     }
 
     public static final int FIRST_QUESTION_FIELD_NUMBER = 3;
@@ -5896,19 +5419,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
      */
     public boolean hasFirstQuestion() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return firstQuestion_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Question getFirstQuestion() {
-      return firstQuestion_;
+      return firstQuestion_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : firstQuestion_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getFirstQuestionOrBuilder() {
-      return firstQuestion_;
+      return getFirstQuestion();
     }
 
     public static final int FIRST_VALIDATION_FIELD_NUMBER = 4;
@@ -5917,19 +5440,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     public boolean hasFirstValidation() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return firstValidation_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.Validation getFirstValidation() {
-      return firstValidation_;
+      return firstValidation_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : firstValidation_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getFirstValidationOrBuilder() {
-      return firstValidation_;
+      return getFirstValidation();
     }
 
     public static final int FIRST_COMBINER_FIELD_NUMBER = 5;
@@ -5938,19 +5461,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     public boolean hasFirstCombiner() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return firstCombiner_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombiner getFirstCombiner() {
-      return firstCombiner_;
+      return firstCombiner_ == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : firstCombiner_;
     }
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder() {
-      return firstCombiner_;
+      return getFirstCombiner();
     }
 
     public static final int SECOND_QUESTION_FIELD_NUMBER = 6;
@@ -5959,19 +5482,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
      */
     public boolean hasSecondQuestion() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return secondQuestion_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.Question getSecondQuestion() {
-      return secondQuestion_;
+      return secondQuestion_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : secondQuestion_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getSecondQuestionOrBuilder() {
-      return secondQuestion_;
+      return getSecondQuestion();
     }
 
     public static final int SECOND_VALIDATION_FIELD_NUMBER = 7;
@@ -5980,19 +5503,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     public boolean hasSecondValidation() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return secondValidation_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     public org.roylance.yaorm.ComplexModel.Validation getSecondValidation() {
-      return secondValidation_;
+      return secondValidation_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : secondValidation_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getSecondValidationOrBuilder() {
-      return secondValidation_;
+      return getSecondValidation();
     }
 
     public static final int SECOND_COMBINER_FIELD_NUMBER = 8;
@@ -6001,29 +5524,23 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     public boolean hasSecondCombiner() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return secondCombiner_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombiner getSecondCombiner() {
-      return secondCombiner_;
+      return secondCombiner_ == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : secondCombiner_;
     }
     /**
      * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder() {
-      return secondCombiner_;
+      return getSecondCombiner();
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 9;
-    private java.lang.Object display_;
-    /**
-     * <code>optional string display = 9;</code>
-     */
-    public boolean hasDisplay() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
+    private volatile java.lang.Object display_;
     /**
      * <code>optional string display = 9;</code>
      */
@@ -6035,9 +5552,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          display_ = s;
-        }
+        display_ = s;
         return s;
       }
     }
@@ -6058,17 +5573,6 @@ public final class ComplexModel {
       }
     }
 
-    private void initFields() {
-      id_ = "";
-      type_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.AND;
-      firstQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
-      firstValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
-      firstCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
-      secondQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
-      secondValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
-      secondCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
-      display_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6081,91 +5585,79 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, type_.getNumber());
+      if (type_ != org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.AND.getNumber()) {
+        output.writeEnum(2, type_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, firstQuestion_);
+      if (firstQuestion_ != null) {
+        output.writeMessage(3, getFirstQuestion());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, firstValidation_);
+      if (firstValidation_ != null) {
+        output.writeMessage(4, getFirstValidation());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(5, firstCombiner_);
+      if (firstCombiner_ != null) {
+        output.writeMessage(5, getFirstCombiner());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(6, secondQuestion_);
+      if (secondQuestion_ != null) {
+        output.writeMessage(6, getSecondQuestion());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(7, secondValidation_);
+      if (secondValidation_ != null) {
+        output.writeMessage(7, getSecondValidation());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(8, secondCombiner_);
+      if (secondCombiner_ != null) {
+        output.writeMessage(8, getSecondCombiner());
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeBytes(9, getDisplayBytes());
+      if (!getDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 9, display_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (type_ != org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.AND.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, type_.getNumber());
+          .computeEnumSize(2, type_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (firstQuestion_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, firstQuestion_);
+          .computeMessageSize(3, getFirstQuestion());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (firstValidation_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, firstValidation_);
+          .computeMessageSize(4, getFirstValidation());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (firstCombiner_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, firstCombiner_);
+          .computeMessageSize(5, getFirstCombiner());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (secondQuestion_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, secondQuestion_);
+          .computeMessageSize(6, getSecondQuestion());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (secondValidation_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, secondValidation_);
+          .computeMessageSize(7, getSecondValidation());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (secondCombiner_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, secondCombiner_);
+          .computeMessageSize(8, getSecondCombiner());
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(9, getDisplayBytes());
+      if (!getDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(9, display_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6189,42 +5681,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.HeuristicCombiner prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.HeuristicCombiner prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -6263,67 +5766,53 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getFirstQuestionFieldBuilder();
-          getFirstValidationFieldBuilder();
-          getFirstCombinerFieldBuilder();
-          getSecondQuestionFieldBuilder();
-          getSecondValidationFieldBuilder();
-          getSecondCombinerFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.AND;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (firstQuestionBuilder_ == null) {
-          firstQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
-        } else {
-          firstQuestionBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (firstValidationBuilder_ == null) {
-          firstValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
-        } else {
-          firstValidationBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (firstCombinerBuilder_ == null) {
-          firstCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
-        } else {
-          firstCombinerBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (secondQuestionBuilder_ == null) {
-          secondQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
-        } else {
-          secondQuestionBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        if (secondValidationBuilder_ == null) {
-          secondValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
-        } else {
-          secondValidationBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000040);
-        if (secondCombinerBuilder_ == null) {
-          secondCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
-        } else {
-          secondCombinerBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000080);
-        display_ = "";
-        bitField0_ = (bitField0_ & ~0x00000100);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        type_ = 0;
+
+        if (firstQuestionBuilder_ == null) {
+          firstQuestion_ = null;
+        } else {
+          firstQuestion_ = null;
+          firstQuestionBuilder_ = null;
+        }
+        if (firstValidationBuilder_ == null) {
+          firstValidation_ = null;
+        } else {
+          firstValidation_ = null;
+          firstValidationBuilder_ = null;
+        }
+        if (firstCombinerBuilder_ == null) {
+          firstCombiner_ = null;
+        } else {
+          firstCombiner_ = null;
+          firstCombinerBuilder_ = null;
+        }
+        if (secondQuestionBuilder_ == null) {
+          secondQuestion_ = null;
+        } else {
+          secondQuestion_ = null;
+          secondQuestionBuilder_ = null;
+        }
+        if (secondValidationBuilder_ == null) {
+          secondValidation_ = null;
+        } else {
+          secondValidation_ = null;
+          secondValidationBuilder_ = null;
+        }
+        if (secondCombinerBuilder_ == null) {
+          secondCombiner_ = null;
+        } else {
+          secondCombiner_ = null;
+          secondCombinerBuilder_ = null;
+        }
+        display_ = "";
+
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -6345,69 +5834,39 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner buildPartial() {
         org.roylance.yaorm.ComplexModel.HeuristicCombiner result = new org.roylance.yaorm.ComplexModel.HeuristicCombiner(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.type_ = type_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (firstQuestionBuilder_ == null) {
           result.firstQuestion_ = firstQuestion_;
         } else {
           result.firstQuestion_ = firstQuestionBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
         }
         if (firstValidationBuilder_ == null) {
           result.firstValidation_ = firstValidation_;
         } else {
           result.firstValidation_ = firstValidationBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         if (firstCombinerBuilder_ == null) {
           result.firstCombiner_ = firstCombiner_;
         } else {
           result.firstCombiner_ = firstCombinerBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
         }
         if (secondQuestionBuilder_ == null) {
           result.secondQuestion_ = secondQuestion_;
         } else {
           result.secondQuestion_ = secondQuestionBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
         if (secondValidationBuilder_ == null) {
           result.secondValidation_ = secondValidation_;
         } else {
           result.secondValidation_ = secondValidationBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
         }
         if (secondCombinerBuilder_ == null) {
           result.secondCombiner_ = secondCombiner_;
         } else {
           result.secondCombiner_ = secondCombinerBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
         result.display_ = display_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6423,13 +5882,12 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.HeuristicCombiner other) {
         if (other == org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasType()) {
-          setType(other.getType());
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
         }
         if (other.hasFirstQuestion()) {
           mergeFirstQuestion(other.getFirstQuestion());
@@ -6449,12 +5907,11 @@ public final class ComplexModel {
         if (other.hasSecondCombiner()) {
           mergeSecondCombiner(other.getSecondCombiner());
         }
-        if (other.hasDisplay()) {
-          bitField0_ |= 0x00000100;
+        if (!other.getDisplay().isEmpty()) {
           display_ = other.display_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -6471,7 +5928,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.HeuristicCombiner) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -6479,15 +5936,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -6497,9 +5947,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -6529,7 +5977,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -6538,7 +5986,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -6551,24 +5999,34 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type type_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.AND;
+      private int type_ = 0;
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type getType() {
-        return type_;
+        org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type result = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.forNumber(type_);
+        return result == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.UNRECOGNIZED : result;
       }
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
@@ -6577,8 +6035,8 @@ public final class ComplexModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000002;
-        type_ = value;
+        
+        type_ = value.getNumber();
         onChanged();
         return this;
       }
@@ -6586,27 +6044,27 @@ public final class ComplexModel {
        * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        type_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.AND;
+        
+        type_ = 0;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Question firstQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Question firstQuestion_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> firstQuestionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
        */
       public boolean hasFirstQuestion() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return firstQuestionBuilder_ != null || firstQuestion_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question getFirstQuestion() {
         if (firstQuestionBuilder_ == null) {
-          return firstQuestion_;
+          return firstQuestion_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : firstQuestion_;
         } else {
           return firstQuestionBuilder_.getMessage();
         }
@@ -6624,7 +6082,7 @@ public final class ComplexModel {
         } else {
           firstQuestionBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -6638,7 +6096,7 @@ public final class ComplexModel {
         } else {
           firstQuestionBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -6646,8 +6104,7 @@ public final class ComplexModel {
        */
       public Builder mergeFirstQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (firstQuestionBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              firstQuestion_ != org.roylance.yaorm.ComplexModel.Question.getDefaultInstance()) {
+          if (firstQuestion_ != null) {
             firstQuestion_ =
               org.roylance.yaorm.ComplexModel.Question.newBuilder(firstQuestion_).mergeFrom(value).buildPartial();
           } else {
@@ -6657,7 +6114,7 @@ public final class ComplexModel {
         } else {
           firstQuestionBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -6665,19 +6122,20 @@ public final class ComplexModel {
        */
       public Builder clearFirstQuestion() {
         if (firstQuestionBuilder_ == null) {
-          firstQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
+          firstQuestion_ = null;
           onChanged();
         } else {
-          firstQuestionBuilder_.clear();
+          firstQuestion_ = null;
+          firstQuestionBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question.Builder getFirstQuestionBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getFirstQuestionFieldBuilder().getBuilder();
       }
@@ -6688,7 +6146,8 @@ public final class ComplexModel {
         if (firstQuestionBuilder_ != null) {
           return firstQuestionBuilder_.getMessageOrBuilder();
         } else {
-          return firstQuestion_;
+          return firstQuestion_ == null ?
+              org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : firstQuestion_;
         }
       }
       /**
@@ -6708,21 +6167,21 @@ public final class ComplexModel {
         return firstQuestionBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Validation firstValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Validation firstValidation_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> firstValidationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public boolean hasFirstValidation() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return firstValidationBuilder_ != null || firstValidation_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation getFirstValidation() {
         if (firstValidationBuilder_ == null) {
-          return firstValidation_;
+          return firstValidation_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : firstValidation_;
         } else {
           return firstValidationBuilder_.getMessage();
         }
@@ -6740,7 +6199,7 @@ public final class ComplexModel {
         } else {
           firstValidationBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -6754,7 +6213,7 @@ public final class ComplexModel {
         } else {
           firstValidationBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -6762,8 +6221,7 @@ public final class ComplexModel {
        */
       public Builder mergeFirstValidation(org.roylance.yaorm.ComplexModel.Validation value) {
         if (firstValidationBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              firstValidation_ != org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance()) {
+          if (firstValidation_ != null) {
             firstValidation_ =
               org.roylance.yaorm.ComplexModel.Validation.newBuilder(firstValidation_).mergeFrom(value).buildPartial();
           } else {
@@ -6773,7 +6231,7 @@ public final class ComplexModel {
         } else {
           firstValidationBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -6781,19 +6239,20 @@ public final class ComplexModel {
        */
       public Builder clearFirstValidation() {
         if (firstValidationBuilder_ == null) {
-          firstValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
+          firstValidation_ = null;
           onChanged();
         } else {
-          firstValidationBuilder_.clear();
+          firstValidation_ = null;
+          firstValidationBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation.Builder getFirstValidationBuilder() {
-        bitField0_ |= 0x00000008;
+        
         onChanged();
         return getFirstValidationFieldBuilder().getBuilder();
       }
@@ -6804,7 +6263,8 @@ public final class ComplexModel {
         if (firstValidationBuilder_ != null) {
           return firstValidationBuilder_.getMessageOrBuilder();
         } else {
-          return firstValidation_;
+          return firstValidation_ == null ?
+              org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : firstValidation_;
         }
       }
       /**
@@ -6824,21 +6284,21 @@ public final class ComplexModel {
         return firstValidationBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.HeuristicCombiner firstCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.HeuristicCombiner firstCombiner_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.HeuristicCombiner, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder, org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder> firstCombinerBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public boolean hasFirstCombiner() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return firstCombinerBuilder_ != null || firstCombiner_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner getFirstCombiner() {
         if (firstCombinerBuilder_ == null) {
-          return firstCombiner_;
+          return firstCombiner_ == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : firstCombiner_;
         } else {
           return firstCombinerBuilder_.getMessage();
         }
@@ -6856,7 +6316,7 @@ public final class ComplexModel {
         } else {
           firstCombinerBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+
         return this;
       }
       /**
@@ -6870,7 +6330,7 @@ public final class ComplexModel {
         } else {
           firstCombinerBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+
         return this;
       }
       /**
@@ -6878,8 +6338,7 @@ public final class ComplexModel {
        */
       public Builder mergeFirstCombiner(org.roylance.yaorm.ComplexModel.HeuristicCombiner value) {
         if (firstCombinerBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              firstCombiner_ != org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance()) {
+          if (firstCombiner_ != null) {
             firstCombiner_ =
               org.roylance.yaorm.ComplexModel.HeuristicCombiner.newBuilder(firstCombiner_).mergeFrom(value).buildPartial();
           } else {
@@ -6889,7 +6348,7 @@ public final class ComplexModel {
         } else {
           firstCombinerBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+
         return this;
       }
       /**
@@ -6897,19 +6356,20 @@ public final class ComplexModel {
        */
       public Builder clearFirstCombiner() {
         if (firstCombinerBuilder_ == null) {
-          firstCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
+          firstCombiner_ = null;
           onChanged();
         } else {
-          firstCombinerBuilder_.clear();
+          firstCombiner_ = null;
+          firstCombinerBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder getFirstCombinerBuilder() {
-        bitField0_ |= 0x00000010;
+        
         onChanged();
         return getFirstCombinerFieldBuilder().getBuilder();
       }
@@ -6920,7 +6380,8 @@ public final class ComplexModel {
         if (firstCombinerBuilder_ != null) {
           return firstCombinerBuilder_.getMessageOrBuilder();
         } else {
-          return firstCombiner_;
+          return firstCombiner_ == null ?
+              org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : firstCombiner_;
         }
       }
       /**
@@ -6940,21 +6401,21 @@ public final class ComplexModel {
         return firstCombinerBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Question secondQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Question secondQuestion_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> secondQuestionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
        */
       public boolean hasSecondQuestion() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return secondQuestionBuilder_ != null || secondQuestion_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question getSecondQuestion() {
         if (secondQuestionBuilder_ == null) {
-          return secondQuestion_;
+          return secondQuestion_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : secondQuestion_;
         } else {
           return secondQuestionBuilder_.getMessage();
         }
@@ -6972,7 +6433,7 @@ public final class ComplexModel {
         } else {
           secondQuestionBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -6986,7 +6447,7 @@ public final class ComplexModel {
         } else {
           secondQuestionBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -6994,8 +6455,7 @@ public final class ComplexModel {
        */
       public Builder mergeSecondQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (secondQuestionBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
-              secondQuestion_ != org.roylance.yaorm.ComplexModel.Question.getDefaultInstance()) {
+          if (secondQuestion_ != null) {
             secondQuestion_ =
               org.roylance.yaorm.ComplexModel.Question.newBuilder(secondQuestion_).mergeFrom(value).buildPartial();
           } else {
@@ -7005,7 +6465,7 @@ public final class ComplexModel {
         } else {
           secondQuestionBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -7013,19 +6473,20 @@ public final class ComplexModel {
        */
       public Builder clearSecondQuestion() {
         if (secondQuestionBuilder_ == null) {
-          secondQuestion_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
+          secondQuestion_ = null;
           onChanged();
         } else {
-          secondQuestionBuilder_.clear();
+          secondQuestion_ = null;
+          secondQuestionBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question.Builder getSecondQuestionBuilder() {
-        bitField0_ |= 0x00000020;
+        
         onChanged();
         return getSecondQuestionFieldBuilder().getBuilder();
       }
@@ -7036,7 +6497,8 @@ public final class ComplexModel {
         if (secondQuestionBuilder_ != null) {
           return secondQuestionBuilder_.getMessageOrBuilder();
         } else {
-          return secondQuestion_;
+          return secondQuestion_ == null ?
+              org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : secondQuestion_;
         }
       }
       /**
@@ -7056,21 +6518,21 @@ public final class ComplexModel {
         return secondQuestionBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Validation secondValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Validation secondValidation_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> secondValidationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public boolean hasSecondValidation() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return secondValidationBuilder_ != null || secondValidation_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation getSecondValidation() {
         if (secondValidationBuilder_ == null) {
-          return secondValidation_;
+          return secondValidation_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : secondValidation_;
         } else {
           return secondValidationBuilder_.getMessage();
         }
@@ -7088,7 +6550,7 @@ public final class ComplexModel {
         } else {
           secondValidationBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000040;
+
         return this;
       }
       /**
@@ -7102,7 +6564,7 @@ public final class ComplexModel {
         } else {
           secondValidationBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000040;
+
         return this;
       }
       /**
@@ -7110,8 +6572,7 @@ public final class ComplexModel {
        */
       public Builder mergeSecondValidation(org.roylance.yaorm.ComplexModel.Validation value) {
         if (secondValidationBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040) &&
-              secondValidation_ != org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance()) {
+          if (secondValidation_ != null) {
             secondValidation_ =
               org.roylance.yaorm.ComplexModel.Validation.newBuilder(secondValidation_).mergeFrom(value).buildPartial();
           } else {
@@ -7121,7 +6582,7 @@ public final class ComplexModel {
         } else {
           secondValidationBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000040;
+
         return this;
       }
       /**
@@ -7129,19 +6590,20 @@ public final class ComplexModel {
        */
       public Builder clearSecondValidation() {
         if (secondValidationBuilder_ == null) {
-          secondValidation_ = org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance();
+          secondValidation_ = null;
           onChanged();
         } else {
-          secondValidationBuilder_.clear();
+          secondValidation_ = null;
+          secondValidationBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation.Builder getSecondValidationBuilder() {
-        bitField0_ |= 0x00000040;
+        
         onChanged();
         return getSecondValidationFieldBuilder().getBuilder();
       }
@@ -7152,7 +6614,8 @@ public final class ComplexModel {
         if (secondValidationBuilder_ != null) {
           return secondValidationBuilder_.getMessageOrBuilder();
         } else {
-          return secondValidation_;
+          return secondValidation_ == null ?
+              org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : secondValidation_;
         }
       }
       /**
@@ -7172,21 +6635,21 @@ public final class ComplexModel {
         return secondValidationBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.HeuristicCombiner secondCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.HeuristicCombiner secondCombiner_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.HeuristicCombiner, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder, org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder> secondCombinerBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public boolean hasSecondCombiner() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return secondCombinerBuilder_ != null || secondCombiner_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner getSecondCombiner() {
         if (secondCombinerBuilder_ == null) {
-          return secondCombiner_;
+          return secondCombiner_ == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : secondCombiner_;
         } else {
           return secondCombinerBuilder_.getMessage();
         }
@@ -7204,7 +6667,7 @@ public final class ComplexModel {
         } else {
           secondCombinerBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000080;
+
         return this;
       }
       /**
@@ -7218,7 +6681,7 @@ public final class ComplexModel {
         } else {
           secondCombinerBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000080;
+
         return this;
       }
       /**
@@ -7226,8 +6689,7 @@ public final class ComplexModel {
        */
       public Builder mergeSecondCombiner(org.roylance.yaorm.ComplexModel.HeuristicCombiner value) {
         if (secondCombinerBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
-              secondCombiner_ != org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance()) {
+          if (secondCombiner_ != null) {
             secondCombiner_ =
               org.roylance.yaorm.ComplexModel.HeuristicCombiner.newBuilder(secondCombiner_).mergeFrom(value).buildPartial();
           } else {
@@ -7237,7 +6699,7 @@ public final class ComplexModel {
         } else {
           secondCombinerBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000080;
+
         return this;
       }
       /**
@@ -7245,19 +6707,20 @@ public final class ComplexModel {
        */
       public Builder clearSecondCombiner() {
         if (secondCombinerBuilder_ == null) {
-          secondCombiner_ = org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance();
+          secondCombiner_ = null;
           onChanged();
         } else {
-          secondCombinerBuilder_.clear();
+          secondCombiner_ = null;
+          secondCombinerBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder getSecondCombinerBuilder() {
-        bitField0_ |= 0x00000080;
+        
         onChanged();
         return getSecondCombinerFieldBuilder().getBuilder();
       }
@@ -7268,7 +6731,8 @@ public final class ComplexModel {
         if (secondCombinerBuilder_ != null) {
           return secondCombinerBuilder_.getMessageOrBuilder();
         } else {
-          return secondCombiner_;
+          return secondCombiner_ == null ?
+              org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : secondCombiner_;
         }
       }
       /**
@@ -7292,21 +6756,13 @@ public final class ComplexModel {
       /**
        * <code>optional string display = 9;</code>
        */
-      public boolean hasDisplay() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional string display = 9;</code>
-       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            display_ = s;
-          }
+          display_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -7336,7 +6792,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  
         display_ = value;
         onChanged();
         return this;
@@ -7345,7 +6801,7 @@ public final class ComplexModel {
        * <code>optional string display = 9;</code>
        */
       public Builder clearDisplay() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -7358,31 +6814,65 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  checkByteStringIsUtf8(value);
+        
         display_ = value;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.HeuristicCombiner)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.HeuristicCombiner)
+    private static final org.roylance.yaorm.ComplexModel.HeuristicCombiner DEFAULT_INSTANCE;
     static {
-      defaultInstance = new HeuristicCombiner(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.HeuristicCombiner();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.HeuristicCombiner)
+    public static org.roylance.yaorm.ComplexModel.HeuristicCombiner getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HeuristicCombiner>
+        PARSER = new com.google.protobuf.AbstractParser<HeuristicCombiner>() {
+      public HeuristicCombiner parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new HeuristicCombiner(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<HeuristicCombiner> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HeuristicCombiner> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.HeuristicCombiner getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface FormOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Form)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -7393,10 +6883,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
-    /**
-     * <code>optional string display = 2;</code>
-     */
-    boolean hasDisplay();
     /**
      * <code>optional string display = 2;</code>
      */
@@ -7447,40 +6933,31 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Form}
    */
-  public static final class Form extends
+  public  static final class Form extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Form)
       FormOrBuilder {
     // Use Form.newBuilder() to construct.
     private Form(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Form(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Form defaultInstance;
-    public static Form getDefaultInstance() {
-      return defaultInstance;
+    private Form() {
+      id_ = "";
+      display_ = "";
+      questions_ = java.util.Collections.emptyList();
     }
 
-    public Form getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Form(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7490,35 +6967,34 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              display_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              display_ = s;
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.RequestImage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (image_ != null) {
                 subBuilder = image_.toBuilder();
               }
-              image_ = input.readMessage(org.roylance.yaorm.ComplexModel.RequestImage.PARSER, extensionRegistry);
+              image_ = input.readMessage(org.roylance.yaorm.ComplexModel.RequestImage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(image_);
                 image_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
@@ -7526,7 +7002,7 @@ public final class ComplexModel {
                 questions_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Question>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              questions_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Question.PARSER, extensionRegistry));
+              questions_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Question.parser(), extensionRegistry));
               break;
             }
           }
@@ -7535,12 +7011,11 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           questions_ = java.util.Collections.unmodifiableList(questions_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -7556,30 +7031,9 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Form.class, org.roylance.yaorm.ComplexModel.Form.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Form> PARSER =
-        new com.google.protobuf.AbstractParser<Form>() {
-      public Form parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Form(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Form> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -7591,9 +7045,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -7615,13 +7067,7 @@ public final class ComplexModel {
     }
 
     public static final int DISPLAY_FIELD_NUMBER = 2;
-    private java.lang.Object display_;
-    /**
-     * <code>optional string display = 2;</code>
-     */
-    public boolean hasDisplay() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object display_;
     /**
      * <code>optional string display = 2;</code>
      */
@@ -7633,9 +7079,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          display_ = s;
-        }
+        display_ = s;
         return s;
       }
     }
@@ -7662,19 +7106,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
      */
     public boolean hasImage() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return image_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
-      return image_;
+      return image_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
     }
     /**
      * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder() {
-      return image_;
+      return getImage();
     }
 
     public static final int QUESTIONS_FIELD_NUMBER = 4;
@@ -7712,12 +7156,6 @@ public final class ComplexModel {
       return questions_.get(index);
     }
 
-    private void initFields() {
-      id_ = "";
-      display_ = "";
-      image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
-      questions_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -7730,56 +7168,44 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getDisplayBytes());
+      if (!getDisplayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, image_);
+      if (image_ != null) {
+        output.writeMessage(3, getImage());
       }
       for (int i = 0; i < questions_.size(); i++) {
         output.writeMessage(4, questions_.get(i));
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getDisplayBytes());
+      if (!getDisplayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (image_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, image_);
+          .computeMessageSize(3, getImage());
       }
       for (int i = 0; i < questions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, questions_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Form parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7803,42 +7229,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Form parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Form parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Form parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Form parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Form parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Form parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Form prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Form prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -7877,26 +7314,21 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getImageFieldBuilder();
           getQuestionsFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         display_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         if (imageBuilder_ == null) {
-          image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+          image_ = null;
         } else {
-          imageBuilder_.clear();
+          image_ = null;
+          imageBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (questionsBuilder_ == null) {
           questions_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
@@ -7904,10 +7336,6 @@ public final class ComplexModel {
           questionsBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -7931,17 +7359,8 @@ public final class ComplexModel {
         org.roylance.yaorm.ComplexModel.Form result = new org.roylance.yaorm.ComplexModel.Form(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.display_ = display_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (imageBuilder_ == null) {
           result.image_ = image_;
         } else {
@@ -7972,13 +7391,11 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Form other) {
         if (other == org.roylance.yaorm.ComplexModel.Form.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasDisplay()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getDisplay().isEmpty()) {
           display_ = other.display_;
           onChanged();
         }
@@ -8011,7 +7428,7 @@ public final class ComplexModel {
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -8028,7 +7445,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Form) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -8042,21 +7459,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id = 1;</code>
        */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -8086,7 +7495,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -8095,7 +7504,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -8108,7 +7517,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -8118,21 +7528,13 @@ public final class ComplexModel {
       /**
        * <code>optional string display = 2;</code>
        */
-      public boolean hasDisplay() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string display = 2;</code>
-       */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            display_ = s;
-          }
+          display_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -8162,7 +7564,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         display_ = value;
         onChanged();
         return this;
@@ -8171,7 +7573,7 @@ public final class ComplexModel {
        * <code>optional string display = 2;</code>
        */
       public Builder clearDisplay() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         display_ = getDefaultInstance().getDisplay();
         onChanged();
         return this;
@@ -8184,27 +7586,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         display_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.RequestImage image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.RequestImage image_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> imageBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public boolean hasImage() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return imageBuilder_ != null || image_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
         if (imageBuilder_ == null) {
-          return image_;
+          return image_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
         } else {
           return imageBuilder_.getMessage();
         }
@@ -8222,7 +7625,7 @@ public final class ComplexModel {
         } else {
           imageBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -8236,7 +7639,7 @@ public final class ComplexModel {
         } else {
           imageBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -8244,8 +7647,7 @@ public final class ComplexModel {
        */
       public Builder mergeImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (imageBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              image_ != org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance()) {
+          if (image_ != null) {
             image_ =
               org.roylance.yaorm.ComplexModel.RequestImage.newBuilder(image_).mergeFrom(value).buildPartial();
           } else {
@@ -8255,7 +7657,7 @@ public final class ComplexModel {
         } else {
           imageBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -8263,19 +7665,20 @@ public final class ComplexModel {
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
-          image_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+          image_ = null;
           onChanged();
         } else {
-          imageBuilder_.clear();
+          image_ = null;
+          imageBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage.Builder getImageBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getImageFieldBuilder().getBuilder();
       }
@@ -8286,7 +7689,8 @@ public final class ComplexModel {
         if (imageBuilder_ != null) {
           return imageBuilder_.getMessageOrBuilder();
         } else {
-          return image_;
+          return image_ == null ?
+              org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
         }
       }
       /**
@@ -8545,26 +7949,59 @@ public final class ComplexModel {
         }
         return questionsBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Form)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Form)
+    private static final org.roylance.yaorm.ComplexModel.Form DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Form(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Form();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Form)
+    public static org.roylance.yaorm.ComplexModel.Form getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Form>
+        PARSER = new com.google.protobuf.AbstractParser<Form>() {
+      public Form parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Form(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Form> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Form> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Form getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface ViewOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.View)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -8591,10 +8028,6 @@ public final class ComplexModel {
     /**
      * <code>optional string title = 3;</code>
      */
-    boolean hasTitle();
-    /**
-     * <code>optional string title = 3;</code>
-     */
     java.lang.String getTitle();
     /**
      * <code>optional string title = 3;</code>
@@ -8602,10 +8035,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getTitleBytes();
 
-    /**
-     * <code>optional string description = 4;</code>
-     */
-    boolean hasDescription();
     /**
      * <code>optional string description = 4;</code>
      */
@@ -8691,40 +8120,34 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.View}
    */
-  public static final class View extends
+  public  static final class View extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.View)
       ViewOrBuilder {
     // Use View.newBuilder() to construct.
     private View(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private View(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final View defaultInstance;
-    public static View getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public View getDefaultInstanceForType() {
-      return defaultInstance;
+    private View() {
+      id_ = "";
+      title_ = "";
+      description_ = "";
+      forms_ = java.util.Collections.emptyList();
+      heuristics_ = java.util.Collections.emptyList();
+      validations_ = java.util.Collections.emptyList();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private View(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -8734,41 +8157,40 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
               org.roylance.yaorm.ComplexModel.RequestImage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (backgroundImage_ != null) {
                 subBuilder = backgroundImage_.toBuilder();
               }
-              backgroundImage_ = input.readMessage(org.roylance.yaorm.ComplexModel.RequestImage.PARSER, extensionRegistry);
+              backgroundImage_ = input.readMessage(org.roylance.yaorm.ComplexModel.RequestImage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(backgroundImage_);
                 backgroundImage_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              title_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              description_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
               break;
             }
             case 42: {
@@ -8776,7 +8198,7 @@ public final class ComplexModel {
                 forms_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Form>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              forms_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Form.PARSER, extensionRegistry));
+              forms_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Form.parser(), extensionRegistry));
               break;
             }
             case 50: {
@@ -8784,7 +8206,7 @@ public final class ComplexModel {
                 heuristics_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Heuristic>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              heuristics_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Heuristic.PARSER, extensionRegistry));
+              heuristics_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Heuristic.parser(), extensionRegistry));
               break;
             }
             case 58: {
@@ -8792,7 +8214,7 @@ public final class ComplexModel {
                 validations_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Validation>();
                 mutable_bitField0_ |= 0x00000040;
               }
-              validations_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Validation.PARSER, extensionRegistry));
+              validations_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry));
               break;
             }
           }
@@ -8801,7 +8223,7 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           forms_ = java.util.Collections.unmodifiableList(forms_);
@@ -8812,7 +8234,6 @@ public final class ComplexModel {
         if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           validations_ = java.util.Collections.unmodifiableList(validations_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -8828,30 +8249,9 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.View.class, org.roylance.yaorm.ComplexModel.View.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<View> PARSER =
-        new com.google.protobuf.AbstractParser<View>() {
-      public View parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new View(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<View> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -8863,9 +8263,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -8892,29 +8290,23 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     public boolean hasBackgroundImage() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return backgroundImage_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImage getBackgroundImage() {
-      return backgroundImage_;
+      return backgroundImage_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : backgroundImage_;
     }
     /**
      * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getBackgroundImageOrBuilder() {
-      return backgroundImage_;
+      return getBackgroundImage();
     }
 
     public static final int TITLE_FIELD_NUMBER = 3;
-    private java.lang.Object title_;
-    /**
-     * <code>optional string title = 3;</code>
-     */
-    public boolean hasTitle() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
+    private volatile java.lang.Object title_;
     /**
      * <code>optional string title = 3;</code>
      */
@@ -8926,9 +8318,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          title_ = s;
-        }
+        title_ = s;
         return s;
       }
     }
@@ -8950,13 +8340,7 @@ public final class ComplexModel {
     }
 
     public static final int DESCRIPTION_FIELD_NUMBER = 4;
-    private java.lang.Object description_;
-    /**
-     * <code>optional string description = 4;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
+    private volatile java.lang.Object description_;
     /**
      * <code>optional string description = 4;</code>
      */
@@ -8968,9 +8352,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
+        description_ = s;
         return s;
       }
     }
@@ -9096,15 +8478,6 @@ public final class ComplexModel {
       return validations_.get(index);
     }
 
-    private void initFields() {
-      id_ = "";
-      backgroundImage_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
-      title_ = "";
-      description_ = "";
-      forms_ = java.util.Collections.emptyList();
-      heuristics_ = java.util.Collections.emptyList();
-      validations_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -9117,18 +8490,17 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, backgroundImage_);
+      if (backgroundImage_ != null) {
+        output.writeMessage(2, getBackgroundImage());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getTitleBytes());
+      if (!getTitleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, title_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getDescriptionBytes());
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, description_);
       }
       for (int i = 0; i < forms_.size(); i++) {
         output.writeMessage(5, forms_.get(i));
@@ -9139,30 +8511,25 @@ public final class ComplexModel {
       for (int i = 0; i < validations_.size(); i++) {
         output.writeMessage(7, validations_.get(i));
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (backgroundImage_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, backgroundImage_);
+          .computeMessageSize(2, getBackgroundImage());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getTitleBytes());
+      if (!getTitleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, title_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getDescriptionBytes());
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, description_);
       }
       for (int i = 0; i < forms_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -9176,18 +8543,11 @@ public final class ComplexModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, validations_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.View parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9211,42 +8571,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.View parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.View parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.View parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.View parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.View parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.View parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.View prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.View prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -9285,30 +8656,25 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getBackgroundImageFieldBuilder();
           getFormsFieldBuilder();
           getHeuristicsFieldBuilder();
           getValidationsFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         if (backgroundImageBuilder_ == null) {
-          backgroundImage_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+          backgroundImage_ = null;
         } else {
-          backgroundImageBuilder_.clear();
+          backgroundImage_ = null;
+          backgroundImageBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         title_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
+
         if (formsBuilder_ == null) {
           forms_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000010);
@@ -9328,10 +8694,6 @@ public final class ComplexModel {
           validationsBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -9355,25 +8717,13 @@ public final class ComplexModel {
         org.roylance.yaorm.ComplexModel.View result = new org.roylance.yaorm.ComplexModel.View(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (backgroundImageBuilder_ == null) {
           result.backgroundImage_ = backgroundImage_;
         } else {
           result.backgroundImage_ = backgroundImageBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.title_ = title_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.description_ = description_;
         if (formsBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010)) {
@@ -9418,21 +8768,18 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.View other) {
         if (other == org.roylance.yaorm.ComplexModel.View.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
         if (other.hasBackgroundImage()) {
           mergeBackgroundImage(other.getBackgroundImage());
         }
-        if (other.hasTitle()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getTitle().isEmpty()) {
           title_ = other.title_;
           onChanged();
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000008;
+        if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
         }
@@ -9514,7 +8861,7 @@ public final class ComplexModel {
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -9531,7 +8878,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.View) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -9545,21 +8892,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id = 1;</code>
        */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9589,7 +8928,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -9598,7 +8937,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -9611,27 +8950,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.RequestImage backgroundImage_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.RequestImage backgroundImage_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> backgroundImageBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public boolean hasBackgroundImage() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return backgroundImageBuilder_ != null || backgroundImage_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage getBackgroundImage() {
         if (backgroundImageBuilder_ == null) {
-          return backgroundImage_;
+          return backgroundImage_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : backgroundImage_;
         } else {
           return backgroundImageBuilder_.getMessage();
         }
@@ -9649,7 +8989,7 @@ public final class ComplexModel {
         } else {
           backgroundImageBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -9663,7 +9003,7 @@ public final class ComplexModel {
         } else {
           backgroundImageBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -9671,8 +9011,7 @@ public final class ComplexModel {
        */
       public Builder mergeBackgroundImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (backgroundImageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              backgroundImage_ != org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance()) {
+          if (backgroundImage_ != null) {
             backgroundImage_ =
               org.roylance.yaorm.ComplexModel.RequestImage.newBuilder(backgroundImage_).mergeFrom(value).buildPartial();
           } else {
@@ -9682,7 +9021,7 @@ public final class ComplexModel {
         } else {
           backgroundImageBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -9690,19 +9029,20 @@ public final class ComplexModel {
        */
       public Builder clearBackgroundImage() {
         if (backgroundImageBuilder_ == null) {
-          backgroundImage_ = org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance();
+          backgroundImage_ = null;
           onChanged();
         } else {
-          backgroundImageBuilder_.clear();
+          backgroundImage_ = null;
+          backgroundImageBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage.Builder getBackgroundImageBuilder() {
-        bitField0_ |= 0x00000002;
+        
         onChanged();
         return getBackgroundImageFieldBuilder().getBuilder();
       }
@@ -9713,7 +9053,8 @@ public final class ComplexModel {
         if (backgroundImageBuilder_ != null) {
           return backgroundImageBuilder_.getMessageOrBuilder();
         } else {
-          return backgroundImage_;
+          return backgroundImage_ == null ?
+              org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : backgroundImage_;
         }
       }
       /**
@@ -9737,21 +9078,13 @@ public final class ComplexModel {
       /**
        * <code>optional string title = 3;</code>
        */
-      public boolean hasTitle() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string title = 3;</code>
-       */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            title_ = s;
-          }
+          title_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9781,7 +9114,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         title_ = value;
         onChanged();
         return this;
@@ -9790,7 +9123,7 @@ public final class ComplexModel {
        * <code>optional string title = 3;</code>
        */
       public Builder clearTitle() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         title_ = getDefaultInstance().getTitle();
         onChanged();
         return this;
@@ -9803,7 +9136,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         title_ = value;
         onChanged();
         return this;
@@ -9813,21 +9147,13 @@ public final class ComplexModel {
       /**
        * <code>optional string description = 4;</code>
        */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional string description = 4;</code>
-       */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            description_ = s;
-          }
+          description_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -9857,7 +9183,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  
         description_ = value;
         onChanged();
         return this;
@@ -9866,7 +9192,7 @@ public final class ComplexModel {
        * <code>optional string description = 4;</code>
        */
       public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
@@ -9879,7 +9205,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  checkByteStringIsUtf8(value);
+        
         description_ = value;
         onChanged();
         return this;
@@ -10604,26 +9931,59 @@ public final class ComplexModel {
         }
         return validationsBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.View)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.View)
+    private static final org.roylance.yaorm.ComplexModel.View DEFAULT_INSTANCE;
     static {
-      defaultInstance = new View(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.View();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.View)
+    public static org.roylance.yaorm.ComplexModel.View getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<View>
+        PARSER = new com.google.protobuf.AbstractParser<View>() {
+      public View parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new View(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<View> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<View> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.View getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface HeuristicOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Heuristic)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -10634,10 +9994,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
-    /**
-     * <code>optional string description = 2;</code>
-     */
-    boolean hasDescription();
     /**
      * <code>optional string description = 2;</code>
      */
@@ -10688,7 +10044,7 @@ public final class ComplexModel {
     /**
      * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
-    boolean hasHeuristicGroupType();
+    int getHeuristicGroupTypeValue();
     /**
      * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
@@ -10697,40 +10053,32 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Heuristic}
    */
-  public static final class Heuristic extends
+  public  static final class Heuristic extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Heuristic)
       HeuristicOrBuilder {
     // Use Heuristic.newBuilder() to construct.
     private Heuristic(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Heuristic(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Heuristic defaultInstance;
-    public static Heuristic getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Heuristic getDefaultInstanceForType() {
-      return defaultInstance;
+    private Heuristic() {
+      id_ = "";
+      description_ = "";
+      heuristicCombiners_ = java.util.Collections.emptyList();
+      heuristicGroupType_ = 0;
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Heuristic(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -10740,35 +10088,34 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              description_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.View.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (nextView_ != null) {
                 subBuilder = nextView_.toBuilder();
               }
-              nextView_ = input.readMessage(org.roylance.yaorm.ComplexModel.View.PARSER, extensionRegistry);
+              nextView_ = input.readMessage(org.roylance.yaorm.ComplexModel.View.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(nextView_);
                 nextView_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
@@ -10776,18 +10123,13 @@ public final class ComplexModel {
                 heuristicCombiners_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.HeuristicCombiner>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              heuristicCombiners_.add(input.readMessage(org.roylance.yaorm.ComplexModel.HeuristicCombiner.PARSER, extensionRegistry));
+              heuristicCombiners_.add(input.readMessage(org.roylance.yaorm.ComplexModel.HeuristicCombiner.parser(), extensionRegistry));
               break;
             }
             case 40: {
               int rawValue = input.readEnum();
-              org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType value = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(5, rawValue);
-              } else {
-                bitField0_ |= 0x00000008;
-                heuristicGroupType_ = value;
-              }
+
+              heuristicGroupType_ = rawValue;
               break;
             }
           }
@@ -10796,12 +10138,11 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           heuristicCombiners_ = java.util.Collections.unmodifiableList(heuristicCombiners_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -10817,21 +10158,6 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Heuristic.class, org.roylance.yaorm.ComplexModel.Heuristic.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Heuristic> PARSER =
-        new com.google.protobuf.AbstractParser<Heuristic>() {
-      public Heuristic parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Heuristic(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Heuristic> getParserForType() {
-      return PARSER;
-    }
-
     /**
      * Protobuf enum {@code org.roylance.yaorm.Heuristic.HeuristicGroupType}
      */
@@ -10840,7 +10166,8 @@ public final class ComplexModel {
       /**
        * <code>BUTTON = 0;</code>
        */
-      BUTTON(0, 0),
+      BUTTON(0),
+      UNRECOGNIZED(-1),
       ;
 
       /**
@@ -10849,9 +10176,23 @@ public final class ComplexModel {
       public static final int BUTTON_VALUE = 0;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
 
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static HeuristicGroupType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static HeuristicGroupType forNumber(int value) {
         switch (value) {
           case 0: return BUTTON;
           default: return null;
@@ -10862,17 +10203,17 @@ public final class ComplexModel {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<HeuristicGroupType>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          HeuristicGroupType> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<HeuristicGroupType>() {
               public HeuristicGroupType findValueByNumber(int number) {
-                return HeuristicGroupType.valueOf(number);
+                return HeuristicGroupType.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -10891,14 +10232,15 @@ public final class ComplexModel {
           throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private HeuristicGroupType(int index, int value) {
-        this.index = index;
+      private HeuristicGroupType(int value) {
         this.value = value;
       }
 
@@ -10907,13 +10249,7 @@ public final class ComplexModel {
 
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -10925,9 +10261,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -10949,13 +10283,7 @@ public final class ComplexModel {
     }
 
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
-    private java.lang.Object description_;
-    /**
-     * <code>optional string description = 2;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object description_;
     /**
      * <code>optional string description = 2;</code>
      */
@@ -10967,9 +10295,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
+        description_ = s;
         return s;
       }
     }
@@ -10996,19 +10322,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
      */
     public boolean hasNextView() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return nextView_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.View getNextView() {
-      return nextView_;
+      return nextView_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : nextView_;
     }
     /**
      * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.ViewOrBuilder getNextViewOrBuilder() {
-      return nextView_;
+      return getNextView();
     }
 
     public static final int HEURISTIC_COMBINERS_FIELD_NUMBER = 4;
@@ -11047,27 +10373,21 @@ public final class ComplexModel {
     }
 
     public static final int HEURISTIC_GROUP_TYPE_FIELD_NUMBER = 5;
-    private org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType heuristicGroupType_;
+    private int heuristicGroupType_;
     /**
      * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
-    public boolean hasHeuristicGroupType() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+    public int getHeuristicGroupTypeValue() {
+      return heuristicGroupType_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType getHeuristicGroupType() {
-      return heuristicGroupType_;
+      org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType result = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.forNumber(heuristicGroupType_);
+      return result == null ? org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.UNRECOGNIZED : result;
     }
 
-    private void initFields() {
-      id_ = "";
-      description_ = "";
-      nextView_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
-      heuristicCombiners_ = java.util.Collections.emptyList();
-      heuristicGroupType_ = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.BUTTON;
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -11080,63 +10400,51 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getDescriptionBytes());
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, description_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, nextView_);
+      if (nextView_ != null) {
+        output.writeMessage(3, getNextView());
       }
       for (int i = 0; i < heuristicCombiners_.size(); i++) {
         output.writeMessage(4, heuristicCombiners_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeEnum(5, heuristicGroupType_.getNumber());
+      if (heuristicGroupType_ != org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.BUTTON.getNumber()) {
+        output.writeEnum(5, heuristicGroupType_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getDescriptionBytes());
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, description_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (nextView_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, nextView_);
+          .computeMessageSize(3, getNextView());
       }
       for (int i = 0; i < heuristicCombiners_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, heuristicCombiners_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (heuristicGroupType_ != org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.BUTTON.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, heuristicGroupType_.getNumber());
+          .computeEnumSize(5, heuristicGroupType_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11160,42 +10468,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Heuristic prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Heuristic prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -11234,39 +10553,30 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getNextViewFieldBuilder();
           getHeuristicCombinersFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         if (nextViewBuilder_ == null) {
-          nextView_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+          nextView_ = null;
         } else {
-          nextViewBuilder_.clear();
+          nextView_ = null;
+          nextViewBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (heuristicCombinersBuilder_ == null) {
           heuristicCombiners_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           heuristicCombinersBuilder_.clear();
         }
-        heuristicGroupType_ = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.BUTTON;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
+        heuristicGroupType_ = 0;
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -11290,17 +10600,8 @@ public final class ComplexModel {
         org.roylance.yaorm.ComplexModel.Heuristic result = new org.roylance.yaorm.ComplexModel.Heuristic(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.description_ = description_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (nextViewBuilder_ == null) {
           result.nextView_ = nextView_;
         } else {
@@ -11314,9 +10615,6 @@ public final class ComplexModel {
           result.heuristicCombiners_ = heuristicCombiners_;
         } else {
           result.heuristicCombiners_ = heuristicCombinersBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000008;
         }
         result.heuristicGroupType_ = heuristicGroupType_;
         result.bitField0_ = to_bitField0_;
@@ -11335,13 +10633,11 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Heuristic other) {
         if (other == org.roylance.yaorm.ComplexModel.Heuristic.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
         }
@@ -11374,10 +10670,10 @@ public final class ComplexModel {
             }
           }
         }
-        if (other.hasHeuristicGroupType()) {
-          setHeuristicGroupType(other.getHeuristicGroupType());
+        if (other.heuristicGroupType_ != 0) {
+          setHeuristicGroupTypeValue(other.getHeuristicGroupTypeValue());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -11394,7 +10690,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Heuristic) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -11408,21 +10704,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id = 1;</code>
        */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -11452,7 +10740,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -11461,7 +10749,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -11474,7 +10762,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -11484,21 +10773,13 @@ public final class ComplexModel {
       /**
        * <code>optional string description = 2;</code>
        */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string description = 2;</code>
-       */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            description_ = s;
-          }
+          description_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -11528,7 +10809,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         description_ = value;
         onChanged();
         return this;
@@ -11537,7 +10818,7 @@ public final class ComplexModel {
        * <code>optional string description = 2;</code>
        */
       public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
@@ -11550,27 +10831,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         description_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.View nextView_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.View nextView_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> nextViewBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
        */
       public boolean hasNextView() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return nextViewBuilder_ != null || nextView_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View getNextView() {
         if (nextViewBuilder_ == null) {
-          return nextView_;
+          return nextView_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : nextView_;
         } else {
           return nextViewBuilder_.getMessage();
         }
@@ -11588,7 +10870,7 @@ public final class ComplexModel {
         } else {
           nextViewBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -11602,7 +10884,7 @@ public final class ComplexModel {
         } else {
           nextViewBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -11610,8 +10892,7 @@ public final class ComplexModel {
        */
       public Builder mergeNextView(org.roylance.yaorm.ComplexModel.View value) {
         if (nextViewBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              nextView_ != org.roylance.yaorm.ComplexModel.View.getDefaultInstance()) {
+          if (nextView_ != null) {
             nextView_ =
               org.roylance.yaorm.ComplexModel.View.newBuilder(nextView_).mergeFrom(value).buildPartial();
           } else {
@@ -11621,7 +10902,7 @@ public final class ComplexModel {
         } else {
           nextViewBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -11629,19 +10910,20 @@ public final class ComplexModel {
        */
       public Builder clearNextView() {
         if (nextViewBuilder_ == null) {
-          nextView_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+          nextView_ = null;
           onChanged();
         } else {
-          nextViewBuilder_.clear();
+          nextView_ = null;
+          nextViewBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View.Builder getNextViewBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getNextViewFieldBuilder().getBuilder();
       }
@@ -11652,7 +10934,8 @@ public final class ComplexModel {
         if (nextViewBuilder_ != null) {
           return nextViewBuilder_.getMessageOrBuilder();
         } else {
-          return nextView_;
+          return nextView_ == null ?
+              org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : nextView_;
         }
       }
       /**
@@ -11912,18 +11195,27 @@ public final class ComplexModel {
         return heuristicCombinersBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType heuristicGroupType_ = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.BUTTON;
+      private int heuristicGroupType_ = 0;
       /**
        * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
-      public boolean hasHeuristicGroupType() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      public int getHeuristicGroupTypeValue() {
+        return heuristicGroupType_;
+      }
+      /**
+       * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+       */
+      public Builder setHeuristicGroupTypeValue(int value) {
+        heuristicGroupType_ = value;
+        onChanged();
+        return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType getHeuristicGroupType() {
-        return heuristicGroupType_;
+        org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType result = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.forNumber(heuristicGroupType_);
+        return result == null ? org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.UNRECOGNIZED : result;
       }
       /**
        * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
@@ -11932,8 +11224,8 @@ public final class ComplexModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000010;
-        heuristicGroupType_ = value;
+        
+        heuristicGroupType_ = value.getNumber();
         onChanged();
         return this;
       }
@@ -11941,31 +11233,64 @@ public final class ComplexModel {
        * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public Builder clearHeuristicGroupType() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        heuristicGroupType_ = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.BUTTON;
+        
+        heuristicGroupType_ = 0;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Heuristic)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Heuristic)
+    private static final org.roylance.yaorm.ComplexModel.Heuristic DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Heuristic(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Heuristic();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Heuristic)
+    public static org.roylance.yaorm.ComplexModel.Heuristic getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Heuristic>
+        PARSER = new com.google.protobuf.AbstractParser<Heuristic>() {
+      public Heuristic parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Heuristic(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Heuristic> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Heuristic> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Heuristic getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface RequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Request)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -11976,10 +11301,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    boolean hasName();
     /**
      * <code>optional string name = 2;</code>
      */
@@ -12006,40 +11327,30 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Request}
    */
-  public static final class Request extends
+  public  static final class Request extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Request)
       RequestOrBuilder {
     // Use Request.newBuilder() to construct.
     private Request(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Request(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Request defaultInstance;
-    public static Request getDefaultInstance() {
-      return defaultInstance;
+    private Request() {
+      id_ = "";
+      name_ = "";
     }
 
-    public Request getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Request(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12049,35 +11360,34 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              name_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.View.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (view_ != null) {
                 subBuilder = view_.toBuilder();
               }
-              view_ = input.readMessage(org.roylance.yaorm.ComplexModel.View.PARSER, extensionRegistry);
+              view_ = input.readMessage(org.roylance.yaorm.ComplexModel.View.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(view_);
                 view_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
           }
@@ -12086,9 +11396,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -12104,30 +11413,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Request.class, org.roylance.yaorm.ComplexModel.Request.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Request> PARSER =
-        new com.google.protobuf.AbstractParser<Request>() {
-      public Request parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Request(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Request> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -12139,9 +11426,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -12163,13 +11448,7 @@ public final class ComplexModel {
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object name_;
     /**
      * <code>optional string name = 2;</code>
      */
@@ -12181,9 +11460,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
+        name_ = s;
         return s;
       }
     }
@@ -12210,26 +11487,21 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.View view = 3;</code>
      */
     public boolean hasView() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return view_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.View view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.View getView() {
-      return view_;
+      return view_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
     }
     /**
      * <code>optional .org.roylance.yaorm.View view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder() {
-      return view_;
+      return getView();
     }
 
-    private void initFields() {
-      id_ = "";
-      name_ = "";
-      view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -12242,49 +11514,37 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, view_);
+      if (view_ != null) {
+        output.writeMessage(3, getView());
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (view_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, view_);
+          .computeMessageSize(3, getView());
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Request parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12308,42 +11568,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Request parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Request parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Request parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Request parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Request parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Request parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Request prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Request prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -12382,30 +11653,21 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getViewFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (viewBuilder_ == null) {
-          view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
-        } else {
-          viewBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        name_ = "";
+
+        if (viewBuilder_ == null) {
+          view_ = null;
+        } else {
+          view_ = null;
+          viewBuilder_ = null;
+        }
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -12427,25 +11689,13 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.Request buildPartial() {
         org.roylance.yaorm.ComplexModel.Request result = new org.roylance.yaorm.ComplexModel.Request(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (viewBuilder_ == null) {
           result.view_ = view_;
         } else {
           result.view_ = viewBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -12461,20 +11711,18 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Request other) {
         if (other == org.roylance.yaorm.ComplexModel.Request.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
         }
         if (other.hasView()) {
           mergeView(other.getView());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -12491,7 +11739,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Request) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -12499,15 +11747,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -12517,9 +11758,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -12549,7 +11788,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -12558,7 +11797,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -12571,7 +11810,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -12581,21 +11821,13 @@ public final class ComplexModel {
       /**
        * <code>optional string name = 2;</code>
        */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            name_ = s;
-          }
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -12625,7 +11857,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         name_ = value;
         onChanged();
         return this;
@@ -12634,7 +11866,7 @@ public final class ComplexModel {
        * <code>optional string name = 2;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -12647,27 +11879,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         name_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.View view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.View view_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> viewBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.View view = 3;</code>
        */
       public boolean hasView() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return viewBuilder_ != null || view_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.View view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View getView() {
         if (viewBuilder_ == null) {
-          return view_;
+          return view_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
         } else {
           return viewBuilder_.getMessage();
         }
@@ -12685,7 +11918,7 @@ public final class ComplexModel {
         } else {
           viewBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -12699,7 +11932,7 @@ public final class ComplexModel {
         } else {
           viewBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -12707,8 +11940,7 @@ public final class ComplexModel {
        */
       public Builder mergeView(org.roylance.yaorm.ComplexModel.View value) {
         if (viewBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              view_ != org.roylance.yaorm.ComplexModel.View.getDefaultInstance()) {
+          if (view_ != null) {
             view_ =
               org.roylance.yaorm.ComplexModel.View.newBuilder(view_).mergeFrom(value).buildPartial();
           } else {
@@ -12718,7 +11950,7 @@ public final class ComplexModel {
         } else {
           viewBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -12726,19 +11958,20 @@ public final class ComplexModel {
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
-          view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+          view_ = null;
           onChanged();
         } else {
-          viewBuilder_.clear();
+          view_ = null;
+          viewBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.View view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View.Builder getViewBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getViewFieldBuilder().getBuilder();
       }
@@ -12749,7 +11982,8 @@ public final class ComplexModel {
         if (viewBuilder_ != null) {
           return viewBuilder_.getMessageOrBuilder();
         } else {
-          return view_;
+          return view_ == null ?
+              org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
         }
       }
       /**
@@ -12768,26 +12002,59 @@ public final class ComplexModel {
         }
         return viewBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Request)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Request)
+    private static final org.roylance.yaorm.ComplexModel.Request DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Request(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Request();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Request)
+    public static org.roylance.yaorm.ComplexModel.Request getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Request>
+        PARSER = new com.google.protobuf.AbstractParser<Request>() {
+      public Request parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Request(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Request> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Request> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Request getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface ResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Response)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -12838,40 +12105,30 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Response}
    */
-  public static final class Response extends
+  public  static final class Response extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Response)
       ResponseOrBuilder {
     // Use Response.newBuilder() to construct.
     private Response(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Response(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Response defaultInstance;
-    public static Response getDefaultInstance() {
-      return defaultInstance;
+    private Response() {
+      id_ = "";
+      answers_ = java.util.Collections.emptyList();
     }
 
-    public Response getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Response(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12881,29 +12138,28 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
               org.roylance.yaorm.ComplexModel.Request.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (request_ != null) {
                 subBuilder = request_.toBuilder();
               }
-              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.PARSER, extensionRegistry);
+              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(request_);
                 request_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             case 26: {
@@ -12911,7 +12167,7 @@ public final class ComplexModel {
                 answers_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Answer>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              answers_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Answer.PARSER, extensionRegistry));
+              answers_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Answer.parser(), extensionRegistry));
               break;
             }
           }
@@ -12920,12 +12176,11 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           answers_ = java.util.Collections.unmodifiableList(answers_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -12941,30 +12196,9 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Response.class, org.roylance.yaorm.ComplexModel.Response.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Response> PARSER =
-        new com.google.protobuf.AbstractParser<Response>() {
-      public Response parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Response(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Response> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -12976,9 +12210,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -13005,19 +12237,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Request request = 2;</code>
      */
     public boolean hasRequest() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return request_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
-      return request_;
+      return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
-      return request_;
+      return getRequest();
     }
 
     public static final int ANSWERS_FIELD_NUMBER = 3;
@@ -13055,11 +12287,6 @@ public final class ComplexModel {
       return answers_.get(index);
     }
 
-    private void initFields() {
-      id_ = "";
-      request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-      answers_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -13072,49 +12299,38 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, request_);
+      if (request_ != null) {
+        output.writeMessage(2, getRequest());
       }
       for (int i = 0; i < answers_.size(); i++) {
         output.writeMessage(3, answers_.get(i));
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (request_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, request_);
+          .computeMessageSize(2, getRequest());
       }
       for (int i = 0; i < answers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, answers_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Response parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13138,42 +12354,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Response parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Response parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Response parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Response parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Response parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Response parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Response prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Response prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -13212,24 +12439,19 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRequestFieldBuilder();
           getAnswersFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+          request_ = null;
         } else {
-          requestBuilder_.clear();
+          request_ = null;
+          requestBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (answersBuilder_ == null) {
           answers_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
@@ -13237,10 +12459,6 @@ public final class ComplexModel {
           answersBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -13264,13 +12482,7 @@ public final class ComplexModel {
         org.roylance.yaorm.ComplexModel.Response result = new org.roylance.yaorm.ComplexModel.Response(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (requestBuilder_ == null) {
           result.request_ = request_;
         } else {
@@ -13301,8 +12513,7 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Response other) {
         if (other == org.roylance.yaorm.ComplexModel.Response.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
@@ -13335,7 +12546,7 @@ public final class ComplexModel {
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -13352,7 +12563,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Response) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -13366,21 +12577,13 @@ public final class ComplexModel {
       /**
        * <code>optional string id = 1;</code>
        */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -13410,7 +12613,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -13419,7 +12622,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -13432,27 +12635,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Request request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Request request_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Request request = 2;</code>
        */
       public boolean hasRequest() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return requestBuilder_ != null || request_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
-          return request_;
+          return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         } else {
           return requestBuilder_.getMessage();
         }
@@ -13470,7 +12674,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -13484,7 +12688,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -13492,8 +12696,7 @@ public final class ComplexModel {
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              request_ != org.roylance.yaorm.ComplexModel.Request.getDefaultInstance()) {
+          if (request_ != null) {
             request_ =
               org.roylance.yaorm.ComplexModel.Request.newBuilder(request_).mergeFrom(value).buildPartial();
           } else {
@@ -13503,7 +12706,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -13511,19 +12714,20 @@ public final class ComplexModel {
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+          request_ = null;
           onChanged();
         } else {
-          requestBuilder_.clear();
+          request_ = null;
+          requestBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
-        bitField0_ |= 0x00000002;
+        
         onChanged();
         return getRequestFieldBuilder().getBuilder();
       }
@@ -13534,7 +12738,8 @@ public final class ComplexModel {
         if (requestBuilder_ != null) {
           return requestBuilder_.getMessageOrBuilder();
         } else {
-          return request_;
+          return request_ == null ?
+              org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         }
       }
       /**
@@ -13793,26 +12998,59 @@ public final class ComplexModel {
         }
         return answersBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Response)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Response)
+    private static final org.roylance.yaorm.ComplexModel.Response DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Response(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Response();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Response)
+    public static org.roylance.yaorm.ComplexModel.Response getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Response>
+        PARSER = new com.google.protobuf.AbstractParser<Response>() {
+      public Response parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Response(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Response> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Response> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Response getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface AnswerOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Answer)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    boolean hasId();
     /**
      * <code>optional string id = 1;</code>
      */
@@ -13823,10 +13061,6 @@ public final class ComplexModel {
     com.google.protobuf.ByteString
         getIdBytes();
 
-    /**
-     * <code>optional string user_id = 2;</code>
-     */
-    boolean hasUserId();
     /**
      * <code>optional string user_id = 2;</code>
      */
@@ -13850,10 +13084,6 @@ public final class ComplexModel {
      */
     org.roylance.yaorm.ComplexModel.QuestionOrBuilder getQuestionOrBuilder();
 
-    /**
-     * <code>optional string value = 4;</code>
-     */
-    boolean hasValue();
     /**
      * <code>optional string value = 4;</code>
      */
@@ -13893,40 +13123,31 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.Answer}
    */
-  public static final class Answer extends
+  public  static final class Answer extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Answer)
       AnswerOrBuilder {
     // Use Answer.newBuilder() to construct.
     private Answer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Answer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Answer defaultInstance;
-    public static Answer getDefaultInstance() {
-      return defaultInstance;
+    private Answer() {
+      id_ = "";
+      userId_ = "";
+      value_ = "";
     }
 
-    public Answer getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Answer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -13936,67 +13157,66 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              id_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              userId_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userId_ = s;
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.Question.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (question_ != null) {
                 subBuilder = question_.toBuilder();
               }
-              question_ = input.readMessage(org.roylance.yaorm.ComplexModel.Question.PARSER, extensionRegistry);
+              question_ = input.readMessage(org.roylance.yaorm.ComplexModel.Question.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(question_);
                 question_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              value_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              value_ = s;
               break;
             }
             case 42: {
               org.roylance.yaorm.ComplexModel.Request.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              if (request_ != null) {
                 subBuilder = request_.toBuilder();
               }
-              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.PARSER, extensionRegistry);
+              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(request_);
                 request_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000010;
+
               break;
             }
             case 50: {
               org.roylance.yaorm.ComplexModel.Response.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(org.roylance.yaorm.ComplexModel.Response.PARSER, extensionRegistry);
+              response_ = input.readMessage(org.roylance.yaorm.ComplexModel.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+
               break;
             }
           }
@@ -14005,9 +13225,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -14023,30 +13242,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Answer.class, org.roylance.yaorm.ComplexModel.Answer.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Answer> PARSER =
-        new com.google.protobuf.AbstractParser<Answer>() {
-      public Answer parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Answer(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Answer> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object id_;
     /**
      * <code>optional string id = 1;</code>
      */
@@ -14058,9 +13255,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
+        id_ = s;
         return s;
       }
     }
@@ -14082,13 +13277,7 @@ public final class ComplexModel {
     }
 
     public static final int USER_ID_FIELD_NUMBER = 2;
-    private java.lang.Object userId_;
-    /**
-     * <code>optional string user_id = 2;</code>
-     */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
+    private volatile java.lang.Object userId_;
     /**
      * <code>optional string user_id = 2;</code>
      */
@@ -14100,9 +13289,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          userId_ = s;
-        }
+        userId_ = s;
         return s;
       }
     }
@@ -14129,29 +13316,23 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Question question = 3;</code>
      */
     public boolean hasQuestion() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return question_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Question question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Question getQuestion() {
-      return question_;
+      return question_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : question_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Question question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getQuestionOrBuilder() {
-      return question_;
+      return getQuestion();
     }
 
     public static final int VALUE_FIELD_NUMBER = 4;
-    private java.lang.Object value_;
-    /**
-     * <code>optional string value = 4;</code>
-     */
-    public boolean hasValue() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
+    private volatile java.lang.Object value_;
     /**
      * <code>optional string value = 4;</code>
      */
@@ -14163,9 +13344,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          value_ = s;
-        }
+        value_ = s;
         return s;
       }
     }
@@ -14192,19 +13371,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Request request = 5;</code>
      */
     public boolean hasRequest() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return request_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
-      return request_;
+      return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
-      return request_;
+      return getRequest();
     }
 
     public static final int RESPONSE_FIELD_NUMBER = 6;
@@ -14213,29 +13392,21 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Response response = 6;</code>
      */
     public boolean hasResponse() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return response_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Response response = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.Response getResponse() {
-      return response_;
+      return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Response response = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
-      return response_;
+      return getResponse();
     }
 
-    private void initFields() {
-      id_ = "";
-      userId_ = "";
-      question_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
-      value_ = "";
-      request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-      response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -14248,70 +13419,57 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, userId_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, question_);
+      if (question_ != null) {
+        output.writeMessage(3, getQuestion());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getValueBytes());
+      if (!getValueBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, value_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(5, request_);
+      if (request_ != null) {
+        output.writeMessage(5, getRequest());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(6, response_);
+      if (response_ != null) {
+        output.writeMessage(6, getResponse());
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, userId_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (question_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, question_);
+          .computeMessageSize(3, getQuestion());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (!getValueBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, value_);
+      }
+      if (request_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getValueBytes());
+          .computeMessageSize(5, getRequest());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (response_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, request_);
+          .computeMessageSize(6, getResponse());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, response_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14335,42 +13493,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.Answer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Answer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Answer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Answer prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.Answer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -14409,46 +13578,35 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getQuestionFieldBuilder();
-          getRequestFieldBuilder();
-          getResponseFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        userId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (questionBuilder_ == null) {
-          question_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
-        } else {
-          questionBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-        } else {
-          requestBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (responseBuilder_ == null) {
-          response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
-        } else {
-          responseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        userId_ = "";
+
+        if (questionBuilder_ == null) {
+          question_ = null;
+        } else {
+          question_ = null;
+          questionBuilder_ = null;
+        }
+        value_ = "";
+
+        if (requestBuilder_ == null) {
+          request_ = null;
+        } else {
+          request_ = null;
+          requestBuilder_ = null;
+        }
+        if (responseBuilder_ == null) {
+          response_ = null;
+        } else {
+          response_ = null;
+          responseBuilder_ = null;
+        }
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -14470,45 +13628,24 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.Answer buildPartial() {
         org.roylance.yaorm.ComplexModel.Answer result = new org.roylance.yaorm.ComplexModel.Answer(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.userId_ = userId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (questionBuilder_ == null) {
           result.question_ = question_;
         } else {
           result.question_ = questionBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.value_ = value_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         if (requestBuilder_ == null) {
           result.request_ = request_;
         } else {
           result.request_ = requestBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
         }
         if (responseBuilder_ == null) {
           result.response_ = response_;
         } else {
           result.response_ = responseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -14524,21 +13661,18 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.Answer other) {
         if (other == org.roylance.yaorm.ComplexModel.Answer.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
         }
-        if (other.hasUserId()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getUserId().isEmpty()) {
           userId_ = other.userId_;
           onChanged();
         }
         if (other.hasQuestion()) {
           mergeQuestion(other.getQuestion());
         }
-        if (other.hasValue()) {
-          bitField0_ |= 0x00000008;
+        if (!other.getValue().isEmpty()) {
           value_ = other.value_;
           onChanged();
         }
@@ -14548,7 +13682,7 @@ public final class ComplexModel {
         if (other.hasResponse()) {
           mergeResponse(other.getResponse());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -14565,7 +13699,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.Answer) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -14573,15 +13707,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string id = 1;</code>
        */
@@ -14591,9 +13718,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            id_ = s;
-          }
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -14623,7 +13748,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         id_ = value;
         onChanged();
         return this;
@@ -14632,7 +13757,7 @@ public final class ComplexModel {
        * <code>optional string id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
@@ -14645,7 +13770,8 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         id_ = value;
         onChanged();
         return this;
@@ -14655,21 +13781,13 @@ public final class ComplexModel {
       /**
        * <code>optional string user_id = 2;</code>
        */
-      public boolean hasUserId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string user_id = 2;</code>
-       */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            userId_ = s;
-          }
+          userId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -14699,7 +13817,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         userId_ = value;
         onChanged();
         return this;
@@ -14708,7 +13826,7 @@ public final class ComplexModel {
        * <code>optional string user_id = 2;</code>
        */
       public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         userId_ = getDefaultInstance().getUserId();
         onChanged();
         return this;
@@ -14721,27 +13839,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         userId_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Question question_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Question question_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> questionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Question question = 3;</code>
        */
       public boolean hasQuestion() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return questionBuilder_ != null || question_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Question question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question getQuestion() {
         if (questionBuilder_ == null) {
-          return question_;
+          return question_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : question_;
         } else {
           return questionBuilder_.getMessage();
         }
@@ -14759,7 +13878,7 @@ public final class ComplexModel {
         } else {
           questionBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -14773,7 +13892,7 @@ public final class ComplexModel {
         } else {
           questionBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -14781,8 +13900,7 @@ public final class ComplexModel {
        */
       public Builder mergeQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (questionBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              question_ != org.roylance.yaorm.ComplexModel.Question.getDefaultInstance()) {
+          if (question_ != null) {
             question_ =
               org.roylance.yaorm.ComplexModel.Question.newBuilder(question_).mergeFrom(value).buildPartial();
           } else {
@@ -14792,7 +13910,7 @@ public final class ComplexModel {
         } else {
           questionBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -14800,19 +13918,20 @@ public final class ComplexModel {
        */
       public Builder clearQuestion() {
         if (questionBuilder_ == null) {
-          question_ = org.roylance.yaorm.ComplexModel.Question.getDefaultInstance();
+          question_ = null;
           onChanged();
         } else {
-          questionBuilder_.clear();
+          question_ = null;
+          questionBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Question question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question.Builder getQuestionBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getQuestionFieldBuilder().getBuilder();
       }
@@ -14823,7 +13942,8 @@ public final class ComplexModel {
         if (questionBuilder_ != null) {
           return questionBuilder_.getMessageOrBuilder();
         } else {
-          return question_;
+          return question_ == null ?
+              org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : question_;
         }
       }
       /**
@@ -14847,21 +13967,13 @@ public final class ComplexModel {
       /**
        * <code>optional string value = 4;</code>
        */
-      public boolean hasValue() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional string value = 4;</code>
-       */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            value_ = s;
-          }
+          value_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -14891,7 +14003,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  
         value_ = value;
         onChanged();
         return this;
@@ -14900,7 +14012,7 @@ public final class ComplexModel {
        * <code>optional string value = 4;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        
         value_ = getDefaultInstance().getValue();
         onChanged();
         return this;
@@ -14913,27 +14025,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  checkByteStringIsUtf8(value);
+        
         value_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Request request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Request request_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Request request = 5;</code>
        */
       public boolean hasRequest() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return requestBuilder_ != null || request_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
-          return request_;
+          return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         } else {
           return requestBuilder_.getMessage();
         }
@@ -14951,7 +14064,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+
         return this;
       }
       /**
@@ -14965,7 +14078,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+
         return this;
       }
       /**
@@ -14973,8 +14086,7 @@ public final class ComplexModel {
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              request_ != org.roylance.yaorm.ComplexModel.Request.getDefaultInstance()) {
+          if (request_ != null) {
             request_ =
               org.roylance.yaorm.ComplexModel.Request.newBuilder(request_).mergeFrom(value).buildPartial();
           } else {
@@ -14984,7 +14096,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+
         return this;
       }
       /**
@@ -14992,19 +14104,20 @@ public final class ComplexModel {
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+          request_ = null;
           onChanged();
         } else {
-          requestBuilder_.clear();
+          request_ = null;
+          requestBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
-        bitField0_ |= 0x00000010;
+        
         onChanged();
         return getRequestFieldBuilder().getBuilder();
       }
@@ -15015,7 +14128,8 @@ public final class ComplexModel {
         if (requestBuilder_ != null) {
           return requestBuilder_.getMessageOrBuilder();
         } else {
-          return request_;
+          return request_ == null ?
+              org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         }
       }
       /**
@@ -15035,21 +14149,21 @@ public final class ComplexModel {
         return requestBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Response response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Response response_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Response response = 6;</code>
        */
       public boolean hasResponse() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return responseBuilder_ != null || response_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Response response = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_;
+          return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -15067,7 +14181,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -15081,7 +14195,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -15089,8 +14203,7 @@ public final class ComplexModel {
        */
       public Builder mergeResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
-              response_ != org.roylance.yaorm.ComplexModel.Response.getDefaultInstance()) {
+          if (response_ != null) {
             response_ =
               org.roylance.yaorm.ComplexModel.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
@@ -15100,7 +14213,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -15108,19 +14221,20 @@ public final class ComplexModel {
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
-          response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
+          response_ = null;
           onChanged();
         } else {
-          responseBuilder_.clear();
+          response_ = null;
+          responseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Response response = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response.Builder getResponseBuilder() {
-        bitField0_ |= 0x00000020;
+        
         onChanged();
         return getResponseFieldBuilder().getBuilder();
       }
@@ -15131,7 +14245,8 @@ public final class ComplexModel {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
-          return response_;
+          return response_ == null ?
+              org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
         }
       }
       /**
@@ -15150,26 +14265,59 @@ public final class ComplexModel {
         }
         return responseBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.Answer)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Answer)
+    private static final org.roylance.yaorm.ComplexModel.Answer DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Answer(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.Answer();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.Answer)
+    public static org.roylance.yaorm.ComplexModel.Answer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Answer>
+        PARSER = new com.google.protobuf.AbstractParser<Answer>() {
+      public Answer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Answer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Answer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Answer> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.Answer getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface UINaruRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.UINaruRequest)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    boolean hasToken();
     /**
      * <code>optional string token = 1;</code>
      */
@@ -15209,10 +14357,6 @@ public final class ComplexModel {
     /**
      * <code>optional string user_id = 4;</code>
      */
-    boolean hasUserId();
-    /**
-     * <code>optional string user_id = 4;</code>
-     */
     java.lang.String getUserId();
     /**
      * <code>optional string user_id = 4;</code>
@@ -15223,40 +14367,30 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.UINaruRequest}
    */
-  public static final class UINaruRequest extends
+  public  static final class UINaruRequest extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UINaruRequest)
       UINaruRequestOrBuilder {
     // Use UINaruRequest.newBuilder() to construct.
     private UINaruRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private UINaruRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UINaruRequest defaultInstance;
-    public static UINaruRequest getDefaultInstance() {
-      return defaultInstance;
+    private UINaruRequest() {
+      token_ = "";
+      userId_ = "";
     }
 
-    public UINaruRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private UINaruRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -15266,48 +14400,47 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              token_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              token_ = s;
               break;
             }
             case 18: {
               org.roylance.yaorm.ComplexModel.Response.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(org.roylance.yaorm.ComplexModel.Response.PARSER, extensionRegistry);
+              response_ = input.readMessage(org.roylance.yaorm.ComplexModel.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.Beacon.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (beacon_ != null) {
                 subBuilder = beacon_.toBuilder();
               }
-              beacon_ = input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.PARSER, extensionRegistry);
+              beacon_ = input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(beacon_);
                 beacon_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              userId_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userId_ = s;
               break;
             }
           }
@@ -15316,9 +14449,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -15334,30 +14466,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.UINaruRequest.class, org.roylance.yaorm.ComplexModel.UINaruRequest.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<UINaruRequest> PARSER =
-        new com.google.protobuf.AbstractParser<UINaruRequest>() {
-      public UINaruRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UINaruRequest(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UINaruRequest> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int TOKEN_FIELD_NUMBER = 1;
-    private java.lang.Object token_;
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public boolean hasToken() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object token_;
     /**
      * <code>optional string token = 1;</code>
      */
@@ -15369,9 +14479,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          token_ = s;
-        }
+        token_ = s;
         return s;
       }
     }
@@ -15398,19 +14506,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Response response = 2;</code>
      */
     public boolean hasResponse() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return response_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Response getResponse() {
-      return response_;
+      return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
-      return response_;
+      return getResponse();
     }
 
     public static final int BEACON_FIELD_NUMBER = 3;
@@ -15419,29 +14527,23 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return beacon_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
-      return beacon_;
+      return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
-      return beacon_;
+      return getBeacon();
     }
 
     public static final int USER_ID_FIELD_NUMBER = 4;
-    private java.lang.Object userId_;
-    /**
-     * <code>optional string user_id = 4;</code>
-     */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
+    private volatile java.lang.Object userId_;
     /**
      * <code>optional string user_id = 4;</code>
      */
@@ -15453,9 +14555,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          userId_ = s;
-        }
+        userId_ = s;
         return s;
       }
     }
@@ -15476,12 +14576,6 @@ public final class ComplexModel {
       }
     }
 
-    private void initFields() {
-      token_ = "";
-      response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
-      beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
-      userId_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -15494,56 +14588,44 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getTokenBytes());
+      if (!getTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, response_);
+      if (response_ != null) {
+        output.writeMessage(2, getResponse());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, beacon_);
+      if (beacon_ != null) {
+        output.writeMessage(3, getBeacon());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, userId_);
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTokenBytes());
+      if (!getTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (response_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, response_);
+          .computeMessageSize(2, getResponse());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (beacon_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, beacon_);
+          .computeMessageSize(3, getBeacon());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, userId_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15567,42 +14649,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -15641,37 +14734,27 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getResponseFieldBuilder();
-          getBeaconFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         token_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (responseBuilder_ == null) {
-          response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
-        } else {
-          responseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (beaconBuilder_ == null) {
-          beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
-        } else {
-          beaconBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        userId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        if (responseBuilder_ == null) {
+          response_ = null;
+        } else {
+          response_ = null;
+          responseBuilder_ = null;
+        }
+        if (beaconBuilder_ == null) {
+          beacon_ = null;
+        } else {
+          beacon_ = null;
+          beaconBuilder_ = null;
+        }
+        userId_ = "";
+
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -15693,33 +14776,18 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.UINaruRequest buildPartial() {
         org.roylance.yaorm.ComplexModel.UINaruRequest result = new org.roylance.yaorm.ComplexModel.UINaruRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.token_ = token_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (responseBuilder_ == null) {
           result.response_ = response_;
         } else {
           result.response_ = responseBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
         }
         if (beaconBuilder_ == null) {
           result.beacon_ = beacon_;
         } else {
           result.beacon_ = beaconBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.userId_ = userId_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -15735,8 +14803,7 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.UINaruRequest other) {
         if (other == org.roylance.yaorm.ComplexModel.UINaruRequest.getDefaultInstance()) return this;
-        if (other.hasToken()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getToken().isEmpty()) {
           token_ = other.token_;
           onChanged();
         }
@@ -15746,12 +14813,11 @@ public final class ComplexModel {
         if (other.hasBeacon()) {
           mergeBeacon(other.getBeacon());
         }
-        if (other.hasUserId()) {
-          bitField0_ |= 0x00000008;
+        if (!other.getUserId().isEmpty()) {
           userId_ = other.userId_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -15768,7 +14834,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.UINaruRequest) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -15776,15 +14842,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object token_ = "";
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public boolean hasToken() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string token = 1;</code>
        */
@@ -15794,9 +14853,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            token_ = s;
-          }
+          token_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -15826,7 +14883,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         token_ = value;
         onChanged();
         return this;
@@ -15835,7 +14892,7 @@ public final class ComplexModel {
        * <code>optional string token = 1;</code>
        */
       public Builder clearToken() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
@@ -15848,27 +14905,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         token_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Response response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Response response_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Response response = 2;</code>
        */
       public boolean hasResponse() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return responseBuilder_ != null || response_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_;
+          return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -15886,7 +14944,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -15900,7 +14958,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -15908,8 +14966,7 @@ public final class ComplexModel {
        */
       public Builder mergeResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              response_ != org.roylance.yaorm.ComplexModel.Response.getDefaultInstance()) {
+          if (response_ != null) {
             response_ =
               org.roylance.yaorm.ComplexModel.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
@@ -15919,7 +14976,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -15927,19 +14984,20 @@ public final class ComplexModel {
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
-          response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
+          response_ = null;
           onChanged();
         } else {
-          responseBuilder_.clear();
+          response_ = null;
+          responseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response.Builder getResponseBuilder() {
-        bitField0_ |= 0x00000002;
+        
         onChanged();
         return getResponseFieldBuilder().getBuilder();
       }
@@ -15950,7 +15008,8 @@ public final class ComplexModel {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
-          return response_;
+          return response_ == null ?
+              org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
         }
       }
       /**
@@ -15970,21 +15029,21 @@ public final class ComplexModel {
         return responseBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Beacon beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Beacon beacon_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return beaconBuilder_ != null || beacon_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
-          return beacon_;
+          return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
         } else {
           return beaconBuilder_.getMessage();
         }
@@ -16002,7 +15061,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -16016,7 +15075,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -16024,8 +15083,7 @@ public final class ComplexModel {
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              beacon_ != org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance()) {
+          if (beacon_ != null) {
             beacon_ =
               org.roylance.yaorm.ComplexModel.Beacon.newBuilder(beacon_).mergeFrom(value).buildPartial();
           } else {
@@ -16035,7 +15093,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -16043,19 +15101,20 @@ public final class ComplexModel {
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
-          beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
+          beacon_ = null;
           onChanged();
         } else {
-          beaconBuilder_.clear();
+          beacon_ = null;
+          beaconBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getBeaconFieldBuilder().getBuilder();
       }
@@ -16066,7 +15125,8 @@ public final class ComplexModel {
         if (beaconBuilder_ != null) {
           return beaconBuilder_.getMessageOrBuilder();
         } else {
-          return beacon_;
+          return beacon_ == null ?
+              org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
         }
       }
       /**
@@ -16090,21 +15150,13 @@ public final class ComplexModel {
       /**
        * <code>optional string user_id = 4;</code>
        */
-      public boolean hasUserId() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional string user_id = 4;</code>
-       */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            userId_ = s;
-          }
+          userId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -16134,7 +15186,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  
         userId_ = value;
         onChanged();
         return this;
@@ -16143,7 +15195,7 @@ public final class ComplexModel {
        * <code>optional string user_id = 4;</code>
        */
       public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        
         userId_ = getDefaultInstance().getUserId();
         onChanged();
         return this;
@@ -16156,31 +15208,65 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  checkByteStringIsUtf8(value);
+        
         userId_ = value;
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.UINaruRequest)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruRequest)
+    private static final org.roylance.yaorm.ComplexModel.UINaruRequest DEFAULT_INSTANCE;
     static {
-      defaultInstance = new UINaruRequest(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.UINaruRequest();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruRequest)
+    public static org.roylance.yaorm.ComplexModel.UINaruRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UINaruRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UINaruRequest>() {
+      public UINaruRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UINaruRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UINaruRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UINaruRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.UINaruRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface UINaruResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.UINaruResponse)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional bool successful = 1;</code>
-     */
-    boolean hasSuccessful();
     /**
      * <code>optional bool successful = 1;</code>
      */
@@ -16202,40 +15288,29 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.UINaruResponse}
    */
-  public static final class UINaruResponse extends
+  public  static final class UINaruResponse extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UINaruResponse)
       UINaruResponseOrBuilder {
     // Use UINaruResponse.newBuilder() to construct.
     private UINaruResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private UINaruResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UINaruResponse defaultInstance;
-    public static UINaruResponse getDefaultInstance() {
-      return defaultInstance;
+    private UINaruResponse() {
+      successful_ = false;
     }
 
-    public UINaruResponse getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private UINaruResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -16245,28 +15320,27 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+
               successful_ = input.readBool();
               break;
             }
             case 18: {
               org.roylance.yaorm.ComplexModel.Request.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (request_ != null) {
                 subBuilder = request_.toBuilder();
               }
-              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.PARSER, extensionRegistry);
+              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(request_);
                 request_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
           }
@@ -16275,9 +15349,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -16293,30 +15366,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.UINaruResponse.class, org.roylance.yaorm.ComplexModel.UINaruResponse.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<UINaruResponse> PARSER =
-        new com.google.protobuf.AbstractParser<UINaruResponse>() {
-      public UINaruResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UINaruResponse(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UINaruResponse> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int SUCCESSFUL_FIELD_NUMBER = 1;
     private boolean successful_;
-    /**
-     * <code>optional bool successful = 1;</code>
-     */
-    public boolean hasSuccessful() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
     /**
      * <code>optional bool successful = 1;</code>
      */
@@ -16330,25 +15381,21 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Request request = 2;</code>
      */
     public boolean hasRequest() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return request_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
-      return request_;
+      return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
-      return request_;
+      return getRequest();
     }
 
-    private void initFields() {
-      successful_ = false;
-      request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -16361,42 +15408,32 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (successful_ != false) {
         output.writeBool(1, successful_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, request_);
+      if (request_ != null) {
+        output.writeMessage(2, getRequest());
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (successful_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, successful_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (request_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, request_);
+          .computeMessageSize(2, getRequest());
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16420,42 +15457,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruResponse prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -16494,28 +15542,19 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRequestFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         successful_ = false;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-        } else {
-          requestBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        if (requestBuilder_ == null) {
+          request_ = null;
+        } else {
+          request_ = null;
+          requestBuilder_ = null;
+        }
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -16537,21 +15576,12 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.UINaruResponse buildPartial() {
         org.roylance.yaorm.ComplexModel.UINaruResponse result = new org.roylance.yaorm.ComplexModel.UINaruResponse(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.successful_ = successful_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (requestBuilder_ == null) {
           result.request_ = request_;
         } else {
           result.request_ = requestBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -16567,13 +15597,13 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.UINaruResponse other) {
         if (other == org.roylance.yaorm.ComplexModel.UINaruResponse.getDefaultInstance()) return this;
-        if (other.hasSuccessful()) {
+        if (other.getSuccessful() != false) {
           setSuccessful(other.getSuccessful());
         }
         if (other.hasRequest()) {
           mergeRequest(other.getRequest());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -16590,7 +15620,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.UINaruResponse) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -16598,15 +15628,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private boolean successful_ ;
-      /**
-       * <code>optional bool successful = 1;</code>
-       */
-      public boolean hasSuccessful() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional bool successful = 1;</code>
        */
@@ -16617,7 +15640,7 @@ public final class ComplexModel {
        * <code>optional bool successful = 1;</code>
        */
       public Builder setSuccessful(boolean value) {
-        bitField0_ |= 0x00000001;
+        
         successful_ = value;
         onChanged();
         return this;
@@ -16626,27 +15649,27 @@ public final class ComplexModel {
        * <code>optional bool successful = 1;</code>
        */
       public Builder clearSuccessful() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         successful_ = false;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Request request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Request request_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Request request = 2;</code>
        */
       public boolean hasRequest() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return requestBuilder_ != null || request_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
-          return request_;
+          return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         } else {
           return requestBuilder_.getMessage();
         }
@@ -16664,7 +15687,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -16678,7 +15701,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -16686,8 +15709,7 @@ public final class ComplexModel {
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              request_ != org.roylance.yaorm.ComplexModel.Request.getDefaultInstance()) {
+          if (request_ != null) {
             request_ =
               org.roylance.yaorm.ComplexModel.Request.newBuilder(request_).mergeFrom(value).buildPartial();
           } else {
@@ -16697,7 +15719,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -16705,19 +15727,20 @@ public final class ComplexModel {
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+          request_ = null;
           onChanged();
         } else {
-          requestBuilder_.clear();
+          request_ = null;
+          requestBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
-        bitField0_ |= 0x00000002;
+        
         onChanged();
         return getRequestFieldBuilder().getBuilder();
       }
@@ -16728,7 +15751,8 @@ public final class ComplexModel {
         if (requestBuilder_ != null) {
           return requestBuilder_.getMessageOrBuilder();
         } else {
-          return request_;
+          return request_ == null ?
+              org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         }
       }
       /**
@@ -16747,26 +15771,59 @@ public final class ComplexModel {
         }
         return requestBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.UINaruResponse)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruResponse)
+    private static final org.roylance.yaorm.ComplexModel.UINaruResponse DEFAULT_INSTANCE;
     static {
-      defaultInstance = new UINaruResponse(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.UINaruResponse();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruResponse)
+    public static org.roylance.yaorm.ComplexModel.UINaruResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UINaruResponse>
+        PARSER = new com.google.protobuf.AbstractParser<UINaruResponse>() {
+      public UINaruResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UINaruResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UINaruResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UINaruResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.UINaruResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface UINaruAdminRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.UINaruAdminRequest)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    boolean hasToken();
     /**
      * <code>optional string token = 1;</code>
      */
@@ -16819,10 +15876,6 @@ public final class ComplexModel {
     /**
      * <code>optional string user_id = 5;</code>
      */
-    boolean hasUserId();
-    /**
-     * <code>optional string user_id = 5;</code>
-     */
     java.lang.String getUserId();
     /**
      * <code>optional string user_id = 5;</code>
@@ -16846,40 +15899,30 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.UINaruAdminRequest}
    */
-  public static final class UINaruAdminRequest extends
+  public  static final class UINaruAdminRequest extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UINaruAdminRequest)
       UINaruAdminRequestOrBuilder {
     // Use UINaruAdminRequest.newBuilder() to construct.
     private UINaruAdminRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private UINaruAdminRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UINaruAdminRequest defaultInstance;
-    public static UINaruAdminRequest getDefaultInstance() {
-      return defaultInstance;
+    private UINaruAdminRequest() {
+      token_ = "";
+      userId_ = "";
     }
 
-    public UINaruAdminRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private UINaruAdminRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -16889,74 +15932,73 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              token_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              token_ = s;
               break;
             }
             case 18: {
               org.roylance.yaorm.ComplexModel.Response.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(org.roylance.yaorm.ComplexModel.Response.PARSER, extensionRegistry);
+              response_ = input.readMessage(org.roylance.yaorm.ComplexModel.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             case 26: {
               org.roylance.yaorm.ComplexModel.Beacon.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (beacon_ != null) {
                 subBuilder = beacon_.toBuilder();
               }
-              beacon_ = input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.PARSER, extensionRegistry);
+              beacon_ = input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(beacon_);
                 beacon_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             case 34: {
               org.roylance.yaorm.ComplexModel.Request.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (request_ != null) {
                 subBuilder = request_.toBuilder();
               }
-              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.PARSER, extensionRegistry);
+              request_ = input.readMessage(org.roylance.yaorm.ComplexModel.Request.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(request_);
                 request_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+
               break;
             }
             case 42: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000010;
-              userId_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userId_ = s;
               break;
             }
             case 50: {
               org.roylance.yaorm.ComplexModel.View.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (view_ != null) {
                 subBuilder = view_.toBuilder();
               }
-              view_ = input.readMessage(org.roylance.yaorm.ComplexModel.View.PARSER, extensionRegistry);
+              view_ = input.readMessage(org.roylance.yaorm.ComplexModel.View.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(view_);
                 view_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+
               break;
             }
           }
@@ -16965,9 +16007,8 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -16983,30 +16024,8 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.UINaruAdminRequest.class, org.roylance.yaorm.ComplexModel.UINaruAdminRequest.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<UINaruAdminRequest> PARSER =
-        new com.google.protobuf.AbstractParser<UINaruAdminRequest>() {
-      public UINaruAdminRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UINaruAdminRequest(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UINaruAdminRequest> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
     public static final int TOKEN_FIELD_NUMBER = 1;
-    private java.lang.Object token_;
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public boolean hasToken() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
+    private volatile java.lang.Object token_;
     /**
      * <code>optional string token = 1;</code>
      */
@@ -17018,9 +16037,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          token_ = s;
-        }
+        token_ = s;
         return s;
       }
     }
@@ -17047,19 +16064,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Response response = 2;</code>
      */
     public boolean hasResponse() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return response_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Response getResponse() {
-      return response_;
+      return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
-      return response_;
+      return getResponse();
     }
 
     public static final int BEACON_FIELD_NUMBER = 3;
@@ -17068,19 +16085,19 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return beacon_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
-      return beacon_;
+      return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
-      return beacon_;
+      return getBeacon();
     }
 
     public static final int REQUEST_FIELD_NUMBER = 4;
@@ -17089,29 +16106,23 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     public boolean hasRequest() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return request_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
-      return request_;
+      return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
-      return request_;
+      return getRequest();
     }
 
     public static final int USER_ID_FIELD_NUMBER = 5;
-    private java.lang.Object userId_;
-    /**
-     * <code>optional string user_id = 5;</code>
-     */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
+    private volatile java.lang.Object userId_;
     /**
      * <code>optional string user_id = 5;</code>
      */
@@ -17123,9 +16134,7 @@ public final class ComplexModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          userId_ = s;
-        }
+        userId_ = s;
         return s;
       }
     }
@@ -17152,29 +16161,21 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.View view = 6;</code>
      */
     public boolean hasView() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return view_ != null;
     }
     /**
      * <code>optional .org.roylance.yaorm.View view = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.View getView() {
-      return view_;
+      return view_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
     }
     /**
      * <code>optional .org.roylance.yaorm.View view = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder() {
-      return view_;
+      return getView();
     }
 
-    private void initFields() {
-      token_ = "";
-      response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
-      beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
-      request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-      userId_ = "";
-      view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -17187,70 +16188,58 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getTokenBytes());
+      if (!getTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, response_);
+      if (response_ != null) {
+        output.writeMessage(2, getResponse());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, beacon_);
+      if (beacon_ != null) {
+        output.writeMessage(3, getBeacon());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, request_);
+      if (request_ != null) {
+        output.writeMessage(4, getRequest());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getUserIdBytes());
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, userId_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(6, view_);
+      if (view_ != null) {
+        output.writeMessage(6, getView());
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTokenBytes());
+      if (!getTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (response_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, response_);
+          .computeMessageSize(2, getResponse());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (beacon_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, beacon_);
+          .computeMessageSize(3, getBeacon());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (request_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, request_);
+          .computeMessageSize(4, getRequest());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, userId_);
+      }
+      if (view_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getUserIdBytes());
+          .computeMessageSize(6, getView());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, view_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17274,42 +16263,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruAdminRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruAdminRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -17348,51 +16348,39 @@ public final class ComplexModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getResponseFieldBuilder();
-          getBeaconFieldBuilder();
-          getRequestFieldBuilder();
-          getViewFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         token_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (responseBuilder_ == null) {
-          response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
-        } else {
-          responseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (beaconBuilder_ == null) {
-          beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
-        } else {
-          beaconBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
-        } else {
-          requestBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        userId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (viewBuilder_ == null) {
-          view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
-        } else {
-          viewBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        if (responseBuilder_ == null) {
+          response_ = null;
+        } else {
+          response_ = null;
+          responseBuilder_ = null;
+        }
+        if (beaconBuilder_ == null) {
+          beacon_ = null;
+        } else {
+          beacon_ = null;
+          beaconBuilder_ = null;
+        }
+        if (requestBuilder_ == null) {
+          request_ = null;
+        } else {
+          request_ = null;
+          requestBuilder_ = null;
+        }
+        userId_ = "";
+
+        if (viewBuilder_ == null) {
+          view_ = null;
+        } else {
+          view_ = null;
+          viewBuilder_ = null;
+        }
+        return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -17414,49 +16402,28 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.UINaruAdminRequest buildPartial() {
         org.roylance.yaorm.ComplexModel.UINaruAdminRequest result = new org.roylance.yaorm.ComplexModel.UINaruAdminRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.token_ = token_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (responseBuilder_ == null) {
           result.response_ = response_;
         } else {
           result.response_ = responseBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
         }
         if (beaconBuilder_ == null) {
           result.beacon_ = beacon_;
         } else {
           result.beacon_ = beaconBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         if (requestBuilder_ == null) {
           result.request_ = request_;
         } else {
           result.request_ = requestBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         result.userId_ = userId_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
         if (viewBuilder_ == null) {
           result.view_ = view_;
         } else {
           result.view_ = viewBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -17472,8 +16439,7 @@ public final class ComplexModel {
 
       public Builder mergeFrom(org.roylance.yaorm.ComplexModel.UINaruAdminRequest other) {
         if (other == org.roylance.yaorm.ComplexModel.UINaruAdminRequest.getDefaultInstance()) return this;
-        if (other.hasToken()) {
-          bitField0_ |= 0x00000001;
+        if (!other.getToken().isEmpty()) {
           token_ = other.token_;
           onChanged();
         }
@@ -17486,15 +16452,14 @@ public final class ComplexModel {
         if (other.hasRequest()) {
           mergeRequest(other.getRequest());
         }
-        if (other.hasUserId()) {
-          bitField0_ |= 0x00000010;
+        if (!other.getUserId().isEmpty()) {
           userId_ = other.userId_;
           onChanged();
         }
         if (other.hasView()) {
           mergeView(other.getView());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -17511,7 +16476,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.UINaruAdminRequest) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -17519,15 +16484,8 @@ public final class ComplexModel {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object token_ = "";
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public boolean hasToken() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
       /**
        * <code>optional string token = 1;</code>
        */
@@ -17537,9 +16495,7 @@ public final class ComplexModel {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            token_ = s;
-          }
+          token_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17569,7 +16525,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
         token_ = value;
         onChanged();
         return this;
@@ -17578,7 +16534,7 @@ public final class ComplexModel {
        * <code>optional string token = 1;</code>
        */
       public Builder clearToken() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
@@ -17591,27 +16547,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+        
         token_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.Response response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Response response_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Response response = 2;</code>
        */
       public boolean hasResponse() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return responseBuilder_ != null || response_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_;
+          return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -17629,7 +16586,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -17643,7 +16600,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -17651,8 +16608,7 @@ public final class ComplexModel {
        */
       public Builder mergeResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              response_ != org.roylance.yaorm.ComplexModel.Response.getDefaultInstance()) {
+          if (response_ != null) {
             response_ =
               org.roylance.yaorm.ComplexModel.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
@@ -17662,7 +16618,7 @@ public final class ComplexModel {
         } else {
           responseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
@@ -17670,19 +16626,20 @@ public final class ComplexModel {
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
-          response_ = org.roylance.yaorm.ComplexModel.Response.getDefaultInstance();
+          response_ = null;
           onChanged();
         } else {
-          responseBuilder_.clear();
+          response_ = null;
+          responseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response.Builder getResponseBuilder() {
-        bitField0_ |= 0x00000002;
+        
         onChanged();
         return getResponseFieldBuilder().getBuilder();
       }
@@ -17693,7 +16650,8 @@ public final class ComplexModel {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
-          return response_;
+          return response_ == null ?
+              org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
         }
       }
       /**
@@ -17713,21 +16671,21 @@ public final class ComplexModel {
         return responseBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Beacon beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Beacon beacon_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return beaconBuilder_ != null || beacon_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
-          return beacon_;
+          return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
         } else {
           return beaconBuilder_.getMessage();
         }
@@ -17745,7 +16703,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -17759,7 +16717,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -17767,8 +16725,7 @@ public final class ComplexModel {
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              beacon_ != org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance()) {
+          if (beacon_ != null) {
             beacon_ =
               org.roylance.yaorm.ComplexModel.Beacon.newBuilder(beacon_).mergeFrom(value).buildPartial();
           } else {
@@ -17778,7 +16735,7 @@ public final class ComplexModel {
         } else {
           beaconBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
@@ -17786,19 +16743,20 @@ public final class ComplexModel {
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
-          beacon_ = org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance();
+          beacon_ = null;
           onChanged();
         } else {
-          beaconBuilder_.clear();
+          beacon_ = null;
+          beaconBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getBeaconFieldBuilder().getBuilder();
       }
@@ -17809,7 +16767,8 @@ public final class ComplexModel {
         if (beaconBuilder_ != null) {
           return beaconBuilder_.getMessageOrBuilder();
         } else {
-          return beacon_;
+          return beacon_ == null ?
+              org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
         }
       }
       /**
@@ -17829,21 +16788,21 @@ public final class ComplexModel {
         return beaconBuilder_;
       }
 
-      private org.roylance.yaorm.ComplexModel.Request request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.Request request_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Request request = 4;</code>
        */
       public boolean hasRequest() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return requestBuilder_ != null || request_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
-          return request_;
+          return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         } else {
           return requestBuilder_.getMessage();
         }
@@ -17861,7 +16820,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -17875,7 +16834,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -17883,8 +16842,7 @@ public final class ComplexModel {
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              request_ != org.roylance.yaorm.ComplexModel.Request.getDefaultInstance()) {
+          if (request_ != null) {
             request_ =
               org.roylance.yaorm.ComplexModel.Request.newBuilder(request_).mergeFrom(value).buildPartial();
           } else {
@@ -17894,7 +16852,7 @@ public final class ComplexModel {
         } else {
           requestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+
         return this;
       }
       /**
@@ -17902,19 +16860,20 @@ public final class ComplexModel {
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
-          request_ = org.roylance.yaorm.ComplexModel.Request.getDefaultInstance();
+          request_ = null;
           onChanged();
         } else {
-          requestBuilder_.clear();
+          request_ = null;
+          requestBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
-        bitField0_ |= 0x00000008;
+        
         onChanged();
         return getRequestFieldBuilder().getBuilder();
       }
@@ -17925,7 +16884,8 @@ public final class ComplexModel {
         if (requestBuilder_ != null) {
           return requestBuilder_.getMessageOrBuilder();
         } else {
-          return request_;
+          return request_ == null ?
+              org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
         }
       }
       /**
@@ -17949,21 +16909,13 @@ public final class ComplexModel {
       /**
        * <code>optional string user_id = 5;</code>
        */
-      public boolean hasUserId() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string user_id = 5;</code>
-       */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            userId_ = s;
-          }
+          userId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -17993,7 +16945,7 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  
         userId_ = value;
         onChanged();
         return this;
@@ -18002,7 +16954,7 @@ public final class ComplexModel {
        * <code>optional string user_id = 5;</code>
        */
       public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        
         userId_ = getDefaultInstance().getUserId();
         onChanged();
         return this;
@@ -18015,27 +16967,28 @@ public final class ComplexModel {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  checkByteStringIsUtf8(value);
+        
         userId_ = value;
         onChanged();
         return this;
       }
 
-      private org.roylance.yaorm.ComplexModel.View view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+      private org.roylance.yaorm.ComplexModel.View view_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> viewBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.View view = 6;</code>
        */
       public boolean hasView() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return viewBuilder_ != null || view_ != null;
       }
       /**
        * <code>optional .org.roylance.yaorm.View view = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.View getView() {
         if (viewBuilder_ == null) {
-          return view_;
+          return view_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
         } else {
           return viewBuilder_.getMessage();
         }
@@ -18053,7 +17006,7 @@ public final class ComplexModel {
         } else {
           viewBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -18067,7 +17020,7 @@ public final class ComplexModel {
         } else {
           viewBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -18075,8 +17028,7 @@ public final class ComplexModel {
        */
       public Builder mergeView(org.roylance.yaorm.ComplexModel.View value) {
         if (viewBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
-              view_ != org.roylance.yaorm.ComplexModel.View.getDefaultInstance()) {
+          if (view_ != null) {
             view_ =
               org.roylance.yaorm.ComplexModel.View.newBuilder(view_).mergeFrom(value).buildPartial();
           } else {
@@ -18086,7 +17038,7 @@ public final class ComplexModel {
         } else {
           viewBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
+
         return this;
       }
       /**
@@ -18094,19 +17046,20 @@ public final class ComplexModel {
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
-          view_ = org.roylance.yaorm.ComplexModel.View.getDefaultInstance();
+          view_ = null;
           onChanged();
         } else {
-          viewBuilder_.clear();
+          view_ = null;
+          viewBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+
         return this;
       }
       /**
        * <code>optional .org.roylance.yaorm.View view = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.View.Builder getViewBuilder() {
-        bitField0_ |= 0x00000020;
+        
         onChanged();
         return getViewFieldBuilder().getBuilder();
       }
@@ -18117,7 +17070,8 @@ public final class ComplexModel {
         if (viewBuilder_ != null) {
           return viewBuilder_.getMessageOrBuilder();
         } else {
-          return view_;
+          return view_ == null ?
+              org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
         }
       }
       /**
@@ -18136,16 +17090,53 @@ public final class ComplexModel {
         }
         return viewBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.UINaruAdminRequest)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruAdminRequest)
+    private static final org.roylance.yaorm.ComplexModel.UINaruAdminRequest DEFAULT_INSTANCE;
     static {
-      defaultInstance = new UINaruAdminRequest(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.UINaruAdminRequest();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruAdminRequest)
+    public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UINaruAdminRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UINaruAdminRequest>() {
+      public UINaruAdminRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UINaruAdminRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UINaruAdminRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UINaruAdminRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.UINaruAdminRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface UINaruAdminResponseOrBuilder extends
@@ -18227,40 +17218,31 @@ public final class ComplexModel {
   /**
    * Protobuf type {@code org.roylance.yaorm.UINaruAdminResponse}
    */
-  public static final class UINaruAdminResponse extends
+  public  static final class UINaruAdminResponse extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UINaruAdminResponse)
       UINaruAdminResponseOrBuilder {
     // Use UINaruAdminResponse.newBuilder() to construct.
     private UINaruAdminResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private UINaruAdminResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UINaruAdminResponse defaultInstance;
-    public static UINaruAdminResponse getDefaultInstance() {
-      return defaultInstance;
+    private UINaruAdminResponse() {
+      requests_ = java.util.Collections.emptyList();
+      beacons_ = java.util.Collections.emptyList();
+      views_ = java.util.Collections.emptyList();
     }
 
-    public UINaruAdminResponse getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private UINaruAdminResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -18270,8 +17252,7 @@ public final class ComplexModel {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
@@ -18281,7 +17262,7 @@ public final class ComplexModel {
                 requests_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Request>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              requests_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Request.PARSER, extensionRegistry));
+              requests_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Request.parser(), extensionRegistry));
               break;
             }
             case 18: {
@@ -18289,7 +17270,7 @@ public final class ComplexModel {
                 beacons_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Beacon>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              beacons_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.PARSER, extensionRegistry));
+              beacons_.add(input.readMessage(org.roylance.yaorm.ComplexModel.Beacon.parser(), extensionRegistry));
               break;
             }
             case 26: {
@@ -18297,7 +17278,7 @@ public final class ComplexModel {
                 views_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.View>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              views_.add(input.readMessage(org.roylance.yaorm.ComplexModel.View.PARSER, extensionRegistry));
+              views_.add(input.readMessage(org.roylance.yaorm.ComplexModel.View.parser(), extensionRegistry));
               break;
             }
           }
@@ -18306,7 +17287,7 @@ public final class ComplexModel {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           requests_ = java.util.Collections.unmodifiableList(requests_);
@@ -18317,7 +17298,6 @@ public final class ComplexModel {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           views_ = java.util.Collections.unmodifiableList(views_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -18331,21 +17311,6 @@ public final class ComplexModel {
       return org.roylance.yaorm.ComplexModel.internal_static_org_roylance_yaorm_UINaruAdminResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.roylance.yaorm.ComplexModel.UINaruAdminResponse.class, org.roylance.yaorm.ComplexModel.UINaruAdminResponse.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<UINaruAdminResponse> PARSER =
-        new com.google.protobuf.AbstractParser<UINaruAdminResponse>() {
-      public UINaruAdminResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UINaruAdminResponse(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UINaruAdminResponse> getParserForType() {
-      return PARSER;
     }
 
     public static final int REQUESTS_FIELD_NUMBER = 1;
@@ -18453,11 +17418,6 @@ public final class ComplexModel {
       return views_.get(index);
     }
 
-    private void initFields() {
-      requests_ = java.util.Collections.emptyList();
-      beacons_ = java.util.Collections.emptyList();
-      views_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -18470,7 +17430,6 @@ public final class ComplexModel {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       for (int i = 0; i < requests_.size(); i++) {
         output.writeMessage(1, requests_.get(i));
       }
@@ -18480,12 +17439,10 @@ public final class ComplexModel {
       for (int i = 0; i < views_.size(); i++) {
         output.writeMessage(3, views_.get(i));
       }
-      getUnknownFields().writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -18501,18 +17458,11 @@ public final class ComplexModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, views_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18536,42 +17486,53 @@ public final class ComplexModel {
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruAdminResponse prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.UINaruAdminResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
@@ -18615,10 +17576,6 @@ public final class ComplexModel {
           getViewsFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         if (requestsBuilder_ == null) {
@@ -18640,10 +17597,6 @@ public final class ComplexModel {
           viewsBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -18786,7 +17739,7 @@ public final class ComplexModel {
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
         return this;
       }
 
@@ -18803,7 +17756,7 @@ public final class ComplexModel {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.roylance.yaorm.ComplexModel.UINaruAdminResponse) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -19532,101 +18485,138 @@ public final class ComplexModel {
         }
         return viewsBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
 
       // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.UINaruAdminResponse)
     }
 
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruAdminResponse)
+    private static final org.roylance.yaorm.ComplexModel.UINaruAdminResponse DEFAULT_INSTANCE;
     static {
-      defaultInstance = new UINaruAdminResponse(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.UINaruAdminResponse();
     }
 
-    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.UINaruAdminResponse)
+    public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UINaruAdminResponse>
+        PARSER = new com.google.protobuf.AbstractParser<UINaruAdminResponse>() {
+      public UINaruAdminResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UINaruAdminResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UINaruAdminResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UINaruAdminResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.UINaruAdminResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Beacon_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Beacon_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ClientBeacon_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_ClientBeacon_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_RequestImage_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_RequestImage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ExpectedAnswer_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_ExpectedAnswer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Question_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Question_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Validation_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Validation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_HeuristicCombiner_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_HeuristicCombiner_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Form_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Form_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_View_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_View_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Heuristic_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Heuristic_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Request_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Request_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Response_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Response_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Answer_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_Answer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UINaruRequest_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_UINaruRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UINaruResponse_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_UINaruResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UINaruAdminRequest_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_UINaruAdminRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UINaruAdminResponse_descriptor;
-  private static
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_roylance_yaorm_UINaruAdminResponse_fieldAccessorTable;
 
@@ -19634,7 +18624,7 @@ public final class ComplexModel {
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -19706,7 +18696,7 @@ public final class ComplexModel {
       "esponse\022-\n\010requests\030\001 \003(\0132\033.org.roylance" +
       ".yaorm.Request\022+\n\007beacons\030\002 \003(\0132\032.org.ro" +
       "ylance.yaorm.Beacon\022\'\n\005views\030\003 \003(\0132\030.org" +
-      ".roylance.yaorm.View"
+      ".roylance.yaorm.Viewb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

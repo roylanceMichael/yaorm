@@ -272,19 +272,19 @@ class SQLiteEntityProtoContextTest {
             complexModelContext.handleMigrations()
 
             val firstView = ComplexModel.View.newBuilder()
-                    .setId(UUID.randomUUID().toString())
+                    .setId("first_view")
                     .setTitle("cool title")
 
             val firstForm = ComplexModel.Form.newBuilder()
-                    .setId(UUID.randomUUID().toString())
+                    .setId("first_form")
                     .setDisplay("cool display")
 
             val firstQuestion = ComplexModel.Question.newBuilder()
-                    .setId(UUID.randomUUID().toString())
+                    .setId("first_question")
                     .setDisplay("first question")
 
             val secondQuestion = ComplexModel.Question.newBuilder()
-                    .setId(UUID.randomUUID().toString())
+                    .setId("second_question")
                     .setDisplay("second question")
 
             firstForm.addQuestions(firstQuestion)
