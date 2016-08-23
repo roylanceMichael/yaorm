@@ -1,5 +1,5 @@
 group 'org.roylance'
-version '0.115-SNAPSHOT'
+version '0.117-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -73,7 +73,7 @@ dependencies {
 //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
     compile 'org.apache.commons:commons-lang3:3.4'
-    compile 'com.google.protobuf:protobuf-java:3.0.0'
+    compile 'org.roylance:common:0.4-SNAPSHOT'
+
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'org.roylance:common:0.3-SNAPSHOT'
 }

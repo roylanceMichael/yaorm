@@ -1,6 +1,6 @@
 package org.roylance.yaorm.utilities
 
-import com.google.protobuf.GeneratedMessage
+import com.google.protobuf.GeneratedMessageV3
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.proto.BaseProtoGeneratedMessageBuilder
 
@@ -8,7 +8,7 @@ class TestModelGMBuilder : BaseProtoGeneratedMessageBuilder() {
     override val name: String
         get() = "TestingModel"
 
-    override fun buildGeneratedMessage(name: String): GeneratedMessage {
+    override fun buildGeneratedMessage(name: String): GeneratedMessageV3 {
         if (TestingModel.Child.getDescriptor().name.equals(name)) {
             return TestingModel.Child.getDefaultInstance()
         }

@@ -1,6 +1,6 @@
 package org.roylance.yaorm.utilities
 
-import com.google.protobuf.GeneratedMessage
+import com.google.protobuf.GeneratedMessageV3
 import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.services.proto.BaseProtoGeneratedMessageBuilder
 import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
@@ -9,7 +9,7 @@ object ComplexModelBuilder: BaseProtoGeneratedMessageBuilder(), IProtoGeneratedM
     override val name: String
         get() = "ComplexModel"
 
-    override fun buildGeneratedMessage(name: String): GeneratedMessage {
+    override fun buildGeneratedMessage(name: String): GeneratedMessageV3 {
         if (ComplexModel.Beacon.getDescriptor().name.equals(name)) {
             return ComplexModel.Beacon.getDefaultInstance()
         }

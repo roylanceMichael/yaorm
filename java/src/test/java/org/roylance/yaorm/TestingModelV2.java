@@ -6,7 +6,13 @@ package org.roylance.yaorm;
 public final class TestingModelV2 {
   private TestingModelV2() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code org.roylance.yaorm.WorkerState}
@@ -548,11 +554,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.SimpleInsertTest}
    */
   public  static final class SimpleInsertTest extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SimpleInsertTest)
       SimpleInsertTestOrBuilder {
     // Use SimpleInsertTest.newBuilder() to construct.
-    private SimpleInsertTest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private SimpleInsertTest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private SimpleInsertTest() {
@@ -731,7 +737,8 @@ public final class TestingModelV2 {
                 childs_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Child>();
                 mutable_bitField0_ |= 0x00080000;
               }
-              childs_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Child.parser(), extensionRegistry));
+              childs_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Child.parser(), extensionRegistry));
               break;
             }
           }
@@ -756,7 +763,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1077,7 +1084,7 @@ public final class TestingModelV2 {
      * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
      */
     public org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType getCoolType() {
-      org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.forNumber(coolType_);
+      org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.valueOf(coolType_);
       return result == null ? org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
     }
 
@@ -1109,7 +1116,7 @@ public final class TestingModelV2 {
             new com.google.protobuf.Internal.ListAdapter.Converter<
                 java.lang.Integer, org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType>() {
               public org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType convert(java.lang.Integer from) {
-                org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.forNumber(from);
+                org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.valueOf(from);
                 return result == null ? org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
               }
             };
@@ -1196,10 +1203,10 @@ public final class TestingModelV2 {
                         throws java.io.IOException {
       getSerializedSize();
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, display_);
       }
       if (testInt32_ != 0) {
         output.writeInt32(3, testInt32_);
@@ -1250,8 +1257,8 @@ public final class TestingModelV2 {
         output.writeMessage(18, getChild());
       }
       if (getCoolTypesList().size() > 0) {
-        output.writeRawVarint32(154);
-        output.writeRawVarint32(coolTypesMemoizedSerializedSize);
+        output.writeUInt32NoTag(154);
+        output.writeUInt32NoTag(coolTypesMemoizedSerializedSize);
       }
       for (int i = 0; i < coolTypes_.size(); i++) {
         output.writeEnumNoTag(coolTypes_.get(i));
@@ -1267,10 +1274,10 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, display_);
       }
       if (testInt32_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -1345,7 +1352,7 @@ public final class TestingModelV2 {
         size += dataSize;
         if (!getCoolTypesList().isEmpty()) {  size += 2;
           size += com.google.protobuf.CodedOutputStream
-            .computeRawVarint32Size(dataSize);
+            .computeUInt32SizeNoTag(dataSize);
         }coolTypesMemoizedSerializedSize = dataSize;
       }
       for (int i = 0; i < childs_.size(); i++) {
@@ -1357,6 +1364,131 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.SimpleInsertTest)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.SimpleInsertTest other = (org.roylance.yaorm.TestingModelV2.SimpleInsertTest) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDisplay()
+          .equals(other.getDisplay());
+      result = result && (getTestInt32()
+          == other.getTestInt32());
+      result = result && (getTestInt64()
+          == other.getTestInt64());
+      result = result && (getTestUint32()
+          == other.getTestUint32());
+      result = result && (getTestUint64()
+          == other.getTestUint64());
+      result = result && (getTestSint32()
+          == other.getTestSint32());
+      result = result && (getTestSint64()
+          == other.getTestSint64());
+      result = result && (getTestFixed32()
+          == other.getTestFixed32());
+      result = result && (getTestFixed64()
+          == other.getTestFixed64());
+      result = result && (getTestSfixed32()
+          == other.getTestSfixed32());
+      result = result && (getTestSfixed64()
+          == other.getTestSfixed64());
+      result = result && (getTestBool()
+          == other.getTestBool());
+      result = result && getTestBytes()
+          .equals(other.getTestBytes());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getTestDouble())
+          == java.lang.Double.doubleToLongBits(
+              other.getTestDouble()));
+      result = result && (
+          java.lang.Float.floatToIntBits(getTestFloat())
+          == java.lang.Float.floatToIntBits(
+              other.getTestFloat()));
+      result = result && coolType_ == other.coolType_;
+      result = result && (hasChild() == other.hasChild());
+      if (hasChild()) {
+        result = result && getChild()
+            .equals(other.getChild());
+      }
+      result = result && coolTypes_.equals(other.coolTypes_);
+      result = result && getChildsList()
+          .equals(other.getChildsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplay().hashCode();
+      hash = (37 * hash) + TEST_INT32_FIELD_NUMBER;
+      hash = (53 * hash) + getTestInt32();
+      hash = (37 * hash) + TEST_INT64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTestInt64());
+      hash = (37 * hash) + TEST_UINT32_FIELD_NUMBER;
+      hash = (53 * hash) + getTestUint32();
+      hash = (37 * hash) + TEST_UINT64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTestUint64());
+      hash = (37 * hash) + TEST_SINT32_FIELD_NUMBER;
+      hash = (53 * hash) + getTestSint32();
+      hash = (37 * hash) + TEST_SINT64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTestSint64());
+      hash = (37 * hash) + TEST_FIXED32_FIELD_NUMBER;
+      hash = (53 * hash) + getTestFixed32();
+      hash = (37 * hash) + TEST_FIXED64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTestFixed64());
+      hash = (37 * hash) + TEST_SFIXED32_FIELD_NUMBER;
+      hash = (53 * hash) + getTestSfixed32();
+      hash = (37 * hash) + TEST_SFIXED64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTestSfixed64());
+      hash = (37 * hash) + TEST_BOOL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getTestBool());
+      hash = (37 * hash) + TEST_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + getTestBytes().hashCode();
+      hash = (37 * hash) + TEST_DOUBLE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getTestDouble()));
+      hash = (37 * hash) + TEST_FLOAT_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getTestFloat());
+      hash = (37 * hash) + COOL_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + coolType_;
+      if (hasChild()) {
+        hash = (37 * hash) + CHILD_FIELD_NUMBER;
+        hash = (53 * hash) + getChild().hashCode();
+      }
+      if (getCoolTypesCount() > 0) {
+        hash = (37 * hash) + COOL_TYPES_FIELD_NUMBER;
+        hash = (53 * hash) + coolTypes_.hashCode();
+      }
+      if (getChildsCount() > 0) {
+        hash = (37 * hash) + CHILDS_FIELD_NUMBER;
+        hash = (53 * hash) + getChildsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1380,39 +1512,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SimpleInsertTest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -1430,7 +1562,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1438,7 +1570,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.SimpleInsertTest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SimpleInsertTest)
         org.roylance.yaorm.TestingModelV2.SimpleInsertTestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1446,7 +1578,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1459,12 +1591,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getChildsFieldBuilder();
         }
       }
@@ -1583,6 +1716,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.SimpleInsertTest) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.SimpleInsertTest)other);
@@ -1679,7 +1838,7 @@ public final class TestingModelV2 {
               childs_ = other.childs_;
               bitField0_ = (bitField0_ & ~0x00080000);
               childsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getChildsFieldBuilder() : null;
             } else {
               childsBuilder_.addAllMessages(other.childs_);
@@ -2237,7 +2396,7 @@ public final class TestingModelV2 {
        * <code>optional .org.roylance.yaorm.SimpleInsertTest.CoolType cool_type = 17;</code>
        */
       public org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType getCoolType() {
-        org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.forNumber(coolType_);
+        org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType result = org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.valueOf(coolType_);
         return result == null ? org.roylance.yaorm.TestingModelV2.SimpleInsertTest.CoolType.UNRECOGNIZED : result;
       }
       /**
@@ -2263,7 +2422,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.Child child_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Child, org.roylance.yaorm.TestingModelV2.Child.Builder, org.roylance.yaorm.TestingModelV2.ChildOrBuilder> childBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Child child = 18;</code>
@@ -2365,11 +2524,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.Child child = 18;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Child, org.roylance.yaorm.TestingModelV2.Child.Builder, org.roylance.yaorm.TestingModelV2.ChildOrBuilder> 
           getChildFieldBuilder() {
         if (childBuilder_ == null) {
-          childBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          childBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Child, org.roylance.yaorm.TestingModelV2.Child.Builder, org.roylance.yaorm.TestingModelV2.ChildOrBuilder>(
                   getChild(),
                   getParentForChildren(),
@@ -2506,7 +2665,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Child, org.roylance.yaorm.TestingModelV2.Child.Builder, org.roylance.yaorm.TestingModelV2.ChildOrBuilder> childsBuilder_;
 
       /**
@@ -2722,11 +2881,11 @@ public final class TestingModelV2 {
            getChildsBuilderList() {
         return getChildsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Child, org.roylance.yaorm.TestingModelV2.Child.Builder, org.roylance.yaorm.TestingModelV2.ChildOrBuilder> 
           getChildsFieldBuilder() {
         if (childsBuilder_ == null) {
-          childsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          childsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Child, org.roylance.yaorm.TestingModelV2.Child.Builder, org.roylance.yaorm.TestingModelV2.ChildOrBuilder>(
                   childs_,
                   ((bitField0_ & 0x00080000) == 0x00080000),
@@ -2850,11 +3009,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Child}
    */
   public  static final class Child extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Child)
       ChildOrBuilder {
     // Use Child.newBuilder() to construct.
-    private Child(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Child(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Child() {
@@ -2905,7 +3064,8 @@ public final class TestingModelV2 {
                 subChild_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.SubChild>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              subChild_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.SubChild.parser(), extensionRegistry));
+              subChild_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.SubChild.parser(), extensionRegistry));
               break;
             }
             case 34: {
@@ -2940,7 +3100,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Child_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Child_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -3085,10 +3245,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getTestDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, testDisplay_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, testDisplay_);
       }
       for (int i = 0; i < subChild_.size(); i++) {
         output.writeMessage(3, subChild_.get(i));
@@ -3104,10 +3264,10 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getTestDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, testDisplay_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, testDisplay_);
       }
       for (int i = 0; i < subChild_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -3122,6 +3282,55 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Child)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Child other = (org.roylance.yaorm.TestingModelV2.Child) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getTestDisplay()
+          .equals(other.getTestDisplay());
+      result = result && getSubChildList()
+          .equals(other.getSubChildList());
+      result = result && (hasSubSubSubChild() == other.hasSubSubSubChild());
+      if (hasSubSubSubChild()) {
+        result = result && getSubSubSubChild()
+            .equals(other.getSubSubSubChild());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + TEST_DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getTestDisplay().hashCode();
+      if (getSubChildCount() > 0) {
+        hash = (37 * hash) + SUB_CHILD_FIELD_NUMBER;
+        hash = (53 * hash) + getSubChildList().hashCode();
+      }
+      if (hasSubSubSubChild()) {
+        hash = (37 * hash) + SUB_SUB_SUB_CHILD_FIELD_NUMBER;
+        hash = (53 * hash) + getSubSubSubChild().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Child parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3145,39 +3354,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Child parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Child parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Child parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Child parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Child parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Child parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -3195,7 +3404,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3203,7 +3412,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Child}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Child)
         org.roylance.yaorm.TestingModelV2.ChildOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -3211,7 +3420,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Child_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Child_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3224,12 +3433,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getSubChildFieldBuilder();
         }
       }
@@ -3296,6 +3506,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Child) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Child)other);
@@ -3334,7 +3570,7 @@ public final class TestingModelV2 {
               subChild_ = other.subChild_;
               bitField0_ = (bitField0_ & ~0x00000004);
               subChildBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSubChildFieldBuilder() : null;
             } else {
               subChildBuilder_.addAllMessages(other.subChild_);
@@ -3518,7 +3754,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubChild, org.roylance.yaorm.TestingModelV2.SubChild.Builder, org.roylance.yaorm.TestingModelV2.SubChildOrBuilder> subChildBuilder_;
 
       /**
@@ -3734,11 +3970,11 @@ public final class TestingModelV2 {
            getSubChildBuilderList() {
         return getSubChildFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubChild, org.roylance.yaorm.TestingModelV2.SubChild.Builder, org.roylance.yaorm.TestingModelV2.SubChildOrBuilder> 
           getSubChildFieldBuilder() {
         if (subChildBuilder_ == null) {
-          subChildBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          subChildBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.SubChild, org.roylance.yaorm.TestingModelV2.SubChild.Builder, org.roylance.yaorm.TestingModelV2.SubChildOrBuilder>(
                   subChild_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -3750,7 +3986,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.SubSubSubChild subSubSubChild_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubSubSubChild, org.roylance.yaorm.TestingModelV2.SubSubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder> subSubSubChildBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
@@ -3852,11 +4088,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.SubSubSubChild sub_sub_sub_child = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubSubSubChild, org.roylance.yaorm.TestingModelV2.SubSubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder> 
           getSubSubSubChildFieldBuilder() {
         if (subSubSubChildBuilder_ == null) {
-          subSubSubChildBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          subSubSubChildBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.SubSubSubChild, org.roylance.yaorm.TestingModelV2.SubSubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder>(
                   getSubSubSubChild(),
                   getParentForChildren(),
@@ -3971,11 +4207,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.SubChild}
    */
   public  static final class SubChild extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubChild)
       SubChildOrBuilder {
     // Use SubChild.newBuilder() to construct.
-    private SubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private SubChild(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private SubChild() {
@@ -4032,7 +4268,8 @@ public final class TestingModelV2 {
                 subSubChild_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.SubSubChild>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              subSubChild_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.SubSubChild.parser(), extensionRegistry));
+              subSubChild_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.SubSubChild.parser(), extensionRegistry));
               break;
             }
           }
@@ -4054,7 +4291,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubChild_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -4187,10 +4424,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getAnotherTestDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, anotherTestDisplay_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, anotherTestDisplay_);
       }
       if (coolTest_ != false) {
         output.writeBool(3, coolTest_);
@@ -4206,10 +4443,10 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getAnotherTestDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, anotherTestDisplay_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, anotherTestDisplay_);
       }
       if (coolTest_ != false) {
         size += com.google.protobuf.CodedOutputStream
@@ -4224,6 +4461,51 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.SubChild)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.SubChild other = (org.roylance.yaorm.TestingModelV2.SubChild) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getAnotherTestDisplay()
+          .equals(other.getAnotherTestDisplay());
+      result = result && (getCoolTest()
+          == other.getCoolTest());
+      result = result && getSubSubChildList()
+          .equals(other.getSubSubChildList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + ANOTHER_TEST_DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getAnotherTestDisplay().hashCode();
+      hash = (37 * hash) + COOL_TEST_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getCoolTest());
+      if (getSubSubChildCount() > 0) {
+        hash = (37 * hash) + SUB_SUB_CHILD_FIELD_NUMBER;
+        hash = (53 * hash) + getSubSubChildList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.SubChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4247,39 +4529,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.SubChild parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubChild parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SubChild parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubChild parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SubChild parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubChild parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -4297,7 +4579,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -4305,7 +4587,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.SubChild}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SubChild)
         org.roylance.yaorm.TestingModelV2.SubChildOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -4313,7 +4595,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubChild_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -4326,12 +4608,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getSubSubChildFieldBuilder();
         }
       }
@@ -4390,6 +4673,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.SubChild) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.SubChild)other);
@@ -4431,7 +4740,7 @@ public final class TestingModelV2 {
               subSubChild_ = other.subSubChild_;
               bitField0_ = (bitField0_ & ~0x00000008);
               subSubChildBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSubSubChildFieldBuilder() : null;
             } else {
               subSubChildBuilder_.addAllMessages(other.subSubChild_);
@@ -4638,7 +4947,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubSubChild, org.roylance.yaorm.TestingModelV2.SubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubChildOrBuilder> subSubChildBuilder_;
 
       /**
@@ -4854,11 +5163,11 @@ public final class TestingModelV2 {
            getSubSubChildBuilderList() {
         return getSubSubChildFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubSubChild, org.roylance.yaorm.TestingModelV2.SubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubChildOrBuilder> 
           getSubSubChildFieldBuilder() {
         if (subSubChildBuilder_ == null) {
-          subSubChildBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          subSubChildBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.SubSubChild, org.roylance.yaorm.TestingModelV2.SubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubChildOrBuilder>(
                   subSubChild_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -4969,11 +5278,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.SubSubChild}
    */
   public  static final class SubSubChild extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubSubChild)
       SubSubChildOrBuilder {
     // Use SubSubChild.newBuilder() to construct.
-    private SubSubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private SubSubChild(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private SubSubChild() {
@@ -5024,7 +5333,8 @@ public final class TestingModelV2 {
                 subSubSubChilds_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.SubSubSubChild>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              subSubSubChilds_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.SubSubSubChild.parser(), extensionRegistry));
+              subSubSubChilds_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.SubSubSubChild.parser(), extensionRegistry));
               break;
             }
           }
@@ -5046,7 +5356,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubChild_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -5170,10 +5480,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getSubSubDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, subSubDisplay_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, subSubDisplay_);
       }
       for (int i = 0; i < subSubSubChilds_.size(); i++) {
         output.writeMessage(3, subSubSubChilds_.get(i));
@@ -5186,10 +5496,10 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getSubSubDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, subSubDisplay_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, subSubDisplay_);
       }
       for (int i = 0; i < subSubSubChilds_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -5200,6 +5510,46 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.SubSubChild)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.SubSubChild other = (org.roylance.yaorm.TestingModelV2.SubSubChild) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getSubSubDisplay()
+          .equals(other.getSubSubDisplay());
+      result = result && getSubSubSubChildsList()
+          .equals(other.getSubSubSubChildsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SUB_SUB_DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getSubSubDisplay().hashCode();
+      if (getSubSubSubChildsCount() > 0) {
+        hash = (37 * hash) + SUB_SUB_SUB_CHILDS_FIELD_NUMBER;
+        hash = (53 * hash) + getSubSubSubChildsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5223,39 +5573,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -5273,7 +5623,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5281,7 +5631,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.SubSubChild}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SubSubChild)
         org.roylance.yaorm.TestingModelV2.SubSubChildOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -5289,7 +5639,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubChild_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -5302,12 +5652,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getSubSubSubChildsFieldBuilder();
         }
       }
@@ -5363,6 +5714,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.SubSubChild) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.SubSubChild)other);
@@ -5401,7 +5778,7 @@ public final class TestingModelV2 {
               subSubSubChilds_ = other.subSubSubChilds_;
               bitField0_ = (bitField0_ & ~0x00000004);
               subSubSubChildsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSubSubSubChildsFieldBuilder() : null;
             } else {
               subSubSubChildsBuilder_.addAllMessages(other.subSubSubChilds_);
@@ -5582,7 +5959,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubSubSubChild, org.roylance.yaorm.TestingModelV2.SubSubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder> subSubSubChildsBuilder_;
 
       /**
@@ -5798,11 +6175,11 @@ public final class TestingModelV2 {
            getSubSubSubChildsBuilderList() {
         return getSubSubSubChildsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.SubSubSubChild, org.roylance.yaorm.TestingModelV2.SubSubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder> 
           getSubSubSubChildsFieldBuilder() {
         if (subSubSubChildsBuilder_ == null) {
-          subSubSubChildsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          subSubSubChildsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.SubSubSubChild, org.roylance.yaorm.TestingModelV2.SubSubSubChild.Builder, org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder>(
                   subSubSubChilds_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -5889,11 +6266,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.SubSubSubChild}
    */
   public  static final class SubSubSubChild extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SubSubSubChild)
       SubSubSubChildOrBuilder {
     // Use SubSubSubChild.newBuilder() to construct.
-    private SubSubSubChild(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private SubSubSubChild(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private SubSubSubChild() {
@@ -5954,7 +6331,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -6042,10 +6419,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getSubSubSubDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, subSubSubDisplay_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, subSubSubDisplay_);
       }
     }
 
@@ -6055,16 +6432,50 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getSubSubSubDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, subSubSubDisplay_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, subSubSubDisplay_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.SubSubSubChild)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.SubSubSubChild other = (org.roylance.yaorm.TestingModelV2.SubSubSubChild) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getSubSubSubDisplay()
+          .equals(other.getSubSubSubDisplay());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SUB_SUB_SUB_DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getSubSubSubDisplay().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6088,39 +6499,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.SubSubSubChild parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -6138,7 +6549,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -6146,7 +6557,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.SubSubSubChild}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.SubSubSubChild)
         org.roylance.yaorm.TestingModelV2.SubSubSubChildOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -6154,7 +6565,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -6167,12 +6578,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -6209,6 +6621,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.SubSubSubChild) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.SubSubSubChild)other);
@@ -6576,11 +7014,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Person}
    */
   public  static final class Person extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Person)
       PersonOrBuilder {
     // Use Person.newBuilder() to construct.
-    private Person(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Person(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Person() {
@@ -6640,7 +7078,8 @@ public final class TestingModelV2 {
                 addresses_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Address>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              addresses_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Address.parser(), extensionRegistry));
+              addresses_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Address.parser(), extensionRegistry));
               break;
             }
             case 42: {
@@ -6648,7 +7087,8 @@ public final class TestingModelV2 {
                 phoneNumbers_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Phone>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              phoneNumbers_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Phone.parser(), extensionRegistry));
+              phoneNumbers_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Phone.parser(), extensionRegistry));
               break;
             }
             case 50: {
@@ -6682,7 +7122,8 @@ public final class TestingModelV2 {
                 friends_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Person>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              friends_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Person.parser(), extensionRegistry));
+              friends_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Person.parser(), extensionRegistry));
               break;
             }
           }
@@ -6710,7 +7151,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Person_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Person_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -6980,13 +7421,13 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getFirstNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, firstName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, firstName_);
       }
       if (!getLastNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, lastName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, lastName_);
       }
       for (int i = 0; i < addresses_.size(); i++) {
         output.writeMessage(4, addresses_.get(i));
@@ -7011,13 +7452,13 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getFirstNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, firstName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, firstName_);
       }
       if (!getLastNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, lastName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, lastName_);
       }
       for (int i = 0; i < addresses_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -7044,6 +7485,80 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Person)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Person other = (org.roylance.yaorm.TestingModelV2.Person) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getFirstName()
+          .equals(other.getFirstName());
+      result = result && getLastName()
+          .equals(other.getLastName());
+      result = result && getAddressesList()
+          .equals(other.getAddressesList());
+      result = result && getPhoneNumbersList()
+          .equals(other.getPhoneNumbersList());
+      result = result && (hasMother() == other.hasMother());
+      if (hasMother()) {
+        result = result && getMother()
+            .equals(other.getMother());
+      }
+      result = result && (hasFather() == other.hasFather());
+      if (hasFather()) {
+        result = result && getFather()
+            .equals(other.getFather());
+      }
+      result = result && getFriendsList()
+          .equals(other.getFriendsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + FIRST_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFirstName().hashCode();
+      hash = (37 * hash) + LAST_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getLastName().hashCode();
+      if (getAddressesCount() > 0) {
+        hash = (37 * hash) + ADDRESSES_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressesList().hashCode();
+      }
+      if (getPhoneNumbersCount() > 0) {
+        hash = (37 * hash) + PHONE_NUMBERS_FIELD_NUMBER;
+        hash = (53 * hash) + getPhoneNumbersList().hashCode();
+      }
+      if (hasMother()) {
+        hash = (37 * hash) + MOTHER_FIELD_NUMBER;
+        hash = (53 * hash) + getMother().hashCode();
+      }
+      if (hasFather()) {
+        hash = (37 * hash) + FATHER_FIELD_NUMBER;
+        hash = (53 * hash) + getFather().hashCode();
+      }
+      if (getFriendsCount() > 0) {
+        hash = (37 * hash) + FRIENDS_FIELD_NUMBER;
+        hash = (53 * hash) + getFriendsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Person parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7067,39 +7582,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Person parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Person parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Person parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Person parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Person parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Person parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -7117,7 +7632,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -7125,7 +7640,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Person}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Person)
         org.roylance.yaorm.TestingModelV2.PersonOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -7133,7 +7648,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Person_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Person_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -7146,12 +7661,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getAddressesFieldBuilder();
           getPhoneNumbersFieldBuilder();
           getFriendsFieldBuilder();
@@ -7264,6 +7780,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Person) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Person)other);
@@ -7306,7 +7848,7 @@ public final class TestingModelV2 {
               addresses_ = other.addresses_;
               bitField0_ = (bitField0_ & ~0x00000008);
               addressesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getAddressesFieldBuilder() : null;
             } else {
               addressesBuilder_.addAllMessages(other.addresses_);
@@ -7332,7 +7874,7 @@ public final class TestingModelV2 {
               phoneNumbers_ = other.phoneNumbers_;
               bitField0_ = (bitField0_ & ~0x00000010);
               phoneNumbersBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPhoneNumbersFieldBuilder() : null;
             } else {
               phoneNumbersBuilder_.addAllMessages(other.phoneNumbers_);
@@ -7364,7 +7906,7 @@ public final class TestingModelV2 {
               friends_ = other.friends_;
               bitField0_ = (bitField0_ & ~0x00000080);
               friendsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getFriendsFieldBuilder() : null;
             } else {
               friendsBuilder_.addAllMessages(other.friends_);
@@ -7614,7 +8156,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Address, org.roylance.yaorm.TestingModelV2.Address.Builder, org.roylance.yaorm.TestingModelV2.AddressOrBuilder> addressesBuilder_;
 
       /**
@@ -7830,11 +8372,11 @@ public final class TestingModelV2 {
            getAddressesBuilderList() {
         return getAddressesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Address, org.roylance.yaorm.TestingModelV2.Address.Builder, org.roylance.yaorm.TestingModelV2.AddressOrBuilder> 
           getAddressesFieldBuilder() {
         if (addressesBuilder_ == null) {
-          addressesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          addressesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Address, org.roylance.yaorm.TestingModelV2.Address.Builder, org.roylance.yaorm.TestingModelV2.AddressOrBuilder>(
                   addresses_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -7854,7 +8396,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Phone, org.roylance.yaorm.TestingModelV2.Phone.Builder, org.roylance.yaorm.TestingModelV2.PhoneOrBuilder> phoneNumbersBuilder_;
 
       /**
@@ -8070,11 +8612,11 @@ public final class TestingModelV2 {
            getPhoneNumbersBuilderList() {
         return getPhoneNumbersFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Phone, org.roylance.yaorm.TestingModelV2.Phone.Builder, org.roylance.yaorm.TestingModelV2.PhoneOrBuilder> 
           getPhoneNumbersFieldBuilder() {
         if (phoneNumbersBuilder_ == null) {
-          phoneNumbersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          phoneNumbersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Phone, org.roylance.yaorm.TestingModelV2.Phone.Builder, org.roylance.yaorm.TestingModelV2.PhoneOrBuilder>(
                   phoneNumbers_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -8086,7 +8628,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.Person mother_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder> motherBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
@@ -8188,11 +8730,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.Person mother = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder> 
           getMotherFieldBuilder() {
         if (motherBuilder_ == null) {
-          motherBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          motherBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder>(
                   getMother(),
                   getParentForChildren(),
@@ -8203,7 +8745,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.Person father_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder> fatherBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Person father = 7;</code>
@@ -8305,11 +8847,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.Person father = 7;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder> 
           getFatherFieldBuilder() {
         if (fatherBuilder_ == null) {
-          fatherBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          fatherBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder>(
                   getFather(),
                   getParentForChildren(),
@@ -8328,7 +8870,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder> friendsBuilder_;
 
       /**
@@ -8544,11 +9086,11 @@ public final class TestingModelV2 {
            getFriendsBuilderList() {
         return getFriendsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder> 
           getFriendsFieldBuilder() {
         if (friendsBuilder_ == null) {
-          friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Person, org.roylance.yaorm.TestingModelV2.Person.Builder, org.roylance.yaorm.TestingModelV2.PersonOrBuilder>(
                   friends_,
                   ((bitField0_ & 0x00000080) == 0x00000080),
@@ -8665,11 +9207,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Address}
    */
   public  static final class Address extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Address)
       AddressOrBuilder {
     // Use Address.newBuilder() to construct.
-    private Address(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Address(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Address() {
@@ -8751,7 +9293,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Address_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Address_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -8941,19 +9483,19 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, address_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
       }
       if (!getCityBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, city_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, city_);
       }
       if (!getStateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, state_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, state_);
       }
       if (!getZipBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, zip_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, zip_);
       }
     }
 
@@ -8963,25 +9505,71 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, address_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
       }
       if (!getCityBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, city_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, city_);
       }
       if (!getStateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, state_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, state_);
       }
       if (!getZipBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, zip_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, zip_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Address)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Address other = (org.roylance.yaorm.TestingModelV2.Address) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getAddress()
+          .equals(other.getAddress());
+      result = result && getCity()
+          .equals(other.getCity());
+      result = result && getState()
+          .equals(other.getState());
+      result = result && getZip()
+          .equals(other.getZip());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress().hashCode();
+      hash = (37 * hash) + CITY_FIELD_NUMBER;
+      hash = (53 * hash) + getCity().hashCode();
+      hash = (37 * hash) + STATE_FIELD_NUMBER;
+      hash = (53 * hash) + getState().hashCode();
+      hash = (37 * hash) + ZIP_FIELD_NUMBER;
+      hash = (53 * hash) + getZip().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Address parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9005,39 +9593,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Address parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Address parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Address parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Address parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Address parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Address parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -9055,7 +9643,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -9063,7 +9651,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Address}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Address)
         org.roylance.yaorm.TestingModelV2.AddressOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -9071,7 +9659,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Address_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Address_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -9084,12 +9672,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -9135,6 +9724,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Address) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Address)other);
@@ -9613,11 +10228,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Phone}
    */
   public  static final class Phone extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Phone)
       PhoneOrBuilder {
     // Use Phone.newBuilder() to construct.
-    private Phone(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Phone(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Phone() {
@@ -9678,7 +10293,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Phone_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Phone_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -9766,10 +10381,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNumberBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, number_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, number_);
       }
     }
 
@@ -9779,16 +10394,50 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNumberBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, number_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, number_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Phone)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Phone other = (org.roylance.yaorm.TestingModelV2.Phone) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getNumber()
+          .equals(other.getNumber());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NUMBER_FIELD_NUMBER;
+      hash = (53 * hash) + getNumber().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Phone parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9812,39 +10461,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Phone parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Phone parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Phone parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Phone parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Phone parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Phone parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -9862,7 +10511,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -9870,7 +10519,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Phone}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Phone)
         org.roylance.yaorm.TestingModelV2.PhoneOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -9878,7 +10527,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Phone_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Phone_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -9891,12 +10540,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -9933,6 +10583,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Phone) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Phone)other);
@@ -10226,11 +10902,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.WorkerConfiguration}
    */
   public  static final class WorkerConfiguration extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.WorkerConfiguration)
       WorkerConfigurationOrBuilder {
     // Use WorkerConfiguration.newBuilder() to construct.
-    private WorkerConfiguration(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private WorkerConfiguration(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private WorkerConfiguration() {
@@ -10318,7 +10994,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -10482,7 +11158,7 @@ public final class TestingModelV2 {
      * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
      */
     public org.roylance.yaorm.TestingModelV2.WorkerState getState() {
-      org.roylance.yaorm.TestingModelV2.WorkerState result = org.roylance.yaorm.TestingModelV2.WorkerState.forNumber(state_);
+      org.roylance.yaorm.TestingModelV2.WorkerState result = org.roylance.yaorm.TestingModelV2.WorkerState.valueOf(state_);
       return result == null ? org.roylance.yaorm.TestingModelV2.WorkerState.UNRECOGNIZED : result;
     }
 
@@ -10499,16 +11175,16 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getIpBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, ip_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ip_);
       }
       if (!getPortBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, port_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, port_);
       }
       if (!getHostBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, host_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, host_);
       }
       if (initializedTime_ != 0L) {
         output.writeUInt64(5, initializedTime_);
@@ -10524,16 +11200,16 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getIpBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, ip_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ip_);
       }
       if (!getPortBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, port_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, port_);
       }
       if (!getHostBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, host_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, host_);
       }
       if (initializedTime_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -10548,6 +11224,56 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.WorkerConfiguration)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.WorkerConfiguration other = (org.roylance.yaorm.TestingModelV2.WorkerConfiguration) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getIp()
+          .equals(other.getIp());
+      result = result && getPort()
+          .equals(other.getPort());
+      result = result && getHost()
+          .equals(other.getHost());
+      result = result && (getInitializedTime()
+          == other.getInitializedTime());
+      result = result && state_ == other.state_;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + IP_FIELD_NUMBER;
+      hash = (53 * hash) + getIp().hashCode();
+      hash = (37 * hash) + PORT_FIELD_NUMBER;
+      hash = (53 * hash) + getPort().hashCode();
+      hash = (37 * hash) + HOST_FIELD_NUMBER;
+      hash = (53 * hash) + getHost().hashCode();
+      hash = (37 * hash) + INITIALIZED_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getInitializedTime());
+      hash = (37 * hash) + STATE_FIELD_NUMBER;
+      hash = (53 * hash) + state_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10571,39 +11297,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.WorkerConfiguration parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -10621,7 +11347,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -10629,7 +11355,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.WorkerConfiguration}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.WorkerConfiguration)
         org.roylance.yaorm.TestingModelV2.WorkerConfigurationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -10637,7 +11363,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -10650,12 +11376,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -10704,6 +11431,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.WorkerConfiguration) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.WorkerConfiguration)other);
@@ -11084,7 +11837,7 @@ public final class TestingModelV2 {
        * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public org.roylance.yaorm.TestingModelV2.WorkerState getState() {
-        org.roylance.yaorm.TestingModelV2.WorkerState result = org.roylance.yaorm.TestingModelV2.WorkerState.forNumber(state_);
+        org.roylance.yaorm.TestingModelV2.WorkerState result = org.roylance.yaorm.TestingModelV2.WorkerState.valueOf(state_);
         return result == null ? org.roylance.yaorm.TestingModelV2.WorkerState.UNRECOGNIZED : result;
       }
       /**
@@ -11185,11 +11938,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Log}
    */
   public  static final class Log extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Log)
       LogOrBuilder {
     // Use Log.newBuilder() to construct.
-    private Log(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Log(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Log() {
@@ -11250,7 +12003,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Log_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Log_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -11338,10 +12091,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getMessageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, message_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
     }
 
@@ -11351,16 +12104,50 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getMessageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, message_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Log)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Log other = (org.roylance.yaorm.TestingModelV2.Log) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getMessage()
+          .equals(other.getMessage());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Log parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11384,39 +12171,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Log parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Log parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Log parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Log parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Log parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Log parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -11434,7 +12221,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -11442,7 +12229,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Log}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Log)
         org.roylance.yaorm.TestingModelV2.LogOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -11450,7 +12237,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Log_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Log_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -11463,12 +12250,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -11505,6 +12293,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Log) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Log)other);
@@ -11924,11 +12738,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Dag}
    */
   public  static final class Dag extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Dag)
       DagOrBuilder {
     // Use Dag.newBuilder() to construct.
-    private Dag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Dag(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Dag() {
@@ -11989,7 +12803,8 @@ public final class TestingModelV2 {
                 flattenedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Task>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              flattenedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
+              flattenedTasks_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
               break;
             }
             case 32: {
@@ -12017,7 +12832,8 @@ public final class TestingModelV2 {
                 uncompletedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Task>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              uncompletedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
+              uncompletedTasks_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
               break;
             }
             case 74: {
@@ -12025,7 +12841,8 @@ public final class TestingModelV2 {
                 processingTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Task>();
                 mutable_bitField0_ |= 0x00000100;
               }
-              processingTasks_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
+              processingTasks_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
               break;
             }
             case 82: {
@@ -12033,7 +12850,8 @@ public final class TestingModelV2 {
                 erroredTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Task>();
                 mutable_bitField0_ |= 0x00000200;
               }
-              erroredTasks_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
+              erroredTasks_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
               break;
             }
             case 90: {
@@ -12041,7 +12859,8 @@ public final class TestingModelV2 {
                 completedTasks_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Task>();
                 mutable_bitField0_ |= 0x00000400;
               }
-              completedTasks_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
+              completedTasks_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Task.parser(), extensionRegistry));
               break;
             }
             case 98: {
@@ -12087,7 +12906,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Dag_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Dag_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -12455,10 +13274,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, display_);
       }
       for (int i = 0; i < flattenedTasks_.size(); i++) {
         output.writeMessage(3, flattenedTasks_.get(i));
@@ -12488,10 +13307,10 @@ public final class TestingModelV2 {
         output.writeMessage(11, completedTasks_.get(i));
       }
       if (!getNewField1Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 12, newField1_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, newField1_);
       }
       if (!getNewField2Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 13, newField2_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, newField2_);
       }
     }
 
@@ -12501,10 +13320,10 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, display_);
       }
       for (int i = 0; i < flattenedTasks_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -12543,16 +13362,108 @@ public final class TestingModelV2 {
           .computeMessageSize(11, completedTasks_.get(i));
       }
       if (!getNewField1Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(12, newField1_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, newField1_);
       }
       if (!getNewField2Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(13, newField2_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, newField2_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Dag)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Dag other = (org.roylance.yaorm.TestingModelV2.Dag) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDisplay()
+          .equals(other.getDisplay());
+      result = result && getFlattenedTasksList()
+          .equals(other.getFlattenedTasksList());
+      result = result && (getExecutionDate()
+          == other.getExecutionDate());
+      result = result && (getStartDate()
+          == other.getStartDate());
+      result = result && (getEndDate()
+          == other.getEndDate());
+      result = result && (getDuration()
+          == other.getDuration());
+      result = result && getUncompletedTasksList()
+          .equals(other.getUncompletedTasksList());
+      result = result && getProcessingTasksList()
+          .equals(other.getProcessingTasksList());
+      result = result && getErroredTasksList()
+          .equals(other.getErroredTasksList());
+      result = result && getCompletedTasksList()
+          .equals(other.getCompletedTasksList());
+      result = result && getNewField1()
+          .equals(other.getNewField1());
+      result = result && getNewField2()
+          .equals(other.getNewField2());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplay().hashCode();
+      if (getFlattenedTasksCount() > 0) {
+        hash = (37 * hash) + FLATTENED_TASKS_FIELD_NUMBER;
+        hash = (53 * hash) + getFlattenedTasksList().hashCode();
+      }
+      hash = (37 * hash) + EXECUTION_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getExecutionDate());
+      hash = (37 * hash) + START_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getStartDate());
+      hash = (37 * hash) + END_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEndDate());
+      hash = (37 * hash) + DURATION_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDuration());
+      if (getUncompletedTasksCount() > 0) {
+        hash = (37 * hash) + UNCOMPLETED_TASKS_FIELD_NUMBER;
+        hash = (53 * hash) + getUncompletedTasksList().hashCode();
+      }
+      if (getProcessingTasksCount() > 0) {
+        hash = (37 * hash) + PROCESSING_TASKS_FIELD_NUMBER;
+        hash = (53 * hash) + getProcessingTasksList().hashCode();
+      }
+      if (getErroredTasksCount() > 0) {
+        hash = (37 * hash) + ERRORED_TASKS_FIELD_NUMBER;
+        hash = (53 * hash) + getErroredTasksList().hashCode();
+      }
+      if (getCompletedTasksCount() > 0) {
+        hash = (37 * hash) + COMPLETED_TASKS_FIELD_NUMBER;
+        hash = (53 * hash) + getCompletedTasksList().hashCode();
+      }
+      hash = (37 * hash) + NEW_FIELD_1_FIELD_NUMBER;
+      hash = (53 * hash) + getNewField1().hashCode();
+      hash = (37 * hash) + NEW_FIELD_2_FIELD_NUMBER;
+      hash = (53 * hash) + getNewField2().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Dag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12576,39 +13487,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Dag parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Dag parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Dag parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Dag parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Dag parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Dag parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -12626,7 +13537,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -12634,7 +13545,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Dag}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Dag)
         org.roylance.yaorm.TestingModelV2.DagOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -12642,7 +13553,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Dag_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Dag_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -12655,12 +13566,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getFlattenedTasksFieldBuilder();
           getUncompletedTasksFieldBuilder();
           getProcessingTasksFieldBuilder();
@@ -12798,6 +13710,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Dag) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Dag)other);
@@ -12836,7 +13774,7 @@ public final class TestingModelV2 {
               flattenedTasks_ = other.flattenedTasks_;
               bitField0_ = (bitField0_ & ~0x00000004);
               flattenedTasksBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getFlattenedTasksFieldBuilder() : null;
             } else {
               flattenedTasksBuilder_.addAllMessages(other.flattenedTasks_);
@@ -12874,7 +13812,7 @@ public final class TestingModelV2 {
               uncompletedTasks_ = other.uncompletedTasks_;
               bitField0_ = (bitField0_ & ~0x00000080);
               uncompletedTasksBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getUncompletedTasksFieldBuilder() : null;
             } else {
               uncompletedTasksBuilder_.addAllMessages(other.uncompletedTasks_);
@@ -12900,7 +13838,7 @@ public final class TestingModelV2 {
               processingTasks_ = other.processingTasks_;
               bitField0_ = (bitField0_ & ~0x00000100);
               processingTasksBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getProcessingTasksFieldBuilder() : null;
             } else {
               processingTasksBuilder_.addAllMessages(other.processingTasks_);
@@ -12926,7 +13864,7 @@ public final class TestingModelV2 {
               erroredTasks_ = other.erroredTasks_;
               bitField0_ = (bitField0_ & ~0x00000200);
               erroredTasksBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getErroredTasksFieldBuilder() : null;
             } else {
               erroredTasksBuilder_.addAllMessages(other.erroredTasks_);
@@ -12952,7 +13890,7 @@ public final class TestingModelV2 {
               completedTasks_ = other.completedTasks_;
               bitField0_ = (bitField0_ & ~0x00000400);
               completedTasksBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getCompletedTasksFieldBuilder() : null;
             } else {
               completedTasksBuilder_.addAllMessages(other.completedTasks_);
@@ -13141,7 +14079,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> flattenedTasksBuilder_;
 
       /**
@@ -13357,11 +14295,11 @@ public final class TestingModelV2 {
            getFlattenedTasksBuilderList() {
         return getFlattenedTasksFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getFlattenedTasksFieldBuilder() {
         if (flattenedTasksBuilder_ == null) {
-          flattenedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          flattenedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   flattenedTasks_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -13485,7 +14423,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> uncompletedTasksBuilder_;
 
       /**
@@ -13701,11 +14639,11 @@ public final class TestingModelV2 {
            getUncompletedTasksBuilderList() {
         return getUncompletedTasksFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getUncompletedTasksFieldBuilder() {
         if (uncompletedTasksBuilder_ == null) {
-          uncompletedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          uncompletedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   uncompletedTasks_,
                   ((bitField0_ & 0x00000080) == 0x00000080),
@@ -13725,7 +14663,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> processingTasksBuilder_;
 
       /**
@@ -13941,11 +14879,11 @@ public final class TestingModelV2 {
            getProcessingTasksBuilderList() {
         return getProcessingTasksFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getProcessingTasksFieldBuilder() {
         if (processingTasksBuilder_ == null) {
-          processingTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          processingTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   processingTasks_,
                   ((bitField0_ & 0x00000100) == 0x00000100),
@@ -13965,7 +14903,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> erroredTasksBuilder_;
 
       /**
@@ -14181,11 +15119,11 @@ public final class TestingModelV2 {
            getErroredTasksBuilderList() {
         return getErroredTasksFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getErroredTasksFieldBuilder() {
         if (erroredTasksBuilder_ == null) {
-          erroredTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          erroredTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   erroredTasks_,
                   ((bitField0_ & 0x00000200) == 0x00000200),
@@ -14205,7 +15143,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> completedTasksBuilder_;
 
       /**
@@ -14421,11 +15359,11 @@ public final class TestingModelV2 {
            getCompletedTasksBuilderList() {
         return getCompletedTasksFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getCompletedTasksFieldBuilder() {
         if (completedTasksBuilder_ == null) {
-          completedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          completedTasksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   completedTasks_,
                   ((bitField0_ & 0x00000400) == 0x00000400),
@@ -14758,11 +15696,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.Task}
    */
   public  static final class Task extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Task)
       TaskOrBuilder {
     // Use Task.newBuilder() to construct.
-    private Task(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Task(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Task() {
@@ -14822,7 +15760,8 @@ public final class TestingModelV2 {
                 dependencies_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.TaskDependency>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              dependencies_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.TaskDependency.parser(), extensionRegistry));
+              dependencies_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.TaskDependency.parser(), extensionRegistry));
               break;
             }
             case 34: {
@@ -14836,7 +15775,8 @@ public final class TestingModelV2 {
                 logs_ = new java.util.ArrayList<org.roylance.yaorm.TestingModelV2.Log>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              logs_.add(input.readMessage(org.roylance.yaorm.TestingModelV2.Log.parser(), extensionRegistry));
+              logs_.add(
+                  input.readMessage(org.roylance.yaorm.TestingModelV2.Log.parser(), extensionRegistry));
               break;
             }
             case 48: {
@@ -14899,7 +15839,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Task_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Task_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -15230,16 +16170,16 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, display_);
       }
       for (int i = 0; i < dependencies_.size(); i++) {
         output.writeMessage(3, dependencies_.get(i));
       }
       if (!getDagIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, dagId_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, dagId_);
       }
       for (int i = 0; i < logs_.size(); i++) {
         output.writeMessage(5, logs_.get(i));
@@ -15257,13 +16197,13 @@ public final class TestingModelV2 {
         output.writeInt64(9, duration_);
       }
       if (!getFirstContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 10, firstContextBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, firstContextBase64_);
       }
       if (!getSecondContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 11, secondContextBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, secondContextBase64_);
       }
       if (!getThirdContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 12, thirdContextBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, thirdContextBase64_);
       }
     }
 
@@ -15273,17 +16213,17 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, display_);
       }
       for (int i = 0; i < dependencies_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, dependencies_.get(i));
       }
       if (!getDagIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, dagId_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, dagId_);
       }
       for (int i = 0; i < logs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -15306,19 +16246,101 @@ public final class TestingModelV2 {
           .computeInt64Size(9, duration_);
       }
       if (!getFirstContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, firstContextBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, firstContextBase64_);
       }
       if (!getSecondContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(11, secondContextBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, secondContextBase64_);
       }
       if (!getThirdContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(12, thirdContextBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, thirdContextBase64_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.Task)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.Task other = (org.roylance.yaorm.TestingModelV2.Task) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDisplay()
+          .equals(other.getDisplay());
+      result = result && getDependenciesList()
+          .equals(other.getDependenciesList());
+      result = result && getDagId()
+          .equals(other.getDagId());
+      result = result && getLogsList()
+          .equals(other.getLogsList());
+      result = result && (getExecutionDate()
+          == other.getExecutionDate());
+      result = result && (getStartDate()
+          == other.getStartDate());
+      result = result && (getEndDate()
+          == other.getEndDate());
+      result = result && (getDuration()
+          == other.getDuration());
+      result = result && getFirstContextBase64()
+          .equals(other.getFirstContextBase64());
+      result = result && getSecondContextBase64()
+          .equals(other.getSecondContextBase64());
+      result = result && getThirdContextBase64()
+          .equals(other.getThirdContextBase64());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplay().hashCode();
+      if (getDependenciesCount() > 0) {
+        hash = (37 * hash) + DEPENDENCIES_FIELD_NUMBER;
+        hash = (53 * hash) + getDependenciesList().hashCode();
+      }
+      hash = (37 * hash) + DAG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getDagId().hashCode();
+      if (getLogsCount() > 0) {
+        hash = (37 * hash) + LOGS_FIELD_NUMBER;
+        hash = (53 * hash) + getLogsList().hashCode();
+      }
+      hash = (37 * hash) + EXECUTION_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getExecutionDate());
+      hash = (37 * hash) + START_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getStartDate());
+      hash = (37 * hash) + END_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEndDate());
+      hash = (37 * hash) + DURATION_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDuration());
+      hash = (37 * hash) + FIRST_CONTEXT_BASE_64_FIELD_NUMBER;
+      hash = (53 * hash) + getFirstContextBase64().hashCode();
+      hash = (37 * hash) + SECOND_CONTEXT_BASE_64_FIELD_NUMBER;
+      hash = (53 * hash) + getSecondContextBase64().hashCode();
+      hash = (37 * hash) + THIRD_CONTEXT_BASE_64_FIELD_NUMBER;
+      hash = (53 * hash) + getThirdContextBase64().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.Task parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15342,39 +16364,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.Task parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Task parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Task parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Task parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.Task parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.Task parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -15392,7 +16414,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -15400,7 +16422,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.Task}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Task)
         org.roylance.yaorm.TestingModelV2.TaskOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -15408,7 +16430,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Task_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_Task_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -15421,12 +16443,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getDependenciesFieldBuilder();
           getLogsFieldBuilder();
         }
@@ -15522,6 +16545,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.Task) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.Task)other);
@@ -15560,7 +16609,7 @@ public final class TestingModelV2 {
               dependencies_ = other.dependencies_;
               bitField0_ = (bitField0_ & ~0x00000004);
               dependenciesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getDependenciesFieldBuilder() : null;
             } else {
               dependenciesBuilder_.addAllMessages(other.dependencies_);
@@ -15590,7 +16639,7 @@ public final class TestingModelV2 {
               logs_ = other.logs_;
               bitField0_ = (bitField0_ & ~0x00000010);
               logsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getLogsFieldBuilder() : null;
             } else {
               logsBuilder_.addAllMessages(other.logs_);
@@ -15795,7 +16844,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.TaskDependency, org.roylance.yaorm.TestingModelV2.TaskDependency.Builder, org.roylance.yaorm.TestingModelV2.TaskDependencyOrBuilder> dependenciesBuilder_;
 
       /**
@@ -16011,11 +17060,11 @@ public final class TestingModelV2 {
            getDependenciesBuilderList() {
         return getDependenciesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.TaskDependency, org.roylance.yaorm.TestingModelV2.TaskDependency.Builder, org.roylance.yaorm.TestingModelV2.TaskDependencyOrBuilder> 
           getDependenciesFieldBuilder() {
         if (dependenciesBuilder_ == null) {
-          dependenciesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          dependenciesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.TaskDependency, org.roylance.yaorm.TestingModelV2.TaskDependency.Builder, org.roylance.yaorm.TestingModelV2.TaskDependencyOrBuilder>(
                   dependencies_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -16104,7 +17153,7 @@ public final class TestingModelV2 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Log, org.roylance.yaorm.TestingModelV2.Log.Builder, org.roylance.yaorm.TestingModelV2.LogOrBuilder> logsBuilder_;
 
       /**
@@ -16320,11 +17369,11 @@ public final class TestingModelV2 {
            getLogsBuilderList() {
         return getLogsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Log, org.roylance.yaorm.TestingModelV2.Log.Builder, org.roylance.yaorm.TestingModelV2.LogOrBuilder> 
           getLogsFieldBuilder() {
         if (logsBuilder_ == null) {
-          logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Log, org.roylance.yaorm.TestingModelV2.Log.Builder, org.roylance.yaorm.TestingModelV2.LogOrBuilder>(
                   logs_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -16722,11 +17771,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.TaskDependency}
    */
   public  static final class TaskDependency extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TaskDependency)
       TaskDependencyOrBuilder {
     // Use TaskDependency.newBuilder() to construct.
-    private TaskDependency(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private TaskDependency(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private TaskDependency() {
@@ -16787,7 +17836,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_TaskDependency_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -16875,10 +17924,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getParentTaskIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, parentTaskId_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, parentTaskId_);
       }
     }
 
@@ -16888,16 +17937,50 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getParentTaskIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, parentTaskId_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, parentTaskId_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.TaskDependency)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.TaskDependency other = (org.roylance.yaorm.TestingModelV2.TaskDependency) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getParentTaskId()
+          .equals(other.getParentTaskId());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + PARENT_TASK_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getParentTaskId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16921,39 +18004,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.TaskDependency parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -16971,7 +18054,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -16979,7 +18062,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.TaskDependency}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.TaskDependency)
         org.roylance.yaorm.TestingModelV2.TaskDependencyOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -16987,7 +18070,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_TaskDependency_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -17000,12 +18083,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -17042,6 +18126,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.TaskDependency) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.TaskDependency)other);
@@ -17347,11 +18457,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.AddTaskToDag}
    */
   public  static final class AddTaskToDag extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.AddTaskToDag)
       AddTaskToDagOrBuilder {
     // Use AddTaskToDag.newBuilder() to construct.
-    private AddTaskToDag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private AddTaskToDag(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private AddTaskToDag() {
@@ -17452,7 +18562,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -17650,7 +18760,7 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (parentTask_ != null) {
         output.writeMessage(2, getParentTask());
@@ -17659,13 +18769,13 @@ public final class TestingModelV2 {
         output.writeMessage(3, getNewTask());
       }
       if (!getFirstContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, firstContextBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, firstContextBase64_);
       }
       if (!getSecondContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, secondContextBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, secondContextBase64_);
       }
       if (!getThirdContextBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 6, thirdContextBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, thirdContextBase64_);
       }
     }
 
@@ -17675,7 +18785,7 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (parentTask_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -17686,19 +18796,79 @@ public final class TestingModelV2 {
           .computeMessageSize(3, getNewTask());
       }
       if (!getFirstContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, firstContextBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, firstContextBase64_);
       }
       if (!getSecondContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, secondContextBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, secondContextBase64_);
       }
       if (!getThirdContextBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, thirdContextBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, thirdContextBase64_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.AddTaskToDag)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.AddTaskToDag other = (org.roylance.yaorm.TestingModelV2.AddTaskToDag) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (hasParentTask() == other.hasParentTask());
+      if (hasParentTask()) {
+        result = result && getParentTask()
+            .equals(other.getParentTask());
+      }
+      result = result && (hasNewTask() == other.hasNewTask());
+      if (hasNewTask()) {
+        result = result && getNewTask()
+            .equals(other.getNewTask());
+      }
+      result = result && getFirstContextBase64()
+          .equals(other.getFirstContextBase64());
+      result = result && getSecondContextBase64()
+          .equals(other.getSecondContextBase64());
+      result = result && getThirdContextBase64()
+          .equals(other.getThirdContextBase64());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      if (hasParentTask()) {
+        hash = (37 * hash) + PARENT_TASK_FIELD_NUMBER;
+        hash = (53 * hash) + getParentTask().hashCode();
+      }
+      if (hasNewTask()) {
+        hash = (37 * hash) + NEW_TASK_FIELD_NUMBER;
+        hash = (53 * hash) + getNewTask().hashCode();
+      }
+      hash = (37 * hash) + FIRST_CONTEXT_BASE_64_FIELD_NUMBER;
+      hash = (53 * hash) + getFirstContextBase64().hashCode();
+      hash = (37 * hash) + SECOND_CONTEXT_BASE_64_FIELD_NUMBER;
+      hash = (53 * hash) + getSecondContextBase64().hashCode();
+      hash = (37 * hash) + THIRD_CONTEXT_BASE_64_FIELD_NUMBER;
+      hash = (53 * hash) + getThirdContextBase64().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17722,39 +18892,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.AddTaskToDag parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -17772,7 +18942,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -17780,7 +18950,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.AddTaskToDag}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.AddTaskToDag)
         org.roylance.yaorm.TestingModelV2.AddTaskToDagOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -17788,7 +18958,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -17801,12 +18971,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -17871,6 +19042,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.AddTaskToDag) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.AddTaskToDag)other);
@@ -18000,7 +19197,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.Task parentTask_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> parentTaskBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
@@ -18102,11 +19299,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getParentTaskFieldBuilder() {
         if (parentTaskBuilder_ == null) {
-          parentTaskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          parentTaskBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   getParentTask(),
                   getParentForChildren(),
@@ -18117,7 +19314,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.Task newTask_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> newTaskBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
@@ -18219,11 +19416,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getNewTaskFieldBuilder() {
         if (newTaskBuilder_ == null) {
-          newTaskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          newTaskBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   getNewTask(),
                   getParentForChildren(),
@@ -18531,7 +19728,7 @@ public final class TestingModelV2 {
     /**
      * <code>repeated string logs = 4;</code>
      */
-    com.google.protobuf.ProtocolStringList
+    java.util.List<java.lang.String>
         getLogsList();
     /**
      * <code>repeated string logs = 4;</code>
@@ -18556,11 +19753,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.CompleteTask}
    */
   public  static final class CompleteTask extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.CompleteTask)
       CompleteTaskOrBuilder {
     // Use CompleteTask.newBuilder() to construct.
-    private CompleteTask(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CompleteTask(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private CompleteTask() {
@@ -18659,7 +19856,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_CompleteTask_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -18794,7 +19991,7 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (task_ != null) {
         output.writeMessage(2, getTask());
@@ -18803,7 +20000,7 @@ public final class TestingModelV2 {
         output.writeMessage(3, getWorkerConfiguration());
       }
       for (int i = 0; i < logs_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, logs_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, logs_.getRaw(i));
       }
       if (isError_ != false) {
         output.writeBool(5, isError_);
@@ -18816,7 +20013,7 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (task_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -18843,6 +20040,65 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.CompleteTask)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.CompleteTask other = (org.roylance.yaorm.TestingModelV2.CompleteTask) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (hasTask() == other.hasTask());
+      if (hasTask()) {
+        result = result && getTask()
+            .equals(other.getTask());
+      }
+      result = result && (hasWorkerConfiguration() == other.hasWorkerConfiguration());
+      if (hasWorkerConfiguration()) {
+        result = result && getWorkerConfiguration()
+            .equals(other.getWorkerConfiguration());
+      }
+      result = result && getLogsList()
+          .equals(other.getLogsList());
+      result = result && (getIsError()
+          == other.getIsError());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      if (hasTask()) {
+        hash = (37 * hash) + TASK_FIELD_NUMBER;
+        hash = (53 * hash) + getTask().hashCode();
+      }
+      if (hasWorkerConfiguration()) {
+        hash = (37 * hash) + WORKER_CONFIGURATION_FIELD_NUMBER;
+        hash = (53 * hash) + getWorkerConfiguration().hashCode();
+      }
+      if (getLogsCount() > 0) {
+        hash = (37 * hash) + LOGS_FIELD_NUMBER;
+        hash = (53 * hash) + getLogsList().hashCode();
+      }
+      hash = (37 * hash) + IS_ERROR_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsError());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18866,39 +20122,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.CompleteTask parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -18916,7 +20172,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -18924,7 +20180,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.CompleteTask}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.CompleteTask)
         org.roylance.yaorm.TestingModelV2.CompleteTaskOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -18932,7 +20188,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_CompleteTask_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -18945,12 +20201,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -19019,6 +20276,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.CompleteTask) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.CompleteTask)other);
@@ -19150,7 +20433,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.Task task_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> taskBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Task task = 2;</code>
@@ -19252,11 +20535,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.Task task = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder> 
           getTaskFieldBuilder() {
         if (taskBuilder_ == null) {
-          taskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          taskBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.Task, org.roylance.yaorm.TestingModelV2.Task.Builder, org.roylance.yaorm.TestingModelV2.TaskOrBuilder>(
                   getTask(),
                   getParentForChildren(),
@@ -19267,7 +20550,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.WorkerConfiguration workerConfiguration_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.WorkerConfiguration, org.roylance.yaorm.TestingModelV2.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModelV2.WorkerConfigurationOrBuilder> workerConfigurationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
@@ -19369,11 +20652,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.WorkerConfiguration, org.roylance.yaorm.TestingModelV2.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModelV2.WorkerConfigurationOrBuilder> 
           getWorkerConfigurationFieldBuilder() {
         if (workerConfigurationBuilder_ == null) {
-          workerConfigurationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          workerConfigurationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.WorkerConfiguration, org.roylance.yaorm.TestingModelV2.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModelV2.WorkerConfigurationOrBuilder>(
                   getWorkerConfiguration(),
                   getParentForChildren(),
@@ -19579,11 +20862,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.User}
    */
   public  static final class User extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.User)
       UserOrBuilder {
     // Use User.newBuilder() to construct.
-    private User(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private User() {
@@ -19644,7 +20927,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_User_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_User_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -19732,10 +21015,10 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, display_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, display_);
       }
     }
 
@@ -19745,16 +21028,50 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, display_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, display_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.User)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.User other = (org.roylance.yaorm.TestingModelV2.User) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDisplay()
+          .equals(other.getDisplay());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplay().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.User parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19778,39 +21095,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.User parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.User parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.User parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.User parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.User parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.User parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -19828,7 +21145,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -19836,7 +21153,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.User}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.User)
         org.roylance.yaorm.TestingModelV2.UserOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -19844,7 +21161,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_User_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_User_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -19857,12 +21174,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -19899,6 +21217,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.User) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.User)other);
@@ -20161,11 +21505,11 @@ public final class TestingModelV2 {
    * Protobuf type {@code org.roylance.yaorm.UserDevice}
    */
   public  static final class UserDevice extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UserDevice)
       UserDeviceOrBuilder {
     // Use UserDevice.newBuilder() to construct.
-    private UserDevice(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private UserDevice(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private UserDevice() {
@@ -20232,7 +21576,7 @@ public final class TestingModelV2 {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_UserDevice_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_UserDevice_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -20307,7 +21651,7 @@ public final class TestingModelV2 {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (user_ != null) {
         output.writeMessage(2, getUser());
@@ -20320,7 +21664,7 @@ public final class TestingModelV2 {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (user_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -20331,6 +21675,45 @@ public final class TestingModelV2 {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.TestingModelV2.UserDevice)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.TestingModelV2.UserDevice other = (org.roylance.yaorm.TestingModelV2.UserDevice) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (hasUser() == other.hasUser());
+      if (hasUser()) {
+        result = result && getUser()
+            .equals(other.getUser());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      if (hasUser()) {
+        hash = (37 * hash) + USER_FIELD_NUMBER;
+        hash = (53 * hash) + getUser().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20354,39 +21737,39 @@ public final class TestingModelV2 {
     }
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.TestingModelV2.UserDevice parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -20404,7 +21787,7 @@ public final class TestingModelV2 {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -20412,7 +21795,7 @@ public final class TestingModelV2 {
      * Protobuf type {@code org.roylance.yaorm.UserDevice}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.UserDevice)
         org.roylance.yaorm.TestingModelV2.UserDeviceOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -20420,7 +21803,7 @@ public final class TestingModelV2 {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_UserDevice_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.TestingModelV2.internal_static_org_roylance_yaorm_UserDevice_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -20433,12 +21816,13 @@ public final class TestingModelV2 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -20483,6 +21867,32 @@ public final class TestingModelV2 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.TestingModelV2.UserDevice) {
           return mergeFrom((org.roylance.yaorm.TestingModelV2.UserDevice)other);
@@ -20597,7 +22007,7 @@ public final class TestingModelV2 {
       }
 
       private org.roylance.yaorm.TestingModelV2.User user_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.User, org.roylance.yaorm.TestingModelV2.User.Builder, org.roylance.yaorm.TestingModelV2.UserOrBuilder> userBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.User user = 2;</code>
@@ -20699,11 +22109,11 @@ public final class TestingModelV2 {
       /**
        * <code>optional .org.roylance.yaorm.User user = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV2.User, org.roylance.yaorm.TestingModelV2.User.Builder, org.roylance.yaorm.TestingModelV2.UserOrBuilder> 
           getUserFieldBuilder() {
         if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.TestingModelV2.User, org.roylance.yaorm.TestingModelV2.User.Builder, org.roylance.yaorm.TestingModelV2.UserOrBuilder>(
                   getUser(),
                   getParentForChildren(),
@@ -20764,87 +22174,87 @@ public final class TestingModelV2 {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Child_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Child_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubChild_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubSubChild_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_SubSubSubChild_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Person_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Person_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Address_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Address_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Phone_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Phone_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Log_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Log_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Dag_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Dag_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Task_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Task_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_TaskDependency_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_AddTaskToDag_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_CompleteTask_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_User_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_User_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UserDevice_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_UserDevice_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -20951,103 +22361,103 @@ public final class TestingModelV2 {
     internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_org_roylance_yaorm_SimpleInsertTest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_SimpleInsertTest_descriptor,
         new java.lang.String[] { "Id", "Display", "TestInt32", "TestInt64", "TestUint32", "TestUint64", "TestSint32", "TestSint64", "TestFixed32", "TestFixed64", "TestSfixed32", "TestSfixed64", "TestBool", "TestBytes", "TestDouble", "TestFloat", "CoolType", "Child", "CoolTypes", "Childs", });
     internal_static_org_roylance_yaorm_Child_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_org_roylance_yaorm_Child_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Child_descriptor,
         new java.lang.String[] { "Id", "TestDisplay", "SubChild", "SubSubSubChild", });
     internal_static_org_roylance_yaorm_SubChild_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_roylance_yaorm_SubChild_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_SubChild_descriptor,
         new java.lang.String[] { "Id", "AnotherTestDisplay", "CoolTest", "SubSubChild", });
     internal_static_org_roylance_yaorm_SubSubChild_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_org_roylance_yaorm_SubSubChild_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_SubSubChild_descriptor,
         new java.lang.String[] { "Id", "SubSubDisplay", "SubSubSubChilds", });
     internal_static_org_roylance_yaorm_SubSubSubChild_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_org_roylance_yaorm_SubSubSubChild_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_SubSubSubChild_descriptor,
         new java.lang.String[] { "Id", "SubSubSubDisplay", });
     internal_static_org_roylance_yaorm_Person_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_org_roylance_yaorm_Person_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Person_descriptor,
         new java.lang.String[] { "Id", "FirstName", "LastName", "Addresses", "PhoneNumbers", "Mother", "Father", "Friends", });
     internal_static_org_roylance_yaorm_Address_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_org_roylance_yaorm_Address_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Address_descriptor,
         new java.lang.String[] { "Id", "Address", "City", "State", "Zip", });
     internal_static_org_roylance_yaorm_Phone_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_org_roylance_yaorm_Phone_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Phone_descriptor,
         new java.lang.String[] { "Id", "Number", });
     internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_org_roylance_yaorm_WorkerConfiguration_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_WorkerConfiguration_descriptor,
         new java.lang.String[] { "Id", "Ip", "Port", "Host", "InitializedTime", "State", });
     internal_static_org_roylance_yaorm_Log_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_org_roylance_yaorm_Log_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Log_descriptor,
         new java.lang.String[] { "Id", "Message", });
     internal_static_org_roylance_yaorm_Dag_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_org_roylance_yaorm_Dag_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Dag_descriptor,
         new java.lang.String[] { "Id", "Display", "FlattenedTasks", "ExecutionDate", "StartDate", "EndDate", "Duration", "UncompletedTasks", "ProcessingTasks", "ErroredTasks", "CompletedTasks", "NewField1", "NewField2", });
     internal_static_org_roylance_yaorm_Task_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_org_roylance_yaorm_Task_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Task_descriptor,
         new java.lang.String[] { "Id", "Display", "Dependencies", "DagId", "Logs", "ExecutionDate", "StartDate", "EndDate", "Duration", "FirstContextBase64", "SecondContextBase64", "ThirdContextBase64", });
     internal_static_org_roylance_yaorm_TaskDependency_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_org_roylance_yaorm_TaskDependency_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_TaskDependency_descriptor,
         new java.lang.String[] { "Id", "ParentTaskId", });
     internal_static_org_roylance_yaorm_AddTaskToDag_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_org_roylance_yaorm_AddTaskToDag_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_AddTaskToDag_descriptor,
         new java.lang.String[] { "Id", "ParentTask", "NewTask", "FirstContextBase64", "SecondContextBase64", "ThirdContextBase64", });
     internal_static_org_roylance_yaorm_CompleteTask_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_org_roylance_yaorm_CompleteTask_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_CompleteTask_descriptor,
         new java.lang.String[] { "Id", "Task", "WorkerConfiguration", "Logs", "IsError", });
     internal_static_org_roylance_yaorm_User_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_org_roylance_yaorm_User_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_User_descriptor,
         new java.lang.String[] { "Id", "Display", });
     internal_static_org_roylance_yaorm_UserDevice_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_org_roylance_yaorm_UserDevice_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UserDevice_descriptor,
         new java.lang.String[] { "Id", "User", });
   }

@@ -6,7 +6,13 @@ package org.roylance.yaorm;
 public final class NestedEnumTest {
   private NestedEnumTest() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code org.roylance.yaorm.ProtobufType}
@@ -484,11 +490,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Customer}
    */
   public  static final class Customer extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Customer)
       CustomerOrBuilder {
     // Use Customer.newBuilder() to construct.
-    private Customer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Customer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Customer() {
@@ -555,7 +561,8 @@ public final class NestedEnumTest {
                 projections_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.Projection>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              projections_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.Projection.parser(), extensionRegistry));
+              projections_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.Projection.parser(), extensionRegistry));
               break;
             }
             case 42: {
@@ -563,7 +570,8 @@ public final class NestedEnumTest {
                 datasets_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataSet>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              datasets_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataSet.parser(), extensionRegistry));
+              datasets_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataSet.parser(), extensionRegistry));
               break;
             }
             case 50: {
@@ -571,7 +579,8 @@ public final class NestedEnumTest {
                 transformations_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.Transformation>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              transformations_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.Transformation.parser(), extensionRegistry));
+              transformations_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.Transformation.parser(), extensionRegistry));
               break;
             }
             case 56: {
@@ -604,7 +613,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Customer_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Customer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -828,10 +837,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (stagingConnection_ != null) {
         output.writeMessage(3, getStagingConnection());
@@ -856,10 +865,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (stagingConnection_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -886,6 +895,72 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Customer)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Customer other = (org.roylance.yaorm.NestedEnumTest.Customer) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && (hasStagingConnection() == other.hasStagingConnection());
+      if (hasStagingConnection()) {
+        result = result && getStagingConnection()
+            .equals(other.getStagingConnection());
+      }
+      result = result && getProjectionsList()
+          .equals(other.getProjectionsList());
+      result = result && getDatasetsList()
+          .equals(other.getDatasetsList());
+      result = result && getTransformationsList()
+          .equals(other.getTransformationsList());
+      result = result && (getBuildLandingDag()
+          == other.getBuildLandingDag());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (hasStagingConnection()) {
+        hash = (37 * hash) + STAGING_CONNECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getStagingConnection().hashCode();
+      }
+      if (getProjectionsCount() > 0) {
+        hash = (37 * hash) + PROJECTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getProjectionsList().hashCode();
+      }
+      if (getDatasetsCount() > 0) {
+        hash = (37 * hash) + DATASETS_FIELD_NUMBER;
+        hash = (53 * hash) + getDatasetsList().hashCode();
+      }
+      if (getTransformationsCount() > 0) {
+        hash = (37 * hash) + TRANSFORMATIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getTransformationsList().hashCode();
+      }
+      hash = (37 * hash) + BUILD_LANDING_DAG_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBuildLandingDag());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -909,39 +984,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -959,7 +1034,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -967,7 +1042,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Customer}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Customer)
         org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -975,7 +1050,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Customer_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Customer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -988,12 +1063,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getProjectionsFieldBuilder();
           getDatasetsFieldBuilder();
           getTransformationsFieldBuilder();
@@ -1095,6 +1171,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Customer) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Customer)other);
@@ -1136,7 +1238,7 @@ public final class NestedEnumTest {
               projections_ = other.projections_;
               bitField0_ = (bitField0_ & ~0x00000008);
               projectionsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getProjectionsFieldBuilder() : null;
             } else {
               projectionsBuilder_.addAllMessages(other.projections_);
@@ -1162,7 +1264,7 @@ public final class NestedEnumTest {
               datasets_ = other.datasets_;
               bitField0_ = (bitField0_ & ~0x00000010);
               datasetsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getDatasetsFieldBuilder() : null;
             } else {
               datasetsBuilder_.addAllMessages(other.datasets_);
@@ -1188,7 +1290,7 @@ public final class NestedEnumTest {
               transformations_ = other.transformations_;
               bitField0_ = (bitField0_ & ~0x00000020);
               transformationsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTransformationsFieldBuilder() : null;
             } else {
               transformationsBuilder_.addAllMessages(other.transformations_);
@@ -1364,7 +1466,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.ConnectionInformation stagingConnection_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> stagingConnectionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
@@ -1466,11 +1568,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
           getStagingConnectionFieldBuilder() {
         if (stagingConnectionBuilder_ == null) {
-          stagingConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          stagingConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder>(
                   getStagingConnection(),
                   getParentForChildren(),
@@ -1489,7 +1591,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder> projectionsBuilder_;
 
       /**
@@ -1705,11 +1807,11 @@ public final class NestedEnumTest {
            getProjectionsBuilderList() {
         return getProjectionsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder> 
           getProjectionsFieldBuilder() {
         if (projectionsBuilder_ == null) {
-          projectionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          projectionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder>(
                   projections_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -1729,7 +1831,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder> datasetsBuilder_;
 
       /**
@@ -1945,11 +2047,11 @@ public final class NestedEnumTest {
            getDatasetsBuilderList() {
         return getDatasetsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder> 
           getDatasetsFieldBuilder() {
         if (datasetsBuilder_ == null) {
-          datasetsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          datasetsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder>(
                   datasets_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -1969,7 +2071,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationsBuilder_;
 
       /**
@@ -2185,11 +2287,11 @@ public final class NestedEnumTest {
            getTransformationsBuilderList() {
         return getTransformationsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
           getTransformationsFieldBuilder() {
         if (transformationsBuilder_ == null) {
-          transformationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          transformationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder>(
                   transformations_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
@@ -2430,11 +2532,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Projection}
    */
   public  static final class Projection extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Projection)
       ProjectionOrBuilder {
     // Use Projection.newBuilder() to construct.
-    private Projection(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Projection(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Projection() {
@@ -2577,7 +2679,8 @@ public final class NestedEnumTest {
                 tables_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.ProjectionTable>();
                 mutable_bitField0_ |= 0x00002000;
               }
-              tables_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.ProjectionTable.parser(), extensionRegistry));
+              tables_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.ProjectionTable.parser(), extensionRegistry));
               break;
             }
           }
@@ -2599,7 +2702,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Projection_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Projection_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -2983,22 +3086,22 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDestinationDatabaseKeyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, destinationDatabaseKey_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, destinationDatabaseKey_);
       }
       if (!getEcrStartDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, ecrStartDate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ecrStartDate_);
       }
       if (!getEcrEndDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, ecrEndDate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ecrEndDate_);
       }
       if (!getAcgStartDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, acgStartDate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, acgStartDate_);
       }
       if (!getAcgEndDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 6, acgEndDate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, acgEndDate_);
       }
       if (destinationDatabaseConnection_ != null) {
         output.writeMessage(7, getDestinationDatabaseConnection());
@@ -3010,7 +3113,7 @@ public final class NestedEnumTest {
         output.writeMessage(9, getS3Connection());
       }
       if (!getHermesBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 10, hermes_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, hermes_);
       }
       if (buildRedshiftDag_ != false) {
         output.writeBool(11, buildRedshiftDag_);
@@ -3032,22 +3135,22 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDestinationDatabaseKeyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, destinationDatabaseKey_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, destinationDatabaseKey_);
       }
       if (!getEcrStartDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, ecrStartDate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ecrStartDate_);
       }
       if (!getEcrEndDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, ecrEndDate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ecrEndDate_);
       }
       if (!getAcgStartDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, acgStartDate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, acgStartDate_);
       }
       if (!getAcgEndDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, acgEndDate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, acgEndDate_);
       }
       if (destinationDatabaseConnection_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -3062,7 +3165,7 @@ public final class NestedEnumTest {
           .computeMessageSize(9, getS3Connection());
       }
       if (!getHermesBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, hermes_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, hermes_);
       }
       if (buildRedshiftDag_ != false) {
         size += com.google.protobuf.CodedOutputStream
@@ -3085,6 +3188,108 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Projection)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Projection other = (org.roylance.yaorm.NestedEnumTest.Projection) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDestinationDatabaseKey()
+          .equals(other.getDestinationDatabaseKey());
+      result = result && getEcrStartDate()
+          .equals(other.getEcrStartDate());
+      result = result && getEcrEndDate()
+          .equals(other.getEcrEndDate());
+      result = result && getAcgStartDate()
+          .equals(other.getAcgStartDate());
+      result = result && getAcgEndDate()
+          .equals(other.getAcgEndDate());
+      result = result && (hasDestinationDatabaseConnection() == other.hasDestinationDatabaseConnection());
+      if (hasDestinationDatabaseConnection()) {
+        result = result && getDestinationDatabaseConnection()
+            .equals(other.getDestinationDatabaseConnection());
+      }
+      result = result && (hasRedshiftConnection() == other.hasRedshiftConnection());
+      if (hasRedshiftConnection()) {
+        result = result && getRedshiftConnection()
+            .equals(other.getRedshiftConnection());
+      }
+      result = result && (hasS3Connection() == other.hasS3Connection());
+      if (hasS3Connection()) {
+        result = result && getS3Connection()
+            .equals(other.getS3Connection());
+      }
+      result = result && getHermes()
+          .equals(other.getHermes());
+      result = result && (getBuildRedshiftDag()
+          == other.getBuildRedshiftDag());
+      result = result && (getBuildDag()
+          == other.getBuildDag());
+      result = result && (getIsDemo()
+          == other.getIsDemo());
+      result = result && getTablesList()
+          .equals(other.getTablesList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DESTINATION_DATABASE_KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getDestinationDatabaseKey().hashCode();
+      hash = (37 * hash) + ECR_START_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getEcrStartDate().hashCode();
+      hash = (37 * hash) + ECR_END_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getEcrEndDate().hashCode();
+      hash = (37 * hash) + ACG_START_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getAcgStartDate().hashCode();
+      hash = (37 * hash) + ACG_END_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getAcgEndDate().hashCode();
+      if (hasDestinationDatabaseConnection()) {
+        hash = (37 * hash) + DESTINATION_DATABASE_CONNECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getDestinationDatabaseConnection().hashCode();
+      }
+      if (hasRedshiftConnection()) {
+        hash = (37 * hash) + REDSHIFT_CONNECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getRedshiftConnection().hashCode();
+      }
+      if (hasS3Connection()) {
+        hash = (37 * hash) + S3_CONNECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getS3Connection().hashCode();
+      }
+      hash = (37 * hash) + HERMES_FIELD_NUMBER;
+      hash = (53 * hash) + getHermes().hashCode();
+      hash = (37 * hash) + BUILD_REDSHIFT_DAG_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBuildRedshiftDag());
+      hash = (37 * hash) + BUILD_DAG_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBuildDag());
+      hash = (37 * hash) + IS_DEMO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsDemo());
+      if (getTablesCount() > 0) {
+        hash = (37 * hash) + TABLES_FIELD_NUMBER;
+        hash = (53 * hash) + getTablesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3108,39 +3313,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -3158,7 +3363,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3166,7 +3371,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Projection}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Projection)
         org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -3174,7 +3379,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Projection_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Projection_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3187,12 +3392,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getTablesFieldBuilder();
         }
       }
@@ -3305,6 +3511,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Projection) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Projection)other);
@@ -3381,7 +3613,7 @@ public final class NestedEnumTest {
               tables_ = other.tables_;
               bitField0_ = (bitField0_ & ~0x00002000);
               tablesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTablesFieldBuilder() : null;
             } else {
               tablesBuilder_.addAllMessages(other.tables_);
@@ -3830,7 +4062,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.ConnectionInformation destinationDatabaseConnection_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> destinationDatabaseConnectionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
@@ -3932,11 +4164,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
           getDestinationDatabaseConnectionFieldBuilder() {
         if (destinationDatabaseConnectionBuilder_ == null) {
-          destinationDatabaseConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          destinationDatabaseConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder>(
                   getDestinationDatabaseConnection(),
                   getParentForChildren(),
@@ -3947,7 +4179,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.ConnectionInformation redshiftConnection_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> redshiftConnectionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
@@ -4049,11 +4281,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
           getRedshiftConnectionFieldBuilder() {
         if (redshiftConnectionBuilder_ == null) {
-          redshiftConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          redshiftConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder>(
                   getRedshiftConnection(),
                   getParentForChildren(),
@@ -4064,7 +4296,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.ConnectionInformation s3Connection_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> s3ConnectionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
@@ -4166,11 +4398,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
           getS3ConnectionFieldBuilder() {
         if (s3ConnectionBuilder_ == null) {
-          s3ConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          s3ConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder>(
                   getS3Connection(),
                   getParentForChildren(),
@@ -4336,7 +4568,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ProjectionTable, org.roylance.yaorm.NestedEnumTest.ProjectionTable.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionTableOrBuilder> tablesBuilder_;
 
       /**
@@ -4552,11 +4784,11 @@ public final class NestedEnumTest {
            getTablesBuilderList() {
         return getTablesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ProjectionTable, org.roylance.yaorm.NestedEnumTest.ProjectionTable.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionTableOrBuilder> 
           getTablesFieldBuilder() {
         if (tablesBuilder_ == null) {
-          tablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          tablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ProjectionTable, org.roylance.yaorm.NestedEnumTest.ProjectionTable.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionTableOrBuilder>(
                   tables_,
                   ((bitField0_ & 0x00002000) == 0x00002000),
@@ -4669,11 +4901,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ProjectionTable}
    */
   public  static final class ProjectionTable extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ProjectionTable)
       ProjectionTableOrBuilder {
     // Use ProjectionTable.newBuilder() to construct.
-    private ProjectionTable(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ProjectionTable(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ProjectionTable() {
@@ -4760,7 +4992,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ProjectionTable_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ProjectionTable_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -4890,7 +5122,7 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (projection_ != null) {
         output.writeMessage(2, getProjection());
@@ -4899,7 +5131,7 @@ public final class NestedEnumTest {
         output.writeMessage(3, getMysqlRedshiftTable());
       }
       if (!getTableNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, tableName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tableName_);
       }
     }
 
@@ -4909,7 +5141,7 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (projection_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -4920,13 +5152,65 @@ public final class NestedEnumTest {
           .computeMessageSize(3, getMysqlRedshiftTable());
       }
       if (!getTableNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, tableName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tableName_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ProjectionTable)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ProjectionTable other = (org.roylance.yaorm.NestedEnumTest.ProjectionTable) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (hasProjection() == other.hasProjection());
+      if (hasProjection()) {
+        result = result && getProjection()
+            .equals(other.getProjection());
+      }
+      result = result && (hasMysqlRedshiftTable() == other.hasMysqlRedshiftTable());
+      if (hasMysqlRedshiftTable()) {
+        result = result && getMysqlRedshiftTable()
+            .equals(other.getMysqlRedshiftTable());
+      }
+      result = result && getTableName()
+          .equals(other.getTableName());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      if (hasProjection()) {
+        hash = (37 * hash) + PROJECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getProjection().hashCode();
+      }
+      if (hasMysqlRedshiftTable()) {
+        hash = (37 * hash) + MYSQL_REDSHIFT_TABLE_FIELD_NUMBER;
+        hash = (53 * hash) + getMysqlRedshiftTable().hashCode();
+      }
+      hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getTableName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4950,39 +5234,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -5000,7 +5284,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5008,7 +5292,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ProjectionTable}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ProjectionTable)
         org.roylance.yaorm.NestedEnumTest.ProjectionTableOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -5016,7 +5300,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ProjectionTable_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ProjectionTable_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -5029,12 +5313,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -5093,6 +5378,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ProjectionTable) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ProjectionTable)other);
@@ -5214,7 +5525,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Projection projection_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder> projectionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
@@ -5316,11 +5627,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder> 
           getProjectionFieldBuilder() {
         if (projectionBuilder_ == null) {
-          projectionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          projectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder>(
                   getProjection(),
                   getParentForChildren(),
@@ -5331,7 +5642,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable mysqlRedshiftTable_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder> mysqlRedshiftTableBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
@@ -5433,11 +5744,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder> 
           getMysqlRedshiftTableFieldBuilder() {
         if (mysqlRedshiftTableBuilder_ == null) {
-          mysqlRedshiftTableBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          mysqlRedshiftTableBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder>(
                   getMysqlRedshiftTable(),
                   getParentForChildren(),
@@ -5663,11 +5974,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Transformation}
    */
   public  static final class Transformation extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Transformation)
       TransformationOrBuilder {
     // Use Transformation.newBuilder() to construct.
-    private Transformation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Transformation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Transformation() {
@@ -5726,7 +6037,8 @@ public final class NestedEnumTest {
                 inputs_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.Input>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              inputs_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.Input.parser(), extensionRegistry));
+              inputs_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.Input.parser(), extensionRegistry));
               break;
             }
             case 42: {
@@ -5734,7 +6046,8 @@ public final class NestedEnumTest {
                 outputs_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.Output>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              outputs_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.Output.parser(), extensionRegistry));
+              outputs_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.Output.parser(), extensionRegistry));
               break;
             }
             case 50: {
@@ -5772,7 +6085,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Transformation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Transformation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -5986,13 +6299,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (!getRawSqlBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, rawSql_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, rawSql_);
       }
       for (int i = 0; i < inputs_.size(); i++) {
         output.writeMessage(4, inputs_.get(i));
@@ -6011,13 +6324,13 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (!getRawSqlBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, rawSql_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, rawSql_);
       }
       for (int i = 0; i < inputs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -6036,6 +6349,65 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Transformation)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Transformation other = (org.roylance.yaorm.NestedEnumTest.Transformation) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getRawSql()
+          .equals(other.getRawSql());
+      result = result && getInputsList()
+          .equals(other.getInputsList());
+      result = result && getOutputsList()
+          .equals(other.getOutputsList());
+      result = result && (hasCustomer() == other.hasCustomer());
+      if (hasCustomer()) {
+        result = result && getCustomer()
+            .equals(other.getCustomer());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + RAW_SQL_FIELD_NUMBER;
+      hash = (53 * hash) + getRawSql().hashCode();
+      if (getInputsCount() > 0) {
+        hash = (37 * hash) + INPUTS_FIELD_NUMBER;
+        hash = (53 * hash) + getInputsList().hashCode();
+      }
+      if (getOutputsCount() > 0) {
+        hash = (37 * hash) + OUTPUTS_FIELD_NUMBER;
+        hash = (53 * hash) + getOutputsList().hashCode();
+      }
+      if (hasCustomer()) {
+        hash = (37 * hash) + CUSTOMER_FIELD_NUMBER;
+        hash = (53 * hash) + getCustomer().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6059,39 +6431,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -6109,7 +6481,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -6117,7 +6489,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Transformation}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Transformation)
         org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -6125,7 +6497,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Transformation_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Transformation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -6138,12 +6510,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getInputsFieldBuilder();
           getOutputsFieldBuilder();
         }
@@ -6229,6 +6602,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Transformation) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Transformation)other);
@@ -6271,7 +6670,7 @@ public final class NestedEnumTest {
               inputs_ = other.inputs_;
               bitField0_ = (bitField0_ & ~0x00000008);
               inputsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getInputsFieldBuilder() : null;
             } else {
               inputsBuilder_.addAllMessages(other.inputs_);
@@ -6297,7 +6696,7 @@ public final class NestedEnumTest {
               outputs_ = other.outputs_;
               bitField0_ = (bitField0_ & ~0x00000010);
               outputsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getOutputsFieldBuilder() : null;
             } else {
               outputsBuilder_.addAllMessages(other.outputs_);
@@ -6550,7 +6949,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Input, org.roylance.yaorm.NestedEnumTest.Input.Builder, org.roylance.yaorm.NestedEnumTest.InputOrBuilder> inputsBuilder_;
 
       /**
@@ -6766,11 +7165,11 @@ public final class NestedEnumTest {
            getInputsBuilderList() {
         return getInputsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Input, org.roylance.yaorm.NestedEnumTest.Input.Builder, org.roylance.yaorm.NestedEnumTest.InputOrBuilder> 
           getInputsFieldBuilder() {
         if (inputsBuilder_ == null) {
-          inputsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          inputsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Input, org.roylance.yaorm.NestedEnumTest.Input.Builder, org.roylance.yaorm.NestedEnumTest.InputOrBuilder>(
                   inputs_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -6790,7 +7189,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> outputsBuilder_;
 
       /**
@@ -7006,11 +7405,11 @@ public final class NestedEnumTest {
            getOutputsBuilderList() {
         return getOutputsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> 
           getOutputsFieldBuilder() {
         if (outputsBuilder_ == null) {
-          outputsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          outputsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder>(
                   outputs_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -7022,7 +7421,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Customer customer_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder> customerBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
@@ -7124,11 +7523,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder> 
           getCustomerFieldBuilder() {
         if (customerBuilder_ == null) {
-          customerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          customerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder>(
                   getCustomer(),
                   getParentForChildren(),
@@ -7253,11 +7652,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Input}
    */
   public  static final class Input extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Input)
       InputOrBuilder {
     // Use Input.newBuilder() to construct.
-    private Input(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Input(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Input() {
@@ -7357,7 +7756,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Input_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Input_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -7508,7 +7907,7 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (transformation_ != null) {
         output.writeMessage(2, getTransformation());
@@ -7520,7 +7919,7 @@ public final class NestedEnumTest {
         output.writeMessage(4, getDataset());
       }
       if (!getDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, display_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, display_);
       }
     }
 
@@ -7530,7 +7929,7 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (transformation_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -7545,13 +7944,74 @@ public final class NestedEnumTest {
           .computeMessageSize(4, getDataset());
       }
       if (!getDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, display_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, display_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Input)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Input other = (org.roylance.yaorm.NestedEnumTest.Input) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (hasTransformation() == other.hasTransformation());
+      if (hasTransformation()) {
+        result = result && getTransformation()
+            .equals(other.getTransformation());
+      }
+      result = result && (hasInputTransformation() == other.hasInputTransformation());
+      if (hasInputTransformation()) {
+        result = result && getInputTransformation()
+            .equals(other.getInputTransformation());
+      }
+      result = result && (hasDataset() == other.hasDataset());
+      if (hasDataset()) {
+        result = result && getDataset()
+            .equals(other.getDataset());
+      }
+      result = result && getDisplay()
+          .equals(other.getDisplay());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      if (hasTransformation()) {
+        hash = (37 * hash) + TRANSFORMATION_FIELD_NUMBER;
+        hash = (53 * hash) + getTransformation().hashCode();
+      }
+      if (hasInputTransformation()) {
+        hash = (37 * hash) + INPUT_TRANSFORMATION_FIELD_NUMBER;
+        hash = (53 * hash) + getInputTransformation().hashCode();
+      }
+      if (hasDataset()) {
+        hash = (37 * hash) + DATASET_FIELD_NUMBER;
+        hash = (53 * hash) + getDataset().hashCode();
+      }
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplay().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7575,39 +8035,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Input parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Input parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -7625,7 +8085,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -7633,7 +8093,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Input}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Input)
         org.roylance.yaorm.NestedEnumTest.InputOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -7641,7 +8101,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Input_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Input_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -7654,12 +8114,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -7729,6 +8190,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Input) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Input)other);
@@ -7853,7 +8340,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Transformation transformation_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
@@ -7955,11 +8442,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
           getTransformationFieldBuilder() {
         if (transformationBuilder_ == null) {
-          transformationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          transformationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder>(
                   getTransformation(),
                   getParentForChildren(),
@@ -7970,7 +8457,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Transformation inputTransformation_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> inputTransformationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
@@ -8072,11 +8559,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
           getInputTransformationFieldBuilder() {
         if (inputTransformationBuilder_ == null) {
-          inputTransformationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          inputTransformationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder>(
                   getInputTransformation(),
                   getParentForChildren(),
@@ -8087,7 +8574,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.DataSet dataset_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder> datasetBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
@@ -8189,11 +8676,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder> 
           getDatasetFieldBuilder() {
         if (datasetBuilder_ == null) {
-          datasetBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          datasetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder>(
                   getDataset(),
                   getParentForChildren(),
@@ -8370,11 +8857,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Output}
    */
   public  static final class Output extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Output)
       OutputOrBuilder {
     // Use Output.newBuilder() to construct.
-    private Output(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Output(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Output() {
@@ -8455,7 +8942,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Output_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Output_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -8563,7 +9050,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(columnType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -8580,13 +9067,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (transformation_ != null) {
         output.writeMessage(2, getTransformation());
       }
       if (!getColumnNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, columnName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, columnName_);
       }
       if (columnType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(4, columnType_);
@@ -8599,14 +9086,14 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (transformation_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getTransformation());
       }
       if (!getColumnNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, columnName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, columnName_);
       }
       if (columnType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -8617,6 +9104,52 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Output)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Output other = (org.roylance.yaorm.NestedEnumTest.Output) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (hasTransformation() == other.hasTransformation());
+      if (hasTransformation()) {
+        result = result && getTransformation()
+            .equals(other.getTransformation());
+      }
+      result = result && getColumnName()
+          .equals(other.getColumnName());
+      result = result && columnType_ == other.columnType_;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      if (hasTransformation()) {
+        hash = (37 * hash) + TRANSFORMATION_FIELD_NUMBER;
+        hash = (53 * hash) + getTransformation().hashCode();
+      }
+      hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getColumnName().hashCode();
+      hash = (37 * hash) + COLUMN_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + columnType_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8640,39 +9173,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Output parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Output parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -8690,7 +9223,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -8698,7 +9231,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Output}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Output)
         org.roylance.yaorm.NestedEnumTest.OutputOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -8706,7 +9239,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Output_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Output_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -8719,12 +9252,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -8775,6 +9309,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Output) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Output)other);
@@ -8896,7 +9456,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Transformation transformation_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
@@ -8998,11 +9558,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
           getTransformationFieldBuilder() {
         if (transformationBuilder_ == null) {
-          transformationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          transformationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder>(
                   getTransformation(),
                   getParentForChildren(),
@@ -9100,7 +9660,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(columnType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -9287,11 +9847,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.DataSet}
    */
   public  static final class DataSet extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DataSet)
       DataSetOrBuilder {
     // Use DataSet.newBuilder() to construct.
-    private DataSet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DataSet(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DataSet() {
@@ -9366,7 +9926,8 @@ public final class NestedEnumTest {
                 columnInfos_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.ColumnInfo>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              columnInfos_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.ColumnInfo.parser(), extensionRegistry));
+              columnInfos_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.ColumnInfo.parser(), extensionRegistry));
               break;
             }
             case 58: {
@@ -9374,7 +9935,8 @@ public final class NestedEnumTest {
                 receivedDatasets_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.ReceivedDataSet>();
                 mutable_bitField0_ |= 0x00000040;
               }
-              receivedDatasets_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.ReceivedDataSet.parser(), extensionRegistry));
+              receivedDatasets_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.ReceivedDataSet.parser(), extensionRegistry));
               break;
             }
             case 64: {
@@ -9409,7 +9971,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSet_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSet_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -9497,7 +10059,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
-      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(columnDelimiter_);
+      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
     }
 
@@ -9513,7 +10075,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
-      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(rowDelimiter_);
+      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
     }
 
@@ -9652,10 +10214,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, destinationName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, destinationName_);
       }
       if (columnDelimiter_ != org.roylance.yaorm.NestedEnumTest.DelimiterType.COMMA.getNumber()) {
         output.writeEnum(3, columnDelimiter_);
@@ -9664,7 +10226,7 @@ public final class NestedEnumTest {
         output.writeEnum(4, rowDelimiter_);
       }
       if (!getDirectoryLocationBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, directoryLocation_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, directoryLocation_);
       }
       for (int i = 0; i < columnInfos_.size(); i++) {
         output.writeMessage(6, columnInfos_.get(i));
@@ -9686,10 +10248,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, destinationName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, destinationName_);
       }
       if (columnDelimiter_ != org.roylance.yaorm.NestedEnumTest.DelimiterType.COMMA.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -9700,7 +10262,7 @@ public final class NestedEnumTest {
           .computeEnumSize(4, rowDelimiter_);
       }
       if (!getDirectoryLocationBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, directoryLocation_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, directoryLocation_);
       }
       for (int i = 0; i < columnInfos_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -9723,6 +10285,72 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.DataSet)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.DataSet other = (org.roylance.yaorm.NestedEnumTest.DataSet) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDestinationName()
+          .equals(other.getDestinationName());
+      result = result && columnDelimiter_ == other.columnDelimiter_;
+      result = result && rowDelimiter_ == other.rowDelimiter_;
+      result = result && getDirectoryLocation()
+          .equals(other.getDirectoryLocation());
+      result = result && getColumnInfosList()
+          .equals(other.getColumnInfosList());
+      result = result && getReceivedDatasetsList()
+          .equals(other.getReceivedDatasetsList());
+      result = result && (getHasHeaders()
+          == other.getHasHeaders());
+      result = result && (getIsFixedWidth()
+          == other.getIsFixedWidth());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DESTINATION_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDestinationName().hashCode();
+      hash = (37 * hash) + COLUMN_DELIMITER_FIELD_NUMBER;
+      hash = (53 * hash) + columnDelimiter_;
+      hash = (37 * hash) + ROW_DELIMITER_FIELD_NUMBER;
+      hash = (53 * hash) + rowDelimiter_;
+      hash = (37 * hash) + DIRECTORY_LOCATION_FIELD_NUMBER;
+      hash = (53 * hash) + getDirectoryLocation().hashCode();
+      if (getColumnInfosCount() > 0) {
+        hash = (37 * hash) + COLUMN_INFOS_FIELD_NUMBER;
+        hash = (53 * hash) + getColumnInfosList().hashCode();
+      }
+      if (getReceivedDatasetsCount() > 0) {
+        hash = (37 * hash) + RECEIVED_DATASETS_FIELD_NUMBER;
+        hash = (53 * hash) + getReceivedDatasetsList().hashCode();
+      }
+      hash = (37 * hash) + HAS_HEADERS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasHeaders());
+      hash = (37 * hash) + IS_FIXED_WIDTH_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsFixedWidth());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9746,39 +10374,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -9796,7 +10424,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -9804,7 +10432,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.DataSet}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DataSet)
         org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -9812,7 +10440,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSet_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSet_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -9825,12 +10453,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getColumnInfosFieldBuilder();
           getReceivedDatasetsFieldBuilder();
         }
@@ -9917,6 +10546,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.DataSet) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.DataSet)other);
@@ -9965,7 +10620,7 @@ public final class NestedEnumTest {
               columnInfos_ = other.columnInfos_;
               bitField0_ = (bitField0_ & ~0x00000020);
               columnInfosBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getColumnInfosFieldBuilder() : null;
             } else {
               columnInfosBuilder_.addAllMessages(other.columnInfos_);
@@ -9991,7 +10646,7 @@ public final class NestedEnumTest {
               receivedDatasets_ = other.receivedDatasets_;
               bitField0_ = (bitField0_ & ~0x00000040);
               receivedDatasetsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getReceivedDatasetsFieldBuilder() : null;
             } else {
               receivedDatasetsBuilder_.addAllMessages(other.receivedDatasets_);
@@ -10188,7 +10843,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
-        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(columnDelimiter_);
+        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
@@ -10232,7 +10887,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
-        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(rowDelimiter_);
+        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
@@ -10335,7 +10990,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ColumnInfo, org.roylance.yaorm.NestedEnumTest.ColumnInfo.Builder, org.roylance.yaorm.NestedEnumTest.ColumnInfoOrBuilder> columnInfosBuilder_;
 
       /**
@@ -10551,11 +11206,11 @@ public final class NestedEnumTest {
            getColumnInfosBuilderList() {
         return getColumnInfosFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ColumnInfo, org.roylance.yaorm.NestedEnumTest.ColumnInfo.Builder, org.roylance.yaorm.NestedEnumTest.ColumnInfoOrBuilder> 
           getColumnInfosFieldBuilder() {
         if (columnInfosBuilder_ == null) {
-          columnInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          columnInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ColumnInfo, org.roylance.yaorm.NestedEnumTest.ColumnInfo.Builder, org.roylance.yaorm.NestedEnumTest.ColumnInfoOrBuilder>(
                   columnInfos_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
@@ -10575,7 +11230,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ReceivedDataSet, org.roylance.yaorm.NestedEnumTest.ReceivedDataSet.Builder, org.roylance.yaorm.NestedEnumTest.ReceivedDataSetOrBuilder> receivedDatasetsBuilder_;
 
       /**
@@ -10791,11 +11446,11 @@ public final class NestedEnumTest {
            getReceivedDatasetsBuilderList() {
         return getReceivedDatasetsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ReceivedDataSet, org.roylance.yaorm.NestedEnumTest.ReceivedDataSet.Builder, org.roylance.yaorm.NestedEnumTest.ReceivedDataSetOrBuilder> 
           getReceivedDatasetsFieldBuilder() {
         if (receivedDatasetsBuilder_ == null) {
-          receivedDatasetsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          receivedDatasetsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ReceivedDataSet, org.roylance.yaorm.NestedEnumTest.ReceivedDataSet.Builder, org.roylance.yaorm.NestedEnumTest.ReceivedDataSetOrBuilder>(
                   receivedDatasets_,
                   ((bitField0_ & 0x00000040) == 0x00000040),
@@ -10944,11 +11599,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ReceivedDataSet}
    */
   public  static final class ReceivedDataSet extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ReceivedDataSet)
       ReceivedDataSetOrBuilder {
     // Use ReceivedDataSet.newBuilder() to construct.
-    private ReceivedDataSet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ReceivedDataSet(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ReceivedDataSet() {
@@ -11021,7 +11676,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReceivedDataSet_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReceivedDataSet_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -11127,13 +11782,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (receivedDate_ != 0L) {
         output.writeInt64(3, receivedDate_);
       }
       if (!getCompressedBase64Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, compressedBase64_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, compressedBase64_);
       }
       if (hasProcessed_ != false) {
         output.writeBool(5, hasProcessed_);
@@ -11146,14 +11801,14 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (receivedDate_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, receivedDate_);
       }
       if (!getCompressedBase64Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, compressedBase64_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, compressedBase64_);
       }
       if (hasProcessed_ != false) {
         size += com.google.protobuf.CodedOutputStream
@@ -11164,6 +11819,50 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ReceivedDataSet)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ReceivedDataSet other = (org.roylance.yaorm.NestedEnumTest.ReceivedDataSet) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (getReceivedDate()
+          == other.getReceivedDate());
+      result = result && getCompressedBase64()
+          .equals(other.getCompressedBase64());
+      result = result && (getHasProcessed()
+          == other.getHasProcessed());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + RECEIVED_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getReceivedDate());
+      hash = (37 * hash) + COMPRESSED_BASE64_FIELD_NUMBER;
+      hash = (53 * hash) + getCompressedBase64().hashCode();
+      hash = (37 * hash) + HAS_PROCESSED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasProcessed());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11187,39 +11886,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -11237,7 +11936,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -11245,7 +11944,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ReceivedDataSet}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ReceivedDataSet)
         org.roylance.yaorm.NestedEnumTest.ReceivedDataSetOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -11253,7 +11952,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReceivedDataSet_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReceivedDataSet_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -11266,12 +11965,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -11314,6 +12014,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ReceivedDataSet) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ReceivedDataSet)other);
@@ -11709,11 +12435,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ColumnInfo}
    */
   public  static final class ColumnInfo extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ColumnInfo)
       ColumnInfoOrBuilder {
     // Use ColumnInfo.newBuilder() to construct.
-    private ColumnInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ColumnInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ColumnInfo() {
@@ -11845,7 +12571,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfo_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -11932,7 +12658,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(sourceType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -11991,7 +12717,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(destinationType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -12121,10 +12847,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getSourceNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, sourceName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sourceName_);
       }
       if (sourceType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(3, sourceType_);
@@ -12133,7 +12859,7 @@ public final class NestedEnumTest {
         output.writeInt64(4, sourceIndex_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, destinationName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, destinationName_);
       }
       if (destinationType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(6, destinationType_);
@@ -12154,10 +12880,10 @@ public final class NestedEnumTest {
         output.writeBool(11, hasSpecialInstructions_);
       }
       if (!getSpecialInstructionsEqualsBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 12, specialInstructionsEquals_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, specialInstructionsEquals_);
       }
       if (!getSpecialInstructionsNotEqualsBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 13, specialInstructionsNotEquals_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, specialInstructionsNotEquals_);
       }
     }
 
@@ -12167,10 +12893,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getSourceNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, sourceName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sourceName_);
       }
       if (sourceType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -12181,7 +12907,7 @@ public final class NestedEnumTest {
           .computeInt64Size(4, sourceIndex_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, destinationName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, destinationName_);
       }
       if (destinationType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -12208,16 +12934,98 @@ public final class NestedEnumTest {
           .computeBoolSize(11, hasSpecialInstructions_);
       }
       if (!getSpecialInstructionsEqualsBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(12, specialInstructionsEquals_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, specialInstructionsEquals_);
       }
       if (!getSpecialInstructionsNotEqualsBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(13, specialInstructionsNotEquals_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, specialInstructionsNotEquals_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ColumnInfo)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ColumnInfo other = (org.roylance.yaorm.NestedEnumTest.ColumnInfo) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getSourceName()
+          .equals(other.getSourceName());
+      result = result && sourceType_ == other.sourceType_;
+      result = result && (getSourceIndex()
+          == other.getSourceIndex());
+      result = result && getDestinationName()
+          .equals(other.getDestinationName());
+      result = result && destinationType_ == other.destinationType_;
+      result = result && (getDestinationIndex()
+          == other.getDestinationIndex());
+      result = result && (getFixedWidthStart()
+          == other.getFixedWidthStart());
+      result = result && (getFixedWidthEnd()
+          == other.getFixedWidthEnd());
+      result = result && (getIsOverpunch()
+          == other.getIsOverpunch());
+      result = result && (getHasSpecialInstructions()
+          == other.getHasSpecialInstructions());
+      result = result && getSpecialInstructionsEquals()
+          .equals(other.getSpecialInstructionsEquals());
+      result = result && getSpecialInstructionsNotEquals()
+          .equals(other.getSpecialInstructionsNotEquals());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SOURCE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceName().hashCode();
+      hash = (37 * hash) + SOURCE_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + sourceType_;
+      hash = (37 * hash) + SOURCE_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getSourceIndex());
+      hash = (37 * hash) + DESTINATION_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDestinationName().hashCode();
+      hash = (37 * hash) + DESTINATION_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + destinationType_;
+      hash = (37 * hash) + DESTINATION_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDestinationIndex());
+      hash = (37 * hash) + FIXED_WIDTH_START_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFixedWidthStart());
+      hash = (37 * hash) + FIXED_WIDTH_END_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFixedWidthEnd());
+      hash = (37 * hash) + IS_OVERPUNCH_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsOverpunch());
+      hash = (37 * hash) + HAS_SPECIAL_INSTRUCTIONS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasSpecialInstructions());
+      hash = (37 * hash) + SPECIAL_INSTRUCTIONS_EQUALS_FIELD_NUMBER;
+      hash = (53 * hash) + getSpecialInstructionsEquals().hashCode();
+      hash = (37 * hash) + SPECIAL_INSTRUCTIONS_NOT_EQUALS_FIELD_NUMBER;
+      hash = (53 * hash) + getSpecialInstructionsNotEquals().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12241,39 +13049,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -12291,7 +13099,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -12299,7 +13107,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ColumnInfo}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ColumnInfo)
         org.roylance.yaorm.NestedEnumTest.ColumnInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -12307,7 +13115,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfo_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -12320,12 +13128,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -12395,6 +13204,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ColumnInfo) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ColumnInfo)other);
@@ -12633,7 +13468,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(sourceType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -12772,7 +13607,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(destinationType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -13141,11 +13976,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.MySQLRedshiftTable}
    */
   public  static final class MySQLRedshiftTable extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.MySQLRedshiftTable)
       MySQLRedshiftTableOrBuilder {
     // Use MySQLRedshiftTable.newBuilder() to construct.
-    private MySQLRedshiftTable(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private MySQLRedshiftTable(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private MySQLRedshiftTable() {
@@ -13206,7 +14041,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_MySQLRedshiftTable_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_MySQLRedshiftTable_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -13294,10 +14129,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getTableNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, tableName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tableName_);
       }
     }
 
@@ -13307,16 +14142,50 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getTableNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, tableName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tableName_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable other = (org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getTableName()
+          .equals(other.getTableName());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getTableName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13340,39 +14209,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -13390,7 +14259,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -13398,7 +14267,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.MySQLRedshiftTable}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.MySQLRedshiftTable)
         org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -13406,7 +14275,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_MySQLRedshiftTable_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_MySQLRedshiftTable_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -13419,12 +14288,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -13461,6 +14331,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable)other);
@@ -13804,11 +14700,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ConnectionInformation}
    */
   public  static final class ConnectionInformation extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ConnectionInformation)
       ConnectionInformationOrBuilder {
     // Use ConnectionInformation.newBuilder() to construct.
-    private ConnectionInformation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ConnectionInformation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ConnectionInformation() {
@@ -13931,7 +14827,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ConnectionInformation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ConnectionInformation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -14381,7 +15277,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType getDbtype() {
-      org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType result = org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.forNumber(dbtype_);
+      org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType result = org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.valueOf(dbtype_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.UNRECOGNIZED : result;
     }
 
@@ -14398,34 +15294,34 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (!getUserBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, user_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, user_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, password_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, password_);
       }
       if (!getHostBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, host_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, host_);
       }
       if (port_ != 0) {
         output.writeInt32(6, port_);
       }
       if (!getDatabaseBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 7, database_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, database_);
       }
       if (!getExtraBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 8, extra_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, extra_);
       }
       if (!getAwsAccessBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 9, awsAccess_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, awsAccess_);
       }
       if (!getAwsSecretBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 10, awsSecret_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, awsSecret_);
       }
       if (dbtype_ != org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.MYSQL.getNumber()) {
         output.writeEnum(11, dbtype_);
@@ -14438,35 +15334,35 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (!getUserBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, user_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, user_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, password_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, password_);
       }
       if (!getHostBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, host_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, host_);
       }
       if (port_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, port_);
       }
       if (!getDatabaseBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(7, database_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, database_);
       }
       if (!getExtraBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(8, extra_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, extra_);
       }
       if (!getAwsAccessBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(9, awsAccess_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, awsAccess_);
       }
       if (!getAwsSecretBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, awsSecret_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, awsSecret_);
       }
       if (dbtype_ != org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.MYSQL.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -14477,6 +15373,75 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ConnectionInformation)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ConnectionInformation other = (org.roylance.yaorm.NestedEnumTest.ConnectionInformation) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getUser()
+          .equals(other.getUser());
+      result = result && getPassword()
+          .equals(other.getPassword());
+      result = result && getHost()
+          .equals(other.getHost());
+      result = result && (getPort()
+          == other.getPort());
+      result = result && getDatabase()
+          .equals(other.getDatabase());
+      result = result && getExtra()
+          .equals(other.getExtra());
+      result = result && getAwsAccess()
+          .equals(other.getAwsAccess());
+      result = result && getAwsSecret()
+          .equals(other.getAwsSecret());
+      result = result && dbtype_ == other.dbtype_;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + USER_FIELD_NUMBER;
+      hash = (53 * hash) + getUser().hashCode();
+      hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getPassword().hashCode();
+      hash = (37 * hash) + HOST_FIELD_NUMBER;
+      hash = (53 * hash) + getHost().hashCode();
+      hash = (37 * hash) + PORT_FIELD_NUMBER;
+      hash = (53 * hash) + getPort();
+      hash = (37 * hash) + DATABASE_FIELD_NUMBER;
+      hash = (53 * hash) + getDatabase().hashCode();
+      hash = (37 * hash) + EXTRA_FIELD_NUMBER;
+      hash = (53 * hash) + getExtra().hashCode();
+      hash = (37 * hash) + AWS_ACCESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAwsAccess().hashCode();
+      hash = (37 * hash) + AWS_SECRET_FIELD_NUMBER;
+      hash = (53 * hash) + getAwsSecret().hashCode();
+      hash = (37 * hash) + DBTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + dbtype_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14500,39 +15465,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -14550,7 +15515,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -14558,7 +15523,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ConnectionInformation}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ConnectionInformation)
         org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -14566,7 +15531,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ConnectionInformation_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ConnectionInformation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -14579,12 +15544,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -14648,6 +15614,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ConnectionInformation) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ConnectionInformation)other);
@@ -15393,7 +16385,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType getDbtype() {
-        org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType result = org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.forNumber(dbtype_);
+        org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType result = org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.valueOf(dbtype_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.UNRECOGNIZED : result;
       }
       /**
@@ -15504,11 +16496,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.RegularExpression}
    */
   public  static final class RegularExpression extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.RegularExpression)
       RegularExpressionOrBuilder {
     // Use RegularExpression.newBuilder() to construct.
-    private RegularExpression(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RegularExpression(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private RegularExpression() {
@@ -15576,7 +16568,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RegularExpression_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RegularExpression_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -15698,13 +16690,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (!getValueBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, value_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
       }
     }
 
@@ -15714,19 +16706,57 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (!getValueBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, value_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.RegularExpression)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.RegularExpression other = (org.roylance.yaorm.NestedEnumTest.RegularExpression) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getValue()
+          .equals(other.getValue());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getValue().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15750,39 +16780,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -15800,7 +16830,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -15808,7 +16838,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.RegularExpression}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.RegularExpression)
         org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -15816,7 +16846,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RegularExpression_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RegularExpression_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -15829,12 +16859,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -15874,6 +16905,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.RegularExpression) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.RegularExpression)other);
@@ -16267,11 +17324,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Validation}
    */
   public  static final class Validation extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Validation)
       ValidationOrBuilder {
     // Use Validation.newBuilder() to construct.
-    private Validation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Validation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Validation() {
@@ -16336,7 +17393,8 @@ public final class NestedEnumTest {
                 validations_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.OutputValidation>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              validations_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.OutputValidation.parser(), extensionRegistry));
+              validations_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.OutputValidation.parser(), extensionRegistry));
               break;
             }
             case 42: {
@@ -16344,7 +17402,8 @@ public final class NestedEnumTest {
                 reports_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.ValidationReport>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              reports_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.ValidationReport.parser(), extensionRegistry));
+              reports_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.ValidationReport.parser(), extensionRegistry));
               break;
             }
           }
@@ -16369,7 +17428,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Validation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Validation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -16549,10 +17608,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (transformation_ != null) {
         output.writeMessage(3, getTransformation());
@@ -16571,10 +17630,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (transformation_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -16593,6 +17652,61 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Validation)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Validation other = (org.roylance.yaorm.NestedEnumTest.Validation) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && (hasTransformation() == other.hasTransformation());
+      if (hasTransformation()) {
+        result = result && getTransformation()
+            .equals(other.getTransformation());
+      }
+      result = result && getValidationsList()
+          .equals(other.getValidationsList());
+      result = result && getReportsList()
+          .equals(other.getReportsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (hasTransformation()) {
+        hash = (37 * hash) + TRANSFORMATION_FIELD_NUMBER;
+        hash = (53 * hash) + getTransformation().hashCode();
+      }
+      if (getValidationsCount() > 0) {
+        hash = (37 * hash) + VALIDATIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getValidationsList().hashCode();
+      }
+      if (getReportsCount() > 0) {
+        hash = (37 * hash) + REPORTS_FIELD_NUMBER;
+        hash = (53 * hash) + getReportsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16616,39 +17730,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -16666,7 +17780,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -16674,7 +17788,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Validation}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Validation)
         org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -16682,7 +17796,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Validation_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Validation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -16695,12 +17809,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getValidationsFieldBuilder();
           getReportsFieldBuilder();
         }
@@ -16783,6 +17898,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Validation) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Validation)other);
@@ -16824,7 +17965,7 @@ public final class NestedEnumTest {
               validations_ = other.validations_;
               bitField0_ = (bitField0_ & ~0x00000008);
               validationsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getValidationsFieldBuilder() : null;
             } else {
               validationsBuilder_.addAllMessages(other.validations_);
@@ -16850,7 +17991,7 @@ public final class NestedEnumTest {
               reports_ = other.reports_;
               bitField0_ = (bitField0_ & ~0x00000010);
               reportsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getReportsFieldBuilder() : null;
             } else {
               reportsBuilder_.addAllMessages(other.reports_);
@@ -17023,7 +18164,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Transformation transformation_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
@@ -17125,11 +18266,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
           getTransformationFieldBuilder() {
         if (transformationBuilder_ == null) {
-          transformationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          transformationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder>(
                   getTransformation(),
                   getParentForChildren(),
@@ -17148,7 +18289,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.OutputValidation, org.roylance.yaorm.NestedEnumTest.OutputValidation.Builder, org.roylance.yaorm.NestedEnumTest.OutputValidationOrBuilder> validationsBuilder_;
 
       /**
@@ -17364,11 +18505,11 @@ public final class NestedEnumTest {
            getValidationsBuilderList() {
         return getValidationsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.OutputValidation, org.roylance.yaorm.NestedEnumTest.OutputValidation.Builder, org.roylance.yaorm.NestedEnumTest.OutputValidationOrBuilder> 
           getValidationsFieldBuilder() {
         if (validationsBuilder_ == null) {
-          validationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          validationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.OutputValidation, org.roylance.yaorm.NestedEnumTest.OutputValidation.Builder, org.roylance.yaorm.NestedEnumTest.OutputValidationOrBuilder>(
                   validations_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -17388,7 +18529,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ValidationReport, org.roylance.yaorm.NestedEnumTest.ValidationReport.Builder, org.roylance.yaorm.NestedEnumTest.ValidationReportOrBuilder> reportsBuilder_;
 
       /**
@@ -17604,11 +18745,11 @@ public final class NestedEnumTest {
            getReportsBuilderList() {
         return getReportsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ValidationReport, org.roylance.yaorm.NestedEnumTest.ValidationReport.Builder, org.roylance.yaorm.NestedEnumTest.ValidationReportOrBuilder> 
           getReportsFieldBuilder() {
         if (reportsBuilder_ == null) {
-          reportsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          reportsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ValidationReport, org.roylance.yaorm.NestedEnumTest.ValidationReport.Builder, org.roylance.yaorm.NestedEnumTest.ValidationReportOrBuilder>(
                   reports_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -17734,11 +18875,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.OutputValidation}
    */
   public  static final class OutputValidation extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.OutputValidation)
       OutputValidationOrBuilder {
     // Use OutputValidation.newBuilder() to construct.
-    private OutputValidation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private OutputValidation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private OutputValidation() {
@@ -17838,7 +18979,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_OutputValidation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_OutputValidation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -17989,10 +19130,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (output_ != null) {
         output.writeMessage(3, getOutput());
@@ -18011,10 +19152,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (output_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -18033,6 +19174,67 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.OutputValidation)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.OutputValidation other = (org.roylance.yaorm.NestedEnumTest.OutputValidation) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && (hasOutput() == other.hasOutput());
+      if (hasOutput()) {
+        result = result && getOutput()
+            .equals(other.getOutput());
+      }
+      result = result && (hasRegularExpression() == other.hasRegularExpression());
+      if (hasRegularExpression()) {
+        result = result && getRegularExpression()
+            .equals(other.getRegularExpression());
+      }
+      result = result && (hasValidation() == other.hasValidation());
+      if (hasValidation()) {
+        result = result && getValidation()
+            .equals(other.getValidation());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (hasOutput()) {
+        hash = (37 * hash) + OUTPUT_FIELD_NUMBER;
+        hash = (53 * hash) + getOutput().hashCode();
+      }
+      if (hasRegularExpression()) {
+        hash = (37 * hash) + REGULAR_EXPRESSION_FIELD_NUMBER;
+        hash = (53 * hash) + getRegularExpression().hashCode();
+      }
+      if (hasValidation()) {
+        hash = (37 * hash) + VALIDATION_FIELD_NUMBER;
+        hash = (53 * hash) + getValidation().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18056,39 +19258,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -18106,7 +19308,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -18114,7 +19316,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.OutputValidation}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.OutputValidation)
         org.roylance.yaorm.NestedEnumTest.OutputValidationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -18122,7 +19324,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_OutputValidation_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_OutputValidation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -18135,12 +19337,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -18210,6 +19413,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.OutputValidation) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.OutputValidation)other);
@@ -18403,7 +19632,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Output output_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> outputBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Output output = 3;</code>
@@ -18505,11 +19734,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Output output = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> 
           getOutputFieldBuilder() {
         if (outputBuilder_ == null) {
-          outputBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          outputBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder>(
                   getOutput(),
                   getParentForChildren(),
@@ -18520,7 +19749,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.RegularExpression regularExpression_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> regularExpressionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
@@ -18622,11 +19851,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> 
           getRegularExpressionFieldBuilder() {
         if (regularExpressionBuilder_ == null) {
-          regularExpressionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          regularExpressionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder>(
                   getRegularExpression(),
                   getParentForChildren(),
@@ -18637,7 +19866,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Validation validation_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> validationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
@@ -18739,11 +19968,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> 
           getValidationFieldBuilder() {
         if (validationBuilder_ == null) {
-          validationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          validationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder>(
                   getValidation(),
                   getParentForChildren(),
@@ -18857,11 +20086,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ValidationReport}
    */
   public  static final class ValidationReport extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ValidationReport)
       ValidationReportOrBuilder {
     // Use ValidationReport.newBuilder() to construct.
-    private ValidationReport(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ValidationReport(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ValidationReport() {
@@ -18953,7 +20182,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ValidationReport_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ValidationReport_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -19089,13 +20318,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (dateRun_ != 0L) {
         output.writeInt64(2, dateRun_);
       }
       if (!getDateRunDisplayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, dateRunDisplay_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, dateRunDisplay_);
       }
       if (numberPassed_ != 0L) {
         output.writeInt64(4, numberPassed_);
@@ -19114,14 +20343,14 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (dateRun_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, dateRun_);
       }
       if (!getDateRunDisplayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, dateRunDisplay_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, dateRunDisplay_);
       }
       if (numberPassed_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -19140,6 +20369,64 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ValidationReport)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ValidationReport other = (org.roylance.yaorm.NestedEnumTest.ValidationReport) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && (getDateRun()
+          == other.getDateRun());
+      result = result && getDateRunDisplay()
+          .equals(other.getDateRunDisplay());
+      result = result && (getNumberPassed()
+          == other.getNumberPassed());
+      result = result && (getNumberFailed()
+          == other.getNumberFailed());
+      result = result && (hasValidation() == other.hasValidation());
+      if (hasValidation()) {
+        result = result && getValidation()
+            .equals(other.getValidation());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DATE_RUN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDateRun());
+      hash = (37 * hash) + DATE_RUN_DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDateRunDisplay().hashCode();
+      hash = (37 * hash) + NUMBER_PASSED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getNumberPassed());
+      hash = (37 * hash) + NUMBER_FAILED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getNumberFailed());
+      if (hasValidation()) {
+        hash = (37 * hash) + VALIDATION_FIELD_NUMBER;
+        hash = (53 * hash) + getValidation().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19163,39 +20450,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -19213,7 +20500,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -19221,7 +20508,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ValidationReport}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ValidationReport)
         org.roylance.yaorm.NestedEnumTest.ValidationReportOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -19229,7 +20516,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ValidationReport_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ValidationReport_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -19242,12 +20529,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -19304,6 +20592,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ValidationReport) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ValidationReport)other);
@@ -19578,7 +20892,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Validation validation_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> validationBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
@@ -19680,11 +20994,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> 
           getValidationFieldBuilder() {
         if (validationBuilder_ == null) {
-          validationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          validationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder>(
                   getValidation(),
                   getParentForChildren(),
@@ -19852,11 +21166,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.DataWarehouseColumn}
    */
   public  static final class DataWarehouseColumn extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DataWarehouseColumn)
       DataWarehouseColumnOrBuilder {
     // Use DataWarehouseColumn.newBuilder() to construct.
-    private DataWarehouseColumn(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DataWarehouseColumn(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DataWarehouseColumn() {
@@ -19940,7 +21254,8 @@ public final class NestedEnumTest {
                 validations_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              validations_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation.parser(), extensionRegistry));
+              validations_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation.parser(), extensionRegistry));
               break;
             }
             case 74: {
@@ -19948,7 +21263,8 @@ public final class NestedEnumTest {
                 tableColumns_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn>();
                 mutable_bitField0_ |= 0x00000100;
               }
-              tableColumns_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.parser(), extensionRegistry));
+              tableColumns_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.parser(), extensionRegistry));
               break;
             }
           }
@@ -19973,7 +21289,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumn_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -20095,7 +21411,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(columnType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -20209,13 +21525,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getColumnNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, columnName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, columnName_);
       }
       if (!getColumnDescriptionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, columnDescription_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, columnDescription_);
       }
       if (columnType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(4, columnType_);
@@ -20243,13 +21559,13 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getColumnNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, columnName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, columnName_);
       }
       if (!getColumnDescriptionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, columnDescription_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, columnDescription_);
       }
       if (columnType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -20280,6 +21596,76 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn other = (org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getColumnName()
+          .equals(other.getColumnName());
+      result = result && getColumnDescription()
+          .equals(other.getColumnDescription());
+      result = result && columnType_ == other.columnType_;
+      result = result && (
+          java.lang.Float.floatToIntBits(getDiscoveryWeight())
+          == java.lang.Float.floatToIntBits(
+              other.getDiscoveryWeight()));
+      result = result && (getIsNumeric()
+          == other.getIsNumeric());
+      result = result && (getIsDate()
+          == other.getIsDate());
+      result = result && getValidationsList()
+          .equals(other.getValidationsList());
+      result = result && getTableColumnsList()
+          .equals(other.getTableColumnsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getColumnName().hashCode();
+      hash = (37 * hash) + COLUMN_DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getColumnDescription().hashCode();
+      hash = (37 * hash) + COLUMN_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + columnType_;
+      hash = (37 * hash) + DISCOVERY_WEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getDiscoveryWeight());
+      hash = (37 * hash) + IS_NUMERIC_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsNumeric());
+      hash = (37 * hash) + IS_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsDate());
+      if (getValidationsCount() > 0) {
+        hash = (37 * hash) + VALIDATIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getValidationsList().hashCode();
+      }
+      if (getTableColumnsCount() > 0) {
+        hash = (37 * hash) + TABLE_COLUMNS_FIELD_NUMBER;
+        hash = (53 * hash) + getTableColumnsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20303,39 +21689,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -20353,7 +21739,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -20361,7 +21747,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.DataWarehouseColumn}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DataWarehouseColumn)
         org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -20369,7 +21755,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumn_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumn_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -20382,12 +21768,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getValidationsFieldBuilder();
           getTableColumnsFieldBuilder();
         }
@@ -20474,6 +21861,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn)other);
@@ -20528,7 +21941,7 @@ public final class NestedEnumTest {
               validations_ = other.validations_;
               bitField0_ = (bitField0_ & ~0x00000080);
               validationsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getValidationsFieldBuilder() : null;
             } else {
               validationsBuilder_.addAllMessages(other.validations_);
@@ -20554,7 +21967,7 @@ public final class NestedEnumTest {
               tableColumns_ = other.tableColumns_;
               bitField0_ = (bitField0_ & ~0x00000100);
               tableColumnsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTableColumnsFieldBuilder() : null;
             } else {
               tableColumnsBuilder_.addAllMessages(other.tableColumns_);
@@ -20814,7 +22227,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(columnType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -20926,7 +22339,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidationOrBuilder> validationsBuilder_;
 
       /**
@@ -21142,11 +22555,11 @@ public final class NestedEnumTest {
            getValidationsBuilderList() {
         return getValidationsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidationOrBuilder> 
           getValidationsFieldBuilder() {
         if (validationsBuilder_ == null) {
-          validationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          validationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidationOrBuilder>(
                   validations_,
                   ((bitField0_ & 0x00000080) == 0x00000080),
@@ -21166,7 +22579,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> tableColumnsBuilder_;
 
       /**
@@ -21382,11 +22795,11 @@ public final class NestedEnumTest {
            getTableColumnsBuilderList() {
         return getTableColumnsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> 
           getTableColumnsFieldBuilder() {
         if (tableColumnsBuilder_ == null) {
-          tableColumnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          tableColumnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder>(
                   tableColumns_,
                   ((bitField0_ & 0x00000100) == 0x00000100),
@@ -21499,11 +22912,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.DataWarehouseColumnValidation}
    */
   public  static final class DataWarehouseColumnValidation extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DataWarehouseColumnValidation)
       DataWarehouseColumnValidationOrBuilder {
     // Use DataWarehouseColumnValidation.newBuilder() to construct.
-    private DataWarehouseColumnValidation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DataWarehouseColumnValidation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DataWarehouseColumnValidation() {
@@ -21590,7 +23003,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -21720,10 +23133,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (regularExpression_ != null) {
         output.writeMessage(3, getRegularExpression());
@@ -21739,10 +23152,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (regularExpression_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -21757,6 +23170,58 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation other = (org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && (hasRegularExpression() == other.hasRegularExpression());
+      if (hasRegularExpression()) {
+        result = result && getRegularExpression()
+            .equals(other.getRegularExpression());
+      }
+      result = result && (hasColumn() == other.hasColumn());
+      if (hasColumn()) {
+        result = result && getColumn()
+            .equals(other.getColumn());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (hasRegularExpression()) {
+        hash = (37 * hash) + REGULAR_EXPRESSION_FIELD_NUMBER;
+        hash = (53 * hash) + getRegularExpression().hashCode();
+      }
+      if (hasColumn()) {
+        hash = (37 * hash) + COLUMN_FIELD_NUMBER;
+        hash = (53 * hash) + getColumn().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21780,39 +23245,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -21830,7 +23295,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -21838,7 +23303,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.DataWarehouseColumnValidation}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DataWarehouseColumnValidation)
         org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -21846,7 +23311,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -21859,12 +23324,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -21923,6 +23389,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation)other);
@@ -22113,7 +23605,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.RegularExpression regularExpression_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> regularExpressionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
@@ -22215,11 +23707,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> 
           getRegularExpressionFieldBuilder() {
         if (regularExpressionBuilder_ == null) {
-          regularExpressionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          regularExpressionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder>(
                   getRegularExpression(),
                   getParentForChildren(),
@@ -22230,7 +23722,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn column_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> columnBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
@@ -22332,11 +23824,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> 
           getColumnFieldBuilder() {
         if (columnBuilder_ == null) {
-          columnBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          columnBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder>(
                   getColumn(),
                   getParentForChildren(),
@@ -22456,11 +23948,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.DataWarehouseTable}
    */
   public  static final class DataWarehouseTable extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DataWarehouseTable)
       DataWarehouseTableOrBuilder {
     // Use DataWarehouseTable.newBuilder() to construct.
-    private DataWarehouseTable(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DataWarehouseTable(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DataWarehouseTable() {
@@ -22518,7 +24010,8 @@ public final class NestedEnumTest {
                 tableColumns_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              tableColumns_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.parser(), extensionRegistry));
+              tableColumns_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.parser(), extensionRegistry));
               break;
             }
           }
@@ -22540,7 +24033,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTable_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTable_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -22698,13 +24191,13 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (!getDescriptionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, description_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
       }
       for (int i = 0; i < tableColumns_.size(); i++) {
         output.writeMessage(9, tableColumns_.get(i));
@@ -22717,13 +24210,13 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (!getDescriptionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, description_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
       }
       for (int i = 0; i < tableColumns_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -22734,6 +24227,50 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseTable)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.DataWarehouseTable other = (org.roylance.yaorm.NestedEnumTest.DataWarehouseTable) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getDescription()
+          .equals(other.getDescription());
+      result = result && getTableColumnsList()
+          .equals(other.getTableColumnsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      if (getTableColumnsCount() > 0) {
+        hash = (37 * hash) + TABLE_COLUMNS_FIELD_NUMBER;
+        hash = (53 * hash) + getTableColumnsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -22757,39 +24294,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -22807,7 +24344,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -22815,7 +24352,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.DataWarehouseTable}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DataWarehouseTable)
         org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -22823,7 +24360,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTable_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTable_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -22836,12 +24373,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getTableColumnsFieldBuilder();
         }
       }
@@ -22900,6 +24438,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseTable) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.DataWarehouseTable)other);
@@ -22942,7 +24506,7 @@ public final class NestedEnumTest {
               tableColumns_ = other.tableColumns_;
               bitField0_ = (bitField0_ & ~0x00000008);
               tableColumnsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTableColumnsFieldBuilder() : null;
             } else {
               tableColumnsBuilder_.addAllMessages(other.tableColumns_);
@@ -23192,7 +24756,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> tableColumnsBuilder_;
 
       /**
@@ -23408,11 +24972,11 @@ public final class NestedEnumTest {
            getTableColumnsBuilderList() {
         return getTableColumnsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> 
           getTableColumnsFieldBuilder() {
         if (tableColumnsBuilder_ == null) {
-          tableColumnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          tableColumnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder>(
                   tableColumns_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -23558,11 +25122,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.DataWarehouseTableColumn}
    */
   public  static final class DataWarehouseTableColumn extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DataWarehouseTableColumn)
       DataWarehouseTableColumnOrBuilder {
     // Use DataWarehouseTableColumn.newBuilder() to construct.
-    private DataWarehouseTableColumn(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DataWarehouseTableColumn(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DataWarehouseTableColumn() {
@@ -23646,7 +25210,8 @@ public final class NestedEnumTest {
                 mappings_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.Mapping>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              mappings_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.Mapping.parser(), extensionRegistry));
+              mappings_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.Mapping.parser(), extensionRegistry));
               break;
             }
           }
@@ -23668,7 +25233,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTableColumn_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTableColumn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -23756,7 +25321,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(columnType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -23850,10 +25415,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getColumnNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, columnName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, columnName_);
       }
       if (columnType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(3, columnType_);
@@ -23875,10 +25440,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getColumnNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, columnName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, columnName_);
       }
       if (columnType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -23901,6 +25466,67 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn other = (org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getColumnName()
+          .equals(other.getColumnName());
+      result = result && columnType_ == other.columnType_;
+      result = result && (hasTable() == other.hasTable());
+      if (hasTable()) {
+        result = result && getTable()
+            .equals(other.getTable());
+      }
+      result = result && (hasColumn() == other.hasColumn());
+      if (hasColumn()) {
+        result = result && getColumn()
+            .equals(other.getColumn());
+      }
+      result = result && getMappingsList()
+          .equals(other.getMappingsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getColumnName().hashCode();
+      hash = (37 * hash) + COLUMN_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + columnType_;
+      if (hasTable()) {
+        hash = (37 * hash) + TABLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTable().hashCode();
+      }
+      if (hasColumn()) {
+        hash = (37 * hash) + COLUMN_FIELD_NUMBER;
+        hash = (53 * hash) + getColumn().hashCode();
+      }
+      if (getMappingsCount() > 0) {
+        hash = (37 * hash) + MAPPINGS_FIELD_NUMBER;
+        hash = (53 * hash) + getMappingsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -23924,39 +25550,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -23974,7 +25600,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -23982,7 +25608,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.DataWarehouseTableColumn}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DataWarehouseTableColumn)
         org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -23990,7 +25616,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTableColumn_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataWarehouseTableColumn_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -24003,12 +25629,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getMappingsFieldBuilder();
         }
       }
@@ -24089,6 +25716,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn)other);
@@ -24136,7 +25789,7 @@ public final class NestedEnumTest {
               mappings_ = other.mappings_;
               bitField0_ = (bitField0_ & ~0x00000020);
               mappingsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getMappingsFieldBuilder() : null;
             } else {
               mappingsBuilder_.addAllMessages(other.mappings_);
@@ -24327,7 +25980,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(columnType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -24353,7 +26006,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.DataWarehouseTable table_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> tableBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
@@ -24455,11 +26108,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> 
           getTableFieldBuilder() {
         if (tableBuilder_ == null) {
-          tableBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          tableBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder>(
                   getTable(),
                   getParentForChildren(),
@@ -24470,7 +26123,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn column_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> columnBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
@@ -24572,11 +26225,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> 
           getColumnFieldBuilder() {
         if (columnBuilder_ == null) {
-          columnBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          columnBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder>(
                   getColumn(),
                   getParentForChildren(),
@@ -24595,7 +26248,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Mapping, org.roylance.yaorm.NestedEnumTest.Mapping.Builder, org.roylance.yaorm.NestedEnumTest.MappingOrBuilder> mappingsBuilder_;
 
       /**
@@ -24811,11 +26464,11 @@ public final class NestedEnumTest {
            getMappingsBuilderList() {
         return getMappingsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Mapping, org.roylance.yaorm.NestedEnumTest.Mapping.Builder, org.roylance.yaorm.NestedEnumTest.MappingOrBuilder> 
           getMappingsFieldBuilder() {
         if (mappingsBuilder_ == null) {
-          mappingsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          mappingsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Mapping, org.roylance.yaorm.NestedEnumTest.Mapping.Builder, org.roylance.yaorm.NestedEnumTest.MappingOrBuilder>(
                   mappings_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
@@ -24969,11 +26622,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.Mapping}
    */
   public  static final class Mapping extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Mapping)
       MappingOrBuilder {
     // Use Mapping.newBuilder() to construct.
-    private Mapping(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Mapping(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Mapping() {
@@ -25094,7 +26747,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Mapping_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Mapping_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -25181,7 +26834,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getFromType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(fromType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(fromType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -25231,7 +26884,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getToType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(toType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(toType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -25311,16 +26964,16 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getFromNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, fromName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, fromName_);
       }
       if (fromType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(3, fromType_);
       }
       if (!getToNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, toName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, toName_);
       }
       if (toType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(5, toType_);
@@ -25342,17 +26995,17 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getFromNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, fromName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, fromName_);
       }
       if (fromType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, fromType_);
       }
       if (!getToNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, toName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, toName_);
       }
       if (toType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -25375,6 +27028,77 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.Mapping)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.Mapping other = (org.roylance.yaorm.NestedEnumTest.Mapping) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getFromName()
+          .equals(other.getFromName());
+      result = result && fromType_ == other.fromType_;
+      result = result && getToName()
+          .equals(other.getToName());
+      result = result && toType_ == other.toType_;
+      result = result && (hasOutput() == other.hasOutput());
+      if (hasOutput()) {
+        result = result && getOutput()
+            .equals(other.getOutput());
+      }
+      result = result && (hasTableColumn() == other.hasTableColumn());
+      if (hasTableColumn()) {
+        result = result && getTableColumn()
+            .equals(other.getTableColumn());
+      }
+      result = result && (hasTable() == other.hasTable());
+      if (hasTable()) {
+        result = result && getTable()
+            .equals(other.getTable());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + FROM_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFromName().hashCode();
+      hash = (37 * hash) + FROM_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + fromType_;
+      hash = (37 * hash) + TO_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getToName().hashCode();
+      hash = (37 * hash) + TO_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + toType_;
+      if (hasOutput()) {
+        hash = (37 * hash) + OUTPUT_FIELD_NUMBER;
+        hash = (53 * hash) + getOutput().hashCode();
+      }
+      if (hasTableColumn()) {
+        hash = (37 * hash) + TABLE_COLUMN_FIELD_NUMBER;
+        hash = (53 * hash) + getTableColumn().hashCode();
+      }
+      if (hasTable()) {
+        hash = (37 * hash) + TABLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTable().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -25398,39 +27122,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -25448,7 +27172,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -25456,7 +27180,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.Mapping}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.Mapping)
         org.roylance.yaorm.NestedEnumTest.MappingOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -25464,7 +27188,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Mapping_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_Mapping_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -25477,12 +27201,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -25561,6 +27286,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.Mapping) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.Mapping)other);
@@ -25782,7 +27533,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getFromType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(fromType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(fromType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -25895,7 +27646,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getToType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(toType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(toType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -25921,7 +27672,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.Output output_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> outputBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.Output output = 6;</code>
@@ -26023,11 +27774,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.Output output = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> 
           getOutputFieldBuilder() {
         if (outputBuilder_ == null) {
-          outputBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          outputBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder>(
                   getOutput(),
                   getParentForChildren(),
@@ -26038,7 +27789,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn tableColumn_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> tableColumnBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
@@ -26140,11 +27891,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> 
           getTableColumnFieldBuilder() {
         if (tableColumnBuilder_ == null) {
-          tableColumnBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          tableColumnBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder>(
                   getTableColumn(),
                   getParentForChildren(),
@@ -26155,7 +27906,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.DataWarehouseTable table_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> tableBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
@@ -26257,11 +28008,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> 
           getTableFieldBuilder() {
         if (tableBuilder_ == null) {
-          tableBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          tableBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder>(
                   getTable(),
                   getParentForChildren(),
@@ -26399,11 +28150,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.DataSetTemplate}
    */
   public  static final class DataSetTemplate extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DataSetTemplate)
       DataSetTemplateOrBuilder {
     // Use DataSetTemplate.newBuilder() to construct.
-    private DataSetTemplate(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DataSetTemplate(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DataSetTemplate() {
@@ -26470,7 +28221,8 @@ public final class NestedEnumTest {
                 columnInfos_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              columnInfos_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate.parser(), extensionRegistry));
+              columnInfos_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate.parser(), extensionRegistry));
               break;
             }
             case 48: {
@@ -26502,7 +28254,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSetTemplate_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSetTemplate_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -26590,7 +28342,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
-      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(columnDelimiter_);
+      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
     }
 
@@ -26606,7 +28358,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
-      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(rowDelimiter_);
+      org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
     }
 
@@ -26676,10 +28428,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, destinationName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, destinationName_);
       }
       if (columnDelimiter_ != org.roylance.yaorm.NestedEnumTest.DelimiterType.COMMA.getNumber()) {
         output.writeEnum(3, columnDelimiter_);
@@ -26704,10 +28456,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, destinationName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, destinationName_);
       }
       if (columnDelimiter_ != org.roylance.yaorm.NestedEnumTest.DelimiterType.COMMA.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -26734,6 +28486,62 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.DataSetTemplate)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.DataSetTemplate other = (org.roylance.yaorm.NestedEnumTest.DataSetTemplate) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getDestinationName()
+          .equals(other.getDestinationName());
+      result = result && columnDelimiter_ == other.columnDelimiter_;
+      result = result && rowDelimiter_ == other.rowDelimiter_;
+      result = result && getColumnInfosList()
+          .equals(other.getColumnInfosList());
+      result = result && (getHasHeaders()
+          == other.getHasHeaders());
+      result = result && (getIsFixedWidth()
+          == other.getIsFixedWidth());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + DESTINATION_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDestinationName().hashCode();
+      hash = (37 * hash) + COLUMN_DELIMITER_FIELD_NUMBER;
+      hash = (53 * hash) + columnDelimiter_;
+      hash = (37 * hash) + ROW_DELIMITER_FIELD_NUMBER;
+      hash = (53 * hash) + rowDelimiter_;
+      if (getColumnInfosCount() > 0) {
+        hash = (37 * hash) + COLUMN_INFOS_FIELD_NUMBER;
+        hash = (53 * hash) + getColumnInfosList().hashCode();
+      }
+      hash = (37 * hash) + HAS_HEADERS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasHeaders());
+      hash = (37 * hash) + IS_FIXED_WIDTH_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsFixedWidth());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -26757,39 +28565,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -26807,7 +28615,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -26815,7 +28623,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.DataSetTemplate}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DataSetTemplate)
         org.roylance.yaorm.NestedEnumTest.DataSetTemplateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -26823,7 +28631,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSetTemplate_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_DataSetTemplate_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -26836,12 +28644,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getColumnInfosFieldBuilder();
         }
       }
@@ -26909,6 +28718,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.DataSetTemplate) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.DataSetTemplate)other);
@@ -26953,7 +28788,7 @@ public final class NestedEnumTest {
               columnInfos_ = other.columnInfos_;
               bitField0_ = (bitField0_ & ~0x00000010);
               columnInfosBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getColumnInfosFieldBuilder() : null;
             } else {
               columnInfosBuilder_.addAllMessages(other.columnInfos_);
@@ -27150,7 +28985,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
-        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(columnDelimiter_);
+        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
@@ -27194,7 +29029,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
-        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.forNumber(rowDelimiter_);
+        org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
@@ -27228,7 +29063,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate, org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate.Builder, org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplateOrBuilder> columnInfosBuilder_;
 
       /**
@@ -27444,11 +29279,11 @@ public final class NestedEnumTest {
            getColumnInfosBuilderList() {
         return getColumnInfosFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate, org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate.Builder, org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplateOrBuilder> 
           getColumnInfosFieldBuilder() {
         if (columnInfosBuilder_ == null) {
-          columnInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          columnInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate, org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate.Builder, org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplateOrBuilder>(
                   columnInfos_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -27665,11 +29500,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ColumnInfoTemplate}
    */
   public  static final class ColumnInfoTemplate extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ColumnInfoTemplate)
       ColumnInfoTemplateOrBuilder {
     // Use ColumnInfoTemplate.newBuilder() to construct.
-    private ColumnInfoTemplate(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ColumnInfoTemplate(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ColumnInfoTemplate() {
@@ -27801,7 +29636,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfoTemplate_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfoTemplate_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -27888,7 +29723,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceDatatype() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(sourceDatatype_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceDatatype_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -27947,7 +29782,7 @@ public final class NestedEnumTest {
      * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
-      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(destinationType_);
+      org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
       return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
     }
 
@@ -28077,10 +29912,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (!getSourceNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, sourceName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sourceName_);
       }
       if (sourceDatatype_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(3, sourceDatatype_);
@@ -28089,7 +29924,7 @@ public final class NestedEnumTest {
         output.writeInt64(4, sourceIndex_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, destinationName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, destinationName_);
       }
       if (destinationType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         output.writeEnum(6, destinationType_);
@@ -28110,10 +29945,10 @@ public final class NestedEnumTest {
         output.writeBool(11, hasSpecialInstructions_);
       }
       if (!getSpecialInstructionsEqualsBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 12, specialInstructionsEquals_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, specialInstructionsEquals_);
       }
       if (!getSpecialInstructionsNotEqualsBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 13, specialInstructionsNotEquals_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, specialInstructionsNotEquals_);
       }
     }
 
@@ -28123,10 +29958,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (!getSourceNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, sourceName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sourceName_);
       }
       if (sourceDatatype_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -28137,7 +29972,7 @@ public final class NestedEnumTest {
           .computeInt64Size(4, sourceIndex_);
       }
       if (!getDestinationNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, destinationName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, destinationName_);
       }
       if (destinationType_ != org.roylance.yaorm.NestedEnumTest.ProtobufType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -28164,16 +29999,98 @@ public final class NestedEnumTest {
           .computeBoolSize(11, hasSpecialInstructions_);
       }
       if (!getSpecialInstructionsEqualsBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(12, specialInstructionsEquals_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, specialInstructionsEquals_);
       }
       if (!getSpecialInstructionsNotEqualsBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(13, specialInstructionsNotEquals_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, specialInstructionsNotEquals_);
       }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate other = (org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getSourceName()
+          .equals(other.getSourceName());
+      result = result && sourceDatatype_ == other.sourceDatatype_;
+      result = result && (getSourceIndex()
+          == other.getSourceIndex());
+      result = result && getDestinationName()
+          .equals(other.getDestinationName());
+      result = result && destinationType_ == other.destinationType_;
+      result = result && (getDestinationIndex()
+          == other.getDestinationIndex());
+      result = result && (getFixedWidthStart()
+          == other.getFixedWidthStart());
+      result = result && (getFixedWidthEnd()
+          == other.getFixedWidthEnd());
+      result = result && (getIsOverpunch()
+          == other.getIsOverpunch());
+      result = result && (getHasSpecialInstructions()
+          == other.getHasSpecialInstructions());
+      result = result && getSpecialInstructionsEquals()
+          .equals(other.getSpecialInstructionsEquals());
+      result = result && getSpecialInstructionsNotEquals()
+          .equals(other.getSpecialInstructionsNotEquals());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SOURCE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceName().hashCode();
+      hash = (37 * hash) + SOURCE_DATATYPE_FIELD_NUMBER;
+      hash = (53 * hash) + sourceDatatype_;
+      hash = (37 * hash) + SOURCE_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getSourceIndex());
+      hash = (37 * hash) + DESTINATION_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDestinationName().hashCode();
+      hash = (37 * hash) + DESTINATION_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + destinationType_;
+      hash = (37 * hash) + DESTINATION_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDestinationIndex());
+      hash = (37 * hash) + FIXED_WIDTH_START_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFixedWidthStart());
+      hash = (37 * hash) + FIXED_WIDTH_END_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFixedWidthEnd());
+      hash = (37 * hash) + IS_OVERPUNCH_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsOverpunch());
+      hash = (37 * hash) + HAS_SPECIAL_INSTRUCTIONS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasSpecialInstructions());
+      hash = (37 * hash) + SPECIAL_INSTRUCTIONS_EQUALS_FIELD_NUMBER;
+      hash = (53 * hash) + getSpecialInstructionsEquals().hashCode();
+      hash = (37 * hash) + SPECIAL_INSTRUCTIONS_NOT_EQUALS_FIELD_NUMBER;
+      hash = (53 * hash) + getSpecialInstructionsNotEquals().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -28197,39 +30114,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -28247,7 +30164,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -28255,7 +30172,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ColumnInfoTemplate}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ColumnInfoTemplate)
         org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -28263,7 +30180,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfoTemplate_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ColumnInfoTemplate_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -28276,12 +30193,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -28351,6 +30269,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate)other);
@@ -28589,7 +30533,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceDatatype() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(sourceDatatype_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceDatatype_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -28728,7 +30672,7 @@ public final class NestedEnumTest {
        * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
-        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.forNumber(destinationType_);
+        org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
@@ -29235,11 +31179,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.RestCustomers}
    */
   public  static final class RestCustomers extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.RestCustomers)
       RestCustomersOrBuilder {
     // Use RestCustomers.newBuilder() to construct.
-    private RestCustomers(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RestCustomers(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private RestCustomers() {
@@ -29283,7 +31227,8 @@ public final class NestedEnumTest {
                 customers_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.Customer>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              customers_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.Customer.parser(), extensionRegistry));
+              customers_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.Customer.parser(), extensionRegistry));
               break;
             }
             case 18: {
@@ -29291,7 +31236,8 @@ public final class NestedEnumTest {
                 connections_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.ConnectionInformation>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              connections_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.ConnectionInformation.parser(), extensionRegistry));
+              connections_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.ConnectionInformation.parser(), extensionRegistry));
               break;
             }
             case 26: {
@@ -29324,7 +31270,8 @@ public final class NestedEnumTest {
                 mysqlRedshiftTables_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              mysqlRedshiftTables_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.parser(), extensionRegistry));
+              mysqlRedshiftTables_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.parser(), extensionRegistry));
               break;
             }
             case 58: {
@@ -29332,7 +31279,8 @@ public final class NestedEnumTest {
                 regularExpressions_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.RegularExpression>();
                 mutable_bitField0_ |= 0x00000040;
               }
-              regularExpressions_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.RegularExpression.parser(), extensionRegistry));
+              regularExpressions_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.RegularExpression.parser(), extensionRegistry));
               break;
             }
             case 66: {
@@ -29340,7 +31288,8 @@ public final class NestedEnumTest {
                 datasetTemplates_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataSetTemplate>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              datasetTemplates_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataSetTemplate.parser(), extensionRegistry));
+              datasetTemplates_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataSetTemplate.parser(), extensionRegistry));
               break;
             }
             case 72: {
@@ -29379,7 +31328,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestCustomers_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestCustomers_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -29679,10 +31628,10 @@ public final class NestedEnumTest {
         output.writeMessage(2, connections_.get(i));
       }
       if (!getAcgJavaHomeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, acgJavaHome_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, acgJavaHome_);
       }
       if (!getEcrJavaHomeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, ecrJavaHome_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ecrJavaHome_);
       }
       if (s3FileRetrieveConnection_ != null) {
         output.writeMessage(5, getS3FileRetrieveConnection());
@@ -29715,10 +31664,10 @@ public final class NestedEnumTest {
           .computeMessageSize(2, connections_.get(i));
       }
       if (!getAcgJavaHomeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, acgJavaHome_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, acgJavaHome_);
       }
       if (!getEcrJavaHomeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, ecrJavaHome_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ecrJavaHome_);
       }
       if (s3FileRetrieveConnection_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -29745,6 +31694,84 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.RestCustomers)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.RestCustomers other = (org.roylance.yaorm.NestedEnumTest.RestCustomers) obj;
+
+      boolean result = true;
+      result = result && getCustomersList()
+          .equals(other.getCustomersList());
+      result = result && getConnectionsList()
+          .equals(other.getConnectionsList());
+      result = result && getAcgJavaHome()
+          .equals(other.getAcgJavaHome());
+      result = result && getEcrJavaHome()
+          .equals(other.getEcrJavaHome());
+      result = result && (hasS3FileRetrieveConnection() == other.hasS3FileRetrieveConnection());
+      if (hasS3FileRetrieveConnection()) {
+        result = result && getS3FileRetrieveConnection()
+            .equals(other.getS3FileRetrieveConnection());
+      }
+      result = result && getMysqlRedshiftTablesList()
+          .equals(other.getMysqlRedshiftTablesList());
+      result = result && getRegularExpressionsList()
+          .equals(other.getRegularExpressionsList());
+      result = result && getDatasetTemplatesList()
+          .equals(other.getDatasetTemplatesList());
+      result = result && (getLicenseExists()
+          == other.getLicenseExists());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getCustomersCount() > 0) {
+        hash = (37 * hash) + CUSTOMERS_FIELD_NUMBER;
+        hash = (53 * hash) + getCustomersList().hashCode();
+      }
+      if (getConnectionsCount() > 0) {
+        hash = (37 * hash) + CONNECTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getConnectionsList().hashCode();
+      }
+      hash = (37 * hash) + ACG_JAVA_HOME_FIELD_NUMBER;
+      hash = (53 * hash) + getAcgJavaHome().hashCode();
+      hash = (37 * hash) + ECR_JAVA_HOME_FIELD_NUMBER;
+      hash = (53 * hash) + getEcrJavaHome().hashCode();
+      if (hasS3FileRetrieveConnection()) {
+        hash = (37 * hash) + S3_FILE_RETRIEVE_CONNECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getS3FileRetrieveConnection().hashCode();
+      }
+      if (getMysqlRedshiftTablesCount() > 0) {
+        hash = (37 * hash) + MYSQL_REDSHIFT_TABLES_FIELD_NUMBER;
+        hash = (53 * hash) + getMysqlRedshiftTablesList().hashCode();
+      }
+      if (getRegularExpressionsCount() > 0) {
+        hash = (37 * hash) + REGULAR_EXPRESSIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getRegularExpressionsList().hashCode();
+      }
+      if (getDatasetTemplatesCount() > 0) {
+        hash = (37 * hash) + DATASET_TEMPLATES_FIELD_NUMBER;
+        hash = (53 * hash) + getDatasetTemplatesList().hashCode();
+      }
+      hash = (37 * hash) + LICENSE_EXISTS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getLicenseExists());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -29768,39 +31795,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -29818,7 +31845,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -29826,7 +31853,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.RestCustomers}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.RestCustomers)
         org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -29834,7 +31861,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestCustomers_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestCustomers_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -29847,12 +31874,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getCustomersFieldBuilder();
           getConnectionsFieldBuilder();
           getMysqlRedshiftTablesFieldBuilder();
@@ -29986,6 +32014,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.RestCustomers) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.RestCustomers)other);
@@ -30016,7 +32070,7 @@ public final class NestedEnumTest {
               customers_ = other.customers_;
               bitField0_ = (bitField0_ & ~0x00000001);
               customersBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getCustomersFieldBuilder() : null;
             } else {
               customersBuilder_.addAllMessages(other.customers_);
@@ -30042,7 +32096,7 @@ public final class NestedEnumTest {
               connections_ = other.connections_;
               bitField0_ = (bitField0_ & ~0x00000002);
               connectionsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getConnectionsFieldBuilder() : null;
             } else {
               connectionsBuilder_.addAllMessages(other.connections_);
@@ -30079,7 +32133,7 @@ public final class NestedEnumTest {
               mysqlRedshiftTables_ = other.mysqlRedshiftTables_;
               bitField0_ = (bitField0_ & ~0x00000020);
               mysqlRedshiftTablesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getMysqlRedshiftTablesFieldBuilder() : null;
             } else {
               mysqlRedshiftTablesBuilder_.addAllMessages(other.mysqlRedshiftTables_);
@@ -30105,7 +32159,7 @@ public final class NestedEnumTest {
               regularExpressions_ = other.regularExpressions_;
               bitField0_ = (bitField0_ & ~0x00000040);
               regularExpressionsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getRegularExpressionsFieldBuilder() : null;
             } else {
               regularExpressionsBuilder_.addAllMessages(other.regularExpressions_);
@@ -30131,7 +32185,7 @@ public final class NestedEnumTest {
               datasetTemplates_ = other.datasetTemplates_;
               bitField0_ = (bitField0_ & ~0x00000080);
               datasetTemplatesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getDatasetTemplatesFieldBuilder() : null;
             } else {
               datasetTemplatesBuilder_.addAllMessages(other.datasetTemplates_);
@@ -30177,7 +32231,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder> customersBuilder_;
 
       /**
@@ -30393,11 +32447,11 @@ public final class NestedEnumTest {
            getCustomersBuilderList() {
         return getCustomersFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder> 
           getCustomersFieldBuilder() {
         if (customersBuilder_ == null) {
-          customersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          customersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder>(
                   customers_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -30417,7 +32471,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> connectionsBuilder_;
 
       /**
@@ -30633,11 +32687,11 @@ public final class NestedEnumTest {
            getConnectionsBuilderList() {
         return getConnectionsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
           getConnectionsFieldBuilder() {
         if (connectionsBuilder_ == null) {
-          connectionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          connectionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder>(
                   connections_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
@@ -30787,7 +32841,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.ConnectionInformation s3FileRetrieveConnection_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> s3FileRetrieveConnectionBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
@@ -30889,11 +32943,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
           getS3FileRetrieveConnectionFieldBuilder() {
         if (s3FileRetrieveConnectionBuilder_ == null) {
-          s3FileRetrieveConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          s3FileRetrieveConnectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder>(
                   getS3FileRetrieveConnection(),
                   getParentForChildren(),
@@ -30912,7 +32966,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder> mysqlRedshiftTablesBuilder_;
 
       /**
@@ -31128,11 +33182,11 @@ public final class NestedEnumTest {
            getMysqlRedshiftTablesBuilderList() {
         return getMysqlRedshiftTablesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder> 
           getMysqlRedshiftTablesFieldBuilder() {
         if (mysqlRedshiftTablesBuilder_ == null) {
-          mysqlRedshiftTablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          mysqlRedshiftTablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder>(
                   mysqlRedshiftTables_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
@@ -31152,7 +33206,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> regularExpressionsBuilder_;
 
       /**
@@ -31368,11 +33422,11 @@ public final class NestedEnumTest {
            getRegularExpressionsBuilderList() {
         return getRegularExpressionsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> 
           getRegularExpressionsFieldBuilder() {
         if (regularExpressionsBuilder_ == null) {
-          regularExpressionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          regularExpressionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder>(
                   regularExpressions_,
                   ((bitField0_ & 0x00000040) == 0x00000040),
@@ -31392,7 +33446,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSetTemplate, org.roylance.yaorm.NestedEnumTest.DataSetTemplate.Builder, org.roylance.yaorm.NestedEnumTest.DataSetTemplateOrBuilder> datasetTemplatesBuilder_;
 
       /**
@@ -31608,11 +33662,11 @@ public final class NestedEnumTest {
            getDatasetTemplatesBuilderList() {
         return getDatasetTemplatesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSetTemplate, org.roylance.yaorm.NestedEnumTest.DataSetTemplate.Builder, org.roylance.yaorm.NestedEnumTest.DataSetTemplateOrBuilder> 
           getDatasetTemplatesFieldBuilder() {
         if (datasetTemplatesBuilder_ == null) {
-          datasetTemplatesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          datasetTemplatesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataSetTemplate, org.roylance.yaorm.NestedEnumTest.DataSetTemplate.Builder, org.roylance.yaorm.NestedEnumTest.DataSetTemplateOrBuilder>(
                   datasetTemplates_,
                   ((bitField0_ & 0x00000080) == 0x00000080),
@@ -31753,11 +33807,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.RestDataWarehouseInfo}
    */
   public  static final class RestDataWarehouseInfo extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.RestDataWarehouseInfo)
       RestDataWarehouseInfoOrBuilder {
     // Use RestDataWarehouseInfo.newBuilder() to construct.
-    private RestDataWarehouseInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RestDataWarehouseInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private RestDataWarehouseInfo() {
@@ -31795,7 +33849,8 @@ public final class NestedEnumTest {
                 columns_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              columns_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.parser(), extensionRegistry));
+              columns_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.parser(), extensionRegistry));
               break;
             }
             case 18: {
@@ -31803,7 +33858,8 @@ public final class NestedEnumTest {
                 tables_ = new java.util.ArrayList<org.roylance.yaorm.NestedEnumTest.DataWarehouseTable>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              tables_.add(input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.parser(), extensionRegistry));
+              tables_.add(
+                  input.readMessage(org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.parser(), extensionRegistry));
               break;
             }
           }
@@ -31828,7 +33884,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestDataWarehouseInfo_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestDataWarehouseInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -31943,6 +33999,44 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo other = (org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo) obj;
+
+      boolean result = true;
+      result = result && getColumnsList()
+          .equals(other.getColumnsList());
+      result = result && getTablesList()
+          .equals(other.getTablesList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getColumnsCount() > 0) {
+        hash = (37 * hash) + COLUMNS_FIELD_NUMBER;
+        hash = (53 * hash) + getColumnsList().hashCode();
+      }
+      if (getTablesCount() > 0) {
+        hash = (37 * hash) + TABLES_FIELD_NUMBER;
+        hash = (53 * hash) + getTablesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -31966,39 +34060,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -32016,7 +34110,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -32024,7 +34118,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.RestDataWarehouseInfo}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.RestDataWarehouseInfo)
         org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -32032,7 +34126,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestDataWarehouseInfo_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_RestDataWarehouseInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -32045,12 +34139,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getColumnsFieldBuilder();
           getTablesFieldBuilder();
         }
@@ -32114,6 +34209,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo)other);
@@ -32144,7 +34265,7 @@ public final class NestedEnumTest {
               columns_ = other.columns_;
               bitField0_ = (bitField0_ & ~0x00000001);
               columnsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getColumnsFieldBuilder() : null;
             } else {
               columnsBuilder_.addAllMessages(other.columns_);
@@ -32170,7 +34291,7 @@ public final class NestedEnumTest {
               tables_ = other.tables_;
               bitField0_ = (bitField0_ & ~0x00000002);
               tablesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTablesFieldBuilder() : null;
             } else {
               tablesBuilder_.addAllMessages(other.tables_);
@@ -32213,7 +34334,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> columnsBuilder_;
 
       /**
@@ -32429,11 +34550,11 @@ public final class NestedEnumTest {
            getColumnsBuilderList() {
         return getColumnsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> 
           getColumnsFieldBuilder() {
         if (columnsBuilder_ == null) {
-          columnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          columnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder>(
                   columns_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -32453,7 +34574,7 @@ public final class NestedEnumTest {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> tablesBuilder_;
 
       /**
@@ -32669,11 +34790,11 @@ public final class NestedEnumTest {
            getTablesBuilderList() {
         return getTablesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> 
           getTablesFieldBuilder() {
         if (tablesBuilder_ == null) {
-          tablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          tablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder>(
                   tables_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
@@ -32776,11 +34897,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.UILetoRequest}
    */
   public  static final class UILetoRequest extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UILetoRequest)
       UILetoRequestOrBuilder {
     // Use UILetoRequest.newBuilder() to construct.
-    private UILetoRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private UILetoRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private UILetoRequest() {
@@ -32860,7 +34981,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -32956,7 +35077,7 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getTokenBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, token_);
       }
       if (restCustomers_ != null) {
         output.writeMessage(2, getRestCustomers());
@@ -32972,7 +35093,7 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getTokenBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, token_);
       }
       if (restCustomers_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -32987,6 +35108,54 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.UILetoRequest)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.UILetoRequest other = (org.roylance.yaorm.NestedEnumTest.UILetoRequest) obj;
+
+      boolean result = true;
+      result = result && getToken()
+          .equals(other.getToken());
+      result = result && (hasRestCustomers() == other.hasRestCustomers());
+      if (hasRestCustomers()) {
+        result = result && getRestCustomers()
+            .equals(other.getRestCustomers());
+      }
+      result = result && (hasDataWarehouseInfo() == other.hasDataWarehouseInfo());
+      if (hasDataWarehouseInfo()) {
+        result = result && getDataWarehouseInfo()
+            .equals(other.getDataWarehouseInfo());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken().hashCode();
+      if (hasRestCustomers()) {
+        hash = (37 * hash) + REST_CUSTOMERS_FIELD_NUMBER;
+        hash = (53 * hash) + getRestCustomers().hashCode();
+      }
+      if (hasDataWarehouseInfo()) {
+        hash = (37 * hash) + DATA_WAREHOUSE_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getDataWarehouseInfo().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -33010,39 +35179,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -33060,7 +35229,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -33068,7 +35237,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.UILetoRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.UILetoRequest)
         org.roylance.yaorm.NestedEnumTest.UILetoRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -33076,7 +35245,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoRequest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -33089,12 +35258,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -33150,6 +35320,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.UILetoRequest) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.UILetoRequest)other);
@@ -33267,7 +35463,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.RestCustomers restCustomers_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> restCustomersBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
@@ -33369,11 +35565,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> 
           getRestCustomersFieldBuilder() {
         if (restCustomersBuilder_ == null) {
-          restCustomersBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          restCustomersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder>(
                   getRestCustomers(),
                   getParentForChildren(),
@@ -33384,7 +35580,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo dataWarehouseInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> dataWarehouseInfoBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
@@ -33486,11 +35682,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> 
           getDataWarehouseInfoFieldBuilder() {
         if (dataWarehouseInfoBuilder_ == null) {
-          dataWarehouseInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          dataWarehouseInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder>(
                   getDataWarehouseInfo(),
                   getParentForChildren(),
@@ -33587,11 +35783,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.UILetoResponse}
    */
   public  static final class UILetoResponse extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UILetoResponse)
       UILetoResponseOrBuilder {
     // Use UILetoResponse.newBuilder() to construct.
-    private UILetoResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private UILetoResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private UILetoResponse() {
@@ -33670,7 +35866,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoResponse_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -33773,6 +35969,55 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.UILetoResponse)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.UILetoResponse other = (org.roylance.yaorm.NestedEnumTest.UILetoResponse) obj;
+
+      boolean result = true;
+      result = result && (getSuccessful()
+          == other.getSuccessful());
+      result = result && (hasRestCustomers() == other.hasRestCustomers());
+      if (hasRestCustomers()) {
+        result = result && getRestCustomers()
+            .equals(other.getRestCustomers());
+      }
+      result = result && (hasDataWarehouseInfo() == other.hasDataWarehouseInfo());
+      if (hasDataWarehouseInfo()) {
+        result = result && getDataWarehouseInfo()
+            .equals(other.getDataWarehouseInfo());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + SUCCESSFUL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSuccessful());
+      if (hasRestCustomers()) {
+        hash = (37 * hash) + REST_CUSTOMERS_FIELD_NUMBER;
+        hash = (53 * hash) + getRestCustomers().hashCode();
+      }
+      if (hasDataWarehouseInfo()) {
+        hash = (37 * hash) + DATA_WAREHOUSE_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getDataWarehouseInfo().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -33796,39 +36041,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -33846,7 +36091,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -33854,7 +36099,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.UILetoResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.UILetoResponse)
         org.roylance.yaorm.NestedEnumTest.UILetoResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -33862,7 +36107,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoResponse_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_UILetoResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -33875,12 +36120,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -33936,6 +36182,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.UILetoResponse) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.UILetoResponse)other);
@@ -34009,7 +36281,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.RestCustomers restCustomers_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> restCustomersBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
@@ -34111,11 +36383,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> 
           getRestCustomersFieldBuilder() {
         if (restCustomersBuilder_ == null) {
-          restCustomersBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          restCustomersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder>(
                   getRestCustomers(),
                   getParentForChildren(),
@@ -34126,7 +36398,7 @@ public final class NestedEnumTest {
       }
 
       private org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo dataWarehouseInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> dataWarehouseInfoBuilder_;
       /**
        * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
@@ -34228,11 +36500,11 @@ public final class NestedEnumTest {
       /**
        * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> 
           getDataWarehouseInfoFieldBuilder() {
         if (dataWarehouseInfoBuilder_ == null) {
-          dataWarehouseInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          dataWarehouseInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder>(
                   getDataWarehouseInfo(),
                   getParentForChildren(),
@@ -34318,11 +36590,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ReportEligibility}
    */
   public  static final class ReportEligibility extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ReportEligibility)
       ReportEligibilityOrBuilder {
     // Use ReportEligibility.newBuilder() to construct.
-    private ReportEligibility(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ReportEligibility(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ReportEligibility() {
@@ -34388,7 +36660,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReportEligibility_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReportEligibility_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -34460,7 +36732,7 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getMonthBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, month_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, month_);
       }
       if (medicalEligibile_ != 0D) {
         output.writeDouble(2, medicalEligibile_);
@@ -34476,7 +36748,7 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getMonthBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, month_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, month_);
       }
       if (medicalEligibile_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
@@ -34491,6 +36763,50 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ReportEligibility)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ReportEligibility other = (org.roylance.yaorm.NestedEnumTest.ReportEligibility) obj;
+
+      boolean result = true;
+      result = result && getMonth()
+          .equals(other.getMonth());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getMedicalEligibile())
+          == java.lang.Double.doubleToLongBits(
+              other.getMedicalEligibile()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getIneligibileAll())
+          == java.lang.Double.doubleToLongBits(
+              other.getIneligibileAll()));
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + MONTH_FIELD_NUMBER;
+      hash = (53 * hash) + getMonth().hashCode();
+      hash = (37 * hash) + MEDICAL_ELIGIBILE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getMedicalEligibile()));
+      hash = (37 * hash) + INELIGIBILE_ALL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getIneligibileAll()));
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -34514,39 +36830,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -34564,7 +36880,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -34572,7 +36888,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ReportEligibility}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ReportEligibility)
         org.roylance.yaorm.NestedEnumTest.ReportEligibilityOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -34580,7 +36896,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReportEligibility_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ReportEligibility_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -34593,12 +36909,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -34638,6 +36955,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ReportEligibility) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ReportEligibility)other);
@@ -34887,11 +37230,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ClaimsTriangle}
    */
   public  static final class ClaimsTriangle extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ClaimsTriangle)
       ClaimsTriangleOrBuilder {
     // Use ClaimsTriangle.newBuilder() to construct.
-    private ClaimsTriangle(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ClaimsTriangle(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ClaimsTriangle() {
@@ -34958,7 +37301,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ClaimsTriangle_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ClaimsTriangle_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -35055,10 +37398,10 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getPaidDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, paidDate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, paidDate_);
       }
       if (!getServiceDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, serviceDate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, serviceDate_);
       }
       if (medicalAllowedAmount_ != 0D) {
         output.writeDouble(3, medicalAllowedAmount_);
@@ -35071,10 +37414,10 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getPaidDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, paidDate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, paidDate_);
       }
       if (!getServiceDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, serviceDate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, serviceDate_);
       }
       if (medicalAllowedAmount_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
@@ -35085,6 +37428,47 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ClaimsTriangle)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ClaimsTriangle other = (org.roylance.yaorm.NestedEnumTest.ClaimsTriangle) obj;
+
+      boolean result = true;
+      result = result && getPaidDate()
+          .equals(other.getPaidDate());
+      result = result && getServiceDate()
+          .equals(other.getServiceDate());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getMedicalAllowedAmount())
+          == java.lang.Double.doubleToLongBits(
+              other.getMedicalAllowedAmount()));
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + PAID_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getPaidDate().hashCode();
+      hash = (37 * hash) + SERVICE_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getServiceDate().hashCode();
+      hash = (37 * hash) + MEDICAL_ALLOWED_AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getMedicalAllowedAmount()));
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -35108,39 +37492,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -35158,7 +37542,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -35166,7 +37550,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ClaimsTriangle}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ClaimsTriangle)
         org.roylance.yaorm.NestedEnumTest.ClaimsTriangleOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -35174,7 +37558,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ClaimsTriangle_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ClaimsTriangle_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -35187,12 +37571,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -35232,6 +37617,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ClaimsTriangle) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ClaimsTriangle)other);
@@ -35545,11 +37956,11 @@ public final class NestedEnumTest {
    * Protobuf type {@code org.roylance.yaorm.ServiceCategory}
    */
   public  static final class ServiceCategory extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ServiceCategory)
       ServiceCategoryOrBuilder {
     // Use ServiceCategory.newBuilder() to construct.
-    private ServiceCategory(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ServiceCategory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ServiceCategory() {
@@ -35630,7 +38041,7 @@ public final class NestedEnumTest {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ServiceCategory_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ServiceCategory_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -35795,16 +38206,16 @@ public final class NestedEnumTest {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getL1Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, l1_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, l1_);
       }
       if (!getL2Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, l2_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, l2_);
       }
       if (!getArtTosCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, artTosCode_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, artTosCode_);
       }
       if (!getScgL2Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, scgL2_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, scgL2_);
       }
       if (medicalAllowedAmount_ != 0D) {
         output.writeDouble(5, medicalAllowedAmount_);
@@ -35817,16 +38228,16 @@ public final class NestedEnumTest {
 
       size = 0;
       if (!getL1Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, l1_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, l1_);
       }
       if (!getL2Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, l2_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, l2_);
       }
       if (!getArtTosCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, artTosCode_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, artTosCode_);
       }
       if (!getScgL2Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, scgL2_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, scgL2_);
       }
       if (medicalAllowedAmount_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
@@ -35837,6 +38248,55 @@ public final class NestedEnumTest {
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.NestedEnumTest.ServiceCategory)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.NestedEnumTest.ServiceCategory other = (org.roylance.yaorm.NestedEnumTest.ServiceCategory) obj;
+
+      boolean result = true;
+      result = result && getL1()
+          .equals(other.getL1());
+      result = result && getL2()
+          .equals(other.getL2());
+      result = result && getArtTosCode()
+          .equals(other.getArtTosCode());
+      result = result && getScgL2()
+          .equals(other.getScgL2());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getMedicalAllowedAmount())
+          == java.lang.Double.doubleToLongBits(
+              other.getMedicalAllowedAmount()));
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + L1_FIELD_NUMBER;
+      hash = (53 * hash) + getL1().hashCode();
+      hash = (37 * hash) + L2_FIELD_NUMBER;
+      hash = (53 * hash) + getL2().hashCode();
+      hash = (37 * hash) + ART_TOS_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getArtTosCode().hashCode();
+      hash = (37 * hash) + SCG_L2_FIELD_NUMBER;
+      hash = (53 * hash) + getScgL2().hashCode();
+      hash = (37 * hash) + MEDICAL_ALLOWED_AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getMedicalAllowedAmount()));
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -35860,39 +38320,39 @@ public final class NestedEnumTest {
     }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
+      return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -35910,7 +38370,7 @@ public final class NestedEnumTest {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -35918,7 +38378,7 @@ public final class NestedEnumTest {
      * Protobuf type {@code org.roylance.yaorm.ServiceCategory}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.ServiceCategory)
         org.roylance.yaorm.NestedEnumTest.ServiceCategoryOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -35926,7 +38386,7 @@ public final class NestedEnumTest {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ServiceCategory_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.roylance.yaorm.NestedEnumTest.internal_static_org_roylance_yaorm_ServiceCategory_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -35939,12 +38399,13 @@ public final class NestedEnumTest {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -35990,6 +38451,32 @@ public final class NestedEnumTest {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.roylance.yaorm.NestedEnumTest.ServiceCategory) {
           return mergeFrom((org.roylance.yaorm.NestedEnumTest.ServiceCategory)other);
@@ -36399,147 +38886,147 @@ public final class NestedEnumTest {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Customer_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Customer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Projection_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Projection_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ProjectionTable_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ProjectionTable_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Transformation_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Transformation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Input_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Input_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Output_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Output_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_DataSet_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_DataSet_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ReceivedDataSet_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ReceivedDataSet_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ColumnInfo_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ColumnInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_MySQLRedshiftTable_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_MySQLRedshiftTable_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ConnectionInformation_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ConnectionInformation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_RegularExpression_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_RegularExpression_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Validation_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Validation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_OutputValidation_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_OutputValidation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ValidationReport_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ValidationReport_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_DataWarehouseColumn_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_DataWarehouseColumn_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_DataWarehouseTable_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_DataWarehouseTable_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_DataWarehouseTableColumn_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_DataWarehouseTableColumn_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Mapping_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Mapping_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_DataSetTemplate_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_DataSetTemplate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ColumnInfoTemplate_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ColumnInfoTemplate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_RestCustomers_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_RestCustomers_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_RestDataWarehouseInfo_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_RestDataWarehouseInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UILetoRequest_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_UILetoRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_UILetoResponse_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_UILetoResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ReportEligibility_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ReportEligibility_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ClaimsTriangle_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ClaimsTriangle_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_ServiceCategory_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_ServiceCategory_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -36743,175 +39230,175 @@ public final class NestedEnumTest {
     internal_static_org_roylance_yaorm_Customer_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_org_roylance_yaorm_Customer_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Customer_descriptor,
         new java.lang.String[] { "Id", "Name", "StagingConnection", "Projections", "Datasets", "Transformations", "BuildLandingDag", });
     internal_static_org_roylance_yaorm_Projection_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_org_roylance_yaorm_Projection_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Projection_descriptor,
         new java.lang.String[] { "Id", "DestinationDatabaseKey", "EcrStartDate", "EcrEndDate", "AcgStartDate", "AcgEndDate", "DestinationDatabaseConnection", "RedshiftConnection", "S3Connection", "Hermes", "BuildRedshiftDag", "BuildDag", "IsDemo", "Tables", });
     internal_static_org_roylance_yaorm_ProjectionTable_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_roylance_yaorm_ProjectionTable_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ProjectionTable_descriptor,
         new java.lang.String[] { "Id", "Projection", "MysqlRedshiftTable", "TableName", });
     internal_static_org_roylance_yaorm_Transformation_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_org_roylance_yaorm_Transformation_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Transformation_descriptor,
         new java.lang.String[] { "Id", "Name", "RawSql", "Inputs", "Outputs", "Customer", });
     internal_static_org_roylance_yaorm_Input_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_org_roylance_yaorm_Input_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Input_descriptor,
         new java.lang.String[] { "Id", "Transformation", "InputTransformation", "Dataset", "Display", });
     internal_static_org_roylance_yaorm_Output_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_org_roylance_yaorm_Output_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Output_descriptor,
         new java.lang.String[] { "Id", "Transformation", "ColumnName", "ColumnType", });
     internal_static_org_roylance_yaorm_DataSet_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_org_roylance_yaorm_DataSet_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_DataSet_descriptor,
         new java.lang.String[] { "Id", "DestinationName", "ColumnDelimiter", "RowDelimiter", "DirectoryLocation", "ColumnInfos", "ReceivedDatasets", "HasHeaders", "IsFixedWidth", });
     internal_static_org_roylance_yaorm_ReceivedDataSet_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_org_roylance_yaorm_ReceivedDataSet_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ReceivedDataSet_descriptor,
         new java.lang.String[] { "Id", "ReceivedDate", "CompressedBase64", "HasProcessed", });
     internal_static_org_roylance_yaorm_ColumnInfo_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_org_roylance_yaorm_ColumnInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ColumnInfo_descriptor,
         new java.lang.String[] { "Id", "SourceName", "SourceType", "SourceIndex", "DestinationName", "DestinationType", "DestinationIndex", "FixedWidthStart", "FixedWidthEnd", "IsOverpunch", "HasSpecialInstructions", "SpecialInstructionsEquals", "SpecialInstructionsNotEquals", });
     internal_static_org_roylance_yaorm_MySQLRedshiftTable_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_org_roylance_yaorm_MySQLRedshiftTable_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_MySQLRedshiftTable_descriptor,
         new java.lang.String[] { "Id", "TableName", });
     internal_static_org_roylance_yaorm_ConnectionInformation_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_org_roylance_yaorm_ConnectionInformation_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ConnectionInformation_descriptor,
         new java.lang.String[] { "Id", "Name", "User", "Password", "Host", "Port", "Database", "Extra", "AwsAccess", "AwsSecret", "Dbtype", });
     internal_static_org_roylance_yaorm_RegularExpression_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_org_roylance_yaorm_RegularExpression_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_RegularExpression_descriptor,
         new java.lang.String[] { "Id", "Name", "Value", });
     internal_static_org_roylance_yaorm_Validation_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_org_roylance_yaorm_Validation_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Validation_descriptor,
         new java.lang.String[] { "Id", "Name", "Transformation", "Validations", "Reports", });
     internal_static_org_roylance_yaorm_OutputValidation_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_org_roylance_yaorm_OutputValidation_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_OutputValidation_descriptor,
         new java.lang.String[] { "Id", "Name", "Output", "RegularExpression", "Validation", });
     internal_static_org_roylance_yaorm_ValidationReport_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_org_roylance_yaorm_ValidationReport_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ValidationReport_descriptor,
         new java.lang.String[] { "Id", "DateRun", "DateRunDisplay", "NumberPassed", "NumberFailed", "Validation", });
     internal_static_org_roylance_yaorm_DataWarehouseColumn_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_org_roylance_yaorm_DataWarehouseColumn_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_DataWarehouseColumn_descriptor,
         new java.lang.String[] { "Id", "ColumnName", "ColumnDescription", "ColumnType", "DiscoveryWeight", "IsNumeric", "IsDate", "Validations", "TableColumns", });
     internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_DataWarehouseColumnValidation_descriptor,
         new java.lang.String[] { "Id", "Name", "RegularExpression", "Column", });
     internal_static_org_roylance_yaorm_DataWarehouseTable_descriptor =
       getDescriptor().getMessageTypes().get(17);
     internal_static_org_roylance_yaorm_DataWarehouseTable_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_DataWarehouseTable_descriptor,
         new java.lang.String[] { "Id", "Name", "Description", "TableColumns", });
     internal_static_org_roylance_yaorm_DataWarehouseTableColumn_descriptor =
       getDescriptor().getMessageTypes().get(18);
     internal_static_org_roylance_yaorm_DataWarehouseTableColumn_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_DataWarehouseTableColumn_descriptor,
         new java.lang.String[] { "Id", "ColumnName", "ColumnType", "Table", "Column", "Mappings", });
     internal_static_org_roylance_yaorm_Mapping_descriptor =
       getDescriptor().getMessageTypes().get(19);
     internal_static_org_roylance_yaorm_Mapping_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Mapping_descriptor,
         new java.lang.String[] { "Id", "FromName", "FromType", "ToName", "ToType", "Output", "TableColumn", "Table", });
     internal_static_org_roylance_yaorm_DataSetTemplate_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_org_roylance_yaorm_DataSetTemplate_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_DataSetTemplate_descriptor,
         new java.lang.String[] { "Id", "DestinationName", "ColumnDelimiter", "RowDelimiter", "ColumnInfos", "HasHeaders", "IsFixedWidth", });
     internal_static_org_roylance_yaorm_ColumnInfoTemplate_descriptor =
       getDescriptor().getMessageTypes().get(21);
     internal_static_org_roylance_yaorm_ColumnInfoTemplate_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ColumnInfoTemplate_descriptor,
         new java.lang.String[] { "Id", "SourceName", "SourceDatatype", "SourceIndex", "DestinationName", "DestinationType", "DestinationIndex", "FixedWidthStart", "FixedWidthEnd", "IsOverpunch", "HasSpecialInstructions", "SpecialInstructionsEquals", "SpecialInstructionsNotEquals", });
     internal_static_org_roylance_yaorm_RestCustomers_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_org_roylance_yaorm_RestCustomers_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_RestCustomers_descriptor,
         new java.lang.String[] { "Customers", "Connections", "AcgJavaHome", "EcrJavaHome", "S3FileRetrieveConnection", "MysqlRedshiftTables", "RegularExpressions", "DatasetTemplates", "LicenseExists", });
     internal_static_org_roylance_yaorm_RestDataWarehouseInfo_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_org_roylance_yaorm_RestDataWarehouseInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_RestDataWarehouseInfo_descriptor,
         new java.lang.String[] { "Columns", "Tables", });
     internal_static_org_roylance_yaorm_UILetoRequest_descriptor =
       getDescriptor().getMessageTypes().get(24);
     internal_static_org_roylance_yaorm_UILetoRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UILetoRequest_descriptor,
         new java.lang.String[] { "Token", "RestCustomers", "DataWarehouseInfo", });
     internal_static_org_roylance_yaorm_UILetoResponse_descriptor =
       getDescriptor().getMessageTypes().get(25);
     internal_static_org_roylance_yaorm_UILetoResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UILetoResponse_descriptor,
         new java.lang.String[] { "Successful", "RestCustomers", "DataWarehouseInfo", });
     internal_static_org_roylance_yaorm_ReportEligibility_descriptor =
       getDescriptor().getMessageTypes().get(26);
     internal_static_org_roylance_yaorm_ReportEligibility_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ReportEligibility_descriptor,
         new java.lang.String[] { "Month", "MedicalEligibile", "IneligibileAll", });
     internal_static_org_roylance_yaorm_ClaimsTriangle_descriptor =
       getDescriptor().getMessageTypes().get(27);
     internal_static_org_roylance_yaorm_ClaimsTriangle_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ClaimsTriangle_descriptor,
         new java.lang.String[] { "PaidDate", "ServiceDate", "MedicalAllowedAmount", });
     internal_static_org_roylance_yaorm_ServiceCategory_descriptor =
       getDescriptor().getMessageTypes().get(28);
     internal_static_org_roylance_yaorm_ServiceCategory_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ServiceCategory_descriptor,
         new java.lang.String[] { "L1", "L2", "ArtTosCode", "ScgL2", "MedicalAllowedAmount", });
   }
