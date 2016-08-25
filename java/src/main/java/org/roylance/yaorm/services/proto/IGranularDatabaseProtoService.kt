@@ -10,4 +10,5 @@ interface IGranularDatabaseProtoService: AutoCloseable {
     fun executeSelectQuery(definition: YaormModel.TableDefinition, query:String): IProtoCursor
     fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query:String, streamer: IProtoStreamer)
     fun commit()
+    fun getReport(): YaormModel.DatabaseExecutionReport
 }

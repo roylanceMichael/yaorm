@@ -7,9 +7,7 @@ import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityMessageService
 import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.utilities.DagBuilder
-import org.roylance.yaorm.utilities.TestModelGMBuilder
-import org.roylance.yaorm.utilities.YaormUtils
+import org.roylance.yaorm.utilities.*
 import java.io.File
 import java.util.*
 
@@ -332,6 +330,82 @@ class SQLiteEntityMessageServiceTest {
             // assert
             val foundDags = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
             Assert.assertTrue(foundDags.size == 100)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    fun bulkInsert1Test() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(
+                    database.absolutePath,
+                    "mike",
+                    "testing")
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = TestModelGMBuilder()
+
+            val customIndexes = HashMap<String, YaormModel.Index>()
+            val index = YaormModel.Index
+                    .newBuilder()
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .build()
+            customIndexes[TestingModel.Dag.getDescriptor().name] = index
+
+            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+
+            val manyDags = ArrayList<TestingModel.Dag>()
+            var i = 0
+            while (i < 100) {
+                manyDags.add(DagBuilder().build())
+                i++
+            }
+
+            entityMessageService.bulkInsert(manyDags)
+
+            // act
+            val objects = GetProtoObjects(
+                    entityService,
+                    protoService,
+                    HashMap(),
+                    HashMap())
+
+            val results = objects.build(TestingModel.Dag.getDefaultInstance(), manyDags.map { it.id })
+
+            // assert
+            val actualResults = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
+
+            results.forEach { outerResult ->
+                val foundComparable = actualResults.first { it.id.equals(outerResult.id) }
+                Assert.assertTrue(foundComparable != null)
+                Assert.assertTrue(outerResult.flattenedTasksCount.equals(foundComparable.flattenedTasksCount))
+                Assert.assertTrue(outerResult.uncompletedTasksCount.equals(foundComparable.uncompletedTasksCount))
+
+                val flattenedUnion = HashSet<String>()
+                outerResult.flattenedTasksList.forEach { flattenedUnion.add(it.id) }
+                foundComparable.flattenedTasksList.forEach { flattenedUnion.add(it.id) }
+
+                Assert.assertTrue(flattenedUnion.size.equals(outerResult.flattenedTasksCount))
+
+                val uncompletedUnion = HashSet<String>()
+                outerResult.uncompletedTasksList.forEach { uncompletedUnion.add(it.id) }
+                foundComparable.uncompletedTasksList.forEach { uncompletedUnion.add(it.id) }
+
+                Assert.assertTrue(uncompletedUnion.size.equals(outerResult.uncompletedTasksCount))
+            }
+            Assert.assertTrue(actualResults.size == 100)
+            Assert.assertTrue(results.size == 100)
+            System.out.println(granularDatabaseService.getReport().callsToDatabase)
         }
         finally {
             database.deleteOnExit()

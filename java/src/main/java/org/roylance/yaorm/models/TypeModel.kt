@@ -62,6 +62,9 @@ class TypeModel(
         }
 
         fun isInt(item: String): Boolean {
+            if (item.length == 0) {
+                return true
+            }
             return StringUtils.isNumeric(item)
         }
 

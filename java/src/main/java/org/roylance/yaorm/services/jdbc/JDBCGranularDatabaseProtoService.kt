@@ -11,6 +11,11 @@ import java.util.*
 
 class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: IConnectionSourceFactory,
                                        private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseProtoService {
+    private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
+
+    override fun getReport(): YaormModel.DatabaseExecutionReport {
+        return this.report.build()
+    }
 
     override fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition {
         val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
@@ -48,6 +53,7 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
             throw e
         }
         finally {
+            this.report.callsToDatabase = this.report.callsToDatabase + 1
             statement.close()
         }
     }
@@ -88,6 +94,7 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
                 this.connectionSourceFactory.connectionSource.commit()
             }
             statement.close()
+            this.report.callsToDatabase = this.report.callsToDatabase + 1
         }
     }
 
@@ -102,6 +109,7 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
         }
         finally {
             // normally close, but wait for service to do it
+            this.report.callsToDatabase = this.report.callsToDatabase + 1
         }
     }
 
@@ -114,6 +122,7 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
         }
         finally {
             // normally close, but wait for service to do it
+            this.report.callsToDatabase = this.report.callsToDatabase + 1
         }
     }
 

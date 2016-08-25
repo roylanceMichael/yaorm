@@ -28,6 +28,7 @@ message WhereClause {
         GREATER_THAN = 1;
         LESS_THAN = 2;
         NOT_EQUALS = 3;
+        IN = 4;
     }
     OperatorType operator_type = 2;
     enum ConnectingAndOr {
@@ -37,6 +38,7 @@ message WhereClause {
     }
     ConnectingAndOr connecting_and_or = 3;
     WhereClause connecting_where_clause = 4;
+    repeated string in_items = 5;
 }
 
 message ColumnDefinition {
@@ -221,4 +223,8 @@ message Migration {
     string context_name = 2;
     string model_definition_base64 = 3;
     int64 insert_date = 4;
+}
+
+message DatabaseExecutionReport {
+    int64 calls_to_database = 1;
 }

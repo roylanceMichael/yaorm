@@ -140,8 +140,18 @@ object ProtobufUtils {
                                                     generatedMessageBuilder: IProtoGeneratedMessageBuilder,
                                                     definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
                                                     customIndexes: MutableMap<String, YaormModel.Index>): T? {
-        return GetProtoObject(entityService, generatedMessageBuilder, definitions, customIndexes)
-                .build(builder, entityId)
+        val getObject = GetProtoObjects(
+                entityService,
+                generatedMessageBuilder,
+                definitions,
+                customIndexes)
+
+        val results = getObject.build(builder, listOf(entityId))
+        if (results.size > 0) {
+            return results.first()
+        }
+
+        return null
     }
 
     fun convertProtobufObjectToRecords(message:Message,
@@ -161,6 +171,18 @@ object ProtobufUtils {
         val foundIdField = message.allFields.keys.firstOrNull { it.name.equals(YaormUtils.IdName) } ?: Empty
         val foundId = message.allFields[foundIdField] ?: return Empty
         return foundId.toString()
+    }
+
+    fun getIdFromMessage(message:Message.Builder):String {
+        val foundIdField = message.allFields.keys.firstOrNull { it.name.equals(YaormUtils.IdName) } ?: Empty
+        val foundId = message.allFields[foundIdField] ?: return Empty
+        return foundId.toString()
+    }
+
+    fun setIdForMessage(message: Message.Builder, id: String) {
+        val foundIdField = message.descriptorForType.fields.firstOrNull { it.name.equals(YaormUtils.IdName) } ?: return
+
+        message.setField(foundIdField, id)
     }
 
     fun isMessageOk(message: Message):Boolean {
@@ -272,10 +294,7 @@ object ProtobufUtils {
         val actualMainColumnName = buildLinkerMessageMainTableColumnName(mainName)
         val actualOtherColumnName= buildLinkerMessageOtherTableColumnName(otherName)
 
-        tableDefinition.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder()
-                .setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR)
-                .setType(YaormModel.ProtobufType.STRING)
-                .setName(YaormUtils.IdName))
+        tableDefinition.addColumnDefinitions(YaormUtils.buildIdColumnDefinition())
         tableDefinition.addColumnDefinitions(YaormModel.ColumnDefinition.newBuilder()
                 .setColumnType(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY)
                 .setLinkerType(YaormModel.ColumnDefinition.LinkerType.PARENT)
@@ -299,12 +318,7 @@ object ProtobufUtils {
         val actualMainTableName = buildLinkerMessageMainTableColumnName(mainColumnName)
         val actualOtherTableName= buildLinkerMessageOtherTableColumnName(otherColumnName)
 
-        val idColumn = YaormModel.Column.newBuilder()
-                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
-                        .setName(YaormUtils.IdName)
-                        .setType(YaormModel.ProtobufType.STRING)
-                        .setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR))
-                .setStringHolder("$mainColumnId~$otherColumnId")
+        val idColumn = YaormUtils.buildIdColumn("$mainColumnId~$otherColumnId")
 
         val mainIdColumn = YaormModel.Column.newBuilder()
                 .setDefinition(YaormModel.ColumnDefinition.newBuilder()
@@ -336,11 +350,7 @@ object ProtobufUtils {
                                         enumValueDescriptor: Descriptors.EnumValueDescriptor):YaormModel.Record {
         val record = YaormModel.Record.newBuilder()
 
-        val idColumn = YaormModel.Column.newBuilder()
-                .setDefinition(YaormModel.ColumnDefinition.newBuilder()
-                        .setName(YaormUtils.IdName)
-                        .setType(YaormModel.ProtobufType.STRING))
-                .setStringHolder("$mainColumnId~${enumValueDescriptor.name}")
+        val idColumn = YaormUtils.buildIdColumn("$mainColumnId~${enumValueDescriptor.name}")
 
         val mainIdColumn = YaormModel.Column.newBuilder()
                 .setDefinition(YaormModel.ColumnDefinition.newBuilder()
@@ -368,10 +378,7 @@ object ProtobufUtils {
                 .setTableType(YaormModel.TableDefinition.TableType.LINKER_ENUM)
                 .setName("${mainTableName}_${repeatedEnumName}_$repeatedEnumColumnName")
 
-        val idProperty = YaormModel.ColumnDefinition.newBuilder()
-                .setName(YaormUtils.IdName)
-                .setType(YaormModel.ProtobufType.STRING)
-                .build()
+        val idProperty = YaormUtils.buildIdColumnDefinition()
         val mainTableIdProperty = YaormModel.ColumnDefinition.newBuilder()
                 .setName(mainTableName)
                 .setType(YaormModel.ProtobufType.STRING)
@@ -400,10 +407,7 @@ object ProtobufUtils {
         val mainTableColumnName = buildLinkerMessageMainTableColumnName(mainTableName)
         val otherTableColumnName = buildLinkerMessageOtherTableColumnName(linkerTableName)
 
-        val idProperty = YaormModel.ColumnDefinition.newBuilder()
-                .setName(YaormUtils.IdName)
-                .setType(YaormModel.ProtobufType.STRING)
-                .build()
+        val idProperty = YaormUtils.buildIdColumnDefinition()
         val mainTableIdProperty = YaormModel.ColumnDefinition.newBuilder()
                 .setName(mainTableColumnName)
                 .setType(YaormModel.ProtobufType.STRING)

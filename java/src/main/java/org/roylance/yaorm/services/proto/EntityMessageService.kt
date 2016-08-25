@@ -4,16 +4,64 @@ import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.utilities.ConvertRecordsToProtobuf
+import org.roylance.yaorm.utilities.GetProtoObjects
 import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.ProtobufUtils
 import java.util.*
 
+@Suppress("UNCHECKED_CAST")
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         override val entityService: IEntityProtoService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
-
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
+
+    override fun <T : Message> getMany(messageType: T, ids: List<String>): List<T> {
+        val returnList = ArrayList<T>()
+        if (!ProtobufUtils.isMessageOk(messageType)) {
+            return returnList
+        }
+
+        val objects = GetProtoObjects(
+                this.entityService,
+                this.protoGeneratedMessageBuilder,
+                this.definitions,
+                this.customIndexes)
+
+        return objects.build(messageType, ids)
+    }
+
+    override fun <T : Message> getManySingleLevel(messageType: T, limit:Int, offset:Int): List<T> {
+        val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
+                ?: return ArrayList()
+
+        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
+        val records = this.entityService.getMany(definition, limit, offset)
+        return records.recordsList.map {
+            val newBuilder = builder.newBuilderForType()
+            ConvertRecordsToProtobuf.build(newBuilder, it)
+            newBuilder.build() as T
+        }
+    }
+
+    override fun <T : Message> getManySingleLevel(messageType: T, ids: List<String>): List<T> {
+        val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
+                ?: return ArrayList()
+
+        val whereClause = YaormModel.WhereClause.newBuilder()
+                .setNameAndProperty(YaormModel.Column.newBuilder()
+                        .setDefinition(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName).setType(YaormModel.ProtobufType.STRING)))
+                .addAllInItems(ids)
+                .build()
+
+        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
+        val records = this.entityService.where(whereClause, definition)
+        return records.recordsList.map {
+            val newBuilder = builder.newBuilderForType()
+            ConvertRecordsToProtobuf.build(newBuilder, it)
+            newBuilder.build() as T
+        }
+    }
 
     override fun <T : Message> mergeTable(messages: List<T>, message: T): Boolean {
         if (!ProtobufUtils.isMessageOk(message)) {
@@ -269,19 +317,26 @@ class EntityMessageService(
     }
 
     override fun <T : Message> get(messageType:T, id: String): T? {
-        return ProtobufUtils.getProtoObjectFromBuilderSingle(messageType,
+        val objects = GetProtoObjects(
                 this.entityService,
-                id,
                 this.protoGeneratedMessageBuilder,
-                definitions,
+                this.definitions,
                 this.customIndexes)
+
+        val foundItems = objects.build(messageType, listOf(id))
+
+        if (foundItems.size > 0) {
+            return foundItems.first()
+        }
+        return null
     }
 
     override fun <T : Message> getMany(messageType: T, limit: Int, offset: Int): List<T> {
-        val returnList = ArrayList<T>()
         if (!ProtobufUtils.isMessageOk(messageType)) {
-            return returnList
+            return ArrayList()
         }
+
+        val ids = ArrayList<String>()
 
         // get ids first
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
@@ -289,52 +344,84 @@ class EntityMessageService(
                 .forEach { record ->
                     val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
-                        val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        if (completedMessage != null) {
-                            returnList.add(completedMessage)
-                        }
+                        ids.add(idColumn.stringHolder)
                     }
         }
 
+        val objects = GetProtoObjects(
+                this.entityService,
+                this.protoGeneratedMessageBuilder,
+                this.definitions,
+                this.customIndexes)
+
         // get messageType and all children
-        return returnList
+        return objects.build(messageType, ids)
     }
 
     override fun <T : Message> getManyStream(messageType: T, streamer: IMessageStreamer, limit:Int, offset: Int) {
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return
         }
+
+        val ids = ArrayList<String>()
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.getMany(definition = tableDefinition, limit = limit, offset = offset).recordsList
                 .forEach { record ->
                     val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
-                        val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        if (completedMessage != null) {
-                            streamer.stream(completedMessage)
+
+                        ids.add(idColumn.stringHolder)
+
+                        if (ids.size > MaxQuerySize) {
+                            val objects = GetProtoObjects(
+                                    this.entityService,
+                                    this.protoGeneratedMessageBuilder,
+                                    this.definitions,
+                                    this.customIndexes)
+
+                            objects.build(messageType, ids).forEach { completedMessage ->
+                                streamer.stream(completedMessage)
+                            }
+                            ids.clear()
                         }
                     }
                 }
+
+        if (ids.size > 0) {
+            val objects = GetProtoObjects(
+                    this.entityService,
+                    this.protoGeneratedMessageBuilder,
+                    this.definitions,
+                    this.customIndexes)
+
+            objects.build(messageType, ids).forEach { completedMessage ->
+                streamer.stream(completedMessage)
+            }
+        }
     }
 
     override fun <T : Message> where(messageType: T, whereClause: YaormModel.WhereClause): List<T> {
-        val returnList = ArrayList<T>()
         if (!ProtobufUtils.isMessageOk(messageType)) {
-            return returnList
+            return ArrayList()
         }
+        val ids = ArrayList<String>()
+
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.where(whereClause, tableDefinition).recordsList
                 .forEach { record ->
                     val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
-                        val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        if (completedMessage != null) {
-                            returnList.add(completedMessage)
-                        }
+                        ids.add(idColumn.stringHolder)
                     }
                 }
 
-        return returnList
+        val objects = GetProtoObjects(
+                this.entityService,
+                this.protoGeneratedMessageBuilder,
+                this.definitions,
+                this.customIndexes)
+
+        return objects.build(messageType, ids)
     }
 
     override fun <T : Message> whereStream(messageType: T,
@@ -343,17 +430,42 @@ class EntityMessageService(
         if (!ProtobufUtils.isMessageOk(messageType)) {
             return
         }
+        val ids = ArrayList<String>()
+
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.where(whereClause, tableDefinition).recordsList
                 .forEach { record ->
                     val idColumn = YaormUtils.getIdColumn(record.columnsList)
                     if (idColumn != null) {
-                        val completedMessage = this.get(messageType, idColumn.stringHolder)
-                        if (completedMessage != null) {
-                            streamer.stream(completedMessage)
+                        ids.add(idColumn.stringHolder)
+
+                        if (ids.size > MaxQuerySize) {
+                            val objects = GetProtoObjects(
+                                    this.entityService,
+                                    this.protoGeneratedMessageBuilder,
+                                    this.definitions,
+                                    this.customIndexes)
+
+                            objects.build(messageType, ids).forEach { completedMessage ->
+                                streamer.stream(completedMessage)
+                            }
+                            ids.clear()
                         }
                     }
                 }
+
+        if (ids.size > 0) {
+            val objects = GetProtoObjects(
+                    this.entityService,
+                    this.protoGeneratedMessageBuilder,
+                    this.definitions,
+                    this.customIndexes)
+
+            objects.build(messageType, ids).forEach { completedMessage ->
+                streamer.stream(completedMessage)
+            }
+            ids.clear()
+        }
     }
 
     override fun <T : Message> getCount(messageType: T): Long {
@@ -537,5 +649,9 @@ class EntityMessageService(
 
     override fun close() {
         this.entityService.close()
+    }
+
+    companion object {
+        private const val MaxQuerySize = 500
     }
 }

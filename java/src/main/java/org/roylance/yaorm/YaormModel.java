@@ -294,6 +294,25 @@ public final class YaormModel {
      * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getConnectingWhereClauseOrBuilder();
+
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    java.util.List<java.lang.String>
+        getInItemsList();
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    int getInItemsCount();
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    java.lang.String getInItems(int index);
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getInItemsBytes(int index);
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.WhereClause}
@@ -309,6 +328,7 @@ public final class YaormModel {
     private WhereClause() {
       operatorType_ = 0;
       connectingAndOr_ = 0;
+      inItems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -374,6 +394,15 @@ public final class YaormModel {
 
               break;
             }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                inItems_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              inItems_.add(s);
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -382,6 +411,9 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          inItems_ = inItems_.getUnmodifiableView();
+        }
         makeExtensionsImmutable();
       }
     }
@@ -418,6 +450,10 @@ public final class YaormModel {
        * <code>NOT_EQUALS = 3;</code>
        */
       NOT_EQUALS(3),
+      /**
+       * <code>IN = 4;</code>
+       */
+      IN(4),
       UNRECOGNIZED(-1),
       ;
 
@@ -437,6 +473,10 @@ public final class YaormModel {
        * <code>NOT_EQUALS = 3;</code>
        */
       public static final int NOT_EQUALS_VALUE = 3;
+      /**
+       * <code>IN = 4;</code>
+       */
+      public static final int IN_VALUE = 4;
 
 
       public final int getNumber() {
@@ -461,6 +501,7 @@ public final class YaormModel {
           case 1: return GREATER_THAN;
           case 2: return LESS_THAN;
           case 3: return NOT_EQUALS;
+          case 4: return IN;
           default: return null;
         }
       }
@@ -620,6 +661,7 @@ public final class YaormModel {
       // @@protoc_insertion_point(enum_scope:org.roylance.yaorm.WhereClause.ConnectingAndOr)
     }
 
+    private int bitField0_;
     public static final int NAME_AND_PROPERTY_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.Column nameAndProperty_;
     /**
@@ -694,6 +736,35 @@ public final class YaormModel {
       return getConnectingWhereClause();
     }
 
+    public static final int IN_ITEMS_FIELD_NUMBER = 5;
+    private com.google.protobuf.LazyStringList inItems_;
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getInItemsList() {
+      return inItems_;
+    }
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    public int getInItemsCount() {
+      return inItems_.size();
+    }
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    public java.lang.String getInItems(int index) {
+      return inItems_.get(index);
+    }
+    /**
+     * <code>repeated string in_items = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInItemsBytes(int index) {
+      return inItems_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -718,6 +789,9 @@ public final class YaormModel {
       if (connectingWhereClause_ != null) {
         output.writeMessage(4, getConnectingWhereClause());
       }
+      for (int i = 0; i < inItems_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, inItems_.getRaw(i));
+      }
     }
 
     public int getSerializedSize() {
@@ -740,6 +814,14 @@ public final class YaormModel {
       if (connectingWhereClause_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getConnectingWhereClause());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < inItems_.size(); i++) {
+          dataSize += computeStringSizeNoTag(inItems_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getInItemsList().size();
       }
       memoizedSize = size;
       return size;
@@ -769,6 +851,8 @@ public final class YaormModel {
         result = result && getConnectingWhereClause()
             .equals(other.getConnectingWhereClause());
       }
+      result = result && getInItemsList()
+          .equals(other.getInItemsList());
       return result;
     }
 
@@ -790,6 +874,10 @@ public final class YaormModel {
       if (hasConnectingWhereClause()) {
         hash = (37 * hash) + CONNECTING_WHERE_CLAUSE_FIELD_NUMBER;
         hash = (53 * hash) + getConnectingWhereClause().hashCode();
+      }
+      if (getInItemsCount() > 0) {
+        hash = (37 * hash) + IN_ITEMS_FIELD_NUMBER;
+        hash = (53 * hash) + getInItemsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -925,6 +1013,8 @@ public final class YaormModel {
           connectingWhereClause_ = null;
           connectingWhereClauseBuilder_ = null;
         }
+        inItems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -947,6 +1037,8 @@ public final class YaormModel {
 
       public org.roylance.yaorm.YaormModel.WhereClause buildPartial() {
         org.roylance.yaorm.YaormModel.WhereClause result = new org.roylance.yaorm.YaormModel.WhereClause(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (nameAndPropertyBuilder_ == null) {
           result.nameAndProperty_ = nameAndProperty_;
         } else {
@@ -959,6 +1051,12 @@ public final class YaormModel {
         } else {
           result.connectingWhereClause_ = connectingWhereClauseBuilder_.build();
         }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          inItems_ = inItems_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.inItems_ = inItems_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1012,6 +1110,16 @@ public final class YaormModel {
         if (other.hasConnectingWhereClause()) {
           mergeConnectingWhereClause(other.getConnectingWhereClause());
         }
+        if (!other.inItems_.isEmpty()) {
+          if (inItems_.isEmpty()) {
+            inItems_ = other.inItems_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureInItemsIsMutable();
+            inItems_.addAll(other.inItems_);
+          }
+          onChanged();
+        }
         onChanged();
         return this;
       }
@@ -1037,6 +1145,7 @@ public final class YaormModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private org.roylance.yaorm.YaormModel.Column nameAndProperty_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1358,6 +1467,100 @@ public final class YaormModel {
           connectingWhereClause_ = null;
         }
         return connectingWhereClauseBuilder_;
+      }
+
+      private com.google.protobuf.LazyStringList inItems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureInItemsIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          inItems_ = new com.google.protobuf.LazyStringArrayList(inItems_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getInItemsList() {
+        return inItems_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public int getInItemsCount() {
+        return inItems_.size();
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public java.lang.String getInItems(int index) {
+        return inItems_.get(index);
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInItemsBytes(int index) {
+        return inItems_.getByteString(index);
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public Builder setInItems(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureInItemsIsMutable();
+        inItems_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public Builder addInItems(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureInItemsIsMutable();
+        inItems_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public Builder addAllInItems(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureInItemsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, inItems_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public Builder clearInItems() {
+        inItems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string in_items = 5;</code>
+       */
+      public Builder addInItemsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureInItemsIsMutable();
+        inItems_.add(value);
+        onChanged();
+        return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -21272,6 +21475,436 @@ public final class YaormModel {
 
   }
 
+  public interface DatabaseExecutionReportOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.DatabaseExecutionReport)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int64 calls_to_database = 1;</code>
+     */
+    long getCallsToDatabase();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.DatabaseExecutionReport}
+   */
+  public  static final class DatabaseExecutionReport extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DatabaseExecutionReport)
+      DatabaseExecutionReportOrBuilder {
+    // Use DatabaseExecutionReport.newBuilder() to construct.
+    private DatabaseExecutionReport(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DatabaseExecutionReport() {
+      callsToDatabase_ = 0L;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private DatabaseExecutionReport(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              callsToDatabase_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.YaormModel.internal_static_org_roylance_yaorm_DatabaseExecutionReport_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.YaormModel.internal_static_org_roylance_yaorm_DatabaseExecutionReport_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.YaormModel.DatabaseExecutionReport.class, org.roylance.yaorm.YaormModel.DatabaseExecutionReport.Builder.class);
+    }
+
+    public static final int CALLS_TO_DATABASE_FIELD_NUMBER = 1;
+    private long callsToDatabase_;
+    /**
+     * <code>optional int64 calls_to_database = 1;</code>
+     */
+    public long getCallsToDatabase() {
+      return callsToDatabase_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (callsToDatabase_ != 0L) {
+        output.writeInt64(1, callsToDatabase_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (callsToDatabase_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, callsToDatabase_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.YaormModel.DatabaseExecutionReport)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.YaormModel.DatabaseExecutionReport other = (org.roylance.yaorm.YaormModel.DatabaseExecutionReport) obj;
+
+      boolean result = true;
+      result = result && (getCallsToDatabase()
+          == other.getCallsToDatabase());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + CALLS_TO_DATABASE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCallsToDatabase());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.YaormModel.DatabaseExecutionReport prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.DatabaseExecutionReport}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.DatabaseExecutionReport)
+        org.roylance.yaorm.YaormModel.DatabaseExecutionReportOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.YaormModel.internal_static_org_roylance_yaorm_DatabaseExecutionReport_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.YaormModel.internal_static_org_roylance_yaorm_DatabaseExecutionReport_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.YaormModel.DatabaseExecutionReport.class, org.roylance.yaorm.YaormModel.DatabaseExecutionReport.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.YaormModel.DatabaseExecutionReport.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        callsToDatabase_ = 0L;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.YaormModel.internal_static_org_roylance_yaorm_DatabaseExecutionReport_descriptor;
+      }
+
+      public org.roylance.yaorm.YaormModel.DatabaseExecutionReport getDefaultInstanceForType() {
+        return org.roylance.yaorm.YaormModel.DatabaseExecutionReport.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.YaormModel.DatabaseExecutionReport build() {
+        org.roylance.yaorm.YaormModel.DatabaseExecutionReport result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.YaormModel.DatabaseExecutionReport buildPartial() {
+        org.roylance.yaorm.YaormModel.DatabaseExecutionReport result = new org.roylance.yaorm.YaormModel.DatabaseExecutionReport(this);
+        result.callsToDatabase_ = callsToDatabase_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.YaormModel.DatabaseExecutionReport) {
+          return mergeFrom((org.roylance.yaorm.YaormModel.DatabaseExecutionReport)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.YaormModel.DatabaseExecutionReport other) {
+        if (other == org.roylance.yaorm.YaormModel.DatabaseExecutionReport.getDefaultInstance()) return this;
+        if (other.getCallsToDatabase() != 0L) {
+          setCallsToDatabase(other.getCallsToDatabase());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.YaormModel.DatabaseExecutionReport parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.YaormModel.DatabaseExecutionReport) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long callsToDatabase_ ;
+      /**
+       * <code>optional int64 calls_to_database = 1;</code>
+       */
+      public long getCallsToDatabase() {
+        return callsToDatabase_;
+      }
+      /**
+       * <code>optional int64 calls_to_database = 1;</code>
+       */
+      public Builder setCallsToDatabase(long value) {
+        
+        callsToDatabase_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 calls_to_database = 1;</code>
+       */
+      public Builder clearCallsToDatabase() {
+        
+        callsToDatabase_ = 0L;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.DatabaseExecutionReport)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.DatabaseExecutionReport)
+    private static final org.roylance.yaorm.YaormModel.DatabaseExecutionReport DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.YaormModel.DatabaseExecutionReport();
+    }
+
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DatabaseExecutionReport>
+        PARSER = new com.google.protobuf.AbstractParser<DatabaseExecutionReport>() {
+      public DatabaseExecutionReport parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new DatabaseExecutionReport(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DatabaseExecutionReport> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DatabaseExecutionReport> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.YaormModel.DatabaseExecutionReport getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_WhereClause_descriptor;
   private static final 
@@ -21367,6 +22000,11 @@ public final class YaormModel {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_roylance_yaorm_Migration_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_DatabaseExecutionReport_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_roylance_yaorm_DatabaseExecutionReport_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -21377,125 +22015,127 @@ public final class YaormModel {
   static {
     java.lang.String[] descriptorData = {
       "\n\021yaorm_model.proto\022\022org.roylance.yaorm\"" +
-      "\222\003\n\013WhereClause\0225\n\021name_and_property\030\001 \001" +
+      "\254\003\n\013WhereClause\0225\n\021name_and_property\030\001 \001" +
       "(\0132\032.org.roylance.yaorm.Column\022C\n\roperat" +
       "or_type\030\002 \001(\0162,.org.roylance.yaorm.Where" +
       "Clause.OperatorType\022J\n\021connecting_and_or" +
       "\030\003 \001(\0162/.org.roylance.yaorm.WhereClause." +
       "ConnectingAndOr\022@\n\027connecting_where_clau" +
       "se\030\004 \001(\0132\037.org.roylance.yaorm.WhereClaus" +
-      "e\"K\n\014OperatorType\022\n\n\006EQUALS\020\000\022\020\n\014GREATER" +
-      "_THAN\020\001\022\r\n\tLESS_THAN\020\002\022\016\n\nNOT_EQUALS\020\003\",",
-      "\n\017ConnectingAndOr\022\010\n\004NONE\020\000\022\007\n\003AND\020\001\022\006\n\002" +
-      "OR\020\002\"\201\003\n\020ColumnDefinition\022\014\n\004name\030\001 \001(\t\022" +
-      ".\n\004type\030\002 \001(\0162 .org.roylance.yaorm.Proto" +
-      "bufType\022\016\n\006is_key\030\003 \001(\010\022D\n\013column_type\030\004" +
-      " \001(\0162/.org.roylance.yaorm.ColumnDefiniti" +
-      "on.ColumnType\022D\n\013linker_type\030\005 \001(\0162/.org" +
-      ".roylance.yaorm.ColumnDefinition.LinkerT" +
-      "ype\022\r\n\005order\030\006 \001(\005\"H\n\nColumnType\022\n\n\006SCAL" +
-      "AR\020\000\022\r\n\tENUM_NAME\020\001\022\016\n\nENUM_VALUE\020\002\022\017\n\013M" +
-      "ESSAGE_KEY\020\003\":\n\nLinkerType\022\010\n\004NONE\020\000\022\n\n\006",
-      "PARENT\020\001\022\t\n\005CHILD\020\002\022\013\n\007NEITHER\020\003\"\200\001\n\005Ind" +
-      "ex\022:\n\014column_names\030\001 \003(\0132$.org.roylance." +
-      "yaorm.ColumnDefinition\022;\n\rinclude_names\030" +
-      "\002 \003(\0132$.org.roylance.yaorm.ColumnDefinit" +
-      "ion\"\226\003\n\nDifference\022>\n\013entity_type\030\001 \001(\0162" +
-      ").org.roylance.yaorm.Difference.EntityTy" +
-      "pe\022;\n\toperation\030\002 \001(\0162(.org.roylance.yao" +
-      "rm.Difference.Operation\022\014\n\004name\030\003 \001(\t\022(\n" +
-      "\005index\030\004 \001(\0132\031.org.roylance.yaorm.Index\022" +
-      "A\n\023property_definition\030\005 \001(\0132$.org.royla",
-      "nce.yaorm.ColumnDefinition\022=\n\020table_defi" +
-      "nition\030\006 \001(\0132#.org.roylance.yaorm.TableD" +
-      "efinition\".\n\nEntityType\022\t\n\005INDEX\020\000\022\n\n\006CO" +
-      "LUMN\020\001\022\t\n\005TABLE\020\002\"!\n\tOperation\022\n\n\006CREATE" +
-      "\020\000\022\010\n\004DROP\020\001\"\214\002\n\017TableDefinition\022\014\n\004name" +
-      "\030\001 \001(\t\022@\n\022column_definitions\030\002 \003(\0132$.org" +
-      ".roylance.yaorm.ColumnDefinition\022(\n\005inde" +
-      "x\030\003 \001(\0132\031.org.roylance.yaorm.Index\022A\n\nta" +
-      "ble_type\030\004 \001(\0162-.org.roylance.yaorm.Tabl" +
-      "eDefinition.TableType\"<\n\tTableType\022\n\n\006NO",
-      "RMAL\020\000\022\022\n\016LINKER_MESSAGE\020\001\022\017\n\013LINKER_ENU" +
-      "M\020\002\"R\n\020TableDefinitions\022>\n\021table_definit" +
-      "ions\030\001 \003(\0132#.org.roylance.yaorm.TableDef" +
-      "inition\"a\n\020DifferenceReport\022\030\n\020migration" +
-      "_exists\030\001 \001(\010\0223\n\013differences\030\002 \003(\0132\036.org" +
-      ".roylance.yaorm.Difference\"\233\003\n\006Column\0228\n" +
-      "\ndefinition\030\001 \001(\0132$.org.roylance.yaorm.C" +
-      "olumnDefinition\022\025\n\rdouble_holder\030\002 \001(\001\022\024" +
-      "\n\014float_holder\030\003 \001(\002\022\024\n\014int32_holder\030\004 \001" +
-      "(\005\022\024\n\014int64_holder\030\005 \001(\003\022\025\n\ruint32_holde",
-      "r\030\006 \001(\r\022\025\n\ruint64_holder\030\007 \001(\004\022\025\n\rsint32" +
-      "_holder\030\010 \001(\021\022\025\n\rsint64_holder\030\t \001(\022\022\026\n\016" +
-      "fixed32_holder\030\n \001(\007\022\026\n\016fixed64_holder\030\013" +
-      " \001(\006\022\027\n\017sfixed32_holder\030\014 \001(\017\022\027\n\017sfixed6" +
-      "4_holder\030\r \001(\020\022\023\n\013bool_holder\030\016 \001(\010\022\025\n\rs" +
-      "tring_holder\030\017 \001(\t\022\024\n\014bytes_holder\030\020 \001(\014" +
-      "\"5\n\006Record\022+\n\007columns\030\001 \003(\0132\032.org.roylan" +
-      "ce.yaorm.Column\"6\n\007Records\022+\n\007records\030\001 " +
-      "\003(\0132\032.org.roylance.yaorm.Record\"\251\001\n\014Tabl" +
-      "eRecords\022=\n\020table_definition\030\001 \001(\0132#.org",
-      ".roylance.yaorm.TableDefinition\022,\n\007recor" +
-      "ds\030\002 \001(\0132\033.org.roylance.yaorm.Records\022\022\n" +
-      "\ntable_name\030\003 \001(\t\022\030\n\020known_parent_ids\030\004 " +
-      "\003(\t\"J\n\017AllTableRecords\0227\n\rtable_records\030" +
-      "\001 \003(\0132 .org.roylance.yaorm.TableRecords\"" +
-      "\317\005\n\021DatabaseOperation\022=\n\020table_definitio" +
-      "n\030\001 \001(\0132#.org.roylance.yaorm.TableDefini" +
-      "tion\022,\n\007records\030\002 \001(\0132\033.org.roylance.yao" +
-      "rm.Records\022(\n\005index\030\003 \001(\0132\031.org.roylance" +
-      ".yaorm.Index\022?\n\021column_definition\030\004 \001(\0132",
-      "$.org.roylance.yaorm.ColumnDefinition\0225\n" +
-      "\014where_clause\030\005 \001(\0132\037.org.roylance.yaorm" +
-      ".WhereClause\022\\\n\027database_operation_type\030" +
-      "\006 \001(\0162;.org.roylance.yaorm.DatabaseOpera" +
-      "tion.DatabaseOperationType\"\314\002\n\025DatabaseO" +
-      "perationType\022\020\n\014CREATE_TABLE\020\000\022\016\n\nDROP_T" +
-      "ABLE\020\001\022\020\n\014CREATE_INDEX\020\002\022\016\n\nDROP_INDEX\020\003" +
-      "\022\021\n\rCREATE_COLUMN\020\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\t" +
-      "GET_COUNT\020\006\022\016\n\nGET_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010" +
-      "GET_MANY\020\t\022\r\n\tGET_WHERE\020\n\022\017\n\013BULK_INSERT",
-      "\020\013\022\024\n\020CREATE_OR_UPDATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006" +
-      "UPDATE\020\016\022\030\n\024UPDATE_WITH_CRITERIA\020\017\022\021\n\rUP" +
-      "DATE_CUSTOM\020\020\022\n\n\006DELETE\020\021\022\016\n\nDELETE_ALL\020" +
-      "\022\"\206\002\n\027DatabaseOperationResult\022\023\n\013bool_re" +
-      "sult\030\001 \001(\010\022\024\n\014count_result\030\002 \001(\003\0221\n\rreco" +
-      "rd_result\030\003 \001(\0132\032.org.roylance.yaorm.Rec" +
-      "ord\0223\n\016records_result\030\004 \001(\0132\033.org.roylan" +
-      "ce.yaorm.Records\022\025\n\rerror_message\030\005 \001(\t\022" +
-      "A\n\022database_operation\030\006 \001(\0132%.org.roylan" +
-      "ce.yaorm.DatabaseOperation\"\277\001\n\022DatabaseD",
-      "efinition\022\016\n\006schema\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022" +
-      "?\n\021table_definitions\030\003 \001(\0132$.org.roylanc" +
-      "e.yaorm.TableDefinitions\022J\n\027table_defini" +
-      "tion_graphs\030\004 \003(\0132).org.roylance.yaorm.T" +
-      "ableDefinitionGraphs\"\273\003\n\024TableDefinition" +
-      "Graph\022B\n\025main_table_definition\030\001 \001(\0132#.o" +
-      "rg.roylance.yaorm.TableDefinition\022C\n\026oth" +
-      "er_table_definition\030\002 \001(\0132#.org.roylance" +
-      ".yaorm.TableDefinition\022?\n\022linker_table_t" +
-      "able\030\003 \001(\0132#.org.roylance.yaorm.TableDef",
-      "inition\022`\n\025definition_graph_type\030\004 \001(\0162A" +
-      ".org.roylance.yaorm.TableDefinitionGraph" +
-      ".TableDefinitionGraphType\022\021\n\tmain_name\030\005" +
-      " \001(\t\022\022\n\nother_name\030\006 \001(\t\022\023\n\013column_name\030" +
-      "\007 \001(\t\";\n\030TableDefinitionGraphType\022\r\n\tENU" +
-      "M_TYPE\020\000\022\020\n\014MESSAGE_TYPE\020\001\"\246\001\n\025TableDefi" +
-      "nitionGraphs\022B\n\025main_table_definition\030\001 " +
-      "\001(\0132#.org.roylance.yaorm.TableDefinition" +
-      "\022I\n\027table_definition_graphs\030\002 \003(\0132(.org." +
-      "roylance.yaorm.TableDefinitionGraph\"z\n\016C",
-      "onnectionInfo\022\014\n\004host\030\001 \001(\t\022\014\n\004user\030\002 \001(" +
-      "\t\022\020\n\010password\030\003 \001(\t\022\016\n\006schema\030\004 \001(\t\022\034\n\024s" +
-      "hould_create_schema\030\005 \001(\010\022\014\n\004port\030\006 \001(\005\"" +
-      "c\n\tMigration\022\n\n\002id\030\001 \001(\t\022\024\n\014context_name" +
-      "\030\002 \001(\t\022\037\n\027model_definition_base64\030\003 \001(\t\022" +
-      "\023\n\013insert_date\030\004 \001(\003*\327\001\n\014ProtobufType\022\010\n" +
+      "e\022\020\n\010in_items\030\005 \003(\t\"S\n\014OperatorType\022\n\n\006E" +
+      "QUALS\020\000\022\020\n\014GREATER_THAN\020\001\022\r\n\tLESS_THAN\020\002",
+      "\022\016\n\nNOT_EQUALS\020\003\022\006\n\002IN\020\004\",\n\017ConnectingAn" +
+      "dOr\022\010\n\004NONE\020\000\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\201\003\n\020Colum" +
+      "nDefinition\022\014\n\004name\030\001 \001(\t\022.\n\004type\030\002 \001(\0162" +
+      " .org.roylance.yaorm.ProtobufType\022\016\n\006is_" +
+      "key\030\003 \001(\010\022D\n\013column_type\030\004 \001(\0162/.org.roy" +
+      "lance.yaorm.ColumnDefinition.ColumnType\022" +
+      "D\n\013linker_type\030\005 \001(\0162/.org.roylance.yaor" +
+      "m.ColumnDefinition.LinkerType\022\r\n\005order\030\006" +
+      " \001(\005\"H\n\nColumnType\022\n\n\006SCALAR\020\000\022\r\n\tENUM_N" +
+      "AME\020\001\022\016\n\nENUM_VALUE\020\002\022\017\n\013MESSAGE_KEY\020\003\":",
+      "\n\nLinkerType\022\010\n\004NONE\020\000\022\n\n\006PARENT\020\001\022\t\n\005CH" +
+      "ILD\020\002\022\013\n\007NEITHER\020\003\"\200\001\n\005Index\022:\n\014column_n" +
+      "ames\030\001 \003(\0132$.org.roylance.yaorm.ColumnDe" +
+      "finition\022;\n\rinclude_names\030\002 \003(\0132$.org.ro" +
+      "ylance.yaorm.ColumnDefinition\"\226\003\n\nDiffer" +
+      "ence\022>\n\013entity_type\030\001 \001(\0162).org.roylance" +
+      ".yaorm.Difference.EntityType\022;\n\toperatio" +
+      "n\030\002 \001(\0162(.org.roylance.yaorm.Difference." +
+      "Operation\022\014\n\004name\030\003 \001(\t\022(\n\005index\030\004 \001(\0132\031" +
+      ".org.roylance.yaorm.Index\022A\n\023property_de",
+      "finition\030\005 \001(\0132$.org.roylance.yaorm.Colu" +
+      "mnDefinition\022=\n\020table_definition\030\006 \001(\0132#" +
+      ".org.roylance.yaorm.TableDefinition\".\n\nE" +
+      "ntityType\022\t\n\005INDEX\020\000\022\n\n\006COLUMN\020\001\022\t\n\005TABL" +
+      "E\020\002\"!\n\tOperation\022\n\n\006CREATE\020\000\022\010\n\004DROP\020\001\"\214" +
+      "\002\n\017TableDefinition\022\014\n\004name\030\001 \001(\t\022@\n\022colu" +
+      "mn_definitions\030\002 \003(\0132$.org.roylance.yaor" +
+      "m.ColumnDefinition\022(\n\005index\030\003 \001(\0132\031.org." +
+      "roylance.yaorm.Index\022A\n\ntable_type\030\004 \001(\016" +
+      "2-.org.roylance.yaorm.TableDefinition.Ta",
+      "bleType\"<\n\tTableType\022\n\n\006NORMAL\020\000\022\022\n\016LINK" +
+      "ER_MESSAGE\020\001\022\017\n\013LINKER_ENUM\020\002\"R\n\020TableDe" +
+      "finitions\022>\n\021table_definitions\030\001 \003(\0132#.o" +
+      "rg.roylance.yaorm.TableDefinition\"a\n\020Dif" +
+      "ferenceReport\022\030\n\020migration_exists\030\001 \001(\010\022" +
+      "3\n\013differences\030\002 \003(\0132\036.org.roylance.yaor" +
+      "m.Difference\"\233\003\n\006Column\0228\n\ndefinition\030\001 " +
+      "\001(\0132$.org.roylance.yaorm.ColumnDefinitio" +
+      "n\022\025\n\rdouble_holder\030\002 \001(\001\022\024\n\014float_holder" +
+      "\030\003 \001(\002\022\024\n\014int32_holder\030\004 \001(\005\022\024\n\014int64_ho",
+      "lder\030\005 \001(\003\022\025\n\ruint32_holder\030\006 \001(\r\022\025\n\ruin" +
+      "t64_holder\030\007 \001(\004\022\025\n\rsint32_holder\030\010 \001(\021\022" +
+      "\025\n\rsint64_holder\030\t \001(\022\022\026\n\016fixed32_holder" +
+      "\030\n \001(\007\022\026\n\016fixed64_holder\030\013 \001(\006\022\027\n\017sfixed" +
+      "32_holder\030\014 \001(\017\022\027\n\017sfixed64_holder\030\r \001(\020" +
+      "\022\023\n\013bool_holder\030\016 \001(\010\022\025\n\rstring_holder\030\017" +
+      " \001(\t\022\024\n\014bytes_holder\030\020 \001(\014\"5\n\006Record\022+\n\007" +
+      "columns\030\001 \003(\0132\032.org.roylance.yaorm.Colum" +
+      "n\"6\n\007Records\022+\n\007records\030\001 \003(\0132\032.org.royl" +
+      "ance.yaorm.Record\"\251\001\n\014TableRecords\022=\n\020ta",
+      "ble_definition\030\001 \001(\0132#.org.roylance.yaor" +
+      "m.TableDefinition\022,\n\007records\030\002 \001(\0132\033.org" +
+      ".roylance.yaorm.Records\022\022\n\ntable_name\030\003 " +
+      "\001(\t\022\030\n\020known_parent_ids\030\004 \003(\t\"J\n\017AllTabl" +
+      "eRecords\0227\n\rtable_records\030\001 \003(\0132 .org.ro" +
+      "ylance.yaorm.TableRecords\"\317\005\n\021DatabaseOp" +
+      "eration\022=\n\020table_definition\030\001 \001(\0132#.org." +
+      "roylance.yaorm.TableDefinition\022,\n\007record" +
+      "s\030\002 \001(\0132\033.org.roylance.yaorm.Records\022(\n\005" +
+      "index\030\003 \001(\0132\031.org.roylance.yaorm.Index\022?",
+      "\n\021column_definition\030\004 \001(\0132$.org.roylance" +
+      ".yaorm.ColumnDefinition\0225\n\014where_clause\030" +
+      "\005 \001(\0132\037.org.roylance.yaorm.WhereClause\022\\" +
+      "\n\027database_operation_type\030\006 \001(\0162;.org.ro" +
+      "ylance.yaorm.DatabaseOperation.DatabaseO" +
+      "perationType\"\314\002\n\025DatabaseOperationType\022\020" +
+      "\n\014CREATE_TABLE\020\000\022\016\n\nDROP_TABLE\020\001\022\020\n\014CREA" +
+      "TE_INDEX\020\002\022\016\n\nDROP_INDEX\020\003\022\021\n\rCREATE_COL" +
+      "UMN\020\004\022\017\n\013DROP_COLUMN\020\005\022\r\n\tGET_COUNT\020\006\022\016\n" +
+      "\nGET_CUSTOM\020\007\022\007\n\003GET\020\010\022\014\n\010GET_MANY\020\t\022\r\n\t",
+      "GET_WHERE\020\n\022\017\n\013BULK_INSERT\020\013\022\024\n\020CREATE_O" +
+      "R_UPDATE\020\014\022\n\n\006CREATE\020\r\022\n\n\006UPDATE\020\016\022\030\n\024UP" +
+      "DATE_WITH_CRITERIA\020\017\022\021\n\rUPDATE_CUSTOM\020\020\022" +
+      "\n\n\006DELETE\020\021\022\016\n\nDELETE_ALL\020\022\"\206\002\n\027Database" +
+      "OperationResult\022\023\n\013bool_result\030\001 \001(\010\022\024\n\014" +
+      "count_result\030\002 \001(\003\0221\n\rrecord_result\030\003 \001(" +
+      "\0132\032.org.roylance.yaorm.Record\0223\n\016records" +
+      "_result\030\004 \001(\0132\033.org.roylance.yaorm.Recor" +
+      "ds\022\025\n\rerror_message\030\005 \001(\t\022A\n\022database_op" +
+      "eration\030\006 \001(\0132%.org.roylance.yaorm.Datab",
+      "aseOperation\"\277\001\n\022DatabaseDefinition\022\016\n\006s" +
+      "chema\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022?\n\021table_defin" +
+      "itions\030\003 \001(\0132$.org.roylance.yaorm.TableD" +
+      "efinitions\022J\n\027table_definition_graphs\030\004 " +
+      "\003(\0132).org.roylance.yaorm.TableDefinition" +
+      "Graphs\"\273\003\n\024TableDefinitionGraph\022B\n\025main_" +
+      "table_definition\030\001 \001(\0132#.org.roylance.ya" +
+      "orm.TableDefinition\022C\n\026other_table_defin" +
+      "ition\030\002 \001(\0132#.org.roylance.yaorm.TableDe" +
+      "finition\022?\n\022linker_table_table\030\003 \001(\0132#.o",
+      "rg.roylance.yaorm.TableDefinition\022`\n\025def" +
+      "inition_graph_type\030\004 \001(\0162A.org.roylance." +
+      "yaorm.TableDefinitionGraph.TableDefiniti" +
+      "onGraphType\022\021\n\tmain_name\030\005 \001(\t\022\022\n\nother_" +
+      "name\030\006 \001(\t\022\023\n\013column_name\030\007 \001(\t\";\n\030Table" +
+      "DefinitionGraphType\022\r\n\tENUM_TYPE\020\000\022\020\n\014ME" +
+      "SSAGE_TYPE\020\001\"\246\001\n\025TableDefinitionGraphs\022B" +
+      "\n\025main_table_definition\030\001 \001(\0132#.org.royl" +
+      "ance.yaorm.TableDefinition\022I\n\027table_defi" +
+      "nition_graphs\030\002 \003(\0132(.org.roylance.yaorm",
+      ".TableDefinitionGraph\"z\n\016ConnectionInfo\022" +
+      "\014\n\004host\030\001 \001(\t\022\014\n\004user\030\002 \001(\t\022\020\n\010password\030" +
+      "\003 \001(\t\022\016\n\006schema\030\004 \001(\t\022\034\n\024should_create_s" +
+      "chema\030\005 \001(\010\022\014\n\004port\030\006 \001(\005\"c\n\tMigration\022\n" +
+      "\n\002id\030\001 \001(\t\022\024\n\014context_name\030\002 \001(\t\022\037\n\027mode" +
+      "l_definition_base64\030\003 \001(\t\022\023\n\013insert_date" +
+      "\030\004 \001(\003\"4\n\027DatabaseExecutionReport\022\031\n\021cal" +
+      "ls_to_database\030\001 \001(\003*\327\001\n\014ProtobufType\022\010\n" +
       "\004NONE\020\000\022\n\n\006DOUBLE\020\001\022\t\n\005FLOAT\020\002\022\t\n\005INT32\020" +
-      "\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006" +
+      "\003\022\t\n\005INT64\020\004\022\n\n\006UINT32\020\005\022\n\n\006UINT64\020\006\022\n\n\006",
       "SINT32\020\007\022\n\n\006SINT64\020\010\022\013\n\007FIXED32\020\t\022\013\n\007FIX" +
-      "ED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BO",
+      "ED64\020\n\022\014\n\010SFIXED32\020\013\022\014\n\010SFIXED64\020\014\022\010\n\004BO" +
       "OL\020\r\022\n\n\006STRING\020\016\022\t\n\005BYTES\020\017\022\t\n\005PROTO\020\020b\006" +
       "proto3"
     };
@@ -21516,7 +22156,7 @@ public final class YaormModel {
     internal_static_org_roylance_yaorm_WhereClause_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_WhereClause_descriptor,
-        new java.lang.String[] { "NameAndProperty", "OperatorType", "ConnectingAndOr", "ConnectingWhereClause", });
+        new java.lang.String[] { "NameAndProperty", "OperatorType", "ConnectingAndOr", "ConnectingWhereClause", "InItems", });
     internal_static_org_roylance_yaorm_ColumnDefinition_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_org_roylance_yaorm_ColumnDefinition_fieldAccessorTable = new
@@ -21625,6 +22265,12 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Migration_descriptor,
         new java.lang.String[] { "Id", "ContextName", "ModelDefinitionBase64", "InsertDate", });
+    internal_static_org_roylance_yaorm_DatabaseExecutionReport_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_org_roylance_yaorm_DatabaseExecutionReport_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_DatabaseExecutionReport_descriptor,
+        new java.lang.String[] { "CallsToDatabase", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package org.roylance.yaorm.utilities
 
 import com.google.protobuf.ByteString
@@ -30,26 +32,6 @@ object YaormUtils {
     const val Is = "is"
     const val LeftParen = "("
     const val RightParen = ")"
-
-    const val JavaObjectName: String = "java.lang.Object"
-    const val JavaStringName: String = "java.lang.String"
-
-    const val Get:String = "get"
-    const val Set:String = "set"
-    const val GetSetLength = Get.length
-
-    val JavaToProtoMap: HashMap<Class<*>, YaormModel.ProtobufType> = object: HashMap<Class<*>, YaormModel.ProtobufType>() {
-        init {
-            put(String::class.java, YaormModel.ProtobufType.STRING)
-            put(Any::class.java, YaormModel.ProtobufType.STRING)
-            put(Double::class.java, YaormModel.ProtobufType.DOUBLE)
-            put(Int::class.java, YaormModel.ProtobufType.INT64)
-            put(Float::class.java, YaormModel.ProtobufType.DOUBLE)
-            put(Long::class.java, YaormModel.ProtobufType.INT64)
-            put(Boolean::class.java, YaormModel.ProtobufType.BOOL)
-            put(ByteArray::class.java, YaormModel.ProtobufType.BYTES)
-        }
-    }
 
     fun buildColumn(value: Any?,
                     propertyDefinition:YaormModel.ColumnDefinition):YaormModel.Column {
@@ -115,92 +97,6 @@ object YaormUtils {
         }
 
         if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES  )) {
-            if (value is ByteString) {
-                returnHolder.bytesHolder = value
-            }
-            else if (value is String) {
-                returnHolder.bytesHolder = ByteString.copyFromUtf8(value)
-            }
-            else {
-                returnHolder.bytesHolder = ByteString.EMPTY
-            }
-        }
-
-        return returnHolder.build()
-    }
-
-    fun buildColumn(value: Any?, javaType: Class<*>, name:String):YaormModel.Column {
-        val returnHolder = YaormModel.Column.newBuilder()
-        val propertyDefinition = YaormModel.ColumnDefinition.newBuilder().setName(name).setIsKey(IdName.equals(name))
-
-        if (JavaToProtoMap.containsKey(javaType)) {
-            propertyDefinition.type = JavaToProtoMap[javaType]
-        }
-        else {
-            propertyDefinition.type = YaormModel.ProtobufType.STRING
-        }
-
-        returnHolder.setDefinition(propertyDefinition)
-
-        val notNullValueAsString = if (value == null) "" else value.toString()
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.STRING)) {
-            returnHolder.stringHolder = notNullValueAsString.toString()
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BOOL)) {
-            returnHolder.boolHolder = getBool(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT32)) {
-            returnHolder.int32Holder = getInt(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT64)) {
-            returnHolder.int64Holder = getLong(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED32)) {
-            returnHolder.fixed32Holder = getInt(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED64)) {
-            returnHolder.fixed64Holder = getLong(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
-            returnHolder.sfixed32Holder = getInt(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
-            returnHolder.sfixed64Holder = getLong(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
-            returnHolder.uint32Holder = getInt(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT64)) {
-            returnHolder.uint64Holder = getLong(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
-            returnHolder.sint32Holder = getInt(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
-            returnHolder.sint64Holder = getLong(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
-            returnHolder.doubleHolder = getDouble(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT)) {
-            returnHolder.floatHolder = getFloat(notNullValueAsString)
-        }
-
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES)) {
             if (value is ByteString) {
                 returnHolder.bytesHolder = value
             }
@@ -360,24 +256,6 @@ object YaormUtils {
         return firstChar + input.substring(1)
     }
 
-    fun getFirstWordInProperty(input:String):String {
-        // going to lower case, just in case
-        val lowerInput = this.lowercaseFirstChar(input)
-        val returnString = StringBuilder()
-
-        for (newChar in lowerInput) {
-            if (newChar.isLetter()) {
-                if (newChar.isLowerCase()) {
-                    returnString.append(newChar)
-                }
-                else {
-                    break
-                }
-            }
-        }
-
-        return returnString.toString()
-    }
 
     fun buildIndexName(columnNames:List<String>) : String {
         return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
@@ -428,13 +306,28 @@ object YaormUtils {
         var currentWhereClauseItem: YaormModel.WhereClause? = whereClauseItem
 
         while (currentWhereClauseItem != null) {
-            val stringValue = YaormUtils
-                    .getFormattedString(currentWhereClauseItem.nameAndProperty)
-            filterItems.append(
-                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
-                            SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
-                            stringValue +
-                            YaormUtils.Space)
+            if (currentWhereClauseItem.operatorType.equals(YaormModel.WhereClause.OperatorType.IN) &&
+                    currentWhereClauseItem.inItemsCount > 0) {
+                val items = currentWhereClauseItem.inItemsList.map {
+                    val tempColumn = buildColumn(it, currentWhereClauseItem!!.nameAndProperty.definition)
+                    val stringValue = getFormattedString(tempColumn)
+                    stringValue
+                }.joinToString()
+
+                filterItems.append(keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
+                        Space +
+                        "in ($items)" +
+                        Space)
+            }
+            else {
+                val stringValue = YaormUtils
+                        .getFormattedString(currentWhereClauseItem.nameAndProperty)
+                filterItems.append(
+                        keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
+                                SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
+                                stringValue +
+                                Space)
+            }
 
             if (!currentWhereClauseItem.connectingAndOr.equals(YaormModel.WhereClause.ConnectingAndOr.NONE) &&
                 currentWhereClauseItem.hasConnectingWhereClause()) {
@@ -468,6 +361,21 @@ object YaormUtils {
             returnMap[it.definition.name] = item
         }
         return returnMap
+    }
+
+    fun buildIdColumnDefinition(): YaormModel.ColumnDefinition {
+        return YaormModel.ColumnDefinition.newBuilder()
+                .setColumnType(YaormModel.ColumnDefinition.ColumnType.SCALAR)
+                .setType(YaormModel.ProtobufType.STRING)
+                .setName(YaormUtils.IdName)
+                .build()
+    }
+
+    fun buildIdColumn(id: String): YaormModel.Column {
+        return YaormModel.Column.newBuilder()
+            .setStringHolder(id)
+            .setDefinition(buildIdColumnDefinition())
+            .build()
     }
 
     fun getIdColumn(columns:List<YaormModel.ColumnDefinition>):YaormModel.ColumnDefinition? {
