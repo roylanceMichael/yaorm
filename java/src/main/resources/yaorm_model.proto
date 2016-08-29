@@ -228,3 +228,22 @@ message Migration {
 message DatabaseExecutionReport {
     int64 calls_to_database = 1;
 }
+
+// projection api
+message JoinKey {
+    ColumnDefinition first = 1;
+    ColumnDefinition second = 2;
+    ColumnDefinition third = 3;
+    ColumnDefinition fourth = 4;
+    ColumnDefinition fifth = 5;
+    ColumnDefinition sixth = 6;
+}
+
+message JoinDefinition {
+    TableDefinition table = 1;
+    JoinKey key = 2;
+}
+
+message Join {
+    repeated JoinDefinition join_definitions = 1;
+}

@@ -229,6 +229,7 @@ object ProtobufUtils {
                                 subRecords.keys.forEach { subRecordKey ->
                                     if (returnMap.containsKey(subRecordKey)) {
                                         returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
+                                                .addAllKnownParentIds(subRecords[subRecordKey]!!.knownParentIdsList)
                                     }
                                     else {
                                         returnMap[subRecordKey] = subRecords[subRecordKey]!!
