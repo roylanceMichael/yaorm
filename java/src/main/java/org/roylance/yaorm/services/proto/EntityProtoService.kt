@@ -8,6 +8,9 @@ import java.util.*
 
 class EntityProtoService(private val granularDatabaseService: IGranularDatabaseProtoService,
                          private val sqlGeneratorService: ISQLGeneratorService) : IEntityProtoService {
+    override val insertSameAsUpdate: Boolean
+        get() = this.sqlGeneratorService.insertSameAsUpdate
+
     override fun buildDefinitionFromSql(customSql: String): YaormModel.TableDefinition {
         return this.granularDatabaseService.buildTableDefinitionFromQuery(customSql)
     }

@@ -40,6 +40,9 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
         }
     }
 
+    override val insertSameAsUpdate: Boolean
+        get() = true
+
     override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
         return "select id from ${this.buildKeyword(definition.name)}"
     }

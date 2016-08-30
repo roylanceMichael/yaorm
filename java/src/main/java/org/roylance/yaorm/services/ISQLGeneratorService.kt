@@ -5,6 +5,7 @@ import org.roylance.yaorm.YaormModel
 interface ISQLGeneratorService: IKeywordHandler {
     val protoTypeToSqlType: Map<YaormModel.ProtobufType, String>
     val bulkInsertSize:Int
+    val insertSameAsUpdate:Boolean
 
     fun buildCountSql(definition: YaormModel.TableDefinition): String
 

@@ -40,6 +40,9 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         }
     }
 
+    override val insertSameAsUpdate: Boolean
+        get() = true
+
     override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
         return "select \"id\" from ${definition.name}"
     }

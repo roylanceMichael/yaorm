@@ -41,6 +41,9 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
         }
     }
 
+    override val insertSameAsUpdate: Boolean
+        get() = false
+
     override fun buildCountSql(definition: YaormModel.TableDefinition): String {
         return "select count(1) as ${this.buildKeyword("longVal")} from ${this.buildKeyword(definition.name)}"
     }

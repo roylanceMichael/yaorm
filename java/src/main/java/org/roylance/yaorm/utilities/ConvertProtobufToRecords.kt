@@ -35,7 +35,6 @@ internal class ConvertProtobufToRecords(
                 recordsMap[it.linkerTableTable.name] = YaormModel.TableRecords.newBuilder()
                         .setTableName(it.linkerTableTable.name)
                         .setTableDefinition(it.linkerTableTable)
-                        .addKnownParentIds(mainMessageId)
             }
             if (it.hasOtherTableDefinition() && !recordsMap.containsKey(it.otherName)) {
                 recordsMap[it.otherName] = YaormModel.TableRecords.newBuilder()
@@ -151,7 +150,6 @@ internal class ConvertProtobufToRecords(
         repeatedMessageMap.keys.forEach {
             if (recordsMap.containsKey(it)) {
                 recordsMap[it]!!.mergeRecords(repeatedMessageMap[it]!!.records)
-                        .addAllKnownParentIds(repeatedMessageMap[it]!!.knownParentIdsList)
             }
             else {
                 recordsMap[it] = repeatedMessageMap[it]!!

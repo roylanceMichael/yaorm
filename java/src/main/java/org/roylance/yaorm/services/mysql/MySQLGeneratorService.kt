@@ -41,6 +41,9 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
         }
     }
 
+    override val insertSameAsUpdate: Boolean
+        get() = true
+
     override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
         return "select id from ${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)}"
     }
