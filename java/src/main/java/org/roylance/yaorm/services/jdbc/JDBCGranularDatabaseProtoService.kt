@@ -37,7 +37,12 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
 
                 types.keys.forEach {
                     val item = resultSet.getString(it)
-                    types[it]!!.addTest(item)
+                    if (item == null) {
+                        types[it]!!.addTest(EmptyString)
+                    }
+                    else {
+                        types[it]!!.addTest(item)
+                    }
                 }
             }
 
@@ -136,5 +141,6 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
 
     companion object {
         const private val TenSeconds = 10
+        const private val EmptyString = ""
     }
 }

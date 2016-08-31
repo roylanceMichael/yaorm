@@ -285,7 +285,7 @@ class EntityMessageService(
                     entityService.bulkInsert(tempRecordsToInsert.build(), tableRecords.tableDefinition)
 
                     recordsFromDatabaseMap.keys.forEach {
-                        val idColumn = recordsFromDatabaseMap[it]!!.columnsList.firstOrNull { it.definition.name.equals(YaormUtils.IdName) }
+                        val idColumn = YaormUtils.getIdColumn(recordsFromDatabaseMap[it]!!.columnsList)
                         if (!recordsFromClientMap.containsKey(it) && idColumn != null) {
                             // delete
                             entityService.delete(
