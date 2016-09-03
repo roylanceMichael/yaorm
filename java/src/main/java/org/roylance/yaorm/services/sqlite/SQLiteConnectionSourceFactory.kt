@@ -5,43 +5,65 @@ import org.roylance.yaorm.services.IConnectionSourceFactory
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
+import java.sql.Statement
 
 class SQLiteConnectionSourceFactory : IConnectionSourceFactory {
-    private val commonConnection: Connection
+
+    private val actualReadConnection: Connection
+    private val actualWriteConnection: Connection
     private var isClosed: Boolean = false
 
-    @Throws(SQLException::class)
     constructor(
             dbPath: String) {
-        this.commonConnection = DriverManager.getConnection(
+        this.actualReadConnection = DriverManager.getConnection(
+                String.format(SqliteJdbcDbTemplate, dbPath))
+        this.actualWriteConnection = DriverManager.getConnection(
                 String.format(SqliteJdbcDbTemplate, dbPath))
     }
 
-    @Throws(SQLException::class)
     constructor(
             dbPath: String,
             userName: String,
             password: String) {
-        this.commonConnection = DriverManager.getConnection(String.format(SqliteJdbcDbTemplate, dbPath),
+        this.actualReadConnection = DriverManager.getConnection(String.format(SqliteJdbcDbTemplate, dbPath),
+                userName,
+                password)
+        this.actualWriteConnection = DriverManager.getConnection(String.format(SqliteJdbcDbTemplate, dbPath),
                 userName,
                 password)
     }
 
-    override val connectionSource: Connection
-        @Throws(SQLException::class)
+    override val readConnection: Connection
         get() {
             if (this.isClosed) {
                 throw SQLException("already closed...")
             }
-            return this.commonConnection
+            return this.actualReadConnection
+        }
+
+    override val writeConnection: Connection
+        get() {
+            if (this.isClosed) {
+                throw SQLException("already closed...")
+            }
+            return this.actualWriteConnection
         }
 
     @Throws(Exception::class)
     override fun close() {
         if (!this.isClosed) {
-            this.commonConnection.close()
+            this.actualReadConnection.close()
+            this.actualWriteConnection.close()
         }
         this.isClosed = true
+    }
+
+    override fun generateReadStatement(): Statement {
+        return this.readConnection.createStatement()
+    }
+
+    override fun generateUpdateStatement(): Statement {
+        return this.writeConnection.createStatement()
     }
 
     companion object {

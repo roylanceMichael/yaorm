@@ -4,6 +4,7 @@ import org.roylance.yaorm.services.IConnectionSourceFactory
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
+import java.sql.Statement
 import java.util.*
 
 class PostgresConnectionSourceFactory(
@@ -13,7 +14,9 @@ class PostgresConnectionSourceFactory(
         userName:String,
         password:String,
         useSSL:Boolean = true): IConnectionSourceFactory {
-    private val commonConnection: Connection
+
+    private val actualReadConnection: Connection
+    private val actualWriteConnection: Connection
     private var isClosed: Boolean = false
 
     init {
@@ -26,21 +29,38 @@ class PostgresConnectionSourceFactory(
             props.setProperty("sslfactory", "org.postgresql.ssl.NonValidatingFactory")
         }
 
-        this.commonConnection = DriverManager.getConnection(url, props)
+        this.actualReadConnection = DriverManager.getConnection(url, props)
+        this.actualWriteConnection = DriverManager.getConnection(url, props)
     }
 
-    override val connectionSource: Connection
-        @Throws(SQLException::class)
+    override val readConnection: Connection
         get() {
             if (this.isClosed) {
                 throw SQLException("already closed...")
             }
-            return this.commonConnection
+            return this.actualReadConnection
         }
+
+    override val writeConnection: Connection
+        get() {
+            if (this.isClosed) {
+                throw SQLException("already closed...")
+            }
+            return this.actualWriteConnection
+        }
+
+    override fun generateReadStatement(): Statement {
+        return this.readConnection.createStatement()
+    }
+
+    override fun generateUpdateStatement(): Statement {
+        return this.writeConnection.createStatement()
+    }
 
     override fun close() {
         if (!this.isClosed) {
-            this.commonConnection.close()
+            this.readConnection.close()
+            this.writeConnection.close()
         }
     }
 }

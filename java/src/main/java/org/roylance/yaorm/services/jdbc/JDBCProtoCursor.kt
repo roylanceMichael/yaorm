@@ -1,18 +1,15 @@
 package org.roylance.yaorm.services.jdbc
 
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.models.TypeModel
 import org.roylance.yaorm.services.proto.IProtoCursor
 import org.roylance.yaorm.services.proto.IProtoStreamer
 import org.roylance.yaorm.utilities.YaormUtils
 import java.sql.ResultSet
 import java.sql.SQLException
-import java.sql.Statement
 import java.util.*
 
 class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
-                      private val resultSet: ResultSet,
-                      private val preparedStatement: Statement):IProtoCursor {
+                      private val resultSet: ResultSet):IProtoCursor {
     private val namesToAvoid = HashSet<String>()
 
     fun moveNext(): Boolean {
@@ -59,8 +56,6 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
             return returnItems.build()
         }
         finally {
-            // mysql is having problems closing...
-            this.preparedStatement.close()
         }
     }
 
@@ -71,8 +66,6 @@ class JDBCProtoCursor(private val definitionModel: YaormModel.TableDefinition,
             }
         }
         finally {
-            // mysql is having problems closing...
-            this.preparedStatement.close()
         }
     }
 }

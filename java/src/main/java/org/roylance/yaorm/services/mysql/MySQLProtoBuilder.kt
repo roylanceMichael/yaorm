@@ -38,6 +38,7 @@ class MySQLProtoBuilder: IEntityProtoBuilder {
         val granularDatabaseService = JDBCGranularDatabaseProtoService(
                 sourceConnection,
                 false)
+
         val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
         return EntityProtoService(granularDatabaseService, mySqlGeneratorService)

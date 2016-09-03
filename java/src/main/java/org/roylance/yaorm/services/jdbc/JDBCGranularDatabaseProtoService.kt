@@ -18,9 +18,9 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
     }
 
     override fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition {
-        val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
+        val statement = this.connectionSourceFactory.generateReadStatement()
         try {
-            val resultSet = statement.executeQuery()
+            val resultSet = statement.executeQuery(query)
             val types = HashMap<String, TypeModel>()
 
             while (resultSet.next()) {
@@ -28,8 +28,8 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
                 if (types.size == 0) {
                     // this starts at index 1 for some reason... tests for sqlite, mysql, and postgres
                     var i = 1
-                    while (i <= statement.metaData.columnCount) {
-                        val columnName = statement.metaData.getColumnLabel(i)
+                    while (i <= resultSet.metaData.columnCount) {
+                        val columnName = resultSet.metaData.getColumnLabel(i)
                         types[columnName] = TypeModel(columnName, i)
                         i++
                     }
@@ -59,13 +59,12 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
         }
         finally {
             this.report.callsToDatabase = this.report.callsToDatabase + 1
-            statement.close()
         }
     }
 
     override fun isAvailable(): Boolean {
         try {
-            return this.connectionSourceFactory.connectionSource.isValid(TenSeconds)
+            return this.connectionSourceFactory.writeConnection.isValid(TenSeconds)
         }
         catch(e: UnsupportedOperationException) {
             e.printStackTrace()
@@ -79,7 +78,7 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
     }
 
     override fun executeUpdateQuery(query: String): EntityResultModel {
-        val statement = this.connectionSourceFactory.connectionSource.createStatement()
+        val statement = this.connectionSourceFactory.generateUpdateStatement()
         val returnObject = EntityResultModel()
         try {
             val result = statement.executeUpdate(query)
@@ -96,18 +95,17 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
         }
         finally {
             if (this.shouldManuallyCommitAfterUpdate) {
-                this.connectionSourceFactory.connectionSource.commit()
+                this.connectionSourceFactory.writeConnection.commit()
             }
-            statement.close()
             this.report.callsToDatabase = this.report.callsToDatabase + 1
         }
     }
 
     override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): IProtoCursor {
-        val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
+        val statement = this.connectionSourceFactory.generateReadStatement()
         try {
-            val resultSet = statement.executeQuery()
-            return JDBCProtoCursor(definition, resultSet, statement)
+            val resultSet = statement.executeQuery(query)
+            return JDBCProtoCursor(definition, resultSet)
         }
         catch(e:Exception) {
             throw e
@@ -119,11 +117,10 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
     }
 
     override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IProtoStreamer) {
-        val statement = this.connectionSourceFactory.connectionSource.prepareStatement(query)
+        val statement = this.connectionSourceFactory.generateReadStatement()
         try {
-            val resultSet = statement.executeQuery()
-            JDBCProtoCursor(definition, resultSet, statement)
-                    .getRecordsStream(streamer)
+            val resultSet = statement.executeQuery(query)
+            JDBCProtoCursor(definition, resultSet).getRecordsStream(streamer)
         }
         finally {
             // normally close, but wait for service to do it
@@ -132,7 +129,7 @@ class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: ICon
     }
 
     override fun commit() {
-        this.connectionSourceFactory.connectionSource.commit()
+        this.connectionSourceFactory.writeConnection.commit()
     }
 
     override fun close() {

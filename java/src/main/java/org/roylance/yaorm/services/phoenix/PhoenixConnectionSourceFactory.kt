@@ -5,38 +5,55 @@ import org.roylance.yaorm.services.IConnectionSourceFactory
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
+import java.sql.Statement
 
 class PhoenixConnectionSourceFactory @Throws(ClassNotFoundException::class, SQLException::class)
 constructor(host: String) : IConnectionSourceFactory {
 
+    private val actualReadConnection: Connection
+    private val actualWriteConnection: Connection
     private var isClosed: Boolean = false
-    private val commonConnection: Connection
 
     init {
         Class.forName(JDBCDriverName)
         val jdbcUrl = String.format(JDBCUrl, host)
-        this.commonConnection = DriverManager.getConnection(jdbcUrl)
+        this.actualReadConnection = DriverManager.getConnection(jdbcUrl)
+        this.actualWriteConnection = DriverManager.getConnection(jdbcUrl)
     }
 
-    override val connectionSource: Connection
-        @Throws(SQLException::class)
+    override val readConnection: Connection
         get() {
             if (this.isClosed) {
                 throw SQLException("already closed...")
             }
-            return this.commonConnection
+            return this.actualReadConnection
         }
 
-    @Throws(Exception::class)
+    override val writeConnection: Connection
+        get() {
+            if (this.isClosed) {
+                throw SQLException("already closed...")
+            }
+            return this.actualWriteConnection
+        }
+
     override fun close() {
         if (!this.isClosed) {
-            this.commonConnection.close()
+            this.readConnection.close()
+            this.writeConnection.close()
         }
         this.isClosed = true
     }
 
-    companion object {
+    override fun generateUpdateStatement(): Statement {
+        return this.writeConnection.createStatement()
+    }
 
+    override fun generateReadStatement(): Statement {
+        return this.readConnection.createStatement()
+    }
+
+    companion object {
         private val JDBCDriverName = "org.apache.phoenix.jdbc.PhoenixDriver"
         private val JDBCUrl = "jdbc:phoenix:%1\$s:/hbase-unsecure"
     }
