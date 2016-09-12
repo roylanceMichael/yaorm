@@ -4,6 +4,7 @@ import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
+import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoService
 import org.roylance.yaorm.utilities.ConnectionUtilities
