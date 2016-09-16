@@ -1,9 +1,25 @@
+buildscript {
+    ext.kotlin_version = '1.0.3'
+    ext.project_version = "0.128"
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    }
+}
+
 group 'org.roylance'
-version '0.128-SNAPSHOT'
+version project_version
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
-apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.7
@@ -16,46 +32,28 @@ publishing {
     }
 }
 
-artifactory {
-    contextUrl = 'http://chaperapp.dyndns-server.com:8081/artifactory'
-    publish {
-        repository {
-            repoKey = 'libs-snapshot-local'
-            username = System.getenv('ARTIFACTORY_USER')
-            password = System.getenv('ARTIFACTORY_PASSWORD')
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['mavenJava']
+    publish = true
+    pkg {
+        repo = 'maven'
+        name = "${group}.${rootProject.name}"
+        userOrg = user
+        licenses = ['Apache-2.0']
+        labels = [rootProject.name]
+        publicDownloadNumbers = true
+        vcsUrl = 'https://github.com/roylanceMichael/yaorm.git'
+        version {
+            name = project_version
         }
-        defaults {
-            publications('mavenJava')
-            publishBuildInfo = true
-            publishArtifacts = true
-            properties = ['qa.level': 'basic', 'dev.team' : 'core']
-            publishPom = true
-        }
-    }
-    resolve {
-        repository {
-            repoKey = 'repo'
-        }
-    }
-}
-
-buildscript {
-    ext.kotlin_version = '1.0.3'
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.1.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
     }
 }
 
 repositories {
     mavenCentral()
-    maven { url 'http://mikeapps.org:8081/artifactory/ext-release-local' }
-    maven { url 'http://chaperapp.dyndns-server.com:8081/artifactory/libs-snapshot-local' }
+    maven { url "http://dl.bintray.com/roylancemichael/maven" }
 }
 
 dependencies {
@@ -72,6 +70,6 @@ dependencies {
 //    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
 //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
+    compile 'org.roylance:common:0.6'
     compile 'org.apache.commons:commons-lang3:3.4'
-    compile 'org.roylance:common:0.4-SNAPSHOT'
 }
