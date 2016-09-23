@@ -51,8 +51,8 @@ class PostgresEntityMessageServiceTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             // act
             val result = entityProtoMessageService.merge(testModel.build())
@@ -123,8 +123,8 @@ class PostgresEntityMessageServiceTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             entityProtoMessageService.merge(testModel.build())
             testModel.clearChild()
@@ -183,8 +183,8 @@ class PostgresEntityMessageServiceTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             // act
             val result = entityProtoMessageService.merge(testModel.build())
@@ -241,8 +241,8 @@ class PostgresEntityMessageServiceTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             entityProtoMessageService.merge(testModel.build())
             val newFirstDisplay = "new first display"

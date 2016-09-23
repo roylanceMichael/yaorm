@@ -18,7 +18,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
     private val SqlTextIdName = "varchar(150)"
     private val SqlIntegerName = "bigint"
     private val SqlTextName = "text"
-    private val SqlRealName = "double precision"
+    private val SqlRealName = "decimal(60, 10)"
     private val SqlBlobName = "text"
 
     override val protoTypeToSqlType: Map<YaormModel.ProtobufType, String> = object: HashMap<YaormModel.ProtobufType, String>() {

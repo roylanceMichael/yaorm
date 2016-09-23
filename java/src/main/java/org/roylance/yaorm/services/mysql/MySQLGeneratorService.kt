@@ -18,7 +18,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
     // http://dev.mysql.com/doc/refman/5.0/en/char.html - thank you
     private val SqlTextName = "mediumtext"
     private val SqlTextIdName = "varchar(150)"
-    private val SqlRealName = "decimal"
+    private val SqlRealName = "decimal(60,10)"
     private val SqlBlobName = "longtext"
 
     override val protoTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {

@@ -134,8 +134,8 @@ class SQLiteProtoTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
             testModel.addChilds(subTestChild)
@@ -211,8 +211,8 @@ class SQLiteProtoTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
             testModel.addChilds(subTestChild)
@@ -275,8 +275,8 @@ class SQLiteProtoTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
             val subTestChild2 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("third display")
@@ -343,8 +343,8 @@ class SQLiteProtoTest {
             testModel.testSfixed64 = 10
             testModel.testBool = true
             testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.0
-            testModel.testFloat = 12.0F
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
 
             val subTestChild = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("second display")
             val subTestChild2 = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("third display")
