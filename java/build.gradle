@@ -1,6 +1,6 @@
 buildscript {
-    ext.kotlin_version = '1.0.3'
-    ext.project_version = "0.129"
+    ext.kotlin_version = '1.0.4'
+    ext.project_version = "0.130"
 
     repositories {
         mavenCentral()
@@ -70,6 +70,6 @@ dependencies {
 //    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
 //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
-    compile 'org.roylance:common:0.6'
+    compile 'org.roylance:common:0.7'
     compile 'org.apache.commons:commons-lang3:3.4'
 }
