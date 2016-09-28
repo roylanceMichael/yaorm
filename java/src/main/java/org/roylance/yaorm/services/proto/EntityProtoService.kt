@@ -157,7 +157,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
 
         if (allRecords.recordsCount > 0) {
             val foundRecord = allRecords.recordsList[0]
-            val longValColumn = foundRecord.columnsList.firstOrNull { it.definition.name.equals(GenericModel.LongValName) }
+            val longValColumn = foundRecord.columnsList.firstOrNull { it.definition.name == GenericModel.LongValName }
             if (longValColumn != null) {
                 return longValColumn.int64Holder
             }
@@ -295,10 +295,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun create(entity: YaormModel.Record, definition: YaormModel.TableDefinition): Boolean {
-        val idColumn = YaormUtils.getIdColumn(entity.columnsList)
-        if (idColumn == null) {
-            return false
-        }
+        YaormUtils.getIdColumn(entity.columnsList) ?: return false
 
         if (!this.granularDatabaseService.isAvailable()) {
             return false

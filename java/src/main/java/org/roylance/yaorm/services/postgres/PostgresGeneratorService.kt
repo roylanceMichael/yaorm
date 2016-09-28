@@ -68,16 +68,16 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
     override fun buildCreateIndex(definition: YaormModel.TableDefinition,
                                   properties: Map<String, YaormModel.ColumnDefinition>,
                                   includes: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(definition.name, properties.values.map { it.name })
         val joinedColumnNames = properties.values.map { this.buildKeyword(it.name) }.joinToString(YaormUtils.Comma)
 
-        return "create index ${definition.name}_$indexName on ${this.buildKeyword(definition.name)} ($joinedColumnNames)"
+        return "create index $indexName on ${this.buildKeyword(definition.name)} ($joinedColumnNames)"
     }
 
     override fun buildDropIndex(definition: YaormModel.TableDefinition,
                                 columns: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(columns.values.map { it.name })
-        return "drop index ${definition.name}_$indexName"
+        val indexName = YaormUtils.buildIndexName(definition.name, columns.values.map { it.name })
+        return "drop index if exists $indexName"
     }
 
     override fun buildDropTable(definition: YaormModel.TableDefinition): String {
@@ -97,9 +97,9 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
         val workspace = StringBuilder()
 
         for (nameType in nameTypes) {
-            if (YaormUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName == nameType.sqlColumnName) {
                 var dataType = nameType.dataType
-                if (SqlTextName.equals(dataType)) {
+                if (SqlTextName == dataType) {
                     dataType = SqlTextIdName
                 }
 
@@ -113,9 +113,9 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
         }
 
         for (nameType in nameTypes) {
-            if (!YaormUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName != nameType.sqlColumnName) {
                 var dataType = nameType.dataType
-                if (nameType.isForeignKey && SqlTextName.equals(dataType)) {
+                if (nameType.isForeignKey && SqlTextName == dataType) {
                     dataType = SqlTextIdName
 
                 }
@@ -172,7 +172,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                     val valueColumnPairs = ArrayList<String>()
                     sortedColumns
                             .forEach { columnDefinition ->
-                                val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name.equals(columnDefinition.name) }
+                                val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name == columnDefinition.name }
 
                                 if (foundColumn != null) {
                                     val formattedString = YaormUtils.getFormattedString(foundColumn)
@@ -250,7 +250,7 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000) : ISQLGe
                     .columnsList
                     .forEach {
                         val formattedString = YaormUtils.getFormattedString(it)
-                        if (it.definition.name.equals(YaormUtils.IdName)) {
+                        if (it.definition.name == YaormUtils.IdName) {
                             stringId = formattedString
                         }
                         else {

@@ -51,7 +51,7 @@ object ProtobufUtils {
     fun buildDefinitionFromDescriptor(descriptor:Descriptors.Descriptor,
                                       customIndexes: MutableMap<String, YaormModel.Index>):YaormModel.TableDefinition? {
         // make sure we have an id, or return nothing
-        descriptor.fields.firstOrNull { YaormUtils.IdName.equals(it.name) && ProtoStringName.equals(it.type.name) } ?: return null
+        descriptor.fields.firstOrNull { YaormUtils.IdName == it.name && ProtoStringName == it.type.name } ?: return null
 
         val definition = YaormModel.TableDefinition.newBuilder()
                 .setName(descriptor.name)
@@ -73,10 +73,10 @@ object ProtobufUtils {
                             // linker table
                             return@forEach
                         }
-                        else if (ProtoEnumType.equals(it.type.name)) {
+                        else if (ProtoEnumType == it.type.name) {
                             definition.addColumnDefinitions(buildEnumNameColumnName(it.name, it.number))
                         }
-                        else if (ProtoMessageType.equals(it.type.name)) {
+                        else if (ProtoMessageType == it.type.name) {
                             definition.addColumnDefinitions(buildMessageColumnName(it.name, it.number))
                         }
                     }
@@ -96,7 +96,7 @@ object ProtobufUtils {
         descriptor.fields
             .filter { it.isRepeated }
             .forEach {
-                if (ProtoEnumType.equals(it.type.name)) {
+                if (ProtoEnumType == it.type.name) {
                     val definitionGraph = YaormModel.TableDefinitionGraph.newBuilder()
                             .setDefinitionGraphType(YaormModel.TableDefinitionGraph.TableDefinitionGraphType.ENUM_TYPE)
                             .setMainName(mainDefinition.name)
@@ -107,7 +107,7 @@ object ProtobufUtils {
                     definitionGraph.mainTableDefinition = mainDefinition
                     returnGraph.addTableDefinitionGraphs(definitionGraph)
                 }
-                else if (ProtoMessageType.equals(it.type.name)) {
+                else if (ProtoMessageType == it.type.name) {
                     val otherDefinition = buildDefinitionFromDescriptor(it.messageType, customIndexes) ?: return@forEach
                     val definitionGraph = YaormModel.TableDefinitionGraph.newBuilder()
                             .setDefinitionGraphType(YaormModel.TableDefinitionGraph.TableDefinitionGraphType.MESSAGE_TYPE)
@@ -168,32 +168,32 @@ object ProtobufUtils {
     }
 
     fun getIdFromMessage(message:Message):String {
-        val foundIdField = message.allFields.keys.firstOrNull { it.name.equals(YaormUtils.IdName) } ?: Empty
+        val foundIdField = message.allFields.keys.firstOrNull { it.name == YaormUtils.IdName } ?: Empty
         val foundId = message.allFields[foundIdField] ?: return Empty
         return foundId.toString()
     }
 
     fun getIdFromMessage(message:Message.Builder):String {
-        val foundIdField = message.allFields.keys.firstOrNull { it.name.equals(YaormUtils.IdName) } ?: Empty
+        val foundIdField = message.allFields.keys.firstOrNull { it.name == YaormUtils.IdName } ?: Empty
         val foundId = message.allFields[foundIdField] ?: return Empty
         return foundId.toString()
     }
 
     fun setIdForMessage(message: Message.Builder, id: String) {
-        val foundIdField = message.descriptorForType.fields.firstOrNull { it.name.equals(YaormUtils.IdName) } ?: return
+        val foundIdField = message.descriptorForType.fields.firstOrNull { it.name == YaormUtils.IdName } ?: return
 
         message.setField(foundIdField, id)
     }
 
     fun isMessageOk(message: Message):Boolean {
-        return message.descriptorForType.fields.any { it.name.equals(YaormUtils.IdName) }
+        return message.descriptorForType.fields.any { it.name == YaormUtils.IdName }
     }
 
     internal fun handleRepeatedMessageFields(message:Message,
                                              mainMessageId: String,
                                              convertProto:ConvertProtobufToRecords): Map<String, YaormModel.TableRecords.Builder> {
         val returnMap = HashMap<String, YaormModel.TableRecords.Builder>()
-        message.allFields.keys.filter { it.type.name.equals(ProtoMessageType) && it.isRepeated }
+        message.allFields.keys.filter { it.type.name == ProtoMessageType && it.isRepeated }
                 .forEach { fieldKey ->
                     val foundItem = message.allFields[fieldKey]
 
@@ -249,11 +249,11 @@ object ProtobufUtils {
                                          mainMessageId:String,
                                          definitions:YaormModel.TableDefinitionGraphs):Map<String, YaormModel.TableRecords.Builder> {
         val returnRecords = HashMap<String, YaormModel.TableRecords.Builder>()
-        message.allFields.keys.filter { it.type.name.equals(ProtoEnumType) && it.isRepeated }
+        message.allFields.keys.filter { it.type.name == ProtoEnumType && it.isRepeated }
                 .forEach { fieldKey ->
                     val foundLinkerTable = definitions.tableDefinitionGraphsList.firstOrNull {
-                        it.otherName.equals(fieldKey.enumType.name) &&
-                                it.columnName.equals(fieldKey.name)
+                        it.otherName == fieldKey.enumType.name &&
+                                it.columnName == fieldKey.name
                     } ?: return@forEach
 
                     val foundItem = message.allFields[fieldKey]
@@ -454,10 +454,6 @@ object ProtobufUtils {
 
     internal fun buildLinkerMessageOtherTableColumnName(tableName: String):String {
         return "$tableName$OtherSuffix"
-    }
-
-    internal fun buildUniqueKey(builder: Message, entityId:String):String {
-        return "${builder.descriptorForType.name}~$entityId"
     }
 
     const val MainSuffix = "_main"

@@ -177,7 +177,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 val valueColumnPairs = ArrayList<String>()
 
                 sortedColumns.forEach { columnDefinition ->
-                    val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name.equals(columnDefinition.name) }
+                    val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name == columnDefinition.name }
 
                     if (foundColumn != null) {
                         val formattedString = YaormUtils.getFormattedString(foundColumn)
@@ -256,7 +256,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 .sortedBy { it.definition.order }
                 .forEach {
                     val formattedString = YaormUtils.getFormattedString(it)
-                    if (it.definition.name.equals(YaormUtils.IdName)) {
+                    if (it.definition.name == YaormUtils.IdName) {
                         stringId = formattedString
                     }
                     else {

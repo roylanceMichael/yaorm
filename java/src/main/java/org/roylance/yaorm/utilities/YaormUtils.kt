@@ -40,63 +40,63 @@ object YaormUtils {
 
         val notNullValueAsString = if (value == null) "" else value.toString()
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.STRING)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.STRING) {
             returnHolder.stringHolder = notNullValueAsString.toString()
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BOOL)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.BOOL) {
             returnHolder.boolHolder = getBool(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.INT32) {
             returnHolder.int32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.INT64) {
             returnHolder.int64Holder = if (value == null) 0L else getLong(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.FIXED32) {
             returnHolder.fixed32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.FIXED64) {
             returnHolder.fixed64Holder =  if (value == null) 0L else getLong(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SFIXED32) {
             returnHolder.sfixed32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SFIXED64) {
             returnHolder.sfixed64Holder =  if (value == null) 0L else getLong(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.UINT32) {
             returnHolder.uint32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.UINT64) {
             returnHolder.uint64Holder = if (value == null) 0L else getLong(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SINT32) {
             returnHolder.sint32Holder = if (value == null) 0 else getInt(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SINT64) {
             returnHolder.sint64Holder = if (value == null) 0L else getLong(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.DOUBLE) {
             returnHolder.doubleHolder = if (value == null) 0.0 else getDouble(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT  )) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.FLOAT) {
             returnHolder.floatHolder = if (value == null) 0F else getFloat(notNullValueAsString)
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES  )) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.BYTES) {
             if (value is ByteString) {
                 returnHolder.bytesHolder = value
             }
@@ -113,63 +113,63 @@ object YaormUtils {
 
     fun getAnyObject(holder:YaormModel.Column):Any? {
         val propertyDefinition = holder.definition
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.STRING)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.STRING) {
             return holder.stringHolder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BOOL)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.BOOL) {
             return holder.boolHolder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.INT32) {
             return holder.int32Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.INT64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.INT64) {
             return holder.int64Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.FIXED32) {
             return holder.fixed32Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FIXED64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.FIXED64) {
             return holder.fixed64Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SFIXED32) {
             return holder.sfixed32Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SFIXED64) {
             return holder.sfixed64Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SINT32) {
             return holder.sint32Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.SINT64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.SINT64) {
             return holder.sint64Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT32)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.UINT32) {
             return holder.uint32Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.UINT64)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.UINT64) {
             return holder.uint64Holder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.DOUBLE) {
             return holder.doubleHolder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.FLOAT)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.FLOAT) {
             return holder.floatHolder
         }
 
-        if (propertyDefinition.type.equals(YaormModel.ProtobufType.BYTES)) {
+        if (propertyDefinition.type == YaormModel.ProtobufType.BYTES) {
             return holder.bytesHolder
         }
         return null
@@ -180,63 +180,63 @@ object YaormUtils {
             return Null
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.STRING)) {
+        if (value.definition.type == YaormModel.ProtobufType.STRING) {
             return SingleQuote + value.stringHolder.replace(SingleQuote, DoubleSingleQuote) + SingleQuote
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.BOOL)) {
+        if (value.definition.type == YaormModel.ProtobufType.BOOL) {
             return Integer.toString(if (value.boolHolder) 1 else 0)
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.INT32)) {
+        if (value.definition.type == YaormModel.ProtobufType.INT32) {
             return value.int32Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.INT64)) {
+        if (value.definition.type == YaormModel.ProtobufType.INT64) {
             return value.int64Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.FIXED32)) {
+        if (value.definition.type == YaormModel.ProtobufType.FIXED32) {
             return value.fixed32Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.FIXED64)) {
+        if (value.definition.type == YaormModel.ProtobufType.FIXED64) {
             return value.fixed64Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.SFIXED32)) {
+        if (value.definition.type == YaormModel.ProtobufType.SFIXED32) {
             return value.sfixed32Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.SFIXED64)) {
+        if (value.definition.type == YaormModel.ProtobufType.SFIXED64) {
             return value.sfixed64Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.UINT32)) {
+        if (value.definition.type == YaormModel.ProtobufType.UINT32) {
             return value.uint32Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.UINT64)) {
+        if (value.definition.type == YaormModel.ProtobufType.UINT64) {
             return value.uint64Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.SINT32)) {
+        if (value.definition.type == YaormModel.ProtobufType.SINT32) {
             return value.sint32Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.SINT64)) {
+        if (value.definition.type == YaormModel.ProtobufType.SINT64) {
             return value.sint64Holder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.DOUBLE)) {
+        if (value.definition.type == YaormModel.ProtobufType.DOUBLE) {
             return value.doubleHolder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.FLOAT)) {
+        if (value.definition.type == YaormModel.ProtobufType.FLOAT) {
             return value.floatHolder.toString()
         }
 
-        if (value.definition.type.equals(YaormModel.ProtobufType.BYTES)) {
+        if (value.definition.type == YaormModel.ProtobufType.BYTES) {
             return SingleQuote + value.bytesHolder.toStringUtf8() + SingleQuote
         }
 
@@ -257,8 +257,8 @@ object YaormUtils {
     }
 
 
-    fun buildIndexName(columnNames:List<String>) : String {
-        return "${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
+    fun buildIndexName(tableName: String, columnNames:List<String>) : String {
+        return "${tableName}_${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
     }
 
     fun getNameTypes(
@@ -280,7 +280,7 @@ object YaormUtils {
 
                     if (javaTypeToSqlType.containsKey(javaType)) {
                         val dataType = javaTypeToSqlType[javaType]
-                        if (IdName.equals(sqlColumnName)) {
+                        if (IdName == sqlColumnName) {
                             foundIdColumnName = true
                         }
                         nameTypes.add(ColumnNameTuple(sqlColumnName, javaColumnName, dataType!!))
@@ -306,7 +306,7 @@ object YaormUtils {
         var currentWhereClauseItem: YaormModel.WhereClause? = whereClauseItem
 
         while (currentWhereClauseItem != null) {
-            if (currentWhereClauseItem.operatorType.equals(YaormModel.WhereClause.OperatorType.IN) &&
+            if (currentWhereClauseItem.operatorType == YaormModel.WhereClause.OperatorType.IN &&
                     currentWhereClauseItem.inItemsCount > 0) {
                 val items = currentWhereClauseItem.inItemsList.map {
                     val tempColumn = buildColumn(it, currentWhereClauseItem!!.nameAndProperty.definition)
@@ -329,7 +329,7 @@ object YaormUtils {
                                 Space)
             }
 
-            if (!currentWhereClauseItem.connectingAndOr.equals(YaormModel.WhereClause.ConnectingAndOr.NONE) &&
+            if (currentWhereClauseItem.connectingAndOr != YaormModel.WhereClause.ConnectingAndOr.NONE &&
                 currentWhereClauseItem.hasConnectingWhereClause()) {
                 filterItems.append(currentWhereClauseItem.connectingAndOr.name + YaormUtils.Space)
                 currentWhereClauseItem = currentWhereClauseItem.connectingWhereClause
@@ -343,7 +343,7 @@ object YaormUtils {
     }
 
     fun checkIfOk(definition: YaormModel.TableDefinition):Boolean {
-        return definition.columnDefinitionsList.any { it.name.equals(IdName) }
+        return definition.columnDefinitionsList.any { it.name == IdName }
     }
 
     fun getLastWord(item:String):String {
@@ -379,11 +379,11 @@ object YaormUtils {
     }
 
     fun getIdColumn(columns:List<YaormModel.ColumnDefinition>):YaormModel.ColumnDefinition? {
-        return columns.firstOrNull { it.name.equals(IdName) }
+        return columns.firstOrNull { it.name == IdName }
     }
 
     fun getIdColumn(columns:List<YaormModel.Column>):YaormModel.Column? {
-        return columns.firstOrNull { it.definition.name.equals(IdName) }
+        return columns.firstOrNull { it.definition.name == IdName }
     }
 
     fun buildMapsFromRecords(records:YaormModel.Records):List<Map<String, Any?>> {
@@ -391,12 +391,12 @@ object YaormUtils {
     }
 
     fun <T> getValueFromRecord(name:String, record:YaormModel.Record):T? {
-        val foundColumn = record.columnsList.firstOrNull { name.equals(it.definition.name) } ?: return  null
+        val foundColumn = record.columnsList.firstOrNull { name == it.definition.name } ?: return  null
         return getAnyObject(foundColumn) as T
     }
 
     fun getValueFromRecordAny(name:String, record:YaormModel.Record):Any? {
-        val foundColumn = record.columnsList.firstOrNull { name.equals(it.definition.name) } ?: return  null
+        val foundColumn = record.columnsList.firstOrNull { name == it.definition.name } ?: return  null
         return getAnyObject(foundColumn)
     }
 
@@ -409,10 +409,10 @@ object YaormUtils {
     }
 
     private fun getBool(item:String):Boolean {
-        if (item.equals("0")) {
+        if (item == "0") {
             return false
         }
-        if (item.toLowerCase().equals("false")) {
+        if (item.toLowerCase() == "false") {
             return false
         }
         if (item.length == 0) {

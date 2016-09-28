@@ -64,12 +64,12 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
     }
 
     override fun buildDropIndex(definition: YaormModel.TableDefinition, columns: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(columns.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(definition.name, columns.values.map { it.name })
         return "drop index if exists $indexName on ${definition.name}"
     }
 
     override fun buildCreateIndex(definition: YaormModel.TableDefinition, properties: Map<String, YaormModel.ColumnDefinition>, includes: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(definition.name, properties.values.map { it.name })
         val joinedColumnNames = properties.values.joinToString(YaormUtils.Comma)
         val sqlStatement = "create index if not exists $indexName on ${definition.name} ($joinedColumnNames)"
 
@@ -191,7 +191,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
 
         val workspace = StringBuilder()
 
-        val foundId = nameTypes.firstOrNull { YaormUtils.IdName.equals(it.sqlColumnName) } ?: return null
+        val foundId = nameTypes.firstOrNull { YaormUtils.IdName == it.sqlColumnName } ?: return null
 
         workspace.append(YaormUtils.IdName)
             .append(YaormUtils.Space)
@@ -201,7 +201,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
             .append(YaormUtils.Space)
             .append(PrimaryKey)
 
-        for (nameType in nameTypes.filter { !YaormUtils.IdName.equals(it.sqlColumnName) }) {
+        for (nameType in nameTypes.filter { YaormUtils.IdName != it.sqlColumnName }) {
             workspace
                 .append(YaormUtils.Comma)
                 .append(YaormUtils.Space)

@@ -34,8 +34,8 @@ object PropertyModelComparisonUtil {
         }
 
         if (currentProperty != null && otherProperty != null &&
-                (!currentProperty.name.equals(otherProperty.name) ||
-                        !currentProperty.type.equals(otherProperty.type))) {
+                (currentProperty.name != otherProperty.name ||
+                        currentProperty.type != otherProperty.type)) {
             val dropDifference = YaormModel.Difference.newBuilder()
                     .setEntityType(YaormModel.Difference.EntityType.COLUMN)
                     .setOperation(YaormModel.Difference.Operation.DROP)

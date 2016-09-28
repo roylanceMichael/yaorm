@@ -95,16 +95,16 @@ internal class GetProtoObjects(
         // handle repeated enums for all
         builder.descriptorForType
                 .fields
-                .filter { it.type.name.equals(ProtobufUtils.ProtoEnumType) && it.isRepeated }
+                .filter { it.type.name == ProtobufUtils.ProtoEnumType && it.isRepeated }
                 .forEach { fieldKey ->
                     val definitionForLinkerTable = tableDefinitionGraph.tableDefinitionGraphsList
-                            .firstOrNull { it.columnName.equals(fieldKey.name) && it.otherName.equals(fieldKey.enumType.name) }
+                            .firstOrNull { it.columnName == fieldKey.name && it.otherName == fieldKey.enumType.name }
                             ?: return@forEach
 
                     val foundRecords = entityService.where(groupWhereClause, definitionForLinkerTable.linkerTableTable)
                     foundRecords.recordsList.forEach { record ->
-                        val nameColumn = record.columnsList.firstOrNull { fieldKey.enumType.name.equals(it.definition.name) }
-                        val entityColumn = record.columnsList.firstOrNull { mainEnumColumnName.equals(it.definition.name) }
+                        val nameColumn = record.columnsList.firstOrNull { fieldKey.enumType.name == it.definition.name }
+                        val entityColumn = record.columnsList.firstOrNull { mainEnumColumnName == it.definition.name }
                         if (nameColumn != null && entityColumn != null) {
                             val actualBuilder = cacheStore.getObject(builder, entityColumn.stringHolder)
                             val enumToAdd = fieldKey.enumType.findValueByName(nameColumn.stringHolder.toUpperCase())
@@ -128,10 +128,10 @@ internal class GetProtoObjects(
         // handle messages for all
         builder.descriptorForType
             .fields
-            .filter { it.type.name.equals(ProtobufUtils.ProtoMessageType) && it.isRepeated }
+            .filter { it.type.name == ProtobufUtils.ProtoMessageType && it.isRepeated }
             .forEach { fieldKey ->
                 val definitionForLinkerTable = tableDefinitionGraph.tableDefinitionGraphsList
-                        .firstOrNull { it.columnName.equals(fieldKey.name) && it.otherName.equals(fieldKey.messageType.name) }
+                        .firstOrNull { it.columnName == fieldKey.name && it.otherName == fieldKey.messageType.name }
                         ?: return@forEach
 
                 val foundRecords = entityService.where(groupMessageWhereClause, definitionForLinkerTable.linkerTableTable)
@@ -141,8 +141,8 @@ internal class GetProtoObjects(
 
                 foundRecords.recordsList
                         .forEach { record ->
-                            val nameColumn = record.columnsList.firstOrNull { otherColumnName.equals(it.definition.name) }
-                            val entityColumn = record.columnsList.firstOrNull { mainMessageColumnName.equals(it.definition.name) }
+                            val nameColumn = record.columnsList.firstOrNull { otherColumnName == it.definition.name }
+                            val entityColumn = record.columnsList.firstOrNull { mainMessageColumnName == it.definition.name }
 
                             if (nameColumn != null && nameColumn.stringHolder.length > 0 && entityColumn != null) {
                                 if (!keysToReconcile.containsKey(fieldKey.messageType.name)) {
@@ -175,7 +175,7 @@ internal class GetProtoObjects(
             val childBuilder = this.generatedMessageBuilder.buildGeneratedMessage(childType)
             this.build(childBuilder, keysToReconcile[childType]!!.toList())
 
-            normalReconciliation.filter { it.key.equals(childType) }
+            normalReconciliation.filter { it.key == childType }
                     .flatMap { it.value.values }
                     .flatMap { it.values }.forEach { cachingObject ->
                 val mainObject = cacheStore.getObject(builder, cachingObject.mainId)
@@ -184,7 +184,7 @@ internal class GetProtoObjects(
                 mainObject.setField(cachingObject.fieldKey, childObject.build())
             }
 
-            repeatedReconciliation.filter { it.key.equals(childType) }
+            repeatedReconciliation.filter { it.key == childType }
                     .flatMap { it.value.values }
                     .flatMap { it.values }.forEach { cachingObject ->
                 val mainObject = cacheStore.getObject(builder, cachingObject.mainId)

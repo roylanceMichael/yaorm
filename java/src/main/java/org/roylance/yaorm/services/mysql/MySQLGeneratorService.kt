@@ -75,7 +75,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
             definition: YaormModel.TableDefinition,
             properties: Map<String, YaormModel.ColumnDefinition>,
             includes: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(definition.name, properties.values.map { it.name })
         val joinedColumnNames = properties.values
                 .map { this.buildIndexColumnName(it) }
                 .joinToString(YaormUtils.Comma)
@@ -88,8 +88,8 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
     override fun buildDropIndex(
             definition: YaormModel.TableDefinition,
             columns: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(columns.values.map { it.name })
-        return "drop index ${this.buildKeyword(indexName)} on ${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)}"
+        val indexName = YaormUtils.buildIndexName(definition.name, columns.values.map { it.name })
+        return "drop index if exists ${this.buildKeyword(indexName)} on ${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)}"
     }
 
     override fun buildDropTable(definition: YaormModel.TableDefinition): String {
@@ -108,9 +108,9 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
 
         val workspace = StringBuilder()
         for (nameType in nameTypes) {
-            if (YaormUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName == nameType.sqlColumnName) {
                 var dataType = nameType.dataType
-                if (SqlTextName.equals(dataType)) {
+                if (SqlTextName == dataType) {
                     dataType = SqlTextIdName
                 }
 
@@ -124,9 +124,9 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
         }
 
         for (nameType in nameTypes) {
-            if (!YaormUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName != nameType.sqlColumnName) {
                 var dataType = nameType.dataType
-                if (nameType.isForeignKey && SqlTextName.equals(dataType)) {
+                if (nameType.isForeignKey && SqlTextName == dataType) {
                     dataType = SqlTextIdName
 
                 }
@@ -186,7 +186,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
                     val valueColumnPairs = ArrayList<String>()
                     sortedColumns
                             .forEach { columnDefinition ->
-                                val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name.equals(columnDefinition.name) }
+                                val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name == columnDefinition.name }
                                 if (foundColumn != null) {
                                     val formattedString = YaormUtils.getFormattedString(foundColumn)
                                     if (valueColumnPairs.isEmpty()) {
@@ -264,7 +264,7 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
                 .columnsList
                 .forEach {
                     val formattedString = YaormUtils.getFormattedString(it)
-                    if (it.definition.name.equals(YaormUtils.IdName)) {
+                    if (it.definition.name == YaormUtils.IdName) {
                         stringId = formattedString
                     }
                     else {
@@ -353,9 +353,9 @@ class MySQLGeneratorService(private val schemaName: String, override val bulkIns
     }
 
     private fun buildIndexColumnName(columnName:YaormModel.ColumnDefinition): String {
-        if ((columnName.type.equals(YaormModel.ProtobufType.STRING) ||
-                columnName.type.equals(YaormModel.ProtobufType.BYTES)) &&
-            !columnName.name.equals(YaormUtils.IdName)) {
+        if ((columnName.type == YaormModel.ProtobufType.STRING ||
+                columnName.type == YaormModel.ProtobufType.BYTES) &&
+                columnName.name != YaormUtils.IdName) {
             return "${columnName.name}(100)"
         }
         return this.buildKeyword(columnName.name)

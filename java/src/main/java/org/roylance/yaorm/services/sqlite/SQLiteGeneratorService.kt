@@ -88,7 +88,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
     override fun buildDropIndex(
             definition: YaormModel.TableDefinition,
             columns: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(columns.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(definition.name, columns.values.map { it.name })
         return "drop index if exists ${this.buildKeyword(indexName)} on ${this.buildKeyword(definition.name)}"
     }
 
@@ -96,7 +96,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
             definition: YaormModel.TableDefinition,
             properties: Map<String, YaormModel.ColumnDefinition>,
             includes: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(properties.values.map { it.name })
+        val indexName = YaormUtils.buildIndexName(definition.name, properties.values.map { it.name })
         val joinedColumnNames = properties.values.map { this.buildKeyword(it.name) }.joinToString(YaormUtils.Comma)
         val sqlStatement = "create index if not exists ${this.buildKeyword(indexName)} on ${this.buildKeyword(definition.name)} ($joinedColumnNames)"
 
@@ -132,7 +132,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
             newValuesWorkspace.append(YaormUtils.getFormattedString(it))
         }
 
-        return "update ${this.buildKeyword(definition.name)} set ${newValuesWorkspace.toString()} where $whereClauseStr${YaormUtils.SemiColon}"
+        return "update ${this.buildKeyword(definition.name)} set $newValuesWorkspace where $whereClauseStr${YaormUtils.SemiColon}"
     }
 
     override fun buildDropTable(definition: YaormModel.TableDefinition): String {
@@ -160,7 +160,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
 
                 sortedColumns
                     .forEach { columnDefinition ->
-                        val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name.equals(columnDefinition.name) }
+                        val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name == columnDefinition.name }
 
                         if (foundColumn != null) {
                             val formattedValue = YaormUtils.getFormattedString(foundColumn)
@@ -242,7 +242,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                 .sortedBy { it.definition.order }
                 .forEach {
                     val formattedValue = YaormUtils.getFormattedString(it)
-                    if (it.definition.name.equals(YaormUtils.IdName)) {
+                    if (it.definition.name == YaormUtils.IdName) {
                         stringId = formattedValue
                     }
                     else {
@@ -308,7 +308,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         val workspace = StringBuilder()
 
         for (nameType in nameTypes) {
-            if (YaormUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName == nameType.sqlColumnName) {
                 workspace
                         .append(this.buildKeyword(nameType.sqlColumnName))
                         .append(YaormUtils.Space)
@@ -319,7 +319,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         }
 
         for (nameType in nameTypes) {
-            if (!YaormUtils.IdName.equals(nameType.sqlColumnName)) {
+            if (YaormUtils.IdName != nameType.sqlColumnName) {
                 workspace
                         .append(YaormUtils.Comma)
                         .append(YaormUtils.Space)

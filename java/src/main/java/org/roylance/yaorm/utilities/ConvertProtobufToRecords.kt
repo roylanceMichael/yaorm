@@ -48,9 +48,9 @@ internal class ConvertProtobufToRecords(
         definitions[message.descriptorForType.name]!!
                 .mainTableDefinition
                 .columnDefinitionsList
-                .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.SCALAR) }
+                .filter { it.columnType == YaormModel.ColumnDefinition.ColumnType.SCALAR }
                 .forEach { column ->
-                    val foundField = message.allFields.keys.firstOrNull { column.name.equals(it.name) }
+                    val foundField = message.allFields.keys.firstOrNull { column.name == it.name }
                     if (foundField == null) {
                         val generatedColumn = YaormUtils.buildColumn(null, column)
                         baseRecord.addColumns(generatedColumn)
@@ -65,9 +65,9 @@ internal class ConvertProtobufToRecords(
         definitions[message.descriptorForType.name]!!
                 .mainTableDefinition
                 .columnDefinitionsList
-                .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.ENUM_NAME) }
+                .filter { it.columnType == YaormModel.ColumnDefinition.ColumnType.ENUM_NAME }
                 .forEach { columnDefinition ->
-                    val foundMessageField = message.allFields.keys.firstOrNull { it.name.equals(columnDefinition.name) }
+                    val foundMessageField = message.allFields.keys.firstOrNull { it.name == columnDefinition.name }
                     if (foundMessageField == null) {
                         val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.Default, columnDefinition)
                         baseRecord.addColumns(generatedNameColumn)
@@ -89,9 +89,9 @@ internal class ConvertProtobufToRecords(
         definitions[message.descriptorForType.name]!!
                 .mainTableDefinition
                 .columnDefinitionsList
-                .filter { it.columnType.equals(YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY) }
+                .filter { it.columnType == YaormModel.ColumnDefinition.ColumnType.MESSAGE_KEY }
                 .forEach { columnDefinition ->
-                    val foundMessageField = message.allFields.keys.firstOrNull { it.name.equals(columnDefinition.name) }
+                    val foundMessageField = message.allFields.keys.firstOrNull { it.name == columnDefinition.name }
                     if (foundMessageField == null) {
                         val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.Empty, columnDefinition)
                         baseRecord.addColumns(generatedNameColumn)

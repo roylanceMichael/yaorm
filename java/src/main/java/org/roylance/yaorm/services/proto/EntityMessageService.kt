@@ -192,12 +192,12 @@ class EntityMessageService(
             return
         }
 
-        val idField = messageType.descriptorForType.fields.first { it.name.equals(YaormUtils.IdName) }
+        val idField = messageType.descriptorForType.fields.first { it.name == YaormUtils.IdName }
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.getIdsStream(tableDefinition, object: IProtoStreamer {
             override fun stream(record: YaormModel.Record) {
                 val builder = protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name).toBuilder()
-                builder.setField(idField, record.columnsList.first { it.definition.name.equals(YaormUtils.IdName) }!!.stringHolder)
+                builder.setField(idField, record.columnsList.first { it.definition.name == YaormUtils.IdName }!!.stringHolder)
                 streamer.stream(builder.build())
             }
         })
@@ -222,11 +222,11 @@ class EntityMessageService(
         val records = ProtobufUtils.convertProtobufObjectToRecords(message, this.definitions, this.customIndexes)
 
         // create the main one
-        if (!records.tableRecordsList.any { message.descriptorForType.name.equals(it.tableName) }) {
+        if (!records.tableRecordsList.any { message.descriptorForType.name == it.tableName }) {
             return false
         }
 
-        val mainRecords = records.tableRecordsList.first { it.tableName.equals(message.descriptorForType.name) }
+        val mainRecords = records.tableRecordsList.first { it.tableName == message.descriptorForType.name }
         if (!mainRecords.hasRecords()) {
             return false
         }
@@ -250,13 +250,13 @@ class EntityMessageService(
 
                     // where clause with all the ids
                     tableRecords.records.recordsList.forEach {
-                        val idColumn = it.columnsList.firstOrNull { it.definition.name.equals(YaormUtils.IdName) }
+                        val idColumn = it.columnsList.firstOrNull { it.definition.name == YaormUtils.IdName }
                         if (idColumn != null) {
                             recordsFromClientMap[idColumn.stringHolder] = it
                         }
                     }
 
-                    val existingTableRecords = existingDatabaseAllRecords.tableRecordsList.firstOrNull { it.tableName.equals(tableRecords.tableName) }
+                    val existingTableRecords = existingDatabaseAllRecords.tableRecordsList.firstOrNull { it.tableName == tableRecords.tableName }
                     if (existingTableRecords != null) {
                         existingTableRecords.records.recordsList.forEach {
                             val idColumn = YaormUtils.getIdColumn(it.columnsList)

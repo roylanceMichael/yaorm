@@ -127,7 +127,7 @@ class EntityProtoContext(
                     }
                     else {
                         val foundDefinition = latestMigration.tableDefinitionsList
-                                .filter { currentDefinition.name.equals(it.name) }
+                                .filter { currentDefinition.name == it.name }
                                 .firstOrNull()
 
                         // will look at children as well
