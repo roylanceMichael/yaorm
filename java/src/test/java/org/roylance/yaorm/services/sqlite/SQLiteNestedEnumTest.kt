@@ -2,11 +2,13 @@ package org.roylance.yaorm.services.sqlite
 
 import org.junit.Assert
 import org.junit.Test
+import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.NestedEnumTest
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.utilities.ComplexModelBuilder
 import org.roylance.yaorm.utilities.NestedEnumGMBuilder
 import org.roylance.yaorm.utilities.TestBase64Service
 import org.roylance.yaorm.utilities.TestModelGMBuilder
@@ -71,6 +73,56 @@ class SQLiteNestedEnumTest {
             // assert
             val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
             Assert.assertTrue(allCustomers.size == 1)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
+    fun simplePassThroughTest2() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = ComplexModelBuilder
+            val protoContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    protoService,
+                    entityService,
+                    HashMap(),
+                    TestBase64Service())
+
+            protoContext.handleMigrations()
+
+            val firstFile = ComplexModel.MappedFile.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setName("first")
+
+            val secondFile = ComplexModel.MappedFile.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setName("second")
+                    .setParent(firstFile)
+
+            firstFile.addChildren(secondFile)
+
+            val thirdFile = ComplexModel.MappedFile.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setName("third")
+                    .setParent(secondFile)
+
+            secondFile.addChildren(thirdFile)
+
+            // act
+            protoContext.entityMessageService.merge(firstFile.build())
+
+            // assert
+            assert(true)
         }
         finally {
             database.deleteOnExit()

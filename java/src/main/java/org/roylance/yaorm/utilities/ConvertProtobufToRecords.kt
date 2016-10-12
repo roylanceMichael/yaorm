@@ -102,7 +102,6 @@ internal class ConvertProtobufToRecords(
                             val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.getIdFromMessage(foundField), columnDefinition)
                             baseRecord.addColumns(generatedNameColumn)
 
-
                             val childMessageRecords = this.build(foundField)
                             childMessageRecords.keys.forEach {
                                 if (recordsMap.containsKey(it)) {

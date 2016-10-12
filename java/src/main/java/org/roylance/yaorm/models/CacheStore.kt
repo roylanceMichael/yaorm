@@ -9,6 +9,14 @@ class CacheStore(
         private val generatedMessageBuilder: IProtoGeneratedMessageBuilder) {
     private val types = HashMap<String, HashMap<String, Message.Builder>>()
 
+    fun seenObject(type: Message, key: String): Boolean {
+        if (types.containsKey(type.descriptorForType.name) &&
+                types[type.descriptorForType.name]!!.containsKey(key)) {
+            return true
+        }
+        return false
+    }
+
     fun getObject(type: Message, key: String): Message.Builder {
         if (types.containsKey(type.descriptorForType.name) &&
             types[type.descriptorForType.name]!!.containsKey(key)) {

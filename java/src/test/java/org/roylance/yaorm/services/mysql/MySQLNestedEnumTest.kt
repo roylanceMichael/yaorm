@@ -2,10 +2,12 @@ package org.roylance.yaorm.services.mysql
 
 import org.junit.Assert
 import org.junit.Test
+import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.NestedEnumTest
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.EntityProtoContext
 import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.utilities.ComplexModelBuilder
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.NestedEnumGMBuilder
 import org.roylance.yaorm.utilities.TestBase64Service
@@ -74,6 +76,68 @@ class MySQLNestedEnumTest {
             // assert
             val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
             Assert.assertTrue(allCustomers.size == 1)
+        }
+        finally {
+            ConnectionUtilities.dropMySQLSchema()
+        }
+    }
+
+    @Test
+    fun simplePassThroughTest2() {
+        // arrange
+        ConnectionUtilities.getMySQLConnectionInfo()
+        try {
+            val sourceConnection = MySQLConnectionSourceFactory(
+                    ConnectionUtilities.mysqlHost!!,
+                    ConnectionUtilities.mysqlSchema!!,
+                    ConnectionUtilities.mysqlUserName!!,
+                    ConnectionUtilities.mysqlPassword!!)
+
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val protoService = ComplexModelBuilder
+            val protoContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    protoService,
+                    entityService,
+                    HashMap(),
+                    TestBase64Service())
+
+            protoContext.handleMigrations()
+
+            val firstFile = ComplexModel.MappedFile.newBuilder()
+                    .setId("first")
+                    .setName("first")
+
+            val secondFile = ComplexModel.MappedFile.newBuilder()
+                    .setId("second")
+                    .setName("second")
+
+            val thirdFile = ComplexModel.MappedFile.newBuilder()
+                    .setId("third")
+                    .setName("third")
+                    .setParent(secondFile)
+
+            val fourthFile = ComplexModel.MappedFile.newBuilder()
+                    .setId("fourth")
+                    .setName("fourth")
+                    .setParent(secondFile)
+
+            secondFile.addChildren(thirdFile)
+            secondFile.addChildren(fourthFile)
+
+            secondFile.setParent(firstFile)
+            firstFile.addChildren(secondFile)
+
+            // act
+//            protoContext.entityMessageService.merge(secondFile.build())
+            protoContext.entityMessageService.merge(firstFile.build())
+
+            // assert
+            assert(true)
         }
         finally {
             ConnectionUtilities.dropMySQLSchema()

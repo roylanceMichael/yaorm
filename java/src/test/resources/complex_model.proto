@@ -131,3 +131,10 @@ message UINaruAdminResponse {
     repeated Beacon beacons = 2;
     repeated View views = 3;
 }
+
+message MappedFile {
+    string id = 1;
+    string name = 2;
+    MappedFile parent = 3;
+    repeated MappedFile children = 4;
+}

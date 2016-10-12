@@ -23,7 +23,21 @@ internal class GetProtoObjects(
             return ArrayList()
         }
 
+        var allFound = true
+        entityIds.forEach { entityId ->
+            if(!cacheStore.seenObject(builder, entityId)) {
+                allFound = false
+            }
+        }
+
+        if (allFound) {
+            return entityIds.map {
+                cacheStore.getObject(builder, it).build() as T
+            }
+        }
+
         val keysToReconcile = HashMap<String, HashSet<String>>()
+
         // type - mainId - field name
         val normalReconciliation = HashMap<String, HashMap<String, HashMap<String, CachingObject>>>()
         val repeatedReconciliation = HashMap<String, HashMap<String, HashMap<String, CachingObject>>>()
