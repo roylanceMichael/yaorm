@@ -256,9 +256,10 @@ object YaormUtils {
         return firstChar + input.substring(1)
     }
 
-
     fun buildIndexName(tableName: String, columnNames:List<String>) : String {
-        return "${tableName}_${columnNames.sortedBy { it }.joinToString(Underscore)}${Underscore}idx"
+        val column_names = columnNames.sortedBy { it }.joinToString(Underscore)
+        val columnNamesHash = customHash(column_names).toString().replace("-", Underscore)
+        return "$tableName$Underscore$columnNamesHash${Underscore}idx"
     }
 
     fun getNameTypes(
@@ -398,6 +399,16 @@ object YaormUtils {
     fun getValueFromRecordAny(name:String, record:YaormModel.Record):Any? {
         val foundColumn = record.columnsList.firstOrNull { name == it.definition.name } ?: return  null
         return getAnyObject(foundColumn)
+    }
+
+    fun customHash(value: String): Long {
+        var largePrimeNumber = 3612342499L
+        val valueLength = value.length
+
+        for (i in 0..valueLength - 1) {
+            largePrimeNumber = 31 * largePrimeNumber + value[i].toLong()
+        }
+        return largePrimeNumber
     }
 
     private fun bothItemsNull(firstObject:Any?, secondObject: Any?):Boolean {
