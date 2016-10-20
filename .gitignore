@@ -27,3 +27,4 @@ csharp/Org.Roylance.Yaorm.Api/bin
 csharp/Org.Roylance.Yaorm.Api/obj
 sapi/target
 sapi/src/main/javascript/node_modules
+api/src/test/resources/mysql.properties

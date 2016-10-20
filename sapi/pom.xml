@@ -7,17 +7,17 @@
     <properties>		<group>org.roylance.yaorm</group>
 		<name>api</name>
 		<fullName>org.roylance.yaorm.api</fullName>
-		<minor>137</minor>
+		<minor>139</minor>
 		<major>0</major>
-		<fullVersion>0.137</fullVersion>
-		<org_roylance_yaorm_api>0.137</org_roylance_yaorm_api>
+		<fullVersion>0.139</fullVersion>
+		<org_roylance_yaorm_api>0.139</org_roylance_yaorm_api>
 		<org_apache_commons_commons_lang_>3.4</org_apache_commons_commons_lang_>
 	</properties>
 
 
     <groupId>org.roylance.yaorm</groupId>
     <artifactId>sapi</artifactId>
-    <version>0.137</version>
+    <version>0.139</version>
 
     <repositories>
         <repository>

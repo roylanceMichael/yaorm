@@ -1,4 +1,5 @@
 // THIS FILE WAS AUTO-GENERATED. DO NOT ALTER!
+/// <reference path="../node_modules/roylance.common/bytebuffer.d.ts" />
 import {YaormModel} from "../node_modules/org.roylance.yaorm.api/YaormModelFactory";
 
 import {YaormMainService} from "../node_modules/org.roylance.yaorm.api/YaormMainService";

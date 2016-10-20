@@ -12,6 +12,6 @@
 	"IHttpExecute.ts",
 	"YaormModel.d.ts",
 	"YaormModelFactory.ts",
-	"bytebuffer.d.ts",	"long.d.ts"
+	"node_modules/roylance.common/bytebuffer.d.ts"
     ]
 }
