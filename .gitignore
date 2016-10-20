@@ -18,3 +18,12 @@ yaorm.iml
 # Created by .ignore support plugin (hsz.mobi)
 .gradle
 .idea
+
+javascript/node_modules
+api/build
+api/.gradle
+.gradle
+csharp/Org.Roylance.Yaorm.Api/bin
+csharp/Org.Roylance.Yaorm.Api/obj
+sapi/target
+sapi/src/main/javascript/node_modules

@@ -1,0 +1,17 @@
+syntax = "proto3";
+package org.roylance.yaorm;
+import "yaorm_model.proto";
+
+message CommonAction {
+    org.roylance.yaorm.UIYaormRequest request = 1;
+    org.roylance.yaorm.UIYaormResponse response = 2;
+}
+
+message YaormMainController {
+    CommonAction get_schemas = 1;
+    CommonAction get_tables = 2;
+    CommonAction get_table_definition = 3;
+    CommonAction get_table_definitions = 4;
+    CommonAction get_record_count = 5;
+    CommonAction get_records = 6;
+}

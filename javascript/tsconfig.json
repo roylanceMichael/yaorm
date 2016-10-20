@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    },
+    "files": [
+	"IYaormMainService.ts",
+	"YaormMainService.ts",
+	"IHttpExecute.ts",
+	"YaormModel.d.ts",
+	"YaormModelFactory.ts",
+	"bytebuffer.d.ts",	"long.d.ts"
+    ]
+}

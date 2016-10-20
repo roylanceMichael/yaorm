@@ -1,0 +1,63 @@
+import org.roylance.yaclib.YaclibPlugin
+import org.roylance.yaclib.YaclibModel
+
+group 'org.roylance.yaorm'
+version = "${actualMajor}.${actualMinor}"
+
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url repoUrl_ }
+    }
+    dependencies {
+        classpath "org.roylance.yaclib:core:${yaclibMajor}.${yaclibMinor}"
+        classpath "org.roylance.yaorm:api:${actualMajor}.${actualMinor}"
+    }
+}
+
+
+task execute(type: YaclibPlugin) {
+    def parentDir = new File(System.getProperty("user.dir")).parentFile.toString()
+
+    location = parentDir
+    mainModel = "org.roylance.yaorm.YaormModel"
+    mainController = "org.roylance.yaorm.YaormController"
+
+    dependencyDescriptors = new ArrayList<>()
+    thirdPartyServerDependencies = new ArrayList<>()
+
+    def commonsLangDependency = YaclibModel.Dependency.newBuilder().setType(YaclibModel.DependencyType.JAVA)
+            .setGroup("org.apache.commons")
+            .setName("commons-lang3")
+            .setThirdPartyDependencyVersion("3.4")
+            .build()
+
+    thirdPartyServerDependencies.add(commonsLangDependency)
+
+    nugetKey = System.getenv('NUGET_KEY')
+
+    mainDependency = YaclibModel.Dependency.newBuilder()
+            .setGroup("org.roylance.yaorm")
+            .setName("api")
+            .setAuthorName(author_)
+            .setLicense(license_)
+            .setGithubRepo(githubRepo_)
+            .setMajorVersion(actualMajor.toInteger())
+            .setMinorVersion(actualMinor.toInteger())
+            .setTypescriptModelFile("YaormModel")
+            .setMavenRepository(YaclibModel.Repository.newBuilder()
+            .setName(repoName_)
+            .setUrl(repoUrl_)
+            .setRepositoryType(YaclibModel.RepositoryType.BINTRAY).build())
+            .build()
+
+    def tempAuxiliaryProjects = YaclibModel.AuxiliaryProjects.newBuilder()
+
+    auxiliaryProjects = tempAuxiliaryProjects.build()
+
+    println(nugetKey)
+    println(parentDir)
+}

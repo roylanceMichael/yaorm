@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{5D3B4406-0E7B-48B0-9F9C-FBA1801FE898}") = "Org.Roylance.Yaorm.Api", "Org.Roylance.Yaorm.Api.xproj", "{1702229E-2E14-4FE3-8B7F-A41A4D70D97E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1702229E-2E14-4FE3-8B7F-A41A4D70D97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1702229E-2E14-4FE3-8B7F-A41A4D70D97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1702229E-2E14-4FE3-8B7F-A41A4D70D97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1702229E-2E14-4FE3-8B7F-A41A4D70D97E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
