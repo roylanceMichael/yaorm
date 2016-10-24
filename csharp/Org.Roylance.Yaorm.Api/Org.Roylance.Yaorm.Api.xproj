@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>8E1B3515-6ECD-405A-B0FB-DB70E8EDF330</ProjectGuid>
+    <ProjectGuid>6D427EC3-37EB-44AB-87E5-7DF3846B39B0</ProjectGuid>
     <RootNamespace>Org.Roylance.Yaorm.Api</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == ''">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)' == ''">.\bin\</OutputPath>

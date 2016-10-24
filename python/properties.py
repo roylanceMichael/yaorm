@@ -1,12 +1,12 @@
-#generated from yaclib on Thu Oct 20 16:21:34 MDT 2016
-#Thu Oct 20 16:21:34 MDT 2016
+#generated from yaclib on Mon Oct 24 12:18:24 MDT 2016
+#Mon Oct 24 12:18:24 MDT 2016
 name="api"
 fullName="org_roylance_yaorm_api"
 author="roylance.michael@gmail.com"
 license="MIT"
-minor="139"
+minor="140"
 major="0"
-fullVersion="0.139"
+fullVersion="0.140"
 githubUrl="https\://github.com/roylanceMichael/yaorm.git"
 description="models to interface with the org.roylance.yaorm.api system"
 group="org.roylance.yaorm"

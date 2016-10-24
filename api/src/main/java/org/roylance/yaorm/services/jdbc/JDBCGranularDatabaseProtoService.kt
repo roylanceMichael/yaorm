@@ -10,7 +10,7 @@ import org.roylance.yaorm.services.proto.IProtoStreamer
 import java.sql.ResultSet
 import java.util.*
 
-class JDBCGranularDatabaseProtoService(private val connectionSourceFactory: IConnectionSourceFactory,
+class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: IConnectionSourceFactory,
                                        private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseProtoService {
     private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
 

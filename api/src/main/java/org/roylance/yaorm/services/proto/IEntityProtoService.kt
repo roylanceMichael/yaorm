@@ -1,9 +1,11 @@
 package org.roylance.yaorm.services.proto
 
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.services.IConnectionSourceFactory
 
 interface IEntityProtoService: AutoCloseable {
     val insertSameAsUpdate: Boolean
+    val connectionSourceFactory: IConnectionSourceFactory
 
     fun createTable(definition: YaormModel.TableDefinition): Boolean
     fun dropTable(definition: YaormModel.TableDefinition): Boolean

@@ -2,12 +2,16 @@ package org.roylance.yaorm.services.proto
 
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
+import org.roylance.yaorm.services.IConnectionSourceFactory
 import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class EntityProtoService(private val granularDatabaseService: IGranularDatabaseProtoService,
                          private val sqlGeneratorService: ISQLGeneratorService) : IEntityProtoService {
+    override val connectionSourceFactory: IConnectionSourceFactory
+        get() = granularDatabaseService.connectionSourceFactory
+
     override val insertSameAsUpdate: Boolean
         get() = this.sqlGeneratorService.insertSameAsUpdate
 

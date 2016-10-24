@@ -2,8 +2,10 @@ package org.roylance.yaorm.services.proto
 
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.entity.EntityResultModel
+import org.roylance.yaorm.services.IConnectionSourceFactory
 
 interface IGranularDatabaseProtoService: AutoCloseable {
+    val connectionSourceFactory: IConnectionSourceFactory
     fun isAvailable(): Boolean
     fun executeUpdateQuery(query:String): EntityResultModel
     fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition
