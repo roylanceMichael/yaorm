@@ -10,6 +10,8 @@ import java.util.*
 
 object YaormUtils {
     private const val DoubleSingleQuote = "''"
+    private const val IndexTableNameLength = 15
+
     const val IdName = "id"
     const val EmptyString = ""
 
@@ -257,9 +259,13 @@ object YaormUtils {
     }
 
     fun buildIndexName(tableName: String, columnNames:List<String>) : String {
-        val column_names = columnNames.sortedBy { it }.joinToString(Underscore)
-        val columnNamesHash = customHash(column_names).toString().replace("-", Underscore)
-        return "$tableName$Underscore$columnNamesHash${Underscore}idx"
+        var alteredTableName = tableName
+        if (tableName.length > IndexTableNameLength) {
+            alteredTableName = tableName.substring(0, IndexTableNameLength)
+        }
+        val joinedColumnNames = columnNames.sortedBy { it }.joinToString(Underscore)
+        val columnNamesHash = customHash(joinedColumnNames).toString().replace("-", Underscore)
+        return "$alteredTableName$Underscore$columnNamesHash${Underscore}idx"
     }
 
     fun getNameTypes(
