@@ -6,18 +6,16 @@
 
     <properties>		<group>org.roylance.yaorm</group>
 		<name>api</name>
-		<fullName>org.roylance.yaorm.api</fullName>
-		<minor>141</minor>
+		<minor>142</minor>
 		<major>0</major>
-		<fullVersion>0.141</fullVersion>
-		<org_roylance_yaorm_api>0.141</org_roylance_yaorm_api>
+		<org_roylance_yaorm_api>0.142</org_roylance_yaorm_api>
 		<org_apache_commons_commons_lang_>3.4</org_apache_commons_commons_lang_>
 	</properties>
 
 
     <groupId>org.roylance.yaorm</groupId>
     <artifactId>sapi</artifactId>
-    <version>0.141</version>
+    <version>0.142</version>
 
     <repositories>
         <repository>
@@ -277,7 +275,7 @@
                 <version>1.0.3</version>
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
-                    <appName>$fullName</appName>
+                    <appName>org.roylance.yaorm</appName>
                     <processTypes>
                         <web>sh proc.sh</web>
                     </processTypes>
