@@ -14,6 +14,646 @@ public final class ComplexModel {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface WeakChildOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.WeakChild)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>optional string some_field = 2;</code>
+     */
+    java.lang.String getSomeField();
+    /**
+     * <code>optional string some_field = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSomeFieldBytes();
+  }
+  /**
+   * Protobuf type {@code org.roylance.yaorm.WeakChild}
+   */
+  public  static final class WeakChild extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:org.roylance.yaorm.WeakChild)
+      WeakChildOrBuilder {
+    // Use WeakChild.newBuilder() to construct.
+    private WeakChild(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private WeakChild() {
+      id_ = "";
+      someField_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private WeakChild(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              someField_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.roylance.yaorm.ComplexModel.internal_static_org_roylance_yaorm_WeakChild_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.roylance.yaorm.ComplexModel.internal_static_org_roylance_yaorm_WeakChild_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.roylance.yaorm.ComplexModel.WeakChild.class, org.roylance.yaorm.ComplexModel.WeakChild.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SOME_FIELD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object someField_;
+    /**
+     * <code>optional string some_field = 2;</code>
+     */
+    public java.lang.String getSomeField() {
+      java.lang.Object ref = someField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        someField_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string some_field = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSomeFieldBytes() {
+      java.lang.Object ref = someField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        someField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      if (!getSomeFieldBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, someField_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      if (!getSomeFieldBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, someField_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.roylance.yaorm.ComplexModel.WeakChild)) {
+        return super.equals(obj);
+      }
+      org.roylance.yaorm.ComplexModel.WeakChild other = (org.roylance.yaorm.ComplexModel.WeakChild) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getSomeField()
+          .equals(other.getSomeField());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SOME_FIELD_FIELD_NUMBER;
+      hash = (53 * hash) + getSomeField().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.roylance.yaorm.ComplexModel.WeakChild prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.roylance.yaorm.WeakChild}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.roylance.yaorm.WeakChild)
+        org.roylance.yaorm.ComplexModel.WeakChildOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.roylance.yaorm.ComplexModel.internal_static_org_roylance_yaorm_WeakChild_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.roylance.yaorm.ComplexModel.internal_static_org_roylance_yaorm_WeakChild_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.roylance.yaorm.ComplexModel.WeakChild.class, org.roylance.yaorm.ComplexModel.WeakChild.Builder.class);
+      }
+
+      // Construct using org.roylance.yaorm.ComplexModel.WeakChild.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        someField_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.roylance.yaorm.ComplexModel.internal_static_org_roylance_yaorm_WeakChild_descriptor;
+      }
+
+      public org.roylance.yaorm.ComplexModel.WeakChild getDefaultInstanceForType() {
+        return org.roylance.yaorm.ComplexModel.WeakChild.getDefaultInstance();
+      }
+
+      public org.roylance.yaorm.ComplexModel.WeakChild build() {
+        org.roylance.yaorm.ComplexModel.WeakChild result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.roylance.yaorm.ComplexModel.WeakChild buildPartial() {
+        org.roylance.yaorm.ComplexModel.WeakChild result = new org.roylance.yaorm.ComplexModel.WeakChild(this);
+        result.id_ = id_;
+        result.someField_ = someField_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.roylance.yaorm.ComplexModel.WeakChild) {
+          return mergeFrom((org.roylance.yaorm.ComplexModel.WeakChild)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.roylance.yaorm.ComplexModel.WeakChild other) {
+        if (other == org.roylance.yaorm.ComplexModel.WeakChild.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getSomeField().isEmpty()) {
+          someField_ = other.someField_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.roylance.yaorm.ComplexModel.WeakChild parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.roylance.yaorm.ComplexModel.WeakChild) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object someField_ = "";
+      /**
+       * <code>optional string some_field = 2;</code>
+       */
+      public java.lang.String getSomeField() {
+        java.lang.Object ref = someField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          someField_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string some_field = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSomeFieldBytes() {
+        java.lang.Object ref = someField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          someField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string some_field = 2;</code>
+       */
+      public Builder setSomeField(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        someField_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string some_field = 2;</code>
+       */
+      public Builder clearSomeField() {
+        
+        someField_ = getDefaultInstance().getSomeField();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string some_field = 2;</code>
+       */
+      public Builder setSomeFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        someField_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.roylance.yaorm.WeakChild)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.roylance.yaorm.WeakChild)
+    private static final org.roylance.yaorm.ComplexModel.WeakChild DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.roylance.yaorm.ComplexModel.WeakChild();
+    }
+
+    public static org.roylance.yaorm.ComplexModel.WeakChild getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<WeakChild>
+        PARSER = new com.google.protobuf.AbstractParser<WeakChild>() {
+      public WeakChild parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new WeakChild(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<WeakChild> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WeakChild> getParserForType() {
+      return PARSER;
+    }
+
+    public org.roylance.yaorm.ComplexModel.WeakChild getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface BeaconOrBuilder extends
       // @@protoc_insertion_point(interface_extends:org.roylance.yaorm.Beacon)
       com.google.protobuf.MessageOrBuilder {
@@ -953,15 +1593,15 @@ public final class ComplexModel {
         getUserIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     boolean hasBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     org.roylance.yaorm.ComplexModel.Beacon getBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder();
 
@@ -977,6 +1617,30 @@ public final class ComplexModel {
      * <code>optional .org.roylance.yaorm.Request request = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    java.util.List<org.roylance.yaorm.ComplexModel.WeakChild> 
+        getWeakChildrenList();
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    org.roylance.yaorm.ComplexModel.WeakChild getWeakChildren(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    int getWeakChildrenCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.ComplexModel.WeakChildOrBuilder> 
+        getWeakChildrenOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    org.roylance.yaorm.ComplexModel.WeakChildOrBuilder getWeakChildrenOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.ClientBeacon}
@@ -992,6 +1656,7 @@ public final class ComplexModel {
     private ClientBeacon() {
       id_ = "";
       userId_ = "";
+      weakChildren_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1057,6 +1722,15 @@ public final class ComplexModel {
 
               break;
             }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                weakChildren_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.WeakChild>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              weakChildren_.add(
+                  input.readMessage(org.roylance.yaorm.ComplexModel.WeakChild.parser(), extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1065,6 +1739,9 @@ public final class ComplexModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          weakChildren_ = java.util.Collections.unmodifiableList(weakChildren_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -1080,6 +1757,7 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.ClientBeacon.class, org.roylance.yaorm.ComplexModel.ClientBeacon.Builder.class);
     }
 
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
@@ -1151,19 +1829,19 @@ public final class ComplexModel {
     public static final int BEACON_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.Beacon beacon_;
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     public boolean hasBeacon() {
       return beacon_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
       return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
       return getBeacon();
@@ -1190,6 +1868,41 @@ public final class ComplexModel {
       return getRequest();
     }
 
+    public static final int WEAK_CHILDREN_FIELD_NUMBER = 5;
+    private java.util.List<org.roylance.yaorm.ComplexModel.WeakChild> weakChildren_;
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    public java.util.List<org.roylance.yaorm.ComplexModel.WeakChild> getWeakChildrenList() {
+      return weakChildren_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.ComplexModel.WeakChildOrBuilder> 
+        getWeakChildrenOrBuilderList() {
+      return weakChildren_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    public int getWeakChildrenCount() {
+      return weakChildren_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    public org.roylance.yaorm.ComplexModel.WeakChild getWeakChildren(int index) {
+      return weakChildren_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+     */
+    public org.roylance.yaorm.ComplexModel.WeakChildOrBuilder getWeakChildrenOrBuilder(
+        int index) {
+      return weakChildren_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1214,6 +1927,9 @@ public final class ComplexModel {
       if (request_ != null) {
         output.writeMessage(4, getRequest());
       }
+      for (int i = 0; i < weakChildren_.size(); i++) {
+        output.writeMessage(5, weakChildren_.get(i));
+      }
     }
 
     public int getSerializedSize() {
@@ -1234,6 +1950,10 @@ public final class ComplexModel {
       if (request_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getRequest());
+      }
+      for (int i = 0; i < weakChildren_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, weakChildren_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -1265,6 +1985,8 @@ public final class ComplexModel {
         result = result && getRequest()
             .equals(other.getRequest());
       }
+      result = result && getWeakChildrenList()
+          .equals(other.getWeakChildrenList());
       return result;
     }
 
@@ -1286,6 +2008,10 @@ public final class ComplexModel {
       if (hasRequest()) {
         hash = (37 * hash) + REQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getRequest().hashCode();
+      }
+      if (getWeakChildrenCount() > 0) {
+        hash = (37 * hash) + WEAK_CHILDREN_FIELD_NUMBER;
+        hash = (53 * hash) + getWeakChildrenList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1401,6 +2127,7 @@ public final class ComplexModel {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getWeakChildrenFieldBuilder();
         }
       }
       public Builder clear() {
@@ -1420,6 +2147,12 @@ public final class ComplexModel {
         } else {
           request_ = null;
           requestBuilder_ = null;
+        }
+        if (weakChildrenBuilder_ == null) {
+          weakChildren_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          weakChildrenBuilder_.clear();
         }
         return this;
       }
@@ -1443,6 +2176,8 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.ClientBeacon buildPartial() {
         org.roylance.yaorm.ComplexModel.ClientBeacon result = new org.roylance.yaorm.ComplexModel.ClientBeacon(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.id_ = id_;
         result.userId_ = userId_;
         if (beaconBuilder_ == null) {
@@ -1455,6 +2190,16 @@ public final class ComplexModel {
         } else {
           result.request_ = requestBuilder_.build();
         }
+        if (weakChildrenBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            weakChildren_ = java.util.Collections.unmodifiableList(weakChildren_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.weakChildren_ = weakChildren_;
+        } else {
+          result.weakChildren_ = weakChildrenBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1510,6 +2255,32 @@ public final class ComplexModel {
         if (other.hasRequest()) {
           mergeRequest(other.getRequest());
         }
+        if (weakChildrenBuilder_ == null) {
+          if (!other.weakChildren_.isEmpty()) {
+            if (weakChildren_.isEmpty()) {
+              weakChildren_ = other.weakChildren_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureWeakChildrenIsMutable();
+              weakChildren_.addAll(other.weakChildren_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.weakChildren_.isEmpty()) {
+            if (weakChildrenBuilder_.isEmpty()) {
+              weakChildrenBuilder_.dispose();
+              weakChildrenBuilder_ = null;
+              weakChildren_ = other.weakChildren_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              weakChildrenBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getWeakChildrenFieldBuilder() : null;
+            } else {
+              weakChildrenBuilder_.addAllMessages(other.weakChildren_);
+            }
+          }
+        }
         onChanged();
         return this;
       }
@@ -1535,6 +2306,7 @@ public final class ComplexModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
       /**
@@ -1678,13 +2450,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public boolean hasBeacon() {
         return beaconBuilder_ != null || beacon_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
@@ -1694,7 +2466,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder setBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -1710,7 +2482,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder setBeacon(
           org.roylance.yaorm.ComplexModel.Beacon.Builder builderForValue) {
@@ -1724,7 +2496,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -1742,7 +2514,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
@@ -1756,7 +2528,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
         
@@ -1764,7 +2536,7 @@ public final class ComplexModel {
         return getBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
         if (beaconBuilder_ != null) {
@@ -1775,7 +2547,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> 
@@ -1906,6 +2678,246 @@ public final class ComplexModel {
           request_ = null;
         }
         return requestBuilder_;
+      }
+
+      private java.util.List<org.roylance.yaorm.ComplexModel.WeakChild> weakChildren_ =
+        java.util.Collections.emptyList();
+      private void ensureWeakChildrenIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          weakChildren_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.WeakChild>(weakChildren_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.roylance.yaorm.ComplexModel.WeakChild, org.roylance.yaorm.ComplexModel.WeakChild.Builder, org.roylance.yaorm.ComplexModel.WeakChildOrBuilder> weakChildrenBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public java.util.List<org.roylance.yaorm.ComplexModel.WeakChild> getWeakChildrenList() {
+        if (weakChildrenBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(weakChildren_);
+        } else {
+          return weakChildrenBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public int getWeakChildrenCount() {
+        if (weakChildrenBuilder_ == null) {
+          return weakChildren_.size();
+        } else {
+          return weakChildrenBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public org.roylance.yaorm.ComplexModel.WeakChild getWeakChildren(int index) {
+        if (weakChildrenBuilder_ == null) {
+          return weakChildren_.get(index);
+        } else {
+          return weakChildrenBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder setWeakChildren(
+          int index, org.roylance.yaorm.ComplexModel.WeakChild value) {
+        if (weakChildrenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWeakChildrenIsMutable();
+          weakChildren_.set(index, value);
+          onChanged();
+        } else {
+          weakChildrenBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder setWeakChildren(
+          int index, org.roylance.yaorm.ComplexModel.WeakChild.Builder builderForValue) {
+        if (weakChildrenBuilder_ == null) {
+          ensureWeakChildrenIsMutable();
+          weakChildren_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          weakChildrenBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder addWeakChildren(org.roylance.yaorm.ComplexModel.WeakChild value) {
+        if (weakChildrenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWeakChildrenIsMutable();
+          weakChildren_.add(value);
+          onChanged();
+        } else {
+          weakChildrenBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder addWeakChildren(
+          int index, org.roylance.yaorm.ComplexModel.WeakChild value) {
+        if (weakChildrenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWeakChildrenIsMutable();
+          weakChildren_.add(index, value);
+          onChanged();
+        } else {
+          weakChildrenBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder addWeakChildren(
+          org.roylance.yaorm.ComplexModel.WeakChild.Builder builderForValue) {
+        if (weakChildrenBuilder_ == null) {
+          ensureWeakChildrenIsMutable();
+          weakChildren_.add(builderForValue.build());
+          onChanged();
+        } else {
+          weakChildrenBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder addWeakChildren(
+          int index, org.roylance.yaorm.ComplexModel.WeakChild.Builder builderForValue) {
+        if (weakChildrenBuilder_ == null) {
+          ensureWeakChildrenIsMutable();
+          weakChildren_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          weakChildrenBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder addAllWeakChildren(
+          java.lang.Iterable<? extends org.roylance.yaorm.ComplexModel.WeakChild> values) {
+        if (weakChildrenBuilder_ == null) {
+          ensureWeakChildrenIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, weakChildren_);
+          onChanged();
+        } else {
+          weakChildrenBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder clearWeakChildren() {
+        if (weakChildrenBuilder_ == null) {
+          weakChildren_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          weakChildrenBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public Builder removeWeakChildren(int index) {
+        if (weakChildrenBuilder_ == null) {
+          ensureWeakChildrenIsMutable();
+          weakChildren_.remove(index);
+          onChanged();
+        } else {
+          weakChildrenBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public org.roylance.yaorm.ComplexModel.WeakChild.Builder getWeakChildrenBuilder(
+          int index) {
+        return getWeakChildrenFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public org.roylance.yaorm.ComplexModel.WeakChildOrBuilder getWeakChildrenOrBuilder(
+          int index) {
+        if (weakChildrenBuilder_ == null) {
+          return weakChildren_.get(index);  } else {
+          return weakChildrenBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.ComplexModel.WeakChildOrBuilder> 
+           getWeakChildrenOrBuilderList() {
+        if (weakChildrenBuilder_ != null) {
+          return weakChildrenBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(weakChildren_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public org.roylance.yaorm.ComplexModel.WeakChild.Builder addWeakChildrenBuilder() {
+        return getWeakChildrenFieldBuilder().addBuilder(
+            org.roylance.yaorm.ComplexModel.WeakChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public org.roylance.yaorm.ComplexModel.WeakChild.Builder addWeakChildrenBuilder(
+          int index) {
+        return getWeakChildrenFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.ComplexModel.WeakChild.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.WeakChild weak_children = 5 [weak = true];</code>
+       */
+      public java.util.List<org.roylance.yaorm.ComplexModel.WeakChild.Builder> 
+           getWeakChildrenBuilderList() {
+        return getWeakChildrenFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.roylance.yaorm.ComplexModel.WeakChild, org.roylance.yaorm.ComplexModel.WeakChild.Builder, org.roylance.yaorm.ComplexModel.WeakChildOrBuilder> 
+          getWeakChildrenFieldBuilder() {
+        if (weakChildrenBuilder_ == null) {
+          weakChildrenBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.roylance.yaorm.ComplexModel.WeakChild, org.roylance.yaorm.ComplexModel.WeakChild.Builder, org.roylance.yaorm.ComplexModel.WeakChildOrBuilder>(
+                  weakChildren_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          weakChildren_ = null;
+        }
+        return weakChildrenBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -21283,6 +22295,11 @@ public final class ComplexModel {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_roylance_yaorm_WeakChild_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_roylance_yaorm_WeakChild_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_roylance_yaorm_Beacon_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -21382,79 +22399,81 @@ public final class ComplexModel {
   static {
     java.lang.String[] descriptorData = {
       "\n\023complex_model.proto\022\022org.roylance.yaor" +
-      "m\";\n\006Beacon\022\n\n\002id\030\001 \001(\t\022\013\n\003id1\030\002 \001(\t\022\013\n\003" +
-      "id2\030\003 \001(\t\022\013\n\003id3\030\004 \001(\t\"\205\001\n\014ClientBeacon\022" +
-      "\n\n\002id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022*\n\006beacon\030\003" +
-      " \001(\0132\032.org.roylance.yaorm.Beacon\022,\n\007requ" +
-      "est\030\004 \001(\0132\033.org.roylance.yaorm.Request\"?" +
-      "\n\014RequestImage\022\n\n\002id\030\001 \001(\t\022\023\n\013descriptio" +
-      "n\030\002 \001(\t\022\016\n\006base64\030\003 \001(\t\"+\n\016ExpectedAnswe" +
-      "r\022\n\n\002id\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"\252\001\n\010Questio" +
-      "n\022\n\n\002id\030\001 \001(\t\022\022\n\nform_order\030\002 \001(\005\022\017\n\007dis",
-      "play\030\003 \001(\t\022/\n\005image\030\004 \001(\0132 .org.roylance" +
-      ".yaorm.RequestImage\022<\n\020expected_answers\030" +
-      "\005 \003(\0132\".org.roylance.yaorm.ExpectedAnswe" +
-      "r\"5\n\nValidation\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(" +
-      "\t\022\r\n\005value\030\003 \001(\t\"\344\003\n\021HeuristicCombiner\022\n" +
-      "\n\002id\030\001 \001(\t\0228\n\004type\030\002 \001(\0162*.org.roylance." +
-      "yaorm.HeuristicCombiner.Type\0224\n\016first_qu" +
+      "m\"+\n\tWeakChild\022\n\n\002id\030\001 \001(\t\022\022\n\nsome_field" +
+      "\030\002 \001(\t\";\n\006Beacon\022\n\n\002id\030\001 \001(\t\022\013\n\003id1\030\002 \001(" +
+      "\t\022\013\n\003id2\030\003 \001(\t\022\013\n\003id3\030\004 \001(\t\"\303\001\n\014ClientBe" +
+      "acon\022\n\n\002id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022.\n\006bea" +
+      "con\030\003 \001(\0132\032.org.roylance.yaorm.BeaconB\002P" +
+      "\001\022,\n\007request\030\004 \001(\0132\033.org.roylance.yaorm." +
+      "Request\0228\n\rweak_children\030\005 \003(\0132\035.org.roy" +
+      "lance.yaorm.WeakChildB\002P\001\"?\n\014RequestImag" +
+      "e\022\n\n\002id\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\016\n\006ba",
+      "se64\030\003 \001(\t\"+\n\016ExpectedAnswer\022\n\n\002id\030\001 \001(\t" +
+      "\022\r\n\005value\030\002 \001(\t\"\252\001\n\010Question\022\n\n\002id\030\001 \001(\t" +
+      "\022\022\n\nform_order\030\002 \001(\005\022\017\n\007display\030\003 \001(\t\022/\n" +
+      "\005image\030\004 \001(\0132 .org.roylance.yaorm.Reques" +
+      "tImage\022<\n\020expected_answers\030\005 \003(\0132\".org.r" +
+      "oylance.yaorm.ExpectedAnswer\"5\n\nValidati" +
+      "on\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\003 " +
+      "\001(\t\"\344\003\n\021HeuristicCombiner\022\n\n\002id\030\001 \001(\t\0228\n" +
+      "\004type\030\002 \001(\0162*.org.roylance.yaorm.Heurist" +
+      "icCombiner.Type\0224\n\016first_question\030\003 \001(\0132",
+      "\034.org.roylance.yaorm.Question\0228\n\020first_v" +
+      "alidation\030\004 \001(\0132\036.org.roylance.yaorm.Val" +
+      "idation\022=\n\016first_combiner\030\005 \001(\0132%.org.ro" +
+      "ylance.yaorm.HeuristicCombiner\0225\n\017second" +
+      "_question\030\006 \001(\0132\034.org.roylance.yaorm.Que" +
+      "stion\0229\n\021second_validation\030\007 \001(\0132\036.org.r" +
+      "oylance.yaorm.Validation\022>\n\017second_combi" +
+      "ner\030\010 \001(\0132%.org.roylance.yaorm.Heuristic" +
+      "Combiner\022\017\n\007display\030\t \001(\t\"\027\n\004Type\022\007\n\003AND" +
+      "\020\000\022\006\n\002OR\020\001\"\205\001\n\004Form\022\n\n\002id\030\001 \001(\t\022\017\n\007displ",
+      "ay\030\002 \001(\t\022/\n\005image\030\003 \001(\0132 .org.roylance.y" +
+      "aorm.RequestImage\022/\n\tquestions\030\004 \003(\0132\034.o" +
+      "rg.roylance.yaorm.Question\"\203\002\n\004View\022\n\n\002i" +
+      "d\030\001 \001(\t\022:\n\020background_image\030\002 \001(\0132 .org." +
+      "roylance.yaorm.RequestImage\022\r\n\005title\030\003 \001" +
+      "(\t\022\023\n\013description\030\004 \001(\t\022\'\n\005forms\030\005 \003(\0132\030" +
+      ".org.roylance.yaorm.Form\0221\n\nheuristics\030\006" +
+      " \003(\0132\035.org.roylance.yaorm.Heuristic\0223\n\013v" +
+      "alidations\030\007 \003(\0132\036.org.roylance.yaorm.Va" +
+      "lidation\"\217\002\n\tHeuristic\022\n\n\002id\030\001 \001(\t\022\023\n\013de",
+      "scription\030\002 \001(\t\022+\n\tnext_view\030\003 \001(\0132\030.org" +
+      ".roylance.yaorm.View\022B\n\023heuristic_combin" +
+      "ers\030\004 \003(\0132%.org.roylance.yaorm.Heuristic" +
+      "Combiner\022N\n\024heuristic_group_type\030\005 \001(\01620" +
+      ".org.roylance.yaorm.Heuristic.HeuristicG" +
+      "roupType\" \n\022HeuristicGroupType\022\n\n\006BUTTON" +
+      "\020\000\"K\n\007Request\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022" +
+      "&\n\004view\030\003 \001(\0132\030.org.roylance.yaorm.View\"" +
+      "q\n\010Response\022\n\n\002id\030\001 \001(\t\022,\n\007request\030\002 \001(\013" +
+      "2\033.org.roylance.yaorm.Request\022+\n\007answers",
+      "\030\003 \003(\0132\032.org.roylance.yaorm.Answer\"\360\001\n\006A" +
+      "nswer\022\n\n\002id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022.\n\010qu" +
       "estion\030\003 \001(\0132\034.org.roylance.yaorm.Questi" +
-      "on\0228\n\020first_validation\030\004 \001(\0132\036.org.royla" +
-      "nce.yaorm.Validation\022=\n\016first_combiner\030\005",
-      " \001(\0132%.org.roylance.yaorm.HeuristicCombi" +
-      "ner\0225\n\017second_question\030\006 \001(\0132\034.org.royla" +
-      "nce.yaorm.Question\0229\n\021second_validation\030" +
-      "\007 \001(\0132\036.org.roylance.yaorm.Validation\022>\n" +
-      "\017second_combiner\030\010 \001(\0132%.org.roylance.ya" +
-      "orm.HeuristicCombiner\022\017\n\007display\030\t \001(\t\"\027" +
-      "\n\004Type\022\007\n\003AND\020\000\022\006\n\002OR\020\001\"\205\001\n\004Form\022\n\n\002id\030\001" +
-      " \001(\t\022\017\n\007display\030\002 \001(\t\022/\n\005image\030\003 \001(\0132 .o" +
-      "rg.roylance.yaorm.RequestImage\022/\n\tquesti" +
-      "ons\030\004 \003(\0132\034.org.roylance.yaorm.Question\"",
-      "\203\002\n\004View\022\n\n\002id\030\001 \001(\t\022:\n\020background_image" +
-      "\030\002 \001(\0132 .org.roylance.yaorm.RequestImage" +
-      "\022\r\n\005title\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\022\'\n\005" +
-      "forms\030\005 \003(\0132\030.org.roylance.yaorm.Form\0221\n" +
-      "\nheuristics\030\006 \003(\0132\035.org.roylance.yaorm.H" +
-      "euristic\0223\n\013validations\030\007 \003(\0132\036.org.royl" +
-      "ance.yaorm.Validation\"\217\002\n\tHeuristic\022\n\n\002i" +
-      "d\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022+\n\tnext_vie" +
-      "w\030\003 \001(\0132\030.org.roylance.yaorm.View\022B\n\023heu" +
-      "ristic_combiners\030\004 \003(\0132%.org.roylance.ya",
-      "orm.HeuristicCombiner\022N\n\024heuristic_group" +
-      "_type\030\005 \001(\01620.org.roylance.yaorm.Heurist" +
-      "ic.HeuristicGroupType\" \n\022HeuristicGroupT" +
-      "ype\022\n\n\006BUTTON\020\000\"K\n\007Request\022\n\n\002id\030\001 \001(\t\022\014" +
-      "\n\004name\030\002 \001(\t\022&\n\004view\030\003 \001(\0132\030.org.roylanc" +
-      "e.yaorm.View\"q\n\010Response\022\n\n\002id\030\001 \001(\t\022,\n\007" +
-      "request\030\002 \001(\0132\033.org.roylance.yaorm.Reque" +
-      "st\022+\n\007answers\030\003 \003(\0132\032.org.roylance.yaorm" +
-      ".Answer\"\360\001\n\006Answer\022\n\n\002id\030\001 \001(\t\022\017\n\007user_i" +
-      "d\030\002 \001(\t\022.\n\010question\030\003 \001(\0132\034.org.roylance",
-      ".yaorm.Question\022\r\n\005value\030\004 \001(\t\022,\n\007reques" +
-      "t\030\005 \001(\0132\033.org.roylance.yaorm.Request\022.\n\010" +
-      "response\030\006 \001(\0132\034.org.roylance.yaorm.Resp" +
-      "onse\022\014\n\004test\030\007 \001(\003\022\016\n\006test_1\030\010 \001(\010\022\016\n\006te" +
-      "st_2\030\t \001(\001\"\213\001\n\rUINaruRequest\022\r\n\005token\030\001 " +
-      "\001(\t\022.\n\010response\030\002 \001(\0132\034.org.roylance.yao" +
-      "rm.Response\022*\n\006beacon\030\003 \001(\0132\032.org.roylan" +
-      "ce.yaorm.Beacon\022\017\n\007user_id\030\004 \001(\t\"R\n\016UINa" +
-      "ruResponse\022\022\n\nsuccessful\030\001 \001(\010\022,\n\007reques" +
-      "t\030\002 \001(\0132\033.org.roylance.yaorm.Request\"\346\001\n",
-      "\022UINaruAdminRequest\022\r\n\005token\030\001 \001(\t\022.\n\010re" +
-      "sponse\030\002 \001(\0132\034.org.roylance.yaorm.Respon" +
-      "se\022*\n\006beacon\030\003 \001(\0132\032.org.roylance.yaorm." +
-      "Beacon\022,\n\007request\030\004 \001(\0132\033.org.roylance.y" +
-      "aorm.Request\022\017\n\007user_id\030\005 \001(\t\022&\n\004view\030\006 " +
-      "\001(\0132\030.org.roylance.yaorm.View\"\232\001\n\023UINaru" +
-      "AdminResponse\022-\n\010requests\030\001 \003(\0132\033.org.ro" +
-      "ylance.yaorm.Request\022+\n\007beacons\030\002 \003(\0132\032." +
-      "org.roylance.yaorm.Beacon\022\'\n\005views\030\003 \003(\013" +
-      "2\030.org.roylance.yaorm.View\"\210\001\n\nMappedFil",
-      "e\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022.\n\006parent\030\003 " +
-      "\001(\0132\036.org.roylance.yaorm.MappedFile\0220\n\010c" +
-      "hildren\030\004 \003(\0132\036.org.roylance.yaorm.Mappe" +
-      "dFileb\006proto3"
+      "on\022\r\n\005value\030\004 \001(\t\022,\n\007request\030\005 \001(\0132\033.org" +
+      ".roylance.yaorm.Request\022.\n\010response\030\006 \001(" +
+      "\0132\034.org.roylance.yaorm.Response\022\014\n\004test\030" +
+      "\007 \001(\003\022\016\n\006test_1\030\010 \001(\010\022\016\n\006test_2\030\t \001(\001\"\213\001" +
+      "\n\rUINaruRequest\022\r\n\005token\030\001 \001(\t\022.\n\010respon" +
+      "se\030\002 \001(\0132\034.org.roylance.yaorm.Response\022*" +
+      "\n\006beacon\030\003 \001(\0132\032.org.roylance.yaorm.Beac",
+      "on\022\017\n\007user_id\030\004 \001(\t\"R\n\016UINaruResponse\022\022\n" +
+      "\nsuccessful\030\001 \001(\010\022,\n\007request\030\002 \001(\0132\033.org" +
+      ".roylance.yaorm.Request\"\346\001\n\022UINaruAdminR" +
+      "equest\022\r\n\005token\030\001 \001(\t\022.\n\010response\030\002 \001(\0132" +
+      "\034.org.roylance.yaorm.Response\022*\n\006beacon\030" +
+      "\003 \001(\0132\032.org.roylance.yaorm.Beacon\022,\n\007req" +
+      "uest\030\004 \001(\0132\033.org.roylance.yaorm.Request\022" +
+      "\017\n\007user_id\030\005 \001(\t\022&\n\004view\030\006 \001(\0132\030.org.roy" +
+      "lance.yaorm.View\"\232\001\n\023UINaruAdminResponse" +
+      "\022-\n\010requests\030\001 \003(\0132\033.org.roylance.yaorm.",
+      "Request\022+\n\007beacons\030\002 \003(\0132\032.org.roylance." +
+      "yaorm.Beacon\022\'\n\005views\030\003 \003(\0132\030.org.roylan" +
+      "ce.yaorm.View\"\210\001\n\nMappedFile\022\n\n\002id\030\001 \001(\t" +
+      "\022\014\n\004name\030\002 \001(\t\022.\n\006parent\030\003 \001(\0132\036.org.roy" +
+      "lance.yaorm.MappedFile\0220\n\010children\030\004 \003(\013" +
+      "2\036.org.roylance.yaorm.MappedFileb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -21468,110 +22487,116 @@ public final class ComplexModel {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_org_roylance_yaorm_Beacon_descriptor =
+    internal_static_org_roylance_yaorm_WeakChild_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_org_roylance_yaorm_WeakChild_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_roylance_yaorm_WeakChild_descriptor,
+        new java.lang.String[] { "Id", "SomeField", });
+    internal_static_org_roylance_yaorm_Beacon_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_org_roylance_yaorm_Beacon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Beacon_descriptor,
         new java.lang.String[] { "Id", "Id1", "Id2", "Id3", });
     internal_static_org_roylance_yaorm_ClientBeacon_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_org_roylance_yaorm_ClientBeacon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ClientBeacon_descriptor,
-        new java.lang.String[] { "Id", "UserId", "Beacon", "Request", });
+        new java.lang.String[] { "Id", "UserId", "Beacon", "Request", "WeakChildren", });
     internal_static_org_roylance_yaorm_RequestImage_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_org_roylance_yaorm_RequestImage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_RequestImage_descriptor,
         new java.lang.String[] { "Id", "Description", "Base64", });
     internal_static_org_roylance_yaorm_ExpectedAnswer_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_org_roylance_yaorm_ExpectedAnswer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_ExpectedAnswer_descriptor,
         new java.lang.String[] { "Id", "Value", });
     internal_static_org_roylance_yaorm_Question_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_org_roylance_yaorm_Question_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Question_descriptor,
         new java.lang.String[] { "Id", "FormOrder", "Display", "Image", "ExpectedAnswers", });
     internal_static_org_roylance_yaorm_Validation_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_org_roylance_yaorm_Validation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Validation_descriptor,
         new java.lang.String[] { "Id", "Name", "Value", });
     internal_static_org_roylance_yaorm_HeuristicCombiner_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_org_roylance_yaorm_HeuristicCombiner_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_HeuristicCombiner_descriptor,
         new java.lang.String[] { "Id", "Type", "FirstQuestion", "FirstValidation", "FirstCombiner", "SecondQuestion", "SecondValidation", "SecondCombiner", "Display", });
     internal_static_org_roylance_yaorm_Form_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_org_roylance_yaorm_Form_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Form_descriptor,
         new java.lang.String[] { "Id", "Display", "Image", "Questions", });
     internal_static_org_roylance_yaorm_View_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_org_roylance_yaorm_View_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_View_descriptor,
         new java.lang.String[] { "Id", "BackgroundImage", "Title", "Description", "Forms", "Heuristics", "Validations", });
     internal_static_org_roylance_yaorm_Heuristic_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_org_roylance_yaorm_Heuristic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Heuristic_descriptor,
         new java.lang.String[] { "Id", "Description", "NextView", "HeuristicCombiners", "HeuristicGroupType", });
     internal_static_org_roylance_yaorm_Request_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_org_roylance_yaorm_Request_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Request_descriptor,
         new java.lang.String[] { "Id", "Name", "View", });
     internal_static_org_roylance_yaorm_Response_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_org_roylance_yaorm_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Response_descriptor,
         new java.lang.String[] { "Id", "Request", "Answers", });
     internal_static_org_roylance_yaorm_Answer_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_org_roylance_yaorm_Answer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Answer_descriptor,
         new java.lang.String[] { "Id", "UserId", "Question", "Value", "Request", "Response", "Test", "Test1", "Test2", });
     internal_static_org_roylance_yaorm_UINaruRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_org_roylance_yaorm_UINaruRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UINaruRequest_descriptor,
         new java.lang.String[] { "Token", "Response", "Beacon", "UserId", });
     internal_static_org_roylance_yaorm_UINaruResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_org_roylance_yaorm_UINaruResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UINaruResponse_descriptor,
         new java.lang.String[] { "Successful", "Request", });
     internal_static_org_roylance_yaorm_UINaruAdminRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_org_roylance_yaorm_UINaruAdminRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UINaruAdminRequest_descriptor,
         new java.lang.String[] { "Token", "Response", "Beacon", "Request", "UserId", "View", });
     internal_static_org_roylance_yaorm_UINaruAdminResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_org_roylance_yaorm_UINaruAdminResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_UINaruAdminResponse_descriptor,
         new java.lang.String[] { "Requests", "Beacons", "Views", });
     internal_static_org_roylance_yaorm_MappedFile_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_org_roylance_yaorm_MappedFile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_MappedFile_descriptor,

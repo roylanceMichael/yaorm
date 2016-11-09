@@ -48,8 +48,8 @@ object ProtobufUtils {
         }
     }
 
-    fun buildDefinitionFromDescriptor(descriptor:Descriptors.Descriptor,
-                                      customIndexes: MutableMap<String, YaormModel.Index>):YaormModel.TableDefinition? {
+    fun buildDefinitionFromDescriptor(descriptor: Descriptors.Descriptor,
+                                      customIndexes: MutableMap<String, YaormModel.Index>): YaormModel.TableDefinition? {
         // make sure we have an id, or return nothing
         descriptor.fields.firstOrNull { YaormUtils.IdName == it.name && ProtoStringName == it.type.name } ?: return null
 
@@ -85,9 +85,9 @@ object ProtobufUtils {
         return definition.build()
     }
 
-    fun buildDefinitionGraph(descriptor:Descriptors.Descriptor,
+    fun buildDefinitionGraph(descriptor: Descriptors.Descriptor,
                              customIndexes: MutableMap<String, YaormModel.Index>,
-                             seenTables: MutableSet<String> = HashSet()):YaormModel.TableDefinitionGraphs {
+                             seenTables: MutableSet<String> = HashSet()): YaormModel.TableDefinitionGraphs {
         seenTables.add(descriptor.name)
 
         val mainDefinition = buildDefinitionFromDescriptor(descriptor, customIndexes) ?: return YaormModel.TableDefinitionGraphs.getDefaultInstance()
@@ -102,6 +102,7 @@ object ProtobufUtils {
                             .setMainName(mainDefinition.name)
                             .setOtherName(it.enumType.name)
                             .setColumnName(it.name)
+
                     val linkerTableDefinition = buildLinkerTableEnum(mainDefinition.name, it.enumType.name, it.name)
                     definitionGraph.linkerTableTable = linkerTableDefinition
                     definitionGraph.mainTableDefinition = mainDefinition
@@ -120,6 +121,7 @@ object ProtobufUtils {
                     definitionGraph.mainTableDefinition = mainDefinition
                     definitionGraph.linkerTableTable = linkerTableDefinition
                     definitionGraph.otherTableDefinition = otherDefinition
+
                     returnGraph.addTableDefinitionGraphs(definitionGraph)
 
                     if (!seenTables.contains(it.messageType.name)) {
@@ -224,14 +226,17 @@ object ProtobufUtils {
 
                                 linkerTableRecords.recordsBuilder.addRecords(record)
 
-                                // recursively call for child...
-                                val subRecords = convertProto.build(subMessage)
-                                subRecords.keys.forEach { subRecordKey ->
-                                    if (returnMap.containsKey(subRecordKey)) {
-                                        returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
-                                    }
-                                    else {
-                                        returnMap[subRecordKey] = subRecords[subRecordKey]!!
+                                // for weak records, we won't process the children
+                                if (!fieldKey.options.weak) {
+                                    // recursively call for child...
+                                    val subRecords = convertProto.build(subMessage)
+                                    subRecords.keys.forEach { subRecordKey ->
+                                        if (returnMap.containsKey(subRecordKey)) {
+                                            returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
+                                        }
+                                        else {
+                                            returnMap[subRecordKey] = subRecords[subRecordKey]!!
+                                        }
                                     }
                                 }
                                 if (foundTableDefinition != null) {
@@ -426,7 +431,7 @@ object ProtobufUtils {
         return returnDefinition.build()
     }
 
-    internal fun buildMessageColumnName(name: String, order:Int):YaormModel.ColumnDefinition {
+    internal fun buildMessageColumnName(name: String, order: Int):YaormModel.ColumnDefinition {
         return YaormModel.ColumnDefinition.newBuilder()
                 .setName(name)
                 .setType(YaormModel.ProtobufType.STRING)

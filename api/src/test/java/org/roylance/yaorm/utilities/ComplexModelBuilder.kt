@@ -52,6 +52,9 @@ object ComplexModelBuilder: BaseProtoGeneratedMessageBuilder(), IProtoGeneratedM
         if (ComplexModel.MappedFile.getDescriptor().name == name) {
             return ComplexModel.MappedFile.getDefaultInstance()
         }
+        if (ComplexModel.WeakChild.getDescriptor().name == name) {
+            return ComplexModel.WeakChild.getDefaultInstance()
+        }
 
         return super.buildGeneratedMessage(name)
     }

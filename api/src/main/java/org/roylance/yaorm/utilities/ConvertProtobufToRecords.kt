@@ -6,10 +6,9 @@ import org.roylance.yaorm.YaormModel
 import java.util.*
 
 internal class ConvertProtobufToRecords(
-        internal val definitions:MutableMap<String, YaormModel.TableDefinitionGraphs>,
-        internal val customIndexes: MutableMap<String, YaormModel.Index>
-) {
-    internal fun build(message:Message):MutableMap<String, YaormModel.TableRecords.Builder> {
+        internal val definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
+        internal val customIndexes: MutableMap<String, YaormModel.Index>) {
+    internal fun build(message: Message): MutableMap<String, YaormModel.TableRecords.Builder> {
         if (!ProtobufUtils.isMessageOk(message)) {
             return HashMap()
         }
@@ -23,7 +22,7 @@ internal class ConvertProtobufToRecords(
                     this.customIndexes)
         }
 
-        this.definitions[message.descriptorForType.name]!!
+        definitions[message.descriptorForType.name]!!
                 .tableDefinitionGraphsList
                 .forEach {
             if (!recordsMap.containsKey(it.mainName)) {
@@ -99,16 +98,20 @@ internal class ConvertProtobufToRecords(
                     else {
                         val foundField = message.allFields[foundMessageField]
                         if (foundField is Message && ProtobufUtils.isMessageOk(foundField)) {
-                            val generatedNameColumn = YaormUtils.buildColumn(ProtobufUtils.getIdFromMessage(foundField), columnDefinition)
+                            val generatedNameColumn = YaormUtils.buildColumn(
+                                    ProtobufUtils.getIdFromMessage(foundField),
+                                    columnDefinition)
                             baseRecord.addColumns(generatedNameColumn)
 
-                            val childMessageRecords = this.build(foundField)
-                            childMessageRecords.keys.forEach {
-                                if (recordsMap.containsKey(it)) {
-                                    recordsMap[it]!!.mergeRecords(childMessageRecords[it]!!.records)
-                                }
-                                else {
-                                    recordsMap[it] = childMessageRecords[it]!!
+                            if (!foundMessageField.options.weak) {
+                                val childMessageRecords = this.build(foundField)
+                                childMessageRecords.keys.forEach {
+                                    if (recordsMap.containsKey(it)) {
+                                        recordsMap[it]!!.mergeRecords(childMessageRecords[it]!!.records)
+                                    }
+                                    else {
+                                        recordsMap[it] = childMessageRecords[it]!!
+                                    }
                                 }
                             }
                         }

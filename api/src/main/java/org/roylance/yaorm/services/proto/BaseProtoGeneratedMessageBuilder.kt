@@ -5,7 +5,7 @@ import org.roylance.yaorm.YaormModel
 
 abstract class BaseProtoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder {
     override fun buildGeneratedMessage(name: String): GeneratedMessageV3 {
-        if (YaormModel.Migration.getDescriptor().name.equals(name)) {
+        if (YaormModel.Migration.getDescriptor().name == name) {
             return YaormModel.Migration.getDefaultInstance()
         }
         throw UnsupportedOperationException("could not find message ${name}")

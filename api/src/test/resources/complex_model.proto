@@ -1,6 +1,13 @@
 syntax = "proto3";
 package org.roylance.yaorm;
 
+
+message WeakChild {
+    string id = 1;
+    string some_field = 2;
+}
+
+
 message Beacon {
     string id = 1;
     string id1 = 2;
@@ -11,8 +18,9 @@ message Beacon {
 message ClientBeacon {
     string id = 1;
     string user_id = 2;
-    Beacon beacon = 3;
+    Beacon beacon = 3 [weak=true];
     Request request = 4;
+    repeated WeakChild weak_children = 5 [weak=true];
 }
 
 message RequestImage {

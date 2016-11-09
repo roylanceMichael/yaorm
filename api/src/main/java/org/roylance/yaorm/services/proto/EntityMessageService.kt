@@ -14,6 +14,8 @@ class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         override val entityService: IEntityProtoService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
+
+
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
     override fun <T : Message> getMany(messageType: T, ids: List<String>): List<T> {
@@ -124,8 +126,7 @@ class EntityMessageService(
             }
 
             val actualInsertRecords = YaormModel.Records.newBuilder().addAllRecords(uniqueRecords.values).build()
-            this.entityService.bulkInsert(actualInsertRecords,
-                    recordsDefinitions[recordsKey]!!)
+            this.entityService.bulkInsert(actualInsertRecords, recordsDefinitions[recordsKey]!!)
         }
 
         return true

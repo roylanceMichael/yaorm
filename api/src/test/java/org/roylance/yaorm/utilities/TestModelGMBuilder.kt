@@ -9,49 +9,49 @@ class TestModelGMBuilder : BaseProtoGeneratedMessageBuilder() {
         get() = "TestingModel"
 
     override fun buildGeneratedMessage(name: String): GeneratedMessageV3 {
-        if (TestingModel.Child.getDescriptor().name.equals(name)) {
+        if (TestingModel.Child.getDescriptor().name == name) {
             return TestingModel.Child.getDefaultInstance()
         }
-        else if (TestingModel.SimpleInsertTest.getDescriptor().name.equals(name)) {
+        else if (TestingModel.SimpleInsertTest.getDescriptor().name == name) {
             return TestingModel.SimpleInsertTest.getDefaultInstance()
         }
-        else if (TestingModel.SubChild.getDescriptor().name.equals(name)) {
+        else if (TestingModel.SubChild.getDescriptor().name == name) {
             return TestingModel.SubChild.getDefaultInstance()
         }
-        else if (TestingModel.SubSubChild.getDescriptor().name.equals(name)) {
+        else if (TestingModel.SubSubChild.getDescriptor().name == name) {
             return TestingModel.SubSubChild.getDefaultInstance()
         }
-        else if (TestingModel.SubSubSubChild.getDescriptor().name.equals(name)) {
+        else if (TestingModel.SubSubSubChild.getDescriptor().name == name) {
             return TestingModel.SubSubSubChild.getDefaultInstance()
         }
-        else if (TestingModel.Person.getDescriptor().name.equals(name)) {
+        else if (TestingModel.Person.getDescriptor().name == name) {
             return TestingModel.Person.getDefaultInstance()
         }
-        else if (TestingModel.Address.getDescriptor().name.equals(name)) {
+        else if (TestingModel.Address.getDescriptor().name == name) {
             return TestingModel.Address.getDefaultInstance()
         }
-        else if (TestingModel.Phone.getDescriptor().name.equals(name)) {
+        else if (TestingModel.Phone.getDescriptor().name == name) {
             return TestingModel.Phone.getDefaultInstance()
         }
-        else if (TestingModel.WorkerConfiguration.getDescriptor().name.equals(name)) {
+        else if (TestingModel.WorkerConfiguration.getDescriptor().name == name) {
             return TestingModel.WorkerConfiguration.getDefaultInstance()
         }
-        else if (TestingModel.Log.getDescriptor().name.equals(name)) {
+        else if (TestingModel.Log.getDescriptor().name == name) {
             return TestingModel.Log.getDefaultInstance()
         }
-        else if (TestingModel.Dag.getDescriptor().name.equals(name)) {
+        else if (TestingModel.Dag.getDescriptor().name == name) {
             return TestingModel.Dag.getDefaultInstance()
         }
-        else if (TestingModel.Task.getDescriptor().name.equals(name)) {
+        else if (TestingModel.Task.getDescriptor().name == name) {
             return TestingModel.Task.getDefaultInstance()
         }
-        else if (TestingModel.AddTaskToDag.getDescriptor().name.equals(name)) {
+        else if (TestingModel.AddTaskToDag.getDescriptor().name == name) {
             return TestingModel.AddTaskToDag.getDefaultInstance()
         }
-        else if (TestingModel.CompleteTask.getDescriptor().name.equals(name)) {
+        else if (TestingModel.CompleteTask.getDescriptor().name == name) {
             return TestingModel.CompleteTask.getDefaultInstance()
         }
-        else if (TestingModel.TaskDependency.getDescriptor().name.equals(name)) {
+        else if (TestingModel.TaskDependency.getDescriptor().name == name) {
             return TestingModel.TaskDependency.getDefaultInstance()
         }
 
