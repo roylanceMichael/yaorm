@@ -403,7 +403,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
             else {
                 firstColumn.stringHolder
             }
-        }.filter { it.length > 0 }
+        }.filter(String::isNotEmpty)
     }
 
     override fun getTableNames(schemaName: String): List<String> {
@@ -417,7 +417,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
             else {
                 firstColumn.stringHolder
             }
-        }.filter { it.length > 0 }
+        }.filter(String::isNotEmpty)
     }
 
     override fun getTableDefinition(schemaName: String, tableName: String): YaormModel.TableDefinition {

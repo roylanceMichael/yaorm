@@ -62,23 +62,23 @@ class PostgresEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
-            Assert.assertTrue(foundMessage.coolType.equals(testModel.coolType))
-            Assert.assertTrue(foundMessage.display.equals(testModel.display))
-            Assert.assertTrue(foundMessage.testInt32.equals(testModel.testInt32))
-            Assert.assertTrue(foundMessage.testInt64.equals(testModel.testInt64))
-            Assert.assertTrue(foundMessage.testUint32.equals(testModel.testUint32))
-            Assert.assertTrue(foundMessage.testUint64.equals(testModel.testUint64))
-            Assert.assertTrue(foundMessage.testSint32.equals(testModel.testSint32))
-            Assert.assertTrue(foundMessage.testSint64.equals(testModel.testSint64))
-            Assert.assertTrue(foundMessage.testFixed32.equals(testModel.testFixed32))
-            Assert.assertTrue(foundMessage.testFixed64.equals(testModel.testFixed64))
-            Assert.assertTrue(foundMessage.testSfixed32.equals(testModel.testSfixed32))
-            Assert.assertTrue(foundMessage.testSfixed64.equals(testModel.testSfixed64))
-            Assert.assertTrue(foundMessage.testBool.equals(testModel.testBool))
-            Assert.assertTrue(foundMessage.testBytes.equals(testModel.testBytes))
-            Assert.assertTrue(foundMessage.testDouble.equals(testModel.testDouble))
-            Assert.assertTrue(foundMessage.testFloat.equals(testModel.testFloat))
+            Assert.assertTrue(foundMessage!!.id == testModel.id)
+            Assert.assertTrue(foundMessage.coolType == testModel.coolType)
+            Assert.assertTrue(foundMessage.display == testModel.display)
+            Assert.assertTrue(foundMessage.testInt32 == testModel.testInt32)
+            Assert.assertTrue(foundMessage.testInt64 == testModel.testInt64)
+            Assert.assertTrue(foundMessage.testUint32 == testModel.testUint32)
+            Assert.assertTrue(foundMessage.testUint64 == testModel.testUint64)
+            Assert.assertTrue(foundMessage.testSint32 == testModel.testSint32)
+            Assert.assertTrue(foundMessage.testSint64 == testModel.testSint64)
+            Assert.assertTrue(foundMessage.testFixed32 == testModel.testFixed32)
+            Assert.assertTrue(foundMessage.testFixed64 == testModel.testFixed64)
+            Assert.assertTrue(foundMessage.testSfixed32 == testModel.testSfixed32)
+            Assert.assertTrue(foundMessage.testSfixed64 == testModel.testSfixed64)
+            Assert.assertTrue(foundMessage.testBool == testModel.testBool)
+            Assert.assertTrue(foundMessage.testBytes == testModel.testBytes)
+            Assert.assertTrue(foundMessage.testDouble == testModel.testDouble)
+            Assert.assertTrue(foundMessage.testFloat == testModel.testFloat)
         }
         finally {
         }
@@ -137,8 +137,8 @@ class PostgresEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
-            Assert.assertTrue(foundMessage.child.id.equals(""))
+            Assert.assertTrue(foundMessage!!.id == testModel.id)
+            Assert.assertTrue(foundMessage.child.id == "")
         }
         finally {
         }
@@ -194,9 +194,9 @@ class PostgresEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
-            Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
-            Assert.assertTrue(foundMessage.child.testDisplay.equals(testModel.child.testDisplay))
+            Assert.assertTrue(foundMessage!!.id == testModel.id)
+            Assert.assertTrue(foundMessage.child.id == testModel.child.id)
+            Assert.assertTrue(foundMessage.child.testDisplay == testModel.child.testDisplay)
         }
         finally {
         }
@@ -257,9 +257,9 @@ class PostgresEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
-            Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
-            Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
+            Assert.assertTrue(foundMessage!!.id == testModel.id)
+            Assert.assertTrue(foundMessage.child.id == testModel.child.id)
+            Assert.assertTrue(foundMessage.child.testDisplay == newFirstDisplay)
         }
         finally {
         }
@@ -300,9 +300,9 @@ class PostgresEntityMessageServiceTest {
             val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
 
             Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage!!.id.equals(testModel.id))
-            Assert.assertTrue(foundMessage.child.id.equals(testModel.child.id))
-            Assert.assertTrue(foundMessage.child.testDisplay.equals(newFirstDisplay))
+            Assert.assertTrue(foundMessage!!.id == testModel.id)
+            Assert.assertTrue(foundMessage.child.id == testModel.child.id)
+            Assert.assertTrue(foundMessage.child.testDisplay == newFirstDisplay)
         }
         finally {
         }
@@ -346,22 +346,22 @@ class PostgresEntityMessageServiceTest {
 
             // assert
             val foundPerson = entityProtoMessageService.get(person.build(), person.id)
-            Assert.assertTrue(foundPerson!!.firstName.equals("Michael"))
-            Assert.assertTrue(foundPerson.lastName.equals("Roylance"))
-            Assert.assertTrue(foundPerson.mother.id.equals(person.mother.id))
-            Assert.assertTrue(foundPerson.mother.firstName.equals(person.mother.firstName))
-            Assert.assertTrue(foundPerson.mother.lastName.equals(person.mother.lastName))
-            Assert.assertTrue(foundPerson.father.id.equals(person.father.id))
-            Assert.assertTrue(foundPerson.father.firstName.equals(person.father.firstName))
-            Assert.assertTrue(foundPerson.father.lastName.equals(person.father.lastName))
+            Assert.assertTrue(foundPerson!!.firstName == "Michael")
+            Assert.assertTrue(foundPerson.lastName == "Roylance")
+            Assert.assertTrue(foundPerson.mother.id == person.mother.id)
+            Assert.assertTrue(foundPerson.mother.firstName == person.mother.firstName)
+            Assert.assertTrue(foundPerson.mother.lastName == person.mother.lastName)
+            Assert.assertTrue(foundPerson.father.id == person.father.id)
+            Assert.assertTrue(foundPerson.father.firstName == person.father.firstName)
+            Assert.assertTrue(foundPerson.father.lastName == person.father.lastName)
 
             val foundMother = entityProtoMessageService.get(person.build(), person.mother.id)
-            Assert.assertTrue(foundMother!!.firstName.equals("Terri"))
-            Assert.assertTrue(foundMother.lastName.equals("Roylance"))
+            Assert.assertTrue(foundMother!!.firstName == "Terri")
+            Assert.assertTrue(foundMother.lastName == "Roylance")
 
             val foundFather = entityProtoMessageService.get(person.build(), person.father.id)
-            Assert.assertTrue(foundFather!!.firstName.equals("Paul"))
-            Assert.assertTrue(foundFather.lastName.equals("Roylance"))
+            Assert.assertTrue(foundFather!!.firstName == "Paul")
+            Assert.assertTrue(foundFather.lastName == "Roylance")
         }
         finally {
         }
@@ -406,9 +406,9 @@ class PostgresEntityMessageServiceTest {
 
             // assert
             val foundPerson = entityProtoMessageService.get(person.build(), person.friendsList[0].id)
-            Assert.assertTrue(foundPerson!!.id.equals(person.friendsList[0].id))
-            Assert.assertTrue(foundPerson.firstName.equals("James"))
-            Assert.assertTrue(foundPerson.lastName.equals("Hu"))
+            Assert.assertTrue(foundPerson!!.id == person.friendsList[0].id)
+            Assert.assertTrue(foundPerson.firstName == "James")
+            Assert.assertTrue(foundPerson.lastName == "Hu")
         }
         finally {
         }
@@ -486,10 +486,10 @@ class PostgresEntityMessageServiceTest {
             val moreDags = entityProtoMessageService.getMany(TestingModel.Dag.getDefaultInstance())
             Assert.assertTrue(moreDags.size == 2)
 
-            val firstDag = moreDags.first { it.id.equals(newDag.id) }
+            val firstDag = moreDags.first { it.id == newDag.id }
             Assert.assertTrue(firstDag.uncompletedTasksCount == 10)
             Assert.assertTrue(firstDag.processingTasksCount == 0)
-            val secondDag = moreDags.first { it.id.equals(builder.id) }
+            val secondDag = moreDags.first { it.id == builder.id }
             Assert.assertTrue(secondDag.uncompletedTasksCount == 9)
             Assert.assertTrue(secondDag.processingTasksCount == 1)
         }
@@ -528,8 +528,8 @@ class PostgresEntityMessageServiceTest {
             val users = entityMessageService.getMany(TestingModel.User.getDefaultInstance())
 
             Assert.assertTrue(users.size == 1)
-            Assert.assertTrue(users.first().id.equals(newUser.id))
-            Assert.assertTrue(users.first().display.equals(newUser.display))
+            Assert.assertTrue(users.first().id == newUser.id)
+            Assert.assertTrue(users.first().display == newUser.display)
         }
         finally {
         }

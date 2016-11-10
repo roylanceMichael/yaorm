@@ -9,25 +9,25 @@ class TestModelGMv3Builder : BaseProtoGeneratedMessageBuilder() {
         get() = "TestingModel"
 
     override fun buildGeneratedMessage(name: String): GeneratedMessageV3 {
-        if (TestingModelV3.WorkerConfiguration.getDescriptor().name.equals(name)) {
+        if (TestingModelV3.WorkerConfiguration.getDescriptor().name == name) {
             return TestingModelV3.WorkerConfiguration.getDefaultInstance()
         }
-        else if (TestingModelV3.Log.getDescriptor().name.equals(name)) {
+        else if (TestingModelV3.Log.getDescriptor().name == name) {
             return TestingModelV3.Log.getDefaultInstance()
         }
-        else if (TestingModelV3.Dag.getDescriptor().name.equals(name)) {
+        else if (TestingModelV3.Dag.getDescriptor().name == name) {
             return TestingModelV3.Dag.getDefaultInstance()
         }
-        else if (TestingModelV3.Task.getDescriptor().name.equals(name)) {
+        else if (TestingModelV3.Task.getDescriptor().name == name) {
             return TestingModelV3.Task.getDefaultInstance()
         }
-        else if (TestingModelV3.AddTaskToDag.getDescriptor().name.equals(name)) {
+        else if (TestingModelV3.AddTaskToDag.getDescriptor().name == name) {
             return TestingModelV3.AddTaskToDag.getDefaultInstance()
         }
-        else if (TestingModelV3.CompleteTask.getDescriptor().name.equals(name)) {
+        else if (TestingModelV3.CompleteTask.getDescriptor().name == name) {
             return TestingModelV3.CompleteTask.getDefaultInstance()
         }
-        else if (TestingModelV3.TaskDependency.getDescriptor().name.equals(name)) {
+        else if (TestingModelV3.TaskDependency.getDescriptor().name == name) {
             return TestingModelV3.TaskDependency.getDefaultInstance()
         }
 

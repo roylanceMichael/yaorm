@@ -55,8 +55,7 @@ object IndexModelComparisonUtil {
                     .sortedBy { it.name }
                     .joinToString(YaormUtils.Comma)
 
-            if (!currentColumnNames.equals(otherColumnNames) ||
-                !currentIncludeNames.equals(otherIncludeNames)) {
+            if (currentColumnNames != otherColumnNames || currentIncludeNames != otherIncludeNames) {
                 val dropIndexDifference = YaormModel.Difference.newBuilder()
                         .setEntityType(YaormModel.Difference.EntityType.INDEX)
                         .setOperation(YaormModel.Difference.Operation.DROP)

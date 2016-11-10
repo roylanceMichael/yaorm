@@ -6,7 +6,8 @@ import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
-class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGeneratorService {
+class SQLiteGeneratorService(override val bulkInsertSize: Int = 500,
+                             private val emptyAsNull: Boolean = false) : ISQLGeneratorService {
     override val textTypeName: String
         get() = SqlTextName
     override val integerTypeName: String
@@ -129,12 +130,12 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         val newValuesWorkspace = StringBuilder()
 
         record.columnsList.forEach {
-            if (newValuesWorkspace.length > 0) {
+            if (newValuesWorkspace.isNotEmpty()) {
                 newValuesWorkspace.append(YaormUtils.Comma)
             }
             newValuesWorkspace.append(this.buildKeyword(it.definition.name))
             newValuesWorkspace.append(YaormUtils.Equals)
-            newValuesWorkspace.append(YaormUtils.getFormattedString(it))
+            newValuesWorkspace.append(YaormUtils.getFormattedString(it, emptyAsNull))
         }
 
         return "update ${this.buildKeyword(definition.name)} set $newValuesWorkspace where $whereClauseStr${YaormUtils.SemiColon}"
@@ -168,7 +169,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                         val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name == columnDefinition.name }
 
                         if (foundColumn != null) {
-                            val formattedValue = YaormUtils.getFormattedString(foundColumn)
+                            val formattedValue = YaormUtils.getFormattedString(foundColumn, emptyAsNull)
                             if (valueColumnPairs.isEmpty()) {
                                 valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(foundColumn.definition.name)}")
                             }
@@ -178,7 +179,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                         }
                         else {
                             val actualColumn = YaormUtils.buildColumn(YaormUtils.EmptyString, columnDefinition)
-                            val formattedValue = YaormUtils.getFormattedString(actualColumn)
+                            val formattedValue = YaormUtils.getFormattedString(actualColumn, emptyAsNull)
                             if (valueColumnPairs.isEmpty()) {
                                 valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")
                             }
@@ -219,7 +220,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 this.buildKeyword(definition.name),
-                YaormUtils.getFormattedString(primaryKey))
+                YaormUtils.getFormattedString(primaryKey, emptyAsNull))
 
         return deleteSql
     }
@@ -246,7 +247,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                 .columnsList
                 .sortedBy { it.definition.order }
                 .forEach {
-                    val formattedValue = YaormUtils.getFormattedString(it)
+                    val formattedValue = YaormUtils.getFormattedString(it, emptyAsNull)
                     if (it.definition.name == YaormUtils.IdName) {
                         stringId = formattedValue
                     }
@@ -284,7 +285,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                 .sortedBy { it.definition.order }
                 .forEach {
                     columnNames.add(this.buildKeyword(it.definition.name))
-                    values.add(YaormUtils.getFormattedString(it))
+                    values.add(YaormUtils.getFormattedString(it, emptyAsNull))
                 }
 
             val insertSql = java.lang.String.format(
@@ -306,7 +307,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500) : ISQLGener
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
 
-        if (nameTypes.size == 0) {
+        if (nameTypes.isEmpty()) {
             return null
         }
 

@@ -96,7 +96,7 @@ class SQLiteProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.Child)
-            Assert.assertTrue(record!!.testDisplay.equals("second display"))
+            Assert.assertTrue(record!!.testDisplay == "second display")
         }
         finally {
             database.deleteOnExit()
@@ -158,22 +158,22 @@ class SQLiteProtoTest {
 
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
-            Assert.assertTrue(record!!.coolType.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED))
-            Assert.assertTrue(record.display.equals(testModel.display))
-            Assert.assertTrue(record.testInt32.equals(testModel.testInt32))
-            Assert.assertTrue(record.testInt64.equals(testModel.testInt64))
-            Assert.assertTrue(record.testUint32.equals(testModel.testUint32))
-            Assert.assertTrue(record.testUint64.equals(testModel.testUint64))
-            Assert.assertTrue(record.testSint32.equals(testModel.testSint32))
-            Assert.assertTrue(record.testSint64.equals(testModel.testSint64))
-            Assert.assertTrue(record.testFixed32.equals(testModel.testFixed32))
-            Assert.assertTrue(record.testFixed64.equals(testModel.testFixed64))
-            Assert.assertTrue(record.testSfixed32.equals(testModel.testSfixed32))
-            Assert.assertTrue(record.testSfixed64.equals(testModel.testSfixed64))
-            Assert.assertTrue(record.testBool.equals(testModel.testBool))
-            Assert.assertTrue(record.testBytes.equals(testModel.testBytes))
-            Assert.assertTrue(record.testDouble.equals(testModel.testDouble))
-            Assert.assertTrue(record.testFloat.equals(testModel.testFloat))
+            Assert.assertTrue(record!!.coolType == TestingModel.SimpleInsertTest.CoolType.SURPRISED)
+            Assert.assertTrue(record.display == testModel.display)
+            Assert.assertTrue(record.testInt32 == testModel.testInt32)
+            Assert.assertTrue(record.testInt64 == testModel.testInt64)
+            Assert.assertTrue(record.testUint32 == testModel.testUint32)
+            Assert.assertTrue(record.testUint64 == testModel.testUint64)
+            Assert.assertTrue(record.testSint32 == testModel.testSint32)
+            Assert.assertTrue(record.testSint64 == testModel.testSint64)
+            Assert.assertTrue(record.testFixed32 == testModel.testFixed32)
+            Assert.assertTrue(record.testFixed64 == testModel.testFixed64)
+            Assert.assertTrue(record.testSfixed32 == testModel.testSfixed32)
+            Assert.assertTrue(record.testSfixed64 == testModel.testSfixed64)
+            Assert.assertTrue(record.testBool == testModel.testBool)
+            Assert.assertTrue(record.testBytes == testModel.testBytes)
+            Assert.assertTrue(record.testDouble == testModel.testDouble)
+            Assert.assertTrue(record.testFloat == testModel.testFloat)
         }
         finally {
             database.deleteOnExit()
@@ -236,8 +236,8 @@ class SQLiteProtoTest {
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
             Assert.assertTrue(record!!.coolTypesCount == 2)
-            Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.SURPRISED) })
-            Assert.assertTrue(record.coolTypesList.any { it.equals(TestingModel.SimpleInsertTest.CoolType.TEST) })
+            Assert.assertTrue(record.coolTypesList.any { it == TestingModel.SimpleInsertTest.CoolType.SURPRISED })
+            Assert.assertTrue(record.coolTypesList.any { it == TestingModel.SimpleInsertTest.CoolType.TEST })
         }
         finally {
             database.deleteOnExit()
@@ -304,9 +304,9 @@ class SQLiteProtoTest {
             // assert
             Assert.assertTrue(record is TestingModel.SimpleInsertTest)
             Assert.assertTrue(record!!.childsCount == 3)
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild.testDisplay) && it.id.equals(subTestChild.id) })
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild2.testDisplay) && it.id.equals(subTestChild2.id) })
-            Assert.assertTrue(record.childsList.any { it.testDisplay.equals(subTestChild3.testDisplay) && it.id.equals(subTestChild3.id) })
+            Assert.assertTrue(record.childsList.any { it.testDisplay == subTestChild.testDisplay && it.id == subTestChild.id })
+            Assert.assertTrue(record.childsList.any { it.testDisplay == subTestChild2.testDisplay && it.id == subTestChild2.id })
+            Assert.assertTrue(record.childsList.any { it.testDisplay == subTestChild3.testDisplay && it.id == subTestChild3.id })
         }
         finally {
             database.deleteOnExit()

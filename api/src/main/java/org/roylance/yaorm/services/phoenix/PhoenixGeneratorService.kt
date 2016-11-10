@@ -6,7 +6,7 @@ import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
-class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGeneratorService {
+class PhoenixGeneratorService (override val bulkInsertSize: Int = 500, private val emptyAsNull: Boolean = false) : ISQLGeneratorService {
     override val textTypeName: String
         get() = SqlTextName
     override val integerTypeName: String
@@ -135,7 +135,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 tableName,
-                YaormUtils.getFormattedString(primaryKey))
+                YaormUtils.getFormattedString(primaryKey, emptyAsNull))
 
         return deleteSql
     }
@@ -165,7 +165,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
                 .columnsList
                 .sortedBy { it.definition.order }
                 .forEach {
-                    val formattedValue = YaormUtils.getFormattedString(it)
+                    val formattedValue = YaormUtils.getFormattedString(it, emptyAsNull)
                     columnNames.add(it.definition.name)
                     values.add(formattedValue)
                 }
@@ -189,7 +189,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500) : ISQLGen
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
 
-        if (nameTypes.size == 0) {
+        if (nameTypes.isEmpty()) {
             return null
         }
 

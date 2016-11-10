@@ -58,11 +58,11 @@ class TypeModel(
 
         fun isBoolean(item: String): Boolean {
             val lowercaseItem = item.toLowerCase()
-            return lowercaseItem.equals(LowercaseTrue) || lowercaseItem.equals(LowercaseFalse)
+            return lowercaseItem == LowercaseTrue || lowercaseItem == LowercaseFalse
         }
 
         fun isInt(item: String): Boolean {
-            if (item.length == 0) {
+            if (item.isEmpty()) {
                 return true
             }
             return StringUtils.isNumeric(item)

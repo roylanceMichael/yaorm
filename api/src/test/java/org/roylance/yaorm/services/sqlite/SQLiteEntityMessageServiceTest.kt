@@ -31,7 +31,7 @@ class SQLiteEntityMessageServiceTest {
             val manyDags = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
 
             // assert
-            Assert.assertTrue(manyDags.size == 0)
+            Assert.assertTrue(manyDags.isEmpty())
         }
         finally {
             database.deleteOnExit()
@@ -216,8 +216,8 @@ class SQLiteEntityMessageServiceTest {
             val users = entityMessageService.getMany(TestingModel.User.getDefaultInstance())
 
             Assert.assertTrue(users.size == 1)
-            Assert.assertTrue(users.first().id.equals(newUser.id))
-            Assert.assertTrue(users.first().display.equals(newUser.display))
+            Assert.assertTrue(users.first().id == newUser.id)
+            Assert.assertTrue(users.first().display == newUser.display)
         }
         finally {
             database.deleteOnExit()
@@ -386,22 +386,22 @@ class SQLiteEntityMessageServiceTest {
             val actualResults = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
 
             results.forEach { outerResult ->
-                val foundComparable = actualResults.first { it.id.equals(outerResult.id) }
+                val foundComparable = actualResults.first { it.id == outerResult.id }
                 Assert.assertTrue(foundComparable != null)
-                Assert.assertTrue(outerResult.flattenedTasksCount.equals(foundComparable.flattenedTasksCount))
-                Assert.assertTrue(outerResult.uncompletedTasksCount.equals(foundComparable.uncompletedTasksCount))
+                Assert.assertTrue(outerResult.flattenedTasksCount == foundComparable.flattenedTasksCount)
+                Assert.assertTrue(outerResult.uncompletedTasksCount == foundComparable.uncompletedTasksCount)
 
                 val flattenedUnion = HashSet<String>()
                 outerResult.flattenedTasksList.forEach { flattenedUnion.add(it.id) }
                 foundComparable.flattenedTasksList.forEach { flattenedUnion.add(it.id) }
 
-                Assert.assertTrue(flattenedUnion.size.equals(outerResult.flattenedTasksCount))
+                Assert.assertTrue(flattenedUnion.size == outerResult.flattenedTasksCount)
 
                 val uncompletedUnion = HashSet<String>()
                 outerResult.uncompletedTasksList.forEach { uncompletedUnion.add(it.id) }
                 foundComparable.uncompletedTasksList.forEach { uncompletedUnion.add(it.id) }
 
-                Assert.assertTrue(uncompletedUnion.size.equals(outerResult.uncompletedTasksCount))
+                Assert.assertTrue(uncompletedUnion.size == outerResult.uncompletedTasksCount)
             }
             Assert.assertTrue(actualResults.size == 100)
             Assert.assertTrue(results.size == 100)

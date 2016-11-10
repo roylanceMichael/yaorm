@@ -6,7 +6,8 @@ import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
-class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGeneratorService {
+class HiveGeneratorService(override val bulkInsertSize: Int = 2000,
+                           private val emptyAsNull: Boolean = false) : ISQLGeneratorService {
     override val textTypeName: String
         get() = SqlTextName
     override val integerTypeName: String
@@ -115,11 +116,11 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
             record
                 .columnsList
                 .forEach {
-                    updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + YaormUtils.getFormattedString(it))
+                    updateKvp.add(this.buildKeyword(it.definition.name) + YaormUtils.Equals + YaormUtils.getFormattedString(it, emptyAsNull))
                 }
 
             // nope, not updating entire table
-            if (criteriaString.length == 0) {
+            if (criteriaString.isEmpty()) {
                 return null
             }
 
@@ -185,7 +186,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                     val foundColumn = instance.columnsList.firstOrNull { column -> column.definition.name == columnDefinition.name }
 
                     if (foundColumn != null) {
-                        val formattedString = YaormUtils.getFormattedString(foundColumn)
+                        val formattedString = YaormUtils.getFormattedString(foundColumn, emptyAsNull)
                         if (valueColumnPairs.isEmpty()) {
                             valueColumnPairs.add("select $formattedString as ${this.buildKeyword(foundColumn.definition.name)}")
                         }
@@ -195,7 +196,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                     }
                     else {
                         val actualColumn = YaormUtils.buildColumn(YaormUtils.EmptyString, columnDefinition)
-                        val formattedValue = YaormUtils.getFormattedString(actualColumn)
+                        val formattedValue = YaormUtils.getFormattedString(actualColumn, emptyAsNull)
                         if (valueColumnPairs.isEmpty()) {
                             valueColumnPairs.add("select $formattedValue as ${this.buildKeyword(columnDefinition.name)}")
                         }
@@ -234,7 +235,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
         val deleteSql = java.lang.String.format(
                 DeleteTableTemplate,
                 this.buildKeyword(definition.name),
-                YaormUtils.getFormattedString(primaryKey))
+                YaormUtils.getFormattedString(primaryKey, emptyAsNull))
 
         return deleteSql
     }
@@ -260,7 +261,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 .columnsList
                 .sortedBy { it.definition.order }
                 .forEach {
-                    val formattedString = YaormUtils.getFormattedString(it)
+                    val formattedString = YaormUtils.getFormattedString(it, emptyAsNull)
                     if (it.definition.name == YaormUtils.IdName) {
                         stringId = formattedString
                     }
@@ -296,7 +297,7 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 .columnsList
                 .sortedBy { it.definition.order }
                 .forEach {
-                    values.add(YaormUtils.getFormattedString(it))
+                    values.add(YaormUtils.getFormattedString(it, emptyAsNull))
                 }
 
             val insertSql = java.lang.String.format(
@@ -317,14 +318,14 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000) : ISQLGenera
                 YaormModel.ProtobufType.STRING,
                 this.protoTypeToSqlType)
 
-        if (nameTypes.size == 0) {
+        if (nameTypes.isEmpty()) {
             return null
         }
 
         val workspace = StringBuilder()
 
         for (nameType in nameTypes) {
-            if (workspace.length == 0) {
+            if (workspace.isEmpty()) {
                 workspace
                     .append(YaormUtils.Space)
                     .append(this.buildKeyword(nameType.sqlColumnName))

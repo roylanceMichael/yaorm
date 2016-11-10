@@ -44,7 +44,7 @@ class MySQLProtoContextTest {
                     .getMany(TestingModel.Dag.getDefaultInstance())
 
             // assert
-            Assert.assertTrue(manyDags.size == 0)
+            Assert.assertTrue(manyDags.isEmpty())
         }
         finally {
             ConnectionUtilities.dropMySQLSchema()
@@ -96,8 +96,8 @@ class MySQLProtoContextTest {
             val foundDag = secondContext.entityMessageService.get(simpleDag.build(), simpleDag.id)
 
             Assert.assertTrue(foundDag != null)
-            Assert.assertTrue(foundDag!!.id.equals(simpleDag.id))
-            Assert.assertTrue(foundDag.newField1.equals(simpleDag.newField1))
+            Assert.assertTrue(foundDag!!.id == simpleDag.id)
+            Assert.assertTrue(foundDag.newField1 == simpleDag.newField1)
         }
         finally {
             ConnectionUtilities.dropMySQLSchema()
@@ -150,8 +150,8 @@ class MySQLProtoContextTest {
             val foundDag = firstContext.entityMessageService.get(TestingModel.Dag.getDefaultInstance(), simpleDag.id)
 
             Assert.assertTrue(foundDag != null)
-            Assert.assertTrue(foundDag!!.display.equals(simpleDag.display))
-            Assert.assertTrue(foundDag.id.equals(simpleDag.id))
+            Assert.assertTrue(foundDag!!.display == simpleDag.display)
+            Assert.assertTrue(foundDag.id == simpleDag.id)
         }
         finally {
             ConnectionUtilities.dropMySQLSchema()
@@ -204,8 +204,8 @@ class MySQLProtoContextTest {
             val foundDag = firstVersion.entityMessageService.get(TestingModel.Dag.getDefaultInstance(), simpleDag.id)
 
             Assert.assertTrue(foundDag != null)
-            Assert.assertTrue(foundDag!!.display.equals(simpleDag.display))
-            Assert.assertTrue(foundDag.id.equals(simpleDag.id))
+            Assert.assertTrue(foundDag!!.display == simpleDag.display)
+            Assert.assertTrue(foundDag.id == simpleDag.id)
 
             val migrationsFound = firstVersion.entityMessageService.getMany(YaormModel.Migration.getDefaultInstance())
             Assert.assertTrue(migrationsFound.size == 2)

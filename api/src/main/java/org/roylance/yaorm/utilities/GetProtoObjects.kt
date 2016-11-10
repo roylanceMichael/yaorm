@@ -19,7 +19,7 @@ internal class GetProtoObjects(
     private val cacheStore = CacheStore(this.generatedMessageBuilder)
 
     internal fun <T: Message> build(builder: T, entityIds:List<String>): List<T> {
-        if (entityIds.size == 0) {
+        if (entityIds.isEmpty()) {
             return ArrayList()
         }
 
@@ -57,7 +57,7 @@ internal class GetProtoObjects(
 
         val childMessageHandler = object: IChildMessageHandler {
             override fun handle(fieldKey: Descriptors.FieldDescriptor, idColumn: YaormModel.Column, builder: Message.Builder) {
-                if (idColumn.stringHolder.length > 0) {
+                if (idColumn.stringHolder.isNotEmpty()) {
                     val mainId = ProtobufUtils.getIdFromMessage(builder)
                     val childObject = generatedMessageBuilder.buildGeneratedMessage(fieldKey.messageType.name)
 
@@ -158,7 +158,7 @@ internal class GetProtoObjects(
                             val nameColumn = record.columnsList.firstOrNull { otherColumnName == it.definition.name }
                             val entityColumn = record.columnsList.firstOrNull { mainMessageColumnName == it.definition.name }
 
-                            if (nameColumn != null && nameColumn.stringHolder.length > 0 && entityColumn != null) {
+                            if (nameColumn != null && nameColumn.stringHolder.isNotEmpty() && entityColumn != null) {
                                 if (!keysToReconcile.containsKey(fieldKey.messageType.name)) {
                                     keysToReconcile[fieldKey.messageType.name] = HashSet()
                                 }

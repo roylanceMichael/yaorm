@@ -149,7 +149,7 @@ object ProtobufUtils {
                 customIndexes)
 
         val results = getObject.build(builder, listOf(entityId))
-        if (results.size > 0) {
+        if (results.isNotEmpty()) {
             return results.first()
         }
 

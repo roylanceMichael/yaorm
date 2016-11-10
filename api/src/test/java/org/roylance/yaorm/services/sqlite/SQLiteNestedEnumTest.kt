@@ -232,4 +232,56 @@ class SQLiteNestedEnumTest {
             database.deleteOnExit()
         }
     }
+
+    @Test
+    fun simpleTableDefinitionNullableTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+                    sourceConnection,
+                    false)
+            val sqliteGeneratorService = SQLiteGeneratorService(500, true)
+            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = ComplexModelBuilder
+            val protoContext = EntityProtoContext(
+                    ComplexModel.getDescriptor(),
+                    protoService,
+                    entityService,
+                    HashMap(),
+                    TestBase64Service())
+
+            protoContext.handleMigrations()
+
+            val firstFile = ComplexModel.MappedFile.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setName("first")
+
+            val secondFile = ComplexModel.MappedFile.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setName("second")
+                    .setParent(firstFile)
+
+            firstFile.addChildren(secondFile)
+
+            val thirdFile = ComplexModel.MappedFile.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setName("third")
+                    .setParent(secondFile)
+
+            secondFile.addChildren(thirdFile)
+            protoContext.entityMessageService.merge(firstFile.build())
+
+            // act
+            val tableDefinition = entityService.getTableDefinition("doesn't matter", ComplexModel.Answer.getDescriptor().name)
+
+            // assert
+            println(tableDefinition)
+            assert(tableDefinition.columnDefinitionsCount > 0)
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
 }

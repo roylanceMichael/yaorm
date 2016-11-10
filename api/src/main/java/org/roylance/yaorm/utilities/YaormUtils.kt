@@ -18,7 +18,7 @@ object YaormUtils {
     const val SingleQuote = "'"
     const val DoubleQuote = "\""
     const val AccentQuote = "`"
-    const val Null = "null"
+    const val Null = "NULL"
     const val Space = " "
     const val Comma = ","
     const val Equals = "="
@@ -27,23 +27,15 @@ object YaormUtils {
     const val SpacedUnion = "${CarriageReturn}union "
     const val Underscore = "_"
 
-    const val SpacedAnd = " and "
-    const val And = "and"
-    const val Or = "or"
-
-    const val Is = "is"
-    const val LeftParen = "("
-    const val RightParen = ")"
-
     fun buildColumn(value: Any?,
                     propertyDefinition:YaormModel.ColumnDefinition):YaormModel.Column {
         val returnHolder = YaormModel.Column.newBuilder()
         returnHolder.definition = propertyDefinition
 
-        val notNullValueAsString = if (value == null) "" else value.toString()
+        val notNullValueAsString = value?.toString() ?: ""
 
         if (propertyDefinition.type == YaormModel.ProtobufType.STRING) {
-            returnHolder.stringHolder = notNullValueAsString.toString()
+            returnHolder.stringHolder = notNullValueAsString
         }
 
         if (propertyDefinition.type == YaormModel.ProtobufType.BOOL) {
@@ -177,13 +169,19 @@ object YaormUtils {
         return null
     }
 
-    fun getFormattedString(value: YaormModel.Column): String {
+    fun getFormattedString(value: YaormModel.Column, emptyAsNull: Boolean = false): String {
         if (!value.hasDefinition()) {
             return Null
         }
 
         if (value.definition.type == YaormModel.ProtobufType.STRING) {
-            return SingleQuote + value.stringHolder.replace(SingleQuote, DoubleSingleQuote) + SingleQuote
+            if (value.stringHolder.isEmpty() && emptyAsNull) {
+                return Null
+            }
+
+            return SingleQuote + value.stringHolder.replace(
+                    SingleQuote,
+                    DoubleSingleQuote) + SingleQuote
         }
 
         if (value.definition.type == YaormModel.ProtobufType.BOOL) {
@@ -239,6 +237,9 @@ object YaormUtils {
         }
 
         if (value.definition.type == YaormModel.ProtobufType.BYTES) {
+            if (value.bytesHolder.isEmpty && emptyAsNull) {
+                return Null
+            }
             return SingleQuote + value.bytesHolder.toStringUtf8() + SingleQuote
         }
 
@@ -246,7 +247,7 @@ object YaormUtils {
     }
 
     fun lowercaseFirstChar(input:String):String {
-        if (input.length == 0) {
+        if (input.isEmpty()) {
             return input
         }
 
@@ -355,7 +356,7 @@ object YaormUtils {
 
     fun getLastWord(item:String):String {
         val splitItems = item.split(".")
-        if (splitItems.size > 0) {
+        if (splitItems.isNotEmpty()) {
             return splitItems[splitItems.size - 1]
         }
         return item
@@ -432,7 +433,7 @@ object YaormUtils {
         if (item.toLowerCase() == "false") {
             return false
         }
-        if (item.length == 0) {
+        if (item.isEmpty()) {
             return false
         }
         return true

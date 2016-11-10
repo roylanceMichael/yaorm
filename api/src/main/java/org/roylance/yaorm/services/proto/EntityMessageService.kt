@@ -89,7 +89,7 @@ class EntityMessageService(
     }
 
     override fun <T : Message> bulkInsert(messages: List<T>): Boolean {
-        if (messages.size == 0) {
+        if (messages.isEmpty()) {
             return false
         }
 
@@ -332,7 +332,7 @@ class EntityMessageService(
 
         val foundItems = objects.build(messageType, listOf(id))
 
-        if (foundItems.size > 0) {
+        if (foundItems.isNotEmpty()) {
             return foundItems.first()
         }
         return null
