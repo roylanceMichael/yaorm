@@ -12,22 +12,24 @@ class MySQLProtoBuilder: IEntityProtoBuilder {
                                    fileDescriptor: Descriptors.FileDescriptor,
                                    messageBuilder: IProtoGeneratedMessageBuilder,
                                    customIndexes: HashMap<String, YaormModel.Index>,
-                                   base64Service: IBase64Service): EntityProtoContext {
+                                   base64Service: IBase64Service,
+                                   emptyAsNull: Boolean): EntityProtoContext {
         return EntityProtoContext(
                 fileDescriptor,
                 messageBuilder,
-                this.buildProtoService(connectionInfo),
+                this.buildProtoService(connectionInfo, emptyAsNull),
                 customIndexes,
                 base64Service)
     }
 
     override fun buildMessageService(connectionInfo: YaormModel.ConnectionInfo,
                                      messageBuilder: IProtoGeneratedMessageBuilder,
-                                     customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
-        return EntityMessageService(messageBuilder, this.buildProtoService(connectionInfo), customIndexes)
+                                     customIndexes: HashMap<String, YaormModel.Index>,
+                                     emptyAsNull: Boolean): IEntityMessageService {
+        return EntityMessageService(messageBuilder, this.buildProtoService(connectionInfo, emptyAsNull), customIndexes)
     }
 
-    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo): IEntityProtoService {
+    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo, emptyAsNull: Boolean): IEntityProtoService {
         val sourceConnection = MySQLConnectionSourceFactory(
                 connectionInfo.host,
                 connectionInfo.schema,
@@ -39,7 +41,7 @@ class MySQLProtoBuilder: IEntityProtoBuilder {
                 sourceConnection,
                 false)
 
-        val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
+        val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, emptyAsNull = emptyAsNull)
 
         return EntityProtoService(granularDatabaseService, mySqlGeneratorService)
     }

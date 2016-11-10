@@ -12,24 +12,26 @@ class SQLiteProtoBuilder: IEntityProtoBuilder {
                                    fileDescriptor: Descriptors.FileDescriptor,
                                    messageBuilder: IProtoGeneratedMessageBuilder,
                                    customIndexes: HashMap<String, YaormModel.Index>,
-                                   base64Service: IBase64Service): EntityProtoContext {
+                                   base64Service: IBase64Service,
+                                   emptyAsNull: Boolean): EntityProtoContext {
         return EntityProtoContext(fileDescriptor,
                 messageBuilder,
-                this.buildProtoService(connectionInfo),
+                buildProtoService(connectionInfo, emptyAsNull),
                 customIndexes,
                 base64Service)
     }
 
     override fun buildMessageService(connectionInfo: YaormModel.ConnectionInfo,
                                      messageBuilder: IProtoGeneratedMessageBuilder,
-                                     customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
-        return EntityMessageService(messageBuilder, this.buildProtoService(connectionInfo), customIndexes)
+                                     customIndexes: HashMap<String, YaormModel.Index>,
+                                     emptyAsNull: Boolean): IEntityMessageService {
+        return EntityMessageService(messageBuilder, buildProtoService(connectionInfo, emptyAsNull), customIndexes)
     }
 
-    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo): IEntityProtoService {
+    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo, emptyAsNull: Boolean): IEntityProtoService {
         val sourceConnection = SQLiteConnectionSourceFactory(connectionInfo.schema, connectionInfo.user, connectionInfo.password)
         val granularDatabaseService = JDBCGranularDatabaseProtoService(sourceConnection, false)
-        val sqliteGeneratorService = SQLiteGeneratorService()
+        val sqliteGeneratorService = SQLiteGeneratorService(emptyAsNull = emptyAsNull)
         return EntityProtoService(granularDatabaseService, sqliteGeneratorService)
     }
 }
