@@ -71,7 +71,7 @@ dependencies {
 //    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
 //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
-    compile 'org.roylance:common:0.8'
+    compile 'org.roylance:common:0.9'
     compile 'org.apache.commons:commons-lang3:3.4'
 }
 
