@@ -1,5 +1,4 @@
 buildscript {
-    ext.kotlin_version = '1.0.5'
     ext.project_version = "${actualMajor}.${actualMinor}"
 
     repositories {
@@ -9,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
         classpath "org.roylance.yaclib:core:${yaclibMajor}.${yaclibMinor}"
     }
 }
@@ -71,7 +70,7 @@ dependencies {
 //    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
 //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
-    compile 'org.roylance:common:0.9'
+    compile "org.roylance:common:$yaclib_roylance_common"
     compile 'org.apache.commons:commons-lang3:3.4'
 }
 

@@ -8,7 +8,8 @@ import java.util.*
 
 class MySQLGeneratorService(private val schemaName: String,
                             override val bulkInsertSize: Int = 1000,
-                            private val emptyAsNull: Boolean = false) : ISQLGeneratorService {
+                            private val emptyAsNull: Boolean = false,
+                            private val useMyISAM: Boolean = false) : ISQLGeneratorService {
     override val textTypeName: String
         get() = SqlTextName
     override val integerTypeName: String
@@ -180,7 +181,11 @@ class MySQLGeneratorService(private val schemaName: String,
                 "${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)}",
                 workspace.toString())
 
-        return createTableSql
+        if (useMyISAM) {
+            return "$createTableSql engine = $MyISAMName;"
+        }
+
+        return createTableSql + ";"
     }
 
     override fun buildDeleteAll(definition: YaormModel.TableDefinition): String {
@@ -441,6 +446,7 @@ class MySQLGeneratorService(private val schemaName: String,
     }
 
     companion object {
+        private const val MyISAMName = "MYISAM"
         private const val ColumnNameName = "column_name"
         private const val DataTypeName = "data_type"
         private const val OrdinalPositionName = "ordinal_position"

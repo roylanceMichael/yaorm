@@ -7,7 +7,7 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
 import org.roylance.yaorm.services.proto.*
 import java.util.*
 
-class MySQLProtoBuilder: IEntityProtoBuilder {
+class MySQLProtoBuilder(private val useMyISAM: Boolean = false): IEntityProtoBuilder {
     override fun buildProtoContext(connectionInfo: YaormModel.ConnectionInfo,
                                    fileDescriptor: Descriptors.FileDescriptor,
                                    messageBuilder: IProtoGeneratedMessageBuilder,
@@ -29,7 +29,8 @@ class MySQLProtoBuilder: IEntityProtoBuilder {
         return EntityMessageService(messageBuilder, this.buildProtoService(connectionInfo, emptyAsNull), customIndexes)
     }
 
-    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo, emptyAsNull: Boolean): IEntityProtoService {
+    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo,
+                                   emptyAsNull: Boolean): IEntityProtoService {
         val sourceConnection = MySQLConnectionSourceFactory(
                 connectionInfo.host,
                 connectionInfo.schema,
@@ -41,7 +42,9 @@ class MySQLProtoBuilder: IEntityProtoBuilder {
                 sourceConnection,
                 false)
 
-        val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, emptyAsNull = emptyAsNull)
+        val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema,
+                emptyAsNull = emptyAsNull,
+                useMyISAM = useMyISAM)
 
         return EntityProtoService(granularDatabaseService, mySqlGeneratorService)
     }
