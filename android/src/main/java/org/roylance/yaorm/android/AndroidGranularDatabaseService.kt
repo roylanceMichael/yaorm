@@ -1,0 +1,153 @@
+package org.roylance.yaorm.android
+
+
+import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.models.TypeModel
+import org.roylance.yaorm.models.entity.EntityResultModel
+import org.roylance.yaorm.services.IConnectionSourceFactory
+import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
+import org.roylance.yaorm.services.proto.IProtoCursor
+import org.roylance.yaorm.services.proto.IProtoStreamer
+import java.util.*
+
+class AndroidGranularDatabaseService(databaseName:String,
+                                     context: Context) : SQLiteOpenHelper(context, databaseName, null, 1), IGranularDatabaseProtoService {
+    private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
+    override val connectionSourceFactory: IConnectionSourceFactory = AndroidConnectionSourceFactory()
+
+    override fun onCreate(p0: SQLiteDatabase?) {
+    }
+
+    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
+    }
+
+    override fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition {
+        val cursor = readableDatabase.rawQuery(query, null)
+        val types = HashMap<String, TypeModel>()
+        try {
+            while(cursor.moveToNext()) {
+                if (types.size == 0) {
+                    var i = 1
+                    cursor.columnNames.forEach { columnName ->
+                        types[columnName] = TypeModel(columnName, i)
+                        i++
+                    }
+                }
+
+                types.keys.forEach {
+                    val item = cursor.getString(types[it]!!.index)
+                    if (item == null) {
+                        types[it]!!.addTest("")
+                    }
+                    else {
+                        types[it]!!.addTest(item)
+                    }
+                }
+            }
+
+            val returnTable = YaormModel.TableDefinition.newBuilder()
+            types.keys.forEach {
+                returnTable.addColumnDefinitions(types[it]!!.buildColumnDefinition())
+            }
+
+            return returnTable.build()
+        }
+        catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+        finally {
+            report.callsToDatabase = report.callsToDatabase + 1
+        }
+    }
+
+    override fun commit() {
+    }
+
+    override fun executeSelectQuery(query: String): YaormModel.Records {
+        val returnRecord = YaormModel.Records.newBuilder()
+        val streamer = object: IProtoStreamer {
+            override fun stream(record: YaormModel.Record) {
+                returnRecord.addRecords(record)
+            }
+        }
+        executeSelectQueryStream(query, streamer)
+        return returnRecord.build()
+    }
+
+    override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): IProtoCursor {
+        val cursor = readableDatabase.rawQuery(query, null)
+        try {
+            return AndroidProtoCursor(definition, cursor)
+        }
+        finally {
+            report.callsToDatabase = report.callsToDatabase + 1
+        }
+    }
+
+    override fun executeSelectQueryStream(query: String, stream: IProtoStreamer) {
+        val cursor = readableDatabase.rawQuery(query, null)
+        buildRecords(cursor, stream)
+    }
+
+    override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IProtoStreamer) {
+        val cursor = readableDatabase.rawQuery(query, null)
+        AndroidProtoCursor(definition, cursor).getRecordsStream(streamer)
+    }
+
+    override fun executeUpdateQuery(query: String): EntityResultModel {
+        writableDatabase.execSQL(query)
+        report.callsToDatabase = report.callsToDatabase + 1
+        return EntityResultModel()
+    }
+
+    override fun getReport(): YaormModel.DatabaseExecutionReport {
+        return report.build()
+    }
+
+    override fun isAvailable(): Boolean {
+        return true
+    }
+
+    override fun close() {
+        readableDatabase.close()
+        writableDatabase.close()
+    }
+
+    private fun buildRecords(cursor: Cursor, protoStreamer: IProtoStreamer) {
+        val foundColumns = HashMap<String, YaormModel.ColumnDefinition>()
+        while (cursor.moveToNext()) {
+            val newRecord = YaormModel.Record.newBuilder()
+            if (foundColumns.size == 0) {
+                // this starts at index 1 for some reason... tests for sqlite, mysql, and postgres
+                var i = 1
+                while (i <= cursor.columnCount) {
+                    val columnName = cursor.getColumnName(i)
+                    foundColumns[columnName] = YaormModel.ColumnDefinition.newBuilder()
+                            .setName(columnName)
+                            .setType(YaormModel.ProtobufType.STRING)
+                            .setOrder(i)
+                            .build()
+
+                    i++
+                }
+            }
+
+            foundColumns.keys.forEach {
+                val item = cursor.getString(foundColumns[it]!!.order)
+                if (item != null) {
+                    val newColumn = YaormModel.Column.newBuilder()
+                            .setDefinition(foundColumns[it]!!)
+                            .setStringHolder(item)
+                    newRecord.addColumns(newColumn)
+                }
+            }
+
+            protoStreamer.stream(newRecord.build())
+        }
+    }
+}
