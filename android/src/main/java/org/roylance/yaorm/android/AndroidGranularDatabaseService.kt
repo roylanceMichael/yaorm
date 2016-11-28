@@ -1,6 +1,5 @@
 package org.roylance.yaorm.android
 
-
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -31,7 +30,7 @@ class AndroidGranularDatabaseService(databaseName:String,
         try {
             while(cursor.moveToNext()) {
                 if (types.size == 0) {
-                    var i = 1
+                    var i = 0
                     cursor.columnNames.forEach { columnName ->
                         types[columnName] = TypeModel(columnName, i)
                         i++
@@ -123,10 +122,8 @@ class AndroidGranularDatabaseService(databaseName:String,
         while (cursor.moveToNext()) {
             val newRecord = YaormModel.Record.newBuilder()
             if (foundColumns.size == 0) {
-                // this starts at index 1 for some reason... tests for sqlite, mysql, and postgres
-                var i = 1
-                while (i <= cursor.columnCount) {
-                    val columnName = cursor.getColumnName(i)
+                var i = 0
+                cursor.columnNames.forEach { columnName ->
                     foundColumns[columnName] = YaormModel.ColumnDefinition.newBuilder()
                             .setName(columnName)
                             .setType(YaormModel.ProtobufType.STRING)
