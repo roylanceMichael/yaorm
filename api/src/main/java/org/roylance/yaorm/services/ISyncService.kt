@@ -1,6 +1,5 @@
 package org.roylance.yaorm.services
 
-import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.proto.IEntityMessageService

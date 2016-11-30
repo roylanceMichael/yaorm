@@ -22,142 +22,166 @@ namespace Org.Roylance.Yaorm {
     static YaormModelReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChF5YW9ybV9tb2RlbC5wcm90bxISb3JnLnJveWxhbmNlLnlhb3JtIqwDCgtX",
-            "aGVyZUNsYXVzZRI1ChFuYW1lX2FuZF9wcm9wZXJ0eRgBIAEoCzIaLm9yZy5y",
-            "b3lsYW5jZS55YW9ybS5Db2x1bW4SQwoNb3BlcmF0b3JfdHlwZRgCIAEoDjIs",
-            "Lm9yZy5yb3lsYW5jZS55YW9ybS5XaGVyZUNsYXVzZS5PcGVyYXRvclR5cGUS",
-            "SgoRY29ubmVjdGluZ19hbmRfb3IYAyABKA4yLy5vcmcucm95bGFuY2UueWFv",
-            "cm0uV2hlcmVDbGF1c2UuQ29ubmVjdGluZ0FuZE9yEkAKF2Nvbm5lY3Rpbmdf",
-            "d2hlcmVfY2xhdXNlGAQgASgLMh8ub3JnLnJveWxhbmNlLnlhb3JtLldoZXJl",
-            "Q2xhdXNlEhAKCGluX2l0ZW1zGAUgAygJIlMKDE9wZXJhdG9yVHlwZRIKCgZF",
-            "UVVBTFMQABIQCgxHUkVBVEVSX1RIQU4QARINCglMRVNTX1RIQU4QAhIOCgpO",
-            "T1RfRVFVQUxTEAMSBgoCSU4QBCIsCg9Db25uZWN0aW5nQW5kT3ISCAoETk9O",
-            "RRAAEgcKA0FORBABEgYKAk9SEAIigQMKEENvbHVtbkRlZmluaXRpb24SDAoE",
-            "bmFtZRgBIAEoCRIuCgR0eXBlGAIgASgOMiAub3JnLnJveWxhbmNlLnlhb3Jt",
-            "LlByb3RvYnVmVHlwZRIOCgZpc19rZXkYAyABKAgSRAoLY29sdW1uX3R5cGUY",
-            "BCABKA4yLy5vcmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbi5D",
-            "b2x1bW5UeXBlEkQKC2xpbmtlcl90eXBlGAUgASgOMi8ub3JnLnJveWxhbmNl",
-            "Lnlhb3JtLkNvbHVtbkRlZmluaXRpb24uTGlua2VyVHlwZRINCgVvcmRlchgG",
-            "IAEoBSJICgpDb2x1bW5UeXBlEgoKBlNDQUxBUhAAEg0KCUVOVU1fTkFNRRAB",
-            "Eg4KCkVOVU1fVkFMVUUQAhIPCgtNRVNTQUdFX0tFWRADIjoKCkxpbmtlclR5",
-            "cGUSCAoETk9ORRAAEgoKBlBBUkVOVBABEgkKBUNISUxEEAISCwoHTkVJVEhF",
-            "UhADIoABCgVJbmRleBI6Cgxjb2x1bW5fbmFtZXMYASADKAsyJC5vcmcucm95",
-            "bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbhI7Cg1pbmNsdWRlX25hbWVz",
-            "GAIgAygLMiQub3JnLnJveWxhbmNlLnlhb3JtLkNvbHVtbkRlZmluaXRpb24i",
-            "lgMKCkRpZmZlcmVuY2USPgoLZW50aXR5X3R5cGUYASABKA4yKS5vcmcucm95",
-            "bGFuY2UueWFvcm0uRGlmZmVyZW5jZS5FbnRpdHlUeXBlEjsKCW9wZXJhdGlv",
-            "bhgCIAEoDjIoLm9yZy5yb3lsYW5jZS55YW9ybS5EaWZmZXJlbmNlLk9wZXJh",
-            "dGlvbhIMCgRuYW1lGAMgASgJEigKBWluZGV4GAQgASgLMhkub3JnLnJveWxh",
-            "bmNlLnlhb3JtLkluZGV4EkEKE3Byb3BlcnR5X2RlZmluaXRpb24YBSABKAsy",
-            "JC5vcmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbhI9ChB0YWJs",
-            "ZV9kZWZpbml0aW9uGAYgASgLMiMub3JnLnJveWxhbmNlLnlhb3JtLlRhYmxl",
-            "RGVmaW5pdGlvbiIuCgpFbnRpdHlUeXBlEgkKBUlOREVYEAASCgoGQ09MVU1O",
-            "EAESCQoFVEFCTEUQAiIhCglPcGVyYXRpb24SCgoGQ1JFQVRFEAASCAoERFJP",
-            "UBABIowCCg9UYWJsZURlZmluaXRpb24SDAoEbmFtZRgBIAEoCRJAChJjb2x1",
-            "bW5fZGVmaW5pdGlvbnMYAiADKAsyJC5vcmcucm95bGFuY2UueWFvcm0uQ29s",
-            "dW1uRGVmaW5pdGlvbhIoCgVpbmRleBgDIAEoCzIZLm9yZy5yb3lsYW5jZS55",
-            "YW9ybS5JbmRleBJBCgp0YWJsZV90eXBlGAQgASgOMi0ub3JnLnJveWxhbmNl",
-            "Lnlhb3JtLlRhYmxlRGVmaW5pdGlvbi5UYWJsZVR5cGUiPAoJVGFibGVUeXBl",
-            "EgoKBk5PUk1BTBAAEhIKDkxJTktFUl9NRVNTQUdFEAESDwoLTElOS0VSX0VO",
-            "VU0QAiJSChBUYWJsZURlZmluaXRpb25zEj4KEXRhYmxlX2RlZmluaXRpb25z",
-            "GAEgAygLMiMub3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbiJh",
-            "ChBEaWZmZXJlbmNlUmVwb3J0EhgKEG1pZ3JhdGlvbl9leGlzdHMYASABKAgS",
-            "MwoLZGlmZmVyZW5jZXMYAiADKAsyHi5vcmcucm95bGFuY2UueWFvcm0uRGlm",
-            "ZmVyZW5jZSKbAwoGQ29sdW1uEjgKCmRlZmluaXRpb24YASABKAsyJC5vcmcu",
-            "cm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbhIVCg1kb3VibGVfaG9s",
-            "ZGVyGAIgASgBEhQKDGZsb2F0X2hvbGRlchgDIAEoAhIUCgxpbnQzMl9ob2xk",
-            "ZXIYBCABKAUSFAoMaW50NjRfaG9sZGVyGAUgASgDEhUKDXVpbnQzMl9ob2xk",
-            "ZXIYBiABKA0SFQoNdWludDY0X2hvbGRlchgHIAEoBBIVCg1zaW50MzJfaG9s",
-            "ZGVyGAggASgREhUKDXNpbnQ2NF9ob2xkZXIYCSABKBISFgoOZml4ZWQzMl9o",
-            "b2xkZXIYCiABKAcSFgoOZml4ZWQ2NF9ob2xkZXIYCyABKAYSFwoPc2ZpeGVk",
-            "MzJfaG9sZGVyGAwgASgPEhcKD3NmaXhlZDY0X2hvbGRlchgNIAEoEBITCgti",
-            "b29sX2hvbGRlchgOIAEoCBIVCg1zdHJpbmdfaG9sZGVyGA8gASgJEhQKDGJ5",
-            "dGVzX2hvbGRlchgQIAEoDCI1CgZSZWNvcmQSKwoHY29sdW1ucxgBIAMoCzIa",
-            "Lm9yZy5yb3lsYW5jZS55YW9ybS5Db2x1bW4iNgoHUmVjb3JkcxIrCgdyZWNv",
-            "cmRzGAEgAygLMhoub3JnLnJveWxhbmNlLnlhb3JtLlJlY29yZCKPAQoMVGFi",
-            "bGVSZWNvcmRzEj0KEHRhYmxlX2RlZmluaXRpb24YASABKAsyIy5vcmcucm95",
-            "bGFuY2UueWFvcm0uVGFibGVEZWZpbml0aW9uEiwKB3JlY29yZHMYAiABKAsy",
-            "Gy5vcmcucm95bGFuY2UueWFvcm0uUmVjb3JkcxISCgp0YWJsZV9uYW1lGAMg",
-            "ASgJIkoKD0FsbFRhYmxlUmVjb3JkcxI3Cg10YWJsZV9yZWNvcmRzGAEgAygL",
-            "MiAub3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlUmVjb3JkcyLPBQoRRGF0YWJh",
-            "c2VPcGVyYXRpb24SPQoQdGFibGVfZGVmaW5pdGlvbhgBIAEoCzIjLm9yZy5y",
-            "b3lsYW5jZS55YW9ybS5UYWJsZURlZmluaXRpb24SLAoHcmVjb3JkcxgCIAEo",
-            "CzIbLm9yZy5yb3lsYW5jZS55YW9ybS5SZWNvcmRzEigKBWluZGV4GAMgASgL",
-            "Mhkub3JnLnJveWxhbmNlLnlhb3JtLkluZGV4Ej8KEWNvbHVtbl9kZWZpbml0",
-            "aW9uGAQgASgLMiQub3JnLnJveWxhbmNlLnlhb3JtLkNvbHVtbkRlZmluaXRp",
-            "b24SNQoMd2hlcmVfY2xhdXNlGAUgASgLMh8ub3JnLnJveWxhbmNlLnlhb3Jt",
-            "LldoZXJlQ2xhdXNlElwKF2RhdGFiYXNlX29wZXJhdGlvbl90eXBlGAYgASgO",
-            "Mjsub3JnLnJveWxhbmNlLnlhb3JtLkRhdGFiYXNlT3BlcmF0aW9uLkRhdGFi",
-            "YXNlT3BlcmF0aW9uVHlwZSLMAgoVRGF0YWJhc2VPcGVyYXRpb25UeXBlEhAK",
-            "DENSRUFURV9UQUJMRRAAEg4KCkRST1BfVEFCTEUQARIQCgxDUkVBVEVfSU5E",
-            "RVgQAhIOCgpEUk9QX0lOREVYEAMSEQoNQ1JFQVRFX0NPTFVNThAEEg8KC0RS",
-            "T1BfQ09MVU1OEAUSDQoJR0VUX0NPVU5UEAYSDgoKR0VUX0NVU1RPTRAHEgcK",
-            "A0dFVBAIEgwKCEdFVF9NQU5ZEAkSDQoJR0VUX1dIRVJFEAoSDwoLQlVMS19J",
-            "TlNFUlQQCxIUChBDUkVBVEVfT1JfVVBEQVRFEAwSCgoGQ1JFQVRFEA0SCgoG",
-            "VVBEQVRFEA4SGAoUVVBEQVRFX1dJVEhfQ1JJVEVSSUEQDxIRCg1VUERBVEVf",
-            "Q1VTVE9NEBASCgoGREVMRVRFEBESDgoKREVMRVRFX0FMTBASIoYCChdEYXRh",
-            "YmFzZU9wZXJhdGlvblJlc3VsdBITCgtib29sX3Jlc3VsdBgBIAEoCBIUCgxj",
-            "b3VudF9yZXN1bHQYAiABKAMSMQoNcmVjb3JkX3Jlc3VsdBgDIAEoCzIaLm9y",
-            "Zy5yb3lsYW5jZS55YW9ybS5SZWNvcmQSMwoOcmVjb3Jkc19yZXN1bHQYBCAB",
-            "KAsyGy5vcmcucm95bGFuY2UueWFvcm0uUmVjb3JkcxIVCg1lcnJvcl9tZXNz",
-            "YWdlGAUgASgJEkEKEmRhdGFiYXNlX29wZXJhdGlvbhgGIAEoCzIlLm9yZy5y",
-            "b3lsYW5jZS55YW9ybS5EYXRhYmFzZU9wZXJhdGlvbiK/AQoSRGF0YWJhc2VE",
-            "ZWZpbml0aW9uEg4KBnNjaGVtYRgBIAEoCRIMCgRuYW1lGAIgASgJEj8KEXRh",
-            "YmxlX2RlZmluaXRpb25zGAMgASgLMiQub3JnLnJveWxhbmNlLnlhb3JtLlRh",
-            "YmxlRGVmaW5pdGlvbnMSSgoXdGFibGVfZGVmaW5pdGlvbl9ncmFwaHMYBCAD",
-            "KAsyKS5vcmcucm95bGFuY2UueWFvcm0uVGFibGVEZWZpbml0aW9uR3JhcGhz",
-            "IrsDChRUYWJsZURlZmluaXRpb25HcmFwaBJCChVtYWluX3RhYmxlX2RlZmlu",
+            "ChF5YW9ybV9tb2RlbC5wcm90bxISb3JnLnJveWxhbmNlLnlhb3JtGhlnb29n",
+            "bGUvcHJvdG9idWYvYW55LnByb3RvIlwKElByb3RvVHlwZVRvU3FsVHlwZRI0",
+            "Cgpwcm90b190eXBlGAEgASgOMiAub3JnLnJveWxhbmNlLnlhb3JtLlByb3Rv",
+            "YnVmVHlwZRIQCghzcWxfdHlwZRgCIAEoCSJOChNQcm90b1R5cGVUb1NxbFR5",
+            "cGVzEjcKB3Jlc3VsdHMYASADKAsyJi5vcmcucm95bGFuY2UueWFvcm0uUHJv",
+            "dG9UeXBlVG9TcWxUeXBlIqwDCgtXaGVyZUNsYXVzZRI1ChFuYW1lX2FuZF9w",
+            "cm9wZXJ0eRgBIAEoCzIaLm9yZy5yb3lsYW5jZS55YW9ybS5Db2x1bW4SQwoN",
+            "b3BlcmF0b3JfdHlwZRgCIAEoDjIsLm9yZy5yb3lsYW5jZS55YW9ybS5XaGVy",
+            "ZUNsYXVzZS5PcGVyYXRvclR5cGUSSgoRY29ubmVjdGluZ19hbmRfb3IYAyAB",
+            "KA4yLy5vcmcucm95bGFuY2UueWFvcm0uV2hlcmVDbGF1c2UuQ29ubmVjdGlu",
+            "Z0FuZE9yEkAKF2Nvbm5lY3Rpbmdfd2hlcmVfY2xhdXNlGAQgASgLMh8ub3Jn",
+            "LnJveWxhbmNlLnlhb3JtLldoZXJlQ2xhdXNlEhAKCGluX2l0ZW1zGAUgAygJ",
+            "IlMKDE9wZXJhdG9yVHlwZRIKCgZFUVVBTFMQABIQCgxHUkVBVEVSX1RIQU4Q",
+            "ARINCglMRVNTX1RIQU4QAhIOCgpOT1RfRVFVQUxTEAMSBgoCSU4QBCIsCg9D",
+            "b25uZWN0aW5nQW5kT3ISCAoETk9ORRAAEgcKA0FORBABEgYKAk9SEAIigQMK",
+            "EENvbHVtbkRlZmluaXRpb24SDAoEbmFtZRgBIAEoCRIuCgR0eXBlGAIgASgO",
+            "MiAub3JnLnJveWxhbmNlLnlhb3JtLlByb3RvYnVmVHlwZRIOCgZpc19rZXkY",
+            "AyABKAgSRAoLY29sdW1uX3R5cGUYBCABKA4yLy5vcmcucm95bGFuY2UueWFv",
+            "cm0uQ29sdW1uRGVmaW5pdGlvbi5Db2x1bW5UeXBlEkQKC2xpbmtlcl90eXBl",
+            "GAUgASgOMi8ub3JnLnJveWxhbmNlLnlhb3JtLkNvbHVtbkRlZmluaXRpb24u",
+            "TGlua2VyVHlwZRINCgVvcmRlchgGIAEoBSJICgpDb2x1bW5UeXBlEgoKBlND",
+            "QUxBUhAAEg0KCUVOVU1fTkFNRRABEg4KCkVOVU1fVkFMVUUQAhIPCgtNRVNT",
+            "QUdFX0tFWRADIjoKCkxpbmtlclR5cGUSCAoETk9ORRAAEgoKBlBBUkVOVBAB",
+            "EgkKBUNISUxEEAISCwoHTkVJVEhFUhADIoABCgVJbmRleBI6Cgxjb2x1bW5f",
+            "bmFtZXMYASADKAsyJC5vcmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5p",
+            "dGlvbhI7Cg1pbmNsdWRlX25hbWVzGAIgAygLMiQub3JnLnJveWxhbmNlLnlh",
+            "b3JtLkNvbHVtbkRlZmluaXRpb24ilgMKCkRpZmZlcmVuY2USPgoLZW50aXR5",
+            "X3R5cGUYASABKA4yKS5vcmcucm95bGFuY2UueWFvcm0uRGlmZmVyZW5jZS5F",
+            "bnRpdHlUeXBlEjsKCW9wZXJhdGlvbhgCIAEoDjIoLm9yZy5yb3lsYW5jZS55",
+            "YW9ybS5EaWZmZXJlbmNlLk9wZXJhdGlvbhIMCgRuYW1lGAMgASgJEigKBWlu",
+            "ZGV4GAQgASgLMhkub3JnLnJveWxhbmNlLnlhb3JtLkluZGV4EkEKE3Byb3Bl",
+            "cnR5X2RlZmluaXRpb24YBSABKAsyJC5vcmcucm95bGFuY2UueWFvcm0uQ29s",
+            "dW1uRGVmaW5pdGlvbhI9ChB0YWJsZV9kZWZpbml0aW9uGAYgASgLMiMub3Jn",
+            "LnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbiIuCgpFbnRpdHlUeXBl",
+            "EgkKBUlOREVYEAASCgoGQ09MVU1OEAESCQoFVEFCTEUQAiIhCglPcGVyYXRp",
+            "b24SCgoGQ1JFQVRFEAASCAoERFJPUBABIowCCg9UYWJsZURlZmluaXRpb24S",
+            "DAoEbmFtZRgBIAEoCRJAChJjb2x1bW5fZGVmaW5pdGlvbnMYAiADKAsyJC5v",
+            "cmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbhIoCgVpbmRleBgD",
+            "IAEoCzIZLm9yZy5yb3lsYW5jZS55YW9ybS5JbmRleBJBCgp0YWJsZV90eXBl",
+            "GAQgASgOMi0ub3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbi5U",
+            "YWJsZVR5cGUiPAoJVGFibGVUeXBlEgoKBk5PUk1BTBAAEhIKDkxJTktFUl9N",
+            "RVNTQUdFEAESDwoLTElOS0VSX0VOVU0QAiJSChBUYWJsZURlZmluaXRpb25z",
+            "Ej4KEXRhYmxlX2RlZmluaXRpb25zGAEgAygLMiMub3JnLnJveWxhbmNlLnlh",
+            "b3JtLlRhYmxlRGVmaW5pdGlvbiJhChBEaWZmZXJlbmNlUmVwb3J0EhgKEG1p",
+            "Z3JhdGlvbl9leGlzdHMYASABKAgSMwoLZGlmZmVyZW5jZXMYAiADKAsyHi5v",
+            "cmcucm95bGFuY2UueWFvcm0uRGlmZmVyZW5jZSKbAwoGQ29sdW1uEjgKCmRl",
+            "ZmluaXRpb24YASABKAsyJC5vcmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVm",
+            "aW5pdGlvbhIVCg1kb3VibGVfaG9sZGVyGAIgASgBEhQKDGZsb2F0X2hvbGRl",
+            "chgDIAEoAhIUCgxpbnQzMl9ob2xkZXIYBCABKAUSFAoMaW50NjRfaG9sZGVy",
+            "GAUgASgDEhUKDXVpbnQzMl9ob2xkZXIYBiABKA0SFQoNdWludDY0X2hvbGRl",
+            "chgHIAEoBBIVCg1zaW50MzJfaG9sZGVyGAggASgREhUKDXNpbnQ2NF9ob2xk",
+            "ZXIYCSABKBISFgoOZml4ZWQzMl9ob2xkZXIYCiABKAcSFgoOZml4ZWQ2NF9o",
+            "b2xkZXIYCyABKAYSFwoPc2ZpeGVkMzJfaG9sZGVyGAwgASgPEhcKD3NmaXhl",
+            "ZDY0X2hvbGRlchgNIAEoEBITCgtib29sX2hvbGRlchgOIAEoCBIVCg1zdHJp",
+            "bmdfaG9sZGVyGA8gASgJEhQKDGJ5dGVzX2hvbGRlchgQIAEoDCI1CgZSZWNv",
+            "cmQSKwoHY29sdW1ucxgBIAMoCzIaLm9yZy5yb3lsYW5jZS55YW9ybS5Db2x1",
+            "bW4iNgoHUmVjb3JkcxIrCgdyZWNvcmRzGAEgAygLMhoub3JnLnJveWxhbmNl",
+            "Lnlhb3JtLlJlY29yZCKPAQoMVGFibGVSZWNvcmRzEj0KEHRhYmxlX2RlZmlu",
             "aXRpb24YASABKAsyIy5vcmcucm95bGFuY2UueWFvcm0uVGFibGVEZWZpbml0",
-            "aW9uEkMKFm90aGVyX3RhYmxlX2RlZmluaXRpb24YAiABKAsyIy5vcmcucm95",
-            "bGFuY2UueWFvcm0uVGFibGVEZWZpbml0aW9uEj8KEmxpbmtlcl90YWJsZV90",
-            "YWJsZRgDIAEoCzIjLm9yZy5yb3lsYW5jZS55YW9ybS5UYWJsZURlZmluaXRp",
-            "b24SYAoVZGVmaW5pdGlvbl9ncmFwaF90eXBlGAQgASgOMkEub3JnLnJveWxh",
-            "bmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbkdyYXBoLlRhYmxlRGVmaW5pdGlv",
-            "bkdyYXBoVHlwZRIRCgltYWluX25hbWUYBSABKAkSEgoKb3RoZXJfbmFtZRgG",
-            "IAEoCRITCgtjb2x1bW5fbmFtZRgHIAEoCSI7ChhUYWJsZURlZmluaXRpb25H",
-            "cmFwaFR5cGUSDQoJRU5VTV9UWVBFEAASEAoMTUVTU0FHRV9UWVBFEAEipgEK",
-            "FVRhYmxlRGVmaW5pdGlvbkdyYXBocxJCChVtYWluX3RhYmxlX2RlZmluaXRp",
-            "b24YASABKAsyIy5vcmcucm95bGFuY2UueWFvcm0uVGFibGVEZWZpbml0aW9u",
-            "EkkKF3RhYmxlX2RlZmluaXRpb25fZ3JhcGhzGAIgAygLMigub3JnLnJveWxh",
-            "bmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbkdyYXBoInoKDkNvbm5lY3Rpb25J",
-            "bmZvEgwKBGhvc3QYASABKAkSDAoEdXNlchgCIAEoCRIQCghwYXNzd29yZBgD",
-            "IAEoCRIOCgZzY2hlbWEYBCABKAkSHAoUc2hvdWxkX2NyZWF0ZV9zY2hlbWEY",
-            "BSABKAgSDAoEcG9ydBgGIAEoBSJjCglNaWdyYXRpb24SCgoCaWQYASABKAkS",
-            "FAoMY29udGV4dF9uYW1lGAIgASgJEh8KF21vZGVsX2RlZmluaXRpb25fYmFz",
-            "ZTY0GAMgASgJEhMKC2luc2VydF9kYXRlGAQgASgDIjQKF0RhdGFiYXNlRXhl",
-            "Y3V0aW9uUmVwb3J0EhkKEWNhbGxzX3RvX2RhdGFiYXNlGAEgASgDIskCCgdK",
-            "b2luS2V5EjMKBWZpcnN0GAEgASgLMiQub3JnLnJveWxhbmNlLnlhb3JtLkNv",
-            "bHVtbkRlZmluaXRpb24SNAoGc2Vjb25kGAIgASgLMiQub3JnLnJveWxhbmNl",
-            "Lnlhb3JtLkNvbHVtbkRlZmluaXRpb24SMwoFdGhpcmQYAyABKAsyJC5vcmcu",
-            "cm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbhI0CgZmb3VydGgYBCAB",
-            "KAsyJC5vcmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVmaW5pdGlvbhIzCgVm",
-            "aWZ0aBgFIAEoCzIkLm9yZy5yb3lsYW5jZS55YW9ybS5Db2x1bW5EZWZpbml0",
-            "aW9uEjMKBXNpeHRoGAYgASgLMiQub3JnLnJveWxhbmNlLnlhb3JtLkNvbHVt",
-            "bkRlZmluaXRpb24ibgoOSm9pbkRlZmluaXRpb24SMgoFdGFibGUYASABKAsy",
-            "Iy5vcmcucm95bGFuY2UueWFvcm0uVGFibGVEZWZpbml0aW9uEigKA2tleRgC",
-            "IAEoCzIbLm9yZy5yb3lsYW5jZS55YW9ybS5Kb2luS2V5IkQKBEpvaW4SPAoQ",
-            "am9pbl9kZWZpbml0aW9ucxgBIAMoCzIiLm9yZy5yb3lsYW5jZS55YW9ybS5K",
-            "b2luRGVmaW5pdGlvbiKfAgoOVUlZYW9ybVJlcXVlc3QSDQoFdG9rZW4YASAB",
-            "KAkSPQoQdGFibGVfZGVmaW5pdGlvbhgCIAEoCzIjLm9yZy5yb3lsYW5jZS55",
-            "YW9ybS5UYWJsZURlZmluaXRpb24SLAoHcmVjb3JkcxgDIAEoCzIbLm9yZy5y",
-            "b3lsYW5jZS55YW9ybS5SZWNvcmRzEjsKD2Nvbm5lY3Rpb25faW5mbxgEIAEo",
-            "CzIiLm9yZy5yb3lsYW5jZS55YW9ybS5Db25uZWN0aW9uSW5mbxI1Cgx3aGVy",
-            "ZV9jbGF1c2UYBSABKAsyHy5vcmcucm95bGFuY2UueWFvcm0uV2hlcmVDbGF1",
-            "c2USDQoFbGltaXQYBiABKAMSDgoGb2Zmc2V0GAcgASgDIvYBCg9VSVlhb3Jt",
-            "UmVzcG9uc2USLAoHcmVjb3JkcxgBIAEoCzIbLm9yZy5yb3lsYW5jZS55YW9y",
-            "bS5SZWNvcmRzEg8KB3NjaGVtYXMYAiADKAkSDgoGdGFibGVzGAMgAygJEj0K",
-            "EHRhYmxlX2RlZmluaXRpb24YBCABKAsyIy5vcmcucm95bGFuY2UueWFvcm0u",
-            "VGFibGVEZWZpbml0aW9uEj8KEXRhYmxlX2RlZmluaXRpb25zGAUgASgLMiQu",
-            "b3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbnMSFAoMcmVjb3Jk",
-            "X2NvdW50GAYgASgDKtcBCgxQcm90b2J1ZlR5cGUSCAoETk9ORRAAEgoKBkRP",
-            "VUJMRRABEgkKBUZMT0FUEAISCQoFSU5UMzIQAxIJCgVJTlQ2NBAEEgoKBlVJ",
-            "TlQzMhAFEgoKBlVJTlQ2NBAGEgoKBlNJTlQzMhAHEgoKBlNJTlQ2NBAIEgsK",
-            "B0ZJWEVEMzIQCRILCgdGSVhFRDY0EAoSDAoIU0ZJWEVEMzIQCxIMCghTRklY",
-            "RUQ2NBAMEggKBEJPT0wQDRIKCgZTVFJJTkcQDhIJCgVCWVRFUxAPEgkKBVBS",
-            "T1RPEBBiBnByb3RvMw=="));
+            "aW9uEiwKB3JlY29yZHMYAiABKAsyGy5vcmcucm95bGFuY2UueWFvcm0uUmVj",
+            "b3JkcxISCgp0YWJsZV9uYW1lGAMgASgJIkoKD0FsbFRhYmxlUmVjb3JkcxI3",
+            "Cg10YWJsZV9yZWNvcmRzGAEgAygLMiAub3JnLnJveWxhbmNlLnlhb3JtLlRh",
+            "YmxlUmVjb3JkcyLPBQoRRGF0YWJhc2VPcGVyYXRpb24SPQoQdGFibGVfZGVm",
+            "aW5pdGlvbhgBIAEoCzIjLm9yZy5yb3lsYW5jZS55YW9ybS5UYWJsZURlZmlu",
+            "aXRpb24SLAoHcmVjb3JkcxgCIAEoCzIbLm9yZy5yb3lsYW5jZS55YW9ybS5S",
+            "ZWNvcmRzEigKBWluZGV4GAMgASgLMhkub3JnLnJveWxhbmNlLnlhb3JtLklu",
+            "ZGV4Ej8KEWNvbHVtbl9kZWZpbml0aW9uGAQgASgLMiQub3JnLnJveWxhbmNl",
+            "Lnlhb3JtLkNvbHVtbkRlZmluaXRpb24SNQoMd2hlcmVfY2xhdXNlGAUgASgL",
+            "Mh8ub3JnLnJveWxhbmNlLnlhb3JtLldoZXJlQ2xhdXNlElwKF2RhdGFiYXNl",
+            "X29wZXJhdGlvbl90eXBlGAYgASgOMjsub3JnLnJveWxhbmNlLnlhb3JtLkRh",
+            "dGFiYXNlT3BlcmF0aW9uLkRhdGFiYXNlT3BlcmF0aW9uVHlwZSLMAgoVRGF0",
+            "YWJhc2VPcGVyYXRpb25UeXBlEhAKDENSRUFURV9UQUJMRRAAEg4KCkRST1Bf",
+            "VEFCTEUQARIQCgxDUkVBVEVfSU5ERVgQAhIOCgpEUk9QX0lOREVYEAMSEQoN",
+            "Q1JFQVRFX0NPTFVNThAEEg8KC0RST1BfQ09MVU1OEAUSDQoJR0VUX0NPVU5U",
+            "EAYSDgoKR0VUX0NVU1RPTRAHEgcKA0dFVBAIEgwKCEdFVF9NQU5ZEAkSDQoJ",
+            "R0VUX1dIRVJFEAoSDwoLQlVMS19JTlNFUlQQCxIUChBDUkVBVEVfT1JfVVBE",
+            "QVRFEAwSCgoGQ1JFQVRFEA0SCgoGVVBEQVRFEA4SGAoUVVBEQVRFX1dJVEhf",
+            "Q1JJVEVSSUEQDxIRCg1VUERBVEVfQ1VTVE9NEBASCgoGREVMRVRFEBESDgoK",
+            "REVMRVRFX0FMTBASIoYCChdEYXRhYmFzZU9wZXJhdGlvblJlc3VsdBITCgti",
+            "b29sX3Jlc3VsdBgBIAEoCBIUCgxjb3VudF9yZXN1bHQYAiABKAMSMQoNcmVj",
+            "b3JkX3Jlc3VsdBgDIAEoCzIaLm9yZy5yb3lsYW5jZS55YW9ybS5SZWNvcmQS",
+            "MwoOcmVjb3Jkc19yZXN1bHQYBCABKAsyGy5vcmcucm95bGFuY2UueWFvcm0u",
+            "UmVjb3JkcxIVCg1lcnJvcl9tZXNzYWdlGAUgASgJEkEKEmRhdGFiYXNlX29w",
+            "ZXJhdGlvbhgGIAEoCzIlLm9yZy5yb3lsYW5jZS55YW9ybS5EYXRhYmFzZU9w",
+            "ZXJhdGlvbiK/AQoSRGF0YWJhc2VEZWZpbml0aW9uEg4KBnNjaGVtYRgBIAEo",
+            "CRIMCgRuYW1lGAIgASgJEj8KEXRhYmxlX2RlZmluaXRpb25zGAMgASgLMiQu",
+            "b3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlvbnMSSgoXdGFibGVf",
+            "ZGVmaW5pdGlvbl9ncmFwaHMYBCADKAsyKS5vcmcucm95bGFuY2UueWFvcm0u",
+            "VGFibGVEZWZpbml0aW9uR3JhcGhzIrsDChRUYWJsZURlZmluaXRpb25HcmFw",
+            "aBJCChVtYWluX3RhYmxlX2RlZmluaXRpb24YASABKAsyIy5vcmcucm95bGFu",
+            "Y2UueWFvcm0uVGFibGVEZWZpbml0aW9uEkMKFm90aGVyX3RhYmxlX2RlZmlu",
+            "aXRpb24YAiABKAsyIy5vcmcucm95bGFuY2UueWFvcm0uVGFibGVEZWZpbml0",
+            "aW9uEj8KEmxpbmtlcl90YWJsZV90YWJsZRgDIAEoCzIjLm9yZy5yb3lsYW5j",
+            "ZS55YW9ybS5UYWJsZURlZmluaXRpb24SYAoVZGVmaW5pdGlvbl9ncmFwaF90",
+            "eXBlGAQgASgOMkEub3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlv",
+            "bkdyYXBoLlRhYmxlRGVmaW5pdGlvbkdyYXBoVHlwZRIRCgltYWluX25hbWUY",
+            "BSABKAkSEgoKb3RoZXJfbmFtZRgGIAEoCRITCgtjb2x1bW5fbmFtZRgHIAEo",
+            "CSI7ChhUYWJsZURlZmluaXRpb25HcmFwaFR5cGUSDQoJRU5VTV9UWVBFEAAS",
+            "EAoMTUVTU0FHRV9UWVBFEAEipgEKFVRhYmxlRGVmaW5pdGlvbkdyYXBocxJC",
+            "ChVtYWluX3RhYmxlX2RlZmluaXRpb24YASABKAsyIy5vcmcucm95bGFuY2Uu",
+            "eWFvcm0uVGFibGVEZWZpbml0aW9uEkkKF3RhYmxlX2RlZmluaXRpb25fZ3Jh",
+            "cGhzGAIgAygLMigub3JnLnJveWxhbmNlLnlhb3JtLlRhYmxlRGVmaW5pdGlv",
+            "bkdyYXBoInoKDkNvbm5lY3Rpb25JbmZvEgwKBGhvc3QYASABKAkSDAoEdXNl",
+            "chgCIAEoCRIQCghwYXNzd29yZBgDIAEoCRIOCgZzY2hlbWEYBCABKAkSHAoU",
+            "c2hvdWxkX2NyZWF0ZV9zY2hlbWEYBSABKAgSDAoEcG9ydBgGIAEoBSJjCglN",
+            "aWdyYXRpb24SCgoCaWQYASABKAkSFAoMY29udGV4dF9uYW1lGAIgASgJEh8K",
+            "F21vZGVsX2RlZmluaXRpb25fYmFzZTY0GAMgASgJEhMKC2luc2VydF9kYXRl",
+            "GAQgASgDIjQKF0RhdGFiYXNlRXhlY3V0aW9uUmVwb3J0EhkKEWNhbGxzX3Rv",
+            "X2RhdGFiYXNlGAEgASgDIskCCgdKb2luS2V5EjMKBWZpcnN0GAEgASgLMiQu",
+            "b3JnLnJveWxhbmNlLnlhb3JtLkNvbHVtbkRlZmluaXRpb24SNAoGc2Vjb25k",
+            "GAIgASgLMiQub3JnLnJveWxhbmNlLnlhb3JtLkNvbHVtbkRlZmluaXRpb24S",
+            "MwoFdGhpcmQYAyABKAsyJC5vcmcucm95bGFuY2UueWFvcm0uQ29sdW1uRGVm",
+            "aW5pdGlvbhI0CgZmb3VydGgYBCABKAsyJC5vcmcucm95bGFuY2UueWFvcm0u",
+            "Q29sdW1uRGVmaW5pdGlvbhIzCgVmaWZ0aBgFIAEoCzIkLm9yZy5yb3lsYW5j",
+            "ZS55YW9ybS5Db2x1bW5EZWZpbml0aW9uEjMKBXNpeHRoGAYgASgLMiQub3Jn",
+            "LnJveWxhbmNlLnlhb3JtLkNvbHVtbkRlZmluaXRpb24ibgoOSm9pbkRlZmlu",
+            "aXRpb24SMgoFdGFibGUYASABKAsyIy5vcmcucm95bGFuY2UueWFvcm0uVGFi",
+            "bGVEZWZpbml0aW9uEigKA2tleRgCIAEoCzIbLm9yZy5yb3lsYW5jZS55YW9y",
+            "bS5Kb2luS2V5IkQKBEpvaW4SPAoQam9pbl9kZWZpbml0aW9ucxgBIAMoCzIi",
+            "Lm9yZy5yb3lsYW5jZS55YW9ybS5Kb2luRGVmaW5pdGlvbiLJAwoOVUlZYW9y",
+            "bVJlcXVlc3QSDQoFdG9rZW4YASABKAkSPQoQdGFibGVfZGVmaW5pdGlvbhgC",
+            "IAEoCzIjLm9yZy5yb3lsYW5jZS55YW9ybS5UYWJsZURlZmluaXRpb24SLAoH",
+            "cmVjb3JkcxgDIAEoCzIbLm9yZy5yb3lsYW5jZS55YW9ybS5SZWNvcmRzEjsK",
+            "D2Nvbm5lY3Rpb25faW5mbxgEIAEoCzIiLm9yZy5yb3lsYW5jZS55YW9ybS5D",
+            "b25uZWN0aW9uSW5mbxI1Cgx3aGVyZV9jbGF1c2UYBSABKAsyHy5vcmcucm95",
+            "bGFuY2UueWFvcm0uV2hlcmVDbGF1c2USDQoFbGltaXQYBiABKAMSDgoGb2Zm",
+            "c2V0GAcgASgDEh0KFWluc2VydF9zYW1lX2FzX3VwZGF0ZRgIIAEoCBITCgtz",
+            "Y2hlbWFfbmFtZRgJIAEoCRISCgp0YWJsZV9uYW1lGAogASgJEhIKCmN1c3Rv",
+            "bV9zcWwYCyABKAkSJgoIbWVzc2FnZXMYDCADKAsyFC5nb29nbGUucHJvdG9i",
+            "dWYuQW55EhcKD2ZpbGVfZGVzY3JpcHRvchgNIAEoCRILCgNpZHMYDiADKAki",
+            "5gIKD1VJWWFvcm1SZXNwb25zZRIsCgdyZWNvcmRzGAEgASgLMhsub3JnLnJv",
+            "eWxhbmNlLnlhb3JtLlJlY29yZHMSDwoHc2NoZW1hcxgCIAMoCRIOCgZ0YWJs",
+            "ZXMYAyADKAkSPQoQdGFibGVfZGVmaW5pdGlvbhgEIAEoCzIjLm9yZy5yb3ls",
+            "YW5jZS55YW9ybS5UYWJsZURlZmluaXRpb24SPwoRdGFibGVfZGVmaW5pdGlv",
+            "bnMYBSABKAsyJC5vcmcucm95bGFuY2UueWFvcm0uVGFibGVEZWZpbml0aW9u",
+            "cxIUCgxyZWNvcmRfY291bnQYBiABKAMSDgoGcmVzdWx0GAcgASgIEkcKF3By",
+            "b3RvX3R5cGVfdG9fc3FsX3R5cGVzGAggAygLMiYub3JnLnJveWxhbmNlLnlh",
+            "b3JtLlByb3RvVHlwZVRvU3FsVHlwZRIVCg1zdHJpbmdfcmVzdWx0GAkgASgJ",
+            "IvYDChtTcWxHZW5lcmF0b3JSZXF1ZXN0UmVzcG9uc2USNwoKZGVmaW5pdGlv",
+            "bhgBIAEoCzIjLm9yZy5yb3lsYW5jZS55YW9ybS5UYWJsZURlZmluaXRpb24S",
+            "PwoRY29sdW1uX2RlZmluaXRpb24YAiABKAsyJC5vcmcucm95bGFuY2UueWFv",
+            "cm0uQ29sdW1uRGVmaW5pdGlvbhIoCgVpbmRleBgDIAEoCzIZLm9yZy5yb3ls",
+            "YW5jZS55YW9ybS5JbmRleBIqCgZjb2x1bW4YBCABKAsyGi5vcmcucm95bGFu",
+            "Y2UueWFvcm0uQ29sdW1uEjUKDHdoZXJlX2NsYXVzZRgFIAEoCzIfLm9yZy5y",
+            "b3lsYW5jZS55YW9ybS5XaGVyZUNsYXVzZRIsCgdyZWNvcmRzGAYgASgLMhsu",
+            "b3JnLnJveWxhbmNlLnlhb3JtLlJlY29yZHMSDQoFbGltaXQYByABKAMSDgoG",
+            "b2Zmc2V0GAggASgDEhMKC3NjaGVtYV9uYW1lGAkgASgJEhIKCnRhYmxlX25h",
+            "bWUYCiABKAkSEAoIcmVzcG9uc2UYCyABKAkSSAoXcHJvdG9fdHlwZV90b19z",
+            "cWxfdHlwZXMYDCABKAsyJy5vcmcucm95bGFuY2UueWFvcm0uUHJvdG9UeXBl",
+            "VG9TcWxUeXBlcyrXAQoMUHJvdG9idWZUeXBlEggKBE5PTkUQABIKCgZET1VC",
+            "TEUQARIJCgVGTE9BVBACEgkKBUlOVDMyEAMSCQoFSU5UNjQQBBIKCgZVSU5U",
+            "MzIQBRIKCgZVSU5UNjQQBhIKCgZTSU5UMzIQBxIKCgZTSU5UNjQQCBILCgdG",
+            "SVhFRDMyEAkSCwoHRklYRUQ2NBAKEgwKCFNGSVhFRDMyEAsSDAoIU0ZJWEVE",
+            "NjQQDBIICgRCT09MEA0SCgoGU1RSSU5HEA4SCQoFQllURVMQDxIJCgVQUk9U",
+            "TxAQYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Org.Roylance.Yaorm.ProtobufType), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.ProtoTypeToSqlType), global::Org.Roylance.Yaorm.ProtoTypeToSqlType.Parser, new[]{ "ProtoType", "SqlType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.ProtoTypeToSqlTypes), global::Org.Roylance.Yaorm.ProtoTypeToSqlTypes.Parser, new[]{ "Results" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.WhereClause), global::Org.Roylance.Yaorm.WhereClause.Parser, new[]{ "NameAndProperty", "OperatorType", "ConnectingAndOr", "ConnectingWhereClause", "InItems" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.WhereClause.Types.OperatorType), typeof(global::Org.Roylance.Yaorm.WhereClause.Types.ConnectingAndOr) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.ColumnDefinition), global::Org.Roylance.Yaorm.ColumnDefinition.Parser, new[]{ "Name", "Type", "IsKey", "ColumnType", "LinkerType", "Order" }, null, new[]{ typeof(global::Org.Roylance.Yaorm.ColumnDefinition.Types.ColumnType), typeof(global::Org.Roylance.Yaorm.ColumnDefinition.Types.LinkerType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Index), global::Org.Roylance.Yaorm.Index.Parser, new[]{ "ColumnNames", "IncludeNames" }, null, null, null),
@@ -181,8 +205,9 @@ namespace Org.Roylance.Yaorm {
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.JoinKey), global::Org.Roylance.Yaorm.JoinKey.Parser, new[]{ "First", "Second", "Third", "Fourth", "Fifth", "Sixth" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.JoinDefinition), global::Org.Roylance.Yaorm.JoinDefinition.Parser, new[]{ "Table", "Key" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.Join), global::Org.Roylance.Yaorm.Join.Parser, new[]{ "JoinDefinitions" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.UIYaormRequest), global::Org.Roylance.Yaorm.UIYaormRequest.Parser, new[]{ "Token", "TableDefinition", "Records", "ConnectionInfo", "WhereClause", "Limit", "Offset" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.UIYaormResponse), global::Org.Roylance.Yaorm.UIYaormResponse.Parser, new[]{ "Records", "Schemas", "Tables", "TableDefinition", "TableDefinitions", "RecordCount" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.UIYaormRequest), global::Org.Roylance.Yaorm.UIYaormRequest.Parser, new[]{ "Token", "TableDefinition", "Records", "ConnectionInfo", "WhereClause", "Limit", "Offset", "InsertSameAsUpdate", "SchemaName", "TableName", "CustomSql", "Messages", "FileDescriptor", "Ids" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.UIYaormResponse), global::Org.Roylance.Yaorm.UIYaormResponse.Parser, new[]{ "Records", "Schemas", "Tables", "TableDefinition", "TableDefinitions", "RecordCount", "Result", "ProtoTypeToSqlTypes", "StringResult" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Roylance.Yaorm.SqlGeneratorRequestResponse), global::Org.Roylance.Yaorm.SqlGeneratorRequestResponse.Parser, new[]{ "Definition", "ColumnDefinition", "Index", "Column", "WhereClause", "Records", "Limit", "Offset", "SchemaName", "TableName", "Response", "ProtoTypeToSqlTypes" }, null, null, null)
           }));
     }
     #endregion
@@ -212,6 +237,260 @@ namespace Org.Roylance.Yaorm {
   #endregion
 
   #region Messages
+  public sealed partial class ProtoTypeToSqlType : pb::IMessage<ProtoTypeToSqlType> {
+    private static readonly pb::MessageParser<ProtoTypeToSqlType> _parser = new pb::MessageParser<ProtoTypeToSqlType>(() => new ProtoTypeToSqlType());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ProtoTypeToSqlType> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoTypeToSqlType() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoTypeToSqlType(ProtoTypeToSqlType other) : this() {
+      protoType_ = other.protoType_;
+      sqlType_ = other.sqlType_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoTypeToSqlType Clone() {
+      return new ProtoTypeToSqlType(this);
+    }
+
+    /// <summary>Field number for the "proto_type" field.</summary>
+    public const int ProtoTypeFieldNumber = 1;
+    private global::Org.Roylance.Yaorm.ProtobufType protoType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.ProtobufType ProtoType {
+      get { return protoType_; }
+      set {
+        protoType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sql_type" field.</summary>
+    public const int SqlTypeFieldNumber = 2;
+    private string sqlType_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SqlType {
+      get { return sqlType_; }
+      set {
+        sqlType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ProtoTypeToSqlType);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ProtoTypeToSqlType other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ProtoType != other.ProtoType) return false;
+      if (SqlType != other.SqlType) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ProtoType != 0) hash ^= ProtoType.GetHashCode();
+      if (SqlType.Length != 0) hash ^= SqlType.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ProtoType != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) ProtoType);
+      }
+      if (SqlType.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(SqlType);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ProtoType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProtoType);
+      }
+      if (SqlType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SqlType);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ProtoTypeToSqlType other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ProtoType != 0) {
+        ProtoType = other.ProtoType;
+      }
+      if (other.SqlType.Length != 0) {
+        SqlType = other.SqlType;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            protoType_ = (global::Org.Roylance.Yaorm.ProtobufType) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            SqlType = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ProtoTypeToSqlTypes : pb::IMessage<ProtoTypeToSqlTypes> {
+    private static readonly pb::MessageParser<ProtoTypeToSqlTypes> _parser = new pb::MessageParser<ProtoTypeToSqlTypes>(() => new ProtoTypeToSqlTypes());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ProtoTypeToSqlTypes> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoTypeToSqlTypes() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoTypeToSqlTypes(ProtoTypeToSqlTypes other) : this() {
+      results_ = other.results_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ProtoTypeToSqlTypes Clone() {
+      return new ProtoTypeToSqlTypes(this);
+    }
+
+    /// <summary>Field number for the "results" field.</summary>
+    public const int ResultsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Org.Roylance.Yaorm.ProtoTypeToSqlType> _repeated_results_codec
+        = pb::FieldCodec.ForMessage(10, global::Org.Roylance.Yaorm.ProtoTypeToSqlType.Parser);
+    private readonly pbc::RepeatedField<global::Org.Roylance.Yaorm.ProtoTypeToSqlType> results_ = new pbc::RepeatedField<global::Org.Roylance.Yaorm.ProtoTypeToSqlType>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Org.Roylance.Yaorm.ProtoTypeToSqlType> Results {
+      get { return results_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ProtoTypeToSqlTypes);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ProtoTypeToSqlTypes other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!results_.Equals(other.results_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= results_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      results_.WriteTo(output, _repeated_results_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += results_.CalculateSize(_repeated_results_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ProtoTypeToSqlTypes other) {
+      if (other == null) {
+        return;
+      }
+      results_.Add(other.results_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            results_.AddEntriesFrom(input, _repeated_results_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class WhereClause : pb::IMessage<WhereClause> {
     private static readonly pb::MessageParser<WhereClause> _parser = new pb::MessageParser<WhereClause>(() => new WhereClause());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -219,7 +498,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -473,7 +752,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -751,7 +1030,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -880,7 +1159,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1173,7 +1452,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1385,7 +1664,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1494,7 +1773,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1631,7 +1910,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2174,7 +2453,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2283,7 +2562,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2392,7 +2671,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2577,7 +2856,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2686,7 +2965,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3002,7 +3281,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3277,7 +3556,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3476,7 +3755,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3791,7 +4070,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3934,7 +4213,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4191,7 +4470,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4392,7 +4671,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4512,7 +4791,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4805,7 +5084,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4962,7 +5241,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5071,7 +5350,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5095,6 +5374,13 @@ namespace Org.Roylance.Yaorm {
       WhereClause = other.whereClause_ != null ? other.WhereClause.Clone() : null;
       limit_ = other.limit_;
       offset_ = other.offset_;
+      insertSameAsUpdate_ = other.insertSameAsUpdate_;
+      schemaName_ = other.schemaName_;
+      tableName_ = other.tableName_;
+      customSql_ = other.customSql_;
+      messages_ = other.messages_.Clone();
+      fileDescriptor_ = other.fileDescriptor_;
+      ids_ = other.ids_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5179,6 +5465,81 @@ namespace Org.Roylance.Yaorm {
       }
     }
 
+    /// <summary>Field number for the "insert_same_as_update" field.</summary>
+    public const int InsertSameAsUpdateFieldNumber = 8;
+    private bool insertSameAsUpdate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool InsertSameAsUpdate {
+      get { return insertSameAsUpdate_; }
+      set {
+        insertSameAsUpdate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "schema_name" field.</summary>
+    public const int SchemaNameFieldNumber = 9;
+    private string schemaName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SchemaName {
+      get { return schemaName_; }
+      set {
+        schemaName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "table_name" field.</summary>
+    public const int TableNameFieldNumber = 10;
+    private string tableName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TableName {
+      get { return tableName_; }
+      set {
+        tableName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "custom_sql" field.</summary>
+    public const int CustomSqlFieldNumber = 11;
+    private string customSql_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string CustomSql {
+      get { return customSql_; }
+      set {
+        customSql_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "messages" field.</summary>
+    public const int MessagesFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::Google.Protobuf.WellKnownTypes.Any> _repeated_messages_codec
+        = pb::FieldCodec.ForMessage(98, global::Google.Protobuf.WellKnownTypes.Any.Parser);
+    private readonly pbc::RepeatedField<global::Google.Protobuf.WellKnownTypes.Any> messages_ = new pbc::RepeatedField<global::Google.Protobuf.WellKnownTypes.Any>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Google.Protobuf.WellKnownTypes.Any> Messages {
+      get { return messages_; }
+    }
+
+    /// <summary>Field number for the "file_descriptor" field.</summary>
+    public const int FileDescriptorFieldNumber = 13;
+    private string fileDescriptor_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string FileDescriptor {
+      get { return fileDescriptor_; }
+      set {
+        fileDescriptor_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ids" field.</summary>
+    public const int IdsFieldNumber = 14;
+    private static readonly pb::FieldCodec<string> _repeated_ids_codec
+        = pb::FieldCodec.ForString(114);
+    private readonly pbc::RepeatedField<string> ids_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Ids {
+      get { return ids_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UIYaormRequest);
@@ -5199,6 +5560,13 @@ namespace Org.Roylance.Yaorm {
       if (!object.Equals(WhereClause, other.WhereClause)) return false;
       if (Limit != other.Limit) return false;
       if (Offset != other.Offset) return false;
+      if (InsertSameAsUpdate != other.InsertSameAsUpdate) return false;
+      if (SchemaName != other.SchemaName) return false;
+      if (TableName != other.TableName) return false;
+      if (CustomSql != other.CustomSql) return false;
+      if(!messages_.Equals(other.messages_)) return false;
+      if (FileDescriptor != other.FileDescriptor) return false;
+      if(!ids_.Equals(other.ids_)) return false;
       return true;
     }
 
@@ -5212,6 +5580,13 @@ namespace Org.Roylance.Yaorm {
       if (whereClause_ != null) hash ^= WhereClause.GetHashCode();
       if (Limit != 0L) hash ^= Limit.GetHashCode();
       if (Offset != 0L) hash ^= Offset.GetHashCode();
+      if (InsertSameAsUpdate != false) hash ^= InsertSameAsUpdate.GetHashCode();
+      if (SchemaName.Length != 0) hash ^= SchemaName.GetHashCode();
+      if (TableName.Length != 0) hash ^= TableName.GetHashCode();
+      if (CustomSql.Length != 0) hash ^= CustomSql.GetHashCode();
+      hash ^= messages_.GetHashCode();
+      if (FileDescriptor.Length != 0) hash ^= FileDescriptor.GetHashCode();
+      hash ^= ids_.GetHashCode();
       return hash;
     }
 
@@ -5250,6 +5625,28 @@ namespace Org.Roylance.Yaorm {
         output.WriteRawTag(56);
         output.WriteInt64(Offset);
       }
+      if (InsertSameAsUpdate != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(InsertSameAsUpdate);
+      }
+      if (SchemaName.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(SchemaName);
+      }
+      if (TableName.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(TableName);
+      }
+      if (CustomSql.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(CustomSql);
+      }
+      messages_.WriteTo(output, _repeated_messages_codec);
+      if (FileDescriptor.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(FileDescriptor);
+      }
+      ids_.WriteTo(output, _repeated_ids_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5276,6 +5673,23 @@ namespace Org.Roylance.Yaorm {
       if (Offset != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Offset);
       }
+      if (InsertSameAsUpdate != false) {
+        size += 1 + 1;
+      }
+      if (SchemaName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SchemaName);
+      }
+      if (TableName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TableName);
+      }
+      if (CustomSql.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CustomSql);
+      }
+      size += messages_.CalculateSize(_repeated_messages_codec);
+      if (FileDescriptor.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FileDescriptor);
+      }
+      size += ids_.CalculateSize(_repeated_ids_codec);
       return size;
     }
 
@@ -5317,6 +5731,23 @@ namespace Org.Roylance.Yaorm {
       if (other.Offset != 0L) {
         Offset = other.Offset;
       }
+      if (other.InsertSameAsUpdate != false) {
+        InsertSameAsUpdate = other.InsertSameAsUpdate;
+      }
+      if (other.SchemaName.Length != 0) {
+        SchemaName = other.SchemaName;
+      }
+      if (other.TableName.Length != 0) {
+        TableName = other.TableName;
+      }
+      if (other.CustomSql.Length != 0) {
+        CustomSql = other.CustomSql;
+      }
+      messages_.Add(other.messages_);
+      if (other.FileDescriptor.Length != 0) {
+        FileDescriptor = other.FileDescriptor;
+      }
+      ids_.Add(other.ids_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5367,6 +5798,34 @@ namespace Org.Roylance.Yaorm {
             Offset = input.ReadInt64();
             break;
           }
+          case 64: {
+            InsertSameAsUpdate = input.ReadBool();
+            break;
+          }
+          case 74: {
+            SchemaName = input.ReadString();
+            break;
+          }
+          case 82: {
+            TableName = input.ReadString();
+            break;
+          }
+          case 90: {
+            CustomSql = input.ReadString();
+            break;
+          }
+          case 98: {
+            messages_.AddEntriesFrom(input, _repeated_messages_codec);
+            break;
+          }
+          case 106: {
+            FileDescriptor = input.ReadString();
+            break;
+          }
+          case 114: {
+            ids_.AddEntriesFrom(input, _repeated_ids_codec);
+            break;
+          }
         }
       }
     }
@@ -5380,7 +5839,7 @@ namespace Org.Roylance.Yaorm {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[24]; }
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5403,6 +5862,9 @@ namespace Org.Roylance.Yaorm {
       TableDefinition = other.tableDefinition_ != null ? other.TableDefinition.Clone() : null;
       TableDefinitions = other.tableDefinitions_ != null ? other.TableDefinitions.Clone() : null;
       recordCount_ = other.recordCount_;
+      result_ = other.result_;
+      protoTypeToSqlTypes_ = other.protoTypeToSqlTypes_.Clone();
+      stringResult_ = other.stringResult_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5474,6 +5936,38 @@ namespace Org.Roylance.Yaorm {
       }
     }
 
+    /// <summary>Field number for the "result" field.</summary>
+    public const int ResultFieldNumber = 7;
+    private bool result_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Result {
+      get { return result_; }
+      set {
+        result_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "proto_type_to_sql_types" field.</summary>
+    public const int ProtoTypeToSqlTypesFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::Org.Roylance.Yaorm.ProtoTypeToSqlType> _repeated_protoTypeToSqlTypes_codec
+        = pb::FieldCodec.ForMessage(66, global::Org.Roylance.Yaorm.ProtoTypeToSqlType.Parser);
+    private readonly pbc::RepeatedField<global::Org.Roylance.Yaorm.ProtoTypeToSqlType> protoTypeToSqlTypes_ = new pbc::RepeatedField<global::Org.Roylance.Yaorm.ProtoTypeToSqlType>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Org.Roylance.Yaorm.ProtoTypeToSqlType> ProtoTypeToSqlTypes {
+      get { return protoTypeToSqlTypes_; }
+    }
+
+    /// <summary>Field number for the "string_result" field.</summary>
+    public const int StringResultFieldNumber = 9;
+    private string stringResult_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string StringResult {
+      get { return stringResult_; }
+      set {
+        stringResult_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UIYaormResponse);
@@ -5493,6 +5987,9 @@ namespace Org.Roylance.Yaorm {
       if (!object.Equals(TableDefinition, other.TableDefinition)) return false;
       if (!object.Equals(TableDefinitions, other.TableDefinitions)) return false;
       if (RecordCount != other.RecordCount) return false;
+      if (Result != other.Result) return false;
+      if(!protoTypeToSqlTypes_.Equals(other.protoTypeToSqlTypes_)) return false;
+      if (StringResult != other.StringResult) return false;
       return true;
     }
 
@@ -5505,6 +6002,9 @@ namespace Org.Roylance.Yaorm {
       if (tableDefinition_ != null) hash ^= TableDefinition.GetHashCode();
       if (tableDefinitions_ != null) hash ^= TableDefinitions.GetHashCode();
       if (RecordCount != 0L) hash ^= RecordCount.GetHashCode();
+      if (Result != false) hash ^= Result.GetHashCode();
+      hash ^= protoTypeToSqlTypes_.GetHashCode();
+      if (StringResult.Length != 0) hash ^= StringResult.GetHashCode();
       return hash;
     }
 
@@ -5533,6 +6033,15 @@ namespace Org.Roylance.Yaorm {
         output.WriteRawTag(48);
         output.WriteInt64(RecordCount);
       }
+      if (Result != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(Result);
+      }
+      protoTypeToSqlTypes_.WriteTo(output, _repeated_protoTypeToSqlTypes_codec);
+      if (StringResult.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(StringResult);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5551,6 +6060,13 @@ namespace Org.Roylance.Yaorm {
       }
       if (RecordCount != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(RecordCount);
+      }
+      if (Result != false) {
+        size += 1 + 1;
+      }
+      size += protoTypeToSqlTypes_.CalculateSize(_repeated_protoTypeToSqlTypes_codec);
+      if (StringResult.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(StringResult);
       }
       return size;
     }
@@ -5582,6 +6098,13 @@ namespace Org.Roylance.Yaorm {
       }
       if (other.RecordCount != 0L) {
         RecordCount = other.RecordCount;
+      }
+      if (other.Result != false) {
+        Result = other.Result;
+      }
+      protoTypeToSqlTypes_.Add(other.protoTypeToSqlTypes_);
+      if (other.StringResult.Length != 0) {
+        StringResult = other.StringResult;
       }
     }
 
@@ -5624,6 +6147,485 @@ namespace Org.Roylance.Yaorm {
           }
           case 48: {
             RecordCount = input.ReadInt64();
+            break;
+          }
+          case 56: {
+            Result = input.ReadBool();
+            break;
+          }
+          case 66: {
+            protoTypeToSqlTypes_.AddEntriesFrom(input, _repeated_protoTypeToSqlTypes_codec);
+            break;
+          }
+          case 74: {
+            StringResult = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SqlGeneratorRequestResponse : pb::IMessage<SqlGeneratorRequestResponse> {
+    private static readonly pb::MessageParser<SqlGeneratorRequestResponse> _parser = new pb::MessageParser<SqlGeneratorRequestResponse>(() => new SqlGeneratorRequestResponse());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SqlGeneratorRequestResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Org.Roylance.Yaorm.YaormModelReflection.Descriptor.MessageTypes[27]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqlGeneratorRequestResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqlGeneratorRequestResponse(SqlGeneratorRequestResponse other) : this() {
+      Definition = other.definition_ != null ? other.Definition.Clone() : null;
+      ColumnDefinition = other.columnDefinition_ != null ? other.ColumnDefinition.Clone() : null;
+      Index = other.index_ != null ? other.Index.Clone() : null;
+      Column = other.column_ != null ? other.Column.Clone() : null;
+      WhereClause = other.whereClause_ != null ? other.WhereClause.Clone() : null;
+      Records = other.records_ != null ? other.Records.Clone() : null;
+      limit_ = other.limit_;
+      offset_ = other.offset_;
+      schemaName_ = other.schemaName_;
+      tableName_ = other.tableName_;
+      response_ = other.response_;
+      ProtoTypeToSqlTypes = other.protoTypeToSqlTypes_ != null ? other.ProtoTypeToSqlTypes.Clone() : null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqlGeneratorRequestResponse Clone() {
+      return new SqlGeneratorRequestResponse(this);
+    }
+
+    /// <summary>Field number for the "definition" field.</summary>
+    public const int DefinitionFieldNumber = 1;
+    private global::Org.Roylance.Yaorm.TableDefinition definition_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.TableDefinition Definition {
+      get { return definition_; }
+      set {
+        definition_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "column_definition" field.</summary>
+    public const int ColumnDefinitionFieldNumber = 2;
+    private global::Org.Roylance.Yaorm.ColumnDefinition columnDefinition_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.ColumnDefinition ColumnDefinition {
+      get { return columnDefinition_; }
+      set {
+        columnDefinition_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 3;
+    private global::Org.Roylance.Yaorm.Index index_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.Index Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "column" field.</summary>
+    public const int ColumnFieldNumber = 4;
+    private global::Org.Roylance.Yaorm.Column column_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.Column Column {
+      get { return column_; }
+      set {
+        column_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "where_clause" field.</summary>
+    public const int WhereClauseFieldNumber = 5;
+    private global::Org.Roylance.Yaorm.WhereClause whereClause_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.WhereClause WhereClause {
+      get { return whereClause_; }
+      set {
+        whereClause_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "records" field.</summary>
+    public const int RecordsFieldNumber = 6;
+    private global::Org.Roylance.Yaorm.Records records_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.Records Records {
+      get { return records_; }
+      set {
+        records_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "limit" field.</summary>
+    public const int LimitFieldNumber = 7;
+    private long limit_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Limit {
+      get { return limit_; }
+      set {
+        limit_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "offset" field.</summary>
+    public const int OffsetFieldNumber = 8;
+    private long offset_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Offset {
+      get { return offset_; }
+      set {
+        offset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "schema_name" field.</summary>
+    public const int SchemaNameFieldNumber = 9;
+    private string schemaName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SchemaName {
+      get { return schemaName_; }
+      set {
+        schemaName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "table_name" field.</summary>
+    public const int TableNameFieldNumber = 10;
+    private string tableName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TableName {
+      get { return tableName_; }
+      set {
+        tableName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "response" field.</summary>
+    public const int ResponseFieldNumber = 11;
+    private string response_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Response {
+      get { return response_; }
+      set {
+        response_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "proto_type_to_sql_types" field.</summary>
+    public const int ProtoTypeToSqlTypesFieldNumber = 12;
+    private global::Org.Roylance.Yaorm.ProtoTypeToSqlTypes protoTypeToSqlTypes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Roylance.Yaorm.ProtoTypeToSqlTypes ProtoTypeToSqlTypes {
+      get { return protoTypeToSqlTypes_; }
+      set {
+        protoTypeToSqlTypes_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SqlGeneratorRequestResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SqlGeneratorRequestResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Definition, other.Definition)) return false;
+      if (!object.Equals(ColumnDefinition, other.ColumnDefinition)) return false;
+      if (!object.Equals(Index, other.Index)) return false;
+      if (!object.Equals(Column, other.Column)) return false;
+      if (!object.Equals(WhereClause, other.WhereClause)) return false;
+      if (!object.Equals(Records, other.Records)) return false;
+      if (Limit != other.Limit) return false;
+      if (Offset != other.Offset) return false;
+      if (SchemaName != other.SchemaName) return false;
+      if (TableName != other.TableName) return false;
+      if (Response != other.Response) return false;
+      if (!object.Equals(ProtoTypeToSqlTypes, other.ProtoTypeToSqlTypes)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (definition_ != null) hash ^= Definition.GetHashCode();
+      if (columnDefinition_ != null) hash ^= ColumnDefinition.GetHashCode();
+      if (index_ != null) hash ^= Index.GetHashCode();
+      if (column_ != null) hash ^= Column.GetHashCode();
+      if (whereClause_ != null) hash ^= WhereClause.GetHashCode();
+      if (records_ != null) hash ^= Records.GetHashCode();
+      if (Limit != 0L) hash ^= Limit.GetHashCode();
+      if (Offset != 0L) hash ^= Offset.GetHashCode();
+      if (SchemaName.Length != 0) hash ^= SchemaName.GetHashCode();
+      if (TableName.Length != 0) hash ^= TableName.GetHashCode();
+      if (Response.Length != 0) hash ^= Response.GetHashCode();
+      if (protoTypeToSqlTypes_ != null) hash ^= ProtoTypeToSqlTypes.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (definition_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Definition);
+      }
+      if (columnDefinition_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ColumnDefinition);
+      }
+      if (index_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Index);
+      }
+      if (column_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Column);
+      }
+      if (whereClause_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(WhereClause);
+      }
+      if (records_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Records);
+      }
+      if (Limit != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(Limit);
+      }
+      if (Offset != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(Offset);
+      }
+      if (SchemaName.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(SchemaName);
+      }
+      if (TableName.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(TableName);
+      }
+      if (Response.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(Response);
+      }
+      if (protoTypeToSqlTypes_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(ProtoTypeToSqlTypes);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (definition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Definition);
+      }
+      if (columnDefinition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ColumnDefinition);
+      }
+      if (index_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Index);
+      }
+      if (column_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Column);
+      }
+      if (whereClause_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(WhereClause);
+      }
+      if (records_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Records);
+      }
+      if (Limit != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Limit);
+      }
+      if (Offset != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Offset);
+      }
+      if (SchemaName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SchemaName);
+      }
+      if (TableName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TableName);
+      }
+      if (Response.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Response);
+      }
+      if (protoTypeToSqlTypes_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProtoTypeToSqlTypes);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SqlGeneratorRequestResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.definition_ != null) {
+        if (definition_ == null) {
+          definition_ = new global::Org.Roylance.Yaorm.TableDefinition();
+        }
+        Definition.MergeFrom(other.Definition);
+      }
+      if (other.columnDefinition_ != null) {
+        if (columnDefinition_ == null) {
+          columnDefinition_ = new global::Org.Roylance.Yaorm.ColumnDefinition();
+        }
+        ColumnDefinition.MergeFrom(other.ColumnDefinition);
+      }
+      if (other.index_ != null) {
+        if (index_ == null) {
+          index_ = new global::Org.Roylance.Yaorm.Index();
+        }
+        Index.MergeFrom(other.Index);
+      }
+      if (other.column_ != null) {
+        if (column_ == null) {
+          column_ = new global::Org.Roylance.Yaorm.Column();
+        }
+        Column.MergeFrom(other.Column);
+      }
+      if (other.whereClause_ != null) {
+        if (whereClause_ == null) {
+          whereClause_ = new global::Org.Roylance.Yaorm.WhereClause();
+        }
+        WhereClause.MergeFrom(other.WhereClause);
+      }
+      if (other.records_ != null) {
+        if (records_ == null) {
+          records_ = new global::Org.Roylance.Yaorm.Records();
+        }
+        Records.MergeFrom(other.Records);
+      }
+      if (other.Limit != 0L) {
+        Limit = other.Limit;
+      }
+      if (other.Offset != 0L) {
+        Offset = other.Offset;
+      }
+      if (other.SchemaName.Length != 0) {
+        SchemaName = other.SchemaName;
+      }
+      if (other.TableName.Length != 0) {
+        TableName = other.TableName;
+      }
+      if (other.Response.Length != 0) {
+        Response = other.Response;
+      }
+      if (other.protoTypeToSqlTypes_ != null) {
+        if (protoTypeToSqlTypes_ == null) {
+          protoTypeToSqlTypes_ = new global::Org.Roylance.Yaorm.ProtoTypeToSqlTypes();
+        }
+        ProtoTypeToSqlTypes.MergeFrom(other.ProtoTypeToSqlTypes);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            if (definition_ == null) {
+              definition_ = new global::Org.Roylance.Yaorm.TableDefinition();
+            }
+            input.ReadMessage(definition_);
+            break;
+          }
+          case 18: {
+            if (columnDefinition_ == null) {
+              columnDefinition_ = new global::Org.Roylance.Yaorm.ColumnDefinition();
+            }
+            input.ReadMessage(columnDefinition_);
+            break;
+          }
+          case 26: {
+            if (index_ == null) {
+              index_ = new global::Org.Roylance.Yaorm.Index();
+            }
+            input.ReadMessage(index_);
+            break;
+          }
+          case 34: {
+            if (column_ == null) {
+              column_ = new global::Org.Roylance.Yaorm.Column();
+            }
+            input.ReadMessage(column_);
+            break;
+          }
+          case 42: {
+            if (whereClause_ == null) {
+              whereClause_ = new global::Org.Roylance.Yaorm.WhereClause();
+            }
+            input.ReadMessage(whereClause_);
+            break;
+          }
+          case 50: {
+            if (records_ == null) {
+              records_ = new global::Org.Roylance.Yaorm.Records();
+            }
+            input.ReadMessage(records_);
+            break;
+          }
+          case 56: {
+            Limit = input.ReadInt64();
+            break;
+          }
+          case 64: {
+            Offset = input.ReadInt64();
+            break;
+          }
+          case 74: {
+            SchemaName = input.ReadString();
+            break;
+          }
+          case 82: {
+            TableName = input.ReadString();
+            break;
+          }
+          case 90: {
+            Response = input.ReadString();
+            break;
+          }
+          case 98: {
+            if (protoTypeToSqlTypes_ == null) {
+              protoTypeToSqlTypes_ = new global::Org.Roylance.Yaorm.ProtoTypeToSqlTypes();
+            }
+            input.ReadMessage(protoTypeToSqlTypes_);
             break;
           }
         }

@@ -13,7 +13,7 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500, private v
         get() = SqlIntegerName
     override val realTypeName: String
         get() = SqlRealName
-    override val blogTypeName: String
+    override val blobTypeName: String
         get() = SqlBlobName
 
     override val protoTypeToSqlType = object : HashMap<YaormModel.ProtobufType, String>() {

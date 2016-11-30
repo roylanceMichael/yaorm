@@ -10,19 +10,19 @@ interface IEntityMessageService: AutoCloseable {
     fun createEntireSchema(fileDescriptor: Descriptors.FileDescriptor):Boolean
     fun dropAndCreateEntireSchema(fileDescriptor: Descriptors.FileDescriptor):Boolean
 
-    fun <T: Message> createEntireSchema(messageType:T): Boolean
-    fun <T: Message> dropAndCreateEntireSchema(messageType:T): Boolean
+    fun <T: Message> createEntireSchema(messageType: T): Boolean
+    fun <T: Message> dropAndCreateEntireSchema(messageType: T): Boolean
 
     fun <T: Message> bulkInsert(messages: List<T>): Boolean
-    fun <T: Message> merge(message:T): Boolean
+    fun <T: Message> merge(message: T): Boolean
     fun <T: Message> mergeTable(messages: List<T>, message: T): Boolean
-    fun <T: Message> delete(message:T): Boolean
+    fun <T: Message> delete(message: T): Boolean
 
-    fun <T: Message> get(messageType:T, id:String):T?
-    fun <T: Message> getKeys(messageType:T):List<String>
-    fun <T: Message> getKeysStream(messageType:T, streamer: IMessageStreamer)
+    fun <T: Message> get(messageType: T, id:String):T?
+    fun <T: Message> getKeys(messageType: T):List<String>
+    fun <T: Message> getKeysStream(messageType: T, streamer: IMessageStreamer)
     fun <T: Message> getMany(messageType: T, ids: List<String>): List<T>
-    fun <T: Message> getMany(messageType:T, limit:Int=10000, offset:Int = 0):List<T>
+    fun <T: Message> getMany(messageType: T, limit:Int=10000, offset:Int = 0):List<T>
     fun <T: Message> getManyStream(messageType: T, streamer: IMessageStreamer, limit:Int=10000, offset: Int=0)
 
     fun <T: Message> getManySingleLevel(messageType: T, limit:Int=10000, offset:Int = 0): List<T>

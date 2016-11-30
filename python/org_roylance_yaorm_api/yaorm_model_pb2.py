@@ -14,14 +14,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='yaorm_model.proto',
   package='org.roylance.yaorm',
   syntax='proto3',
-  serialized_pb=_b('\n\x11yaorm_model.proto\x12\x12org.roylance.yaorm\"\xac\x03\n\x0bWhereClause\x12\x35\n\x11name_and_property\x18\x01 \x01(\x0b\x32\x1a.org.roylance.yaorm.Column\x12\x43\n\roperator_type\x18\x02 \x01(\x0e\x32,.org.roylance.yaorm.WhereClause.OperatorType\x12J\n\x11\x63onnecting_and_or\x18\x03 \x01(\x0e\x32/.org.roylance.yaorm.WhereClause.ConnectingAndOr\x12@\n\x17\x63onnecting_where_clause\x18\x04 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12\x10\n\x08in_items\x18\x05 \x03(\t\"S\n\x0cOperatorType\x12\n\n\x06\x45QUALS\x10\x00\x12\x10\n\x0cGREATER_THAN\x10\x01\x12\r\n\tLESS_THAN\x10\x02\x12\x0e\n\nNOT_EQUALS\x10\x03\x12\x06\n\x02IN\x10\x04\",\n\x0f\x43onnectingAndOr\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03\x41ND\x10\x01\x12\x06\n\x02OR\x10\x02\"\x81\x03\n\x10\x43olumnDefinition\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x04type\x18\x02 \x01(\x0e\x32 .org.roylance.yaorm.ProtobufType\x12\x0e\n\x06is_key\x18\x03 \x01(\x08\x12\x44\n\x0b\x63olumn_type\x18\x04 \x01(\x0e\x32/.org.roylance.yaorm.ColumnDefinition.ColumnType\x12\x44\n\x0blinker_type\x18\x05 \x01(\x0e\x32/.org.roylance.yaorm.ColumnDefinition.LinkerType\x12\r\n\x05order\x18\x06 \x01(\x05\"H\n\nColumnType\x12\n\n\x06SCALAR\x10\x00\x12\r\n\tENUM_NAME\x10\x01\x12\x0e\n\nENUM_VALUE\x10\x02\x12\x0f\n\x0bMESSAGE_KEY\x10\x03\":\n\nLinkerType\x12\x08\n\x04NONE\x10\x00\x12\n\n\x06PARENT\x10\x01\x12\t\n\x05\x43HILD\x10\x02\x12\x0b\n\x07NEITHER\x10\x03\"\x80\x01\n\x05Index\x12:\n\x0c\x63olumn_names\x18\x01 \x03(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12;\n\rinclude_names\x18\x02 \x03(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\"\x96\x03\n\nDifference\x12>\n\x0b\x65ntity_type\x18\x01 \x01(\x0e\x32).org.roylance.yaorm.Difference.EntityType\x12;\n\toperation\x18\x02 \x01(\x0e\x32(.org.roylance.yaorm.Difference.Operation\x12\x0c\n\x04name\x18\x03 \x01(\t\x12(\n\x05index\x18\x04 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12\x41\n\x13property_definition\x18\x05 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12=\n\x10table_definition\x18\x06 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\".\n\nEntityType\x12\t\n\x05INDEX\x10\x00\x12\n\n\x06\x43OLUMN\x10\x01\x12\t\n\x05TABLE\x10\x02\"!\n\tOperation\x12\n\n\x06\x43REATE\x10\x00\x12\x08\n\x04\x44ROP\x10\x01\"\x8c\x02\n\x0fTableDefinition\x12\x0c\n\x04name\x18\x01 \x01(\t\x12@\n\x12\x63olumn_definitions\x18\x02 \x03(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12(\n\x05index\x18\x03 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12\x41\n\ntable_type\x18\x04 \x01(\x0e\x32-.org.roylance.yaorm.TableDefinition.TableType\"<\n\tTableType\x12\n\n\x06NORMAL\x10\x00\x12\x12\n\x0eLINKER_MESSAGE\x10\x01\x12\x0f\n\x0bLINKER_ENUM\x10\x02\"R\n\x10TableDefinitions\x12>\n\x11table_definitions\x18\x01 \x03(\x0b\x32#.org.roylance.yaorm.TableDefinition\"a\n\x10\x44ifferenceReport\x12\x18\n\x10migration_exists\x18\x01 \x01(\x08\x12\x33\n\x0b\x64ifferences\x18\x02 \x03(\x0b\x32\x1e.org.roylance.yaorm.Difference\"\x9b\x03\n\x06\x43olumn\x12\x38\n\ndefinition\x18\x01 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x15\n\rdouble_holder\x18\x02 \x01(\x01\x12\x14\n\x0c\x66loat_holder\x18\x03 \x01(\x02\x12\x14\n\x0cint32_holder\x18\x04 \x01(\x05\x12\x14\n\x0cint64_holder\x18\x05 \x01(\x03\x12\x15\n\ruint32_holder\x18\x06 \x01(\r\x12\x15\n\ruint64_holder\x18\x07 \x01(\x04\x12\x15\n\rsint32_holder\x18\x08 \x01(\x11\x12\x15\n\rsint64_holder\x18\t \x01(\x12\x12\x16\n\x0e\x66ixed32_holder\x18\n \x01(\x07\x12\x16\n\x0e\x66ixed64_holder\x18\x0b \x01(\x06\x12\x17\n\x0fsfixed32_holder\x18\x0c \x01(\x0f\x12\x17\n\x0fsfixed64_holder\x18\r \x01(\x10\x12\x13\n\x0b\x62ool_holder\x18\x0e \x01(\x08\x12\x15\n\rstring_holder\x18\x0f \x01(\t\x12\x14\n\x0c\x62ytes_holder\x18\x10 \x01(\x0c\"5\n\x06Record\x12+\n\x07\x63olumns\x18\x01 \x03(\x0b\x32\x1a.org.roylance.yaorm.Column\"6\n\x07Records\x12+\n\x07records\x18\x01 \x03(\x0b\x32\x1a.org.roylance.yaorm.Record\"\x8f\x01\n\x0cTableRecords\x12=\n\x10table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12,\n\x07records\x18\x02 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\x12\n\ntable_name\x18\x03 \x01(\t\"J\n\x0f\x41llTableRecords\x12\x37\n\rtable_records\x18\x01 \x03(\x0b\x32 .org.roylance.yaorm.TableRecords\"\xcf\x05\n\x11\x44\x61tabaseOperation\x12=\n\x10table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12,\n\x07records\x18\x02 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12(\n\x05index\x18\x03 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12?\n\x11\x63olumn_definition\x18\x04 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x35\n\x0cwhere_clause\x18\x05 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12\\\n\x17\x64\x61tabase_operation_type\x18\x06 \x01(\x0e\x32;.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType\"\xcc\x02\n\x15\x44\x61tabaseOperationType\x12\x10\n\x0c\x43REATE_TABLE\x10\x00\x12\x0e\n\nDROP_TABLE\x10\x01\x12\x10\n\x0c\x43REATE_INDEX\x10\x02\x12\x0e\n\nDROP_INDEX\x10\x03\x12\x11\n\rCREATE_COLUMN\x10\x04\x12\x0f\n\x0b\x44ROP_COLUMN\x10\x05\x12\r\n\tGET_COUNT\x10\x06\x12\x0e\n\nGET_CUSTOM\x10\x07\x12\x07\n\x03GET\x10\x08\x12\x0c\n\x08GET_MANY\x10\t\x12\r\n\tGET_WHERE\x10\n\x12\x0f\n\x0b\x42ULK_INSERT\x10\x0b\x12\x14\n\x10\x43REATE_OR_UPDATE\x10\x0c\x12\n\n\x06\x43REATE\x10\r\x12\n\n\x06UPDATE\x10\x0e\x12\x18\n\x14UPDATE_WITH_CRITERIA\x10\x0f\x12\x11\n\rUPDATE_CUSTOM\x10\x10\x12\n\n\x06\x44\x45LETE\x10\x11\x12\x0e\n\nDELETE_ALL\x10\x12\"\x86\x02\n\x17\x44\x61tabaseOperationResult\x12\x13\n\x0b\x62ool_result\x18\x01 \x01(\x08\x12\x14\n\x0c\x63ount_result\x18\x02 \x01(\x03\x12\x31\n\rrecord_result\x18\x03 \x01(\x0b\x32\x1a.org.roylance.yaorm.Record\x12\x33\n\x0erecords_result\x18\x04 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\x15\n\rerror_message\x18\x05 \x01(\t\x12\x41\n\x12\x64\x61tabase_operation\x18\x06 \x01(\x0b\x32%.org.roylance.yaorm.DatabaseOperation\"\xbf\x01\n\x12\x44\x61tabaseDefinition\x12\x0e\n\x06schema\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12?\n\x11table_definitions\x18\x03 \x01(\x0b\x32$.org.roylance.yaorm.TableDefinitions\x12J\n\x17table_definition_graphs\x18\x04 \x03(\x0b\x32).org.roylance.yaorm.TableDefinitionGraphs\"\xbb\x03\n\x14TableDefinitionGraph\x12\x42\n\x15main_table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12\x43\n\x16other_table_definition\x18\x02 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12?\n\x12linker_table_table\x18\x03 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12`\n\x15\x64\x65\x66inition_graph_type\x18\x04 \x01(\x0e\x32\x41.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType\x12\x11\n\tmain_name\x18\x05 \x01(\t\x12\x12\n\nother_name\x18\x06 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x07 \x01(\t\";\n\x18TableDefinitionGraphType\x12\r\n\tENUM_TYPE\x10\x00\x12\x10\n\x0cMESSAGE_TYPE\x10\x01\"\xa6\x01\n\x15TableDefinitionGraphs\x12\x42\n\x15main_table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12I\n\x17table_definition_graphs\x18\x02 \x03(\x0b\x32(.org.roylance.yaorm.TableDefinitionGraph\"z\n\x0e\x43onnectionInfo\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04user\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x0e\n\x06schema\x18\x04 \x01(\t\x12\x1c\n\x14should_create_schema\x18\x05 \x01(\x08\x12\x0c\n\x04port\x18\x06 \x01(\x05\"c\n\tMigration\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0c\x63ontext_name\x18\x02 \x01(\t\x12\x1f\n\x17model_definition_base64\x18\x03 \x01(\t\x12\x13\n\x0binsert_date\x18\x04 \x01(\x03\"4\n\x17\x44\x61tabaseExecutionReport\x12\x19\n\x11\x63\x61lls_to_database\x18\x01 \x01(\x03\"\xc9\x02\n\x07JoinKey\x12\x33\n\x05\x66irst\x18\x01 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x34\n\x06second\x18\x02 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x33\n\x05third\x18\x03 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x34\n\x06\x66ourth\x18\x04 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x33\n\x05\x66ifth\x18\x05 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x33\n\x05sixth\x18\x06 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\"n\n\x0eJoinDefinition\x12\x32\n\x05table\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12(\n\x03key\x18\x02 \x01(\x0b\x32\x1b.org.roylance.yaorm.JoinKey\"D\n\x04Join\x12<\n\x10join_definitions\x18\x01 \x03(\x0b\x32\".org.roylance.yaorm.JoinDefinition\"\x9f\x02\n\x0eUIYaormRequest\x12\r\n\x05token\x18\x01 \x01(\t\x12=\n\x10table_definition\x18\x02 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12,\n\x07records\x18\x03 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12;\n\x0f\x63onnection_info\x18\x04 \x01(\x0b\x32\".org.roylance.yaorm.ConnectionInfo\x12\x35\n\x0cwhere_clause\x18\x05 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12\r\n\x05limit\x18\x06 \x01(\x03\x12\x0e\n\x06offset\x18\x07 \x01(\x03\"\xf6\x01\n\x0fUIYaormResponse\x12,\n\x07records\x18\x01 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\x0f\n\x07schemas\x18\x02 \x03(\t\x12\x0e\n\x06tables\x18\x03 \x03(\t\x12=\n\x10table_definition\x18\x04 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12?\n\x11table_definitions\x18\x05 \x01(\x0b\x32$.org.roylance.yaorm.TableDefinitions\x12\x14\n\x0crecord_count\x18\x06 \x01(\x03*\xd7\x01\n\x0cProtobufType\x12\x08\n\x04NONE\x10\x00\x12\n\n\x06\x44OUBLE\x10\x01\x12\t\n\x05\x46LOAT\x10\x02\x12\t\n\x05INT32\x10\x03\x12\t\n\x05INT64\x10\x04\x12\n\n\x06UINT32\x10\x05\x12\n\n\x06UINT64\x10\x06\x12\n\n\x06SINT32\x10\x07\x12\n\n\x06SINT64\x10\x08\x12\x0b\n\x07\x46IXED32\x10\t\x12\x0b\n\x07\x46IXED64\x10\n\x12\x0c\n\x08SFIXED32\x10\x0b\x12\x0c\n\x08SFIXED64\x10\x0c\x12\x08\n\x04\x42OOL\x10\r\x12\n\n\x06STRING\x10\x0e\x12\t\n\x05\x42YTES\x10\x0f\x12\t\n\x05PROTO\x10\x10\x62\x06proto3')
-)
+  serialized_pb=_b('\n\x11yaorm_model.proto\x12\x12org.roylance.yaorm\x1a\x19google/protobuf/any.proto\"\\\n\x12ProtoTypeToSqlType\x12\x34\n\nproto_type\x18\x01 \x01(\x0e\x32 .org.roylance.yaorm.ProtobufType\x12\x10\n\x08sql_type\x18\x02 \x01(\t\"N\n\x13ProtoTypeToSqlTypes\x12\x37\n\x07results\x18\x01 \x03(\x0b\x32&.org.roylance.yaorm.ProtoTypeToSqlType\"\xac\x03\n\x0bWhereClause\x12\x35\n\x11name_and_property\x18\x01 \x01(\x0b\x32\x1a.org.roylance.yaorm.Column\x12\x43\n\roperator_type\x18\x02 \x01(\x0e\x32,.org.roylance.yaorm.WhereClause.OperatorType\x12J\n\x11\x63onnecting_and_or\x18\x03 \x01(\x0e\x32/.org.roylance.yaorm.WhereClause.ConnectingAndOr\x12@\n\x17\x63onnecting_where_clause\x18\x04 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12\x10\n\x08in_items\x18\x05 \x03(\t\"S\n\x0cOperatorType\x12\n\n\x06\x45QUALS\x10\x00\x12\x10\n\x0cGREATER_THAN\x10\x01\x12\r\n\tLESS_THAN\x10\x02\x12\x0e\n\nNOT_EQUALS\x10\x03\x12\x06\n\x02IN\x10\x04\",\n\x0f\x43onnectingAndOr\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03\x41ND\x10\x01\x12\x06\n\x02OR\x10\x02\"\x81\x03\n\x10\x43olumnDefinition\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x04type\x18\x02 \x01(\x0e\x32 .org.roylance.yaorm.ProtobufType\x12\x0e\n\x06is_key\x18\x03 \x01(\x08\x12\x44\n\x0b\x63olumn_type\x18\x04 \x01(\x0e\x32/.org.roylance.yaorm.ColumnDefinition.ColumnType\x12\x44\n\x0blinker_type\x18\x05 \x01(\x0e\x32/.org.roylance.yaorm.ColumnDefinition.LinkerType\x12\r\n\x05order\x18\x06 \x01(\x05\"H\n\nColumnType\x12\n\n\x06SCALAR\x10\x00\x12\r\n\tENUM_NAME\x10\x01\x12\x0e\n\nENUM_VALUE\x10\x02\x12\x0f\n\x0bMESSAGE_KEY\x10\x03\":\n\nLinkerType\x12\x08\n\x04NONE\x10\x00\x12\n\n\x06PARENT\x10\x01\x12\t\n\x05\x43HILD\x10\x02\x12\x0b\n\x07NEITHER\x10\x03\"\x80\x01\n\x05Index\x12:\n\x0c\x63olumn_names\x18\x01 \x03(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12;\n\rinclude_names\x18\x02 \x03(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\"\x96\x03\n\nDifference\x12>\n\x0b\x65ntity_type\x18\x01 \x01(\x0e\x32).org.roylance.yaorm.Difference.EntityType\x12;\n\toperation\x18\x02 \x01(\x0e\x32(.org.roylance.yaorm.Difference.Operation\x12\x0c\n\x04name\x18\x03 \x01(\t\x12(\n\x05index\x18\x04 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12\x41\n\x13property_definition\x18\x05 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12=\n\x10table_definition\x18\x06 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\".\n\nEntityType\x12\t\n\x05INDEX\x10\x00\x12\n\n\x06\x43OLUMN\x10\x01\x12\t\n\x05TABLE\x10\x02\"!\n\tOperation\x12\n\n\x06\x43REATE\x10\x00\x12\x08\n\x04\x44ROP\x10\x01\"\x8c\x02\n\x0fTableDefinition\x12\x0c\n\x04name\x18\x01 \x01(\t\x12@\n\x12\x63olumn_definitions\x18\x02 \x03(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12(\n\x05index\x18\x03 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12\x41\n\ntable_type\x18\x04 \x01(\x0e\x32-.org.roylance.yaorm.TableDefinition.TableType\"<\n\tTableType\x12\n\n\x06NORMAL\x10\x00\x12\x12\n\x0eLINKER_MESSAGE\x10\x01\x12\x0f\n\x0bLINKER_ENUM\x10\x02\"R\n\x10TableDefinitions\x12>\n\x11table_definitions\x18\x01 \x03(\x0b\x32#.org.roylance.yaorm.TableDefinition\"a\n\x10\x44ifferenceReport\x12\x18\n\x10migration_exists\x18\x01 \x01(\x08\x12\x33\n\x0b\x64ifferences\x18\x02 \x03(\x0b\x32\x1e.org.roylance.yaorm.Difference\"\x9b\x03\n\x06\x43olumn\x12\x38\n\ndefinition\x18\x01 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x15\n\rdouble_holder\x18\x02 \x01(\x01\x12\x14\n\x0c\x66loat_holder\x18\x03 \x01(\x02\x12\x14\n\x0cint32_holder\x18\x04 \x01(\x05\x12\x14\n\x0cint64_holder\x18\x05 \x01(\x03\x12\x15\n\ruint32_holder\x18\x06 \x01(\r\x12\x15\n\ruint64_holder\x18\x07 \x01(\x04\x12\x15\n\rsint32_holder\x18\x08 \x01(\x11\x12\x15\n\rsint64_holder\x18\t \x01(\x12\x12\x16\n\x0e\x66ixed32_holder\x18\n \x01(\x07\x12\x16\n\x0e\x66ixed64_holder\x18\x0b \x01(\x06\x12\x17\n\x0fsfixed32_holder\x18\x0c \x01(\x0f\x12\x17\n\x0fsfixed64_holder\x18\r \x01(\x10\x12\x13\n\x0b\x62ool_holder\x18\x0e \x01(\x08\x12\x15\n\rstring_holder\x18\x0f \x01(\t\x12\x14\n\x0c\x62ytes_holder\x18\x10 \x01(\x0c\"5\n\x06Record\x12+\n\x07\x63olumns\x18\x01 \x03(\x0b\x32\x1a.org.roylance.yaorm.Column\"6\n\x07Records\x12+\n\x07records\x18\x01 \x03(\x0b\x32\x1a.org.roylance.yaorm.Record\"\x8f\x01\n\x0cTableRecords\x12=\n\x10table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12,\n\x07records\x18\x02 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\x12\n\ntable_name\x18\x03 \x01(\t\"J\n\x0f\x41llTableRecords\x12\x37\n\rtable_records\x18\x01 \x03(\x0b\x32 .org.roylance.yaorm.TableRecords\"\xcf\x05\n\x11\x44\x61tabaseOperation\x12=\n\x10table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12,\n\x07records\x18\x02 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12(\n\x05index\x18\x03 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12?\n\x11\x63olumn_definition\x18\x04 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x35\n\x0cwhere_clause\x18\x05 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12\\\n\x17\x64\x61tabase_operation_type\x18\x06 \x01(\x0e\x32;.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType\"\xcc\x02\n\x15\x44\x61tabaseOperationType\x12\x10\n\x0c\x43REATE_TABLE\x10\x00\x12\x0e\n\nDROP_TABLE\x10\x01\x12\x10\n\x0c\x43REATE_INDEX\x10\x02\x12\x0e\n\nDROP_INDEX\x10\x03\x12\x11\n\rCREATE_COLUMN\x10\x04\x12\x0f\n\x0b\x44ROP_COLUMN\x10\x05\x12\r\n\tGET_COUNT\x10\x06\x12\x0e\n\nGET_CUSTOM\x10\x07\x12\x07\n\x03GET\x10\x08\x12\x0c\n\x08GET_MANY\x10\t\x12\r\n\tGET_WHERE\x10\n\x12\x0f\n\x0b\x42ULK_INSERT\x10\x0b\x12\x14\n\x10\x43REATE_OR_UPDATE\x10\x0c\x12\n\n\x06\x43REATE\x10\r\x12\n\n\x06UPDATE\x10\x0e\x12\x18\n\x14UPDATE_WITH_CRITERIA\x10\x0f\x12\x11\n\rUPDATE_CUSTOM\x10\x10\x12\n\n\x06\x44\x45LETE\x10\x11\x12\x0e\n\nDELETE_ALL\x10\x12\"\x86\x02\n\x17\x44\x61tabaseOperationResult\x12\x13\n\x0b\x62ool_result\x18\x01 \x01(\x08\x12\x14\n\x0c\x63ount_result\x18\x02 \x01(\x03\x12\x31\n\rrecord_result\x18\x03 \x01(\x0b\x32\x1a.org.roylance.yaorm.Record\x12\x33\n\x0erecords_result\x18\x04 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\x15\n\rerror_message\x18\x05 \x01(\t\x12\x41\n\x12\x64\x61tabase_operation\x18\x06 \x01(\x0b\x32%.org.roylance.yaorm.DatabaseOperation\"\xbf\x01\n\x12\x44\x61tabaseDefinition\x12\x0e\n\x06schema\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12?\n\x11table_definitions\x18\x03 \x01(\x0b\x32$.org.roylance.yaorm.TableDefinitions\x12J\n\x17table_definition_graphs\x18\x04 \x03(\x0b\x32).org.roylance.yaorm.TableDefinitionGraphs\"\xbb\x03\n\x14TableDefinitionGraph\x12\x42\n\x15main_table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12\x43\n\x16other_table_definition\x18\x02 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12?\n\x12linker_table_table\x18\x03 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12`\n\x15\x64\x65\x66inition_graph_type\x18\x04 \x01(\x0e\x32\x41.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType\x12\x11\n\tmain_name\x18\x05 \x01(\t\x12\x12\n\nother_name\x18\x06 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x07 \x01(\t\";\n\x18TableDefinitionGraphType\x12\r\n\tENUM_TYPE\x10\x00\x12\x10\n\x0cMESSAGE_TYPE\x10\x01\"\xa6\x01\n\x15TableDefinitionGraphs\x12\x42\n\x15main_table_definition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12I\n\x17table_definition_graphs\x18\x02 \x03(\x0b\x32(.org.roylance.yaorm.TableDefinitionGraph\"z\n\x0e\x43onnectionInfo\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04user\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x0e\n\x06schema\x18\x04 \x01(\t\x12\x1c\n\x14should_create_schema\x18\x05 \x01(\x08\x12\x0c\n\x04port\x18\x06 \x01(\x05\"c\n\tMigration\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0c\x63ontext_name\x18\x02 \x01(\t\x12\x1f\n\x17model_definition_base64\x18\x03 \x01(\t\x12\x13\n\x0binsert_date\x18\x04 \x01(\x03\"4\n\x17\x44\x61tabaseExecutionReport\x12\x19\n\x11\x63\x61lls_to_database\x18\x01 \x01(\x03\"\xc9\x02\n\x07JoinKey\x12\x33\n\x05\x66irst\x18\x01 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x34\n\x06second\x18\x02 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x33\n\x05third\x18\x03 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x34\n\x06\x66ourth\x18\x04 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x33\n\x05\x66ifth\x18\x05 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12\x33\n\x05sixth\x18\x06 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\"n\n\x0eJoinDefinition\x12\x32\n\x05table\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12(\n\x03key\x18\x02 \x01(\x0b\x32\x1b.org.roylance.yaorm.JoinKey\"D\n\x04Join\x12<\n\x10join_definitions\x18\x01 \x03(\x0b\x32\".org.roylance.yaorm.JoinDefinition\"\xc9\x03\n\x0eUIYaormRequest\x12\r\n\x05token\x18\x01 \x01(\t\x12=\n\x10table_definition\x18\x02 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12,\n\x07records\x18\x03 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12;\n\x0f\x63onnection_info\x18\x04 \x01(\x0b\x32\".org.roylance.yaorm.ConnectionInfo\x12\x35\n\x0cwhere_clause\x18\x05 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12\r\n\x05limit\x18\x06 \x01(\x03\x12\x0e\n\x06offset\x18\x07 \x01(\x03\x12\x1d\n\x15insert_same_as_update\x18\x08 \x01(\x08\x12\x13\n\x0bschema_name\x18\t \x01(\t\x12\x12\n\ntable_name\x18\n \x01(\t\x12\x12\n\ncustom_sql\x18\x0b \x01(\t\x12&\n\x08messages\x18\x0c \x03(\x0b\x32\x14.google.protobuf.Any\x12\x17\n\x0f\x66ile_descriptor\x18\r \x01(\t\x12\x0b\n\x03ids\x18\x0e \x03(\t\"\xe6\x02\n\x0fUIYaormResponse\x12,\n\x07records\x18\x01 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\x0f\n\x07schemas\x18\x02 \x03(\t\x12\x0e\n\x06tables\x18\x03 \x03(\t\x12=\n\x10table_definition\x18\x04 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12?\n\x11table_definitions\x18\x05 \x01(\x0b\x32$.org.roylance.yaorm.TableDefinitions\x12\x14\n\x0crecord_count\x18\x06 \x01(\x03\x12\x0e\n\x06result\x18\x07 \x01(\x08\x12G\n\x17proto_type_to_sql_types\x18\x08 \x03(\x0b\x32&.org.roylance.yaorm.ProtoTypeToSqlType\x12\x15\n\rstring_result\x18\t \x01(\t\"\xf6\x03\n\x1bSqlGeneratorRequestResponse\x12\x37\n\ndefinition\x18\x01 \x01(\x0b\x32#.org.roylance.yaorm.TableDefinition\x12?\n\x11\x63olumn_definition\x18\x02 \x01(\x0b\x32$.org.roylance.yaorm.ColumnDefinition\x12(\n\x05index\x18\x03 \x01(\x0b\x32\x19.org.roylance.yaorm.Index\x12*\n\x06\x63olumn\x18\x04 \x01(\x0b\x32\x1a.org.roylance.yaorm.Column\x12\x35\n\x0cwhere_clause\x18\x05 \x01(\x0b\x32\x1f.org.roylance.yaorm.WhereClause\x12,\n\x07records\x18\x06 \x01(\x0b\x32\x1b.org.roylance.yaorm.Records\x12\r\n\x05limit\x18\x07 \x01(\x03\x12\x0e\n\x06offset\x18\x08 \x01(\x03\x12\x13\n\x0bschema_name\x18\t \x01(\t\x12\x12\n\ntable_name\x18\n \x01(\t\x12\x10\n\x08response\x18\x0b \x01(\t\x12H\n\x17proto_type_to_sql_types\x18\x0c \x01(\x0b\x32\'.org.roylance.yaorm.ProtoTypeToSqlTypes*\xd7\x01\n\x0cProtobufType\x12\x08\n\x04NONE\x10\x00\x12\n\n\x06\x44OUBLE\x10\x01\x12\t\n\x05\x46LOAT\x10\x02\x12\t\n\x05INT32\x10\x03\x12\t\n\x05INT64\x10\x04\x12\n\n\x06UINT32\x10\x05\x12\n\n\x06UINT64\x10\x06\x12\n\n\x06SINT32\x10\x07\x12\n\n\x06SINT64\x10\x08\x12\x0b\n\x07\x46IXED32\x10\t\x12\x0b\n\x07\x46IXED64\x10\n\x12\x0c\n\x08SFIXED32\x10\x0b\x12\x0c\n\x08SFIXED64\x10\x0c\x12\x08\n\x04\x42OOL\x10\r\x12\n\n\x06STRING\x10\x0e\x12\t\n\x05\x42YTES\x10\x0f\x12\t\n\x05PROTO\x10\x10\x62\x06proto3')
+  ,
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 _PROTOBUFTYPE = _descriptor.EnumDescriptor(
@@ -101,8 +103,8 @@ _PROTOBUFTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=5730,
-  serialized_end=5945,
+  serialized_start=6718,
+  serialized_end=6933,
 )
 _sym_db.RegisterEnumDescriptor(_PROTOBUFTYPE)
 
@@ -155,8 +157,8 @@ _WHERECLAUSE_OPERATORTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=341,
-  serialized_end=424,
+  serialized_start=542,
+  serialized_end=625,
 )
 _sym_db.RegisterEnumDescriptor(_WHERECLAUSE_OPERATORTYPE)
 
@@ -181,8 +183,8 @@ _WHERECLAUSE_CONNECTINGANDOR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=426,
-  serialized_end=470,
+  serialized_start=627,
+  serialized_end=671,
 )
 _sym_db.RegisterEnumDescriptor(_WHERECLAUSE_CONNECTINGANDOR)
 
@@ -211,8 +213,8 @@ _COLUMNDEFINITION_COLUMNTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=726,
-  serialized_end=798,
+  serialized_start=927,
+  serialized_end=999,
 )
 _sym_db.RegisterEnumDescriptor(_COLUMNDEFINITION_COLUMNTYPE)
 
@@ -241,8 +243,8 @@ _COLUMNDEFINITION_LINKERTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=800,
-  serialized_end=858,
+  serialized_start=1001,
+  serialized_end=1059,
 )
 _sym_db.RegisterEnumDescriptor(_COLUMNDEFINITION_LINKERTYPE)
 
@@ -267,8 +269,8 @@ _DIFFERENCE_ENTITYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1317,
-  serialized_end=1363,
+  serialized_start=1518,
+  serialized_end=1564,
 )
 _sym_db.RegisterEnumDescriptor(_DIFFERENCE_ENTITYTYPE)
 
@@ -289,8 +291,8 @@ _DIFFERENCE_OPERATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1365,
-  serialized_end=1398,
+  serialized_start=1566,
+  serialized_end=1599,
 )
 _sym_db.RegisterEnumDescriptor(_DIFFERENCE_OPERATION)
 
@@ -315,8 +317,8 @@ _TABLEDEFINITION_TABLETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1609,
-  serialized_end=1669,
+  serialized_start=1810,
+  serialized_end=1870,
 )
 _sym_db.RegisterEnumDescriptor(_TABLEDEFINITION_TABLETYPE)
 
@@ -405,8 +407,8 @@ _DATABASEOPERATION_DATABASEOPERATIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2989,
-  serialized_end=3321,
+  serialized_start=3190,
+  serialized_end=3522,
 )
 _sym_db.RegisterEnumDescriptor(_DATABASEOPERATION_DATABASEOPERATIONTYPE)
 
@@ -427,10 +429,79 @@ _TABLEDEFINITIONGRAPH_TABLEDEFINITIONGRAPHTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4167,
-  serialized_end=4226,
+  serialized_start=4368,
+  serialized_end=4427,
 )
 _sym_db.RegisterEnumDescriptor(_TABLEDEFINITIONGRAPH_TABLEDEFINITIONGRAPHTYPE)
+
+
+_PROTOTYPETOSQLTYPE = _descriptor.Descriptor(
+  name='ProtoTypeToSqlType',
+  full_name='org.roylance.yaorm.ProtoTypeToSqlType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='proto_type', full_name='org.roylance.yaorm.ProtoTypeToSqlType.proto_type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='sql_type', full_name='org.roylance.yaorm.ProtoTypeToSqlType.sql_type', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=68,
+  serialized_end=160,
+)
+
+
+_PROTOTYPETOSQLTYPES = _descriptor.Descriptor(
+  name='ProtoTypeToSqlTypes',
+  full_name='org.roylance.yaorm.ProtoTypeToSqlTypes',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='results', full_name='org.roylance.yaorm.ProtoTypeToSqlTypes.results', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=162,
+  serialized_end=240,
+)
 
 
 _WHERECLAUSE = _descriptor.Descriptor(
@@ -489,8 +560,8 @@ _WHERECLAUSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42,
-  serialized_end=470,
+  serialized_start=243,
+  serialized_end=671,
 )
 
 
@@ -557,8 +628,8 @@ _COLUMNDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=473,
-  serialized_end=858,
+  serialized_start=674,
+  serialized_end=1059,
 )
 
 
@@ -595,8 +666,8 @@ _INDEX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=861,
-  serialized_end=989,
+  serialized_start=1062,
+  serialized_end=1190,
 )
 
 
@@ -663,8 +734,8 @@ _DIFFERENCE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=992,
-  serialized_end=1398,
+  serialized_start=1193,
+  serialized_end=1599,
 )
 
 
@@ -716,8 +787,8 @@ _TABLEDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1401,
-  serialized_end=1669,
+  serialized_start=1602,
+  serialized_end=1870,
 )
 
 
@@ -747,8 +818,8 @@ _TABLEDEFINITIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1671,
-  serialized_end=1753,
+  serialized_start=1872,
+  serialized_end=1954,
 )
 
 
@@ -785,8 +856,8 @@ _DIFFERENCEREPORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1755,
-  serialized_end=1852,
+  serialized_start=1956,
+  serialized_end=2053,
 )
 
 
@@ -921,8 +992,8 @@ _COLUMN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1855,
-  serialized_end=2266,
+  serialized_start=2056,
+  serialized_end=2467,
 )
 
 
@@ -952,8 +1023,8 @@ _RECORD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2268,
-  serialized_end=2321,
+  serialized_start=2469,
+  serialized_end=2522,
 )
 
 
@@ -983,8 +1054,8 @@ _RECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2323,
-  serialized_end=2377,
+  serialized_start=2524,
+  serialized_end=2578,
 )
 
 
@@ -1028,8 +1099,8 @@ _TABLERECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2380,
-  serialized_end=2523,
+  serialized_start=2581,
+  serialized_end=2724,
 )
 
 
@@ -1059,8 +1130,8 @@ _ALLTABLERECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2525,
-  serialized_end=2599,
+  serialized_start=2726,
+  serialized_end=2800,
 )
 
 
@@ -1126,8 +1197,8 @@ _DATABASEOPERATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2602,
-  serialized_end=3321,
+  serialized_start=2803,
+  serialized_end=3522,
 )
 
 
@@ -1192,8 +1263,8 @@ _DATABASEOPERATIONRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3324,
-  serialized_end=3586,
+  serialized_start=3525,
+  serialized_end=3787,
 )
 
 
@@ -1244,8 +1315,8 @@ _DATABASEDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3589,
-  serialized_end=3780,
+  serialized_start=3790,
+  serialized_end=3981,
 )
 
 
@@ -1318,8 +1389,8 @@ _TABLEDEFINITIONGRAPH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3783,
-  serialized_end=4226,
+  serialized_start=3984,
+  serialized_end=4427,
 )
 
 
@@ -1356,8 +1427,8 @@ _TABLEDEFINITIONGRAPHS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4229,
-  serialized_end=4395,
+  serialized_start=4430,
+  serialized_end=4596,
 )
 
 
@@ -1422,8 +1493,8 @@ _CONNECTIONINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4397,
-  serialized_end=4519,
+  serialized_start=4598,
+  serialized_end=4720,
 )
 
 
@@ -1474,8 +1545,8 @@ _MIGRATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4521,
-  serialized_end=4620,
+  serialized_start=4722,
+  serialized_end=4821,
 )
 
 
@@ -1505,8 +1576,8 @@ _DATABASEEXECUTIONREPORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4622,
-  serialized_end=4674,
+  serialized_start=4823,
+  serialized_end=4875,
 )
 
 
@@ -1571,8 +1642,8 @@ _JOINKEY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4677,
-  serialized_end=5006,
+  serialized_start=4878,
+  serialized_end=5207,
 )
 
 
@@ -1609,8 +1680,8 @@ _JOINDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5008,
-  serialized_end=5118,
+  serialized_start=5209,
+  serialized_end=5319,
 )
 
 
@@ -1640,8 +1711,8 @@ _JOIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5120,
-  serialized_end=5188,
+  serialized_start=5321,
+  serialized_end=5389,
 )
 
 
@@ -1701,6 +1772,55 @@ _UIYAORMREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='insert_same_as_update', full_name='org.roylance.yaorm.UIYaormRequest.insert_same_as_update', index=7,
+      number=8, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='schema_name', full_name='org.roylance.yaorm.UIYaormRequest.schema_name', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='table_name', full_name='org.roylance.yaorm.UIYaormRequest.table_name', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='custom_sql', full_name='org.roylance.yaorm.UIYaormRequest.custom_sql', index=10,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='messages', full_name='org.roylance.yaorm.UIYaormRequest.messages', index=11,
+      number=12, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='file_descriptor', full_name='org.roylance.yaorm.UIYaormRequest.file_descriptor', index=12,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ids', full_name='org.roylance.yaorm.UIYaormRequest.ids', index=13,
+      number=14, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1713,8 +1833,8 @@ _UIYAORMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5191,
-  serialized_end=5478,
+  serialized_start=5392,
+  serialized_end=5849,
 )
 
 
@@ -1767,6 +1887,27 @@ _UIYAORMRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='result', full_name='org.roylance.yaorm.UIYaormResponse.result', index=6,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='proto_type_to_sql_types', full_name='org.roylance.yaorm.UIYaormResponse.proto_type_to_sql_types', index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='string_result', full_name='org.roylance.yaorm.UIYaormResponse.string_result', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1779,10 +1920,120 @@ _UIYAORMRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5481,
-  serialized_end=5727,
+  serialized_start=5852,
+  serialized_end=6210,
 )
 
+
+_SQLGENERATORREQUESTRESPONSE = _descriptor.Descriptor(
+  name='SqlGeneratorRequestResponse',
+  full_name='org.roylance.yaorm.SqlGeneratorRequestResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='definition', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.definition', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='column_definition', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.column_definition', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='index', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.index', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='column', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.column', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='where_clause', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.where_clause', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='records', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.records', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='limit', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.limit', index=6,
+      number=7, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='offset', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.offset', index=7,
+      number=8, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='schema_name', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.schema_name', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='table_name', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.table_name', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='response', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.response', index=10,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='proto_type_to_sql_types', full_name='org.roylance.yaorm.SqlGeneratorRequestResponse.proto_type_to_sql_types', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6213,
+  serialized_end=6715,
+)
+
+_PROTOTYPETOSQLTYPE.fields_by_name['proto_type'].enum_type = _PROTOBUFTYPE
+_PROTOTYPETOSQLTYPES.fields_by_name['results'].message_type = _PROTOTYPETOSQLTYPE
 _WHERECLAUSE.fields_by_name['name_and_property'].message_type = _COLUMN
 _WHERECLAUSE.fields_by_name['operator_type'].enum_type = _WHERECLAUSE_OPERATORTYPE
 _WHERECLAUSE.fields_by_name['connecting_and_or'].enum_type = _WHERECLAUSE_CONNECTINGANDOR
@@ -1847,9 +2098,20 @@ _UIYAORMREQUEST.fields_by_name['table_definition'].message_type = _TABLEDEFINITI
 _UIYAORMREQUEST.fields_by_name['records'].message_type = _RECORDS
 _UIYAORMREQUEST.fields_by_name['connection_info'].message_type = _CONNECTIONINFO
 _UIYAORMREQUEST.fields_by_name['where_clause'].message_type = _WHERECLAUSE
+_UIYAORMREQUEST.fields_by_name['messages'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 _UIYAORMRESPONSE.fields_by_name['records'].message_type = _RECORDS
 _UIYAORMRESPONSE.fields_by_name['table_definition'].message_type = _TABLEDEFINITION
 _UIYAORMRESPONSE.fields_by_name['table_definitions'].message_type = _TABLEDEFINITIONS
+_UIYAORMRESPONSE.fields_by_name['proto_type_to_sql_types'].message_type = _PROTOTYPETOSQLTYPE
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['definition'].message_type = _TABLEDEFINITION
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['column_definition'].message_type = _COLUMNDEFINITION
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['index'].message_type = _INDEX
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['column'].message_type = _COLUMN
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['where_clause'].message_type = _WHERECLAUSE
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['records'].message_type = _RECORDS
+_SQLGENERATORREQUESTRESPONSE.fields_by_name['proto_type_to_sql_types'].message_type = _PROTOTYPETOSQLTYPES
+DESCRIPTOR.message_types_by_name['ProtoTypeToSqlType'] = _PROTOTYPETOSQLTYPE
+DESCRIPTOR.message_types_by_name['ProtoTypeToSqlTypes'] = _PROTOTYPETOSQLTYPES
 DESCRIPTOR.message_types_by_name['WhereClause'] = _WHERECLAUSE
 DESCRIPTOR.message_types_by_name['ColumnDefinition'] = _COLUMNDEFINITION
 DESCRIPTOR.message_types_by_name['Index'] = _INDEX
@@ -1875,7 +2137,22 @@ DESCRIPTOR.message_types_by_name['JoinDefinition'] = _JOINDEFINITION
 DESCRIPTOR.message_types_by_name['Join'] = _JOIN
 DESCRIPTOR.message_types_by_name['UIYaormRequest'] = _UIYAORMREQUEST
 DESCRIPTOR.message_types_by_name['UIYaormResponse'] = _UIYAORMRESPONSE
+DESCRIPTOR.message_types_by_name['SqlGeneratorRequestResponse'] = _SQLGENERATORREQUESTRESPONSE
 DESCRIPTOR.enum_types_by_name['ProtobufType'] = _PROTOBUFTYPE
+
+ProtoTypeToSqlType = _reflection.GeneratedProtocolMessageType('ProtoTypeToSqlType', (_message.Message,), dict(
+  DESCRIPTOR = _PROTOTYPETOSQLTYPE,
+  __module__ = 'yaorm_model_pb2'
+  # @@protoc_insertion_point(class_scope:org.roylance.yaorm.ProtoTypeToSqlType)
+  ))
+_sym_db.RegisterMessage(ProtoTypeToSqlType)
+
+ProtoTypeToSqlTypes = _reflection.GeneratedProtocolMessageType('ProtoTypeToSqlTypes', (_message.Message,), dict(
+  DESCRIPTOR = _PROTOTYPETOSQLTYPES,
+  __module__ = 'yaorm_model_pb2'
+  # @@protoc_insertion_point(class_scope:org.roylance.yaorm.ProtoTypeToSqlTypes)
+  ))
+_sym_db.RegisterMessage(ProtoTypeToSqlTypes)
 
 WhereClause = _reflection.GeneratedProtocolMessageType('WhereClause', (_message.Message,), dict(
   DESCRIPTOR = _WHERECLAUSE,
@@ -2051,6 +2328,13 @@ UIYaormResponse = _reflection.GeneratedProtocolMessageType('UIYaormResponse', (_
   # @@protoc_insertion_point(class_scope:org.roylance.yaorm.UIYaormResponse)
   ))
 _sym_db.RegisterMessage(UIYaormResponse)
+
+SqlGeneratorRequestResponse = _reflection.GeneratedProtocolMessageType('SqlGeneratorRequestResponse', (_message.Message,), dict(
+  DESCRIPTOR = _SQLGENERATORREQUESTRESPONSE,
+  __module__ = 'yaorm_model_pb2'
+  # @@protoc_insertion_point(class_scope:org.roylance.yaorm.SqlGeneratorRequestResponse)
+  ))
+_sym_db.RegisterMessage(SqlGeneratorRequestResponse)
 
 
 # @@protoc_insertion_point(module_scope)

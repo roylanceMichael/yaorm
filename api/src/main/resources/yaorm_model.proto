@@ -1,6 +1,8 @@
 syntax = "proto3";
 package org.roylance.yaorm;
 
+import "google/protobuf/any.proto";
+
 enum ProtobufType {
     NONE = 0;
     DOUBLE = 1;
@@ -19,6 +21,15 @@ enum ProtobufType {
     STRING = 14;
     BYTES = 15;
     PROTO = 16;
+}
+
+message ProtoTypeToSqlType {
+    ProtobufType proto_type = 1;
+    string sql_type = 2;
+}
+
+message ProtoTypeToSqlTypes {
+    repeated ProtoTypeToSqlType results = 1;
 }
 
 message WhereClause {
@@ -255,6 +266,13 @@ message UIYaormRequest {
     WhereClause where_clause = 5;
     int64 limit = 6;
     int64 offset = 7;
+    bool insert_same_as_update = 8;
+    string schema_name = 9;
+    string table_name = 10;
+    string custom_sql = 11;
+    repeated google.protobuf.Any messages = 12;
+    string file_descriptor = 13;
+    repeated string ids = 14;
 }
 
 message UIYaormResponse {
@@ -264,4 +282,22 @@ message UIYaormResponse {
     TableDefinition table_definition = 4;
     TableDefinitions table_definitions = 5;
     int64 record_count = 6;
+    bool result = 7;
+    repeated ProtoTypeToSqlType proto_type_to_sql_types = 8;
+    string string_result = 9;
+}
+
+message SqlGeneratorRequestResponse {
+    org.roylance.yaorm.TableDefinition definition = 1;
+    org.roylance.yaorm.ColumnDefinition column_definition = 2;
+    org.roylance.yaorm.Index index = 3;
+    org.roylance.yaorm.Column column = 4;
+    org.roylance.yaorm.WhereClause where_clause = 5;
+    org.roylance.yaorm.Records records = 6;
+    int64 limit = 7;
+    int64 offset = 8;
+    string schema_name = 9;
+    string table_name = 10;
+    string response = 11;
+    ProtoTypeToSqlTypes proto_type_to_sql_types = 12;
 }

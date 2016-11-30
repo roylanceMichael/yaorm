@@ -11,7 +11,7 @@ interface ISQLGeneratorService: IKeywordHandler {
     val textTypeName: String
     val integerTypeName: String
     val realTypeName: String
-    val blogTypeName: String
+    val blobTypeName: String
 
     fun buildCountSql(definition: YaormModel.TableDefinition): String
 

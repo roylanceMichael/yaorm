@@ -16,7 +16,7 @@ class MySQLGeneratorService(private val schemaName: String,
         get() = SqlIntegerName
     override val realTypeName: String
         get() = SqlRealName
-    override val blogTypeName: String
+    override val blobTypeName: String
         get() = SqlBlobName
 
     override val protoTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {

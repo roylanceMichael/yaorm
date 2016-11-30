@@ -9,7 +9,7 @@ import org.roylance.yaorm.services.IKeywordHandler
 import java.util.*
 
 object YaormUtils {
-    private const val DoubleSingleQuote = "''"
+    private const val EscapedSingleQuote = "\'"
     private const val IndexTableNameLength = 15
 
     const val IdName = "id"
@@ -179,9 +179,7 @@ object YaormUtils {
                 return Null
             }
 
-            return SingleQuote + value.stringHolder.replace(
-                    SingleQuote,
-                    DoubleSingleQuote) + SingleQuote
+            return SingleQuote + value.stringHolder.replace(SingleQuote, EscapedSingleQuote) + SingleQuote
         }
 
         if (value.definition.type == YaormModel.ProtobufType.BOOL) {
@@ -240,7 +238,7 @@ object YaormUtils {
             if (value.bytesHolder.isEmpty && emptyAsNull) {
                 return Null
             }
-            return SingleQuote + value.bytesHolder.toStringUtf8() + SingleQuote
+            return SingleQuote + value.bytesHolder.toStringUtf8().replace(SingleQuote, EscapedSingleQuote) + SingleQuote
         }
 
         return Null
