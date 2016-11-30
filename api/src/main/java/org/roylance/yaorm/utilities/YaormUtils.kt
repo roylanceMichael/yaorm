@@ -9,7 +9,7 @@ import org.roylance.yaorm.services.IKeywordHandler
 import java.util.*
 
 object YaormUtils {
-    private const val EscapedSingleQuote = "\'"
+    private const val EscapedSingleQuote = "''"
     private const val IndexTableNameLength = 15
 
     const val IdName = "id"
