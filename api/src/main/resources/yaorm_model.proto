@@ -1,8 +1,6 @@
 syntax = "proto3";
 package org.roylance.yaorm;
 
-import "google/protobuf/any.proto";
-
 enum ProtobufType {
     NONE = 0;
     DOUBLE = 1;
@@ -270,7 +268,6 @@ message UIYaormRequest {
     string schema_name = 9;
     string table_name = 10;
     string custom_sql = 11;
-    repeated google.protobuf.Any messages = 12;
     string file_descriptor = 13;
     repeated string ids = 14;
 }
