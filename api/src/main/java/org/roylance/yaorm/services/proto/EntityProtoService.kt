@@ -15,8 +15,8 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     override val insertSameAsUpdate: Boolean
         get() = this.sqlGeneratorService.insertSameAsUpdate
 
-    override fun buildDefinitionFromSql(customSql: String): YaormModel.TableDefinition {
-        return this.granularDatabaseService.buildTableDefinitionFromQuery(customSql)
+    override fun buildDefinitionFromSql(customSql: String, rowCount: Int): YaormModel.TableDefinition {
+        return this.granularDatabaseService.buildTableDefinitionFromQuery(customSql, rowCount)
     }
 
     override fun getIdsStream(definition: YaormModel.TableDefinition,

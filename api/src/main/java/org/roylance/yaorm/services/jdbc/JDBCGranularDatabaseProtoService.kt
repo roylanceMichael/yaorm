@@ -18,13 +18,14 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
         return this.report.build()
     }
 
-    override fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition {
+    override fun buildTableDefinitionFromQuery(query: String, rowCount: Int): YaormModel.TableDefinition {
         val statement = this.connectionSourceFactory.generateReadStatement()
         try {
             val resultSet = statement.executeQuery(query)
             val types = HashMap<String, TypeModel>()
 
-            while (resultSet.next()) {
+            var rowNumber = 0
+            while (resultSet.next() && rowNumber < rowCount) {
                 if (types.size == 0) {
                     // this starts at index 1 for some reason... tests for sqlite, mysql, and postgres
                     var i = 1
@@ -44,6 +45,7 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
                         types[it]!!.addTest(item)
                     }
                 }
+                rowNumber += 1
             }
 
             val returnTable = YaormModel.TableDefinition.newBuilder()

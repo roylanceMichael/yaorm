@@ -43,7 +43,7 @@ interface IEntityProtoService: AutoCloseable {
 
     fun where(whereClauseItem: YaormModel.WhereClause, definition: YaormModel.TableDefinition): YaormModel.Records
 
-    fun buildDefinitionFromSql(customSql: String): YaormModel.TableDefinition
+    fun buildDefinitionFromSql(customSql: String, rowCount: Int = 100000): YaormModel.TableDefinition
 
     fun getSchemaNames(): List<String>
     fun getTableNames(schemaName: String): List<String>

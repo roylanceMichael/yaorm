@@ -24,11 +24,12 @@ class AndroidGranularDatabaseService(databaseName:String,
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
     }
 
-    override fun buildTableDefinitionFromQuery(query: String): YaormModel.TableDefinition {
+    override fun buildTableDefinitionFromQuery(query: String, rowCount: Int): YaormModel.TableDefinition {
         val cursor = readableDatabase.rawQuery(query, null)
         val types = HashMap<String, TypeModel>()
         try {
-            while(cursor.moveToNext()) {
+            var rowNumber = 0
+            while(cursor.moveToNext() && rowNumber < rowCount) {
                 if (types.size == 0) {
                     var i = 0
                     cursor.columnNames.forEach { columnName ->
@@ -46,6 +47,7 @@ class AndroidGranularDatabaseService(databaseName:String,
                         types[it]!!.addTest(item)
                     }
                 }
+                rowNumber += 1
             }
 
             val returnTable = YaormModel.TableDefinition.newBuilder()
