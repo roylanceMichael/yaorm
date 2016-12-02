@@ -1,6 +1,6 @@
 {
   "name": "org.roylance.yaorm.api",
-  "version": "0.165.0",
+  "version": "0.167.0",
   "description": "models to interface with the org.roylance.yaorm.api system",
   "author": "roylance.michael@gmail.com",
   "license": "MIT",

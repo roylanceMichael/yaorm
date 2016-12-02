@@ -20,8 +20,9 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
 
     override fun buildTableDefinitionFromQuery(query: String, rowCount: Int): YaormModel.TableDefinition {
         val statement = this.connectionSourceFactory.generateReadStatement()
+        val resultSet = statement.executeQuery(query)
         try {
-            val resultSet = statement.executeQuery(query)
+
             val types = HashMap<String, TypeModel>()
 
             var rowNumber = 0
@@ -60,6 +61,7 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
             throw e
         }
         finally {
+            resultSet.close()
             this.report.callsToDatabase = this.report.callsToDatabase + 1
         }
     }
