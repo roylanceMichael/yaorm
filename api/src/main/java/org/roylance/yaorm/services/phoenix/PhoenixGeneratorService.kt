@@ -6,7 +6,8 @@ import org.roylance.yaorm.services.ISQLGeneratorService
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
-class PhoenixGeneratorService (override val bulkInsertSize: Int = 500, private val emptyAsNull: Boolean = false) : ISQLGeneratorService {
+class PhoenixGeneratorService (override val bulkInsertSize: Int = 500,
+                               private val emptyAsNull: Boolean = false) : ISQLGeneratorService {
     override val textTypeName: String
         get() = SqlTextName
     override val integerTypeName: String
@@ -16,33 +17,30 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500, private v
     override val blobTypeName: String
         get() = SqlBlobName
 
-    override val protoTypeToSqlType = object : HashMap<YaormModel.ProtobufType, String>() {
-        init {
-            put(YaormModel.ProtobufType.STRING, SqlTextName)
-            put(YaormModel.ProtobufType.INT32, SqlIntegerName)
-            put(YaormModel.ProtobufType.INT64, SqlIntegerName)
-            put(YaormModel.ProtobufType.UINT32, SqlIntegerName)
-            put(YaormModel.ProtobufType.UINT64, SqlIntegerName)
-            put(YaormModel.ProtobufType.SINT32, SqlIntegerName)
-            put(YaormModel.ProtobufType.SINT64, SqlIntegerName)
-            put(YaormModel.ProtobufType.FIXED32, SqlIntegerName)
-            put(YaormModel.ProtobufType.FIXED64, SqlIntegerName)
-            put(YaormModel.ProtobufType.SFIXED32, SqlIntegerName)
-            put(YaormModel.ProtobufType.SFIXED64, SqlIntegerName)
-            put(YaormModel.ProtobufType.BOOL, SqlIntegerName)
-            put(YaormModel.ProtobufType.BYTES, SqlBlobName)
-            put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
-            put(YaormModel.ProtobufType.FLOAT, SqlRealName)
-        }
-    }
+    override val protoTypeToSqlType = HashMap<YaormModel.ProtobufType, String>()
+    override val sqlTypeToProtoType = HashMap<String, YaormModel.ProtobufType>()
 
-    override val sqlTypeToProtoType = object : HashMap<String, YaormModel.ProtobufType>() {
-        init {
-            put(SqlTextName, YaormModel.ProtobufType.STRING)
-            put(SqlIntegerName, YaormModel.ProtobufType.INT64)
-            put(SqlRealName, YaormModel.ProtobufType.DOUBLE)
-            put(SqlBlobName, YaormModel.ProtobufType.STRING)
-        }
+    init {
+        protoTypeToSqlType.put(YaormModel.ProtobufType.STRING, SqlTextName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.INT32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.INT64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.UINT32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.UINT64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SINT32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SINT64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.FIXED32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.FIXED64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SFIXED32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SFIXED64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.BOOL, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.BYTES, SqlBlobName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.FLOAT, SqlRealName)
+
+        sqlTypeToProtoType.put(SqlTextName, YaormModel.ProtobufType.STRING)
+        sqlTypeToProtoType.put(SqlIntegerName, YaormModel.ProtobufType.INT64)
+        sqlTypeToProtoType.put(SqlRealName, YaormModel.ProtobufType.DOUBLE)
+        sqlTypeToProtoType.put(SqlBlobName, YaormModel.ProtobufType.STRING)
     }
 
     override val insertSameAsUpdate: Boolean
