@@ -7,12 +7,12 @@ import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.CacheStore
 import org.roylance.yaorm.models.entity.CachingObject
-import org.roylance.yaorm.services.proto.IEntityProtoService
+import org.roylance.yaorm.services.IEntityService
 import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import java.util.*
 
 internal class GetProtoObjects(
-        private val entityService: IEntityProtoService,
+        private val entityService: IEntityService,
         private val generatedMessageBuilder: IProtoGeneratedMessageBuilder,
         private val definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
         private val customIndexes: MutableMap<String, YaormModel.Index>) {

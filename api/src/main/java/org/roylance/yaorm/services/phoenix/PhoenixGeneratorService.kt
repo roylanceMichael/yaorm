@@ -3,6 +3,7 @@ package org.roylance.yaorm.services.phoenix
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
+import org.roylance.yaorm.utilities.ProjectUtilities
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
@@ -240,6 +241,10 @@ class PhoenixGeneratorService (override val bulkInsertSize: Int = 500, private v
 
     override fun buildTableDefinition(tableName: String, records: YaormModel.Records): YaormModel.TableDefinition {
         return YaormModel.TableDefinition.getDefaultInstance()
+    }
+
+    override fun buildProjectionSQL(projection: YaormModel.Projection): String {
+        return ProjectUtilities.buildProjectionSQL(projection, this)
     }
 
     companion object {

@@ -4,10 +4,10 @@ import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.mysql.MySQLConnectionSourceFactory
 import org.roylance.yaorm.services.mysql.MySQLGeneratorService
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.TestModelGMBuilder
@@ -26,11 +26,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -74,11 +74,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -132,11 +132,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -220,11 +220,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -295,11 +295,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
@@ -356,11 +356,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -404,11 +404,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -458,11 +458,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -509,11 +509,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -560,11 +560,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -611,11 +611,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -659,11 +659,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -717,11 +717,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -805,11 +805,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -880,11 +880,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
@@ -941,11 +941,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -989,11 +989,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -1043,11 +1043,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -1094,11 +1094,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -1145,11 +1145,11 @@ class MySQLProtoTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, 500, true, true)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 

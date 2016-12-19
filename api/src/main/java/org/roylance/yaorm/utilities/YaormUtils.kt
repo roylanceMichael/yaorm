@@ -320,19 +320,42 @@ object YaormUtils {
                     stringValue
                 }.joinToString()
 
-                filterItems.append(keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
-                        Space +
-                        "in ($items)" +
-                        Space)
+                if (currentWhereClauseItem.nameAndProperty.definition.tableAlias.isNotEmpty()) {
+                    filterItems.append(
+                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.tableAlias) +
+                            "." +
+                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
+                            Space +
+                            "in ($items)" +
+                            Space)
+                }
+                else {
+                    filterItems.append(keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
+                            Space +
+                            "in ($items)" +
+                            Space)
+                }
             }
             else {
                 val stringValue = YaormUtils
                         .getFormattedString(currentWhereClauseItem.nameAndProperty)
-                filterItems.append(
-                        keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
-                                SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
-                                stringValue +
-                                Space)
+
+                if (currentWhereClauseItem.nameAndProperty.definition.tableAlias.isNotEmpty()) {
+                    filterItems.append(
+                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.tableAlias) +
+                            "." +
+                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
+                                    SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
+                                    stringValue +
+                                    Space)
+                }
+                else {
+                    filterItems.append(
+                            keywordHandler.buildKeyword(currentWhereClauseItem.nameAndProperty.definition.name) +
+                                    SqlOperators.TypeToOperatorStrings[currentWhereClauseItem.operatorType] +
+                                    stringValue +
+                                    Space)
+                }
             }
 
             if (currentWhereClauseItem.connectingAndOr != YaormModel.WhereClause.ConnectingAndOr.NONE &&

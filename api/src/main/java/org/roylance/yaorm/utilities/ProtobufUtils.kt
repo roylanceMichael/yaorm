@@ -3,7 +3,7 @@ package org.roylance.yaorm.utilities
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.proto.IEntityProtoService
+import org.roylance.yaorm.services.IEntityService
 import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import java.util.*
 
@@ -137,7 +137,7 @@ object ProtobufUtils {
 
     // wrap in an object
     fun <T:Message> getProtoObjectFromBuilderSingle(builder: T,
-                                                    entityService: IEntityProtoService,
+                                                    entityService: IEntityService,
                                                     entityId:String,
                                                     generatedMessageBuilder: IProtoGeneratedMessageBuilder,
                                                     definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,

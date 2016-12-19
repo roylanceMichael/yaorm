@@ -46,4 +46,6 @@ interface ISQLGeneratorService: IKeywordHandler {
     fun getTableNames(schemaName: String): String
     fun buildTableDefinitionSQL(schemaName: String, tableName: String): String
     fun buildTableDefinition(tableName: String, records: YaormModel.Records): YaormModel.TableDefinition
+
+    fun buildProjectionSQL(projection: YaormModel.Projection): String
 }

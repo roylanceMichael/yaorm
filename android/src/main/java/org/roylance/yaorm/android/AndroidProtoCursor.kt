@@ -4,14 +4,14 @@ import android.database.Cursor
 import android.database.SQLException
 import android.util.Log
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.proto.IProtoCursor
-import org.roylance.yaorm.services.proto.IProtoStreamer
+import org.roylance.yaorm.services.ICursor
+import org.roylance.yaorm.services.IStreamer
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class AndroidProtoCursor(
         private val definitionModel: YaormModel.TableDefinition,
-        private val cursor: Cursor) : IProtoCursor {
+        private val cursor: Cursor) : ICursor {
     private val namesToAvoid = HashSet<String>()
 
     fun moveNext() : Boolean {
@@ -57,7 +57,7 @@ class AndroidProtoCursor(
         return returnItems.build()
     }
 
-    override fun getRecordsStream(streamer: IProtoStreamer) {
+    override fun getRecordsStream(streamer: IStreamer) {
         while (this.moveNext()) {
             streamer.stream(this.getRecord())
         }

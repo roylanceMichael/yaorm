@@ -8,13 +8,13 @@ import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.TypeModel
 import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.services.IConnectionSourceFactory
-import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.IProtoCursor
-import org.roylance.yaorm.services.proto.IProtoStreamer
+import org.roylance.yaorm.services.ICursor
+import org.roylance.yaorm.services.IGranularDatabaseService
+import org.roylance.yaorm.services.IStreamer
 import java.util.*
 
 class AndroidGranularDatabaseService(databaseName:String,
-                                     context: Context) : SQLiteOpenHelper(context, databaseName, null, 1), IGranularDatabaseProtoService {
+                                     context: Context) : SQLiteOpenHelper(context, databaseName, null, 1), IGranularDatabaseService {
     private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
     override val connectionSourceFactory: IConnectionSourceFactory = AndroidConnectionSourceFactory()
 
@@ -71,7 +71,7 @@ class AndroidGranularDatabaseService(databaseName:String,
 
     override fun executeSelectQuery(query: String): YaormModel.Records {
         val returnRecord = YaormModel.Records.newBuilder()
-        val streamer = object: IProtoStreamer {
+        val streamer = object: IStreamer {
             override fun stream(record: YaormModel.Record) {
                 returnRecord.addRecords(record)
             }
@@ -80,7 +80,7 @@ class AndroidGranularDatabaseService(databaseName:String,
         return returnRecord.build()
     }
 
-    override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): IProtoCursor {
+    override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): ICursor {
         val cursor = readableDatabase.rawQuery(query, null)
         try {
             return AndroidProtoCursor(definition, cursor)
@@ -90,12 +90,12 @@ class AndroidGranularDatabaseService(databaseName:String,
         }
     }
 
-    override fun executeSelectQueryStream(query: String, stream: IProtoStreamer) {
+    override fun executeSelectQueryStream(query: String, stream: IStreamer) {
         val cursor = readableDatabase.rawQuery(query, null)
         buildRecords(cursor, stream)
     }
 
-    override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IProtoStreamer) {
+    override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IStreamer) {
         val cursor = readableDatabase.rawQuery(query, null)
         AndroidProtoCursor(definition, cursor).getRecordsStream(streamer)
     }
@@ -119,7 +119,7 @@ class AndroidGranularDatabaseService(databaseName:String,
         writableDatabase.close()
     }
 
-    private fun buildRecords(cursor: Cursor, protoStreamer: IProtoStreamer) {
+    private fun buildRecords(cursor: Cursor, protoStreamer: IStreamer) {
         val foundColumns = HashMap<String, YaormModel.ColumnDefinition>()
         while (cursor.moveToNext()) {
             val newRecord = YaormModel.Record.newBuilder()

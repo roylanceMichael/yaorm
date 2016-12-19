@@ -32,15 +32,18 @@ declare module org.roylance.yaorm {
 		ConnectionInfo: ConnectionInfoBuilder;
 		Migration: MigrationBuilder;
 		DatabaseExecutionReport: DatabaseExecutionReportBuilder;
-		JoinKey: JoinKeyBuilder;
-		JoinDefinition: JoinDefinitionBuilder;
-		Join: JoinBuilder;
+		JoinTable: JoinTableBuilder;
+		GroupBy: GroupByBuilder;
+		OrderBy: OrderByBuilder;
+		Projection: ProjectionBuilder;
 		UIYaormRequest: UIYaormRequestBuilder;
 		UIYaormResponse: UIYaormResponseBuilder;
 		SqlGeneratorRequestResponse: SqlGeneratorRequestResponseBuilder;
 		CommonAction: CommonActionBuilder;
 		YaormMainController: YaormMainControllerBuilder;
 		ProtobufType: ProtobufType;
+		SelectFunctionType: SelectFunctionType;
+		OrderByType: OrderByType;
 		
 	}
 }
@@ -160,6 +163,18 @@ declare module org.roylance.yaorm {
 		order?: number;
 		getOrder() : number;
 		setOrder(order : number): void;
+		alias?: string;
+		getAlias() : string;
+		setAlias(alias : string): void;
+		table_alias?: string;
+		getTableAlias() : string;
+		setTableAlias(tableAlias : string): void;
+		function_type?: SelectFunctionType;
+		getFunctionType() : SelectFunctionType;
+		setFunctionType(functionType : SelectFunctionType): void;
+		function_text?: string;
+		getFunctionText() : string;
+		setFunctionText(functionText : string): void;
 		
 	}
 	
@@ -285,6 +300,9 @@ declare module org.roylance.yaorm {
 		table_type?: TableDefinition.TableType;
 		getTableType() : TableDefinition.TableType;
 		setTableType(tableType : TableDefinition.TableType): void;
+		alias?: string;
+		getAlias() : string;
+		setAlias(alias : string): void;
 		
 	}
 	
@@ -768,75 +786,112 @@ declare module org.roylance.yaorm {
 
 declare module org.roylance.yaorm {
 
-	export interface JoinKey extends ProtoBufModel {
-		first?: ColumnDefinition;
-		getFirst() : ColumnDefinition;
-		setFirst(first : ColumnDefinition): void;
-		second?: ColumnDefinition;
-		getSecond() : ColumnDefinition;
-		setSecond(second : ColumnDefinition): void;
-		third?: ColumnDefinition;
-		getThird() : ColumnDefinition;
-		setThird(third : ColumnDefinition): void;
-		fourth?: ColumnDefinition;
-		getFourth() : ColumnDefinition;
-		setFourth(fourth : ColumnDefinition): void;
-		fifth?: ColumnDefinition;
-		getFifth() : ColumnDefinition;
-		setFifth(fifth : ColumnDefinition): void;
-		sixth?: ColumnDefinition;
-		getSixth() : ColumnDefinition;
-		setSixth(sixth : ColumnDefinition): void;
+	export interface JoinTable extends ProtoBufModel {
+		first_table?: TableDefinition;
+		getFirstTable() : TableDefinition;
+		setFirstTable(firstTable : TableDefinition): void;
+		second_table?: TableDefinition;
+		getSecondTable() : TableDefinition;
+		setSecondTable(secondTable : TableDefinition): void;
+		first_column?: ColumnDefinition;
+		getFirstColumn() : ColumnDefinition;
+		setFirstColumn(firstColumn : ColumnDefinition): void;
+		second_column?: ColumnDefinition;
+		getSecondColumn() : ColumnDefinition;
+		setSecondColumn(secondColumn : ColumnDefinition): void;
 		
 	}
 	
-	export interface JoinKeyBuilder {
-		new(): JoinKey;
-		decode(buffer: ArrayBuffer) : JoinKey;
-		//decode(buffer: NodeBuffer) : JoinKey;
-		//decode(buffer: ByteArrayBuffer) : JoinKey;
-		decode64(buffer: string) : JoinKey;
+	export interface JoinTableBuilder {
+		new(): JoinTable;
+		decode(buffer: ArrayBuffer) : JoinTable;
+		//decode(buffer: NodeBuffer) : JoinTable;
+		//decode(buffer: ByteArrayBuffer) : JoinTable;
+		decode64(buffer: string) : JoinTable;
 		
 	}	
 }
 
 declare module org.roylance.yaorm {
 
-	export interface JoinDefinition extends ProtoBufModel {
-		table?: TableDefinition;
-		getTable() : TableDefinition;
-		setTable(table : TableDefinition): void;
-		key?: JoinKey;
-		getKey() : JoinKey;
-		setKey(key : JoinKey): void;
+	export interface GroupBy extends ProtoBufModel {
+		columns: ColumnDefinition[];
+		getColumns() : ColumnDefinition[];
+		setColumns(columns : ColumnDefinition[]): void;
 		
 	}
 	
-	export interface JoinDefinitionBuilder {
-		new(): JoinDefinition;
-		decode(buffer: ArrayBuffer) : JoinDefinition;
-		//decode(buffer: NodeBuffer) : JoinDefinition;
-		//decode(buffer: ByteArrayBuffer) : JoinDefinition;
-		decode64(buffer: string) : JoinDefinition;
+	export interface GroupByBuilder {
+		new(): GroupBy;
+		decode(buffer: ArrayBuffer) : GroupBy;
+		//decode(buffer: NodeBuffer) : GroupBy;
+		//decode(buffer: ByteArrayBuffer) : GroupBy;
+		decode64(buffer: string) : GroupBy;
 		
 	}	
 }
 
 declare module org.roylance.yaorm {
 
-	export interface Join extends ProtoBufModel {
-		join_definitions: JoinDefinition[];
-		getJoinDefinitions() : JoinDefinition[];
-		setJoinDefinitions(joinDefinitions : JoinDefinition[]): void;
+	export interface OrderBy extends ProtoBufModel {
+		column?: ColumnDefinition;
+		getColumn() : ColumnDefinition;
+		setColumn(column : ColumnDefinition): void;
+		type?: OrderByType;
+		getType() : OrderByType;
+		setType(type : OrderByType): void;
 		
 	}
 	
-	export interface JoinBuilder {
-		new(): Join;
-		decode(buffer: ArrayBuffer) : Join;
-		//decode(buffer: NodeBuffer) : Join;
-		//decode(buffer: ByteArrayBuffer) : Join;
-		decode64(buffer: string) : Join;
+	export interface OrderByBuilder {
+		new(): OrderBy;
+		decode(buffer: ArrayBuffer) : OrderBy;
+		//decode(buffer: NodeBuffer) : OrderBy;
+		//decode(buffer: ByteArrayBuffer) : OrderBy;
+		decode64(buffer: string) : OrderBy;
+		
+	}	
+}
+
+declare module org.roylance.yaorm {
+
+	export interface Projection extends ProtoBufModel {
+		labels: ColumnDefinition[];
+		getLabels() : ColumnDefinition[];
+		setLabels(labels : ColumnDefinition[]): void;
+		main_table?: TableDefinition;
+		getMainTable() : TableDefinition;
+		setMainTable(mainTable : TableDefinition): void;
+		joins: JoinTable[];
+		getJoins() : JoinTable[];
+		setJoins(joins : JoinTable[]): void;
+		where_clause?: WhereClause;
+		getWhereClause() : WhereClause;
+		setWhereClause(whereClause : WhereClause): void;
+		group_by?: GroupBy;
+		getGroupBy() : GroupBy;
+		setGroupBy(groupBy : GroupBy): void;
+		order_bys: OrderBy[];
+		getOrderBys() : OrderBy[];
+		setOrderBys(orderBys : OrderBy[]): void;
+		name?: string;
+		getName() : string;
+		setName(name : string): void;
+		limit?: number;
+		getLimit() : number;
+		setLimit(limit : number): void;
+		offset?: number;
+		getOffset() : number;
+		setOffset(offset : number): void;
+		
+	}
+	
+	export interface ProjectionBuilder {
+		new(): Projection;
+		decode(buffer: ArrayBuffer) : Projection;
+		//decode(buffer: NodeBuffer) : Projection;
+		//decode(buffer: ByteArrayBuffer) : Projection;
+		decode64(buffer: string) : Projection;
 		
 	}	
 }
@@ -1066,6 +1121,25 @@ declare module org.roylance.yaorm {
 		STRING = 14,
 		BYTES = 15,
 		PROTO = 16,
+		
+	}
+}
+
+declare module org.roylance.yaorm {
+	export const enum SelectFunctionType {
+		NONE_SELECT_FUNCTION_TYPE = 0,
+		COUNT_SELECT_FUNCTION_TYPE = 1,
+		MAX_SELECT_FUNCTION_TYPE = 2,
+		MIN_SELECT_FUNCTION_TYPE = 3,
+		SUM_SELECT_FUNCTION_TYPE = 4,
+		
+	}
+}
+
+declare module org.roylance.yaorm {
+	export const enum OrderByType {
+		ASC = 0,
+		DESC = 1,
 		
 	}
 }

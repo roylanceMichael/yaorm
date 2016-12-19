@@ -21,6 +21,19 @@ enum ProtobufType {
     PROTO = 16;
 }
 
+enum SelectFunctionType {
+    NONE_SELECT_FUNCTION_TYPE = 0;
+    COUNT_SELECT_FUNCTION_TYPE = 1;
+    MAX_SELECT_FUNCTION_TYPE = 2;
+    MIN_SELECT_FUNCTION_TYPE = 3;
+    SUM_SELECT_FUNCTION_TYPE = 4;
+}
+
+enum OrderByType {
+    ASC = 0;
+    DESC = 1;
+}
+
 message ProtoTypeToSqlType {
     ProtobufType proto_type = 1;
     string sql_type = 2;
@@ -69,6 +82,10 @@ message ColumnDefinition {
     }
     LinkerType linker_type = 5;
     int32 order = 6;
+    string alias = 7;
+    string table_alias = 8;
+    SelectFunctionType function_type = 9;
+    string function_text = 10;
 }
 
 message Index {
@@ -104,6 +121,7 @@ message TableDefinition {
         LINKER_ENUM = 2;
     }
     TableType table_type = 4;
+    string alias = 5;
 }
 
 message TableDefinitions {
@@ -237,23 +255,34 @@ message DatabaseExecutionReport {
     int64 calls_to_database = 1;
 }
 
-// projection api
-message JoinKey {
-    ColumnDefinition first = 1;
-    ColumnDefinition second = 2;
-    ColumnDefinition third = 3;
-    ColumnDefinition fourth = 4;
-    ColumnDefinition fifth = 5;
-    ColumnDefinition sixth = 6;
+// project
+message JoinTable {
+    TableDefinition first_table = 1;
+    TableDefinition second_table = 2;
+    ColumnDefinition first_column = 7;
+    ColumnDefinition second_column = 8;
 }
 
-message JoinDefinition {
-    TableDefinition table = 1;
-    JoinKey key = 2;
+message GroupBy {
+    repeated ColumnDefinition columns = 1;
 }
 
-message Join {
-    repeated JoinDefinition join_definitions = 1;
+message OrderBy {
+    ColumnDefinition column = 1;
+    OrderByType type = 2;
+}
+
+message Projection {
+    repeated ColumnDefinition labels = 1;
+    TableDefinition main_table = 2;
+    repeated JoinTable joins = 3;
+    WhereClause where_clause = 4;
+    GroupBy group_by = 5;
+    repeated OrderBy order_bys = 6;
+    string name = 7;
+    int64 limit = 8;
+    int64 offset = 9;
+
 }
 
 message UIYaormRequest {

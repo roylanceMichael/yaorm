@@ -3,6 +3,7 @@ package org.roylance.yaorm.services.postgres
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
+import org.roylance.yaorm.utilities.ProjectUtilities
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
@@ -390,6 +391,10 @@ class PostgresGeneratorService(override val bulkInsertSize: Int = 1000, private 
         }
 
         return returnTableDefinition.build()
+    }
+
+    override fun buildProjectionSQL(projection: YaormModel.Projection): String {
+        return ProjectUtilities.buildProjectionSQL(projection, this)
     }
 
     companion object {

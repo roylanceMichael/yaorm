@@ -2,9 +2,9 @@ package org.roylance.yaorm.services.sqlite
 
 import org.junit.Test
 import org.roylance.yaorm.ComplexModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityMessageService
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.EntityMessageService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.ComplexModelBuilder
 import java.io.File
 import java.util.*
@@ -16,11 +16,11 @@ class SQLiteWeakTypeTests {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
@@ -62,11 +62,11 @@ class SQLiteWeakTypeTests {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
@@ -108,11 +108,11 @@ class SQLiteWeakTypeTests {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
@@ -155,11 +155,11 @@ class SQLiteWeakTypeTests {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
@@ -207,11 +207,11 @@ class SQLiteWeakTypeTests {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
@@ -268,11 +268,11 @@ class SQLiteWeakTypeTests {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()

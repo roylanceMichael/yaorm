@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services.proto
+package org.roylance.yaorm.services
 
 import com.google.protobuf.Message
 

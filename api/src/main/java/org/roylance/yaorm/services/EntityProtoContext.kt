@@ -1,8 +1,9 @@
-package org.roylance.yaorm.services.proto
+package org.roylance.yaorm.services
 
 import com.google.protobuf.Descriptors
 import org.roylance.common.service.IBase64Service
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.migration.DefinitionModelComparisonUtil
@@ -11,7 +12,7 @@ import java.util.*
 class EntityProtoContext(
         val fileDescriptor: Descriptors.FileDescriptor,
         val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
-        val protoService: IEntityProtoService,
+        val service: IEntityService,
         val customIndexes: HashMap<String, YaormModel.Index>,
         val base64Service: IBase64Service): AutoCloseable {
 
@@ -38,7 +39,7 @@ class EntityProtoContext(
 
     init {
         this.entityMessageService = EntityMessageService(this.protoGeneratedMessageBuilder,
-                this.protoService,
+                this.service,
                 this.customIndexes)
         this.entityMessageService.createEntireSchema(YaormModel.Migration.getDefaultInstance())
     }
@@ -174,42 +175,42 @@ class EntityProtoContext(
 
     private fun createIndex(differenceModel: YaormModel.Difference):Boolean {
         if (differenceModel.hasIndex() && differenceModel.hasTableDefinition()) {
-            return this.protoService.createIndex(differenceModel.index, differenceModel.tableDefinition)
+            return this.service.createIndex(differenceModel.index, differenceModel.tableDefinition)
         }
         return false
     }
 
     private fun dropIndex(differenceModel: YaormModel.Difference):Boolean {
         if (differenceModel.hasIndex() && differenceModel.hasTableDefinition()) {
-            return this.protoService.dropIndex(differenceModel.index, differenceModel.tableDefinition)
+            return this.service.dropIndex(differenceModel.index, differenceModel.tableDefinition)
         }
         return false
     }
 
     private fun createColumn(differenceModel: YaormModel.Difference):Boolean {
         if (differenceModel.hasPropertyDefinition() && differenceModel.hasTableDefinition()) {
-            return this.protoService.createColumn(differenceModel.propertyDefinition, differenceModel.tableDefinition)
+            return this.service.createColumn(differenceModel.propertyDefinition, differenceModel.tableDefinition)
         }
         return false
     }
 
     private fun dropColumn(differenceModel: YaormModel.Difference):Boolean {
         if (differenceModel.propertyDefinition != null && differenceModel.hasTableDefinition()) {
-            return this.protoService.dropColumn(differenceModel.propertyDefinition, differenceModel.tableDefinition)
+            return this.service.dropColumn(differenceModel.propertyDefinition, differenceModel.tableDefinition)
         }
         return false
     }
 
     private fun createTable(difference: YaormModel.Difference):Boolean {
         if (difference.hasTableDefinition()) {
-            return this.protoService.createTable(difference.tableDefinition)
+            return this.service.createTable(difference.tableDefinition)
         }
         return false
     }
 
     private fun dropTable(difference: YaormModel.Difference):Boolean {
         if (difference.hasTableDefinition()) {
-            return this.protoService.dropTable(difference.tableDefinition)
+            return this.service.dropTable(difference.tableDefinition)
         }
         return false
     }

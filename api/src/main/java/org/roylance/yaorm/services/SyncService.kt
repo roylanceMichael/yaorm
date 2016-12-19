@@ -2,8 +2,6 @@ package org.roylance.yaorm.services
 
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.proto.IEntityMessageService
-import org.roylance.yaorm.services.proto.IEntityProtoService
 
 object SyncService: ISyncService {
     override fun <T : Message> syncTable(fromMessageService: IEntityMessageService,
@@ -32,28 +30,28 @@ object SyncService: ISyncService {
         return true
     }
 
-    override fun syncTable(fromProtoService: IEntityProtoService,
-                           toProtoService: IEntityProtoService,
+    override fun syncTable(fromService: IEntityService,
+                           toService: IEntityService,
                            tableDefinition: YaormModel.TableDefinition,
                            dropTable: Boolean,
                            bulkInsertSize: Int): Boolean {
         if (dropTable) {
-            toProtoService.dropTable(tableDefinition)
+            toService.dropTable(tableDefinition)
         }
 
-        toProtoService.createTable(tableDefinition)
+        toService.createTable(tableDefinition)
 
-        val totalCount = fromProtoService.getCount(tableDefinition)
+        val totalCount = fromService.getCount(tableDefinition)
         var runningOffset = 0
         while (runningOffset < totalCount) {
-            val records = fromProtoService.getMany(tableDefinition, bulkInsertSize, runningOffset)
-            toProtoService.bulkInsert(records, tableDefinition)
+            val records = fromService.getMany(tableDefinition, bulkInsertSize, runningOffset)
+            toService.bulkInsert(records, tableDefinition)
 
             runningOffset += bulkInsertSize
         }
 
-        val records = fromProtoService.getMany(tableDefinition, bulkInsertSize, runningOffset)
-        toProtoService.bulkInsert(records, tableDefinition)
+        val records = fromService.getMany(tableDefinition, bulkInsertSize, runningOffset)
+        toService.bulkInsert(records, tableDefinition)
 
         return true
     }

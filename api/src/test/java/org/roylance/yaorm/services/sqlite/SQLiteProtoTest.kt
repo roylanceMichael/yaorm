@@ -4,8 +4,8 @@ import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.TestModelGMBuilder
 import java.io.File
@@ -19,11 +19,11 @@ class SQLiteProtoTest {
 
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -62,11 +62,11 @@ class SQLiteProtoTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -109,11 +109,11 @@ class SQLiteProtoTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -186,11 +186,11 @@ class SQLiteProtoTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -250,11 +250,11 @@ class SQLiteProtoTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -319,11 +319,11 @@ class SQLiteProtoTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 

@@ -4,9 +4,9 @@ import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.NestedEnumTest
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityProtoContext
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.EntityProtoContext
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.ComplexModelBuilder
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.NestedEnumGMBuilder
@@ -25,11 +25,11 @@ class MySQLNestedEnumTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoContext = EntityProtoContext(
                     NestedEnumTest.getDescriptor(),
                     NestedEnumGMBuilder(),
@@ -93,11 +93,11 @@ class MySQLNestedEnumTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),

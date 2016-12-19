@@ -3,11 +3,12 @@ package org.roylance.yaorm.services.mysql
 import com.google.protobuf.Descriptors
 import org.roylance.common.service.IBase64Service
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
+import org.roylance.yaorm.services.*
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.proto.*
 import java.util.*
 
-class MySQLProtoBuilder(private val useMyISAM: Boolean = false): IEntityProtoBuilder {
+class MySQLBuilder(private val useMyISAM: Boolean = false): IEntityBuilder {
     override fun buildProtoContext(connectionInfo: YaormModel.ConnectionInfo,
                                    fileDescriptor: Descriptors.FileDescriptor,
                                    messageBuilder: IProtoGeneratedMessageBuilder,
@@ -30,7 +31,7 @@ class MySQLProtoBuilder(private val useMyISAM: Boolean = false): IEntityProtoBui
     }
 
     override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo,
-                                   emptyAsNull: Boolean): IEntityProtoService {
+                                   emptyAsNull: Boolean): IEntityService {
         val sourceConnection = MySQLConnectionSourceFactory(
                 connectionInfo.host,
                 connectionInfo.schema,
@@ -38,7 +39,7 @@ class MySQLProtoBuilder(private val useMyISAM: Boolean = false): IEntityProtoBui
                 connectionInfo.password,
                 connectionInfo.shouldCreateSchema)
 
-        val granularDatabaseService = JDBCGranularDatabaseProtoService(
+        val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
                 false)
 
@@ -46,6 +47,6 @@ class MySQLProtoBuilder(private val useMyISAM: Boolean = false): IEntityProtoBui
                 emptyAsNull = emptyAsNull,
                 useMyISAM = useMyISAM)
 
-        return EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+        return EntityService(granularDatabaseService, mySqlGeneratorService)
     }
 }

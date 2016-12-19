@@ -4,14 +4,12 @@ import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.NestedEnumTest
-import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityProtoContext
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.EntityProtoContext
+import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.utilities.ComplexModelBuilder
 import org.roylance.yaorm.utilities.NestedEnumGMBuilder
 import org.roylance.yaorm.utilities.TestBase64Service
-import org.roylance.yaorm.utilities.TestModelGMBuilder
 import java.io.File
 import java.util.*
 
@@ -22,11 +20,11 @@ class SQLiteNestedEnumTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = NestedEnumGMBuilder()
             val protoContext = EntityProtoContext(
                     NestedEnumTest.getDescriptor(),
@@ -85,11 +83,11 @@ class SQLiteNestedEnumTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
@@ -135,11 +133,11 @@ class SQLiteNestedEnumTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
@@ -187,11 +185,11 @@ class SQLiteNestedEnumTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
@@ -239,11 +237,11 @@ class SQLiteNestedEnumTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),

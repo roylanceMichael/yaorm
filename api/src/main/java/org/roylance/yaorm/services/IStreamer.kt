@@ -1,7 +1,7 @@
-package org.roylance.yaorm.services.proto
+package org.roylance.yaorm.services
 
 import org.roylance.yaorm.YaormModel
 
-interface IProtoStreamer {
+interface IStreamer {
     fun stream(record:YaormModel.Record)
 }

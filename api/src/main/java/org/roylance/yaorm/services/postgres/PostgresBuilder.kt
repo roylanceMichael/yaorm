@@ -3,11 +3,12 @@ package org.roylance.yaorm.services.postgres
 import com.google.protobuf.Descriptors
 import org.roylance.common.service.IBase64Service
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
+import org.roylance.yaorm.services.*
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.proto.*
 import java.util.*
 
-class PostgresProtoBuilder: IEntityProtoBuilder {
+class PostgresBuilder : IEntityBuilder {
     override fun buildMessageService(connectionInfo: YaormModel.ConnectionInfo,
                                      messageBuilder: IProtoGeneratedMessageBuilder,
                                      customIndexes: HashMap<String, YaormModel.Index>,
@@ -29,7 +30,7 @@ class PostgresProtoBuilder: IEntityProtoBuilder {
                 base64Service)
     }
 
-    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo, emptyAsNull: Boolean): IEntityProtoService {
+    override fun buildProtoService(connectionInfo: YaormModel.ConnectionInfo, emptyAsNull: Boolean): IEntityService {
         val sourceConnection = PostgresConnectionSourceFactory(
                 connectionInfo.host,
                 connectionInfo.port.toString(),
@@ -38,10 +39,10 @@ class PostgresProtoBuilder: IEntityProtoBuilder {
                 connectionInfo.password,
                 false)
 
-        val granularDatabaseService = JDBCGranularDatabaseProtoService(
+        val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
                 false)
         val generatorService = PostgresGeneratorService(emptyAsNull = emptyAsNull)
-        return EntityProtoService(granularDatabaseService, generatorService)
+        return EntityService(granularDatabaseService, generatorService)
     }
 }

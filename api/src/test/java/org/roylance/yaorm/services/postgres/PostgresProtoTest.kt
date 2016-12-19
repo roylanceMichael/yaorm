@@ -4,8 +4,8 @@ import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.TestModelGMBuilder
@@ -26,11 +26,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -79,11 +79,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -136,11 +136,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -219,11 +219,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -289,11 +289,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
@@ -350,11 +350,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
 
@@ -392,11 +392,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -448,11 +448,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -504,11 +504,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -561,11 +561,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -614,11 +614,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -671,11 +671,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -754,11 +754,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -824,11 +824,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
@@ -885,11 +885,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
 
@@ -927,11 +927,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -983,11 +983,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
@@ -1039,11 +1039,11 @@ class PostgresProtoTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService(500, true)
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 

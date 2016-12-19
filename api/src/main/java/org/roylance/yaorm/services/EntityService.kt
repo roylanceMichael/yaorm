@@ -1,14 +1,13 @@
-package org.roylance.yaorm.services.proto
+package org.roylance.yaorm.services
 
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
-import org.roylance.yaorm.services.IConnectionSourceFactory
-import org.roylance.yaorm.services.ISQLGeneratorService
+import org.roylance.yaorm.utilities.ProjectUtilities
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
-class EntityProtoService(private val granularDatabaseService: IGranularDatabaseProtoService,
-                         private val sqlGeneratorService: ISQLGeneratorService) : IEntityProtoService {
+class EntityService(private val granularDatabaseService: IGranularDatabaseService,
+                    private val sqlGeneratorService: ISQLGeneratorService) : IEntityService {
     override val connectionSourceFactory: IConnectionSourceFactory
         get() = granularDatabaseService.connectionSourceFactory
 
@@ -20,7 +19,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun getIdsStream(definition: YaormModel.TableDefinition,
-                              streamer: IProtoStreamer) {
+                              streamer: IStreamer) {
         if (!this.granularDatabaseService.isAvailable()) {
             return
         }
@@ -48,7 +47,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
     }
 
     override fun getManyStream(definition: YaormModel.TableDefinition,
-                               streamer: IProtoStreamer,
+                               streamer: IStreamer,
                                limit: Int,
                                offset: Int) {
         if (!this.granularDatabaseService.isAvailable()) {
@@ -179,7 +178,7 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
                 .getRecords()
     }
 
-    override fun getCustomStream(customSql: String, definition: YaormModel.TableDefinition, streamer: IProtoStreamer) {
+    override fun getCustomStream(customSql: String, definition: YaormModel.TableDefinition, streamer: IStreamer) {
         if (!this.granularDatabaseService.isAvailable()) {
             return
         }
@@ -426,6 +425,22 @@ class EntityProtoService(private val granularDatabaseService: IGranularDatabaseP
         val tableDefinition = this.sqlGeneratorService.buildTableDefinition(tableName, tableDefinitionRecords)
 
         return tableDefinition
+    }
+
+    override fun getTableDefinitionFromProject(projection: YaormModel.Projection): YaormModel.TableDefinition {
+        return ProjectUtilities.buildTableDefinitionFromProjection(projection)
+    }
+
+    override fun getRecordsFromProject(project: YaormModel.Projection): YaormModel.Records {
+        val tableDefinition = ProjectUtilities.buildTableDefinitionFromProjection(project)
+        val projectionSQL = ProjectUtilities.buildProjectionSQL(project, sqlGeneratorService)
+        return granularDatabaseService.executeSelectQuery(tableDefinition, projectionSQL).getRecords()
+    }
+
+    override fun getRecordsFromProjectStream(project: YaormModel.Projection, streamer: IStreamer) {
+        val tableDefinition = ProjectUtilities.buildTableDefinitionFromProjection(project)
+        val projectionSQL = ProjectUtilities.buildProjectionSQL(project, sqlGeneratorService)
+        granularDatabaseService.executeSelectQueryStream(tableDefinition, projectionSQL, streamer)
     }
 
     override fun close() {

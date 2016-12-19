@@ -3,13 +3,10 @@ package org.roylance.yaorm.services.postgres
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.*
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityProtoContext
-import org.roylance.yaorm.services.proto.EntityProtoService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
+import org.roylance.yaorm.services.EntityProtoContext
+import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.utilities.*
-import java.io.File
 import java.util.*
 
 class PostgresProtoContextTest {
@@ -26,11 +23,11 @@ class PostgresProtoContextTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
             val protoContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
@@ -69,7 +66,7 @@ class PostgresProtoContextTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
@@ -78,7 +75,7 @@ class PostgresProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -90,7 +87,7 @@ class PostgresProtoContextTest {
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -126,7 +123,7 @@ class PostgresProtoContextTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
@@ -135,7 +132,7 @@ class PostgresProtoContextTest {
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -154,7 +151,7 @@ class PostgresProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -184,7 +181,7 @@ class PostgresProtoContextTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
@@ -193,7 +190,7 @@ class PostgresProtoContextTest {
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -212,7 +209,7 @@ class PostgresProtoContextTest {
             val firstVersion = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -245,7 +242,7 @@ class PostgresProtoContextTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
@@ -253,7 +250,7 @@ class PostgresProtoContextTest {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -311,7 +308,7 @@ class PostgresProtoContextTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
@@ -319,7 +316,7 @@ class PostgresProtoContextTest {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityProtoService(granularDatabaseService, generatorService),
+                    EntityService(granularDatabaseService, generatorService),
                     HashMap(),
                     TestBase64Service())
 

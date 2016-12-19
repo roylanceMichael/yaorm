@@ -5,9 +5,9 @@ import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityMessageService
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.EntityMessageService
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.*
 import java.util.*
 
@@ -25,11 +25,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -97,11 +97,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -157,11 +157,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -215,11 +215,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
@@ -278,11 +278,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
@@ -321,11 +321,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val person = TestingModel.Person.newBuilder()
@@ -380,11 +380,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             val person = TestingModel.Person.newBuilder()
@@ -427,11 +427,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
@@ -464,11 +464,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresPassword!!,
                     false)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
 
             entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
@@ -509,11 +509,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresUserName!!,
                     ConnectionUtilities.postgresPassword!!,
                     false)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
@@ -547,11 +547,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresUserName!!,
                     ConnectionUtilities.postgresPassword!!,
                     false)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val customIndexes = HashMap<String, YaormModel.Index>()
@@ -587,11 +587,11 @@ class PostgresEntityMessageServiceTest {
                     ConnectionUtilities.postgresUserName!!,
                     ConnectionUtilities.postgresPassword!!,
                     false)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val generatorService = PostgresGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, generatorService)
+            val entityService = EntityService(granularDatabaseService, generatorService)
             val protoService = TestModelGMBuilder()
 
             val customIndexes = HashMap<String, YaormModel.Index>()

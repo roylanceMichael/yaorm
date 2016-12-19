@@ -3,9 +3,9 @@ package org.roylance.yaorm.services.sqlite
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.*
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.EntityProtoContext
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.EntityProtoContext
+import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.*
 import java.io.File
 import java.util.*
@@ -17,11 +17,11 @@ class SQLiteEntityProtoContextTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
-            val entityService = EntityProtoService(granularDatabaseService, sqliteGeneratorService)
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val protoService = TestModelGMBuilder()
             val protoContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
@@ -51,7 +51,7 @@ class SQLiteEntityProtoContextTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
@@ -60,7 +60,7 @@ class SQLiteEntityProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -69,7 +69,7 @@ class SQLiteEntityProtoContextTest {
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -99,7 +99,7 @@ class SQLiteEntityProtoContextTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
@@ -108,7 +108,7 @@ class SQLiteEntityProtoContextTest {
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -124,7 +124,7 @@ class SQLiteEntityProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -148,7 +148,7 @@ class SQLiteEntityProtoContextTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
@@ -157,7 +157,7 @@ class SQLiteEntityProtoContextTest {
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -173,7 +173,7 @@ class SQLiteEntityProtoContextTest {
             val firstVersion = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -200,7 +200,7 @@ class SQLiteEntityProtoContextTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
@@ -208,7 +208,7 @@ class SQLiteEntityProtoContextTest {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -257,7 +257,7 @@ class SQLiteEntityProtoContextTest {
         val database = File(UUID.randomUUID().toString().replace("-", ""))
         try {
             val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
@@ -265,7 +265,7 @@ class SQLiteEntityProtoContextTest {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityProtoService(granularDatabaseService, sqliteGeneratorService),
+                    EntityService(granularDatabaseService, sqliteGeneratorService),
                     HashMap(),
                     TestBase64Service())
 

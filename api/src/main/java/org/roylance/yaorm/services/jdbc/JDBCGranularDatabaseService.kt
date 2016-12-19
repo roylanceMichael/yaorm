@@ -4,14 +4,14 @@ import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.TypeModel
 import org.roylance.yaorm.models.entity.EntityResultModel
 import org.roylance.yaorm.services.IConnectionSourceFactory
-import org.roylance.yaorm.services.proto.IGranularDatabaseProtoService
-import org.roylance.yaorm.services.proto.IProtoCursor
-import org.roylance.yaorm.services.proto.IProtoStreamer
+import org.roylance.yaorm.services.ICursor
+import org.roylance.yaorm.services.IGranularDatabaseService
+import org.roylance.yaorm.services.IStreamer
 import java.sql.ResultSet
 import java.util.*
 
-class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: IConnectionSourceFactory,
-                                       private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseProtoService {
+class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnectionSourceFactory,
+                                  private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseService {
     private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
 
     override fun getReport(): YaormModel.DatabaseExecutionReport {
@@ -105,11 +105,11 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
         }
     }
 
-    override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): IProtoCursor {
+    override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): ICursor {
         val statement = this.connectionSourceFactory.generateReadStatement()
         try {
             val resultSet = statement.executeQuery(query)
-            return JDBCProtoCursor(definition, resultSet)
+            return JDBCCursor(definition, resultSet)
         }
         catch(e:Exception) {
             throw e
@@ -120,11 +120,11 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
         }
     }
 
-    override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IProtoStreamer) {
+    override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IStreamer) {
         val statement = this.connectionSourceFactory.generateReadStatement()
         try {
             val resultSet = statement.executeQuery(query)
-            JDBCProtoCursor(definition, resultSet).getRecordsStream(streamer)
+            JDBCCursor(definition, resultSet).getRecordsStream(streamer)
         }
         finally {
             // normally close, but wait for service to do it
@@ -134,7 +134,7 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
 
     override fun executeSelectQuery(query: String): YaormModel.Records {
         val returnRecord = YaormModel.Records.newBuilder()
-        val streamer = object: IProtoStreamer {
+        val streamer = object: IStreamer {
             override fun stream(record: YaormModel.Record) {
                 returnRecord.addRecords(record)
             }
@@ -144,7 +144,7 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
         return returnRecord.build()
     }
 
-    override fun executeSelectQueryStream(query: String, stream: IProtoStreamer) {
+    override fun executeSelectQueryStream(query: String, stream: IStreamer) {
         val statement = connectionSourceFactory.generateReadStatement()
         try {
             val resultSet = statement.executeQuery(query)
@@ -163,7 +163,7 @@ class JDBCGranularDatabaseProtoService(override val connectionSourceFactory: ICo
         this.connectionSourceFactory.close()
     }
 
-    private fun buildRecords(resultSet: ResultSet, protoStreamer: IProtoStreamer) {
+    private fun buildRecords(resultSet: ResultSet, protoStreamer: IStreamer) {
         val foundColumns = HashMap<String, YaormModel.ColumnDefinition>()
         while (resultSet.next()) {
             val newRecord = YaormModel.Record.newBuilder()

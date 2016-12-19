@@ -3,11 +3,9 @@ package org.roylance.yaorm.services.mysql
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.*
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseProtoService
-import org.roylance.yaorm.services.postgres.PostgresConnectionSourceFactory
-import org.roylance.yaorm.services.postgres.PostgresGeneratorService
-import org.roylance.yaorm.services.proto.EntityProtoContext
-import org.roylance.yaorm.services.proto.EntityProtoService
+import org.roylance.yaorm.services.EntityProtoContext
+import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.utilities.*
 import java.util.*
 
@@ -23,11 +21,11 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityProtoService(granularDatabaseService, mySqlGeneratorService)
+            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
             val protoContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
@@ -62,7 +60,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
@@ -71,7 +69,7 @@ class MySQLProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -80,7 +78,7 @@ class MySQLProtoContextTest {
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -115,7 +113,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
@@ -124,7 +122,7 @@ class MySQLProtoContextTest {
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -140,7 +138,7 @@ class MySQLProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -169,7 +167,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
@@ -178,7 +176,7 @@ class MySQLProtoContextTest {
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -194,7 +192,7 @@ class MySQLProtoContextTest {
             val firstVersion = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -226,7 +224,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
@@ -234,7 +232,7 @@ class MySQLProtoContextTest {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 
@@ -288,7 +286,7 @@ class MySQLProtoContextTest {
                     ConnectionUtilities.mysqlUserName!!,
                     ConnectionUtilities.mysqlPassword!!)
 
-            val granularDatabaseService = JDBCGranularDatabaseProtoService(
+            val granularDatabaseService = JDBCGranularDatabaseService(
                     sourceConnection,
                     false)
             val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
@@ -296,7 +294,7 @@ class MySQLProtoContextTest {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityProtoService(granularDatabaseService, mySqlGeneratorService),
+                    EntityService(granularDatabaseService, mySqlGeneratorService),
                     HashMap(),
                     TestBase64Service())
 

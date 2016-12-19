@@ -1,8 +1,9 @@
-package org.roylance.yaorm.services.proto
+package org.roylance.yaorm.services
 
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.ConvertRecordsToProtobuf
 import org.roylance.yaorm.utilities.GetProtoObjects
 import org.roylance.yaorm.utilities.YaormUtils
@@ -12,7 +13,7 @@ import java.util.*
 @Suppress("UNCHECKED_CAST")
 class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
-        override val entityService: IEntityProtoService,
+        override val entityService: IEntityService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
 
 
@@ -151,7 +152,7 @@ class EntityMessageService(
 
         val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
 
-        val protoStream = object: IProtoStreamer {
+        val protoStream = object: IStreamer {
             override fun stream(record: YaormModel.Record) {
                 val newBuilder = builder.newBuilderForType()
                 ConvertRecordsToProtobuf.build(newBuilder, record)
@@ -195,7 +196,7 @@ class EntityMessageService(
 
         val idField = messageType.descriptorForType.fields.first { it.name == YaormUtils.IdName }
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
-        this.entityService.getIdsStream(tableDefinition, object: IProtoStreamer {
+        this.entityService.getIdsStream(tableDefinition, object: IStreamer {
             override fun stream(record: YaormModel.Record) {
                 val builder = protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name).toBuilder()
                 builder.setField(idField, record.columnsList.first { it.definition.name == YaormUtils.IdName }!!.stringHolder)
@@ -497,7 +498,7 @@ class EntityMessageService(
 
     private class CreateSchema(
             private val entityMessageService: EntityMessageService,
-            private val entityService: IEntityProtoService,
+            private val entityService: IEntityService,
             private val customIndexes: HashMap<String, YaormModel.Index>) {
         private val seenTables = HashSet<String>()
 
