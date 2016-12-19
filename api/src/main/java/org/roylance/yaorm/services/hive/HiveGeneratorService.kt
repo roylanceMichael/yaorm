@@ -18,37 +18,35 @@ class HiveGeneratorService(override val bulkInsertSize: Int = 2000,
     override val blobTypeName: String
         get() = SqlBlobName
 
-    override val protoTypeToSqlType: Map<YaormModel.ProtobufType, String> = object : HashMap<YaormModel.ProtobufType, String>() {
-        init {
-            put(YaormModel.ProtobufType.STRING, SqlTextName)
-            put(YaormModel.ProtobufType.INT32, SqlIntegerName)
-            put(YaormModel.ProtobufType.INT64, SqlIntegerName)
-            put(YaormModel.ProtobufType.UINT32, SqlIntegerName)
-            put(YaormModel.ProtobufType.UINT64, SqlIntegerName)
-            put(YaormModel.ProtobufType.SINT32, SqlIntegerName)
-            put(YaormModel.ProtobufType.SINT64, SqlIntegerName)
-            put(YaormModel.ProtobufType.FIXED32, SqlIntegerName)
-            put(YaormModel.ProtobufType.FIXED64, SqlIntegerName)
-            put(YaormModel.ProtobufType.SFIXED32, SqlIntegerName)
-            put(YaormModel.ProtobufType.SFIXED64, SqlIntegerName)
-            put(YaormModel.ProtobufType.BOOL, SqlIntegerName)
-            put(YaormModel.ProtobufType.BYTES, SqlTextName)
-            put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
-            put(YaormModel.ProtobufType.FLOAT, SqlRealName)
-        }
-    }
+    override val protoTypeToSqlType = HashMap<YaormModel.ProtobufType, String>()
 
-    override val sqlTypeToProtoType = object : HashMap<String, YaormModel.ProtobufType>() {
-        init {
-            put(SqlTextName, YaormModel.ProtobufType.STRING)
-            put(SqlIntegerName, YaormModel.ProtobufType.INT64)
-            put(SqlRealName, YaormModel.ProtobufType.DOUBLE)
-            put(SqlTextName, YaormModel.ProtobufType.STRING)
-        }
-    }
+    override val sqlTypeToProtoType = HashMap<String, YaormModel.ProtobufType>()
 
     override val insertSameAsUpdate: Boolean
         get() = true
+
+    init {
+        protoTypeToSqlType.put(YaormModel.ProtobufType.STRING, SqlTextName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.INT32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.INT64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.UINT32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.UINT64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SINT32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SINT64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.FIXED32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.FIXED64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SFIXED32, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.SFIXED64, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.BOOL, SqlIntegerName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.BYTES, SqlTextName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.DOUBLE, SqlRealName)
+        protoTypeToSqlType.put(YaormModel.ProtobufType.FLOAT, SqlRealName)
+
+        sqlTypeToProtoType.put(SqlTextName, YaormModel.ProtobufType.STRING)
+        sqlTypeToProtoType.put(SqlIntegerName, YaormModel.ProtobufType.INT64)
+        sqlTypeToProtoType.put(SqlRealName, YaormModel.ProtobufType.DOUBLE)
+        sqlTypeToProtoType.put(SqlTextName, YaormModel.ProtobufType.STRING)
+    }
 
     override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
         return "select id from ${this.buildKeyword(definition.name)}"

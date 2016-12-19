@@ -18,30 +18,28 @@ class EntityProtoContext(
 
     val entityMessageService: IEntityMessageService
 
-    private val typeToAction = object: HashMap<
+    private val typeToAction = HashMap<
             String,
-            (difference: YaormModel.Difference) -> Boolean>() {
-        init {
-            put(YaormModel.Difference.Operation.CREATE.name + YaormModel.Difference.EntityType.COLUMN.name,
-                    { model ->  createColumn(model) })
-            put(YaormModel.Difference.Operation.CREATE.name + YaormModel.Difference.EntityType.INDEX.name,
-                    { model ->  createIndex(model) })
-            put(YaormModel.Difference.Operation.CREATE.name + YaormModel.Difference.EntityType.TABLE.name,
-                    { model ->  createTable(model) })
-            put(YaormModel.Difference.Operation.DROP.name + YaormModel.Difference.EntityType.COLUMN.name,
-                    { model ->  dropColumn(model) })
-            put(YaormModel.Difference.Operation.DROP.name + YaormModel.Difference.EntityType.INDEX.name,
-                    { model ->  dropIndex(model) })
-            put(YaormModel.Difference.Operation.DROP.name + YaormModel.Difference.EntityType.TABLE.name,
-                    { model ->  dropTable(model) })
-        }
-    }
+            (difference: YaormModel.Difference) -> Boolean>()
 
     init {
         this.entityMessageService = EntityMessageService(this.protoGeneratedMessageBuilder,
                 this.service,
                 this.customIndexes)
         this.entityMessageService.createEntireSchema(YaormModel.Migration.getDefaultInstance())
+
+        typeToAction.put(YaormModel.Difference.Operation.CREATE.name + YaormModel.Difference.EntityType.COLUMN.name,
+                { model ->  createColumn(model) })
+        typeToAction.put(YaormModel.Difference.Operation.CREATE.name + YaormModel.Difference.EntityType.INDEX.name,
+                { model ->  createIndex(model) })
+        typeToAction.put(YaormModel.Difference.Operation.CREATE.name + YaormModel.Difference.EntityType.TABLE.name,
+                { model ->  createTable(model) })
+        typeToAction.put(YaormModel.Difference.Operation.DROP.name + YaormModel.Difference.EntityType.COLUMN.name,
+                { model ->  dropColumn(model) })
+        typeToAction.put(YaormModel.Difference.Operation.DROP.name + YaormModel.Difference.EntityType.INDEX.name,
+                { model ->  dropIndex(model) })
+        typeToAction.put(YaormModel.Difference.Operation.DROP.name + YaormModel.Difference.EntityType.TABLE.name,
+                { model ->  dropTable(model) })
     }
 
     fun handleMigrations(newId:String = UUID.randomUUID().toString()) {

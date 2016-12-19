@@ -28,24 +28,24 @@ object ProtobufUtils {
     const val Default = "DEFAULT"
     const val Empty = ""
 
-    val ProtoNameToProtoTypeMap = object: HashMap<String, YaormModel.ProtobufType>() {
-        init {
-            put(ProtoStringName, YaormModel.ProtobufType.STRING)
-            put(ProtoInt32Name, YaormModel.ProtobufType.INT32)
-            put(ProtoInt64Name, YaormModel.ProtobufType.INT64)
-            put(ProtoUInt32Name, YaormModel.ProtobufType.UINT32)
-            put(ProtoUInt64Name, YaormModel.ProtobufType.UINT64)
-            put(ProtoSInt32Name, YaormModel.ProtobufType.SINT32)
-            put(ProtoSInt64Name, YaormModel.ProtobufType.SINT64)
-            put(ProtoFixed32Name, YaormModel.ProtobufType.FIXED32)
-            put(ProtoFixed64Name, YaormModel.ProtobufType.FIXED64)
-            put(ProtoSFixed32Name, YaormModel.ProtobufType.SFIXED32)
-            put(ProtoSFixed64Name, YaormModel.ProtobufType.SFIXED64)
-            put(ProtoBoolName, YaormModel.ProtobufType.BOOL)
-            put(ProtoBytesName, YaormModel.ProtobufType.BYTES)
-            put(ProtoDoubleName, YaormModel.ProtobufType.DOUBLE)
-            put(ProtoFloatName, YaormModel.ProtobufType.FLOAT)
-        }
+    val ProtoNameToProtoTypeMap = HashMap<String, YaormModel.ProtobufType>()
+
+    init {
+        ProtoNameToProtoTypeMap.put(ProtoStringName, YaormModel.ProtobufType.STRING)
+        ProtoNameToProtoTypeMap.put(ProtoInt32Name, YaormModel.ProtobufType.INT32)
+        ProtoNameToProtoTypeMap.put(ProtoInt64Name, YaormModel.ProtobufType.INT64)
+        ProtoNameToProtoTypeMap.put(ProtoUInt32Name, YaormModel.ProtobufType.UINT32)
+        ProtoNameToProtoTypeMap.put(ProtoUInt64Name, YaormModel.ProtobufType.UINT64)
+        ProtoNameToProtoTypeMap.put(ProtoSInt32Name, YaormModel.ProtobufType.SINT32)
+        ProtoNameToProtoTypeMap.put(ProtoSInt64Name, YaormModel.ProtobufType.SINT64)
+        ProtoNameToProtoTypeMap.put(ProtoFixed32Name, YaormModel.ProtobufType.FIXED32)
+        ProtoNameToProtoTypeMap.put(ProtoFixed64Name, YaormModel.ProtobufType.FIXED64)
+        ProtoNameToProtoTypeMap.put(ProtoSFixed32Name, YaormModel.ProtobufType.SFIXED32)
+        ProtoNameToProtoTypeMap.put(ProtoSFixed64Name, YaormModel.ProtobufType.SFIXED64)
+        ProtoNameToProtoTypeMap.put(ProtoBoolName, YaormModel.ProtobufType.BOOL)
+        ProtoNameToProtoTypeMap.put(ProtoBytesName, YaormModel.ProtobufType.BYTES)
+        ProtoNameToProtoTypeMap.put(ProtoDoubleName, YaormModel.ProtobufType.DOUBLE)
+        ProtoNameToProtoTypeMap.put(ProtoFloatName, YaormModel.ProtobufType.FLOAT)
     }
 
     fun buildDefinitionFromDescriptor(descriptor: Descriptors.Descriptor,
