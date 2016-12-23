@@ -13,6 +13,8 @@ interface ISQLGeneratorService: IKeywordHandler {
     val realTypeName: String
     val blobTypeName: String
 
+    fun buildJoinSql(joinTable: YaormModel.JoinTable): String
+
     fun buildCountSql(definition: YaormModel.TableDefinition): String
 
     fun buildCreateColumn(definition: YaormModel.TableDefinition, propertyDefinition: YaormModel.ColumnDefinition): String?

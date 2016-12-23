@@ -51,4 +51,8 @@ interface IEntityService : AutoCloseable {
     fun getTableDefinitionFromProject(projection: YaormModel.Projection): YaormModel.TableDefinition
     fun getRecordsFromProject(project: YaormModel.Projection): YaormModel.Records
     fun getRecordsFromProjectStream(project: YaormModel.Projection, streamer: IStreamer)
+
+    fun getReport(): YaormModel.DatabaseExecutionReport
+
+    fun getJoinTableRecords(joinTable: YaormModel.JoinTable): YaormModel.Records
 }

@@ -251,8 +251,16 @@ message Migration {
     int64 insert_date = 4;
 }
 
+message DatabaseExecution {
+    string raw_sql = 1;
+    int64 time_called = 2;
+    bool result = 3;
+    int64 order_called = 4;
+}
+
 message DatabaseExecutionReport {
     int64 calls_to_database = 1;
+    repeated DatabaseExecution executions = 2;
 }
 
 // project
@@ -261,6 +269,12 @@ message JoinTable {
     TableDefinition second_table = 2;
     ColumnDefinition first_column = 7;
     ColumnDefinition second_column = 8;
+    WhereClause where_clause = 9;
+}
+
+message JoinTableRecords {
+    JoinTable join_table = 1;
+    Records records = 2;
 }
 
 message GroupBy {

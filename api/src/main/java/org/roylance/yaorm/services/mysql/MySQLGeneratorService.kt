@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.mysql
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.ProjectUtilities
+import org.roylance.yaorm.utilities.ProjectionUtilities
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
@@ -77,6 +77,14 @@ class MySQLGeneratorService(private val schemaName: String,
 
     override val insertSameAsUpdate: Boolean
         get() = true
+
+    override fun buildJoinSql(joinTable: YaormModel.JoinTable): String {
+        return """select *
+from ${this.buildKeyword(joinTable.firstTable.name)} a
+join ${this.buildKeyword(joinTable.secondTable.name)} b
+    on a.${buildKeyword(joinTable.firstColumn.name)} = b.${buildKeyword(joinTable.secondColumn.name)}
+"""
+    }
 
     override fun buildSelectIds(definition: YaormModel.TableDefinition): String {
         return "select id from ${this.buildKeyword(this.schemaName)}.${this.buildKeyword(definition.name)}"
@@ -435,7 +443,7 @@ class MySQLGeneratorService(private val schemaName: String,
     }
 
     override fun buildProjectionSQL(projection: YaormModel.Projection): String {
-        return ProjectUtilities.buildProjectionSQL(projection, this)
+        return ProjectionUtilities.buildProjectionSQL(projection, this)
     }
 
     private fun buildIndexColumnName(columnName:YaormModel.ColumnDefinition): String {
