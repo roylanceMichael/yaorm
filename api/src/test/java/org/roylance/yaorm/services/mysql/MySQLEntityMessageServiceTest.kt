@@ -80,11 +80,6 @@ class MySQLEntityMessageServiceTest {
             Assert.assertTrue(foundMessage.testFloat == testModel.testFloat)
             Assert.assertTrue(entityProtoMessageService.getReport().executionsCount > 0)
             println(entityProtoMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
-
-            var f = object {
-                var t: Int = 0
-                var r: Int = 2
-            }
         }
         finally {
             ConnectionUtilities.dropMySQLSchema()

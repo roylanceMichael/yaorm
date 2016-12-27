@@ -38,9 +38,6 @@ object TransformUtilities {
     fun merge(firstRecords: YaormModel.Records,
               secondRecords: YaormModel.Records,
               joinTable: YaormModel.JoinTable): YaormModel.TableRecords {
-
-
-
         return YaormModel.TableRecords.getDefaultInstance()
     }
 
