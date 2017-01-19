@@ -422,6 +422,6 @@ join ${this.buildKeyword(joinTable.secondTable.name)} b
         private const val SqlIntegerName = "bigint"
         private const val SqlTextName = "text"
         private const val SqlRealName = "decimal(60, 10)"
-        private const val SqlBlobName = "text"
+        private const val SqlBlobName = "varchar"
     }
 }

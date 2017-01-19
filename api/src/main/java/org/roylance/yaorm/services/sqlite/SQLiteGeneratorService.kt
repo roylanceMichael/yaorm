@@ -394,6 +394,7 @@ join ${this.buildKeyword(joinTable.secondTable.name)} b
                 columnDefinition.name = columnSplitInfo[0].replace(DoubleQuote, Empty)
                 columnDefinition.order = position
                 val type  = columnSplitInfo[1].toLowerCase()
+
                 if (sqlTypeToProtoType.containsKey(type)) {
                     columnDefinition.type = sqlTypeToProtoType[type]!!
                 }
@@ -429,7 +430,7 @@ join ${this.buildKeyword(joinTable.secondTable.name)} b
         private const val SqlIntegerName = "integer"
         private const val SqlTextName = "text"
         private const val SqlRealName = "real"
-        private const val SqlBlobName = "text"
+        private const val SqlBlobName = "blob"
 
         private const val SchemaTableRegexStr = """CREATE TABLE "(.+)" \((.+)\)"""
         private val SchemaTableRegex = Regex(SchemaTableRegexStr)
