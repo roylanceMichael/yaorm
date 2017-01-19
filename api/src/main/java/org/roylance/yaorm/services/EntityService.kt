@@ -2,12 +2,23 @@ package org.roylance.yaorm.services
 
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.models.db.GenericModel
-import org.roylance.yaorm.utilities.ProjectUtilities
+import org.roylance.yaorm.utilities.ProjectionUtilities
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
 class EntityService(private val granularDatabaseService: IGranularDatabaseService,
                     private val sqlGeneratorService: ISQLGeneratorService) : IEntityService {
+    override fun getJoinTableRecords(joinTable: YaormModel.JoinTable): YaormModel.Records {
+        val joinTableSQL = sqlGeneratorService.buildJoinSql(joinTable)
+        val joinTableDefinition = ProjectionUtilities.buildTableDefinitionFromJoinTable(joinTable)
+
+        return granularDatabaseService.executeSelectQuery(joinTableDefinition, joinTableSQL).getRecords()
+    }
+
+    override fun getReport(): YaormModel.DatabaseExecutionReport {
+        return granularDatabaseService.getReport()
+    }
+
     override val connectionSourceFactory: IConnectionSourceFactory
         get() = granularDatabaseService.connectionSourceFactory
 
@@ -427,19 +438,19 @@ class EntityService(private val granularDatabaseService: IGranularDatabaseServic
         return tableDefinition
     }
 
-    override fun getTableDefinitionFromProject(projection: YaormModel.Projection): YaormModel.TableDefinition {
-        return ProjectUtilities.buildTableDefinitionFromProjection(projection)
+    override fun getTableDefinitionFromProjection(projection: YaormModel.Projection): YaormModel.TableDefinition {
+        return ProjectionUtilities.buildTableDefinitionFromProjection(projection)
     }
 
-    override fun getRecordsFromProject(project: YaormModel.Projection): YaormModel.Records {
-        val tableDefinition = ProjectUtilities.buildTableDefinitionFromProjection(project)
-        val projectionSQL = ProjectUtilities.buildProjectionSQL(project, sqlGeneratorService)
+    override fun getRecordsFromProjection(projection: YaormModel.Projection): YaormModel.Records {
+        val tableDefinition = ProjectionUtilities.buildTableDefinitionFromProjection(projection)
+        val projectionSQL = ProjectionUtilities.buildProjectionSQL(projection, sqlGeneratorService)
         return granularDatabaseService.executeSelectQuery(tableDefinition, projectionSQL).getRecords()
     }
 
-    override fun getRecordsFromProjectStream(project: YaormModel.Projection, streamer: IStreamer) {
-        val tableDefinition = ProjectUtilities.buildTableDefinitionFromProjection(project)
-        val projectionSQL = ProjectUtilities.buildProjectionSQL(project, sqlGeneratorService)
+    override fun getRecordsFromProjectionStream(projection: YaormModel.Projection, streamer: IStreamer) {
+        val tableDefinition = ProjectionUtilities.buildTableDefinitionFromProjection(projection)
+        val projectionSQL = ProjectionUtilities.buildProjectionSQL(projection, sqlGeneratorService)
         granularDatabaseService.executeSelectQueryStream(tableDefinition, projectionSQL, streamer)
     }
 

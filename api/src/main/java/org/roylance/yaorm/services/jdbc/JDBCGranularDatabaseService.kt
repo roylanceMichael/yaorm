@@ -11,7 +11,8 @@ import java.sql.ResultSet
 import java.util.*
 
 class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnectionSourceFactory,
-                                  private val shouldManuallyCommitAfterUpdate: Boolean): IGranularDatabaseService {
+                                  private val shouldManuallyCommitAfterUpdate: Boolean,
+                                  private val keepLogOfSQLExecutions: Boolean = false): IGranularDatabaseService {
     private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
 
     override fun getReport(): YaormModel.DatabaseExecutionReport {
@@ -21,8 +22,8 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
     override fun buildTableDefinitionFromQuery(query: String, rowCount: Int): YaormModel.TableDefinition {
         val statement = this.connectionSourceFactory.generateReadStatement()
         val resultSet = statement.executeQuery(query)
+        var successful = true
         try {
-
             val types = HashMap<String, TypeModel>()
 
             var rowNumber = 0
@@ -57,12 +58,23 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
             return returnTable.build()
         }
         catch(e: Exception) {
+            successful = false
             e.printStackTrace()
             throw e
         }
         finally {
             resultSet.close()
             this.report.callsToDatabase = this.report.callsToDatabase + 1
+
+            if (keepLogOfSQLExecutions) {
+                val newExecution = YaormModel.DatabaseExecution.newBuilder()
+                        .setRawSql(query)
+                        .setTimeCalled(Date().time)
+                        .setOrderCalled(report.callsToDatabase)
+                        .setResult(successful)
+
+                report.addExecutions(newExecution)
+            }
         }
     }
 
@@ -84,6 +96,7 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
     override fun executeUpdateQuery(query: String): EntityResultModel {
         val statement = this.connectionSourceFactory.generateUpdateStatement()
         val returnObject = EntityResultModel()
+
         try {
             val result = statement.executeUpdate(query)
 
@@ -102,33 +115,67 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
                 this.connectionSourceFactory.writeConnection.commit()
             }
             this.report.callsToDatabase = this.report.callsToDatabase + 1
+            if (keepLogOfSQLExecutions) {
+                val newExecution = YaormModel.DatabaseExecution.newBuilder()
+                        .setRawSql(query)
+                        .setTimeCalled(Date().time)
+                        .setOrderCalled(report.callsToDatabase)
+                        .setResult(returnObject.successful)
+
+                report.addExecutions(newExecution)
+            }
         }
     }
 
     override fun executeSelectQuery(definition: YaormModel.TableDefinition, query: String): ICursor {
         val statement = this.connectionSourceFactory.generateReadStatement()
+        var successful = true
         try {
             val resultSet = statement.executeQuery(query)
             return JDBCCursor(definition, resultSet)
         }
         catch(e:Exception) {
+            successful = false
             throw e
         }
         finally {
             // normally close, but wait for service to do it
             this.report.callsToDatabase = this.report.callsToDatabase + 1
+            if (keepLogOfSQLExecutions) {
+                val newExecution = YaormModel.DatabaseExecution.newBuilder()
+                        .setRawSql(query)
+                        .setTimeCalled(Date().time)
+                        .setOrderCalled(report.callsToDatabase)
+                        .setResult(successful)
+
+                report.addExecutions(newExecution)
+            }
         }
     }
 
     override fun executeSelectQueryStream(definition: YaormModel.TableDefinition, query: String, streamer: IStreamer) {
         val statement = this.connectionSourceFactory.generateReadStatement()
+        var successful = true
         try {
             val resultSet = statement.executeQuery(query)
             JDBCCursor(definition, resultSet).getRecordsStream(streamer)
         }
+        catch (e: Exception) {
+            successful = false
+            throw e
+        }
         finally {
             // normally close, but wait for service to do it
             this.report.callsToDatabase = this.report.callsToDatabase + 1
+            if (keepLogOfSQLExecutions) {
+                val newExecution = YaormModel.DatabaseExecution.newBuilder()
+                        .setRawSql(query)
+                        .setTimeCalled(Date().time)
+                        .setOrderCalled(report.callsToDatabase)
+                        .setResult(successful)
+
+                report.addExecutions(newExecution)
+            }
         }
     }
 
@@ -146,12 +193,26 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
 
     override fun executeSelectQueryStream(query: String, stream: IStreamer) {
         val statement = connectionSourceFactory.generateReadStatement()
+        var successful = true
         try {
             val resultSet = statement.executeQuery(query)
             buildRecords(resultSet, stream)
         }
+        catch (e: Exception) {
+            successful = false
+            throw e
+        }
         finally {
             report.callsToDatabase = report.callsToDatabase + 1
+            if (keepLogOfSQLExecutions) {
+                val newExecution = YaormModel.DatabaseExecution.newBuilder()
+                        .setRawSql(query)
+                        .setTimeCalled(Date().time)
+                        .setOrderCalled(report.callsToDatabase)
+                        .setResult(successful)
+
+                report.addExecutions(newExecution)
+            }
         }
     }
 

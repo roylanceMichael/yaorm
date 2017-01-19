@@ -3,7 +3,7 @@ package org.roylance.yaorm.services.sqlite
 import org.roylance.yaorm.models.ColumnNameTuple
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.ISQLGeneratorService
-import org.roylance.yaorm.utilities.ProjectUtilities
+import org.roylance.yaorm.utilities.ProjectionUtilities
 import org.roylance.yaorm.utilities.YaormUtils
 import java.util.*
 
@@ -43,6 +43,14 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500,
         sqlTypeToProtoType.put(SqlIntegerName, YaormModel.ProtobufType.INT64)
         sqlTypeToProtoType.put(SqlRealName, YaormModel.ProtobufType.DOUBLE)
         sqlTypeToProtoType.put(SqlBlobName, YaormModel.ProtobufType.BYTES)
+    }
+
+    override fun buildJoinSql(joinTable: YaormModel.JoinTable): String {
+        return """select *
+from ${this.buildKeyword(joinTable.firstTable.name)} a
+join ${this.buildKeyword(joinTable.secondTable.name)} b
+    on a.${buildKeyword(joinTable.firstColumn.name)} = b.${buildKeyword(joinTable.secondColumn.name)}
+"""
     }
 
     override val insertSameAsUpdate: Boolean
@@ -386,6 +394,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500,
                 columnDefinition.name = columnSplitInfo[0].replace(DoubleQuote, Empty)
                 columnDefinition.order = position
                 val type  = columnSplitInfo[1].toLowerCase()
+
                 if (sqlTypeToProtoType.containsKey(type)) {
                     columnDefinition.type = sqlTypeToProtoType[type]!!
                 }
@@ -401,7 +410,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500,
     }
 
     override fun buildProjectionSQL(projection: YaormModel.Projection): String {
-        return ProjectUtilities.buildProjectionSQL(projection, this)
+        return ProjectionUtilities.buildProjectionSQL(projection, this)
     }
 
     companion object {
@@ -421,7 +430,7 @@ class SQLiteGeneratorService(override val bulkInsertSize: Int = 500,
         private const val SqlIntegerName = "integer"
         private const val SqlTextName = "text"
         private const val SqlRealName = "real"
-        private const val SqlBlobName = "text"
+        private const val SqlBlobName = "blob"
 
         private const val SchemaTableRegexStr = """CREATE TABLE "(.+)" \((.+)\)"""
         private val SchemaTableRegex = Regex(SchemaTableRegexStr)

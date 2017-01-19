@@ -15,6 +15,73 @@ import java.util.*
 
 class SQLiteNestedEnumTest {
     @Test
+    fun simplePassThroughExecutionsTest() {
+        // arrange
+        val database = File(UUID.randomUUID().toString().replace("-", ""))
+        try {
+            val sourceConnection = SQLiteConnectionSourceFactory(database.absolutePath)
+            val granularDatabaseService = JDBCGranularDatabaseService(
+                    sourceConnection,
+                    false,
+                    true)
+            val sqliteGeneratorService = SQLiteGeneratorService()
+            val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
+            val protoService = NestedEnumGMBuilder()
+            val protoContext = EntityProtoContext(
+                    NestedEnumTest.getDescriptor(),
+                    protoService,
+                    entityService,
+                    HashMap(),
+                    TestBase64Service())
+
+            protoContext.handleMigrations()
+
+            val columnOne = NestedEnumTest.ColumnInfo.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setSourceName("one")
+                    .setSourceType(NestedEnumTest.ProtobufType.STRING)
+                    .setDestinationType(NestedEnumTest.ProtobufType.STRING)
+                    .setDestinationName("one")
+
+            val columnTwo = NestedEnumTest.ColumnInfo.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setSourceName("two")
+                    .setSourceType(NestedEnumTest.ProtobufType.STRING)
+                    .setDestinationType(NestedEnumTest.ProtobufType.STRING)
+                    .setDestinationName("two")
+
+            val dataset = NestedEnumTest.DataSet.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setDestinationName("cool_destination")
+                    .setColumnDelimiter(NestedEnumTest.DelimiterType.COMMA)
+                    .setRowDelimiter(NestedEnumTest.DelimiterType.CARRIAGE_RETURN)
+                    .setHasHeaders(true)
+                    .setIsFixedWidth(false)
+                    .addColumnInfos(columnOne)
+                    .addColumnInfos(columnTwo)
+
+            val customer = NestedEnumTest.Customer.newBuilder()
+                    .setId(UUID.randomUUID().toString())
+                    .setName("test")
+                    .addDatasets(dataset)
+                    .build()
+
+            // act
+            protoContext.entityMessageService.merge(customer)
+
+            // assert
+            val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
+            Assert.assertTrue(allCustomers.size == 1)
+            Assert.assertTrue(protoContext.entityMessageService.getReport().executionsCount > 0)
+
+            println(protoContext.entityMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
+        }
+        finally {
+            database.deleteOnExit()
+        }
+    }
+
+    @Test
     fun simplePassThroughTest() {
         // arrange
         val database = File(UUID.randomUUID().toString().replace("-", ""))

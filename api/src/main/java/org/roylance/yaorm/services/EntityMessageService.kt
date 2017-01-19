@@ -15,7 +15,9 @@ class EntityMessageService(
         private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         override val entityService: IEntityService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
-
+    override fun getReport(): YaormModel.DatabaseExecutionReport {
+        return entityService.getReport()
+    }
 
     private val definitions = HashMap<String, YaormModel.TableDefinitionGraphs>()
 
@@ -53,7 +55,9 @@ class EntityMessageService(
 
         val whereClause = YaormModel.WhereClause.newBuilder()
                 .setNameAndProperty(YaormModel.Column.newBuilder()
-                        .setDefinition(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName).setType(YaormModel.ProtobufType.STRING)))
+                        .setDefinition(YaormModel.ColumnDefinition.newBuilder()
+                                .setName(YaormUtils.IdName)
+                                .setType(YaormModel.ProtobufType.STRING)))
                 .addAllInItems(ids)
                 .build()
 

@@ -38,4 +38,6 @@ interface IEntityMessageService: AutoCloseable {
 
     fun <T: Message> getCustomSingleLevel(messageType: T, customSql: String): List<T>
     fun <T: Message> getCustomSingleLevelStream(messageType: T, customSql: String, stream: IMessageStreamer)
+
+    fun getReport(): YaormModel.DatabaseExecutionReport
 }
