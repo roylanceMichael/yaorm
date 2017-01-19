@@ -48,9 +48,9 @@ interface IEntityService : AutoCloseable {
     fun getTableNames(schemaName: String): List<String>
     fun getTableDefinition(schemaName: String, tableName: String): YaormModel.TableDefinition
 
-    fun getTableDefinitionFromProject(projection: YaormModel.Projection): YaormModel.TableDefinition
-    fun getRecordsFromProject(project: YaormModel.Projection): YaormModel.Records
-    fun getRecordsFromProjectStream(project: YaormModel.Projection, streamer: IStreamer)
+    fun getTableDefinitionFromProjection(projection: YaormModel.Projection): YaormModel.TableDefinition
+    fun getRecordsFromProjection(projection: YaormModel.Projection): YaormModel.Records
+    fun getRecordsFromProjectionStream(projection: YaormModel.Projection, streamer: IStreamer)
 
     fun getReport(): YaormModel.DatabaseExecutionReport
 
