@@ -16,7 +16,7 @@ This is **Y**et **A**nother **O**bject **R**elational **M**apping library.
 
 ## Why was this made?
 
-I didn't find any good ORMs based on protobufs, so I built one that I use myself.
+I did not find any good ORMs based on protobufs, so I built one that I use myself.
 
 
 ***
@@ -43,7 +43,7 @@ Also, because this is dealing with protobufs, non-backwards compatible changes a
 
 I strive to make my code readable in the sense that it is self explanatory. A developer should be able to look at it and understand what is going on. If English comments make the code more readable, then something is wrong with either the code or the developer reading it. Not everything that the code does can be translated to natural language. It does require the developer to understand Java and Kotlin development (or just strongly typed OOP in general).
 
-This is not a universally held point of view, I know. The goal of this library is to serialize protobuf messages to a relational store in a clean and predictable way. To understand the library does require understanding how to code. 
+This is not a universally held point of view, I know, but I am not alone either. The goal of this library is to serialize protobuf messages to a relational store in a clean and predictable way. To understand the library does require understanding how to code. 
 
 ***
 
