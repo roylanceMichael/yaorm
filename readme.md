@@ -16,9 +16,40 @@ This is **Y**et **A**nother **O**bject **R**elational **M**apping library.
 
 ## Why was this made?
 
-I've been doing a lot of Android and iOS development lately (with RoboVM), and didn't find an ORM that I could use. So I wrote one for my own needs.
+I didn't find any good ORMs based on protobufs, so I built one that I use myself.
 
-I am also using this library for Hive as well, they support CRUD operations in Hadoop.
+
+***
+
+## How do I understand what this is doing quickly?
+
+The best way is to look at the integration tests. MySQL, SQLite, and Postgres all have the same tests with the only difference being the service implementation that's passed on. Be sure to edit the properties files under resources with your appropriate settings. 
+
+A lot of the services are similar to what EntityFramework (ActiveRecord, etc) do. 
+
+***
+
+## How does the system handle migrations? 
+
+The migrations are handled automatically when the EntityProtoContext handleMigrations() method is called. This handles instantiating the model in the database if it doesn't exist, and making schema changes what the previous model saved to the current model saved.
+  
+There are pros and cons to both approaches (one where you specify every migration manually). You can still do that, but that framework isn't provided.
+
+Also, because this is dealing with protobufs, non-backwards compatible changes are frowned upon in general (you might have a customer with an old copy of your code trying to communicate with an updated endpoint). In this sense, migrations that require the data to be put into a temp table and then re-added into new column names are discouraged. 
+
+***
+
+## Hold on, there are not many comments throughout the code base. Why not? 
+
+I strive to make my code readable in the sense that it is self explanatory. A developer should be able to look at it and understand what is going on. If English comments make the code more readable, then something is wrong with either the code or the developer reading it. Not everything that the code does can be translated to natural language. It does require the developer to understand Java and Kotlin development (or just strongly typed OOP in general).
+
+This is not a universally held point of view, I know. The goal of this library is to serialize protobuf messages to a relational store in a clean and predictable way. To understand the library does require understanding how to code. 
+
+***
+
+## How do I understand what this is doing quickly?
+
+The best way is to look at the integration tests. MySQL, SQLite, and Postgres all have the same tests with the only difference being the service implementation that's passed on. Be sure to edit the properties files under resources with your appropriate settings. 
 
 
 ***
@@ -31,11 +62,11 @@ In gradle, reference the following URL for your repository:
 ```groovy
 repositories {
     mavenCentral()
-    maven { url 'http://mikeapps.org:8081/artifactory/libs-snapshot-local' }
+    maven { url 'https://bintray.com/roylancemichael/maven' }
 }
 
 dependencies {
-    compile(group: 'org.roylance', name: 'yaorm', version: '0.48-SNAPSHOT')
+    compile(group: 'org.roylance.yaorm', name: 'api', version: '0.179')
 }
 ```
 
@@ -44,144 +75,27 @@ Maven:
 <repositories>
     <repository>
         <snapshots />
-        <id>mikeapps</id>
-        <name>mikeapps-snapshots</name>
-        <url>http://mikeapps.org:8081/artifactory/libs-snapshot-local</url>
+        <id>roylanceBintray</id>
+        <name>roylanceBintray</name>
+        <url>https://bintray.com/roylancemichael/maven</url>
     </repository>
 </repositories>
 
 <dependencies>
     <dependency>
-        <groupId>org.roylance</groupId>
-        <artifactId>yaorm</artifactId>
-        <version>0.48-SNAPSHOT</version>
+        <groupId>org.roylance.yaorm</groupId>
+        <artifactId>api</artifactId>
+        <version>0.179</version>
     </dependency>
 </dependencies>
 ```
-
-
-***
-
-## How do I use it?
-
-
-First, in your code, implement the IEntity interface for your model. For example, this model
-
-```java
-public class TestModel implements IEntity {
-    private String id;
-    private String name;
-
-    @Override
-    public String getId() {
-        return this.id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public TestModel setId(String value) {
-        this.id = value;
-        return this;
-    }
-
-    public TestModel setName(String value) {
-        this.name = value;
-        return this;
-    }
-}
-```
-
-implements the IEntity interface, and adds a new property as well. 
-
-Make sure that your names are nouns, not verbs like "get" or "is".
-
-There are a few service dependencies needed to save this to a data store. Here is a simple test to show them all in action:
-
-```java
-// arrange
-// create a unique file
-final File databaseFile = new File(UUID.randomUUID().toString().replace("-", ""));
-// it shouldn't exist, but delete if it does, for some reason...
-if (databaseFile.exists()) {
-    databaseFile.delete();
-}
-
-final String testName = "NameToTest";
-
-// this is the factory for the SQLite connection. Note, on Android, you can implement this interface and hook it in
-final IConnectionSourceFactory sourceConnection =
-        new SQLiteConnectionSourceFactory(databaseFile.getAbsolutePath());
-
-// this is in charge of converting the results into the model you'd like. Using JDBC for now, but on Android, just implement this interface
-final IGranularDatabaseService granularDatabaseService =
-        new JDBCGranularDatabaseService(
-        sourceConnection.getConnectionSource(),
-        false);
-
-try  {
-    // this is the service that generates the sql for SQLite.
-    final ISqlGeneratorService sqlGeneratorService =
-            new SQLiteGeneratorService();
-
-    // this entity access service uses the previous dependencies to do common CRUD operations against the data store
-    final IEntityService<TestModel> entityAccessService =
-            new EntityService<TestModel>(
-                    TestModel.class,
-                    granularDatabaseService,
-                    sqlGeneratorService,
-                    null);
-
-    // create a new model to test
-    final TestModel newModel = new TestModel()
-            .setName(testName);
-    newModel.setId("test");
-
-    // act
-    // create the sqlite table, we know it doesn't exist yet
-    entityAccessService.createTable();
-
-    // create the entity in the data store
-    entityAccessService.create(newModel);
-
-    // assert
-    // let's get them all, be careful with this, obviously. there is also a filtering method
-    final List<TestModel> foundTestModels = entityAccessService.getMany(1000);
-
-    // verify we're greater than 0
-    assert foundTestModels.size() > 0;
-
-    final TestModel foundTestModel = foundTestModels.get(0);
-
-    // verify that we incremented the id
-    assert foundTestModel.getId().equals("test");
-
-    // verify that the name is the same one we are expecting
-    assert testName.equals(foundTestModel.getName());
-}
-finally {
-    granularDatabaseService.close();
-
-    // clean up after ourselves
-    databaseFile.deleteOnExit();
-}
-```
-
 
 ***
 
 ### Anything else you can tell me?
 
-This is still in development! I'm adding features and functionality (that I need/want) constantly.
+This is still in development, although I have used this in many projects (many of which are in production for paying customers)! I'm adding features and functionality (that I need/want) constantly to new versions.
 
-I currently have SQLite and Hive implemented, as those are both back-ends that I currently use. I'll do more as I need them. I also just implemented Phoenix (Apache), but I'm still ironing that out.
+I currently have MySQL, Postgres, and SQLite implemented, as those are both back-ends that I currently use. I'll do more as I need them.
 
-For Hive, make sure that you have ACID compliance turned on. This will not work otherwise.
-
-For Android, I implemented the IGranularDatabaseService and ICursor with Android specific libraries (they do things outside of JDBC).
-
-This isn't even alpha yet, but I am using this code in my libraries (and there are tests). So use with caution. Pull requests welcome, I will review. 
-
-I wrote this mostly in Kotlin because I really love that language (I view it as the next step in Java, personally). Kotlin has 100% compatibility with Java.
+These use JDBC connections for anything not Android, I have a separate library for that (also on bintray and in this repo). RoboVM connections can use the JDBC SQLite one.
