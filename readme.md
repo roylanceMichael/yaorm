@@ -92,6 +92,22 @@ Maven:
 
 ***
 
+### What are the different projects? Which should I use?
+
+I also developed another framework called yaclib (yet another cross language interface builder) that I use in yaorm as well. It contains all the protobuf models in the api project (as well as any logic needed). It will then programmatically build out an n-tier solution based on the model and controller definitions. This will build Java, CSharp, Python, and TypScript models and communication implementations with the rest endpoint (currently all it does is report meta information about the service). Here is a description of the projections:
+
+api - the core model definition and service implementation of yaorm. For most projects, this is all you need.
+
+csv - a way to convert Records into a CSV file (and back again).
+
+android - android library for instantiating the yaorm proto context.
+
+plugin - a way to automatically generate the IProtoGeneratedMessageBuilder based on current model project. Instantiating protobuf messages in Java through reflection alone does not work, so this type of builder is needed.
+
+sapi - server api, this is the sample rest endpoint project created. 
+
+***
+
 ### Anything else you can tell me?
 
 This is still in development, although I have used this in many projects (many of which are in production for paying customers)! I'm adding features and functionality (that I need/want) constantly to new versions.
@@ -99,3 +115,5 @@ This is still in development, although I have used this in many projects (many o
 I currently have MySQL, Postgres, and SQLite implemented, as those are both back-ends that I currently use. I'll do more as I need them.
 
 These use JDBC connections for anything not Android, I have a separate library for that (also on bintray and in this repo). RoboVM connections can use the JDBC SQLite one.
+
+
