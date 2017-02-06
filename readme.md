@@ -104,8 +104,8 @@ sapi - server api, this is the sample rest endpoint project created.
 
 This is still in development, although I have used this in many projects (many of which are in production for paying customers)! I'm adding features and functionality (that I need/want) constantly to new versions.
 
-I currently have MySQL, Postgres, and SQLite implemented, as those are both back-ends that I currently use. I'll do more as I need them.
+I currently have MySQL, Postgres, and SQLite implemented, as those are back-ends that I currently use. I'll do more as I need them.
 
-These use JDBC connections for anything not Android, I have a separate library for that (also on bintray and in this repo). RoboVM connections can use the JDBC SQLite one.
+Yaorm uses JDBC connections for everything but Android, I have a separate library for that (also on bintray and in this repo). RoboVM connections can use the JDBC SQLite one.
 
 
