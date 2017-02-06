@@ -31,7 +31,7 @@ A lot of the services are similar to what EntityFramework (ActiveRecord, etc) do
 
 ## How does the system handle migrations? 
 
-The migrations are handled automatically when the EntityProtoContext handleMigrations() method is called. This handles instantiating the model in the database if it doesn't exist, and making schema changes what the previous model saved to the current model saved.
+The migrations are handled automatically when the EntityProtoContext handleMigrations() method is called. This handles instantiating the model in the database if it doesn't exist, and making schema changes what the previous model saved to the current model saved. Yaorm does not generate a migration file that can be edited. 
   
 There are pros and cons to both approaches (one where you specify every migration manually). You can still do that, but that framework isn't provided.
 
@@ -43,17 +43,9 @@ Also, because this is dealing with protobufs, non-backwards compatible changes a
 
 I strive to make my code readable in the sense that it is self explanatory. A developer should be able to look at it and understand what is going on. If English comments make the code more readable, then something is wrong with either the code or the developer reading it. Not everything that the code does can be translated to natural language. It does require the developer to understand Java and Kotlin development (or just strongly typed OOP in general).
 
-This is not a universally held point of view, I know, but I am not alone either. The goal of this library is to serialize protobuf messages to a relational store in a clean and predictable way. To understand the library does require understanding how to code. 
+This is not a universally held point of view, I know, but it is a point of view held by many. The goal of this library is to serialize protobuf messages to a relational store in a clean and predictable way. To understand the library does require understanding how to code. 
 
 ***
-
-## How do I understand what this is doing quickly?
-
-The best way is to look at the integration tests. MySQL, SQLite, and Postgres all have the same tests with the only difference being the service implementation that's passed on. Be sure to edit the properties files under resources with your appropriate settings. 
-
-
-***
-
 
 ## How do I get it?
 
