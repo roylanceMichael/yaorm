@@ -63,6 +63,7 @@ dependencies {
 
     testCompile 'mysql:mysql-connector-java:5.1.37'
     testCompile 'org.xerial:sqlite-jdbc:3.8.10.1'
+    testCompile 'commons-io:commons-io:2.5'
 
 //    testCompile 'org.apache.hadoop:hadoop-client:2.3.0'
 //    testCompile 'org.apache.hive:hive-jdbc:1.2.1'

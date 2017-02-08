@@ -18,7 +18,7 @@ internal class GetProtoObjects(
         private val customIndexes: MutableMap<String, YaormModel.Index>) {
     private val cacheStore = CacheStore(this.generatedMessageBuilder)
 
-    internal fun <T: Message> build(builder: T, entityIds:List<String>): List<T> {
+    internal fun <T: Message> build(builder: T, entityIds: List<String>): List<T> {
         if (entityIds.isEmpty()) {
             return ArrayList()
         }
@@ -203,6 +203,7 @@ internal class GetProtoObjects(
                     .flatMap { it.values }.forEach { cachingObject ->
                 val mainObject = cacheStore.getObject(builder, cachingObject.mainId)
 
+                mainObject.clearField(cachingObject.fieldKey)
                 cachingObject.id.forEach { id ->
                     val childObject = cacheStore.getObject(childBuilder, id)
                     mainObject.addRepeatedField(cachingObject.fieldKey, childObject.build())
