@@ -34,3 +34,5 @@ capi
 javascript
 build
 swift/Carthage
+Carthage
+Cartfile.resolved
