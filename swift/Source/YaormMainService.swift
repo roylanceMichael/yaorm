@@ -3,12 +3,12 @@ import Foundation
 import Alamofire
 import SwiftProtobuf
 
-class YaormMainService: IYaormMainService {
+public class YaormMainService: IYaormMainService {
     let baseUrl: String
     init(baseUrl: String) {
         self.baseUrl = baseUrl
     }
-	func get_schemas(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
+	public func get_schemas(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
 
             do {
                 let serializedRequest = try request.serializeProtobuf()
@@ -34,7 +34,7 @@ class YaormMainService: IYaormMainService {
                 onError("\(error)")
             }
 	}
-	func get_tables(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
+	public func get_tables(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
 
             do {
                 let serializedRequest = try request.serializeProtobuf()
@@ -60,7 +60,7 @@ class YaormMainService: IYaormMainService {
                 onError("\(error)")
             }
 	}
-	func get_table_definition(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
+	public func get_table_definition(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
 
             do {
                 let serializedRequest = try request.serializeProtobuf()
@@ -86,7 +86,7 @@ class YaormMainService: IYaormMainService {
                 onError("\(error)")
             }
 	}
-	func get_table_definitions(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
+	public func get_table_definitions(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
 
             do {
                 let serializedRequest = try request.serializeProtobuf()
@@ -112,7 +112,7 @@ class YaormMainService: IYaormMainService {
                 onError("\(error)")
             }
 	}
-	func get_record_count(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
+	public func get_record_count(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
 
             do {
                 let serializedRequest = try request.serializeProtobuf()
@@ -138,7 +138,7 @@ class YaormMainService: IYaormMainService {
                 onError("\(error)")
             }
 	}
-	func get_records(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
+	public func get_records(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
 
             do {
                 let serializedRequest = try request.serializeProtobuf()

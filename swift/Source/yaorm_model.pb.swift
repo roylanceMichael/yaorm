@@ -10,8 +10,8 @@ import Foundation
 import SwiftProtobuf
 
 
-enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case none // = 0
   case double // = 1
   case float // = 2
@@ -31,11 +31,11 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
   case proto // = 16
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .none
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .none
     case 1: self = .double
@@ -58,7 +58,7 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(name: String) {
+  public init?(name: String) {
     switch name {
     case "none": self = .none
     case "double": self = .double
@@ -81,7 +81,7 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(jsonName: String) {
+  public init?(jsonName: String) {
     switch jsonName {
     case "NONE": self = .none
     case "DOUBLE": self = .double
@@ -104,7 +104,7 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(protoName: String) {
+  public init?(protoName: String) {
     switch protoName {
     case "NONE": self = .none
     case "DOUBLE": self = .double
@@ -127,7 +127,7 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     get {
       switch self {
       case .none: return 0
@@ -152,7 +152,7 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
     }
   }
 
-  var json: String {
+  public var json: String {
     get {
       switch self {
       case .none: return "\"NONE\""
@@ -177,9 +177,9 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
     }
   }
 
-  var hashValue: Int { return rawValue }
+  public var hashValue: Int { return rawValue }
 
-  var debugDescription: String {
+  public var debugDescription: String {
     get {
       switch self {
       case .none: return ".none"
@@ -206,8 +206,8 @@ enum Org_Roylance_Yaorm_ProtobufType: SwiftProtobuf.Enum {
 
 }
 
-enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case noneSelectFunctionType // = 0
   case countSelectFunctionType // = 1
   case maxSelectFunctionType // = 2
@@ -215,11 +215,11 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
   case sumSelectFunctionType // = 4
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .noneSelectFunctionType
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .noneSelectFunctionType
     case 1: self = .countSelectFunctionType
@@ -230,7 +230,7 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(name: String) {
+  public init?(name: String) {
     switch name {
     case "noneSelectFunctionType": self = .noneSelectFunctionType
     case "countSelectFunctionType": self = .countSelectFunctionType
@@ -241,7 +241,7 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(jsonName: String) {
+  public init?(jsonName: String) {
     switch jsonName {
     case "NONE_SELECT_FUNCTION_TYPE": self = .noneSelectFunctionType
     case "COUNT_SELECT_FUNCTION_TYPE": self = .countSelectFunctionType
@@ -252,7 +252,7 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(protoName: String) {
+  public init?(protoName: String) {
     switch protoName {
     case "NONE_SELECT_FUNCTION_TYPE": self = .noneSelectFunctionType
     case "COUNT_SELECT_FUNCTION_TYPE": self = .countSelectFunctionType
@@ -263,7 +263,7 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     get {
       switch self {
       case .noneSelectFunctionType: return 0
@@ -276,7 +276,7 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
     }
   }
 
-  var json: String {
+  public var json: String {
     get {
       switch self {
       case .noneSelectFunctionType: return "\"NONE_SELECT_FUNCTION_TYPE\""
@@ -289,9 +289,9 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
     }
   }
 
-  var hashValue: Int { return rawValue }
+  public var hashValue: Int { return rawValue }
 
-  var debugDescription: String {
+  public var debugDescription: String {
     get {
       switch self {
       case .noneSelectFunctionType: return ".noneSelectFunctionType"
@@ -306,17 +306,17 @@ enum Org_Roylance_Yaorm_SelectFunctionType: SwiftProtobuf.Enum {
 
 }
 
-enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case asc // = 0
   case desc // = 1
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .asc
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .asc
     case 1: self = .desc
@@ -324,7 +324,7 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(name: String) {
+  public init?(name: String) {
     switch name {
     case "asc": self = .asc
     case "desc": self = .desc
@@ -332,7 +332,7 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(jsonName: String) {
+  public init?(jsonName: String) {
     switch jsonName {
     case "ASC": self = .asc
     case "DESC": self = .desc
@@ -340,7 +340,7 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
     }
   }
 
-  init?(protoName: String) {
+  public init?(protoName: String) {
     switch protoName {
     case "ASC": self = .asc
     case "DESC": self = .desc
@@ -348,7 +348,7 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     get {
       switch self {
       case .asc: return 0
@@ -358,7 +358,7 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
     }
   }
 
-  var json: String {
+  public var json: String {
     get {
       switch self {
       case .asc: return "\"ASC\""
@@ -368,9 +368,9 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
     }
   }
 
-  var hashValue: Int { return rawValue }
+  public var hashValue: Int { return rawValue }
 
-  var debugDescription: String {
+  public var debugDescription: String {
     get {
       switch self {
       case .asc: return ".asc"
@@ -382,7 +382,7 @@ enum Org_Roylance_Yaorm_OrderByType: SwiftProtobuf.Enum {
 
 }
 
-struct Org_Roylance_Yaorm_ProtoTypeToSqlType: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_ProtoTypeToSqlType: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_ProtoTypeToSqlType"}
   public var protoMessageName: String {return "ProtoTypeToSqlType"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -392,11 +392,11 @@ struct Org_Roylance_Yaorm_ProtoTypeToSqlType: SwiftProtobuf.Message, SwiftProtob
   ]
 
 
-  var protoType: Org_Roylance_Yaorm_ProtobufType = Org_Roylance_Yaorm_ProtobufType.none
+  public var protoType: Org_Roylance_Yaorm_ProtobufType = Org_Roylance_Yaorm_ProtobufType.none
 
-  var sqlType: String = ""
+  public var sqlType: String = ""
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -422,7 +422,7 @@ struct Org_Roylance_Yaorm_ProtoTypeToSqlType: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-struct Org_Roylance_Yaorm_ProtoTypeToSqlTypes: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_ProtoTypeToSqlTypes: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_ProtoTypeToSqlTypes"}
   public var protoMessageName: String {return "ProtoTypeToSqlTypes"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -431,9 +431,9 @@ struct Org_Roylance_Yaorm_ProtoTypeToSqlTypes: SwiftProtobuf.Message, SwiftProto
   ]
 
 
-  var results: [Org_Roylance_Yaorm_ProtoTypeToSqlType] = []
+  public var results: [Org_Roylance_Yaorm_ProtoTypeToSqlType] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -454,7 +454,7 @@ struct Org_Roylance_Yaorm_ProtoTypeToSqlTypes: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_WhereClause"}
   public var protoMessageName: String {return "WhereClause"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -528,8 +528,8 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
   private var _storage = _StorageClass()
 
 
-  enum OperatorType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum OperatorType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case equals // = 0
     case greaterThan // = 1
     case lessThan // = 2
@@ -537,11 +537,11 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
     case `in` // = 4
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .equals
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .equals
       case 1: self = .greaterThan
@@ -552,7 +552,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "equals": self = .equals
       case "greaterThan": self = .greaterThan
@@ -563,7 +563,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "EQUALS": self = .equals
       case "GREATER_THAN": self = .greaterThan
@@ -574,7 +574,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "EQUALS": self = .equals
       case "GREATER_THAN": self = .greaterThan
@@ -585,7 +585,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .equals: return 0
@@ -598,7 +598,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .equals: return "\"EQUALS\""
@@ -611,9 +611,9 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .equals: return ".equals"
@@ -628,18 +628,18 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
 
   }
 
-  enum ConnectingAndOr: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum ConnectingAndOr: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case none // = 0
     case and // = 1
     case or // = 2
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .none
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .none
       case 1: self = .and
@@ -648,7 +648,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "none": self = .none
       case "and": self = .and
@@ -657,7 +657,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "NONE": self = .none
       case "AND": self = .and
@@ -666,7 +666,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "NONE": self = .none
       case "AND": self = .and
@@ -675,7 +675,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .none: return 0
@@ -686,7 +686,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .none: return "\"NONE\""
@@ -697,9 +697,9 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .none: return ".none"
@@ -712,7 +712,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
 
   }
 
-  var nameAndProperty: Org_Roylance_Yaorm_Column {
+  public var nameAndProperty: Org_Roylance_Yaorm_Column {
     get {return _storage._nameAndProperty ?? Org_Roylance_Yaorm_Column()}
     set {_uniqueStorage()._nameAndProperty = newValue}
   }
@@ -723,17 +723,17 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
     return _storage._nameAndProperty = nil
   }
 
-  var operatorType: Org_Roylance_Yaorm_WhereClause.OperatorType {
+  public var operatorType: Org_Roylance_Yaorm_WhereClause.OperatorType {
     get {return _storage._operatorType}
     set {_uniqueStorage()._operatorType = newValue}
   }
 
-  var connectingAndOr: Org_Roylance_Yaorm_WhereClause.ConnectingAndOr {
+  public var connectingAndOr: Org_Roylance_Yaorm_WhereClause.ConnectingAndOr {
     get {return _storage._connectingAndOr}
     set {_uniqueStorage()._connectingAndOr = newValue}
   }
 
-  var connectingWhereClause: Org_Roylance_Yaorm_WhereClause {
+  public var connectingWhereClause: Org_Roylance_Yaorm_WhereClause {
     get {return _storage._connectingWhereClause ?? Org_Roylance_Yaorm_WhereClause()}
     set {_uniqueStorage()._connectingWhereClause = newValue}
   }
@@ -744,12 +744,12 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
     return _storage._connectingWhereClause = nil
   }
 
-  var inItems: [String] {
+  public var inItems: [String] {
     get {return _storage._inItems}
     set {_uniqueStorage()._inItems = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -771,7 +771,7 @@ struct Org_Roylance_Yaorm_WhereClause: SwiftProtobuf.Message, SwiftProtobuf.Prot
   }
 }
 
-struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_ColumnDefinition"}
   public var protoMessageName: String {return "ColumnDefinition"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -789,19 +789,19 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
   ]
 
 
-  enum ColumnType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum ColumnType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case scalar // = 0
     case enumName // = 1
     case enumValue // = 2
     case messageKey // = 3
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .scalar
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .scalar
       case 1: self = .enumName
@@ -811,7 +811,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "scalar": self = .scalar
       case "enumName": self = .enumName
@@ -821,7 +821,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "SCALAR": self = .scalar
       case "ENUM_NAME": self = .enumName
@@ -831,7 +831,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "SCALAR": self = .scalar
       case "ENUM_NAME": self = .enumName
@@ -841,7 +841,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .scalar: return 0
@@ -853,7 +853,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .scalar: return "\"SCALAR\""
@@ -865,9 +865,9 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .scalar: return ".scalar"
@@ -881,19 +881,19 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
 
   }
 
-  enum LinkerType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum LinkerType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case none // = 0
     case parent // = 1
     case child // = 2
     case neither // = 3
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .none
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .none
       case 1: self = .parent
@@ -903,7 +903,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "none": self = .none
       case "parent": self = .parent
@@ -913,7 +913,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "NONE": self = .none
       case "PARENT": self = .parent
@@ -923,7 +923,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "NONE": self = .none
       case "PARENT": self = .parent
@@ -933,7 +933,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .none: return 0
@@ -945,7 +945,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .none: return "\"NONE\""
@@ -957,9 +957,9 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .none: return ".none"
@@ -973,27 +973,27 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
 
   }
 
-  var name: String = ""
+  public var name: String = ""
 
-  var type: Org_Roylance_Yaorm_ProtobufType = Org_Roylance_Yaorm_ProtobufType.none
+  public var type: Org_Roylance_Yaorm_ProtobufType = Org_Roylance_Yaorm_ProtobufType.none
 
-  var isKey: Bool = false
+  public var isKey: Bool = false
 
-  var columnType: Org_Roylance_Yaorm_ColumnDefinition.ColumnType = Org_Roylance_Yaorm_ColumnDefinition.ColumnType.scalar
+  public var columnType: Org_Roylance_Yaorm_ColumnDefinition.ColumnType = Org_Roylance_Yaorm_ColumnDefinition.ColumnType.scalar
 
-  var linkerType: Org_Roylance_Yaorm_ColumnDefinition.LinkerType = Org_Roylance_Yaorm_ColumnDefinition.LinkerType.none
+  public var linkerType: Org_Roylance_Yaorm_ColumnDefinition.LinkerType = Org_Roylance_Yaorm_ColumnDefinition.LinkerType.none
 
-  var order: Int32 = 0
+  public var order: Int32 = 0
 
-  var alias: String = ""
+  public var alias: String = ""
 
-  var tableAlias: String = ""
+  public var tableAlias: String = ""
 
-  var functionType: Org_Roylance_Yaorm_SelectFunctionType = Org_Roylance_Yaorm_SelectFunctionType.noneSelectFunctionType
+  public var functionType: Org_Roylance_Yaorm_SelectFunctionType = Org_Roylance_Yaorm_SelectFunctionType.noneSelectFunctionType
 
-  var functionText: String = ""
+  public var functionText: String = ""
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -1059,7 +1059,7 @@ struct Org_Roylance_Yaorm_ColumnDefinition: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-struct Org_Roylance_Yaorm_Index: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Index: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Index"}
   public var protoMessageName: String {return "Index"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1069,11 +1069,11 @@ struct Org_Roylance_Yaorm_Index: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mess
   ]
 
 
-  var columnNames: [Org_Roylance_Yaorm_ColumnDefinition] = []
+  public var columnNames: [Org_Roylance_Yaorm_ColumnDefinition] = []
 
-  var includeNames: [Org_Roylance_Yaorm_ColumnDefinition] = []
+  public var includeNames: [Org_Roylance_Yaorm_ColumnDefinition] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -1099,7 +1099,7 @@ struct Org_Roylance_Yaorm_Index: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mess
   }
 }
 
-struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Difference"}
   public var protoMessageName: String {return "Difference"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1181,18 +1181,18 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
   private var _storage = _StorageClass()
 
 
-  enum EntityType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum EntityType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case index // = 0
     case column // = 1
     case table // = 2
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .index
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .index
       case 1: self = .column
@@ -1201,7 +1201,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "index": self = .index
       case "column": self = .column
@@ -1210,7 +1210,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "INDEX": self = .index
       case "COLUMN": self = .column
@@ -1219,7 +1219,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "INDEX": self = .index
       case "COLUMN": self = .column
@@ -1228,7 +1228,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .index: return 0
@@ -1239,7 +1239,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .index: return "\"INDEX\""
@@ -1250,9 +1250,9 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .index: return ".index"
@@ -1265,17 +1265,17 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
 
   }
 
-  enum Operation: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum Operation: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case create // = 0
     case drop // = 1
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .create
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .create
       case 1: self = .drop
@@ -1283,7 +1283,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "create": self = .create
       case "drop": self = .drop
@@ -1291,7 +1291,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "CREATE": self = .create
       case "DROP": self = .drop
@@ -1299,7 +1299,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "CREATE": self = .create
       case "DROP": self = .drop
@@ -1307,7 +1307,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .create: return 0
@@ -1317,7 +1317,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .create: return "\"CREATE\""
@@ -1327,9 +1327,9 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .create: return ".create"
@@ -1341,22 +1341,22 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
 
   }
 
-  var entityType: Org_Roylance_Yaorm_Difference.EntityType {
+  public var entityType: Org_Roylance_Yaorm_Difference.EntityType {
     get {return _storage._entityType}
     set {_uniqueStorage()._entityType = newValue}
   }
 
-  var operation: Org_Roylance_Yaorm_Difference.Operation {
+  public var operation: Org_Roylance_Yaorm_Difference.Operation {
     get {return _storage._operation}
     set {_uniqueStorage()._operation = newValue}
   }
 
-  var name: String {
+  public var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  var index: Org_Roylance_Yaorm_Index {
+  public var index: Org_Roylance_Yaorm_Index {
     get {return _storage._index ?? Org_Roylance_Yaorm_Index()}
     set {_uniqueStorage()._index = newValue}
   }
@@ -1367,7 +1367,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
     return _storage._index = nil
   }
 
-  var propertyDefinition: Org_Roylance_Yaorm_ColumnDefinition {
+  public var propertyDefinition: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._propertyDefinition ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._propertyDefinition = newValue}
   }
@@ -1378,7 +1378,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
     return _storage._propertyDefinition = nil
   }
 
-  var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._tableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._tableDefinition = newValue}
   }
@@ -1389,7 +1389,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
     return _storage._tableDefinition = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -1411,7 +1411,7 @@ struct Org_Roylance_Yaorm_Difference: SwiftProtobuf.Message, SwiftProtobuf.Proto
   }
 }
 
-struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_TableDefinition"}
   public var protoMessageName: String {return "TableDefinition"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1485,18 +1485,18 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
   private var _storage = _StorageClass()
 
 
-  enum TableType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum TableType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case normal // = 0
     case linkerMessage // = 1
     case linkerEnum // = 2
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .normal
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .normal
       case 1: self = .linkerMessage
@@ -1505,7 +1505,7 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "normal": self = .normal
       case "linkerMessage": self = .linkerMessage
@@ -1514,7 +1514,7 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "NORMAL": self = .normal
       case "LINKER_MESSAGE": self = .linkerMessage
@@ -1523,7 +1523,7 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "NORMAL": self = .normal
       case "LINKER_MESSAGE": self = .linkerMessage
@@ -1532,7 +1532,7 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .normal: return 0
@@ -1543,7 +1543,7 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .normal: return "\"NORMAL\""
@@ -1554,9 +1554,9 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .normal: return ".normal"
@@ -1569,17 +1569,17 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
 
   }
 
-  var name: String {
+  public var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  var columnDefinitions: [Org_Roylance_Yaorm_ColumnDefinition] {
+  public var columnDefinitions: [Org_Roylance_Yaorm_ColumnDefinition] {
     get {return _storage._columnDefinitions}
     set {_uniqueStorage()._columnDefinitions = newValue}
   }
 
-  var index: Org_Roylance_Yaorm_Index {
+  public var index: Org_Roylance_Yaorm_Index {
     get {return _storage._index ?? Org_Roylance_Yaorm_Index()}
     set {_uniqueStorage()._index = newValue}
   }
@@ -1590,17 +1590,17 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage._index = nil
   }
 
-  var tableType: Org_Roylance_Yaorm_TableDefinition.TableType {
+  public var tableType: Org_Roylance_Yaorm_TableDefinition.TableType {
     get {return _storage._tableType}
     set {_uniqueStorage()._tableType = newValue}
   }
 
-  var alias: String {
+  public var alias: String {
     get {return _storage._alias}
     set {_uniqueStorage()._alias = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -1622,7 +1622,7 @@ struct Org_Roylance_Yaorm_TableDefinition: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-struct Org_Roylance_Yaorm_TableDefinitions: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_TableDefinitions: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_TableDefinitions"}
   public var protoMessageName: String {return "TableDefinitions"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1631,9 +1631,9 @@ struct Org_Roylance_Yaorm_TableDefinitions: SwiftProtobuf.Message, SwiftProtobuf
   ]
 
 
-  var tableDefinitions: [Org_Roylance_Yaorm_TableDefinition] = []
+  public var tableDefinitions: [Org_Roylance_Yaorm_TableDefinition] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -1654,7 +1654,7 @@ struct Org_Roylance_Yaorm_TableDefinitions: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-struct Org_Roylance_Yaorm_DifferenceReport: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_DifferenceReport: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_DifferenceReport"}
   public var protoMessageName: String {return "DifferenceReport"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1664,11 +1664,11 @@ struct Org_Roylance_Yaorm_DifferenceReport: SwiftProtobuf.Message, SwiftProtobuf
   ]
 
 
-  var migrationExists: Bool = false
+  public var migrationExists: Bool = false
 
-  var differences: [Org_Roylance_Yaorm_Difference] = []
+  public var differences: [Org_Roylance_Yaorm_Difference] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -1694,7 +1694,7 @@ struct Org_Roylance_Yaorm_DifferenceReport: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-struct Org_Roylance_Yaorm_Column: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Column: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Column"}
   public var protoMessageName: String {return "Column"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1856,7 +1856,7 @@ struct Org_Roylance_Yaorm_Column: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mes
   private var _storage = _StorageClass()
 
 
-  var definition: Org_Roylance_Yaorm_ColumnDefinition {
+  public var definition: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._definition ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._definition = newValue}
   }
@@ -1867,82 +1867,82 @@ struct Org_Roylance_Yaorm_Column: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mes
     return _storage._definition = nil
   }
 
-  var doubleHolder: Double {
+  public var doubleHolder: Double {
     get {return _storage._doubleHolder}
     set {_uniqueStorage()._doubleHolder = newValue}
   }
 
-  var floatHolder: Float {
+  public var floatHolder: Float {
     get {return _storage._floatHolder}
     set {_uniqueStorage()._floatHolder = newValue}
   }
 
-  var int32Holder: Int32 {
+  public var int32Holder: Int32 {
     get {return _storage._int32Holder}
     set {_uniqueStorage()._int32Holder = newValue}
   }
 
-  var int64Holder: Int64 {
+  public var int64Holder: Int64 {
     get {return _storage._int64Holder}
     set {_uniqueStorage()._int64Holder = newValue}
   }
 
-  var uint32Holder: UInt32 {
+  public var uint32Holder: UInt32 {
     get {return _storage._uint32Holder}
     set {_uniqueStorage()._uint32Holder = newValue}
   }
 
-  var uint64Holder: UInt64 {
+  public var uint64Holder: UInt64 {
     get {return _storage._uint64Holder}
     set {_uniqueStorage()._uint64Holder = newValue}
   }
 
-  var sint32Holder: Int32 {
+  public var sint32Holder: Int32 {
     get {return _storage._sint32Holder}
     set {_uniqueStorage()._sint32Holder = newValue}
   }
 
-  var sint64Holder: Int64 {
+  public var sint64Holder: Int64 {
     get {return _storage._sint64Holder}
     set {_uniqueStorage()._sint64Holder = newValue}
   }
 
-  var fixed32Holder: UInt32 {
+  public var fixed32Holder: UInt32 {
     get {return _storage._fixed32Holder}
     set {_uniqueStorage()._fixed32Holder = newValue}
   }
 
-  var fixed64Holder: UInt64 {
+  public var fixed64Holder: UInt64 {
     get {return _storage._fixed64Holder}
     set {_uniqueStorage()._fixed64Holder = newValue}
   }
 
-  var sfixed32Holder: Int32 {
+  public var sfixed32Holder: Int32 {
     get {return _storage._sfixed32Holder}
     set {_uniqueStorage()._sfixed32Holder = newValue}
   }
 
-  var sfixed64Holder: Int64 {
+  public var sfixed64Holder: Int64 {
     get {return _storage._sfixed64Holder}
     set {_uniqueStorage()._sfixed64Holder = newValue}
   }
 
-  var boolHolder: Bool {
+  public var boolHolder: Bool {
     get {return _storage._boolHolder}
     set {_uniqueStorage()._boolHolder = newValue}
   }
 
-  var stringHolder: String {
+  public var stringHolder: String {
     get {return _storage._stringHolder}
     set {_uniqueStorage()._stringHolder = newValue}
   }
 
-  var bytesHolder: Data {
+  public var bytesHolder: Data {
     get {return _storage._bytesHolder}
     set {_uniqueStorage()._bytesHolder = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -1964,7 +1964,7 @@ struct Org_Roylance_Yaorm_Column: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mes
   }
 }
 
-struct Org_Roylance_Yaorm_Record: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Record: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Record"}
   public var protoMessageName: String {return "Record"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -1973,9 +1973,9 @@ struct Org_Roylance_Yaorm_Record: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mes
   ]
 
 
-  var columns: [Org_Roylance_Yaorm_Column] = []
+  public var columns: [Org_Roylance_Yaorm_Column] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -1996,7 +1996,7 @@ struct Org_Roylance_Yaorm_Record: SwiftProtobuf.Message, SwiftProtobuf.Proto3Mes
   }
 }
 
-struct Org_Roylance_Yaorm_Records: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Records: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Records"}
   public var protoMessageName: String {return "Records"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2005,9 +2005,9 @@ struct Org_Roylance_Yaorm_Records: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
   ]
 
 
-  var records: [Org_Roylance_Yaorm_Record] = []
+  public var records: [Org_Roylance_Yaorm_Record] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -2028,7 +2028,7 @@ struct Org_Roylance_Yaorm_Records: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
   }
 }
 
-struct Org_Roylance_Yaorm_TableRecords: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_TableRecords: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_TableRecords"}
   public var protoMessageName: String {return "TableRecords"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2086,7 +2086,7 @@ struct Org_Roylance_Yaorm_TableRecords: SwiftProtobuf.Message, SwiftProtobuf.Pro
   private var _storage = _StorageClass()
 
 
-  var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._tableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._tableDefinition = newValue}
   }
@@ -2097,7 +2097,7 @@ struct Org_Roylance_Yaorm_TableRecords: SwiftProtobuf.Message, SwiftProtobuf.Pro
     return _storage._tableDefinition = nil
   }
 
-  var records: Org_Roylance_Yaorm_Records {
+  public var records: Org_Roylance_Yaorm_Records {
     get {return _storage._records ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._records = newValue}
   }
@@ -2108,12 +2108,12 @@ struct Org_Roylance_Yaorm_TableRecords: SwiftProtobuf.Message, SwiftProtobuf.Pro
     return _storage._records = nil
   }
 
-  var tableName: String {
+  public var tableName: String {
     get {return _storage._tableName}
     set {_uniqueStorage()._tableName = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -2135,7 +2135,7 @@ struct Org_Roylance_Yaorm_TableRecords: SwiftProtobuf.Message, SwiftProtobuf.Pro
   }
 }
 
-struct Org_Roylance_Yaorm_AllTableRecords: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_AllTableRecords: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_AllTableRecords"}
   public var protoMessageName: String {return "AllTableRecords"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2144,9 +2144,9 @@ struct Org_Roylance_Yaorm_AllTableRecords: SwiftProtobuf.Message, SwiftProtobuf.
   ]
 
 
-  var tableRecords: [Org_Roylance_Yaorm_TableRecords] = []
+  public var tableRecords: [Org_Roylance_Yaorm_TableRecords] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -2167,7 +2167,7 @@ struct Org_Roylance_Yaorm_AllTableRecords: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_DatabaseOperation"}
   public var protoMessageName: String {return "DatabaseOperation"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2249,8 +2249,8 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
   private var _storage = _StorageClass()
 
 
-  enum DatabaseOperationType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum DatabaseOperationType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case createTable // = 0
     case dropTable // = 1
     case createIndex // = 2
@@ -2272,11 +2272,11 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
     case deleteAll // = 18
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .createTable
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .createTable
       case 1: self = .dropTable
@@ -2301,7 +2301,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "createTable": self = .createTable
       case "dropTable": self = .dropTable
@@ -2326,7 +2326,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "CREATE_TABLE": self = .createTable
       case "DROP_TABLE": self = .dropTable
@@ -2351,7 +2351,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "CREATE_TABLE": self = .createTable
       case "DROP_TABLE": self = .dropTable
@@ -2376,7 +2376,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .createTable: return 0
@@ -2403,7 +2403,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .createTable: return "\"CREATE_TABLE\""
@@ -2430,9 +2430,9 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .createTable: return ".createTable"
@@ -2461,7 +2461,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
 
   }
 
-  var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._tableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._tableDefinition = newValue}
   }
@@ -2472,7 +2472,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
     return _storage._tableDefinition = nil
   }
 
-  var records: Org_Roylance_Yaorm_Records {
+  public var records: Org_Roylance_Yaorm_Records {
     get {return _storage._records ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._records = newValue}
   }
@@ -2483,7 +2483,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
     return _storage._records = nil
   }
 
-  var index: Org_Roylance_Yaorm_Index {
+  public var index: Org_Roylance_Yaorm_Index {
     get {return _storage._index ?? Org_Roylance_Yaorm_Index()}
     set {_uniqueStorage()._index = newValue}
   }
@@ -2494,7 +2494,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
     return _storage._index = nil
   }
 
-  var columnDefinition: Org_Roylance_Yaorm_ColumnDefinition {
+  public var columnDefinition: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._columnDefinition ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._columnDefinition = newValue}
   }
@@ -2505,7 +2505,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
     return _storage._columnDefinition = nil
   }
 
-  var whereClause: Org_Roylance_Yaorm_WhereClause {
+  public var whereClause: Org_Roylance_Yaorm_WhereClause {
     get {return _storage._whereClause ?? Org_Roylance_Yaorm_WhereClause()}
     set {_uniqueStorage()._whereClause = newValue}
   }
@@ -2516,12 +2516,12 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
     return _storage._whereClause = nil
   }
 
-  var databaseOperationType: Org_Roylance_Yaorm_DatabaseOperation.DatabaseOperationType {
+  public var databaseOperationType: Org_Roylance_Yaorm_DatabaseOperation.DatabaseOperationType {
     get {return _storage._databaseOperationType}
     set {_uniqueStorage()._databaseOperationType = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -2543,7 +2543,7 @@ struct Org_Roylance_Yaorm_DatabaseOperation: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_DatabaseOperationResult"}
   public var protoMessageName: String {return "DatabaseOperationResult"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2625,17 +2625,17 @@ struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftP
   private var _storage = _StorageClass()
 
 
-  var boolResult: Bool {
+  public var boolResult: Bool {
     get {return _storage._boolResult}
     set {_uniqueStorage()._boolResult = newValue}
   }
 
-  var countResult: Int64 {
+  public var countResult: Int64 {
     get {return _storage._countResult}
     set {_uniqueStorage()._countResult = newValue}
   }
 
-  var recordResult: Org_Roylance_Yaorm_Record {
+  public var recordResult: Org_Roylance_Yaorm_Record {
     get {return _storage._recordResult ?? Org_Roylance_Yaorm_Record()}
     set {_uniqueStorage()._recordResult = newValue}
   }
@@ -2646,7 +2646,7 @@ struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftP
     return _storage._recordResult = nil
   }
 
-  var recordsResult: Org_Roylance_Yaorm_Records {
+  public var recordsResult: Org_Roylance_Yaorm_Records {
     get {return _storage._recordsResult ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._recordsResult = newValue}
   }
@@ -2657,12 +2657,12 @@ struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftP
     return _storage._recordsResult = nil
   }
 
-  var errorMessage: String {
+  public var errorMessage: String {
     get {return _storage._errorMessage}
     set {_uniqueStorage()._errorMessage = newValue}
   }
 
-  var databaseOperation: Org_Roylance_Yaorm_DatabaseOperation {
+  public var databaseOperation: Org_Roylance_Yaorm_DatabaseOperation {
     get {return _storage._databaseOperation ?? Org_Roylance_Yaorm_DatabaseOperation()}
     set {_uniqueStorage()._databaseOperation = newValue}
   }
@@ -2673,7 +2673,7 @@ struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftP
     return _storage._databaseOperation = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -2695,7 +2695,7 @@ struct Org_Roylance_Yaorm_DatabaseOperationResult: SwiftProtobuf.Message, SwiftP
   }
 }
 
-struct Org_Roylance_Yaorm_DatabaseDefinition: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_DatabaseDefinition: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_DatabaseDefinition"}
   public var protoMessageName: String {return "DatabaseDefinition"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2761,17 +2761,17 @@ struct Org_Roylance_Yaorm_DatabaseDefinition: SwiftProtobuf.Message, SwiftProtob
   private var _storage = _StorageClass()
 
 
-  var schema: String {
+  public var schema: String {
     get {return _storage._schema}
     set {_uniqueStorage()._schema = newValue}
   }
 
-  var name: String {
+  public var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  var tableDefinitions: Org_Roylance_Yaorm_TableDefinitions {
+  public var tableDefinitions: Org_Roylance_Yaorm_TableDefinitions {
     get {return _storage._tableDefinitions ?? Org_Roylance_Yaorm_TableDefinitions()}
     set {_uniqueStorage()._tableDefinitions = newValue}
   }
@@ -2782,12 +2782,12 @@ struct Org_Roylance_Yaorm_DatabaseDefinition: SwiftProtobuf.Message, SwiftProtob
     return _storage._tableDefinitions = nil
   }
 
-  var tableDefinitionGraphs: [Org_Roylance_Yaorm_TableDefinitionGraphs] {
+  public var tableDefinitionGraphs: [Org_Roylance_Yaorm_TableDefinitionGraphs] {
     get {return _storage._tableDefinitionGraphs}
     set {_uniqueStorage()._tableDefinitionGraphs = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -2809,7 +2809,7 @@ struct Org_Roylance_Yaorm_DatabaseDefinition: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_TableDefinitionGraph"}
   public var protoMessageName: String {return "TableDefinitionGraph"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -2899,17 +2899,17 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
   private var _storage = _StorageClass()
 
 
-  enum TableDefinitionGraphType: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum TableDefinitionGraphType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case enumType // = 0
     case messageType // = 1
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .enumType
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .enumType
       case 1: self = .messageType
@@ -2917,7 +2917,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
       }
     }
 
-    init?(name: String) {
+    public init?(name: String) {
       switch name {
       case "enumType": self = .enumType
       case "messageType": self = .messageType
@@ -2925,7 +2925,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
       }
     }
 
-    init?(jsonName: String) {
+    public init?(jsonName: String) {
       switch jsonName {
       case "ENUM_TYPE": self = .enumType
       case "MESSAGE_TYPE": self = .messageType
@@ -2933,7 +2933,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
       }
     }
 
-    init?(protoName: String) {
+    public init?(protoName: String) {
       switch protoName {
       case "ENUM_TYPE": self = .enumType
       case "MESSAGE_TYPE": self = .messageType
@@ -2941,7 +2941,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       get {
         switch self {
         case .enumType: return 0
@@ -2951,7 +2951,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
       }
     }
 
-    var json: String {
+    public var json: String {
       get {
         switch self {
         case .enumType: return "\"ENUM_TYPE\""
@@ -2961,9 +2961,9 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
       }
     }
 
-    var hashValue: Int { return rawValue }
+    public var hashValue: Int { return rawValue }
 
-    var debugDescription: String {
+    public var debugDescription: String {
       get {
         switch self {
         case .enumType: return ".enumType"
@@ -2975,7 +2975,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
 
   }
 
-  var mainTableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var mainTableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._mainTableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._mainTableDefinition = newValue}
   }
@@ -2986,7 +2986,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
     return _storage._mainTableDefinition = nil
   }
 
-  var otherTableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var otherTableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._otherTableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._otherTableDefinition = newValue}
   }
@@ -2997,7 +2997,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
     return _storage._otherTableDefinition = nil
   }
 
-  var linkerTableTable: Org_Roylance_Yaorm_TableDefinition {
+  public var linkerTableTable: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._linkerTableTable ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._linkerTableTable = newValue}
   }
@@ -3008,27 +3008,27 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
     return _storage._linkerTableTable = nil
   }
 
-  var definitionGraphType: Org_Roylance_Yaorm_TableDefinitionGraph.TableDefinitionGraphType {
+  public var definitionGraphType: Org_Roylance_Yaorm_TableDefinitionGraph.TableDefinitionGraphType {
     get {return _storage._definitionGraphType}
     set {_uniqueStorage()._definitionGraphType = newValue}
   }
 
-  var mainName: String {
+  public var mainName: String {
     get {return _storage._mainName}
     set {_uniqueStorage()._mainName = newValue}
   }
 
-  var otherName: String {
+  public var otherName: String {
     get {return _storage._otherName}
     set {_uniqueStorage()._otherName = newValue}
   }
 
-  var columnName: String {
+  public var columnName: String {
     get {return _storage._columnName}
     set {_uniqueStorage()._columnName = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -3050,7 +3050,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraph: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-struct Org_Roylance_Yaorm_TableDefinitionGraphs: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_TableDefinitionGraphs: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_TableDefinitionGraphs"}
   public var protoMessageName: String {return "TableDefinitionGraphs"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3100,7 +3100,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraphs: SwiftProtobuf.Message, SwiftPro
   private var _storage = _StorageClass()
 
 
-  var mainTableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var mainTableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._mainTableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._mainTableDefinition = newValue}
   }
@@ -3111,12 +3111,12 @@ struct Org_Roylance_Yaorm_TableDefinitionGraphs: SwiftProtobuf.Message, SwiftPro
     return _storage._mainTableDefinition = nil
   }
 
-  var tableDefinitionGraphs: [Org_Roylance_Yaorm_TableDefinitionGraph] {
+  public var tableDefinitionGraphs: [Org_Roylance_Yaorm_TableDefinitionGraph] {
     get {return _storage._tableDefinitionGraphs}
     set {_uniqueStorage()._tableDefinitionGraphs = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -3138,7 +3138,7 @@ struct Org_Roylance_Yaorm_TableDefinitionGraphs: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-struct Org_Roylance_Yaorm_ConnectionInfo: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_ConnectionInfo: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_ConnectionInfo"}
   public var protoMessageName: String {return "ConnectionInfo"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3152,19 +3152,19 @@ struct Org_Roylance_Yaorm_ConnectionInfo: SwiftProtobuf.Message, SwiftProtobuf.P
   ]
 
 
-  var host: String = ""
+  public var host: String = ""
 
-  var user: String = ""
+  public var user: String = ""
 
-  var password: String = ""
+  public var password: String = ""
 
-  var schema: String = ""
+  public var schema: String = ""
 
-  var shouldCreateSchema: Bool = false
+  public var shouldCreateSchema: Bool = false
 
-  var port: Int32 = 0
+  public var port: Int32 = 0
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -3210,7 +3210,7 @@ struct Org_Roylance_Yaorm_ConnectionInfo: SwiftProtobuf.Message, SwiftProtobuf.P
   }
 }
 
-struct Org_Roylance_Yaorm_Migration: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Migration: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Migration"}
   public var protoMessageName: String {return "Migration"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3222,15 +3222,15 @@ struct Org_Roylance_Yaorm_Migration: SwiftProtobuf.Message, SwiftProtobuf.Proto3
   ]
 
 
-  var id: String = ""
+  public var id: String = ""
 
-  var contextName: String = ""
+  public var contextName: String = ""
 
-  var modelDefinitionBase64: String = ""
+  public var modelDefinitionBase64: String = ""
 
-  var insertDate: Int64 = 0
+  public var insertDate: Int64 = 0
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -3266,7 +3266,7 @@ struct Org_Roylance_Yaorm_Migration: SwiftProtobuf.Message, SwiftProtobuf.Proto3
   }
 }
 
-struct Org_Roylance_Yaorm_DatabaseExecution: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_DatabaseExecution: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_DatabaseExecution"}
   public var protoMessageName: String {return "DatabaseExecution"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3278,15 +3278,15 @@ struct Org_Roylance_Yaorm_DatabaseExecution: SwiftProtobuf.Message, SwiftProtobu
   ]
 
 
-  var rawSql: String = ""
+  public var rawSql: String = ""
 
-  var timeCalled: Int64 = 0
+  public var timeCalled: Int64 = 0
 
-  var result: Bool = false
+  public var result: Bool = false
 
-  var orderCalled: Int64 = 0
+  public var orderCalled: Int64 = 0
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -3322,7 +3322,7 @@ struct Org_Roylance_Yaorm_DatabaseExecution: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-struct Org_Roylance_Yaorm_DatabaseExecutionReport: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_DatabaseExecutionReport: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_DatabaseExecutionReport"}
   public var protoMessageName: String {return "DatabaseExecutionReport"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3332,11 +3332,11 @@ struct Org_Roylance_Yaorm_DatabaseExecutionReport: SwiftProtobuf.Message, SwiftP
   ]
 
 
-  var callsToDatabase: Int64 = 0
+  public var callsToDatabase: Int64 = 0
 
-  var executions: [Org_Roylance_Yaorm_DatabaseExecution] = []
+  public var executions: [Org_Roylance_Yaorm_DatabaseExecution] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -3363,7 +3363,7 @@ struct Org_Roylance_Yaorm_DatabaseExecutionReport: SwiftProtobuf.Message, SwiftP
 }
 
 ///   project
-struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_JoinTable"}
   public var protoMessageName: String {return "JoinTable"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3437,7 +3437,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
   private var _storage = _StorageClass()
 
 
-  var firstTable: Org_Roylance_Yaorm_TableDefinition {
+  public var firstTable: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._firstTable ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._firstTable = newValue}
   }
@@ -3448,7 +3448,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
     return _storage._firstTable = nil
   }
 
-  var secondTable: Org_Roylance_Yaorm_TableDefinition {
+  public var secondTable: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._secondTable ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._secondTable = newValue}
   }
@@ -3459,7 +3459,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
     return _storage._secondTable = nil
   }
 
-  var firstColumn: Org_Roylance_Yaorm_ColumnDefinition {
+  public var firstColumn: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._firstColumn ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._firstColumn = newValue}
   }
@@ -3470,7 +3470,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
     return _storage._firstColumn = nil
   }
 
-  var secondColumn: Org_Roylance_Yaorm_ColumnDefinition {
+  public var secondColumn: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._secondColumn ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._secondColumn = newValue}
   }
@@ -3481,7 +3481,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
     return _storage._secondColumn = nil
   }
 
-  var whereClause: Org_Roylance_Yaorm_WhereClause {
+  public var whereClause: Org_Roylance_Yaorm_WhereClause {
     get {return _storage._whereClause ?? Org_Roylance_Yaorm_WhereClause()}
     set {_uniqueStorage()._whereClause = newValue}
   }
@@ -3492,7 +3492,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
     return _storage._whereClause = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -3514,7 +3514,7 @@ struct Org_Roylance_Yaorm_JoinTable: SwiftProtobuf.Message, SwiftProtobuf.Proto3
   }
 }
 
-struct Org_Roylance_Yaorm_JoinTableRecords: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_JoinTableRecords: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_JoinTableRecords"}
   public var protoMessageName: String {return "JoinTableRecords"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3564,7 +3564,7 @@ struct Org_Roylance_Yaorm_JoinTableRecords: SwiftProtobuf.Message, SwiftProtobuf
   private var _storage = _StorageClass()
 
 
-  var joinTable: Org_Roylance_Yaorm_JoinTable {
+  public var joinTable: Org_Roylance_Yaorm_JoinTable {
     get {return _storage._joinTable ?? Org_Roylance_Yaorm_JoinTable()}
     set {_uniqueStorage()._joinTable = newValue}
   }
@@ -3575,7 +3575,7 @@ struct Org_Roylance_Yaorm_JoinTableRecords: SwiftProtobuf.Message, SwiftProtobuf
     return _storage._joinTable = nil
   }
 
-  var records: Org_Roylance_Yaorm_Records {
+  public var records: Org_Roylance_Yaorm_Records {
     get {return _storage._records ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._records = newValue}
   }
@@ -3586,7 +3586,7 @@ struct Org_Roylance_Yaorm_JoinTableRecords: SwiftProtobuf.Message, SwiftProtobuf
     return _storage._records = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -3608,7 +3608,7 @@ struct Org_Roylance_Yaorm_JoinTableRecords: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-struct Org_Roylance_Yaorm_GroupBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_GroupBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_GroupBy"}
   public var protoMessageName: String {return "GroupBy"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3617,9 +3617,9 @@ struct Org_Roylance_Yaorm_GroupBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
   ]
 
 
-  var columns: [Org_Roylance_Yaorm_ColumnDefinition] = []
+  public var columns: [Org_Roylance_Yaorm_ColumnDefinition] = []
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
@@ -3640,7 +3640,7 @@ struct Org_Roylance_Yaorm_GroupBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
   }
 }
 
-struct Org_Roylance_Yaorm_OrderBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_OrderBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_OrderBy"}
   public var protoMessageName: String {return "OrderBy"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3690,7 +3690,7 @@ struct Org_Roylance_Yaorm_OrderBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
   private var _storage = _StorageClass()
 
 
-  var column: Org_Roylance_Yaorm_ColumnDefinition {
+  public var column: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._column ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._column = newValue}
   }
@@ -3701,12 +3701,12 @@ struct Org_Roylance_Yaorm_OrderBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
     return _storage._column = nil
   }
 
-  var type: Org_Roylance_Yaorm_OrderByType {
+  public var type: Org_Roylance_Yaorm_OrderByType {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -3728,7 +3728,7 @@ struct Org_Roylance_Yaorm_OrderBy: SwiftProtobuf.Message, SwiftProtobuf.Proto3Me
   }
 }
 
-struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_Projection"}
   public var protoMessageName: String {return "Projection"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -3834,12 +3834,12 @@ struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto
   private var _storage = _StorageClass()
 
 
-  var labels: [Org_Roylance_Yaorm_ColumnDefinition] {
+  public var labels: [Org_Roylance_Yaorm_ColumnDefinition] {
     get {return _storage._labels}
     set {_uniqueStorage()._labels = newValue}
   }
 
-  var mainTable: Org_Roylance_Yaorm_TableDefinition {
+  public var mainTable: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._mainTable ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._mainTable = newValue}
   }
@@ -3850,12 +3850,12 @@ struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto
     return _storage._mainTable = nil
   }
 
-  var joins: [Org_Roylance_Yaorm_JoinTable] {
+  public var joins: [Org_Roylance_Yaorm_JoinTable] {
     get {return _storage._joins}
     set {_uniqueStorage()._joins = newValue}
   }
 
-  var whereClause: Org_Roylance_Yaorm_WhereClause {
+  public var whereClause: Org_Roylance_Yaorm_WhereClause {
     get {return _storage._whereClause ?? Org_Roylance_Yaorm_WhereClause()}
     set {_uniqueStorage()._whereClause = newValue}
   }
@@ -3866,7 +3866,7 @@ struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto
     return _storage._whereClause = nil
   }
 
-  var groupBy: Org_Roylance_Yaorm_GroupBy {
+  public var groupBy: Org_Roylance_Yaorm_GroupBy {
     get {return _storage._groupBy ?? Org_Roylance_Yaorm_GroupBy()}
     set {_uniqueStorage()._groupBy = newValue}
   }
@@ -3877,27 +3877,27 @@ struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto
     return _storage._groupBy = nil
   }
 
-  var orderBys: [Org_Roylance_Yaorm_OrderBy] {
+  public var orderBys: [Org_Roylance_Yaorm_OrderBy] {
     get {return _storage._orderBys}
     set {_uniqueStorage()._orderBys = newValue}
   }
 
-  var name: String {
+  public var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  var limit: Int64 {
+  public var limit: Int64 {
     get {return _storage._limit}
     set {_uniqueStorage()._limit = newValue}
   }
 
-  var offset: Int64 {
+  public var offset: Int64 {
     get {return _storage._offset}
     set {_uniqueStorage()._offset = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -3919,7 +3919,7 @@ struct Org_Roylance_Yaorm_Projection: SwiftProtobuf.Message, SwiftProtobuf.Proto
   }
 }
 
-struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_UIYaormRequest"}
   public var protoMessageName: String {return "UIYaormRequest"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -4057,12 +4057,12 @@ struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.P
   private var _storage = _StorageClass()
 
 
-  var token: String {
+  public var token: String {
     get {return _storage._token}
     set {_uniqueStorage()._token = newValue}
   }
 
-  var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._tableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._tableDefinition = newValue}
   }
@@ -4073,7 +4073,7 @@ struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.P
     return _storage._tableDefinition = nil
   }
 
-  var records: Org_Roylance_Yaorm_Records {
+  public var records: Org_Roylance_Yaorm_Records {
     get {return _storage._records ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._records = newValue}
   }
@@ -4084,7 +4084,7 @@ struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.P
     return _storage._records = nil
   }
 
-  var connectionInfo: Org_Roylance_Yaorm_ConnectionInfo {
+  public var connectionInfo: Org_Roylance_Yaorm_ConnectionInfo {
     get {return _storage._connectionInfo ?? Org_Roylance_Yaorm_ConnectionInfo()}
     set {_uniqueStorage()._connectionInfo = newValue}
   }
@@ -4095,7 +4095,7 @@ struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.P
     return _storage._connectionInfo = nil
   }
 
-  var whereClause: Org_Roylance_Yaorm_WhereClause {
+  public var whereClause: Org_Roylance_Yaorm_WhereClause {
     get {return _storage._whereClause ?? Org_Roylance_Yaorm_WhereClause()}
     set {_uniqueStorage()._whereClause = newValue}
   }
@@ -4106,47 +4106,47 @@ struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.P
     return _storage._whereClause = nil
   }
 
-  var limit: Int64 {
+  public var limit: Int64 {
     get {return _storage._limit}
     set {_uniqueStorage()._limit = newValue}
   }
 
-  var offset: Int64 {
+  public var offset: Int64 {
     get {return _storage._offset}
     set {_uniqueStorage()._offset = newValue}
   }
 
-  var insertSameAsUpdate: Bool {
+  public var insertSameAsUpdate: Bool {
     get {return _storage._insertSameAsUpdate}
     set {_uniqueStorage()._insertSameAsUpdate = newValue}
   }
 
-  var schemaName: String {
+  public var schemaName: String {
     get {return _storage._schemaName}
     set {_uniqueStorage()._schemaName = newValue}
   }
 
-  var tableName: String {
+  public var tableName: String {
     get {return _storage._tableName}
     set {_uniqueStorage()._tableName = newValue}
   }
 
-  var customSql: String {
+  public var customSql: String {
     get {return _storage._customSql}
     set {_uniqueStorage()._customSql = newValue}
   }
 
-  var fileDescriptor: String {
+  public var fileDescriptor: String {
     get {return _storage._fileDescriptor}
     set {_uniqueStorage()._fileDescriptor = newValue}
   }
 
-  var ids: [String] {
+  public var ids: [String] {
     get {return _storage._ids}
     set {_uniqueStorage()._ids = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -4168,7 +4168,7 @@ struct Org_Roylance_Yaorm_UIYaormRequest: SwiftProtobuf.Message, SwiftProtobuf.P
   }
 }
 
-struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_UIYaormResponse"}
   public var protoMessageName: String {return "UIYaormResponse"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -4274,7 +4274,7 @@ struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.
   private var _storage = _StorageClass()
 
 
-  var records: Org_Roylance_Yaorm_Records {
+  public var records: Org_Roylance_Yaorm_Records {
     get {return _storage._records ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._records = newValue}
   }
@@ -4285,17 +4285,17 @@ struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage._records = nil
   }
 
-  var schemas: [String] {
+  public var schemas: [String] {
     get {return _storage._schemas}
     set {_uniqueStorage()._schemas = newValue}
   }
 
-  var tables: [String] {
+  public var tables: [String] {
     get {return _storage._tables}
     set {_uniqueStorage()._tables = newValue}
   }
 
-  var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
+  public var tableDefinition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._tableDefinition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._tableDefinition = newValue}
   }
@@ -4306,7 +4306,7 @@ struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage._tableDefinition = nil
   }
 
-  var tableDefinitions: Org_Roylance_Yaorm_TableDefinitions {
+  public var tableDefinitions: Org_Roylance_Yaorm_TableDefinitions {
     get {return _storage._tableDefinitions ?? Org_Roylance_Yaorm_TableDefinitions()}
     set {_uniqueStorage()._tableDefinitions = newValue}
   }
@@ -4317,27 +4317,27 @@ struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage._tableDefinitions = nil
   }
 
-  var recordCount: Int64 {
+  public var recordCount: Int64 {
     get {return _storage._recordCount}
     set {_uniqueStorage()._recordCount = newValue}
   }
 
-  var result: Bool {
+  public var result: Bool {
     get {return _storage._result}
     set {_uniqueStorage()._result = newValue}
   }
 
-  var protoTypeToSqlTypes: [Org_Roylance_Yaorm_ProtoTypeToSqlType] {
+  public var protoTypeToSqlTypes: [Org_Roylance_Yaorm_ProtoTypeToSqlType] {
     get {return _storage._protoTypeToSqlTypes}
     set {_uniqueStorage()._protoTypeToSqlTypes = newValue}
   }
 
-  var stringResult: String {
+  public var stringResult: String {
     get {return _storage._stringResult}
     set {_uniqueStorage()._stringResult = newValue}
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -4359,7 +4359,7 @@ struct Org_Roylance_Yaorm_UIYaormResponse: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_SqlGeneratorRequestResponse"}
   public var protoMessageName: String {return "SqlGeneratorRequestResponse"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -4489,7 +4489,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
   private var _storage = _StorageClass()
 
 
-  var definition: Org_Roylance_Yaorm_TableDefinition {
+  public var definition: Org_Roylance_Yaorm_TableDefinition {
     get {return _storage._definition ?? Org_Roylance_Yaorm_TableDefinition()}
     set {_uniqueStorage()._definition = newValue}
   }
@@ -4500,7 +4500,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._definition = nil
   }
 
-  var columnDefinition: Org_Roylance_Yaorm_ColumnDefinition {
+  public var columnDefinition: Org_Roylance_Yaorm_ColumnDefinition {
     get {return _storage._columnDefinition ?? Org_Roylance_Yaorm_ColumnDefinition()}
     set {_uniqueStorage()._columnDefinition = newValue}
   }
@@ -4511,7 +4511,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._columnDefinition = nil
   }
 
-  var index: Org_Roylance_Yaorm_Index {
+  public var index: Org_Roylance_Yaorm_Index {
     get {return _storage._index ?? Org_Roylance_Yaorm_Index()}
     set {_uniqueStorage()._index = newValue}
   }
@@ -4522,7 +4522,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._index = nil
   }
 
-  var column: Org_Roylance_Yaorm_Column {
+  public var column: Org_Roylance_Yaorm_Column {
     get {return _storage._column ?? Org_Roylance_Yaorm_Column()}
     set {_uniqueStorage()._column = newValue}
   }
@@ -4533,7 +4533,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._column = nil
   }
 
-  var whereClause: Org_Roylance_Yaorm_WhereClause {
+  public var whereClause: Org_Roylance_Yaorm_WhereClause {
     get {return _storage._whereClause ?? Org_Roylance_Yaorm_WhereClause()}
     set {_uniqueStorage()._whereClause = newValue}
   }
@@ -4544,7 +4544,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._whereClause = nil
   }
 
-  var records: Org_Roylance_Yaorm_Records {
+  public var records: Org_Roylance_Yaorm_Records {
     get {return _storage._records ?? Org_Roylance_Yaorm_Records()}
     set {_uniqueStorage()._records = newValue}
   }
@@ -4555,32 +4555,32 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._records = nil
   }
 
-  var limit: Int64 {
+  public var limit: Int64 {
     get {return _storage._limit}
     set {_uniqueStorage()._limit = newValue}
   }
 
-  var offset: Int64 {
+  public var offset: Int64 {
     get {return _storage._offset}
     set {_uniqueStorage()._offset = newValue}
   }
 
-  var schemaName: String {
+  public var schemaName: String {
     get {return _storage._schemaName}
     set {_uniqueStorage()._schemaName = newValue}
   }
 
-  var tableName: String {
+  public var tableName: String {
     get {return _storage._tableName}
     set {_uniqueStorage()._tableName = newValue}
   }
 
-  var response: String {
+  public var response: String {
     get {return _storage._response}
     set {_uniqueStorage()._response = newValue}
   }
 
-  var protoTypeToSqlTypes: Org_Roylance_Yaorm_ProtoTypeToSqlTypes {
+  public var protoTypeToSqlTypes: Org_Roylance_Yaorm_ProtoTypeToSqlTypes {
     get {return _storage._protoTypeToSqlTypes ?? Org_Roylance_Yaorm_ProtoTypeToSqlTypes()}
     set {_uniqueStorage()._protoTypeToSqlTypes = newValue}
   }
@@ -4591,7 +4591,7 @@ struct Org_Roylance_Yaorm_SqlGeneratorRequestResponse: SwiftProtobuf.Message, Sw
     return _storage._protoTypeToSqlTypes = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)

@@ -1,7 +1,7 @@
 // THIS FILE WAS AUTO-GENERATED. DO NOT ALTER!
 import Foundation
 
-protocol IYaormMainService {
+public protocol IYaormMainService {
 	func get_schemas(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void)
 	func get_tables(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void)
 	func get_table_definition(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void)

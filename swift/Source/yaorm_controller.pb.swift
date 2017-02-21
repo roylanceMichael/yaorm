@@ -10,7 +10,7 @@ import Foundation
 import SwiftProtobuf
 
 
-struct Org_Roylance_Yaorm_CommonAction: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_CommonAction: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_CommonAction"}
   public var protoMessageName: String {return "CommonAction"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -60,7 +60,7 @@ struct Org_Roylance_Yaorm_CommonAction: SwiftProtobuf.Message, SwiftProtobuf.Pro
   private var _storage = _StorageClass()
 
 
-  var request: Org_Roylance_Yaorm_UIYaormRequest {
+  public var request: Org_Roylance_Yaorm_UIYaormRequest {
     get {return _storage._request ?? Org_Roylance_Yaorm_UIYaormRequest()}
     set {_uniqueStorage()._request = newValue}
   }
@@ -71,7 +71,7 @@ struct Org_Roylance_Yaorm_CommonAction: SwiftProtobuf.Message, SwiftProtobuf.Pro
     return _storage._request = nil
   }
 
-  var response: Org_Roylance_Yaorm_UIYaormResponse {
+  public var response: Org_Roylance_Yaorm_UIYaormResponse {
     get {return _storage._response ?? Org_Roylance_Yaorm_UIYaormResponse()}
     set {_uniqueStorage()._response = newValue}
   }
@@ -82,7 +82,7 @@ struct Org_Roylance_Yaorm_CommonAction: SwiftProtobuf.Message, SwiftProtobuf.Pro
     return _storage._response = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
@@ -104,7 +104,7 @@ struct Org_Roylance_Yaorm_CommonAction: SwiftProtobuf.Message, SwiftProtobuf.Pro
   }
 }
 
-struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
+public struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Org_Roylance_Yaorm_YaormMainController"}
   public var protoMessageName: String {return "YaormMainController"}
   public var protoPackageName: String {return "org.roylance.yaorm"}
@@ -186,7 +186,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
   private var _storage = _StorageClass()
 
 
-  var getSchemas: Org_Roylance_Yaorm_CommonAction {
+  public var getSchemas: Org_Roylance_Yaorm_CommonAction {
     get {return _storage._getSchemas ?? Org_Roylance_Yaorm_CommonAction()}
     set {_uniqueStorage()._getSchemas = newValue}
   }
@@ -197,7 +197,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
     return _storage._getSchemas = nil
   }
 
-  var getTables: Org_Roylance_Yaorm_CommonAction {
+  public var getTables: Org_Roylance_Yaorm_CommonAction {
     get {return _storage._getTables ?? Org_Roylance_Yaorm_CommonAction()}
     set {_uniqueStorage()._getTables = newValue}
   }
@@ -208,7 +208,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
     return _storage._getTables = nil
   }
 
-  var getTableDefinition: Org_Roylance_Yaorm_CommonAction {
+  public var getTableDefinition: Org_Roylance_Yaorm_CommonAction {
     get {return _storage._getTableDefinition ?? Org_Roylance_Yaorm_CommonAction()}
     set {_uniqueStorage()._getTableDefinition = newValue}
   }
@@ -219,7 +219,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
     return _storage._getTableDefinition = nil
   }
 
-  var getTableDefinitions: Org_Roylance_Yaorm_CommonAction {
+  public var getTableDefinitions: Org_Roylance_Yaorm_CommonAction {
     get {return _storage._getTableDefinitions ?? Org_Roylance_Yaorm_CommonAction()}
     set {_uniqueStorage()._getTableDefinitions = newValue}
   }
@@ -230,7 +230,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
     return _storage._getTableDefinitions = nil
   }
 
-  var getRecordCount: Org_Roylance_Yaorm_CommonAction {
+  public var getRecordCount: Org_Roylance_Yaorm_CommonAction {
     get {return _storage._getRecordCount ?? Org_Roylance_Yaorm_CommonAction()}
     set {_uniqueStorage()._getRecordCount = newValue}
   }
@@ -241,7 +241,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
     return _storage._getRecordCount = nil
   }
 
-  var getRecords: Org_Roylance_Yaorm_CommonAction {
+  public var getRecords: Org_Roylance_Yaorm_CommonAction {
     get {return _storage._getRecords ?? Org_Roylance_Yaorm_CommonAction()}
     set {_uniqueStorage()._getRecords = newValue}
   }
@@ -252,7 +252,7 @@ struct Org_Roylance_Yaorm_YaormMainController: SwiftProtobuf.Message, SwiftProto
     return _storage._getRecords = nil
   }
 
-  init() {}
+  public init() {}
 
   public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
