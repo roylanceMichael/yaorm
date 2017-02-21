@@ -5,7 +5,7 @@ import SwiftProtobuf
 
 public class YaormMainService: IYaormMainService {
     let baseUrl: String
-    init(baseUrl: String) {
+    public init(baseUrl: String) {
         self.baseUrl = baseUrl
     }
 	public func get_schemas(request: Org_Roylance_Yaorm_UIYaormRequest, onSuccess: @escaping (_ response: Org_Roylance_Yaorm_UIYaormResponse) -> Void, onError: @escaping (_ response: String) -> Void) {
