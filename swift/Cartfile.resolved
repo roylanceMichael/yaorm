@@ -1,0 +1,2 @@
+github "Alamofire/Alamofire" "4.3.0"
+github "apple/swift-protobuf" "0.9.27"

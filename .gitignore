@@ -32,3 +32,5 @@ python
 csharp
 capi
 javascript
+build
+swift/Carthage
