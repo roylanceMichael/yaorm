@@ -6,16 +6,16 @@
 
     <properties>		<group>org.roylance.yaorm</group>
 		<name>api</name>
-		<minor>193</minor>
+		<minor>194</minor>
 		<major>0</major>
-		<org_roylance_yaorm_api>0.193</org_roylance_yaorm_api>
+		<org_roylance_yaorm_api>0.194</org_roylance_yaorm_api>
 		<org_apache_commons_commons_lang_>3.4</org_apache_commons_commons_lang_>
 	</properties>
 
 
     <groupId>org.roylance.yaorm</groupId>
     <artifactId>sapi</artifactId>
-    <version>0.193</version>
+    <version>0.194</version>
 
     <repositories>
         <repository>
@@ -78,7 +78,7 @@
         <dependency>
             <groupId>org.roylance</groupId>
             <artifactId>common</artifactId>
-            <version>0.13</version>
+            <version>0.15</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -123,7 +123,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>1.1.0</version>
+            <version>1.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -252,7 +252,7 @@
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>1.1.0</version>
+                <version>1.1.1</version>
 
                 <executions>
                     <execution>
