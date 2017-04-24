@@ -6,16 +6,16 @@
 
     <properties>		<group>org.roylance.yaorm</group>
 		<name>api</name>
-		<minor>198</minor>
+		<minor>199</minor>
 		<major>0</major>
-		<org_roylance_yaorm_api>0.198</org_roylance_yaorm_api>
+		<org_roylance_yaorm_api>0.199</org_roylance_yaorm_api>
 		<org_apache_commons_commons_lang_>3.4</org_apache_commons_commons_lang_>
 	</properties>
 
 
     <groupId>org.roylance.yaorm</groupId>
     <artifactId>sapi</artifactId>
-    <version>0.198</version>
+    <version>0.199</version>
 
     <repositories>
         <repository>

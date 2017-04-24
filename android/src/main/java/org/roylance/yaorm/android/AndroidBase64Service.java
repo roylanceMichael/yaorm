@@ -10,12 +10,12 @@ public class AndroidBase64Service
     @NotNull
     @Override
     public String serialize(byte[] bytes) {
-        return Base64.encodeToString(bytes, Base64.DEFAULT);
+        return Base64.encodeToString(bytes, Base64.NO_WRAP);
     }
 
     @NotNull
     @Override
     public byte[] deserialize(String s) {
-        return Base64.decode(s, Base64.DEFAULT);
+        return Base64.decode(s, Base64.NO_WRAP);
     }
 }

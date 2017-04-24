@@ -49,23 +49,18 @@ class JDBCCursor(private val definitionModel: YaormModel.TableDefinition,
 
     override fun getRecords(): YaormModel.Records {
         val returnItems = YaormModel.Records.newBuilder()
-        try {
-            while (this.moveNext()) {
-                returnItems.addRecords(this.getRecord())
-            }
-            return returnItems.build()
+
+        while (this.moveNext()) {
+            returnItems.addRecords(this.getRecord())
         }
-        finally {
-        }
+        this.resultSet.close()
+        return returnItems.build()
     }
 
     override fun getRecordsStream(streamer: IStreamer) {
-        try {
-            while (this.moveNext()) {
-                streamer.stream(this.getRecord())
-            }
+        while (this.moveNext()) {
+            streamer.stream(this.getRecord())
         }
-        finally {
-        }
+        this.resultSet.close()
     }
 }

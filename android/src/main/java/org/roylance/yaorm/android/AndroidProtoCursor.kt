@@ -54,6 +54,7 @@ class AndroidProtoCursor(
         while (this.moveNext()) {
             returnItems.addRecords(this.getRecord())
         }
+        this.cursor.close()
         return returnItems.build()
     }
 
@@ -61,5 +62,6 @@ class AndroidProtoCursor(
         while (this.moveNext()) {
             streamer.stream(this.getRecord())
         }
+        this.cursor.close()
     }
 }
