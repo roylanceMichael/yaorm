@@ -13,16 +13,12 @@ import org.roylance.yaorm.services.IGranularDatabaseService
 import org.roylance.yaorm.services.IStreamer
 import java.util.*
 
-class AndroidGranularDatabaseService(databaseName:String,
-                                     context: Context) : SQLiteOpenHelper(context, databaseName, null, 1), IGranularDatabaseService {
+class AndroidGranularDatabaseService(
+        private val writableDatabase: SQLiteDatabase,
+        private val readableDatabase: SQLiteDatabase): IGranularDatabaseService {
     private val report = YaormModel.DatabaseExecutionReport.newBuilder().setCallsToDatabase(0)
+
     override val connectionSourceFactory: IConnectionSourceFactory = AndroidConnectionSourceFactory()
-
-    override fun onCreate(p0: SQLiteDatabase?) {
-    }
-
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-    }
 
     override fun buildTableDefinitionFromQuery(query: String, rowCount: Int): YaormModel.TableDefinition {
         val cursor = readableDatabase.rawQuery(query, null)
