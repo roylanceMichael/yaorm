@@ -61,7 +61,7 @@ join ${this.buildKeyword(joinTable.secondTable.name)} b
     }
 
     override fun buildCountSql(definition: YaormModel.TableDefinition): String {
-        return "select count(1) as ${this.buildKeyword("longVal")} from ${definition.name}"
+        return "select count(1) as ${this.buildKeyword("longVal")} from ${this.buildKeyword(definition.name)}"
     }
 
     override fun buildCreateColumn(

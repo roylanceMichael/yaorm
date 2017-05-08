@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0891462586A0559B46BC2F54 /* yaorm_controller.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A4AB79EE512B6F4568118 /* yaorm_controller.pb.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		37644AAE8F61C2E84B491F86 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DD49F8BAE6CF66BE4F5DC5 /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6700487F8FC9A9930F8760B4 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4DD49F8BAE6CF66BE4F5DC5 /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6C0C4EF3AF94F8DE440CBC99 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A834C3AB44676CC1C65A386 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8C44442F9FFA1ED2863E0D31 /* IYaormMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A25429BA5F9DE5783BC9BDE /* IYaormMainService.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9FAD441B9F5FA47D8A57A429 /* yaorm_model.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5004686B872DEA1C506F225 /* yaorm_model.pb.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C49540D584A040CE77B74D4A /* YaormMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63E443984BF5FB194ADBEAD /* YaormMainService.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EB724B39A092ED3B7C8E015E /* SwiftProtobuf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A834C3AB44676CC1C65A386 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		081F470C9932132973576586 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616D45A8A9A101455679EB7B /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0CDC441085A88C2031187CF0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 616D45A8A9A101455679EB7B /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		45644579A1FA371B0FE3C07B /* yaorm_controller.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB04FD5BAABFD6E3D751027 /* yaorm_controller.pb.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B1946DDA71D993C13BEBE14 /* YaormMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833A4CD0A0299E7558B92FF8 /* YaormMainService.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91E64EB1ADC43E9EB472EDD7 /* yaorm_model.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61B4CBDA4459B2ADEA1C4B1 /* yaorm_model.pb.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A4A84D669053DA27CBEC4D86 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D748B2B0825AAB115E1791 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D0564194AD7B22E04AB280C2 /* IYaormMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB041D3A590461B9649FA0D /* IYaormMainService.swift */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E2C54FFD9354DAFB78C5CAFF /* SwiftProtobuf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 40D748B2B0825AAB115E1791 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (Weak, CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD8755A61E5A30C400087F70 /* Org_Roylance_Yaorm_Api.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD87559C1E5A30C300087F70 /* Org_Roylance_Yaorm_Api.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,14 +29,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		17EF45C3B16CA17C932138C0 /* Embed Frameworks */ = {
+		CED445ADA80296B39A37E11B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6700487F8FC9A9930F8760B4 /* Alamofire.framework in Embed Frameworks */,
-				EB724B39A092ED3B7C8E015E /* SwiftProtobuf.framework in Embed Frameworks */,
+				0CDC441085A88C2031187CF0 /* Alamofire.framework in Embed Frameworks */,
+				E2C54FFD9354DAFB78C5CAFF /* SwiftProtobuf.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,12 +44,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4A834C3AB44676CC1C65A386 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = SOURCE_ROOT; };
-		5A25429BA5F9DE5783BC9BDE /* IYaormMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IYaormMainService.swift; path = swift/Source/IYaormMainService.swift; sourceTree = SOURCE_ROOT; };
-		A63E443984BF5FB194ADBEAD /* YaormMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YaormMainService.swift; path = swift/Source/YaormMainService.swift; sourceTree = SOURCE_ROOT; };
-		A84A4AB79EE512B6F4568118 /* yaorm_controller.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yaorm_controller.pb.swift; path = swift/Source/yaorm_controller.pb.swift; sourceTree = SOURCE_ROOT; };
-		B4DD49F8BAE6CF66BE4F5DC5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
-		C5004686B872DEA1C506F225 /* yaorm_model.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yaorm_model.pb.swift; path = swift/Source/yaorm_model.pb.swift; sourceTree = SOURCE_ROOT; };
+		1AB04FD5BAABFD6E3D751027 /* yaorm_controller.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yaorm_controller.pb.swift; path = swift/Source/yaorm_controller.pb.swift; sourceTree = SOURCE_ROOT; };
+		40D748B2B0825AAB115E1791 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = SOURCE_ROOT; };
+		616D45A8A9A101455679EB7B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		833A4CD0A0299E7558B92FF8 /* YaormMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YaormMainService.swift; path = swift/Source/YaormMainService.swift; sourceTree = SOURCE_ROOT; };
+		BEB041D3A590461B9649FA0D /* IYaormMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IYaormMainService.swift; path = swift/Source/IYaormMainService.swift; sourceTree = SOURCE_ROOT; };
+		F61B4CBDA4459B2ADEA1C4B1 /* yaorm_model.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yaorm_model.pb.swift; path = swift/Source/yaorm_model.pb.swift; sourceTree = SOURCE_ROOT; };
 		FD87559C1E5A30C300087F70 /* Org_Roylance_Yaorm_Api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Org_Roylance_Yaorm_Api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8755A01E5A30C300087F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,8 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37644AAE8F61C2E84B491F86 /* Alamofire.framework in Frameworks */,
-				6C0C4EF3AF94F8DE440CBC99 /* SwiftProtobuf.framework in Frameworks */,
+				081F470C9932132973576586 /* Alamofire.framework in Frameworks */,
+				A4A84D669053DA27CBEC4D86 /* SwiftProtobuf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +80,12 @@
 			children = (
 				FD87559E1E5A30C300087F70,
 				FD87559D1E5A30C300087F70 /* Products */,
-				5A25429BA5F9DE5783BC9BDE /* IYaormMainService.swift */,
-				A84A4AB79EE512B6F4568118 /* yaorm_controller.pb.swift */,
-				C5004686B872DEA1C506F225 /* yaorm_model.pb.swift */,
-				A63E443984BF5FB194ADBEAD /* YaormMainService.swift */,
-				B4DD49F8BAE6CF66BE4F5DC5 /* Alamofire.framework */,
-				4A834C3AB44676CC1C65A386 /* SwiftProtobuf.framework */,
+				BEB041D3A590461B9649FA0D /* IYaormMainService.swift */,
+				1AB04FD5BAABFD6E3D751027 /* yaorm_controller.pb.swift */,
+				F61B4CBDA4459B2ADEA1C4B1 /* yaorm_model.pb.swift */,
+				833A4CD0A0299E7558B92FF8 /* YaormMainService.swift */,
+				616D45A8A9A101455679EB7B /* Alamofire.framework */,
+				40D748B2B0825AAB115E1791 /* SwiftProtobuf.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,7 +118,7 @@
 				FD8755981E5A30C300087F70 /* Frameworks */,
 				FD8755991E5A30C300087F70 /* Headers */,
 				FD87559A1E5A30C300087F70 /* Resources */,
-				17EF45C3B16CA17C932138C0 /* Embed Frameworks */,
+				CED445ADA80296B39A37E11B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,10 +190,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C44442F9FFA1ED2863E0D31 /* IYaormMainService.swift in Sources */,
-				0891462586A0559B46BC2F54 /* yaorm_controller.pb.swift in Sources */,
-				9FAD441B9F5FA47D8A57A429 /* yaorm_model.pb.swift in Sources */,
-				C49540D584A040CE77B74D4A /* YaormMainService.swift in Sources */,
+				D0564194AD7B22E04AB280C2 /* IYaormMainService.swift in Sources */,
+				45644579A1FA371B0FE3C07B /* yaorm_controller.pb.swift in Sources */,
+				91E64EB1ADC43E9EB472EDD7 /* yaorm_model.pb.swift in Sources */,
+				8B1946DDA71D993C13BEBE14 /* YaormMainService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +231,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0.199;
+				CURRENT_PROJECT_VERSION = 0.200;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -284,7 +284,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0.199;
+				CURRENT_PROJECT_VERSION = 0.200;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
