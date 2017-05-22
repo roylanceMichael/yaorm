@@ -1,11 +1,10 @@
-package org.roylance.yaorm.services.postgres
+package org.roylance.yaorm.services.mysql.normal
 
 import org.junit.Test
 import org.roylance.yaorm.utilities.common.IProtoContextTest
 import org.roylance.yaorm.utilities.common.ProtoContextTestUtilities
 
-class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
-
+class MySQLProtoContextTest: MySQLBase(), IProtoContextTest {
     @Test
     override fun simplePassThroughTest() {
         ProtoContextTestUtilities.simplePassThroughTest(buildEntityService(), cleanup())

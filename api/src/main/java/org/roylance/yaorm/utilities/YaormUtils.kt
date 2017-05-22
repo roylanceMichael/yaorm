@@ -26,6 +26,8 @@ object YaormUtils {
     const val CarriageReturn = '\n'
     const val SpacedUnion = "${CarriageReturn}union "
     const val Underscore = "_"
+    const val LeftBracket = "["
+    const val RightBracket = "]"
 
     fun buildColumn(value: Any?,
                     propertyDefinition:YaormModel.ColumnDefinition):YaormModel.Column {

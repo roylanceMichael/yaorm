@@ -1,8 +1,10 @@
-package org.roylance.yaorm.services.mysql
+package org.roylance.yaorm.services.mysql.normal
 
 import org.junit.Assert
 import org.junit.Test
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.services.mysql.MySQLConnectionSourceFactory
+import org.roylance.yaorm.services.mysql.MySQLGeneratorService
 import org.roylance.yaorm.utilities.ConnectionUtilities
 
 class MySQLProjectionTest {

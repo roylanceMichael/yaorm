@@ -1,31 +1,17 @@
-package org.roylance.yaorm.services.mysql
+package org.roylance.yaorm.utilities.common
 
 import org.junit.Assert
-import org.junit.Test
+import org.roylance.common.service.IBuilder
 import org.roylance.yaorm.*
 import org.roylance.yaorm.services.EntityProtoContext
-import org.roylance.yaorm.services.EntityService
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.IEntityService
 import org.roylance.yaorm.utilities.*
 import java.util.*
 
-class MySQLProtoContextTest {
-    @Test
-    fun simplePassThroughTest() {
+object ProtoContextTestUtilities {
+    fun simplePassThroughTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
-
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-            val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
             val protoService = TestModelGMBuilder()
             val protoContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
@@ -33,6 +19,9 @@ class MySQLProtoContextTest {
                     entityService,
                     HashMap(),
                     TestBase64Service())
+
+            protoContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
+            protoContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
 
             protoContext.handleMigrations()
 
@@ -45,40 +34,31 @@ class MySQLProtoContextTest {
             Assert.assertTrue(manyDags.isEmpty())
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
+            cleanup?.build()
         }
     }
 
-    @Test
-    fun migrationAddColumnTest() {
+    fun migrationAddColumnTest(entityService: IEntityService, entityService2: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
-
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
 
             // act
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService,
                     HashMap(),
                     TestBase64Service())
+
+            firstContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
+            firstContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
 
             firstContext.handleMigrations()
 
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService2,
                     HashMap(),
                     TestBase64Service())
 
@@ -98,35 +78,25 @@ class MySQLProtoContextTest {
             Assert.assertTrue(foundDag.newField1 == simpleDag.newField1)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
+            cleanup?.build()
         }
     }
 
-    @Test
-    fun migrationRemoveColumnTest() {
+    fun migrationRemoveColumnTest(entityService: IEntityService, entityService2: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
-
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-
             // act
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
                     TestModelGMv2Builder(),
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService,
                     HashMap(),
                     TestBase64Service())
 
             secondContext.handleMigrations()
+
+            secondContext.entityMessageService.dropAndCreateEntireSchema(TestingModelV2.getDescriptor())
+            secondContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
 
             val simpleDag = TestingModelV2.Dag.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -138,7 +108,7 @@ class MySQLProtoContextTest {
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService2,
                     HashMap(),
                     TestBase64Service())
 
@@ -152,33 +122,23 @@ class MySQLProtoContextTest {
             Assert.assertTrue(foundDag.id == simpleDag.id)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
+            cleanup?.build()
         }
     }
 
-    @Test
-    fun migrationAddTableTest() {
+    fun migrationAddTableTest(entityService: IEntityService, entityService2: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
-
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-
             // act
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
                     TestModelGMv3Builder(),
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService,
                     HashMap(),
                     TestBase64Service())
+
+            thirdVersion.entityMessageService.dropAndCreateEntireSchema(TestingModelV3.getDescriptor())
+            thirdVersion.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
 
             thirdVersion.handleMigrations()
 
@@ -192,7 +152,7 @@ class MySQLProtoContextTest {
             val firstVersion = EntityProtoContext(
                     TestingModel.getDescriptor(),
                     TestModelGMBuilder(),
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService2,
                     HashMap(),
                     TestBase64Service())
 
@@ -209,32 +169,22 @@ class MySQLProtoContextTest {
             Assert.assertTrue(migrationsFound.size == 2)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
+            cleanup?.build()
         }
     }
 
-    @Test
-    fun complexMergeTest() {
+    fun complexMergeTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
-
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService,
                     HashMap(),
                     TestBase64Service())
+
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(ComplexModel.getDescriptor())
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
 
             complexModelContext.handleMigrations()
 
@@ -271,32 +221,22 @@ class MySQLProtoContextTest {
             Assert.assertTrue(foundForm.questionsCount == 2)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
+            cleanup?.build()
         }
     }
 
-    @Test
-    fun complexMerge2Test() {
+    fun complexMerge2Test(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
-        ConnectionUtilities.getMySQLConnectionInfo()
         try {
-            val sourceConnection = MySQLConnectionSourceFactory(
-                    ConnectionUtilities.mysqlHost!!,
-                    ConnectionUtilities.mysqlSchema!!,
-                    ConnectionUtilities.mysqlUserName!!,
-                    ConnectionUtilities.mysqlPassword!!)
-
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
-
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
                     ComplexModelBuilder,
-                    EntityService(granularDatabaseService, mySqlGeneratorService),
+                    entityService,
                     HashMap(),
                     TestBase64Service())
+
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(ComplexModel.getDescriptor())
+            complexModelContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
 
             complexModelContext.handleMigrations()
 
@@ -340,7 +280,7 @@ class MySQLProtoContextTest {
             Assert.assertTrue(foundForm.questionsCount == 1)
         }
         finally {
-            ConnectionUtilities.dropMySQLSchema()
+            cleanup?.build()
         }
     }
 }

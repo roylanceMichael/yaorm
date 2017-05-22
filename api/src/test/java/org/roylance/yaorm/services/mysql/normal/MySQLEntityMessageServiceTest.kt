@@ -1,4 +1,4 @@
-package org.roylance.yaorm.services.mysql
+package org.roylance.yaorm.services.mysql.normal
 
 import com.google.protobuf.ByteString
 import org.junit.Assert
@@ -8,6 +8,8 @@ import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.EntityMessageService
 import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.mysql.MySQLConnectionSourceFactory
+import org.roylance.yaorm.services.mysql.MySQLGeneratorService
 import org.roylance.yaorm.utilities.*
 import java.util.*
 

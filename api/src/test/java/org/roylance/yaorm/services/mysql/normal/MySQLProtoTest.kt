@@ -1,11 +1,11 @@
-package org.roylance.yaorm.services.postgres
+package org.roylance.yaorm.services.mysql.normal
 
 import org.junit.Test
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.IProtoTest
 import org.roylance.yaorm.utilities.common.ProtoTestUtilities
 
-class PostgresProtoTest: PostgresBase(), IProtoTest {
+class MySQLProtoTest: MySQLBase(), IProtoTest {
     @Test
     override fun simplePassThroughTest() {
         ProtoTestUtilities.simplePassThroughTest(buildEntityService(), cleanup())
@@ -53,17 +53,16 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleSchemaTablesTest() {
-        ProtoTestUtilities.simpleSchemaTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleSchemaTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
     override fun simpleTableDefinitionTest() {
-        ProtoTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
     override fun simplePassThroughEmptyAsNullTest() {
-        // arrange
         ProtoTestUtilities.simplePassThroughEmptyAsNullTest(buildEntityService(), cleanup())
     }
 
@@ -104,11 +103,11 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleSchemaTablesEmptyAsNullTest() {
-        ProtoTestUtilities.simpleSchemaTablesEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleSchemaTablesEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
     override fun simpleTableDefinitionEmptyAsNullTest() {
-        ProtoTestUtilities.simpleTableDefinitionEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleTableDefinitionEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 }
