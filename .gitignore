@@ -36,3 +36,4 @@ build
 swift/Carthage
 Carthage
 Cartfile.resolved
+.DS_Store
