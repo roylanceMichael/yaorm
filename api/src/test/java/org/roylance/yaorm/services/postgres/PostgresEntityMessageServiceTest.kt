@@ -9,81 +9,49 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.EntityMessageService
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.utilities.*
+import org.roylance.yaorm.utilities.common.EntityMessageServiceTestUtilities
+import org.roylance.yaorm.utilities.common.IEntityMessageServiceTest
 import java.util.*
 
-class PostgresEntityMessageServiceTest {
+class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTest {
     @Test
-    fun simplePassThroughWithReportTest() {
-        // arrange
-        ConnectionUtilities.getPostgresConnectionInfo()
-        try {
-            val sourceConnection = PostgresConnectionSourceFactory(
-                    ConnectionUtilities.postgresHost!!,
-                    ConnectionUtilities.postgresPort!!,
-                    ConnectionUtilities.postgresDatabase!!,
-                    ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!,
-                    false)
+    override fun simpleCreateTest() {
+        EntityMessageServiceTestUtilities.simpleCreateTest(buildEntityService())
+    }
 
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false, true)
-            val generatorService = PostgresGeneratorService()
-            val entityService = EntityService(granularDatabaseService, generatorService)
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+    @Test
+    override fun simpleLoadAndCreateTest() {
+        EntityMessageServiceTestUtilities.simpleLoadAndCreateTest(buildEntityService())
+    }
 
-            val testModel = TestingModel.SimpleInsertTest.newBuilder()
-            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
+    @Test
+    override fun complexLoadAndCreateTest() {
+        EntityMessageServiceTestUtilities.complexLoadAndCreateTest(buildEntityService())
+    }
 
-            testModel.id = UUID.randomUUID().toString()
-            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
-            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
-            testModel.display = "random display"
-            testModel.testInt32 = 1
-            testModel.testInt64 = 2
-            testModel.testUint32 = 3
-            testModel.testUint64 = 4
-            testModel.testSint32 = 5
-            testModel.testSint64 = 6
-            testModel.testFixed32 = 7
-            testModel.testFixed64 = 8
-            testModel.testSfixed32 = 9
-            testModel.testSfixed64 = 10
-            testModel.testBool = true
-            testModel.testBytes = ByteString.copyFromUtf8("what is this")
-            testModel.testDouble = 11.55
-            testModel.testFloat = 12.2324F
+    @Test
+    override fun complexLoadAndCreate2Test() {
+        EntityMessageServiceTestUtilities.complexLoadAndCreate2Test(buildEntityService())
+    }
 
-            // act
-            val result = entityProtoMessageService.merge(testModel.build())
+    @Test
+    override fun complexLoadAndCreateProtectedTest() {
+        EntityMessageServiceTestUtilities.complexLoadAndCreateProtectedTest(buildEntityService())
+    }
 
-            // assert
-            Assert.assertTrue(result)
-            val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
+    @Test
+    override fun simpleGetTest() {
+        EntityMessageServiceTestUtilities.simpleGetTest(buildEntityService())
+    }
 
-            Assert.assertTrue(foundMessage != null)
-            Assert.assertTrue(foundMessage!!.id == testModel.id)
-            Assert.assertTrue(foundMessage.coolType == testModel.coolType)
-            Assert.assertTrue(foundMessage.display == testModel.display)
-            Assert.assertTrue(foundMessage.testInt32 == testModel.testInt32)
-            Assert.assertTrue(foundMessage.testInt64 == testModel.testInt64)
-            Assert.assertTrue(foundMessage.testUint32 == testModel.testUint32)
-            Assert.assertTrue(foundMessage.testUint64 == testModel.testUint64)
-            Assert.assertTrue(foundMessage.testSint32 == testModel.testSint32)
-            Assert.assertTrue(foundMessage.testSint64 == testModel.testSint64)
-            Assert.assertTrue(foundMessage.testFixed32 == testModel.testFixed32)
-            Assert.assertTrue(foundMessage.testFixed64 == testModel.testFixed64)
-            Assert.assertTrue(foundMessage.testSfixed32 == testModel.testSfixed32)
-            Assert.assertTrue(foundMessage.testSfixed64 == testModel.testSfixed64)
-            Assert.assertTrue(foundMessage.testBool == testModel.testBool)
-            Assert.assertTrue(foundMessage.testBytes == testModel.testBytes)
-            Assert.assertTrue(foundMessage.testDouble == testModel.testDouble)
-            Assert.assertTrue(foundMessage.testFloat == testModel.testFloat)
-            Assert.assertTrue(entityProtoMessageService.getReport().executionsCount > 0)
-            println(entityProtoMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
-        }
-        finally {
-        }
+    @Test
+    override fun bulkInsert1Test() {
+        EntityMessageServiceTestUtilities.bulkInsert1Test(buildEntityService())
+    }
+
+    @Test
+    override fun simplePassThroughWithReportTest() {
+        EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService())
     }
 
     @Test
@@ -572,128 +540,17 @@ class PostgresEntityMessageServiceTest {
     }
 
     @Test
-    fun simpleUserAndUserDeviceTestTest() {
-        // arrange
-        ConnectionUtilities.getPostgresConnectionInfo()
-        try {
-            val sourceConnection = PostgresConnectionSourceFactory(
-                    ConnectionUtilities.postgresHost!!,
-                    ConnectionUtilities.postgresPort!!,
-                    ConnectionUtilities.postgresDatabase!!,
-                    ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!,
-                    false)
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val generatorService = PostgresGeneratorService()
-            val entityService = EntityService(granularDatabaseService, generatorService)
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
-
-            val newUser = TestingModel.User.newBuilder().setId(UUID.randomUUID().toString()).setDisplay("ok")
-            val userDevice = TestingModel.UserDevice.newBuilder().setId(UUID.randomUUID().toString()).setUser(newUser)
-
-            // act
-            entityMessageService.merge(userDevice.build())
-
-            // assert
-            val users = entityMessageService.getMany(TestingModel.User.getDefaultInstance())
-
-            Assert.assertTrue(users.size == 1)
-            Assert.assertTrue(users.first().id == newUser.id)
-            Assert.assertTrue(users.first().display == newUser.display)
-        }
-        finally {
-        }
+    override fun simpleUserAndUserDeviceTestTest() {
+        EntityMessageServiceTestUtilities.simpleUserAndUserDeviceTestTest(buildEntityService())
     }
 
     @Test
-    fun simpleIndexTest() {
-        // arrange
-        ConnectionUtilities.getPostgresConnectionInfo()
-        try {
-            val sourceConnection = PostgresConnectionSourceFactory(
-                    ConnectionUtilities.postgresHost!!,
-                    ConnectionUtilities.postgresPort!!,
-                    ConnectionUtilities.postgresDatabase!!,
-                    ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!,
-                    false)
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val generatorService = PostgresGeneratorService()
-            val entityService = EntityService(granularDatabaseService, generatorService)
-            val protoService = TestModelGMBuilder()
-
-            val customIndexes = HashMap<String, YaormModel.Index>()
-            val index = YaormModel.Index
-                    .newBuilder()
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
-                    .build()
-            customIndexes[TestingModel.Dag.getDescriptor().name] = index
-
-            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
-            entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
-
-            // act
-            val foundDag = entityMessageService.get(TestingModel.Dag.getDefaultInstance(), UUID.randomUUID().toString())
-
-            // assert
-            Assert.assertTrue(foundDag == null)
-        }
-        finally {
-        }
+    override fun simpleIndexTest() {
+        EntityMessageServiceTestUtilities.simpleIndexTest(buildEntityService())
     }
 
     @Test
-    fun bulkInsertTest() {
-        // arrange
-        ConnectionUtilities.getPostgresConnectionInfo()
-        try {
-            val sourceConnection = PostgresConnectionSourceFactory(
-                    ConnectionUtilities.postgresHost!!,
-                    ConnectionUtilities.postgresPort!!,
-                    ConnectionUtilities.postgresDatabase!!,
-                    ConnectionUtilities.postgresUserName!!,
-                    ConnectionUtilities.postgresPassword!!,
-                    false)
-            val granularDatabaseService = JDBCGranularDatabaseService(
-                    sourceConnection,
-                    false)
-            val generatorService = PostgresGeneratorService()
-            val entityService = EntityService(granularDatabaseService, generatorService)
-            val protoService = TestModelGMBuilder()
-
-            val customIndexes = HashMap<String, YaormModel.Index>()
-            val index = YaormModel.Index
-                    .newBuilder()
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
-                    .build()
-            customIndexes[TestingModel.Dag.getDescriptor().name] = index
-
-            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
-            entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
-
-            // act
-            val manyDags = ArrayList<TestingModel.Dag>()
-            var i = 0
-            while (i < 100) {
-                manyDags.add(DagBuilder().build())
-                i++
-            }
-
-            entityMessageService.bulkInsert(manyDags)
-
-            // assert
-            val foundDags = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
-            Assert.assertTrue(foundDags.size == 100)
-        }
-        finally {
-        }
+    override fun bulkInsertTest() {
+        EntityMessageServiceTestUtilities.bulkInsertTest(buildEntityService())
     }
 }

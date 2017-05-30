@@ -7,6 +7,12 @@ import java.util.*
 
 class SQLiteEntityMessageServiceTest: SQLiteBase(), IEntityMessageServiceTest {
     @Test
+    override fun simplePassThroughWithReportTest() {
+        val uuid = UUID.randomUUID().toString()
+        EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService(uuid), cleanup(uuid))
+    }
+
+    @Test
     override fun simpleCreateTest() {
         val uuid = UUID.randomUUID().toString()
         EntityMessageServiceTestUtilities.simpleCreateTest(buildEntityService(uuid), cleanup(uuid))

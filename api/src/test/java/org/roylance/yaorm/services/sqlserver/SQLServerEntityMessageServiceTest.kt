@@ -7,6 +7,14 @@ import org.roylance.yaorm.utilities.common.IEntityMessageServiceTest
 
 class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceTest {
     @Test
+    override fun simplePassThroughWithReportTest() {
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService(), cleanup())
+    }
+
+    @Test
     override fun simpleCreateTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return

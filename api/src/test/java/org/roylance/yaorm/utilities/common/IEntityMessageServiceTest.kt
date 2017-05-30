@@ -11,4 +11,5 @@ interface IEntityMessageServiceTest {
     fun simpleIndexTest()
     fun bulkInsertTest()
     fun bulkInsert1Test()
+    fun simplePassThroughWithReportTest()
 }

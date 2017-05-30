@@ -1,5 +1,6 @@
 package org.roylance.yaorm.utilities.common
 
+import com.google.protobuf.ByteString
 import org.junit.Assert
 import org.roylance.common.service.IBuilder
 import org.roylance.yaorm.TestingModel
@@ -8,12 +9,11 @@ import org.roylance.yaorm.services.EntityMessageService
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.IEntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
+import org.roylance.yaorm.services.postgres.PostgresConnectionSourceFactory
+import org.roylance.yaorm.services.postgres.PostgresGeneratorService
 import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
-import org.roylance.yaorm.utilities.DagBuilder
-import org.roylance.yaorm.utilities.GetProtoObjects
-import org.roylance.yaorm.utilities.TestModelGMBuilder
-import org.roylance.yaorm.utilities.YaormUtils
+import org.roylance.yaorm.utilities.*
 import java.io.File
 import java.util.*
 
@@ -320,6 +320,66 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(actualResults.size == 100)
             Assert.assertTrue(results.size == 100)
             System.out.println(entityMessageService.getReport().callsToDatabase)
+        }
+        finally {
+            cleanup?.build()
+        }
+    }
+
+    fun simplePassThroughWithReportTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+        // arrange
+        try {
+            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+
+            val testModel = TestingModel.SimpleInsertTest.newBuilder()
+            entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
+
+            testModel.id = UUID.randomUUID().toString()
+            testModel.coolType = TestingModel.SimpleInsertTest.CoolType.SURPRISED
+            testModel.child = TestingModel.Child.newBuilder().setId(UUID.randomUUID().toString()).setTestDisplay("first display") .build()
+            testModel.display = "random display"
+            testModel.testInt32 = 1
+            testModel.testInt64 = 2
+            testModel.testUint32 = 3
+            testModel.testUint64 = 4
+            testModel.testSint32 = 5
+            testModel.testSint64 = 6
+            testModel.testFixed32 = 7
+            testModel.testFixed64 = 8
+            testModel.testSfixed32 = 9
+            testModel.testSfixed64 = 10
+            testModel.testBool = true
+            testModel.testBytes = ByteString.copyFromUtf8("what is this")
+            testModel.testDouble = 11.55
+            testModel.testFloat = 12.2324F
+
+            // act
+            val result = entityProtoMessageService.merge(testModel.build())
+
+            // assert
+            Assert.assertTrue(result)
+            val foundMessage = entityProtoMessageService.get(testModel.build(), testModel.id)
+
+            Assert.assertTrue(foundMessage != null)
+            Assert.assertTrue(foundMessage!!.id == testModel.id)
+            Assert.assertTrue(foundMessage.coolType == testModel.coolType)
+            Assert.assertTrue(foundMessage.display == testModel.display)
+            Assert.assertTrue(foundMessage.testInt32 == testModel.testInt32)
+            Assert.assertTrue(foundMessage.testInt64 == testModel.testInt64)
+            Assert.assertTrue(foundMessage.testUint32 == testModel.testUint32)
+            Assert.assertTrue(foundMessage.testUint64 == testModel.testUint64)
+            Assert.assertTrue(foundMessage.testSint32 == testModel.testSint32)
+            Assert.assertTrue(foundMessage.testSint64 == testModel.testSint64)
+            Assert.assertTrue(foundMessage.testFixed32 == testModel.testFixed32)
+            Assert.assertTrue(foundMessage.testFixed64 == testModel.testFixed64)
+            Assert.assertTrue(foundMessage.testSfixed32 == testModel.testSfixed32)
+            Assert.assertTrue(foundMessage.testSfixed64 == testModel.testSfixed64)
+            Assert.assertTrue(foundMessage.testBool == testModel.testBool)
+            Assert.assertTrue(foundMessage.testBytes == testModel.testBytes)
+            Assert.assertTrue(foundMessage.testDouble == testModel.testDouble)
+            Assert.assertTrue(foundMessage.testFloat == testModel.testFloat)
+            Assert.assertTrue(entityProtoMessageService.getReport().executionsCount > 0)
+            println(entityProtoMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
         }
         finally {
             cleanup?.build()
