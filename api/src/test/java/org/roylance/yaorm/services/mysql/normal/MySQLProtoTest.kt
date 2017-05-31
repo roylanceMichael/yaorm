@@ -1,14 +1,14 @@
-package org.roylance.yaorm.services.postgres
+package org.roylance.yaorm.services.mysql.normal
 
 import org.junit.Test
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.IProtoTest
 import org.roylance.yaorm.utilities.common.ProtoTestUtilities
 
-class PostgresProtoTest: PostgresBase(), IProtoTest {
+class MySQLProtoTest: MySQLBase(), IProtoTest {
     @Test
     override fun simplePassThroughTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simplePassThroughTest(buildEntityService(), cleanup())
@@ -16,7 +16,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun singleQuoteSimplePassThroughTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.singleQuoteSimplePassThroughTest(buildEntityService(), cleanup())
@@ -24,7 +24,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simplePassThrough2Test() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simplePassThrough2Test(buildEntityService(), cleanup())
@@ -32,7 +32,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun verifyTypesSavedAndReturnedCorrectlyTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.verifyTypesSavedAndReturnedCorrectlyTest(buildEntityService(), cleanup())
@@ -40,7 +40,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun verifyRepeatedNumsSavedAndReturnedCorrectlyTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.verifyRepeatedNumsSavedAndReturnedCorrectlyTest(buildEntityService(), cleanup())
@@ -48,7 +48,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun verifyRepeatedMessagesSavedAndReturnedCorrectlyTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.verifyRepeatedMessagesSavedAndReturnedCorrectlyTest(buildEntityService(), cleanup())
@@ -56,7 +56,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simplePassThroughDefinitionTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simplePassThroughDefinitionTest(buildEntityService(), cleanup())
@@ -64,7 +64,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleDefinitionBuilderTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simpleDefinitionBuilderTest(buildEntityService(), cleanup())
@@ -72,7 +72,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleSchemaTestTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simpleSchemaTestTest(buildEntityService(), cleanup())
@@ -80,23 +80,23 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleSchemaTablesTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        ProtoTestUtilities.simpleSchemaTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleSchemaTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
     override fun simpleTableDefinitionTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        ProtoTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
     override fun simplePassThroughEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simplePassThroughEmptyAsNullTest(buildEntityService(), cleanup())
@@ -104,7 +104,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simplePassThrough2EmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simplePassThrough2EmptyAsNullTest(buildEntityService(), cleanup())
@@ -112,7 +112,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun verifyTypesSavedAndReturnedCorrectlyEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.verifyTypesSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(), cleanup())
@@ -120,7 +120,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun verifyRepeatedNumsSavedAndReturnedCorrectlyEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.verifyRepeatedNumsSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(), cleanup())
@@ -128,7 +128,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun verifyRepeatedMessagesSavedAndReturnedCorrectlyEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.verifyRepeatedMessagesSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(), cleanup())
@@ -136,7 +136,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simplePassThroughDefinitionEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simplePassThroughDefinitionEmptyAsNullTest(buildEntityService(), cleanup())
@@ -144,7 +144,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleDefinitionBuilderEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simpleDefinitionBuilderEmptyAsNullTest(buildEntityService(), cleanup())
@@ -152,7 +152,7 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleSchemaEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoTestUtilities.simpleSchemaEmptyAsNullTest(buildEntityService(), cleanup())
@@ -160,17 +160,17 @@ class PostgresProtoTest: PostgresBase(), IProtoTest {
 
     @Test
     override fun simpleSchemaTablesEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        ProtoTestUtilities.simpleSchemaTablesEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleSchemaTablesEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
     override fun simpleTableDefinitionEmptyAsNullTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        ProtoTestUtilities.simpleTableDefinitionEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
+        ProtoTestUtilities.simpleTableDefinitionEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 }

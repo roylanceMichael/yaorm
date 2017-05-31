@@ -1,15 +1,14 @@
-package org.roylance.yaorm.services.postgres
+package org.roylance.yaorm.services.mysql.normal
 
 import org.junit.Test
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.IProtoContextTest
 import org.roylance.yaorm.utilities.common.ProtoContextTestUtilities
 
-class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
-
+class MySQLProtoContextTest: MySQLBase(), IProtoContextTest {
     @Test
     override fun simplePassThroughTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoContextTestUtilities.simplePassThroughTest(buildEntityService(), cleanup())
@@ -17,7 +16,7 @@ class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
 
     @Test
     override fun migrationAddColumnTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoContextTestUtilities.migrationAddColumnTest(buildEntityService(), buildEntityService(), cleanup())
@@ -25,7 +24,7 @@ class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
 
     @Test
     override fun migrationRemoveColumnTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoContextTestUtilities.migrationRemoveColumnTest(buildEntityService(), buildEntityService(), cleanup())
@@ -33,7 +32,7 @@ class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
 
     @Test
     override fun migrationAddTableTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoContextTestUtilities.migrationAddTableTest(buildEntityService(), buildEntityService(), cleanup())
@@ -41,7 +40,7 @@ class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
 
     @Test
     override fun complexMergeTest() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoContextTestUtilities.complexMergeTest(buildEntityService(), cleanup())
@@ -49,7 +48,7 @@ class PostgresProtoContextTest: PostgresBase(), IProtoContextTest {
 
     @Test
     override fun complexMerge2Test() {
-        if (!ConnectionUtilities.runPostgresTests()) {
+        if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
         ProtoContextTestUtilities.complexMerge2Test(buildEntityService(), cleanup())

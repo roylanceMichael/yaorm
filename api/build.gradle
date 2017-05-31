@@ -65,6 +65,9 @@ dependencies {
     testCompile 'org.xerial:sqlite-jdbc:3.8.10.1'
     testCompile 'commons-io:commons-io:2.5'
 
+    // https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
+    testCompile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '6.1.0.jre8'
+
 //    testCompile 'org.apache.hadoop:hadoop-client:2.3.0'
 //    testCompile 'org.apache.hive:hive-jdbc:1.2.1'
 

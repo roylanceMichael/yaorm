@@ -1,120 +1,181 @@
-package org.roylance.yaorm.services.sqlite
+package org.roylance.yaorm.services.sqlserver
 
 import org.junit.Test
+import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.EntityMessageServiceTestUtilities
 import org.roylance.yaorm.utilities.common.IEntityMessageServiceTest
 import java.util.*
 
-class SQLiteEntityMessageServiceTest: SQLiteBase(), IEntityMessageServiceTest {
+class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceTest {
     @Test
     override fun moreComplexDagTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.moreComplexDagTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simpleDagTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simpleDagTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simplePersonFriendsTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simplePersonFriendsTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simplePersonTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simplePersonTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun additionalAddRemoveTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.additionalAddRemoveTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun verifyChildChangedAfterMergeProperly() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.verifyChildChangedAfterMergeProperly(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun verifyChildSerializedProperly() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.verifyChildSerializedProperly(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun childAddThenDeleteTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.childAddThenDeleteTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simplePassThroughTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simplePassThroughTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun simplePassThroughWithReportTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun simpleCreateTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simpleCreateTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun simpleLoadAndCreateTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simpleLoadAndCreateTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun complexLoadAndCreateTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.complexLoadAndCreateTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun complexLoadAndCreate2Test() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.complexLoadAndCreate2Test(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun complexLoadAndCreateProtectedTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.complexLoadAndCreateProtectedTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun simpleUserAndUserDeviceTestTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simpleUserAndUserDeviceTestTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun simpleGetTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simpleGetTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun simpleIndexTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.simpleIndexTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun bulkInsertTest() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.bulkInsertTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
     override fun bulkInsert1Test() {
-        val uuid = UUID.randomUUID().toString()
+        if (!ConnectionUtilities.runSQLServerTests()) {
+            return
+        }
+        val uuid = ConnectionUtilities.buildSafeUUID()
         EntityMessageServiceTestUtilities.bulkInsert1Test(buildEntityService(uuid), cleanup(uuid))
     }
 }

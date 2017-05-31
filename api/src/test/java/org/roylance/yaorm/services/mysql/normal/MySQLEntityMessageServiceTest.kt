@@ -1,11 +1,11 @@
-package org.roylance.yaorm.services.mysql.myisam
+package org.roylance.yaorm.services.mysql.normal
 
 import org.junit.Test
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.EntityMessageServiceTestUtilities
 import org.roylance.yaorm.utilities.common.IEntityMessageServiceTest
 
-class MySQLEntityMessageServiceTest: MySQLISAMBase(), IEntityMessageServiceTest {
+class MySQLEntityMessageServiceTest: MySQLBase(), IEntityMessageServiceTest {
     @Test
     override fun simpleCreateTest() {
         if (!ConnectionUtilities.runMySQLTests()) {

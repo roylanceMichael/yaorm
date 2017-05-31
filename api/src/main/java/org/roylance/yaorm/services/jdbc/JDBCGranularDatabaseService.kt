@@ -94,6 +94,10 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
     }
 
     override fun executeUpdateQuery(query: String): EntityResultModel {
+        if (query.isBlank()) {
+            return EntityResultModel()
+        }
+
         val statement = this.connectionSourceFactory.generateUpdateStatement()
         val returnObject = EntityResultModel()
 
@@ -106,7 +110,7 @@ class JDBCGranularDatabaseService(override val connectionSourceFactory: IConnect
 
             return returnObject
         }
-        catch(e:Exception) {
+        catch(e: Exception) {
             returnObject.successful = false
             throw e
         }
