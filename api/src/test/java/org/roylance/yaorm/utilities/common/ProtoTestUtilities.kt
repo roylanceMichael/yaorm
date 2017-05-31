@@ -44,6 +44,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(true)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -78,6 +79,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(true)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -123,6 +125,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(record!!.testDisplay == "second display")
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -198,6 +201,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(record.testFloat == testModel.testFloat)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -260,6 +264,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(record.coolTypesList.any { it == TestingModel.SimpleInsertTest.CoolType.TEST })
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -308,6 +313,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(TestingModelUtilities.SubSubChildDisplay == subSubChildFound.subSubDisplay)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -342,6 +348,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(true)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -382,6 +389,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(tableDefinition.columnDefinitionsCount == 18)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -419,6 +427,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(schemas.isNotEmpty())
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -456,6 +465,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(tableNames.isNotEmpty())
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -495,6 +505,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(tableDefinition.columnDefinitionsCount > 0)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -529,6 +540,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(true)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -574,6 +586,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(record!!.testDisplay == "second display")
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -649,6 +662,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(record.testFloat == testModel.testFloat)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -711,6 +725,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(record.coolTypesList.any { it == TestingModel.SimpleInsertTest.CoolType.TEST })
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -759,6 +774,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(TestingModelUtilities.SubSubChildDisplay == subSubChildFound.subSubDisplay)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -793,6 +809,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(true)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -833,6 +850,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(tableDefinition.columnDefinitionsCount == 18)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -870,6 +888,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(schemas.isNotEmpty())
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -907,6 +926,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(tableNames.isNotEmpty())
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -944,6 +964,7 @@ object ProtoTestUtilities {
             Assert.assertTrue(tableDefinition.columnDefinitionsCount > 0)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }

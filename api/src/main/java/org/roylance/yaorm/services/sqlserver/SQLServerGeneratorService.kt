@@ -102,14 +102,17 @@ join ${this.buildKeyword(joinTable.secondTable.name)} b
     }
 
     override fun buildCreateIndex(definition: YaormModel.TableDefinition, properties: Map<String, YaormModel.ColumnDefinition>, includes: Map<String, YaormModel.ColumnDefinition>): String? {
-        val indexName = YaormUtils.buildIndexName(definition.name, properties.values.map { it.name })
-        val joinedColumnNames = properties.values
-                .map { it.name }
-                .joinToString(YaormUtils.Comma)
-        val sqlStatement = "create index $indexName on " +
-                "$DBOName.${this.buildKeyword(definition.name)} " +
-                "($joinedColumnNames)"
-        return sqlStatement
+        // todo: sql server doesn't allow indexes for nvarchar max, so we'll have to work around that
+        return ""
+
+//        val indexName = YaormUtils.buildIndexName(definition.name, properties.values.map { it.name })
+//        val joinedColumnNames = properties.values
+//                .map { this.buildIndexColumnName(it) }
+//                .joinToString(YaormUtils.Comma)
+//        val sqlStatement = "create index $indexName on " +
+//                "$DBOName.${this.buildKeyword(definition.name)} " +
+//                "($joinedColumnNames)"
+//        return sqlStatement
     }
 
     override fun buildDropIndex(definition: YaormModel.TableDefinition, columns: Map<String, YaormModel.ColumnDefinition>): String? {
@@ -412,6 +415,15 @@ join ${this.buildKeyword(joinTable.secondTable.name)} b
 
     override fun buildKeyword(keyword: String): String {
         return "${YaormUtils.LeftBracket}$keyword${YaormUtils.RightBracket}"
+    }
+
+    private fun buildIndexColumnName(columnName:YaormModel.ColumnDefinition): String {
+        if ((columnName.type == YaormModel.ProtobufType.STRING ||
+                columnName.type == YaormModel.ProtobufType.BYTES) &&
+                columnName.name != YaormUtils.IdName) {
+            return "${columnName.name}(100)"
+        }
+        return this.buildKeyword(columnName.name)
     }
 
     companion object {

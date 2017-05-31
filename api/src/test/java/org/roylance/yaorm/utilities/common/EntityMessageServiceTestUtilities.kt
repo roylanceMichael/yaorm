@@ -32,6 +32,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(manyDags.isEmpty())
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -57,6 +58,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(moreDags.size == 2)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -87,6 +89,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(firstDag.processingTasksCount == 1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -120,6 +123,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(firstDag.processingTasksCount == 10)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -153,6 +157,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(firstDag.processingTasksCount == 10)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -178,6 +183,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(users.first().display == newUser.display)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -196,6 +202,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundDag == null)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -223,6 +230,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundDag == null)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -258,6 +266,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundDags.size == 100)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -322,6 +331,7 @@ object EntityMessageServiceTestUtilities {
             System.out.println(entityMessageService.getReport().callsToDatabase)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -382,6 +392,7 @@ object EntityMessageServiceTestUtilities {
             println(entityProtoMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -439,6 +450,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundMessage.testFloat == testModel.testFloat)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -485,6 +497,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundMessage.child.id == "")
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -529,6 +542,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundMessage.child.testDisplay == testModel.child.testDisplay)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -578,6 +592,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundMessage.child.testDisplay == newFirstDisplay)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -607,6 +622,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundMessage.child.testDisplay == newFirstDisplay)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -652,6 +668,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundFather.lastName == "Roylance")
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -685,6 +702,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(foundPerson.lastName == "Hu")
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -708,6 +726,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(moreDags.size == 1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -740,6 +759,7 @@ object EntityMessageServiceTestUtilities {
             Assert.assertTrue(secondDag.processingTasksCount == 1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }

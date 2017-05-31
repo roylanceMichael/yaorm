@@ -47,6 +47,7 @@ object WeakTypeTestUtilities {
             assert(actualClientBeacon.beacon.id1 == beacon.id1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -85,6 +86,7 @@ object WeakTypeTestUtilities {
             assert(actualClientBeacon.beacon.id1 == "")
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -123,6 +125,7 @@ object WeakTypeTestUtilities {
             assert(actualClientBeacon.beacon.id1 != beacon.id1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -167,6 +170,7 @@ object WeakTypeTestUtilities {
             assert(actualClientBeacon.beacon.id1 == beacon.id1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -220,6 +224,7 @@ object WeakTypeTestUtilities {
             assert(actualClientBeacon.weakChildrenList.first().someField != foundWeakChild.someField)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -266,6 +271,7 @@ object WeakTypeTestUtilities {
             assert(actualClientBeacon.weakChildrenCount == 0)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }

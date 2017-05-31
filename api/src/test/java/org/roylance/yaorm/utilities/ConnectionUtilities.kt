@@ -1,6 +1,7 @@
 package org.roylance.yaorm.utilities
 
 import org.roylance.yaorm.services.postgres.PostgresProtoTest
+import org.roylance.yaorm.services.sqlserver.SQLServerConnectionSourceFactory
 import java.sql.DriverManager
 import java.util.*
 
@@ -64,6 +65,15 @@ object ConnectionUtilities {
         connection.close()
     }
 
+    fun dropSQLServerDatabase(databaseName: String) {
+        val connection = DriverManager.getConnection(SQLServerConnectionSourceFactory.buildConnectionString(
+                sqlServerSqlHost!!, 1433, databaseName, sqlServerSqlUserName!!, sqlServerSqlPassword!!, false, false))
+        val statement = connection.prepareStatement("drop database if exists $databaseName")
+        statement.executeUpdate()
+        statement.close()
+        connection.close()
+    }
+
     fun getSQLServerConnectionInfo() {
         if (sqlServerSqlHost == null) {
             val properties = Properties()
@@ -85,6 +95,10 @@ object ConnectionUtilities {
         if (mysqlHost == null) {
             val properties = Properties()
             val mysqlStream = ConnectionUtilities::class.java.getResourceAsStream("/mysql.properties")
+            if (mysqlStream == null) {
+                return
+            }
+
             try {
                 properties.load(mysqlStream)
                 mysqlHost = properties.getProperty("host")
@@ -114,5 +128,9 @@ object ConnectionUtilities {
                 stream.close()
             }
         }
+    }
+
+    fun buildSafeUUID(): String {
+        return "test" + UUID.randomUUID().toString().replace("-", "")
     }
 }

@@ -4,6 +4,7 @@ import org.junit.Test
 import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.EntityMessageServiceTestUtilities
 import org.roylance.yaorm.utilities.common.IEntityMessageServiceTest
+import java.util.*
 
 class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceTest {
     @Test
@@ -11,63 +12,72 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.moreComplexDagTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.moreComplexDagTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simpleDagTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simpleDagTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simpleDagTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simplePersonFriendsTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simplePersonFriendsTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simplePersonFriendsTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simplePersonTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simplePersonTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simplePersonTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun additionalAddRemoveTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.additionalAddRemoveTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.additionalAddRemoveTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun verifyChildChangedAfterMergeProperly() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.verifyChildChangedAfterMergeProperly(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.verifyChildChangedAfterMergeProperly(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun verifyChildSerializedProperly() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.verifyChildSerializedProperly(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.verifyChildSerializedProperly(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun childAddThenDeleteTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.childAddThenDeleteTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.childAddThenDeleteTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun simplePassThroughTest() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simplePassThroughTest(buildEntityService())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simplePassThroughTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -75,7 +85,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -83,7 +94,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simpleCreateTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simpleCreateTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -91,7 +103,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simpleLoadAndCreateTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simpleLoadAndCreateTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -99,7 +112,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.complexLoadAndCreateTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.complexLoadAndCreateTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -107,7 +121,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.complexLoadAndCreate2Test(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.complexLoadAndCreate2Test(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -115,7 +130,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.complexLoadAndCreateProtectedTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.complexLoadAndCreateProtectedTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -123,7 +139,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simpleUserAndUserDeviceTestTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simpleUserAndUserDeviceTestTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -131,7 +148,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simpleGetTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simpleGetTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -139,7 +157,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.simpleIndexTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.simpleIndexTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -147,7 +166,8 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.bulkInsertTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.bulkInsertTest(buildEntityService(uuid), cleanup(uuid))
     }
 
     @Test
@@ -155,6 +175,7 @@ class SQLServerEntityMessageServiceTest: SQLServerBase(), IEntityMessageServiceT
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        EntityMessageServiceTestUtilities.bulkInsert1Test(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        EntityMessageServiceTestUtilities.bulkInsert1Test(buildEntityService(uuid), cleanup(uuid))
     }
 }

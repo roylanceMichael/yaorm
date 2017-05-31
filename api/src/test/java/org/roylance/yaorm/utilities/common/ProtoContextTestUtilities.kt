@@ -34,6 +34,7 @@ object ProtoContextTestUtilities {
             Assert.assertTrue(manyDags.isEmpty())
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -78,6 +79,8 @@ object ProtoContextTestUtilities {
             Assert.assertTrue(foundDag.newField1 == simpleDag.newField1)
         }
         finally {
+            entityService.close()
+            entityService2.close()
             cleanup?.build()
         }
     }
@@ -122,6 +125,8 @@ object ProtoContextTestUtilities {
             Assert.assertTrue(foundDag.id == simpleDag.id)
         }
         finally {
+            entityService.close()
+            entityService2.close()
             cleanup?.build()
         }
     }
@@ -169,6 +174,8 @@ object ProtoContextTestUtilities {
             Assert.assertTrue(migrationsFound.size == 2)
         }
         finally {
+            entityService.close()
+            entityService2.close()
             cleanup?.build()
         }
     }
@@ -221,6 +228,7 @@ object ProtoContextTestUtilities {
             Assert.assertTrue(foundForm.questionsCount == 2)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -280,6 +288,7 @@ object ProtoContextTestUtilities {
             Assert.assertTrue(foundForm.questionsCount == 1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }

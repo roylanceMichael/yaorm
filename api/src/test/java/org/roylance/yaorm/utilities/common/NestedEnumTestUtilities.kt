@@ -66,6 +66,7 @@ object NestedEnumTestUtilities {
             println(protoContext.entityMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -121,6 +122,7 @@ object NestedEnumTestUtilities {
             Assert.assertTrue(allCustomers.size == 1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -163,6 +165,7 @@ object NestedEnumTestUtilities {
             assert(true)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -207,6 +210,7 @@ object NestedEnumTestUtilities {
             assert(tableNames.size > 1)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -251,6 +255,7 @@ object NestedEnumTestUtilities {
             assert(tableDefinition.columnDefinitionsCount > 0)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }
@@ -295,6 +300,7 @@ object NestedEnumTestUtilities {
             assert(tableDefinition.columnDefinitionsCount > 0)
         }
         finally {
+            entityService.close()
             cleanup?.build()
         }
     }

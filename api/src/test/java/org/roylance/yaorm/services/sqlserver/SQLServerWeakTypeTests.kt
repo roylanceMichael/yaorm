@@ -11,41 +11,47 @@ class SQLServerWeakTypeTests: SQLServerBase(), IWeakTypeTests {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        WeakTypeTestUtilities.repeatedAddRemoveTest(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        WeakTypeTestUtilities.repeatedAddRemoveTest(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun saveDeleteSaveNotRepeated() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        WeakTypeTestUtilities.saveDeleteSaveNotRepeated(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        WeakTypeTestUtilities.saveDeleteSaveNotRepeated(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun shouldNotSaveChildMarkedAsWeakEvenIfNotExists() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakEvenIfNotExists(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakEvenIfNotExists(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun directChildRemove() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        WeakTypeTestUtilities.directChildRemove(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        WeakTypeTestUtilities.directChildRemove(buildEntityService(uuid), cleanup(uuid))
     }
     @Test
     override fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough() {
         if (!ConnectionUtilities.runSQLServerTests()) {
             return
         }
-        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough(buildEntityService(), cleanup())
+        val uuid = ConnectionUtilities.buildSafeUUID()
+        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough(buildEntityService(uuid), cleanup(uuid))
     }
 }

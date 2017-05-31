@@ -12,13 +12,14 @@ open class SQLServerBase: ICommonTest {
         ConnectionUtilities.getSQLServerConnectionInfo()
         val sourceConnection = SQLServerConnectionSourceFactory(
                 ConnectionUtilities.sqlServerSqlHost!!,
-                ConnectionUtilities.sqlServerSqlSchema!!,
+                schema!!,
                 ConnectionUtilities.sqlServerSqlUserName!!,
                 ConnectionUtilities.sqlServerSqlPassword!!)
 
         val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
-                false)
+                true,
+                true)
 
         return EntityService(granularDatabaseService, SQLServerGeneratorService())
     }
@@ -26,6 +27,7 @@ open class SQLServerBase: ICommonTest {
     override fun cleanup(schema: String?): IBuilder<Boolean> {
         return object: IBuilder<Boolean> {
             override fun build(): Boolean {
+                ConnectionUtilities.dropSQLServerDatabase(schema!!)
                 return true
             }
 

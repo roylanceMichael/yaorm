@@ -8,106 +8,169 @@ import org.roylance.yaorm.utilities.common.ProtoTestUtilities
 class SQLServerProtoTest: SQLServerBase(), IProtoTest {
     @Test
     override fun simplePassThroughTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simplePassThroughTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simplePassThroughTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun singleQuoteSimplePassThroughTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.singleQuoteSimplePassThroughTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.singleQuoteSimplePassThroughTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simplePassThrough2Test() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simplePassThrough2Test(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simplePassThrough2Test(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun verifyTypesSavedAndReturnedCorrectlyTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.verifyTypesSavedAndReturnedCorrectlyTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.verifyTypesSavedAndReturnedCorrectlyTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun verifyRepeatedNumsSavedAndReturnedCorrectlyTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.verifyRepeatedNumsSavedAndReturnedCorrectlyTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.verifyRepeatedNumsSavedAndReturnedCorrectlyTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun verifyRepeatedMessagesSavedAndReturnedCorrectlyTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.verifyRepeatedMessagesSavedAndReturnedCorrectlyTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.verifyRepeatedMessagesSavedAndReturnedCorrectlyTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simplePassThroughDefinitionTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simplePassThroughDefinitionTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simplePassThroughDefinitionTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simpleDefinitionBuilderTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleDefinitionBuilderTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleDefinitionBuilderTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simpleSchemaTestTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleSchemaTestTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleSchemaTestTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simpleSchemaTablesTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleSchemaTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.sqlServerSqlSchema!!)
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleSchemaTablesTest(buildEntityService(uuid), cleanup(uuid), uuid)
+        }
     }
 
     @Test
     override fun simpleTableDefinitionTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.sqlServerSqlSchema!!)
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleTableDefinitionTest(buildEntityService(uuid), cleanup(uuid), uuid)
+        }
     }
 
     @Test
     override fun simplePassThroughEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simplePassThroughEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simplePassThroughEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simplePassThrough2EmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simplePassThrough2EmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simplePassThrough2EmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun verifyTypesSavedAndReturnedCorrectlyEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.verifyTypesSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.verifyTypesSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun verifyRepeatedNumsSavedAndReturnedCorrectlyEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.verifyRepeatedNumsSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.verifyRepeatedNumsSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun verifyRepeatedMessagesSavedAndReturnedCorrectlyEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.verifyRepeatedMessagesSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.verifyRepeatedMessagesSavedAndReturnedCorrectlyEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simplePassThroughDefinitionEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simplePassThroughDefinitionEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simplePassThroughDefinitionEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simpleDefinitionBuilderEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleDefinitionBuilderEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleDefinitionBuilderEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simpleSchemaEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleSchemaEmptyAsNullTest(buildEntityService(), cleanup())
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleSchemaEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid))
+        }
     }
 
     @Test
     override fun simpleSchemaTablesEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleSchemaTablesEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.sqlServerSqlSchema!!)
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleSchemaTablesEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid), uuid)
+        }
     }
 
     @Test
     override fun simpleTableDefinitionEmptyAsNullTest() {
-        if (ConnectionUtilities.runSQLServerTests()) ProtoTestUtilities.simpleTableDefinitionEmptyAsNullTest(buildEntityService(), cleanup(), ConnectionUtilities.sqlServerSqlSchema!!)
+        if (ConnectionUtilities.runSQLServerTests()) {
+            val uuid = ConnectionUtilities.buildSafeUUID()
+            ProtoTestUtilities.simpleTableDefinitionEmptyAsNullTest(buildEntityService(uuid), cleanup(uuid), uuid)
+        }
     }
 }

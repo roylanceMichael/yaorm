@@ -8,10 +8,10 @@ class SQLServerConnectionSourceFactory(val host:String,
                                        val userName:String,
                                        val password:String,
                                        val port:Int = 1433,
-                                       createDatabaseIfNotExists: Boolean = true): IConnectionSourceFactory {
+                                       createDatabaseIfNotExists: Boolean = true,
+                                       private val isAzure: Boolean = false): IConnectionSourceFactory {
     private val SQLServerClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-    private val SQLServerJDBCString = "jdbc:sqlserver://$host:$port;database=$schema;user=$userName;password=$password;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
-
+    private val SQLServerJDBCString: String
     private val actualReadConnection: Connection
     private val actualWriteConnection: Connection
 
@@ -22,6 +22,7 @@ class SQLServerConnectionSourceFactory(val host:String,
         if (createDatabaseIfNotExists) {
             this.createSchemaIfNotExists()
         }
+        this.SQLServerJDBCString = buildConnectionString(host, port, schema, userName, password, isAzure, true)
         this.actualReadConnection = DriverManager.getConnection(SQLServerJDBCString)
         this.actualWriteConnection = DriverManager.getConnection(SQLServerJDBCString)
 
@@ -58,7 +59,7 @@ class SQLServerConnectionSourceFactory(val host:String,
     }
 
     private fun createSchemaIfNotExists() {
-        val tempConnection = DriverManager.getConnection("jdbc:sqlserver://$host:$port;user=$userName;password=$password;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;")
+        val tempConnection = DriverManager.getConnection(buildConnectionString(host, port, schema, userName, password, isAzure, false))
         val statement = tempConnection.createStatement()
         try {
             statement.executeUpdate("""if not exists(select * from sys.databases where name = '$schema')
@@ -69,4 +70,20 @@ class SQLServerConnectionSourceFactory(val host:String,
             tempConnection?.close()
         }
     }
+
+    companion object {
+        fun buildConnectionString(host: String, port: Int, schema: String, userName: String, password: String, isAzure: Boolean, includeDatabase: Boolean): String {
+            if (isAzure && includeDatabase) {
+                return "jdbc:sqlserver://$host:$port;database=$schema;user=$userName;password=$password;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+            }
+            else if (isAzure) {
+                return "jdbc:sqlserver://$host:$port;user=$userName;password=$password;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+            }
+            else if (includeDatabase) {
+                return "jdbc:sqlserver://$host:$port;database=$schema;user=$userName;password=$password;loginTimeout=30;"
+            }
+            return "jdbc:sqlserver://$host:$port;user=$userName;password=$password;loginTimeout=30;"
+        }
+    }
+
 }
