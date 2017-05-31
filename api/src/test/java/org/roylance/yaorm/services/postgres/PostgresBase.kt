@@ -20,7 +20,8 @@ open class PostgresBase: ICommonTest {
 
         val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
-                false)
+                false,
+                true)
         val generatorService = PostgresGeneratorService()
         val entityService = EntityService(granularDatabaseService, generatorService)
         return entityService

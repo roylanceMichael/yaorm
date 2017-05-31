@@ -24,7 +24,8 @@ open class MySQLISAMBase: ICommonTest {
 
         val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
-                false)
+                false,
+                true)
         val mySqlGeneratorService = MySQLGeneratorService(schemaName = sourceConnection.schema, useMyISAM = true)
         return EntityService(granularDatabaseService, mySqlGeneratorService)
     }

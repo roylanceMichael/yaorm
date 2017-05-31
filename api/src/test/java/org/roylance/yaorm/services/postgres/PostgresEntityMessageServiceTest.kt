@@ -16,46 +16,73 @@ import java.util.*
 class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTest {
     @Test
     override fun simpleCreateTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.simpleCreateTest(buildEntityService())
     }
 
     @Test
     override fun simpleLoadAndCreateTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.simpleLoadAndCreateTest(buildEntityService())
     }
 
     @Test
     override fun complexLoadAndCreateTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.complexLoadAndCreateTest(buildEntityService())
     }
 
     @Test
     override fun complexLoadAndCreate2Test() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.complexLoadAndCreate2Test(buildEntityService())
     }
 
     @Test
     override fun complexLoadAndCreateProtectedTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.complexLoadAndCreateProtectedTest(buildEntityService())
     }
 
     @Test
     override fun simpleGetTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.simpleGetTest(buildEntityService())
     }
 
     @Test
     override fun bulkInsert1Test() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.bulkInsert1Test(buildEntityService())
     }
 
     @Test
     override fun simplePassThroughWithReportTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.simplePassThroughWithReportTest(buildEntityService())
     }
 
     @Test
     fun simplePassThroughTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -128,6 +155,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun childAddThenDeleteTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -188,6 +218,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun verifyChildSerializedProperly() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -246,6 +279,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun verifyChildChangedAfterMergeProperly() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -309,6 +345,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun additionalAddRemoveTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -352,6 +391,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun simplePersonTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -411,6 +453,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun simplePersonFriendsTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -458,6 +503,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun simpleDagTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -495,6 +543,9 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     fun moreComplexDagTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getPostgresConnectionInfo()
         try {
@@ -541,16 +592,25 @@ class PostgresEntityMessageServiceTest: PostgresBase(), IEntityMessageServiceTes
 
     @Test
     override fun simpleUserAndUserDeviceTestTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.simpleUserAndUserDeviceTestTest(buildEntityService())
     }
 
     @Test
     override fun simpleIndexTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.simpleIndexTest(buildEntityService())
     }
 
     @Test
     override fun bulkInsertTest() {
+        if (!ConnectionUtilities.runPostgresTests()) {
+            return
+        }
         EntityMessageServiceTestUtilities.bulkInsertTest(buildEntityService())
     }
 }

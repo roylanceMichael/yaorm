@@ -11,8 +11,7 @@ open class SQLiteBase: ICommonTest {
     override fun buildEntityService(schema: String?): IEntityService {
         val sourceConnection = SQLiteConnectionSourceFactory(schema!!)
         val granularDatabaseService = JDBCGranularDatabaseService(
-                sourceConnection,
-                false)
+                sourceConnection, false, true)
         val sqliteGeneratorService = SQLiteGeneratorService()
         val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
         return entityService

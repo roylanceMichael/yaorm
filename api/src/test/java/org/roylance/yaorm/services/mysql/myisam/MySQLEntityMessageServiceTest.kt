@@ -16,7 +16,11 @@ import java.util.*
 class MySQLEntityMessageServiceTest {
     @Test
     fun simplePassThroughTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
+
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
             val sourceConnection = MySQLConnectionSourceFactory(
@@ -87,6 +91,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun childAddThenDeleteTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -146,6 +153,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun verifyChildSerializedProperly() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -203,6 +213,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun verifyChildChangedAfterMergeProperly() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -265,6 +278,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun additionalAddRemoveTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -307,6 +323,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun simplePersonTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -365,6 +384,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun simplePersonFriendsTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -411,6 +433,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun simpleDagTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -447,6 +472,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun moreComplexDagTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -492,6 +520,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun simpleUserAndUserDeviceTestTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -530,6 +561,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun simpleIndexTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {
@@ -569,6 +603,9 @@ class MySQLEntityMessageServiceTest {
 
     @Test
     fun bulkInsertTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {

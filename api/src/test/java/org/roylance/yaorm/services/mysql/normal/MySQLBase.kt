@@ -24,7 +24,8 @@ open class MySQLBase: ICommonTest {
 
         val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
-                false)
+                false,
+                true)
         val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema)
         return EntityService(granularDatabaseService, mySqlGeneratorService)
     }

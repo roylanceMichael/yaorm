@@ -10,6 +10,9 @@ import org.roylance.yaorm.utilities.ConnectionUtilities
 class MySQLProjectionTest {
     @Test
     fun simpleRunThroughTest() {
+        if (!ConnectionUtilities.runMySQLTests()) {
+            return
+        }
         // arrange
         ConnectionUtilities.getMySQLConnectionInfo()
         try {

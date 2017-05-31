@@ -33,6 +33,28 @@ object ConnectionUtilities {
                 sqlServerSqlSchema!!.isNotBlank()
     }
 
+    fun runPostgresTests(): Boolean {
+        getPostgresConnectionInfo()
+        return postgresHost != null &&
+                postgresHost!!.isNotBlank() &&
+                postgresUserName != null &&
+                postgresUserName!!.isNotBlank() &&
+                postgresDatabase != null &&
+                postgresDatabase!!.isNotBlank()
+    }
+
+    fun runMySQLTests(): Boolean {
+        getMySQLConnectionInfo()
+        return mysqlHost != null &&
+                mysqlHost!!.isNotBlank() &&
+                mysqlUserName != null &&
+                mysqlUserName!!.isNotBlank() &&
+                mysqlPassword != null &&
+                mysqlPassword!!.isNotBlank() &&
+                mysqlSchema != null &&
+                mysqlSchema!!.isNotBlank()
+    }
+
     fun dropMySQLSchema() {
         val connection = DriverManager.getConnection(
                 "jdbc:mysql://$mysqlHost?user=$mysqlUserName&password=$mysqlPassword&autoReconnect=true")
