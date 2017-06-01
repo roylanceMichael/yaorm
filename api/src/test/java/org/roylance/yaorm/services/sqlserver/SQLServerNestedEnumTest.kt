@@ -55,7 +55,7 @@ class SQLServerNestedEnumTest: SQLServerBase(), INestedEnumTest {
             return
         }
         val uuid = ConnectionUtilities.buildSafeUUID()
-        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(uuid), cleanup(uuid))
+        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(uuid), cleanup(uuid), uuid)
     }
 
     @Test
@@ -64,7 +64,7 @@ class SQLServerNestedEnumTest: SQLServerBase(), INestedEnumTest {
             return
         }
         val uuid = ConnectionUtilities.buildSafeUUID()
-        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(uuid), cleanup(uuid))
+        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(uuid), cleanup(uuid), uuid)
     }
 
     @Test
@@ -73,6 +73,6 @@ class SQLServerNestedEnumTest: SQLServerBase(), INestedEnumTest {
             return
         }
         val uuid = ConnectionUtilities.buildSafeUUID()
-        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(uuid), cleanup(uuid))
+        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(uuid), cleanup(uuid), uuid)
     }
 }

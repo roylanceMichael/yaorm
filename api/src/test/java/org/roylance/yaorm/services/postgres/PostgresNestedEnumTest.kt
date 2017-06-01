@@ -52,7 +52,7 @@ class PostgresNestedEnumTest: PostgresBase(), INestedEnumTest {
         if (!ConnectionUtilities.runPostgresTests()) {
             return
         }
-        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(), cleanup())
+        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
     }
 
     @Test
@@ -60,7 +60,7 @@ class PostgresNestedEnumTest: PostgresBase(), INestedEnumTest {
         if (!ConnectionUtilities.runPostgresTests()) {
             return
         }
-        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup())
+        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
     }
 
     @Test
@@ -68,6 +68,6 @@ class PostgresNestedEnumTest: PostgresBase(), INestedEnumTest {
         if (!ConnectionUtilities.runPostgresTests()) {
             return
         }
-        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(), cleanup())
+        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(), cleanup(), ConnectionUtilities.postgresDatabase!!)
     }
 }

@@ -36,18 +36,18 @@ class SQLiteNestedEnumTest: SQLiteBase(), INestedEnumTest {
     @Test
     override fun simpleTablesTest() {
         val uuid = UUID.randomUUID().toString()
-        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(uuid), cleanup(uuid))
+        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(uuid), cleanup(uuid), uuid)
     }
 
     @Test
     override fun simpleTableDefinitionTest() {
         val uuid = UUID.randomUUID().toString()
-        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(uuid), cleanup(uuid))
+        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(uuid), cleanup(uuid), uuid)
     }
 
     @Test
     override fun simpleTableDefinitionNullableTest() {
         val uuid = UUID.randomUUID().toString()
-        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(uuid), cleanup(uuid))
+        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(uuid), cleanup(uuid), uuid)
     }
 }

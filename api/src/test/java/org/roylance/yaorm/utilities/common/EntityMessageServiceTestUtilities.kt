@@ -23,7 +23,7 @@ object EntityMessageServiceTestUtilities {
         try {
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
             val manyDags = entityMessageService.getMany(TestingModel.Dag.getDefaultInstance())
@@ -42,7 +42,7 @@ object EntityMessageServiceTestUtilities {
         try {
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
             entityMessageService.merge(newDag)
@@ -68,7 +68,7 @@ object EntityMessageServiceTestUtilities {
         try {
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
             entityMessageService.merge(newDag)
@@ -99,7 +99,7 @@ object EntityMessageServiceTestUtilities {
         try {
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
             entityMessageService.merge(newDag)
@@ -133,7 +133,7 @@ object EntityMessageServiceTestUtilities {
         try {
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
             entityMessageService.merge(newDag)
@@ -167,7 +167,7 @@ object EntityMessageServiceTestUtilities {
         try {
             val protoService = TestModelGMBuilder()
             val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
-            entityMessageService.createEntireSchema(TestingModel.getDescriptor())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
 
             val newUser = TestingModel.User.newBuilder().setId(UUID.randomUUID().toString()).setDisplay("ok")
             val userDevice = TestingModel.UserDevice.newBuilder().setId(UUID.randomUUID().toString()).setUser(newUser)
@@ -215,8 +215,8 @@ object EntityMessageServiceTestUtilities {
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
                     .newBuilder()
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName).setType(YaormModel.ProtobufType.STRING))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name).setType(YaormModel.ProtobufType.STRING))
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
@@ -243,13 +243,13 @@ object EntityMessageServiceTestUtilities {
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
                     .newBuilder()
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName).setType(YaormModel.ProtobufType.STRING))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name).setType(YaormModel.ProtobufType.STRING))
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
             val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
             val manyDags = ArrayList<TestingModel.Dag>()
@@ -279,13 +279,13 @@ object EntityMessageServiceTestUtilities {
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
                     .newBuilder()
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName))
-                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(YaormUtils.IdName).setType(YaormModel.ProtobufType.STRING))
+                    .addColumnNames(YaormModel.ColumnDefinition.newBuilder().setName(TestingModel.Dag.getDescriptor().findFieldByNumber(TestingModel.Dag.DISPLAY_FIELD_NUMBER).name).setType(YaormModel.ProtobufType.STRING))
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
             val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
-            entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
+            entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val manyDags = ArrayList<TestingModel.Dag>()
             var i = 0

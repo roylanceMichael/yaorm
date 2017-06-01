@@ -22,6 +22,7 @@ object NestedEnumTestUtilities {
                     entityService,
                     HashMap(),
                     TestBase64Service())
+            protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
 
             protoContext.handleMigrations()
 
@@ -81,6 +82,8 @@ object NestedEnumTestUtilities {
                     entityService,
                     HashMap(),
                     TestBase64Service())
+
+            protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
 
             protoContext.handleMigrations()
 
@@ -170,7 +173,7 @@ object NestedEnumTestUtilities {
         }
     }
 
-    fun simpleTablesTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    fun simpleTablesTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schemaName: String) {
         // arrange
         try {
             val protoService = ComplexModelBuilder
@@ -203,7 +206,7 @@ object NestedEnumTestUtilities {
             protoContext.entityMessageService.merge(firstFile.build())
 
             // act
-            val tableNames = entityService.getTableNames("doesn't matter")
+            val tableNames = entityService.getTableNames(schemaName)
 
             // assert
             println(tableNames)
@@ -215,7 +218,7 @@ object NestedEnumTestUtilities {
         }
     }
 
-    fun simpleTableDefinitionTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    fun simpleTableDefinitionTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
         // arrange
         try {
             val protoService = ComplexModelBuilder
@@ -248,7 +251,7 @@ object NestedEnumTestUtilities {
             protoContext.entityMessageService.merge(firstFile.build())
 
             // act
-            val tableDefinition = entityService.getTableDefinition("doesn't matter", ComplexModel.Answer.getDescriptor().name)
+            val tableDefinition = entityService.getTableDefinition(schema, ComplexModel.Answer.getDescriptor().name)
 
             // assert
             println(tableDefinition)
@@ -260,7 +263,7 @@ object NestedEnumTestUtilities {
         }
     }
 
-    fun simpleTableDefinitionNullableTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    fun simpleTableDefinitionNullableTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
         // arrange
         try {
             val protoService = ComplexModelBuilder
@@ -293,7 +296,7 @@ object NestedEnumTestUtilities {
             protoContext.entityMessageService.merge(firstFile.build())
 
             // act
-            val tableDefinition = entityService.getTableDefinition("doesn't matter", ComplexModel.Answer.getDescriptor().name)
+            val tableDefinition = entityService.getTableDefinition(schema, ComplexModel.Answer.getDescriptor().name)
 
             // assert
             println(tableDefinition)

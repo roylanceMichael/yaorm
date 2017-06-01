@@ -24,7 +24,8 @@ class MySQLNestedEnumTest: MySQLISAMBase(), INestedEnumTest {
 
         val granularDatabaseService = JDBCGranularDatabaseService(
                 sourceConnection,
-                false)
+                false,
+                true)
         val mySqlGeneratorService = MySQLGeneratorService(sourceConnection.schema, useMyISAM = true)
         val entityService = EntityService(granularDatabaseService, mySqlGeneratorService)
         NestedEnumTestUtilities.simplePassThroughExecutionsTest(entityService, cleanup())
@@ -35,7 +36,7 @@ class MySQLNestedEnumTest: MySQLISAMBase(), INestedEnumTest {
         if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(), cleanup())
+        NestedEnumTestUtilities.simpleTablesTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
@@ -43,7 +44,7 @@ class MySQLNestedEnumTest: MySQLISAMBase(), INestedEnumTest {
         if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup())
+        NestedEnumTestUtilities.simpleTableDefinitionTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
@@ -51,7 +52,7 @@ class MySQLNestedEnumTest: MySQLISAMBase(), INestedEnumTest {
         if (!ConnectionUtilities.runMySQLTests()) {
             return
         }
-        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(), cleanup())
+        NestedEnumTestUtilities.simpleTableDefinitionNullableTest(buildEntityService(), cleanup(), ConnectionUtilities.mysqlSchema!!)
     }
 
     @Test
