@@ -3,9 +3,12 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$yaclib_kotlin"
@@ -41,7 +44,7 @@ version = "$major.$minor"
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 25
@@ -110,14 +113,6 @@ bintray {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.google.android.gms:play-services:10.0.0'
-    compile 'com.android.support:appcompat-v7:25.0.1'
-
     compile "org.roylance.yaorm:api:$org_roylance_yaorm_api"
-
     testCompile 'junit:junit:4.12'
 }
