@@ -1,7 +1,4 @@
 // THIS FILE WAS AUTO-GENERATED. DO NOT ALTER!
-/// <reference path="../node_modules/roylance.common/bytebuffer.d.ts" />
-import {YaormModel} from "../node_modules/org.roylance.yaorm.api/YaormModelFactory";
-
 import {YaormMainService} from "../node_modules/org.roylance.yaorm.api/YaormMainService";
 
 import {HttpExecute} from "./HttpExecute"
@@ -16,12 +13,8 @@ app.factory("httpExecute", function ($window, $http) {
     return new HttpExecute($http);
 });
 
-app.factory("yaormModel", function () {
-    return YaormModel.org.roylance.yaorm;
-});
-
-app.factory("yaormMainService", function(httpExecute:HttpExecute, yaormModel:org.roylance.yaorm.ProtoBufBuilder) {
-    return new YaormMainService(httpExecute, yaormModel)
+app.factory("yaormMainService", function(httpExecute:HttpExecute) {
+    return new YaormMainService(httpExecute);
 });
 
 
