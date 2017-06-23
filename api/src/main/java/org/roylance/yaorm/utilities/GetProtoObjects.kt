@@ -56,9 +56,11 @@ internal class GetProtoObjects(
                 .build()
 
         val childMessageHandler = object: IChildMessageHandler {
-            override fun handle(fieldKey: Descriptors.FieldDescriptor, idColumn: YaormModel.Column, builder: Message.Builder) {
+            override fun handle(fieldKey: Descriptors.FieldDescriptor,
+                                idColumn: YaormModel.Column,
+                                childBuilder: Message.Builder) {
                 if (idColumn.stringHolder.isNotEmpty()) {
-                    val mainId = ProtobufUtils.getIdFromMessage(builder)
+                    val mainId = ProtobufUtils.getIdFromMessage(childBuilder)
                     val childObject = generatedMessageBuilder.buildGeneratedMessage(fieldKey.messageType.name)
 
                     if (!keysToReconcile.containsKey(childObject.descriptorForType.name)) {

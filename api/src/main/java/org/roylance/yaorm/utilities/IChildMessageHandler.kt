@@ -5,5 +5,7 @@ import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
 
 interface IChildMessageHandler {
-    fun handle(fieldKey: Descriptors.FieldDescriptor, idColumn: YaormModel.Column, builder: Message.Builder)
+    fun handle(fieldKey: Descriptors.FieldDescriptor,
+               idColumn: YaormModel.Column,
+               childBuilder: Message.Builder)
 }

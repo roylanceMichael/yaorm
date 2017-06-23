@@ -6,7 +6,6 @@ import org.roylance.common.service.IProtoSerializerService;
 import org.roylance.yaorm.utilities.ServiceLocator;
 import org.roylance.yaorm.services.IYaormMainService;
 
-import com.google.protobuf.util.JsonFormat;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,12 +25,10 @@ public class YaormMainController {
     private HttpServletResponse response;
 
     private final IYaormMainService yaormMainService;
-    private final JsonFormat.Parser parser;
-    private final JsonFormat.Printer printer;
+    private final IProtoSerializerService serializerService;
 
     public YaormMainController() {
-        this.parser = JsonFormat.parser();
-        this.printer = JsonFormat.printer();
+        this.serializerService = ServiceLocator.INSTANCE.getProtobufSerializerService();
         this.yaormMainService = ServiceLocator.INSTANCE.getYaormMainService();
     }
 
@@ -40,19 +37,12 @@ public class YaormMainController {
     public void get_schemas(@Suspended AsyncResponse asyncResponse, String request) throws Exception {
         new Thread(() -> {
             
-            try {
-                final org.roylance.yaorm.YaormModel.UIYaormRequest.Builder requestTemp = org.roylance.yaorm.YaormModel.UIYaormRequest.newBuilder();
-                this.parser.merge(request, requestTemp);
-                final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual = requestTemp.build();
+            final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual =
+                    this.serializerService.deserializeFromBase64(request, org.roylance.yaorm.YaormModel.UIYaormRequest.getDefaultInstance());
 
-                final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_schemas(requestActual);
-                final String serializedResponse = this.printer.print(response);
-                asyncResponse.resume(serializedResponse);
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                asyncResponse.resume("");
-            }
+            final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_schemas(requestActual);
+            final String deserializeResponse = this.serializerService.serializeToBase64(response);
+            asyncResponse.resume(deserializeResponse);
 
         }).start();
     }
@@ -62,19 +52,12 @@ public class YaormMainController {
     public void get_tables(@Suspended AsyncResponse asyncResponse, String request) throws Exception {
         new Thread(() -> {
             
-            try {
-                final org.roylance.yaorm.YaormModel.UIYaormRequest.Builder requestTemp = org.roylance.yaorm.YaormModel.UIYaormRequest.newBuilder();
-                this.parser.merge(request, requestTemp);
-                final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual = requestTemp.build();
+            final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual =
+                    this.serializerService.deserializeFromBase64(request, org.roylance.yaorm.YaormModel.UIYaormRequest.getDefaultInstance());
 
-                final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_tables(requestActual);
-                final String serializedResponse = this.printer.print(response);
-                asyncResponse.resume(serializedResponse);
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                asyncResponse.resume("");
-            }
+            final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_tables(requestActual);
+            final String deserializeResponse = this.serializerService.serializeToBase64(response);
+            asyncResponse.resume(deserializeResponse);
 
         }).start();
     }
@@ -84,19 +67,12 @@ public class YaormMainController {
     public void get_table_definition(@Suspended AsyncResponse asyncResponse, String request) throws Exception {
         new Thread(() -> {
             
-            try {
-                final org.roylance.yaorm.YaormModel.UIYaormRequest.Builder requestTemp = org.roylance.yaorm.YaormModel.UIYaormRequest.newBuilder();
-                this.parser.merge(request, requestTemp);
-                final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual = requestTemp.build();
+            final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual =
+                    this.serializerService.deserializeFromBase64(request, org.roylance.yaorm.YaormModel.UIYaormRequest.getDefaultInstance());
 
-                final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_table_definition(requestActual);
-                final String serializedResponse = this.printer.print(response);
-                asyncResponse.resume(serializedResponse);
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                asyncResponse.resume("");
-            }
+            final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_table_definition(requestActual);
+            final String deserializeResponse = this.serializerService.serializeToBase64(response);
+            asyncResponse.resume(deserializeResponse);
 
         }).start();
     }
@@ -106,19 +82,12 @@ public class YaormMainController {
     public void get_table_definitions(@Suspended AsyncResponse asyncResponse, String request) throws Exception {
         new Thread(() -> {
             
-            try {
-                final org.roylance.yaorm.YaormModel.UIYaormRequest.Builder requestTemp = org.roylance.yaorm.YaormModel.UIYaormRequest.newBuilder();
-                this.parser.merge(request, requestTemp);
-                final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual = requestTemp.build();
+            final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual =
+                    this.serializerService.deserializeFromBase64(request, org.roylance.yaorm.YaormModel.UIYaormRequest.getDefaultInstance());
 
-                final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_table_definitions(requestActual);
-                final String serializedResponse = this.printer.print(response);
-                asyncResponse.resume(serializedResponse);
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                asyncResponse.resume("");
-            }
+            final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_table_definitions(requestActual);
+            final String deserializeResponse = this.serializerService.serializeToBase64(response);
+            asyncResponse.resume(deserializeResponse);
 
         }).start();
     }
@@ -128,19 +97,12 @@ public class YaormMainController {
     public void get_record_count(@Suspended AsyncResponse asyncResponse, String request) throws Exception {
         new Thread(() -> {
             
-            try {
-                final org.roylance.yaorm.YaormModel.UIYaormRequest.Builder requestTemp = org.roylance.yaorm.YaormModel.UIYaormRequest.newBuilder();
-                this.parser.merge(request, requestTemp);
-                final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual = requestTemp.build();
+            final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual =
+                    this.serializerService.deserializeFromBase64(request, org.roylance.yaorm.YaormModel.UIYaormRequest.getDefaultInstance());
 
-                final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_record_count(requestActual);
-                final String serializedResponse = this.printer.print(response);
-                asyncResponse.resume(serializedResponse);
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                asyncResponse.resume("");
-            }
+            final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_record_count(requestActual);
+            final String deserializeResponse = this.serializerService.serializeToBase64(response);
+            asyncResponse.resume(deserializeResponse);
 
         }).start();
     }
@@ -150,19 +112,12 @@ public class YaormMainController {
     public void get_records(@Suspended AsyncResponse asyncResponse, String request) throws Exception {
         new Thread(() -> {
             
-            try {
-                final org.roylance.yaorm.YaormModel.UIYaormRequest.Builder requestTemp = org.roylance.yaorm.YaormModel.UIYaormRequest.newBuilder();
-                this.parser.merge(request, requestTemp);
-                final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual = requestTemp.build();
+            final org.roylance.yaorm.YaormModel.UIYaormRequest requestActual =
+                    this.serializerService.deserializeFromBase64(request, org.roylance.yaorm.YaormModel.UIYaormRequest.getDefaultInstance());
 
-                final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_records(requestActual);
-                final String serializedResponse = this.printer.print(response);
-                asyncResponse.resume(serializedResponse);
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                asyncResponse.resume("");
-            }
+            final org.roylance.yaorm.YaormModel.UIYaormResponse response = this.yaormMainService.get_records(requestActual);
+            final String deserializeResponse = this.serializerService.serializeToBase64(response);
+            asyncResponse.resume(deserializeResponse);
 
         }).start();
     }

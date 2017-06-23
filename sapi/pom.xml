@@ -6,16 +6,16 @@
 
     <properties>		<group>org.roylance.yaorm</group>
 		<name>api</name>
-		<minor>203</minor>
+		<minor>205</minor>
 		<major>0</major>
-		<org_roylance_yaorm_api>0.203</org_roylance_yaorm_api>
+		<org_roylance_yaorm_api>0.205</org_roylance_yaorm_api>
 		<org_apache_commons_commons_lang_>3.4</org_apache_commons_commons_lang_>
 	</properties>
 
 
     <groupId>org.roylance.yaorm</groupId>
     <artifactId>sapi</artifactId>
-    <version>0.203</version>
+    <version>0.205</version>
 
     <repositories>
         <repository>
@@ -123,7 +123,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>1.1.2-5</version>
+            <version>1.1.3</version>
         </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -257,7 +257,7 @@
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>1.1.2-5</version>
+                <version>1.1.3</version>
 
                 <executions>
                     <execution>

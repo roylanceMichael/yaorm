@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.2-5"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/roylancemichael/maven" }
+}
+
+dependencies {
+    compile "org.roylance:common:0.18"
+    compile 'commons-io:commons-io:2.5'
+    compile 'org.apache.commons:commons-compress:1.12'
+    compile 'org.apache.maven:maven-model:3.3.9'
+
+    testCompile 'junit:junit:4.12'
+}
+
+task generateProto {
+    doLast {
+        exec {
+            commandLine 'protoc'
+            args "-I=src/main/resources --proto_path=src/main/resources --java_out=src/main/java src/main/resources/*.proto"
+        }
+    }
+}

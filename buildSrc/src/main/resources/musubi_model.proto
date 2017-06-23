@@ -1,0 +1,224 @@
+syntax = "proto3";
+
+enum ClientType {
+    CLIENT_ANDROID = 0;
+    CLIENT_IOS_XAMARIN = 1;
+    CLIENT_LIBGDX = 2;
+    CLIENT_JAVAFX = 3;
+    CLIENT_TYPESCRIPT = 4;
+    CLIENT_CLI_JAVA = 5;
+    CLIENT_CLI_PYTHON = 6;
+    CLIENT_CLI_CSHARP = 7;
+}
+
+enum ServerType {
+    MAVEN_TOMCAT_EMBEDDED = 0;
+    GRADLE_JETTY_EMBEDDED = 1;
+}
+
+enum ProjectType {
+    GRADLE_PROJECT_TYPE = 0;
+    MAVEN_PROJECT_TYPE = 1;
+    NPM_PROJECT_TYPE = 2;
+    GULP_PROJECT_TYPE = 3;
+    DOTNET_PROJECT_TYPE = 4;
+    PIP_PROJECT_TYPE = 5;
+}
+
+enum ExecutionPhase {
+    DELETE_DIRECTORIES = 0;
+    GENERATE_CODE_FROM_PROTOBUFS = 1;
+    BUILD_PUBLISH_CSHARP = 2;
+    BUILD_PUBLISH_PYTHON = 3;
+    BUILD_PUBLISH_JAVA_CLIENT = 4;
+    BUILD_PUBLISH_TYPESCRIPT = 5;
+    BUILD_TYPESCRIPT_SERVER = 6;
+    BUILD_PACKAGE_JAVA_SERVER = 7;
+}
+
+enum CustomExecutionType {
+    CUSTOM_BUILD = 0;
+    CUSTOM_PACKAGE = 1;
+    CUSTOM_PUBLISH = 2;
+    CUSTOM_INCREMENT_VERSION = 3;
+    CUSTOM_UPDATE_DEPENDENCIES = 4;
+    CUSTOM_SET_VERSION = 5;
+    CUSTOM_CLEAN = 6;
+}
+
+enum RepositoryType {
+    BINTRAY = 0;
+    ARTIFACTORY = 1;
+    NPMJS = 2;
+    PRIVATE_NPM = 3;
+    NUGET = 4;
+    PRIVATE_NUGET = 5;
+    PIP = 6;
+    PRIVATE_PIP = 7;
+    PRIVATE_BINTRAY = 8;
+    ARTIFACTORY_NPM = 9;
+    PYPI = 10;
+    ARTIFACTORY_PYTHON = 11;
+    STANDARD_MAVEN = 12;
+}
+
+enum DependencyType {
+    INTERNAL = 0;
+    JAVA = 1;
+    TYPESCRIPT = 2;
+    CSHARP = 3;
+    SWIFT = 4;
+    PYTHON = 5;
+}
+
+enum FileExtension {
+    KT_EXT = 0;
+    JAVA_EXT = 1;
+    TYPESCRIPT_EXT = 2;
+    JAVASCRIPT_EXT = 3;
+    SWIFT_EXT = 4;
+    POM_EXT = 5;
+    XML_EXT = 6;
+    HTML_EXT = 7;
+    GRADLE_EXT = 8;
+    JSON_EXT = 9;
+    TS_EXT = 10;
+    NONE_EXT = 11;
+    BAT_EXT = 12;
+    JS_EXT = 13;
+    CS_EXT = 14;
+    SLN_EXT = 15;
+    XPROJ_EXT = 16;
+    SH_EXT = 17;
+    MD_EXT = 18;
+    PY_EXT = 19;
+    CFG_EXT = 20;
+    PROPERTIES_EXT = 21;
+    BLOB_EXT = 22;
+    PROTO_EXT = 23;
+    PLIST_EXT = 24;
+    PBXPROJ_EXT = 25;
+    XCWORKSPACEDATA_EXT = 26;
+    H_EXT = 27;
+    XCSCHEME_EXT = 28;
+}
+
+enum FileUpdateType {
+    OVERWRITE = 0;
+    WRITE_IF_NOT_EXISTS = 1;
+}
+
+message Repository {
+    string url = 1;
+    string username = 2;
+    string name = 8;
+    RepositoryType repository_type = 9;
+    string registry = 10;
+    string npm_scope = 11;
+    string upload_url = 12;
+    string password = 13;
+}
+
+message Dependency {
+    DependencyType type = 1;
+    string group = 2;
+    string name = 3;
+    string typescript_model_file = 6;
+    string third_party_dependency_version = 11;
+    int32 major_version = 12;
+    int32 minor_version = 13;
+    string github_repo = 14;
+    string author_name = 15;
+    string license = 16;
+    Repository maven_repository = 17;
+    Repository npm_repository = 18;
+    Repository nuget_repository = 19;
+    Repository pip_repository = 20;
+    ServerType server_type = 21;
+    int32 server_port = 22;
+    string yaclib_version = 23;
+    bool unpublish_nuget = 24;
+}
+
+message File {
+    string full_directory_location = 1;
+    string file_name = 2;
+    FileExtension file_extension = 3;
+    string file_to_write = 4;
+    FileUpdateType file_update_type = 5;
+    bool ignore_initial_location = 6;
+}
+
+message Controller {
+    string name = 1;
+    repeated Action actions = 2;
+}
+
+message Action {
+    string name = 1;
+    repeated Message inputs = 2;
+    Message output = 5;
+}
+
+message Message {
+    string argument_name = 1;
+    string file_package = 2;
+    string file_class = 3;
+    string message_package = 4;
+    string message_class = 5;
+    string file_name = 6;
+}
+
+message AllFiles {
+    repeated File files = 1;
+}
+
+message AllControllers {
+    repeated Controller controllers = 1;
+    repeated Service services = 2;
+}
+
+message ControllerDependency {
+    AllControllers controllers = 1;
+    Dependency dependency = 2;
+}
+
+message AllControllerDependencies {
+    repeated ControllerDependency controller_dependencies = 1;
+}
+
+message ProcessReport {
+    string normal_output = 1;
+    string error_output = 2;
+    bool is_error = 3;
+    int32 exit_value = 4;
+    string content = 5;
+    int32 new_major = 6;
+    int32 new_minor = 7;
+}
+
+message ProjectInformation {
+    AllControllerDependencies controllers = 1;
+    Dependency main_dependency = 2;
+    repeated Dependency third_party_dependencies = 3;
+    bool is_server = 4;
+    bool do_not_use_json = 5;
+}
+
+message AuxiliaryProject {
+    ExecutionPhase handle_before = 1;
+    repeated CustomExecutionType executions = 2;
+    repeated Dependency from_dependencies = 3;
+    Dependency target_dependency = 4;
+    repeated Dependency to_dependencies = 5;
+    ProjectType project_type = 6;
+}
+
+message AuxiliaryProjects {
+    repeated AuxiliaryProject projects = 1;
+}
+
+message Service {
+    string name = 1;
+    repeated Action actions = 2;
+}

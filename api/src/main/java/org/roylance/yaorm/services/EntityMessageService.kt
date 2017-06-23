@@ -77,10 +77,10 @@ class EntityMessageService(
 
         val existingMessagesHash = this.getKeys(message).toHashSet()
         val currentMessagesHash = HashSet<String>()
-        messages.forEach { message ->
-            val id = ProtobufUtils.getIdFromMessage(message)
+        messages.forEach {
+            val id = ProtobufUtils.getIdFromMessage(it)
             currentMessagesHash.add(id)
-            this.merge(message)
+            this.merge(it)
         }
 
         existingMessagesHash
