@@ -5,32 +5,45 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.2-5"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.3"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'groovy'
+import org.apache.tools.ant.taskdefs.condition.Os
+
+// yes, this is on purpose
+println "purposefully executing protoc at configuration stage in gradle lifecycle"
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+
+}
+else {
+    exec {
+        commandLine 'bash'
+        args ['generate_protobufs.sh']
+    }
+}
 
 repositories {
     mavenCentral()
     maven { url "http://dl.bintray.com/roylancemichael/maven" }
 }
 
+compileGroovy {
+    dependsOn tasks.getByPath('compileKotlin')
+    classpath += files(compileKotlin.destinationDir)
+}
+
 dependencies {
-    compile "org.roylance:common:0.18"
+    compile gradleApi()
+    compile localGroovy()
+
+    compile "org.roylance:common:0.19"
     compile 'commons-io:commons-io:2.5'
     compile 'org.apache.commons:commons-compress:1.12'
     compile 'org.apache.maven:maven-model:3.3.9'
 
     testCompile 'junit:junit:4.12'
-}
-
-task generateProto {
-    doLast {
-        exec {
-            commandLine 'protoc'
-            args "-I=src/main/resources --proto_path=src/main/resources --java_out=src/main/java src/main/resources/*.proto"
-        }
-    }
 }

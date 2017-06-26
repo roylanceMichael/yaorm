@@ -1,10 +1,12 @@
 package utilities
 
+import org.apache.tools.ant.taskdefs.condition.Os
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream
 import org.apache.commons.compress.compressors.gzip.GzipCompressorOutputStream
 import org.apache.commons.io.IOUtils
 import java.io.*
+import java.nio.charset.Charset
 import java.util.*
 
 object FileProcessUtilities {
@@ -61,10 +63,13 @@ object FileProcessUtilities {
         val inputWriter = StringWriter()
         val errorWriter = StringWriter()
 
-        IOUtils.copy(process.inputStream, inputWriter)
-        IOUtils.copy(process.errorStream, errorWriter)
+        IOUtils.copy(process.inputStream, inputWriter, Charset.defaultCharset())
+        IOUtils.copy(process.errorStream, errorWriter, Charset.defaultCharset())
 
-        return returnReport.setErrorOutput(errorWriter.toString()).setNormalOutput(inputWriter.toString()).build()
+        return returnReport
+                .setErrorOutput(errorWriter.toString())
+                .setNormalOutput(inputWriter.toString())
+                .build()
     }
 
     fun executeProcess(location: String,
@@ -76,7 +81,9 @@ object FileProcessUtilities {
         tempFile.writeText(tempScript)
 
         try {
-            Runtime.getRuntime().exec("${InitUtilities.Chmod} ${InitUtilities.ChmodExecutable} ${tempFile.absolutePath}")
+            if (!isWindows()) {
+                Runtime.getRuntime().exec("${InitUtilities.Chmod} ${InitUtilities.ChmodExecutable} ${tempFile.absolutePath}")
+            }
             val process = Runtime.getRuntime().exec(tempFile.absolutePath)
             process.waitFor()
 
@@ -100,8 +107,10 @@ object FileProcessUtilities {
         tempFile.writeText(tempExecuteScript)
 
         try {
-            Runtime.getRuntime().exec("${InitUtilities.Chmod} ${InitUtilities.ChmodExecutable} ${tempFile.absolutePath}")
-            Runtime.getRuntime().exec("${InitUtilities.Chmod} ${InitUtilities.ChmodExecutable} ${tempScript.absolutePath}")
+            if (!isWindows()) {
+                Runtime.getRuntime().exec("${InitUtilities.Chmod} ${InitUtilities.ChmodExecutable} ${tempFile.absolutePath}")
+                Runtime.getRuntime().exec("${InitUtilities.Chmod} ${InitUtilities.ChmodExecutable} ${tempScript.absolutePath}")
+            }
             val process = Runtime.getRuntime().exec(tempFile.absolutePath)
             process.waitFor()
 
@@ -127,7 +136,10 @@ object FileProcessUtilities {
         val gzipOutputStream = GzipCompressorOutputStream(bufferedOutputStream)
         val tarOutputStream = TarArchiveOutputStream(gzipOutputStream)
         try {
-            addFileToTarGz(tarOutputStream, inputDirectory, "", directoriesToExclude)
+            addFileToTarGz(tarOutputStream,
+                    inputDirectory,
+                    "",
+                    directoriesToExclude)
         }
         finally {
             tarOutputStream.finish()
@@ -141,6 +153,10 @@ object FileProcessUtilities {
     }
 
     fun getActualLocation(application: String): String {
+        if (isWindows()) {
+            return application
+        }
+
         if (knownApplicationLocations.containsKey(application)) {
             return knownApplicationLocations[application]!!
         }
@@ -207,11 +223,28 @@ which $application""")
     }
 
     private fun buildTempScript(location: String, actualCommand: String): String {
+        if (isWindows()) {
+            return buildTempScriptWin(location, actualCommand)
+        }
+        return buildTempScriptNIX(location, actualCommand)
+    }
+
+    private fun buildTempScriptNIX(location: String, actualCommand: String): String {
         return """#!/usr/bin/env bash
 . ~/.bash_profile
 . ~/.bashrc
 pushd $location
 $actualCommand
 """
+    }
+
+    private fun buildTempScriptWin(location: String, actualCommand: String): String {
+        return """cd $location
+$actualCommand
+"""
+    }
+
+    private fun isWindows(): Boolean {
+        return Os.isFamily(Os.FAMILY_WINDOWS)
     }
 }

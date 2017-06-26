@@ -1,5 +1,7 @@
 package utilities
 
+import java.nio.file.Paths
+
 object InitUtilities {
     const val OsNameProperty = "os.name"
 
@@ -93,5 +95,9 @@ MAKE SURE THAT ~/.bashrc or ~/.bash_profile PATH contains references to the fold
         return """$Separator
 $message
 $Separator"""
+    }
+
+    fun buildBuildSrcProjectLocation(): String {
+        return Paths.get("buildSrc").toString()
     }
 }
