@@ -3,20 +3,14 @@ package org.roylance.yaorm.utilities.common
 import org.roylance.common.service.IBuilder
 import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.services.EntityMessageService
-import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.IEntityService
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
-import org.roylance.yaorm.utilities.ComplexModelBuilder
-import java.io.File
 import java.util.*
 
 object WeakTypeTestUtilities {
     fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -55,7 +49,7 @@ object WeakTypeTestUtilities {
     fun directChildRemove(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -94,7 +88,7 @@ object WeakTypeTestUtilities {
     fun shouldNotSaveChildMarkedAsWeakEvenIfNotExists(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -133,7 +127,7 @@ object WeakTypeTestUtilities {
     fun saveDeleteSaveNotRepeated(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -178,7 +172,7 @@ object WeakTypeTestUtilities {
     fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -232,7 +226,7 @@ object WeakTypeTestUtilities {
     fun repeatedAddRemoveTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityMessageService = EntityMessageService(ComplexModelBuilder, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
 
             val beacon = ComplexModel.Beacon.newBuilder()
                     .setId(UUID.randomUUID().toString())

@@ -1,12 +1,10 @@
 package org.roylance.yaorm.models
 
 import com.google.protobuf.Message
-import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.ProtobufUtils
 import java.util.*
 
-class CacheStore(
-        private val generatedMessageBuilder: IProtoGeneratedMessageBuilder) {
+class CacheStore {
     private val types = HashMap<String, HashMap<String, Message.Builder>>()
 
     fun seenObject(type: Message, key: String): Boolean {
@@ -27,7 +25,7 @@ class CacheStore(
             types[type.descriptorForType.name] = HashMap()
         }
 
-        val newBuilder = this.generatedMessageBuilder.buildGeneratedMessage(type.descriptorForType.name).toBuilder()
+        val newBuilder =  type.toBuilder()
         ProtobufUtils.setIdForMessage(newBuilder, key)
         types[type.descriptorForType.name]!![key] = newBuilder
 

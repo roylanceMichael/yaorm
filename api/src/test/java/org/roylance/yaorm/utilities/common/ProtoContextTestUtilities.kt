@@ -12,10 +12,8 @@ object ProtoContextTestUtilities {
     fun simplePassThroughTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
             val protoContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -46,10 +44,10 @@ object ProtoContextTestUtilities {
             // act
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
-                    TestModelGMBuilder(),
                     entityService,
                     HashMap(),
-                    TestBase64Service())
+                    TestBase64Service(),
+                    "test")
 
             firstContext.entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
             firstContext.entityMessageService.dropAndCreateEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -58,10 +56,10 @@ object ProtoContextTestUtilities {
 
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
-                    TestModelGMv2Builder(),
                     entityService2,
                     HashMap(),
-                    TestBase64Service())
+                    TestBase64Service(),
+                    "test")
 
             secondContext.handleMigrations()
 
@@ -91,7 +89,6 @@ object ProtoContextTestUtilities {
             // act
             val secondContext = EntityProtoContext(
                     TestingModelV2.getDescriptor(),
-                    TestModelGMv2Builder(),
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -110,7 +107,6 @@ object ProtoContextTestUtilities {
 
             val firstContext = EntityProtoContext(
                     TestingModel.getDescriptor(),
-                    TestModelGMBuilder(),
                     entityService2,
                     HashMap(),
                     TestBase64Service())
@@ -137,7 +133,6 @@ object ProtoContextTestUtilities {
             // act
             val thirdVersion = EntityProtoContext(
                     TestingModelV3.getDescriptor(),
-                    TestModelGMv3Builder(),
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -156,7 +151,6 @@ object ProtoContextTestUtilities {
 
             val firstVersion = EntityProtoContext(
                     TestingModel.getDescriptor(),
-                    TestModelGMBuilder(),
                     entityService2,
                     HashMap(),
                     TestBase64Service())
@@ -185,7 +179,6 @@ object ProtoContextTestUtilities {
         try {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
-                    ComplexModelBuilder,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -238,7 +231,6 @@ object ProtoContextTestUtilities {
         try {
             val complexModelContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
-                    ComplexModelBuilder,
                     entityService,
                     HashMap(),
                     TestBase64Service())

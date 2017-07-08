@@ -8,7 +8,6 @@ import org.roylance.common.service.IBuilder
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.IEntityService
 import org.roylance.yaorm.utilities.ProtobufUtils
-import org.roylance.yaorm.utilities.TestModelGMBuilder
 import org.roylance.yaorm.utilities.TestingModelUtilities
 import java.util.*
 
@@ -87,8 +86,6 @@ object ProtoTestUtilities {
     fun simplePassThrough2Test(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
@@ -116,7 +113,6 @@ object ProtoTestUtilities {
                     TestingModel.Child.getDefaultInstance(),
                     entityService,
                     subTestChild.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -133,8 +129,6 @@ object ProtoTestUtilities {
     fun verifyTypesSavedAndReturnedCorrectlyTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
@@ -177,7 +171,6 @@ object ProtoTestUtilities {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -209,8 +202,6 @@ object ProtoTestUtilities {
     fun verifyRepeatedNumsSavedAndReturnedCorrectlyTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
@@ -253,7 +244,6 @@ object ProtoTestUtilities {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -272,8 +262,6 @@ object ProtoTestUtilities {
     fun verifyRepeatedMessagesSavedAndReturnedCorrectlyTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModelUtilities.buildSampleRootObject()
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
@@ -288,7 +276,6 @@ object ProtoTestUtilities {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -548,8 +535,6 @@ object ProtoTestUtilities {
     fun simplePassThrough2EmptyAsNullTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
@@ -577,7 +562,6 @@ object ProtoTestUtilities {
                     TestingModel.Child.getDefaultInstance(),
                     entityService,
                     subTestChild.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -594,8 +578,6 @@ object ProtoTestUtilities {
     fun verifyTypesSavedAndReturnedCorrectlyEmptyAsNullTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
@@ -638,7 +620,6 @@ object ProtoTestUtilities {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -670,8 +651,6 @@ object ProtoTestUtilities {
     fun verifyRepeatedNumsSavedAndReturnedCorrectlyEmptyAsNullTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
 
             testModel.id = UUID.randomUUID().toString()
@@ -714,7 +693,6 @@ object ProtoTestUtilities {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -733,8 +711,6 @@ object ProtoTestUtilities {
     fun verifyRepeatedMessagesSavedAndReturnedCorrectlyEmptyAsNullTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val testModel = TestingModelUtilities.buildSampleRootObject()
 
             val records = ProtobufUtils.convertProtobufObjectToRecords(testModel.build(), HashMap())
@@ -749,7 +725,6 @@ object ProtoTestUtilities {
                     TestingModel.SimpleInsertTest.getDefaultInstance(),
                     entityService,
                     testModel.id,
-                    protoService,
                     HashMap(),
                     HashMap())
 

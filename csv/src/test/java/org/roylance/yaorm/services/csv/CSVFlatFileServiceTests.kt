@@ -9,7 +9,6 @@ import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
 import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.DagBuilder
-import org.roylance.yaorm.utilities.TestModelGMBuilder
 import org.roylance.yaorm.utilities.YaormUtils
 import java.io.File
 import java.util.*
@@ -30,7 +29,6 @@ class CSVFlatFileServiceTests {
                     false)
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
-            val protoService = TestModelGMBuilder()
 
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
@@ -40,7 +38,7 @@ class CSVFlatFileServiceTests {
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
-            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            val entityMessageService = EntityMessageService(entityService, customIndexes)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val manyDags = ArrayList<TestingModel.Dag>()

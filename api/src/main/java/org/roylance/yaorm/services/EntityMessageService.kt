@@ -3,7 +3,6 @@ package org.roylance.yaorm.services
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.ConvertRecordsToProtobuf
 import org.roylance.yaorm.utilities.GetProtoObjects
 import org.roylance.yaorm.utilities.YaormUtils
@@ -12,7 +11,6 @@ import java.util.*
 
 @Suppress("UNCHECKED_CAST")
 class EntityMessageService(
-        private val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         override val entityService: IEntityService,
         private val customIndexes: HashMap<String, YaormModel.Index>): IEntityMessageService {
     override fun getReport(): YaormModel.DatabaseExecutionReport {
@@ -29,7 +27,6 @@ class EntityMessageService(
 
         val objects = GetProtoObjects(
                 this.entityService,
-                this.protoGeneratedMessageBuilder,
                 this.definitions,
                 this.customIndexes)
 
@@ -40,10 +37,9 @@ class EntityMessageService(
         val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
                 ?: return ArrayList()
 
-        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
         val records = this.entityService.getMany(definition, limit, offset)
         return records.recordsList.map {
-            val newBuilder = builder.newBuilderForType()
+            val newBuilder = messageType.toBuilder()
             ConvertRecordsToProtobuf.build(newBuilder, it)
             newBuilder.build() as T
         }
@@ -61,10 +57,9 @@ class EntityMessageService(
                 .addAllInItems(ids)
                 .build()
 
-        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
         val records = this.entityService.where(whereClause, definition)
         return records.recordsList.map {
-            val newBuilder = builder.newBuilderForType()
+            val newBuilder = messageType.toBuilder()
             ConvertRecordsToProtobuf.build(newBuilder, it)
             newBuilder.build() as T
         }
@@ -141,10 +136,9 @@ class EntityMessageService(
         val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
                 ?: return ArrayList()
 
-        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
         val records = this.entityService.getCustom(customSql, definition)
         return records.recordsList.map {
-            val newBuilder = builder.newBuilderForType()
+            val newBuilder = messageType.toBuilder()
             ConvertRecordsToProtobuf.build(newBuilder, it)
             newBuilder.build() as T
         }
@@ -154,11 +148,9 @@ class EntityMessageService(
         val definition = ProtobufUtils.buildDefinitionFromDescriptor(messageType.descriptorForType, this.customIndexes)
                 ?: return
 
-        val builder = this.protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name)
-
         val protoStream = object: IStreamer {
             override fun stream(record: YaormModel.Record) {
-                val newBuilder = builder.newBuilderForType()
+                val newBuilder = messageType.toBuilder()
                 ConvertRecordsToProtobuf.build(newBuilder, record)
                 stream.stream(newBuilder.build())
             }
@@ -202,7 +194,7 @@ class EntityMessageService(
         val tableDefinition = this.buildTableDefinitionWithOnlyId(messageType)
         this.entityService.getIdsStream(tableDefinition, object: IStreamer {
             override fun stream(record: YaormModel.Record) {
-                val builder = protoGeneratedMessageBuilder.buildGeneratedMessage(messageType.descriptorForType.name).toBuilder()
+                val builder = messageType.toBuilder()
                 builder.setField(idField, record.columnsList.first { it.definition.name == YaormUtils.IdName }!!.stringHolder)
                 streamer.stream(builder.build())
             }
@@ -331,7 +323,6 @@ class EntityMessageService(
     override fun <T : Message> get(messageType:T, id: String): T? {
         val objects = GetProtoObjects(
                 this.entityService,
-                this.protoGeneratedMessageBuilder,
                 this.definitions,
                 this.customIndexes)
 
@@ -362,7 +353,6 @@ class EntityMessageService(
 
         val objects = GetProtoObjects(
                 this.entityService,
-                this.protoGeneratedMessageBuilder,
                 this.definitions,
                 this.customIndexes)
 
@@ -387,7 +377,6 @@ class EntityMessageService(
                         if (ids.size > MaxQuerySize) {
                             val objects = GetProtoObjects(
                                     this.entityService,
-                                    this.protoGeneratedMessageBuilder,
                                     this.definitions,
                                     this.customIndexes)
 
@@ -402,7 +391,6 @@ class EntityMessageService(
         if (ids.size > 0) {
             val objects = GetProtoObjects(
                     this.entityService,
-                    this.protoGeneratedMessageBuilder,
                     this.definitions,
                     this.customIndexes)
 
@@ -429,7 +417,6 @@ class EntityMessageService(
 
         val objects = GetProtoObjects(
                 this.entityService,
-                this.protoGeneratedMessageBuilder,
                 this.definitions,
                 this.customIndexes)
 
@@ -454,7 +441,6 @@ class EntityMessageService(
                         if (ids.size > MaxQuerySize) {
                             val objects = GetProtoObjects(
                                     this.entityService,
-                                    this.protoGeneratedMessageBuilder,
                                     this.definitions,
                                     this.customIndexes)
 
@@ -469,7 +455,6 @@ class EntityMessageService(
         if (ids.size > 0) {
             val objects = GetProtoObjects(
                     this.entityService,
-                    this.protoGeneratedMessageBuilder,
                     this.definitions,
                     this.customIndexes)
 

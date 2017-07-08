@@ -3,7 +3,6 @@ package org.roylance.yaorm.services
 import com.google.protobuf.Descriptors
 import org.roylance.common.service.IBase64Service
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import org.roylance.yaorm.utilities.ProtobufUtils
 import org.roylance.yaorm.utilities.YaormUtils
 import org.roylance.yaorm.utilities.migration.DefinitionModelComparisonUtil
@@ -11,10 +10,10 @@ import java.util.*
 
 class EntityProtoContext(
         val fileDescriptor: Descriptors.FileDescriptor,
-        val protoGeneratedMessageBuilder: IProtoGeneratedMessageBuilder,
         val service: IEntityService,
         val customIndexes: HashMap<String, YaormModel.Index>,
-        val base64Service: IBase64Service): AutoCloseable {
+        val base64Service: IBase64Service,
+        val contextName: String = fileDescriptor.fullName): AutoCloseable {
 
     val entityMessageService: IEntityMessageService
 
@@ -23,7 +22,7 @@ class EntityProtoContext(
             (difference: YaormModel.Difference) -> Boolean>()
 
     init {
-        this.entityMessageService = EntityMessageService(this.protoGeneratedMessageBuilder,
+        this.entityMessageService = EntityMessageService(
                 this.service,
                 this.customIndexes)
         this.entityMessageService.createEntireSchema(YaormModel.Migration.getDefaultInstance())
@@ -56,7 +55,7 @@ class EntityProtoContext(
         val string64 = this.base64Service.serialize(definitionsModels.toByteArray())
         val migrationModel = YaormModel.Migration.newBuilder()
             .setId(id)
-            .setContextName(this.protoGeneratedMessageBuilder.name)
+            .setContextName(contextName)
             .setModelDefinitionBase64(string64)
             .setInsertDate(Date().time)
             .build()
@@ -145,7 +144,7 @@ class EntityProtoContext(
     }
 
     fun getLatestMigrationDefinition() : YaormModel.TableDefinitions? {
-        val propertyHolder = YaormModel.Column.newBuilder().setStringHolder(this.protoGeneratedMessageBuilder.name)
+        val propertyHolder = YaormModel.Column.newBuilder().setStringHolder(contextName)
 
         val propertyDefinition = YaormModel.ColumnDefinition.newBuilder()
                 .setName(YaormModel.Migration.getDescriptor().findFieldByNumber(YaormModel.Migration.CONTEXT_NAME_FIELD_NUMBER).name)
