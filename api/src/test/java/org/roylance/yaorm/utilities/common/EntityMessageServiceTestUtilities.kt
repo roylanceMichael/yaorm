@@ -6,23 +6,15 @@ import org.roylance.common.service.IBuilder
 import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.EntityMessageService
-import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.IEntityService
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.services.postgres.PostgresConnectionSourceFactory
-import org.roylance.yaorm.services.postgres.PostgresGeneratorService
-import org.roylance.yaorm.services.sqlite.SQLiteConnectionSourceFactory
-import org.roylance.yaorm.services.sqlite.SQLiteGeneratorService
 import org.roylance.yaorm.utilities.*
-import java.io.File
 import java.util.*
 
 object EntityMessageServiceTestUtilities {
     fun simpleCreateTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
@@ -40,8 +32,7 @@ object EntityMessageServiceTestUtilities {
     fun simpleLoadAndCreateTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -66,8 +57,7 @@ object EntityMessageServiceTestUtilities {
     fun complexLoadAndCreateTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -97,8 +87,7 @@ object EntityMessageServiceTestUtilities {
     fun complexLoadAndCreate2Test(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -131,8 +120,7 @@ object EntityMessageServiceTestUtilities {
     fun complexLoadAndCreateProtectedTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val newDag = DagBuilder().build()
@@ -165,8 +153,7 @@ object EntityMessageServiceTestUtilities {
     fun simpleUserAndUserDeviceTestTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.dropAndCreateEntireSchema(TestingModel.getDescriptor())
 
             val newUser = TestingModel.User.newBuilder().setId(UUID.randomUUID().toString()).setDisplay("ok")
@@ -191,8 +178,7 @@ object EntityMessageServiceTestUtilities {
     fun simpleGetTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-            val entityMessageService = EntityMessageService(protoService, entityService, HashMap())
+            val entityMessageService = EntityMessageService(entityService, HashMap())
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
@@ -210,8 +196,6 @@ object EntityMessageServiceTestUtilities {
     fun simpleIndexTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
                     .newBuilder()
@@ -220,7 +204,7 @@ object EntityMessageServiceTestUtilities {
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
-            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            val entityMessageService = EntityMessageService(entityService, customIndexes)
             entityMessageService.createEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
@@ -238,8 +222,6 @@ object EntityMessageServiceTestUtilities {
     fun bulkInsertTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
                     .newBuilder()
@@ -248,7 +230,7 @@ object EntityMessageServiceTestUtilities {
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
-            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            val entityMessageService = EntityMessageService(entityService, customIndexes)
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             // act
@@ -274,8 +256,6 @@ object EntityMessageServiceTestUtilities {
     fun bulkInsert1Test(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = TestModelGMBuilder()
-
             val customIndexes = HashMap<String, YaormModel.Index>()
             val index = YaormModel.Index
                     .newBuilder()
@@ -284,7 +264,7 @@ object EntityMessageServiceTestUtilities {
                     .build()
             customIndexes[TestingModel.Dag.getDescriptor().name] = index
 
-            val entityMessageService = EntityMessageService(protoService, entityService, customIndexes)
+            val entityMessageService = EntityMessageService(entityService, customIndexes)
             entityMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
 
             val manyDags = ArrayList<TestingModel.Dag>()
@@ -299,7 +279,6 @@ object EntityMessageServiceTestUtilities {
             // act
             val objects = GetProtoObjects(
                     entityService,
-                    protoService,
                     HashMap(),
                     HashMap())
 
@@ -339,7 +318,7 @@ object EntityMessageServiceTestUtilities {
     fun simplePassThroughWithReportTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -399,7 +378,7 @@ object EntityMessageServiceTestUtilities {
 
     fun simplePassThroughTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -458,7 +437,7 @@ object EntityMessageServiceTestUtilities {
     fun childAddThenDeleteTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -505,7 +484,7 @@ object EntityMessageServiceTestUtilities {
     fun verifyChildSerializedProperly(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -550,7 +529,7 @@ object EntityMessageServiceTestUtilities {
     fun verifyChildChangedAfterMergeProperly(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val testModel = TestingModel.SimpleInsertTest.newBuilder()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -600,7 +579,7 @@ object EntityMessageServiceTestUtilities {
     fun additionalAddRemoveTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val testModel = TestingModelUtilities.buildSampleRootObject()
             entityProtoMessageService.dropAndCreateEntireSchema(testModel.build())
@@ -630,7 +609,7 @@ object EntityMessageServiceTestUtilities {
     fun simplePersonTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val person = TestingModel.Person.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -676,7 +655,7 @@ object EntityMessageServiceTestUtilities {
     fun simplePersonFriendsTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             val person = TestingModel.Person.newBuilder()
                     .setId(UUID.randomUUID().toString())
@@ -710,7 +689,7 @@ object EntityMessageServiceTestUtilities {
     fun simpleDagTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()
@@ -734,7 +713,7 @@ object EntityMessageServiceTestUtilities {
     fun moreComplexDagTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val entityProtoMessageService = EntityMessageService(TestModelGMBuilder(), entityService, HashMap())
+            val entityProtoMessageService = EntityMessageService(entityService, HashMap())
 
             entityProtoMessageService.dropAndCreateEntireSchema(TestingModel.Dag.getDefaultInstance())
             val newDag = DagBuilder().build()

@@ -4,7 +4,6 @@ import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
 import org.roylance.yaorm.services.IEntityService
-import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import java.util.*
 
 object ProtobufUtils {
@@ -139,12 +138,10 @@ object ProtobufUtils {
     fun <T:Message> getProtoObjectFromBuilderSingle(builder: T,
                                                     entityService: IEntityService,
                                                     entityId:String,
-                                                    generatedMessageBuilder: IProtoGeneratedMessageBuilder,
                                                     definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
                                                     customIndexes: MutableMap<String, YaormModel.Index>): T? {
         val getObject = GetProtoObjects(
                 entityService,
-                generatedMessageBuilder,
                 definitions,
                 customIndexes)
 

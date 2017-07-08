@@ -1,14 +1,8 @@
 package org.roylance.yaorm.services.sqlite
 
 import org.junit.Test
-import org.roylance.yaorm.ComplexModel
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.services.EntityMessageService
-import org.roylance.yaorm.services.EntityService
-import org.roylance.yaorm.utilities.ComplexModelBuilder
 import org.roylance.yaorm.utilities.common.IWeakTypeTests
 import org.roylance.yaorm.utilities.common.WeakTypeTestUtilities
-import java.io.File
 import java.util.*
 
 class SQLiteWeakTypeTests: SQLiteBase(), IWeakTypeTests {

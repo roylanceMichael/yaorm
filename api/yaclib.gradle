@@ -88,26 +88,9 @@ task execute(type: YaclibPlugin) {
             .addFromDependencies(mainDependency)
             .build()
 
-    def plugin = YaclibModel.AuxiliaryProject.newBuilder()
-            .setProjectType(YaclibModel.ProjectType.GRADLE_PROJECT_TYPE)
-            .setHandleBefore(YaclibModel.ExecutionPhase.BUILD_PACKAGE_JAVA_SERVER)
-            .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_SET_VERSION)
-            .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_UPDATE_DEPENDENCIES)
-            .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_CLEAN)
-            .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_BUILD)
-            .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_PUBLISH)
-            .setTargetDependency(YaclibModel.Dependency.newBuilder()
-            .setMinorVersion(mainDependency.minorVersion)
-            .setMajorVersion(mainDependency.majorVersion)
-            .setGroup("org.roylance.yaorm")
-            .setName("plugin").build())
-            .addFromDependencies(mainDependency)
-            .build()
-
 
     auxiliaryProjects = tempAuxiliaryProjects
         .addProjects(android)
-        .addProjects(plugin)
         .addProjects(csv).build()
 
     println(nugetKey)

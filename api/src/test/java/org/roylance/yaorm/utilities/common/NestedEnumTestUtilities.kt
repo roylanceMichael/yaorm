@@ -6,8 +6,6 @@ import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.NestedEnumTest
 import org.roylance.yaorm.services.EntityProtoContext
 import org.roylance.yaorm.services.IEntityService
-import org.roylance.yaorm.utilities.ComplexModelBuilder
-import org.roylance.yaorm.utilities.NestedEnumGMBuilder
 import org.roylance.yaorm.utilities.TestBase64Service
 import java.util.*
 
@@ -15,10 +13,8 @@ object NestedEnumTestUtilities {
     fun simplePassThroughExecutionsTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = NestedEnumGMBuilder()
             val protoContext = EntityProtoContext(
                     NestedEnumTest.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -75,10 +71,8 @@ object NestedEnumTestUtilities {
     fun simplePassThroughTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = NestedEnumGMBuilder()
             val protoContext = EntityProtoContext(
                     NestedEnumTest.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -133,10 +127,8 @@ object NestedEnumTestUtilities {
     fun simplePassThroughTest2(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
         // arrange
         try {
-            val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -176,10 +168,8 @@ object NestedEnumTestUtilities {
     fun simpleTablesTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schemaName: String) {
         // arrange
         try {
-            val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -221,10 +211,8 @@ object NestedEnumTestUtilities {
     fun simpleTableDefinitionTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
         // arrange
         try {
-            val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())
@@ -266,10 +254,8 @@ object NestedEnumTestUtilities {
     fun simpleTableDefinitionNullableTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
         // arrange
         try {
-            val protoService = ComplexModelBuilder
             val protoContext = EntityProtoContext(
                     ComplexModel.getDescriptor(),
-                    protoService,
                     entityService,
                     HashMap(),
                     TestBase64Service())

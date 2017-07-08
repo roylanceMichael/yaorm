@@ -3,12 +3,9 @@ package org.roylance.yaorm.services.sqlite
 import org.junit.Assert
 import org.junit.Test
 import org.naru.NaruModel
-import org.roylance.yaorm.TestingModel
 import org.roylance.yaorm.services.EntityMessageService
 import org.roylance.yaorm.services.EntityService
 import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.utilities.NaruModelGenerationModel
-import org.roylance.yaorm.utilities.ProtobufUtils
 import java.io.File
 import java.nio.file.Files
 import java.util.*
@@ -35,7 +32,6 @@ class SQLiteAdditionalMessageTests {
             val sqliteGeneratorService = SQLiteGeneratorService()
             val entityService = EntityService(granularDatabaseService, sqliteGeneratorService)
             val entityMessageService = EntityMessageService(
-                    NaruModelGenerationModel,
                     entityService,
                     HashMap())
 

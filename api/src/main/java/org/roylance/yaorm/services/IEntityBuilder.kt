@@ -3,19 +3,16 @@ package org.roylance.yaorm.services
 import com.google.protobuf.Descriptors
 import org.roylance.common.service.IBase64Service
 import org.roylance.yaorm.YaormModel
-import org.roylance.yaorm.services.proto.IProtoGeneratedMessageBuilder
 import java.util.*
 
 interface IEntityBuilder {
     fun buildProtoContext(connectionInfo: YaormModel.ConnectionInfo,
                           fileDescriptor: Descriptors.FileDescriptor,
-                          messageBuilder: IProtoGeneratedMessageBuilder,
                           customIndexes: HashMap<String, YaormModel.Index>,
                           base64Service: IBase64Service,
                           emptyAsNull: Boolean = false): EntityProtoContext
 
     fun buildMessageService(connectionInfo: YaormModel.ConnectionInfo,
-                            messageBuilder: IProtoGeneratedMessageBuilder,
                             customIndexes: HashMap<String, YaormModel.Index>,
                             emptyAsNull: Boolean = false): IEntityMessageService
 

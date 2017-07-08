@@ -1,21 +1,13 @@
 package org.roylance.yaorm.services.mysql.normal
 
-import org.junit.Assert
 import org.junit.Test
-import org.roylance.yaorm.ComplexModel
-import org.roylance.yaorm.NestedEnumTest
-import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
-import org.roylance.yaorm.services.EntityProtoContext
 import org.roylance.yaorm.services.EntityService
+import org.roylance.yaorm.services.jdbc.JDBCGranularDatabaseService
 import org.roylance.yaorm.services.mysql.MySQLConnectionSourceFactory
 import org.roylance.yaorm.services.mysql.MySQLGeneratorService
-import org.roylance.yaorm.utilities.ComplexModelBuilder
 import org.roylance.yaorm.utilities.ConnectionUtilities
-import org.roylance.yaorm.utilities.NestedEnumGMBuilder
-import org.roylance.yaorm.utilities.TestBase64Service
 import org.roylance.yaorm.utilities.common.INestedEnumTest
 import org.roylance.yaorm.utilities.common.NestedEnumTestUtilities
-import java.util.*
 
 class MySQLNestedEnumTest: MySQLBase(), INestedEnumTest {
     @Test
