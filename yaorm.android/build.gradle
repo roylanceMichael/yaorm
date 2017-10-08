@@ -1,0 +1,118 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$yaclib_kotlin"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://roylance-repo.appspot.com'
+            credentials {
+                username System.getenv('STANDARD_MAVEN_USER')
+                password System.getenv('STANDARD_MAVEN_PASSWORD')
+            }
+        }
+        maven { url "http://dl.bintray.com/roylancemichael/maven" }
+    }
+    apply plugin: 'com.android.library'
+    apply plugin: 'com.github.dcendents.android-maven'
+    apply plugin: 'kotlin-android'
+    apply plugin: "com.jfrog.bintray"
+}
+
+group = "$group"
+version = "$major.$minor"
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name "yaorm.android"
+            description 'yaorm interface for Android'
+            url "${githubRepo_}"
+            inceptionYear '2016'
+
+            packaging 'aar'
+            groupId "org.roylance"
+            artifactId "yaorm.android"
+            version "${major}.${minor}"
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection "${githubRepo_}"
+                url "${githubRepo_}"
+            }
+            developers {
+                developer {
+                    name 'roylance.michael@gmail.com'
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    configurations = ['archives']
+    pkg {
+        publish = true
+        repo = "${repoName_}"
+        name = "${group}.${rootProject.name}"
+        userOrg = user
+        licenses = ["${license_}"]
+        labels = [rootProject.name]
+        publicDownloadNumbers = true
+        vcsUrl = "${githubRepo_}"
+        version {
+            name = "$major.$minor"
+        }
+    }
+}
+
+dependencies {
+    compile "org.roylance:yaorm:$org_roylance_yaorm"
+    testCompile 'junit:junit:4.12'
+}
