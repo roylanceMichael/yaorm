@@ -5787,19 +5787,6 @@ public final class ComplexModel {
      */
     org.roylance.yaorm.ComplexModel.ValidationOrBuilder getChildrenOrBuilder(
         int index);
-
-    /**
-     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-     */
-    boolean hasActualParent();
-    /**
-     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-     */
-    org.roylance.yaorm.ComplexModel.Validation getActualParent();
-    /**
-     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-     */
-    org.roylance.yaorm.ComplexModel.ValidationOrBuilder getActualParentOrBuilder();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.Validation}
@@ -5876,19 +5863,6 @@ public final class ComplexModel {
               }
               children_.add(
                   input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry));
-              break;
-            }
-            case 50: {
-              org.roylance.yaorm.ComplexModel.Validation.Builder subBuilder = null;
-              if (actualParent_ != null) {
-                subBuilder = actualParent_.toBuilder();
-              }
-              actualParent_ = input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(actualParent_);
-                actualParent_ = subBuilder.buildPartial();
-              }
-
               break;
             }
           }
@@ -6089,27 +6063,6 @@ public final class ComplexModel {
       return children_.get(index);
     }
 
-    public static final int ACTUAL_PARENT_FIELD_NUMBER = 6;
-    private org.roylance.yaorm.ComplexModel.Validation actualParent_;
-    /**
-     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-     */
-    public boolean hasActualParent() {
-      return actualParent_ != null;
-    }
-    /**
-     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-     */
-    public org.roylance.yaorm.ComplexModel.Validation getActualParent() {
-      return actualParent_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : actualParent_;
-    }
-    /**
-     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-     */
-    public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getActualParentOrBuilder() {
-      return getActualParent();
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6137,9 +6090,6 @@ public final class ComplexModel {
       for (int i = 0; i < children_.size(); i++) {
         output.writeMessage(5, children_.get(i));
       }
-      if (actualParent_ != null) {
-        output.writeMessage(6, getActualParent());
-      }
     }
 
     public int getSerializedSize() {
@@ -6162,10 +6112,6 @@ public final class ComplexModel {
       for (int i = 0; i < children_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, children_.get(i));
-      }
-      if (actualParent_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getActualParent());
       }
       memoizedSize = size;
       return size;
@@ -6193,11 +6139,6 @@ public final class ComplexModel {
           .equals(other.getParentId());
       result = result && getChildrenList()
           .equals(other.getChildrenList());
-      result = result && (hasActualParent() == other.hasActualParent());
-      if (hasActualParent()) {
-        result = result && getActualParent()
-            .equals(other.getActualParent());
-      }
       return result;
     }
 
@@ -6219,10 +6160,6 @@ public final class ComplexModel {
       if (getChildrenCount() > 0) {
         hash = (37 * hash) + CHILDREN_FIELD_NUMBER;
         hash = (53 * hash) + getChildrenList().hashCode();
-      }
-      if (hasActualParent()) {
-        hash = (37 * hash) + ACTUAL_PARENT_FIELD_NUMBER;
-        hash = (53 * hash) + getActualParent().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -6368,12 +6305,6 @@ public final class ComplexModel {
         } else {
           childrenBuilder_.clear();
         }
-        if (actualParentBuilder_ == null) {
-          actualParent_ = null;
-        } else {
-          actualParent_ = null;
-          actualParentBuilder_ = null;
-        }
         return this;
       }
 
@@ -6410,11 +6341,6 @@ public final class ComplexModel {
           result.children_ = children_;
         } else {
           result.children_ = childrenBuilder_.build();
-        }
-        if (actualParentBuilder_ == null) {
-          result.actualParent_ = actualParent_;
-        } else {
-          result.actualParent_ = actualParentBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -6499,9 +6425,6 @@ public final class ComplexModel {
               childrenBuilder_.addAllMessages(other.children_);
             }
           }
-        }
-        if (other.hasActualParent()) {
-          mergeActualParent(other.getActualParent());
         }
         onChanged();
         return this;
@@ -7044,123 +6967,6 @@ public final class ComplexModel {
           children_ = null;
         }
         return childrenBuilder_;
-      }
-
-      private org.roylance.yaorm.ComplexModel.Validation actualParent_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> actualParentBuilder_;
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public boolean hasActualParent() {
-        return actualParentBuilder_ != null || actualParent_ != null;
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public org.roylance.yaorm.ComplexModel.Validation getActualParent() {
-        if (actualParentBuilder_ == null) {
-          return actualParent_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : actualParent_;
-        } else {
-          return actualParentBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public Builder setActualParent(org.roylance.yaorm.ComplexModel.Validation value) {
-        if (actualParentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          actualParent_ = value;
-          onChanged();
-        } else {
-          actualParentBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public Builder setActualParent(
-          org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
-        if (actualParentBuilder_ == null) {
-          actualParent_ = builderForValue.build();
-          onChanged();
-        } else {
-          actualParentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public Builder mergeActualParent(org.roylance.yaorm.ComplexModel.Validation value) {
-        if (actualParentBuilder_ == null) {
-          if (actualParent_ != null) {
-            actualParent_ =
-              org.roylance.yaorm.ComplexModel.Validation.newBuilder(actualParent_).mergeFrom(value).buildPartial();
-          } else {
-            actualParent_ = value;
-          }
-          onChanged();
-        } else {
-          actualParentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public Builder clearActualParent() {
-        if (actualParentBuilder_ == null) {
-          actualParent_ = null;
-          onChanged();
-        } else {
-          actualParent_ = null;
-          actualParentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public org.roylance.yaorm.ComplexModel.Validation.Builder getActualParentBuilder() {
-        
-        onChanged();
-        return getActualParentFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getActualParentOrBuilder() {
-        if (actualParentBuilder_ != null) {
-          return actualParentBuilder_.getMessageOrBuilder();
-        } else {
-          return actualParent_ == null ?
-              org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : actualParent_;
-        }
-      }
-      /**
-       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
-          getActualParentFieldBuilder() {
-        if (actualParentBuilder_ == null) {
-          actualParentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder>(
-                  getActualParent(),
-                  getParentForChildren(),
-                  isClean());
-          actualParent_ = null;
-        }
-        return actualParentBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -23325,71 +23131,69 @@ public final class ComplexModel {
       "\022\022\n\nform_order\030\002 \001(\005\022\017\n\007display\030\003 \001(\t\022/\n" +
       "\005image\030\004 \001(\0132 .org.roylance.yaorm.Reques" +
       "tImage\022<\n\020expected_answers\030\005 \003(\0132\".org.r" +
-      "oylance.yaorm.ExpectedAnswer\"\261\001\n\nValidat" +
-      "ion\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\003" +
-      " \001(\t\022\021\n\tparent_id\030\004 \001(\t\0220\n\010children\030\005 \003(" +
-      "\0132\036.org.roylance.yaorm.Validation\0225\n\ract" +
-      "ual_parent\030\006 \001(\0132\036.org.roylance.yaorm.Va",
-      "lidation\"\344\003\n\021HeuristicCombiner\022\n\n\002id\030\001 \001" +
-      "(\t\0228\n\004type\030\002 \001(\0162*.org.roylance.yaorm.He" +
-      "uristicCombiner.Type\0224\n\016first_question\030\003" +
-      " \001(\0132\034.org.roylance.yaorm.Question\0228\n\020fi" +
-      "rst_validation\030\004 \001(\0132\036.org.roylance.yaor" +
-      "m.Validation\022=\n\016first_combiner\030\005 \001(\0132%.o" +
-      "rg.roylance.yaorm.HeuristicCombiner\0225\n\017s" +
-      "econd_question\030\006 \001(\0132\034.org.roylance.yaor" +
-      "m.Question\0229\n\021second_validation\030\007 \001(\0132\036." +
-      "org.roylance.yaorm.Validation\022>\n\017second_",
-      "combiner\030\010 \001(\0132%.org.roylance.yaorm.Heur" +
-      "isticCombiner\022\017\n\007display\030\t \001(\t\"\027\n\004Type\022\007" +
-      "\n\003AND\020\000\022\006\n\002OR\020\001\"\205\001\n\004Form\022\n\n\002id\030\001 \001(\t\022\017\n\007" +
-      "display\030\002 \001(\t\022/\n\005image\030\003 \001(\0132 .org.royla" +
-      "nce.yaorm.RequestImage\022/\n\tquestions\030\004 \003(" +
-      "\0132\034.org.roylance.yaorm.Question\"\203\002\n\004View" +
-      "\022\n\n\002id\030\001 \001(\t\022:\n\020background_image\030\002 \001(\0132 " +
-      ".org.roylance.yaorm.RequestImage\022\r\n\005titl" +
-      "e\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\022\'\n\005forms\030\005 " +
-      "\003(\0132\030.org.roylance.yaorm.Form\0221\n\nheurist",
-      "ics\030\006 \003(\0132\035.org.roylance.yaorm.Heuristic" +
-      "\0223\n\013validations\030\007 \003(\0132\036.org.roylance.yao" +
-      "rm.Validation\"\217\002\n\tHeuristic\022\n\n\002id\030\001 \001(\t\022" +
-      "\023\n\013description\030\002 \001(\t\022+\n\tnext_view\030\003 \001(\0132" +
-      "\030.org.roylance.yaorm.View\022B\n\023heuristic_c" +
-      "ombiners\030\004 \003(\0132%.org.roylance.yaorm.Heur" +
-      "isticCombiner\022N\n\024heuristic_group_type\030\005 " +
-      "\001(\01620.org.roylance.yaorm.Heuristic.Heuri" +
-      "sticGroupType\" \n\022HeuristicGroupType\022\n\n\006B" +
-      "UTTON\020\000\"K\n\007Request\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002",
-      " \001(\t\022&\n\004view\030\003 \001(\0132\030.org.roylance.yaorm." +
-      "View\"q\n\010Response\022\n\n\002id\030\001 \001(\t\022,\n\007request\030" +
-      "\002 \001(\0132\033.org.roylance.yaorm.Request\022+\n\007an" +
-      "swers\030\003 \003(\0132\032.org.roylance.yaorm.Answer\"" +
-      "\360\001\n\006Answer\022\n\n\002id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022" +
-      ".\n\010question\030\003 \001(\0132\034.org.roylance.yaorm.Q" +
-      "uestion\022\r\n\005value\030\004 \001(\t\022,\n\007request\030\005 \001(\0132" +
-      "\033.org.roylance.yaorm.Request\022.\n\010response" +
-      "\030\006 \001(\0132\034.org.roylance.yaorm.Response\022\014\n\004" +
-      "test\030\007 \001(\003\022\016\n\006test_1\030\010 \001(\010\022\016\n\006test_2\030\t \001",
-      "(\001\"\213\001\n\rUINaruRequest\022\r\n\005token\030\001 \001(\t\022.\n\010r" +
-      "esponse\030\002 \001(\0132\034.org.roylance.yaorm.Respo" +
-      "nse\022*\n\006beacon\030\003 \001(\0132\032.org.roylance.yaorm" +
-      ".Beacon\022\017\n\007user_id\030\004 \001(\t\"R\n\016UINaruRespon" +
-      "se\022\022\n\nsuccessful\030\001 \001(\010\022,\n\007request\030\002 \001(\0132" +
-      "\033.org.roylance.yaorm.Request\"\346\001\n\022UINaruA" +
-      "dminRequest\022\r\n\005token\030\001 \001(\t\022.\n\010response\030\002" +
-      " \001(\0132\034.org.roylance.yaorm.Response\022*\n\006be" +
-      "acon\030\003 \001(\0132\032.org.roylance.yaorm.Beacon\022," +
-      "\n\007request\030\004 \001(\0132\033.org.roylance.yaorm.Req",
-      "uest\022\017\n\007user_id\030\005 \001(\t\022&\n\004view\030\006 \001(\0132\030.or" +
-      "g.roylance.yaorm.View\"\232\001\n\023UINaruAdminRes" +
-      "ponse\022-\n\010requests\030\001 \003(\0132\033.org.roylance.y" +
-      "aorm.Request\022+\n\007beacons\030\002 \003(\0132\032.org.royl" +
-      "ance.yaorm.Beacon\022\'\n\005views\030\003 \003(\0132\030.org.r" +
-      "oylance.yaorm.View\"\210\001\n\nMappedFile\022\n\n\002id\030" +
-      "\001 \001(\t\022\014\n\004name\030\002 \001(\t\022.\n\006parent\030\003 \001(\0132\036.or" +
-      "g.roylance.yaorm.MappedFile\0220\n\010children\030" +
-      "\004 \003(\0132\036.org.roylance.yaorm.MappedFileb\006p" +
-      "roto3"
+      "oylance.yaorm.ExpectedAnswer\"z\n\nValidati" +
+      "on\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\003 " +
+      "\001(\t\022\021\n\tparent_id\030\004 \001(\t\0220\n\010children\030\005 \003(\013" +
+      "2\036.org.roylance.yaorm.Validation\"\344\003\n\021Heu" +
+      "risticCombiner\022\n\n\002id\030\001 \001(\t\0228\n\004type\030\002 \001(\016",
+      "2*.org.roylance.yaorm.HeuristicCombiner." +
+      "Type\0224\n\016first_question\030\003 \001(\0132\034.org.royla" +
+      "nce.yaorm.Question\0228\n\020first_validation\030\004" +
+      " \001(\0132\036.org.roylance.yaorm.Validation\022=\n\016" +
+      "first_combiner\030\005 \001(\0132%.org.roylance.yaor" +
+      "m.HeuristicCombiner\0225\n\017second_question\030\006" +
+      " \001(\0132\034.org.roylance.yaorm.Question\0229\n\021se" +
+      "cond_validation\030\007 \001(\0132\036.org.roylance.yao" +
+      "rm.Validation\022>\n\017second_combiner\030\010 \001(\0132%" +
+      ".org.roylance.yaorm.HeuristicCombiner\022\017\n",
+      "\007display\030\t \001(\t\"\027\n\004Type\022\007\n\003AND\020\000\022\006\n\002OR\020\001\"" +
+      "\205\001\n\004Form\022\n\n\002id\030\001 \001(\t\022\017\n\007display\030\002 \001(\t\022/\n" +
+      "\005image\030\003 \001(\0132 .org.roylance.yaorm.Reques" +
+      "tImage\022/\n\tquestions\030\004 \003(\0132\034.org.roylance" +
+      ".yaorm.Question\"\203\002\n\004View\022\n\n\002id\030\001 \001(\t\022:\n\020" +
+      "background_image\030\002 \001(\0132 .org.roylance.ya" +
+      "orm.RequestImage\022\r\n\005title\030\003 \001(\t\022\023\n\013descr" +
+      "iption\030\004 \001(\t\022\'\n\005forms\030\005 \003(\0132\030.org.roylan" +
+      "ce.yaorm.Form\0221\n\nheuristics\030\006 \003(\0132\035.org." +
+      "roylance.yaorm.Heuristic\0223\n\013validations\030",
+      "\007 \003(\0132\036.org.roylance.yaorm.Validation\"\217\002" +
+      "\n\tHeuristic\022\n\n\002id\030\001 \001(\t\022\023\n\013description\030\002" +
+      " \001(\t\022+\n\tnext_view\030\003 \001(\0132\030.org.roylance.y" +
+      "aorm.View\022B\n\023heuristic_combiners\030\004 \003(\0132%" +
+      ".org.roylance.yaorm.HeuristicCombiner\022N\n" +
+      "\024heuristic_group_type\030\005 \001(\01620.org.roylan" +
+      "ce.yaorm.Heuristic.HeuristicGroupType\" \n" +
+      "\022HeuristicGroupType\022\n\n\006BUTTON\020\000\"K\n\007Reque" +
+      "st\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022&\n\004view\030\003 \001" +
+      "(\0132\030.org.roylance.yaorm.View\"q\n\010Response",
+      "\022\n\n\002id\030\001 \001(\t\022,\n\007request\030\002 \001(\0132\033.org.royl" +
+      "ance.yaorm.Request\022+\n\007answers\030\003 \003(\0132\032.or" +
+      "g.roylance.yaorm.Answer\"\360\001\n\006Answer\022\n\n\002id" +
+      "\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022.\n\010question\030\003 \001(" +
+      "\0132\034.org.roylance.yaorm.Question\022\r\n\005value" +
+      "\030\004 \001(\t\022,\n\007request\030\005 \001(\0132\033.org.roylance.y" +
+      "aorm.Request\022.\n\010response\030\006 \001(\0132\034.org.roy" +
+      "lance.yaorm.Response\022\014\n\004test\030\007 \001(\003\022\016\n\006te" +
+      "st_1\030\010 \001(\010\022\016\n\006test_2\030\t \001(\001\"\213\001\n\rUINaruReq" +
+      "uest\022\r\n\005token\030\001 \001(\t\022.\n\010response\030\002 \001(\0132\034.",
+      "org.roylance.yaorm.Response\022*\n\006beacon\030\003 " +
+      "\001(\0132\032.org.roylance.yaorm.Beacon\022\017\n\007user_" +
+      "id\030\004 \001(\t\"R\n\016UINaruResponse\022\022\n\nsuccessful" +
+      "\030\001 \001(\010\022,\n\007request\030\002 \001(\0132\033.org.roylance.y" +
+      "aorm.Request\"\346\001\n\022UINaruAdminRequest\022\r\n\005t" +
+      "oken\030\001 \001(\t\022.\n\010response\030\002 \001(\0132\034.org.royla" +
+      "nce.yaorm.Response\022*\n\006beacon\030\003 \001(\0132\032.org" +
+      ".roylance.yaorm.Beacon\022,\n\007request\030\004 \001(\0132" +
+      "\033.org.roylance.yaorm.Request\022\017\n\007user_id\030" +
+      "\005 \001(\t\022&\n\004view\030\006 \001(\0132\030.org.roylance.yaorm",
+      ".View\"\232\001\n\023UINaruAdminResponse\022-\n\010request" +
+      "s\030\001 \003(\0132\033.org.roylance.yaorm.Request\022+\n\007" +
+      "beacons\030\002 \003(\0132\032.org.roylance.yaorm.Beaco" +
+      "n\022\'\n\005views\030\003 \003(\0132\030.org.roylance.yaorm.Vi" +
+      "ew\"\210\001\n\nMappedFile\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 " +
+      "\001(\t\022.\n\006parent\030\003 \001(\0132\036.org.roylance.yaorm" +
+      ".MappedFile\0220\n\010children\030\004 \003(\0132\036.org.royl" +
+      "ance.yaorm.MappedFileb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -23444,7 +23248,7 @@ public final class ComplexModel {
     internal_static_org_roylance_yaorm_Validation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Validation_descriptor,
-        new java.lang.String[] { "Id", "Name", "Value", "ParentId", "Children", "ActualParent", });
+        new java.lang.String[] { "Id", "Name", "Value", "ParentId", "Children", });
     internal_static_org_roylance_yaorm_HeuristicCombiner_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_org_roylance_yaorm_HeuristicCombiner_fieldAccessorTable = new

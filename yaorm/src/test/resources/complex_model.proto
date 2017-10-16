@@ -48,7 +48,6 @@ message Validation {
     string value = 3;
     string parent_id = 4;
     repeated Validation children = 5;
-    Validation actual_parent = 6;
 }
 
 message HeuristicCombiner {

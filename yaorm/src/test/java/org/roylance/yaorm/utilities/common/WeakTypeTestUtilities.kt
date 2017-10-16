@@ -315,8 +315,10 @@ object WeakTypeTestUtilities {
 
       // assert
       val allRequests = entityMessageService.getMany(ComplexModel.Request.getDefaultInstance())
+      val allValidations = entityMessageService.getMany(ComplexModel.Validation.getDefaultInstance())
 
       println(allRequests)
+      println(allValidations)
       assert(true)
     }
     finally {

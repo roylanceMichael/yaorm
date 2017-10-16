@@ -22,17 +22,9 @@ internal class GetProtoObjects(
       return ArrayList()
     }
 
-    var allFound = true
-    entityIds.forEach { entityId ->
-      if (!cacheStore.seenObject(message, entityId)) {
-        allFound = false
-      }
-    }
-
-    if (allFound) {
-      return entityIds.map {
-        cacheStore.getObject(message, it).build() as T
-      }
+    val foundMessages = handleHaveSeenAllEntityIdsBefore<T>(entityIds, message)
+    if (foundMessages.isNotEmpty()) {
+      return foundMessages
     }
 
     val messageBuilder = message.toBuilder()
@@ -57,38 +49,10 @@ internal class GetProtoObjects(
         .setOperatorType(YaormModel.WhereClause.OperatorType.IN)
         .build()
 
-    val childMessageHandler = object : IChildMessageHandler {
-      override fun handle(fieldKey: Descriptors.FieldDescriptor,
-          idColumn: YaormModel.Column,
-          childBuilder: Message.Builder) {
-        if (idColumn.stringHolder.isNotEmpty()) {
-          val mainId = ProtobufUtils.getIdFromMessage(childBuilder)
-          val childObject = messageBuilder.newBuilderForField(fieldKey).build()
-
-          if (!keysToReconcile.containsKey(childObject.descriptorForType.name)) {
-            keysToReconcile[childObject.descriptorForType.name] = HashSet()
-          }
-
-          if (!messagesToReconcile.containsKey(childObject.descriptorForType.name)) {
-            messagesToReconcile[childObject.descriptorForType.name] = childObject
-          }
-
-          keysToReconcile[childObject.descriptorForType.name]?.add(idColumn.stringHolder)
-
-          if (!normalReconciliation.containsKey(childObject.descriptorForType.name)) {
-            normalReconciliation[childObject.descriptorForType.name] = HashMap()
-          }
-
-          if (!normalReconciliation[childObject.descriptorForType.name]?.containsKey(mainId)!!) {
-            normalReconciliation[childObject.descriptorForType.name]!![mainId] = HashMap()
-          }
-
-          normalReconciliation[childObject.descriptorForType.name]!![mainId]!![fieldKey.name] =
-              CachingObject(childObject, fieldKey, mainId,
-                  listOf(idColumn.stringHolder).toMutableList())
-        }
-      }
-    }
+    val childMessageHandler = handleBuildChildMessageHandler(messageBuilder,
+        keysToReconcile,
+        normalReconciliation,
+        messagesToReconcile)
 
     val records = this.entityService.where(whereClause, tableDefinitionGraph.mainTableDefinition)
     val actuallyFoundIds = ArrayList<String>()
@@ -237,5 +201,63 @@ internal class GetProtoObjects(
     return actuallyFoundIds.map {
       cacheStore.getObject(message, it).build() as T
     }
+  }
+
+  private fun handleBuildChildMessageHandler(messageBuilder: Message.Builder,
+      keysToReconcile: HashMap<String, HashSet<String>>,
+      normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
+      messagesToReconcile: HashMap<String, Message>): IChildMessageHandler {
+    val childMessageHandler = object : IChildMessageHandler {
+      override fun handle(fieldKey: Descriptors.FieldDescriptor,
+          idColumn: YaormModel.Column,
+          childBuilder: Message.Builder) {
+        if (idColumn.stringHolder.isNotEmpty()) {
+          val mainId = ProtobufUtils.getIdFromMessage(childBuilder)
+          val childObject = messageBuilder.newBuilderForField(fieldKey).build()
+
+          if (!keysToReconcile.containsKey(childObject.descriptorForType.name)) {
+            keysToReconcile[childObject.descriptorForType.name] = HashSet()
+          }
+
+          if (!messagesToReconcile.containsKey(childObject.descriptorForType.name)) {
+            messagesToReconcile[childObject.descriptorForType.name] = childObject
+          }
+
+          keysToReconcile[childObject.descriptorForType.name]?.add(idColumn.stringHolder)
+
+          if (!normalReconciliation.containsKey(childObject.descriptorForType.name)) {
+            normalReconciliation[childObject.descriptorForType.name] = HashMap()
+          }
+
+          if (!normalReconciliation[childObject.descriptorForType.name]?.containsKey(mainId)!!) {
+            normalReconciliation[childObject.descriptorForType.name]!![mainId] = HashMap()
+          }
+
+          normalReconciliation[childObject.descriptorForType.name]!![mainId]!![fieldKey.name] =
+              CachingObject(childObject, fieldKey, mainId,
+                  listOf(idColumn.stringHolder).toMutableList())
+        }
+      }
+    }
+
+    return childMessageHandler
+  }
+
+  fun <T> handleHaveSeenAllEntityIdsBefore(entityIds: List<String>,
+      message: Message): List<T> {
+    var allFound = true
+    entityIds.forEach { entityId ->
+      if (!cacheStore.seenObject(message, entityId)) {
+        allFound = false
+      }
+    }
+
+    if (allFound) {
+      return entityIds.map {
+        cacheStore.getObject(message, it).build() as T
+      }
+    }
+
+    return listOf()
   }
 }
