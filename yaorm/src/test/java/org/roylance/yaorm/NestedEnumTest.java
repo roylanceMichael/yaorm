@@ -377,35 +377,35 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
      */
     boolean hasStagingConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformation getStagingConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getStagingConnectionOrBuilder();
 
@@ -482,7 +482,7 @@ public final class NestedEnumTest {
         int index);
 
     /**
-     * <code>optional bool build_landing_dag = 7;</code>
+     * <code>bool build_landing_dag = 7;</code>
      */
     boolean getBuildLandingDag();
   }
@@ -624,7 +624,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -639,7 +639,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -658,7 +658,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -673,7 +673,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -692,19 +692,19 @@ public final class NestedEnumTest {
     public static final int STAGING_CONNECTION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.ConnectionInformation stagingConnection_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
      */
     public boolean hasStagingConnection() {
       return stagingConnection_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getStagingConnection() {
       return stagingConnection_ == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.getDefaultInstance() : stagingConnection_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getStagingConnectionOrBuilder() {
       return getStagingConnection();
@@ -818,7 +818,7 @@ public final class NestedEnumTest {
     public static final int BUILD_LANDING_DAG_FIELD_NUMBER = 7;
     private boolean buildLandingDag_;
     /**
-     * <code>optional bool build_landing_dag = 7;</code>
+     * <code>bool build_landing_dag = 7;</code>
      */
     public boolean getBuildLandingDag() {
       return buildLandingDag_;
@@ -932,7 +932,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -961,6 +961,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Customer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1329,7 +1340,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -1344,7 +1355,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -1360,7 +1371,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -1373,7 +1384,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -1382,7 +1393,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1398,7 +1409,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -1413,7 +1424,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -1429,7 +1440,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -1442,7 +1453,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -1451,7 +1462,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -1469,13 +1480,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> stagingConnectionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public boolean hasStagingConnection() {
         return stagingConnectionBuilder_ != null || stagingConnection_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getStagingConnection() {
         if (stagingConnectionBuilder_ == null) {
@@ -1485,7 +1496,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public Builder setStagingConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (stagingConnectionBuilder_ == null) {
@@ -1501,7 +1512,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public Builder setStagingConnection(
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder builderForValue) {
@@ -1515,7 +1526,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public Builder mergeStagingConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (stagingConnectionBuilder_ == null) {
@@ -1533,7 +1544,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public Builder clearStagingConnection() {
         if (stagingConnectionBuilder_ == null) {
@@ -1547,7 +1558,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder getStagingConnectionBuilder() {
         
@@ -1555,7 +1566,7 @@ public final class NestedEnumTest {
         return getStagingConnectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getStagingConnectionOrBuilder() {
         if (stagingConnectionBuilder_ != null) {
@@ -1566,7 +1577,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation staging_connection = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
@@ -2304,13 +2315,13 @@ public final class NestedEnumTest {
 
       private boolean buildLandingDag_ ;
       /**
-       * <code>optional bool build_landing_dag = 7;</code>
+       * <code>bool build_landing_dag = 7;</code>
        */
       public boolean getBuildLandingDag() {
         return buildLandingDag_;
       }
       /**
-       * <code>optional bool build_landing_dag = 7;</code>
+       * <code>bool build_landing_dag = 7;</code>
        */
       public Builder setBuildLandingDag(boolean value) {
         
@@ -2319,7 +2330,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool build_landing_dag = 7;</code>
+       * <code>bool build_landing_dag = 7;</code>
        */
       public Builder clearBuildLandingDag() {
         
@@ -2381,126 +2392,126 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string destination_database_key = 2;</code>
+     * <code>string destination_database_key = 2;</code>
      */
     java.lang.String getDestinationDatabaseKey();
     /**
-     * <code>optional string destination_database_key = 2;</code>
+     * <code>string destination_database_key = 2;</code>
      */
     com.google.protobuf.ByteString
         getDestinationDatabaseKeyBytes();
 
     /**
-     * <code>optional string ecr_start_date = 3;</code>
+     * <code>string ecr_start_date = 3;</code>
      */
     java.lang.String getEcrStartDate();
     /**
-     * <code>optional string ecr_start_date = 3;</code>
+     * <code>string ecr_start_date = 3;</code>
      */
     com.google.protobuf.ByteString
         getEcrStartDateBytes();
 
     /**
-     * <code>optional string ecr_end_date = 4;</code>
+     * <code>string ecr_end_date = 4;</code>
      */
     java.lang.String getEcrEndDate();
     /**
-     * <code>optional string ecr_end_date = 4;</code>
+     * <code>string ecr_end_date = 4;</code>
      */
     com.google.protobuf.ByteString
         getEcrEndDateBytes();
 
     /**
-     * <code>optional string acg_start_date = 5;</code>
+     * <code>string acg_start_date = 5;</code>
      */
     java.lang.String getAcgStartDate();
     /**
-     * <code>optional string acg_start_date = 5;</code>
+     * <code>string acg_start_date = 5;</code>
      */
     com.google.protobuf.ByteString
         getAcgStartDateBytes();
 
     /**
-     * <code>optional string acg_end_date = 6;</code>
+     * <code>string acg_end_date = 6;</code>
      */
     java.lang.String getAcgEndDate();
     /**
-     * <code>optional string acg_end_date = 6;</code>
+     * <code>string acg_end_date = 6;</code>
      */
     com.google.protobuf.ByteString
         getAcgEndDateBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
      */
     boolean hasDestinationDatabaseConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformation getDestinationDatabaseConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getDestinationDatabaseConnectionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
      */
     boolean hasRedshiftConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformation getRedshiftConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getRedshiftConnectionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
      */
     boolean hasS3Connection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformation getS3Connection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getS3ConnectionOrBuilder();
 
     /**
-     * <code>optional string hermes = 10;</code>
+     * <code>string hermes = 10;</code>
      */
     java.lang.String getHermes();
     /**
-     * <code>optional string hermes = 10;</code>
+     * <code>string hermes = 10;</code>
      */
     com.google.protobuf.ByteString
         getHermesBytes();
 
     /**
-     * <code>optional bool build_redshift_dag = 11;</code>
+     * <code>bool build_redshift_dag = 11;</code>
      */
     boolean getBuildRedshiftDag();
 
     /**
-     * <code>optional bool build_dag = 12;</code>
+     * <code>bool build_dag = 12;</code>
      */
     boolean getBuildDag();
 
     /**
-     * <code>optional bool is_demo = 13;</code>
+     * <code>bool is_demo = 13;</code>
      */
     boolean getIsDemo();
 
@@ -2713,7 +2724,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -2728,7 +2739,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -2747,7 +2758,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_DATABASE_KEY_FIELD_NUMBER = 2;
     private volatile java.lang.Object destinationDatabaseKey_;
     /**
-     * <code>optional string destination_database_key = 2;</code>
+     * <code>string destination_database_key = 2;</code>
      */
     public java.lang.String getDestinationDatabaseKey() {
       java.lang.Object ref = destinationDatabaseKey_;
@@ -2762,7 +2773,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string destination_database_key = 2;</code>
+     * <code>string destination_database_key = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationDatabaseKeyBytes() {
@@ -2781,7 +2792,7 @@ public final class NestedEnumTest {
     public static final int ECR_START_DATE_FIELD_NUMBER = 3;
     private volatile java.lang.Object ecrStartDate_;
     /**
-     * <code>optional string ecr_start_date = 3;</code>
+     * <code>string ecr_start_date = 3;</code>
      */
     public java.lang.String getEcrStartDate() {
       java.lang.Object ref = ecrStartDate_;
@@ -2796,7 +2807,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string ecr_start_date = 3;</code>
+     * <code>string ecr_start_date = 3;</code>
      */
     public com.google.protobuf.ByteString
         getEcrStartDateBytes() {
@@ -2815,7 +2826,7 @@ public final class NestedEnumTest {
     public static final int ECR_END_DATE_FIELD_NUMBER = 4;
     private volatile java.lang.Object ecrEndDate_;
     /**
-     * <code>optional string ecr_end_date = 4;</code>
+     * <code>string ecr_end_date = 4;</code>
      */
     public java.lang.String getEcrEndDate() {
       java.lang.Object ref = ecrEndDate_;
@@ -2830,7 +2841,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string ecr_end_date = 4;</code>
+     * <code>string ecr_end_date = 4;</code>
      */
     public com.google.protobuf.ByteString
         getEcrEndDateBytes() {
@@ -2849,7 +2860,7 @@ public final class NestedEnumTest {
     public static final int ACG_START_DATE_FIELD_NUMBER = 5;
     private volatile java.lang.Object acgStartDate_;
     /**
-     * <code>optional string acg_start_date = 5;</code>
+     * <code>string acg_start_date = 5;</code>
      */
     public java.lang.String getAcgStartDate() {
       java.lang.Object ref = acgStartDate_;
@@ -2864,7 +2875,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string acg_start_date = 5;</code>
+     * <code>string acg_start_date = 5;</code>
      */
     public com.google.protobuf.ByteString
         getAcgStartDateBytes() {
@@ -2883,7 +2894,7 @@ public final class NestedEnumTest {
     public static final int ACG_END_DATE_FIELD_NUMBER = 6;
     private volatile java.lang.Object acgEndDate_;
     /**
-     * <code>optional string acg_end_date = 6;</code>
+     * <code>string acg_end_date = 6;</code>
      */
     public java.lang.String getAcgEndDate() {
       java.lang.Object ref = acgEndDate_;
@@ -2898,7 +2909,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string acg_end_date = 6;</code>
+     * <code>string acg_end_date = 6;</code>
      */
     public com.google.protobuf.ByteString
         getAcgEndDateBytes() {
@@ -2917,19 +2928,19 @@ public final class NestedEnumTest {
     public static final int DESTINATION_DATABASE_CONNECTION_FIELD_NUMBER = 7;
     private org.roylance.yaorm.NestedEnumTest.ConnectionInformation destinationDatabaseConnection_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
      */
     public boolean hasDestinationDatabaseConnection() {
       return destinationDatabaseConnection_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getDestinationDatabaseConnection() {
       return destinationDatabaseConnection_ == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.getDefaultInstance() : destinationDatabaseConnection_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getDestinationDatabaseConnectionOrBuilder() {
       return getDestinationDatabaseConnection();
@@ -2938,19 +2949,19 @@ public final class NestedEnumTest {
     public static final int REDSHIFT_CONNECTION_FIELD_NUMBER = 8;
     private org.roylance.yaorm.NestedEnumTest.ConnectionInformation redshiftConnection_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
      */
     public boolean hasRedshiftConnection() {
       return redshiftConnection_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getRedshiftConnection() {
       return redshiftConnection_ == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.getDefaultInstance() : redshiftConnection_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getRedshiftConnectionOrBuilder() {
       return getRedshiftConnection();
@@ -2959,19 +2970,19 @@ public final class NestedEnumTest {
     public static final int S3_CONNECTION_FIELD_NUMBER = 9;
     private org.roylance.yaorm.NestedEnumTest.ConnectionInformation s3Connection_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
      */
     public boolean hasS3Connection() {
       return s3Connection_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getS3Connection() {
       return s3Connection_ == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.getDefaultInstance() : s3Connection_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getS3ConnectionOrBuilder() {
       return getS3Connection();
@@ -2980,7 +2991,7 @@ public final class NestedEnumTest {
     public static final int HERMES_FIELD_NUMBER = 10;
     private volatile java.lang.Object hermes_;
     /**
-     * <code>optional string hermes = 10;</code>
+     * <code>string hermes = 10;</code>
      */
     public java.lang.String getHermes() {
       java.lang.Object ref = hermes_;
@@ -2995,7 +3006,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string hermes = 10;</code>
+     * <code>string hermes = 10;</code>
      */
     public com.google.protobuf.ByteString
         getHermesBytes() {
@@ -3014,7 +3025,7 @@ public final class NestedEnumTest {
     public static final int BUILD_REDSHIFT_DAG_FIELD_NUMBER = 11;
     private boolean buildRedshiftDag_;
     /**
-     * <code>optional bool build_redshift_dag = 11;</code>
+     * <code>bool build_redshift_dag = 11;</code>
      */
     public boolean getBuildRedshiftDag() {
       return buildRedshiftDag_;
@@ -3023,7 +3034,7 @@ public final class NestedEnumTest {
     public static final int BUILD_DAG_FIELD_NUMBER = 12;
     private boolean buildDag_;
     /**
-     * <code>optional bool build_dag = 12;</code>
+     * <code>bool build_dag = 12;</code>
      */
     public boolean getBuildDag() {
       return buildDag_;
@@ -3032,7 +3043,7 @@ public final class NestedEnumTest {
     public static final int IS_DEMO_FIELD_NUMBER = 13;
     private boolean isDemo_;
     /**
-     * <code>optional bool is_demo = 13;</code>
+     * <code>bool is_demo = 13;</code>
      */
     public boolean getIsDemo() {
       return isDemo_;
@@ -3245,7 +3256,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESTINATION_DATABASE_KEY_FIELD_NUMBER;
@@ -3290,6 +3301,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Projection parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3649,7 +3671,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -3664,7 +3686,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -3680,7 +3702,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -3693,7 +3715,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -3702,7 +3724,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -3718,7 +3740,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object destinationDatabaseKey_ = "";
       /**
-       * <code>optional string destination_database_key = 2;</code>
+       * <code>string destination_database_key = 2;</code>
        */
       public java.lang.String getDestinationDatabaseKey() {
         java.lang.Object ref = destinationDatabaseKey_;
@@ -3733,7 +3755,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_database_key = 2;</code>
+       * <code>string destination_database_key = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationDatabaseKeyBytes() {
@@ -3749,7 +3771,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_database_key = 2;</code>
+       * <code>string destination_database_key = 2;</code>
        */
       public Builder setDestinationDatabaseKey(
           java.lang.String value) {
@@ -3762,7 +3784,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_database_key = 2;</code>
+       * <code>string destination_database_key = 2;</code>
        */
       public Builder clearDestinationDatabaseKey() {
         
@@ -3771,7 +3793,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_database_key = 2;</code>
+       * <code>string destination_database_key = 2;</code>
        */
       public Builder setDestinationDatabaseKeyBytes(
           com.google.protobuf.ByteString value) {
@@ -3787,7 +3809,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object ecrStartDate_ = "";
       /**
-       * <code>optional string ecr_start_date = 3;</code>
+       * <code>string ecr_start_date = 3;</code>
        */
       public java.lang.String getEcrStartDate() {
         java.lang.Object ref = ecrStartDate_;
@@ -3802,7 +3824,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string ecr_start_date = 3;</code>
+       * <code>string ecr_start_date = 3;</code>
        */
       public com.google.protobuf.ByteString
           getEcrStartDateBytes() {
@@ -3818,7 +3840,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string ecr_start_date = 3;</code>
+       * <code>string ecr_start_date = 3;</code>
        */
       public Builder setEcrStartDate(
           java.lang.String value) {
@@ -3831,7 +3853,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string ecr_start_date = 3;</code>
+       * <code>string ecr_start_date = 3;</code>
        */
       public Builder clearEcrStartDate() {
         
@@ -3840,7 +3862,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string ecr_start_date = 3;</code>
+       * <code>string ecr_start_date = 3;</code>
        */
       public Builder setEcrStartDateBytes(
           com.google.protobuf.ByteString value) {
@@ -3856,7 +3878,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object ecrEndDate_ = "";
       /**
-       * <code>optional string ecr_end_date = 4;</code>
+       * <code>string ecr_end_date = 4;</code>
        */
       public java.lang.String getEcrEndDate() {
         java.lang.Object ref = ecrEndDate_;
@@ -3871,7 +3893,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string ecr_end_date = 4;</code>
+       * <code>string ecr_end_date = 4;</code>
        */
       public com.google.protobuf.ByteString
           getEcrEndDateBytes() {
@@ -3887,7 +3909,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string ecr_end_date = 4;</code>
+       * <code>string ecr_end_date = 4;</code>
        */
       public Builder setEcrEndDate(
           java.lang.String value) {
@@ -3900,7 +3922,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string ecr_end_date = 4;</code>
+       * <code>string ecr_end_date = 4;</code>
        */
       public Builder clearEcrEndDate() {
         
@@ -3909,7 +3931,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string ecr_end_date = 4;</code>
+       * <code>string ecr_end_date = 4;</code>
        */
       public Builder setEcrEndDateBytes(
           com.google.protobuf.ByteString value) {
@@ -3925,7 +3947,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object acgStartDate_ = "";
       /**
-       * <code>optional string acg_start_date = 5;</code>
+       * <code>string acg_start_date = 5;</code>
        */
       public java.lang.String getAcgStartDate() {
         java.lang.Object ref = acgStartDate_;
@@ -3940,7 +3962,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string acg_start_date = 5;</code>
+       * <code>string acg_start_date = 5;</code>
        */
       public com.google.protobuf.ByteString
           getAcgStartDateBytes() {
@@ -3956,7 +3978,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string acg_start_date = 5;</code>
+       * <code>string acg_start_date = 5;</code>
        */
       public Builder setAcgStartDate(
           java.lang.String value) {
@@ -3969,7 +3991,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string acg_start_date = 5;</code>
+       * <code>string acg_start_date = 5;</code>
        */
       public Builder clearAcgStartDate() {
         
@@ -3978,7 +4000,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string acg_start_date = 5;</code>
+       * <code>string acg_start_date = 5;</code>
        */
       public Builder setAcgStartDateBytes(
           com.google.protobuf.ByteString value) {
@@ -3994,7 +4016,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object acgEndDate_ = "";
       /**
-       * <code>optional string acg_end_date = 6;</code>
+       * <code>string acg_end_date = 6;</code>
        */
       public java.lang.String getAcgEndDate() {
         java.lang.Object ref = acgEndDate_;
@@ -4009,7 +4031,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string acg_end_date = 6;</code>
+       * <code>string acg_end_date = 6;</code>
        */
       public com.google.protobuf.ByteString
           getAcgEndDateBytes() {
@@ -4025,7 +4047,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string acg_end_date = 6;</code>
+       * <code>string acg_end_date = 6;</code>
        */
       public Builder setAcgEndDate(
           java.lang.String value) {
@@ -4038,7 +4060,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string acg_end_date = 6;</code>
+       * <code>string acg_end_date = 6;</code>
        */
       public Builder clearAcgEndDate() {
         
@@ -4047,7 +4069,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string acg_end_date = 6;</code>
+       * <code>string acg_end_date = 6;</code>
        */
       public Builder setAcgEndDateBytes(
           com.google.protobuf.ByteString value) {
@@ -4065,13 +4087,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> destinationDatabaseConnectionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public boolean hasDestinationDatabaseConnection() {
         return destinationDatabaseConnectionBuilder_ != null || destinationDatabaseConnection_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getDestinationDatabaseConnection() {
         if (destinationDatabaseConnectionBuilder_ == null) {
@@ -4081,7 +4103,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public Builder setDestinationDatabaseConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (destinationDatabaseConnectionBuilder_ == null) {
@@ -4097,7 +4119,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public Builder setDestinationDatabaseConnection(
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder builderForValue) {
@@ -4111,7 +4133,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public Builder mergeDestinationDatabaseConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (destinationDatabaseConnectionBuilder_ == null) {
@@ -4129,7 +4151,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public Builder clearDestinationDatabaseConnection() {
         if (destinationDatabaseConnectionBuilder_ == null) {
@@ -4143,7 +4165,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder getDestinationDatabaseConnectionBuilder() {
         
@@ -4151,7 +4173,7 @@ public final class NestedEnumTest {
         return getDestinationDatabaseConnectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getDestinationDatabaseConnectionOrBuilder() {
         if (destinationDatabaseConnectionBuilder_ != null) {
@@ -4162,7 +4184,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation destination_database_connection = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
@@ -4182,13 +4204,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> redshiftConnectionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public boolean hasRedshiftConnection() {
         return redshiftConnectionBuilder_ != null || redshiftConnection_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getRedshiftConnection() {
         if (redshiftConnectionBuilder_ == null) {
@@ -4198,7 +4220,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public Builder setRedshiftConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (redshiftConnectionBuilder_ == null) {
@@ -4214,7 +4236,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public Builder setRedshiftConnection(
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder builderForValue) {
@@ -4228,7 +4250,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public Builder mergeRedshiftConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (redshiftConnectionBuilder_ == null) {
@@ -4246,7 +4268,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public Builder clearRedshiftConnection() {
         if (redshiftConnectionBuilder_ == null) {
@@ -4260,7 +4282,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder getRedshiftConnectionBuilder() {
         
@@ -4268,7 +4290,7 @@ public final class NestedEnumTest {
         return getRedshiftConnectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getRedshiftConnectionOrBuilder() {
         if (redshiftConnectionBuilder_ != null) {
@@ -4279,7 +4301,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation redshift_connection = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
@@ -4299,13 +4321,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> s3ConnectionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public boolean hasS3Connection() {
         return s3ConnectionBuilder_ != null || s3Connection_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getS3Connection() {
         if (s3ConnectionBuilder_ == null) {
@@ -4315,7 +4337,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public Builder setS3Connection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (s3ConnectionBuilder_ == null) {
@@ -4331,7 +4353,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public Builder setS3Connection(
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder builderForValue) {
@@ -4345,7 +4367,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public Builder mergeS3Connection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (s3ConnectionBuilder_ == null) {
@@ -4363,7 +4385,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public Builder clearS3Connection() {
         if (s3ConnectionBuilder_ == null) {
@@ -4377,7 +4399,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder getS3ConnectionBuilder() {
         
@@ -4385,7 +4407,7 @@ public final class NestedEnumTest {
         return getS3ConnectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getS3ConnectionOrBuilder() {
         if (s3ConnectionBuilder_ != null) {
@@ -4396,7 +4418,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_connection = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
@@ -4414,7 +4436,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object hermes_ = "";
       /**
-       * <code>optional string hermes = 10;</code>
+       * <code>string hermes = 10;</code>
        */
       public java.lang.String getHermes() {
         java.lang.Object ref = hermes_;
@@ -4429,7 +4451,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string hermes = 10;</code>
+       * <code>string hermes = 10;</code>
        */
       public com.google.protobuf.ByteString
           getHermesBytes() {
@@ -4445,7 +4467,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string hermes = 10;</code>
+       * <code>string hermes = 10;</code>
        */
       public Builder setHermes(
           java.lang.String value) {
@@ -4458,7 +4480,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string hermes = 10;</code>
+       * <code>string hermes = 10;</code>
        */
       public Builder clearHermes() {
         
@@ -4467,7 +4489,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string hermes = 10;</code>
+       * <code>string hermes = 10;</code>
        */
       public Builder setHermesBytes(
           com.google.protobuf.ByteString value) {
@@ -4483,13 +4505,13 @@ public final class NestedEnumTest {
 
       private boolean buildRedshiftDag_ ;
       /**
-       * <code>optional bool build_redshift_dag = 11;</code>
+       * <code>bool build_redshift_dag = 11;</code>
        */
       public boolean getBuildRedshiftDag() {
         return buildRedshiftDag_;
       }
       /**
-       * <code>optional bool build_redshift_dag = 11;</code>
+       * <code>bool build_redshift_dag = 11;</code>
        */
       public Builder setBuildRedshiftDag(boolean value) {
         
@@ -4498,7 +4520,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool build_redshift_dag = 11;</code>
+       * <code>bool build_redshift_dag = 11;</code>
        */
       public Builder clearBuildRedshiftDag() {
         
@@ -4509,13 +4531,13 @@ public final class NestedEnumTest {
 
       private boolean buildDag_ ;
       /**
-       * <code>optional bool build_dag = 12;</code>
+       * <code>bool build_dag = 12;</code>
        */
       public boolean getBuildDag() {
         return buildDag_;
       }
       /**
-       * <code>optional bool build_dag = 12;</code>
+       * <code>bool build_dag = 12;</code>
        */
       public Builder setBuildDag(boolean value) {
         
@@ -4524,7 +4546,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool build_dag = 12;</code>
+       * <code>bool build_dag = 12;</code>
        */
       public Builder clearBuildDag() {
         
@@ -4535,13 +4557,13 @@ public final class NestedEnumTest {
 
       private boolean isDemo_ ;
       /**
-       * <code>optional bool is_demo = 13;</code>
+       * <code>bool is_demo = 13;</code>
        */
       public boolean getIsDemo() {
         return isDemo_;
       }
       /**
-       * <code>optional bool is_demo = 13;</code>
+       * <code>bool is_demo = 13;</code>
        */
       public Builder setIsDemo(boolean value) {
         
@@ -4550,7 +4572,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_demo = 13;</code>
+       * <code>bool is_demo = 13;</code>
        */
       public Builder clearIsDemo() {
         
@@ -4852,47 +4874,47 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+     * <code>.org.roylance.yaorm.Projection projection = 2;</code>
      */
     boolean hasProjection();
     /**
-     * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+     * <code>.org.roylance.yaorm.Projection projection = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Projection getProjection();
     /**
-     * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+     * <code>.org.roylance.yaorm.Projection projection = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder getProjectionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+     * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
      */
     boolean hasMysqlRedshiftTable();
     /**
-     * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+     * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable getMysqlRedshiftTable();
     /**
-     * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+     * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder getMysqlRedshiftTableOrBuilder();
 
     /**
-     * <code>optional string table_name = 4;</code>
+     * <code>string table_name = 4;</code>
      */
     java.lang.String getTableName();
     /**
-     * <code>optional string table_name = 4;</code>
+     * <code>string table_name = 4;</code>
      */
     com.google.protobuf.ByteString
         getTableNameBytes();
@@ -5002,7 +5024,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -5017,7 +5039,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -5036,19 +5058,19 @@ public final class NestedEnumTest {
     public static final int PROJECTION_FIELD_NUMBER = 2;
     private org.roylance.yaorm.NestedEnumTest.Projection projection_;
     /**
-     * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+     * <code>.org.roylance.yaorm.Projection projection = 2;</code>
      */
     public boolean hasProjection() {
       return projection_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+     * <code>.org.roylance.yaorm.Projection projection = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Projection getProjection() {
       return projection_ == null ? org.roylance.yaorm.NestedEnumTest.Projection.getDefaultInstance() : projection_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+     * <code>.org.roylance.yaorm.Projection projection = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder getProjectionOrBuilder() {
       return getProjection();
@@ -5057,19 +5079,19 @@ public final class NestedEnumTest {
     public static final int MYSQL_REDSHIFT_TABLE_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable mysqlRedshiftTable_;
     /**
-     * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+     * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
      */
     public boolean hasMysqlRedshiftTable() {
       return mysqlRedshiftTable_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+     * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable getMysqlRedshiftTable() {
       return mysqlRedshiftTable_ == null ? org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.getDefaultInstance() : mysqlRedshiftTable_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+     * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder getMysqlRedshiftTableOrBuilder() {
       return getMysqlRedshiftTable();
@@ -5078,7 +5100,7 @@ public final class NestedEnumTest {
     public static final int TABLE_NAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object tableName_;
     /**
-     * <code>optional string table_name = 4;</code>
+     * <code>string table_name = 4;</code>
      */
     public java.lang.String getTableName() {
       java.lang.Object ref = tableName_;
@@ -5093,7 +5115,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string table_name = 4;</code>
+     * <code>string table_name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTableNameBytes() {
@@ -5193,7 +5215,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasProjection()) {
@@ -5211,6 +5233,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ProjectionTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5457,7 +5490,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -5472,7 +5505,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -5488,7 +5521,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -5501,7 +5534,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -5510,7 +5543,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -5528,13 +5561,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder> projectionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public boolean hasProjection() {
         return projectionBuilder_ != null || projection_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Projection getProjection() {
         if (projectionBuilder_ == null) {
@@ -5544,7 +5577,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public Builder setProjection(org.roylance.yaorm.NestedEnumTest.Projection value) {
         if (projectionBuilder_ == null) {
@@ -5560,7 +5593,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public Builder setProjection(
           org.roylance.yaorm.NestedEnumTest.Projection.Builder builderForValue) {
@@ -5574,7 +5607,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public Builder mergeProjection(org.roylance.yaorm.NestedEnumTest.Projection value) {
         if (projectionBuilder_ == null) {
@@ -5592,7 +5625,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public Builder clearProjection() {
         if (projectionBuilder_ == null) {
@@ -5606,7 +5639,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Projection.Builder getProjectionBuilder() {
         
@@ -5614,7 +5647,7 @@ public final class NestedEnumTest {
         return getProjectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder getProjectionOrBuilder() {
         if (projectionBuilder_ != null) {
@@ -5625,7 +5658,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Projection projection = 2;</code>
+       * <code>.org.roylance.yaorm.Projection projection = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Projection, org.roylance.yaorm.NestedEnumTest.Projection.Builder, org.roylance.yaorm.NestedEnumTest.ProjectionOrBuilder> 
@@ -5645,13 +5678,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder> mysqlRedshiftTableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public boolean hasMysqlRedshiftTable() {
         return mysqlRedshiftTableBuilder_ != null || mysqlRedshiftTable_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable getMysqlRedshiftTable() {
         if (mysqlRedshiftTableBuilder_ == null) {
@@ -5661,7 +5694,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public Builder setMysqlRedshiftTable(org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable value) {
         if (mysqlRedshiftTableBuilder_ == null) {
@@ -5677,7 +5710,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public Builder setMysqlRedshiftTable(
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder builderForValue) {
@@ -5691,7 +5724,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public Builder mergeMysqlRedshiftTable(org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable value) {
         if (mysqlRedshiftTableBuilder_ == null) {
@@ -5709,7 +5742,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public Builder clearMysqlRedshiftTable() {
         if (mysqlRedshiftTableBuilder_ == null) {
@@ -5723,7 +5756,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder getMysqlRedshiftTableBuilder() {
         
@@ -5731,7 +5764,7 @@ public final class NestedEnumTest {
         return getMysqlRedshiftTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder getMysqlRedshiftTableOrBuilder() {
         if (mysqlRedshiftTableBuilder_ != null) {
@@ -5742,7 +5775,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
+       * <code>.org.roylance.yaorm.MySQLRedshiftTable mysql_redshift_table = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable.Builder, org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTableOrBuilder> 
@@ -5760,7 +5793,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object tableName_ = "";
       /**
-       * <code>optional string table_name = 4;</code>
+       * <code>string table_name = 4;</code>
        */
       public java.lang.String getTableName() {
         java.lang.Object ref = tableName_;
@@ -5775,7 +5808,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string table_name = 4;</code>
+       * <code>string table_name = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTableNameBytes() {
@@ -5791,7 +5824,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string table_name = 4;</code>
+       * <code>string table_name = 4;</code>
        */
       public Builder setTableName(
           java.lang.String value) {
@@ -5804,7 +5837,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string table_name = 4;</code>
+       * <code>string table_name = 4;</code>
        */
       public Builder clearTableName() {
         
@@ -5813,7 +5846,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string table_name = 4;</code>
+       * <code>string table_name = 4;</code>
        */
       public Builder setTableNameBytes(
           com.google.protobuf.ByteString value) {
@@ -5880,31 +5913,31 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string raw_sql = 3;</code>
+     * <code>string raw_sql = 3;</code>
      */
     java.lang.String getRawSql();
     /**
-     * <code>optional string raw_sql = 3;</code>
+     * <code>string raw_sql = 3;</code>
      */
     com.google.protobuf.ByteString
         getRawSqlBytes();
@@ -5958,15 +5991,15 @@ public final class NestedEnumTest {
         int index);
 
     /**
-     * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+     * <code>.org.roylance.yaorm.Customer customer = 6;</code>
      */
     boolean hasCustomer();
     /**
-     * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+     * <code>.org.roylance.yaorm.Customer customer = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Customer getCustomer();
     /**
-     * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+     * <code>.org.roylance.yaorm.Customer customer = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder getCustomerOrBuilder();
   }
@@ -6096,7 +6129,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -6111,7 +6144,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -6130,7 +6163,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -6145,7 +6178,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -6164,7 +6197,7 @@ public final class NestedEnumTest {
     public static final int RAW_SQL_FIELD_NUMBER = 3;
     private volatile java.lang.Object rawSql_;
     /**
-     * <code>optional string raw_sql = 3;</code>
+     * <code>string raw_sql = 3;</code>
      */
     public java.lang.String getRawSql() {
       java.lang.Object ref = rawSql_;
@@ -6179,7 +6212,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string raw_sql = 3;</code>
+     * <code>string raw_sql = 3;</code>
      */
     public com.google.protobuf.ByteString
         getRawSqlBytes() {
@@ -6268,19 +6301,19 @@ public final class NestedEnumTest {
     public static final int CUSTOMER_FIELD_NUMBER = 6;
     private org.roylance.yaorm.NestedEnumTest.Customer customer_;
     /**
-     * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+     * <code>.org.roylance.yaorm.Customer customer = 6;</code>
      */
     public boolean hasCustomer() {
       return customer_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+     * <code>.org.roylance.yaorm.Customer customer = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Customer getCustomer() {
       return customer_ == null ? org.roylance.yaorm.NestedEnumTest.Customer.getDefaultInstance() : customer_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+     * <code>.org.roylance.yaorm.Customer customer = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder getCustomerOrBuilder() {
       return getCustomer();
@@ -6384,7 +6417,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -6408,6 +6441,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Transformation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6735,7 +6779,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -6750,7 +6794,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -6766,7 +6810,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -6779,7 +6823,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -6788,7 +6832,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6804,7 +6848,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -6819,7 +6863,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -6835,7 +6879,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -6848,7 +6892,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -6857,7 +6901,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -6873,7 +6917,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object rawSql_ = "";
       /**
-       * <code>optional string raw_sql = 3;</code>
+       * <code>string raw_sql = 3;</code>
        */
       public java.lang.String getRawSql() {
         java.lang.Object ref = rawSql_;
@@ -6888,7 +6932,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string raw_sql = 3;</code>
+       * <code>string raw_sql = 3;</code>
        */
       public com.google.protobuf.ByteString
           getRawSqlBytes() {
@@ -6904,7 +6948,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string raw_sql = 3;</code>
+       * <code>string raw_sql = 3;</code>
        */
       public Builder setRawSql(
           java.lang.String value) {
@@ -6917,7 +6961,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string raw_sql = 3;</code>
+       * <code>string raw_sql = 3;</code>
        */
       public Builder clearRawSql() {
         
@@ -6926,7 +6970,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string raw_sql = 3;</code>
+       * <code>string raw_sql = 3;</code>
        */
       public Builder setRawSqlBytes(
           com.google.protobuf.ByteString value) {
@@ -7424,13 +7468,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder> customerBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public boolean hasCustomer() {
         return customerBuilder_ != null || customer_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Customer getCustomer() {
         if (customerBuilder_ == null) {
@@ -7440,7 +7484,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public Builder setCustomer(org.roylance.yaorm.NestedEnumTest.Customer value) {
         if (customerBuilder_ == null) {
@@ -7456,7 +7500,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public Builder setCustomer(
           org.roylance.yaorm.NestedEnumTest.Customer.Builder builderForValue) {
@@ -7470,7 +7514,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public Builder mergeCustomer(org.roylance.yaorm.NestedEnumTest.Customer value) {
         if (customerBuilder_ == null) {
@@ -7488,7 +7532,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public Builder clearCustomer() {
         if (customerBuilder_ == null) {
@@ -7502,7 +7546,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Customer.Builder getCustomerBuilder() {
         
@@ -7510,7 +7554,7 @@ public final class NestedEnumTest {
         return getCustomerFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder getCustomerOrBuilder() {
         if (customerBuilder_ != null) {
@@ -7521,7 +7565,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Customer customer = 6;</code>
+       * <code>.org.roylance.yaorm.Customer customer = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Customer, org.roylance.yaorm.NestedEnumTest.Customer.Builder, org.roylance.yaorm.NestedEnumTest.CustomerOrBuilder> 
@@ -7590,60 +7634,60 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     boolean hasTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Transformation getTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
      */
     boolean hasInputTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Transformation getInputTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getInputTransformationOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+     * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
      */
     boolean hasDataset();
     /**
-     * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+     * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataSet getDataset();
     /**
-     * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+     * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder getDatasetOrBuilder();
 
     /**
-     * <code>optional string display = 5;</code>
+     * <code>string display = 5;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 5;</code>
+     * <code>string display = 5;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
@@ -7766,7 +7810,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -7781,7 +7825,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -7800,19 +7844,19 @@ public final class NestedEnumTest {
     public static final int TRANSFORMATION_FIELD_NUMBER = 2;
     private org.roylance.yaorm.NestedEnumTest.Transformation transformation_;
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     public boolean hasTransformation() {
       return transformation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Transformation getTransformation() {
       return transformation_ == null ? org.roylance.yaorm.NestedEnumTest.Transformation.getDefaultInstance() : transformation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder() {
       return getTransformation();
@@ -7821,19 +7865,19 @@ public final class NestedEnumTest {
     public static final int INPUT_TRANSFORMATION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.Transformation inputTransformation_;
     /**
-     * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
      */
     public boolean hasInputTransformation() {
       return inputTransformation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Transformation getInputTransformation() {
       return inputTransformation_ == null ? org.roylance.yaorm.NestedEnumTest.Transformation.getDefaultInstance() : inputTransformation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getInputTransformationOrBuilder() {
       return getInputTransformation();
@@ -7842,19 +7886,19 @@ public final class NestedEnumTest {
     public static final int DATASET_FIELD_NUMBER = 4;
     private org.roylance.yaorm.NestedEnumTest.DataSet dataset_;
     /**
-     * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+     * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
      */
     public boolean hasDataset() {
       return dataset_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+     * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataSet getDataset() {
       return dataset_ == null ? org.roylance.yaorm.NestedEnumTest.DataSet.getDefaultInstance() : dataset_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+     * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder getDatasetOrBuilder() {
       return getDataset();
@@ -7863,7 +7907,7 @@ public final class NestedEnumTest {
     public static final int DISPLAY_FIELD_NUMBER = 5;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 5;</code>
+     * <code>string display = 5;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -7878,7 +7922,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string display = 5;</code>
+     * <code>string display = 5;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -7990,7 +8034,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasTransformation()) {
@@ -8012,6 +8056,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Input parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8272,7 +8327,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -8287,7 +8342,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -8303,7 +8358,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -8316,7 +8371,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -8325,7 +8380,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -8343,13 +8398,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public boolean hasTransformation() {
         return transformationBuilder_ != null || transformation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation getTransformation() {
         if (transformationBuilder_ == null) {
@@ -8359,7 +8414,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder setTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (transformationBuilder_ == null) {
@@ -8375,7 +8430,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder setTransformation(
           org.roylance.yaorm.NestedEnumTest.Transformation.Builder builderForValue) {
@@ -8389,7 +8444,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder mergeTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (transformationBuilder_ == null) {
@@ -8407,7 +8462,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder clearTransformation() {
         if (transformationBuilder_ == null) {
@@ -8421,7 +8476,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation.Builder getTransformationBuilder() {
         
@@ -8429,7 +8484,7 @@ public final class NestedEnumTest {
         return getTransformationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder() {
         if (transformationBuilder_ != null) {
@@ -8440,7 +8495,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
@@ -8460,13 +8515,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> inputTransformationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public boolean hasInputTransformation() {
         return inputTransformationBuilder_ != null || inputTransformation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation getInputTransformation() {
         if (inputTransformationBuilder_ == null) {
@@ -8476,7 +8531,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public Builder setInputTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (inputTransformationBuilder_ == null) {
@@ -8492,7 +8547,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public Builder setInputTransformation(
           org.roylance.yaorm.NestedEnumTest.Transformation.Builder builderForValue) {
@@ -8506,7 +8561,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public Builder mergeInputTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (inputTransformationBuilder_ == null) {
@@ -8524,7 +8579,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public Builder clearInputTransformation() {
         if (inputTransformationBuilder_ == null) {
@@ -8538,7 +8593,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation.Builder getInputTransformationBuilder() {
         
@@ -8546,7 +8601,7 @@ public final class NestedEnumTest {
         return getInputTransformationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getInputTransformationOrBuilder() {
         if (inputTransformationBuilder_ != null) {
@@ -8557,7 +8612,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation input_transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation input_transformation = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
@@ -8577,13 +8632,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder> datasetBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public boolean hasDataset() {
         return datasetBuilder_ != null || dataset_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataSet getDataset() {
         if (datasetBuilder_ == null) {
@@ -8593,7 +8648,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public Builder setDataset(org.roylance.yaorm.NestedEnumTest.DataSet value) {
         if (datasetBuilder_ == null) {
@@ -8609,7 +8664,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public Builder setDataset(
           org.roylance.yaorm.NestedEnumTest.DataSet.Builder builderForValue) {
@@ -8623,7 +8678,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public Builder mergeDataset(org.roylance.yaorm.NestedEnumTest.DataSet value) {
         if (datasetBuilder_ == null) {
@@ -8641,7 +8696,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public Builder clearDataset() {
         if (datasetBuilder_ == null) {
@@ -8655,7 +8710,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataSet.Builder getDatasetBuilder() {
         
@@ -8663,7 +8718,7 @@ public final class NestedEnumTest {
         return getDatasetFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder getDatasetOrBuilder() {
         if (datasetBuilder_ != null) {
@@ -8674,7 +8729,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataSet dataset = 4;</code>
+       * <code>.org.roylance.yaorm.DataSet dataset = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataSet, org.roylance.yaorm.NestedEnumTest.DataSet.Builder, org.roylance.yaorm.NestedEnumTest.DataSetOrBuilder> 
@@ -8692,7 +8747,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 5;</code>
+       * <code>string display = 5;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -8707,7 +8762,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string display = 5;</code>
+       * <code>string display = 5;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -8723,7 +8778,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string display = 5;</code>
+       * <code>string display = 5;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -8736,7 +8791,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string display = 5;</code>
+       * <code>string display = 5;</code>
        */
       public Builder clearDisplay() {
         
@@ -8745,7 +8800,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string display = 5;</code>
+       * <code>string display = 5;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -8812,44 +8867,44 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     boolean hasTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Transformation getTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder();
 
     /**
-     * <code>optional string column_name = 3;</code>
+     * <code>string column_name = 3;</code>
      */
     java.lang.String getColumnName();
     /**
-     * <code>optional string column_name = 3;</code>
+     * <code>string column_name = 3;</code>
      */
     com.google.protobuf.ByteString
         getColumnNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     int getColumnTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType();
   }
@@ -8952,7 +9007,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -8967,7 +9022,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -8986,19 +9041,19 @@ public final class NestedEnumTest {
     public static final int TRANSFORMATION_FIELD_NUMBER = 2;
     private org.roylance.yaorm.NestedEnumTest.Transformation transformation_;
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     public boolean hasTransformation() {
       return transformation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Transformation getTransformation() {
       return transformation_ == null ? org.roylance.yaorm.NestedEnumTest.Transformation.getDefaultInstance() : transformation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder() {
       return getTransformation();
@@ -9007,7 +9062,7 @@ public final class NestedEnumTest {
     public static final int COLUMN_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object columnName_;
     /**
-     * <code>optional string column_name = 3;</code>
+     * <code>string column_name = 3;</code>
      */
     public java.lang.String getColumnName() {
       java.lang.Object ref = columnName_;
@@ -9022,7 +9077,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string column_name = 3;</code>
+     * <code>string column_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getColumnNameBytes() {
@@ -9041,13 +9096,13 @@ public final class NestedEnumTest {
     public static final int COLUMN_TYPE_FIELD_NUMBER = 4;
     private int columnType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     public int getColumnTypeValue() {
       return columnType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
@@ -9134,7 +9189,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasTransformation()) {
@@ -9150,6 +9205,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Output parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9388,7 +9454,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -9403,7 +9469,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -9419,7 +9485,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -9432,7 +9498,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -9441,7 +9507,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -9459,13 +9525,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public boolean hasTransformation() {
         return transformationBuilder_ != null || transformation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation getTransformation() {
         if (transformationBuilder_ == null) {
@@ -9475,7 +9541,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder setTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (transformationBuilder_ == null) {
@@ -9491,7 +9557,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder setTransformation(
           org.roylance.yaorm.NestedEnumTest.Transformation.Builder builderForValue) {
@@ -9505,7 +9571,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder mergeTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (transformationBuilder_ == null) {
@@ -9523,7 +9589,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public Builder clearTransformation() {
         if (transformationBuilder_ == null) {
@@ -9537,7 +9603,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation.Builder getTransformationBuilder() {
         
@@ -9545,7 +9611,7 @@ public final class NestedEnumTest {
         return getTransformationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder() {
         if (transformationBuilder_ != null) {
@@ -9556,7 +9622,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 2;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
@@ -9574,7 +9640,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object columnName_ = "";
       /**
-       * <code>optional string column_name = 3;</code>
+       * <code>string column_name = 3;</code>
        */
       public java.lang.String getColumnName() {
         java.lang.Object ref = columnName_;
@@ -9589,7 +9655,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_name = 3;</code>
+       * <code>string column_name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getColumnNameBytes() {
@@ -9605,7 +9671,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_name = 3;</code>
+       * <code>string column_name = 3;</code>
        */
       public Builder setColumnName(
           java.lang.String value) {
@@ -9618,7 +9684,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_name = 3;</code>
+       * <code>string column_name = 3;</code>
        */
       public Builder clearColumnName() {
         
@@ -9627,7 +9693,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_name = 3;</code>
+       * <code>string column_name = 3;</code>
        */
       public Builder setColumnNameBytes(
           com.google.protobuf.ByteString value) {
@@ -9643,13 +9709,13 @@ public final class NestedEnumTest {
 
       private int columnType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public int getColumnTypeValue() {
         return columnType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public Builder setColumnTypeValue(int value) {
         columnType_ = value;
@@ -9657,14 +9723,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public Builder setColumnType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -9676,7 +9742,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public Builder clearColumnType() {
         
@@ -9738,49 +9804,49 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     java.lang.String getDestinationName();
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getDestinationNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     int getColumnDelimiterValue();
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter();
 
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     int getRowDelimiterValue();
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter();
 
     /**
-     * <code>optional string directory_location = 5;</code>
+     * <code>string directory_location = 5;</code>
      */
     java.lang.String getDirectoryLocation();
     /**
-     * <code>optional string directory_location = 5;</code>
+     * <code>string directory_location = 5;</code>
      */
     com.google.protobuf.ByteString
         getDirectoryLocationBytes();
@@ -9834,12 +9900,12 @@ public final class NestedEnumTest {
         int index);
 
     /**
-     * <code>optional bool has_headers = 8;</code>
+     * <code>bool has_headers = 8;</code>
      */
     boolean getHasHeaders();
 
     /**
-     * <code>optional bool is_fixed_width = 9;</code>
+     * <code>bool is_fixed_width = 9;</code>
      */
     boolean getIsFixedWidth();
   }
@@ -9982,7 +10048,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -9997,7 +10063,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -10016,7 +10082,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object destinationName_;
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     public java.lang.String getDestinationName() {
       java.lang.Object ref = destinationName_;
@@ -10031,7 +10097,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationNameBytes() {
@@ -10050,13 +10116,13 @@ public final class NestedEnumTest {
     public static final int COLUMN_DELIMITER_FIELD_NUMBER = 3;
     private int columnDelimiter_;
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     public int getColumnDelimiterValue() {
       return columnDelimiter_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
       org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
@@ -10066,13 +10132,13 @@ public final class NestedEnumTest {
     public static final int ROW_DELIMITER_FIELD_NUMBER = 4;
     private int rowDelimiter_;
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     public int getRowDelimiterValue() {
       return rowDelimiter_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
       org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
@@ -10082,7 +10148,7 @@ public final class NestedEnumTest {
     public static final int DIRECTORY_LOCATION_FIELD_NUMBER = 5;
     private volatile java.lang.Object directoryLocation_;
     /**
-     * <code>optional string directory_location = 5;</code>
+     * <code>string directory_location = 5;</code>
      */
     public java.lang.String getDirectoryLocation() {
       java.lang.Object ref = directoryLocation_;
@@ -10097,7 +10163,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string directory_location = 5;</code>
+     * <code>string directory_location = 5;</code>
      */
     public com.google.protobuf.ByteString
         getDirectoryLocationBytes() {
@@ -10186,7 +10252,7 @@ public final class NestedEnumTest {
     public static final int HAS_HEADERS_FIELD_NUMBER = 8;
     private boolean hasHeaders_;
     /**
-     * <code>optional bool has_headers = 8;</code>
+     * <code>bool has_headers = 8;</code>
      */
     public boolean getHasHeaders() {
       return hasHeaders_;
@@ -10195,7 +10261,7 @@ public final class NestedEnumTest {
     public static final int IS_FIXED_WIDTH_FIELD_NUMBER = 9;
     private boolean isFixedWidth_;
     /**
-     * <code>optional bool is_fixed_width = 9;</code>
+     * <code>bool is_fixed_width = 9;</code>
      */
     public boolean getIsFixedWidth() {
       return isFixedWidth_;
@@ -10321,7 +10387,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESTINATION_NAME_FIELD_NUMBER;
@@ -10351,6 +10417,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.DataSet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10688,7 +10765,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -10703,7 +10780,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -10719,7 +10796,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -10732,7 +10809,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -10741,7 +10818,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -10757,7 +10834,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object destinationName_ = "";
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public java.lang.String getDestinationName() {
         java.lang.Object ref = destinationName_;
@@ -10772,7 +10849,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationNameBytes() {
@@ -10788,7 +10865,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public Builder setDestinationName(
           java.lang.String value) {
@@ -10801,7 +10878,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public Builder clearDestinationName() {
         
@@ -10810,7 +10887,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public Builder setDestinationNameBytes(
           com.google.protobuf.ByteString value) {
@@ -10826,13 +10903,13 @@ public final class NestedEnumTest {
 
       private int columnDelimiter_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public int getColumnDelimiterValue() {
         return columnDelimiter_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public Builder setColumnDelimiterValue(int value) {
         columnDelimiter_ = value;
@@ -10840,14 +10917,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
         org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public Builder setColumnDelimiter(org.roylance.yaorm.NestedEnumTest.DelimiterType value) {
         if (value == null) {
@@ -10859,7 +10936,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public Builder clearColumnDelimiter() {
         
@@ -10870,13 +10947,13 @@ public final class NestedEnumTest {
 
       private int rowDelimiter_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public int getRowDelimiterValue() {
         return rowDelimiter_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public Builder setRowDelimiterValue(int value) {
         rowDelimiter_ = value;
@@ -10884,14 +10961,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
         org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public Builder setRowDelimiter(org.roylance.yaorm.NestedEnumTest.DelimiterType value) {
         if (value == null) {
@@ -10903,7 +10980,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public Builder clearRowDelimiter() {
         
@@ -10914,7 +10991,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object directoryLocation_ = "";
       /**
-       * <code>optional string directory_location = 5;</code>
+       * <code>string directory_location = 5;</code>
        */
       public java.lang.String getDirectoryLocation() {
         java.lang.Object ref = directoryLocation_;
@@ -10929,7 +11006,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string directory_location = 5;</code>
+       * <code>string directory_location = 5;</code>
        */
       public com.google.protobuf.ByteString
           getDirectoryLocationBytes() {
@@ -10945,7 +11022,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string directory_location = 5;</code>
+       * <code>string directory_location = 5;</code>
        */
       public Builder setDirectoryLocation(
           java.lang.String value) {
@@ -10958,7 +11035,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string directory_location = 5;</code>
+       * <code>string directory_location = 5;</code>
        */
       public Builder clearDirectoryLocation() {
         
@@ -10967,7 +11044,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string directory_location = 5;</code>
+       * <code>string directory_location = 5;</code>
        */
       public Builder setDirectoryLocationBytes(
           com.google.protobuf.ByteString value) {
@@ -11463,13 +11540,13 @@ public final class NestedEnumTest {
 
       private boolean hasHeaders_ ;
       /**
-       * <code>optional bool has_headers = 8;</code>
+       * <code>bool has_headers = 8;</code>
        */
       public boolean getHasHeaders() {
         return hasHeaders_;
       }
       /**
-       * <code>optional bool has_headers = 8;</code>
+       * <code>bool has_headers = 8;</code>
        */
       public Builder setHasHeaders(boolean value) {
         
@@ -11478,7 +11555,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool has_headers = 8;</code>
+       * <code>bool has_headers = 8;</code>
        */
       public Builder clearHasHeaders() {
         
@@ -11489,13 +11566,13 @@ public final class NestedEnumTest {
 
       private boolean isFixedWidth_ ;
       /**
-       * <code>optional bool is_fixed_width = 9;</code>
+       * <code>bool is_fixed_width = 9;</code>
        */
       public boolean getIsFixedWidth() {
         return isFixedWidth_;
       }
       /**
-       * <code>optional bool is_fixed_width = 9;</code>
+       * <code>bool is_fixed_width = 9;</code>
        */
       public Builder setIsFixedWidth(boolean value) {
         
@@ -11504,7 +11581,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_fixed_width = 9;</code>
+       * <code>bool is_fixed_width = 9;</code>
        */
       public Builder clearIsFixedWidth() {
         
@@ -11566,32 +11643,32 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional int64 received_date = 3;</code>
+     * <code>int64 received_date = 3;</code>
      */
     long getReceivedDate();
 
     /**
-     * <code>optional string compressed_base64 = 4;</code>
+     * <code>string compressed_base64 = 4;</code>
      */
     java.lang.String getCompressedBase64();
     /**
-     * <code>optional string compressed_base64 = 4;</code>
+     * <code>string compressed_base64 = 4;</code>
      */
     com.google.protobuf.ByteString
         getCompressedBase64Bytes();
 
     /**
-     * <code>optional bool has_processed = 5;</code>
+     * <code>bool has_processed = 5;</code>
      */
     boolean getHasProcessed();
   }
@@ -11686,7 +11763,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -11701,7 +11778,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -11720,7 +11797,7 @@ public final class NestedEnumTest {
     public static final int RECEIVED_DATE_FIELD_NUMBER = 3;
     private long receivedDate_;
     /**
-     * <code>optional int64 received_date = 3;</code>
+     * <code>int64 received_date = 3;</code>
      */
     public long getReceivedDate() {
       return receivedDate_;
@@ -11729,7 +11806,7 @@ public final class NestedEnumTest {
     public static final int COMPRESSED_BASE64_FIELD_NUMBER = 4;
     private volatile java.lang.Object compressedBase64_;
     /**
-     * <code>optional string compressed_base64 = 4;</code>
+     * <code>string compressed_base64 = 4;</code>
      */
     public java.lang.String getCompressedBase64() {
       java.lang.Object ref = compressedBase64_;
@@ -11744,7 +11821,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string compressed_base64 = 4;</code>
+     * <code>string compressed_base64 = 4;</code>
      */
     public com.google.protobuf.ByteString
         getCompressedBase64Bytes() {
@@ -11763,7 +11840,7 @@ public final class NestedEnumTest {
     public static final int HAS_PROCESSED_FIELD_NUMBER = 5;
     private boolean hasProcessed_;
     /**
-     * <code>optional bool has_processed = 5;</code>
+     * <code>bool has_processed = 5;</code>
      */
     public boolean getHasProcessed() {
       return hasProcessed_;
@@ -11847,7 +11924,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + RECEIVED_DATE_FIELD_NUMBER;
@@ -11863,6 +11940,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ReceivedDataSet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12093,7 +12181,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -12108,7 +12196,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -12124,7 +12212,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -12137,7 +12225,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -12146,7 +12234,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -12162,13 +12250,13 @@ public final class NestedEnumTest {
 
       private long receivedDate_ ;
       /**
-       * <code>optional int64 received_date = 3;</code>
+       * <code>int64 received_date = 3;</code>
        */
       public long getReceivedDate() {
         return receivedDate_;
       }
       /**
-       * <code>optional int64 received_date = 3;</code>
+       * <code>int64 received_date = 3;</code>
        */
       public Builder setReceivedDate(long value) {
         
@@ -12177,7 +12265,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 received_date = 3;</code>
+       * <code>int64 received_date = 3;</code>
        */
       public Builder clearReceivedDate() {
         
@@ -12188,7 +12276,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object compressedBase64_ = "";
       /**
-       * <code>optional string compressed_base64 = 4;</code>
+       * <code>string compressed_base64 = 4;</code>
        */
       public java.lang.String getCompressedBase64() {
         java.lang.Object ref = compressedBase64_;
@@ -12203,7 +12291,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string compressed_base64 = 4;</code>
+       * <code>string compressed_base64 = 4;</code>
        */
       public com.google.protobuf.ByteString
           getCompressedBase64Bytes() {
@@ -12219,7 +12307,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string compressed_base64 = 4;</code>
+       * <code>string compressed_base64 = 4;</code>
        */
       public Builder setCompressedBase64(
           java.lang.String value) {
@@ -12232,7 +12320,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string compressed_base64 = 4;</code>
+       * <code>string compressed_base64 = 4;</code>
        */
       public Builder clearCompressedBase64() {
         
@@ -12241,7 +12329,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string compressed_base64 = 4;</code>
+       * <code>string compressed_base64 = 4;</code>
        */
       public Builder setCompressedBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -12257,13 +12345,13 @@ public final class NestedEnumTest {
 
       private boolean hasProcessed_ ;
       /**
-       * <code>optional bool has_processed = 5;</code>
+       * <code>bool has_processed = 5;</code>
        */
       public boolean getHasProcessed() {
         return hasProcessed_;
       }
       /**
-       * <code>optional bool has_processed = 5;</code>
+       * <code>bool has_processed = 5;</code>
        */
       public Builder setHasProcessed(boolean value) {
         
@@ -12272,7 +12360,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool has_processed = 5;</code>
+       * <code>bool has_processed = 5;</code>
        */
       public Builder clearHasProcessed() {
         
@@ -12334,99 +12422,99 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     java.lang.String getSourceName();
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getSourceNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
      */
     int getSourceTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceType();
 
     /**
-     * <code>optional int64 source_index = 4;</code>
+     * <code>int64 source_index = 4;</code>
      */
     long getSourceIndex();
 
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     java.lang.String getDestinationName();
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     com.google.protobuf.ByteString
         getDestinationNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     int getDestinationTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType();
 
     /**
-     * <code>optional int64 destination_index = 7;</code>
+     * <code>int64 destination_index = 7;</code>
      */
     long getDestinationIndex();
 
     /**
-     * <code>optional int64 fixed_width_start = 8;</code>
+     * <code>int64 fixed_width_start = 8;</code>
      */
     long getFixedWidthStart();
 
     /**
-     * <code>optional int64 fixed_width_end = 9;</code>
+     * <code>int64 fixed_width_end = 9;</code>
      */
     long getFixedWidthEnd();
 
     /**
-     * <code>optional bool is_overpunch = 10;</code>
+     * <code>bool is_overpunch = 10;</code>
      */
     boolean getIsOverpunch();
 
     /**
-     * <code>optional bool has_special_instructions = 11;</code>
+     * <code>bool has_special_instructions = 11;</code>
      */
     boolean getHasSpecialInstructions();
 
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     java.lang.String getSpecialInstructionsEquals();
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     com.google.protobuf.ByteString
         getSpecialInstructionsEqualsBytes();
 
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     java.lang.String getSpecialInstructionsNotEquals();
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     com.google.protobuf.ByteString
         getSpecialInstructionsNotEqualsBytes();
@@ -12581,7 +12669,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -12596,7 +12684,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -12615,7 +12703,7 @@ public final class NestedEnumTest {
     public static final int SOURCE_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object sourceName_;
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     public java.lang.String getSourceName() {
       java.lang.Object ref = sourceName_;
@@ -12630,7 +12718,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getSourceNameBytes() {
@@ -12649,13 +12737,13 @@ public final class NestedEnumTest {
     public static final int SOURCE_TYPE_FIELD_NUMBER = 3;
     private int sourceType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
      */
     public int getSourceTypeValue() {
       return sourceType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceType_);
@@ -12665,7 +12753,7 @@ public final class NestedEnumTest {
     public static final int SOURCE_INDEX_FIELD_NUMBER = 4;
     private long sourceIndex_;
     /**
-     * <code>optional int64 source_index = 4;</code>
+     * <code>int64 source_index = 4;</code>
      */
     public long getSourceIndex() {
       return sourceIndex_;
@@ -12674,7 +12762,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_NAME_FIELD_NUMBER = 5;
     private volatile java.lang.Object destinationName_;
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     public java.lang.String getDestinationName() {
       java.lang.Object ref = destinationName_;
@@ -12689,7 +12777,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationNameBytes() {
@@ -12708,13 +12796,13 @@ public final class NestedEnumTest {
     public static final int DESTINATION_TYPE_FIELD_NUMBER = 6;
     private int destinationType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     public int getDestinationTypeValue() {
       return destinationType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
@@ -12724,7 +12812,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_INDEX_FIELD_NUMBER = 7;
     private long destinationIndex_;
     /**
-     * <code>optional int64 destination_index = 7;</code>
+     * <code>int64 destination_index = 7;</code>
      */
     public long getDestinationIndex() {
       return destinationIndex_;
@@ -12733,7 +12821,7 @@ public final class NestedEnumTest {
     public static final int FIXED_WIDTH_START_FIELD_NUMBER = 8;
     private long fixedWidthStart_;
     /**
-     * <code>optional int64 fixed_width_start = 8;</code>
+     * <code>int64 fixed_width_start = 8;</code>
      */
     public long getFixedWidthStart() {
       return fixedWidthStart_;
@@ -12742,7 +12830,7 @@ public final class NestedEnumTest {
     public static final int FIXED_WIDTH_END_FIELD_NUMBER = 9;
     private long fixedWidthEnd_;
     /**
-     * <code>optional int64 fixed_width_end = 9;</code>
+     * <code>int64 fixed_width_end = 9;</code>
      */
     public long getFixedWidthEnd() {
       return fixedWidthEnd_;
@@ -12751,7 +12839,7 @@ public final class NestedEnumTest {
     public static final int IS_OVERPUNCH_FIELD_NUMBER = 10;
     private boolean isOverpunch_;
     /**
-     * <code>optional bool is_overpunch = 10;</code>
+     * <code>bool is_overpunch = 10;</code>
      */
     public boolean getIsOverpunch() {
       return isOverpunch_;
@@ -12760,7 +12848,7 @@ public final class NestedEnumTest {
     public static final int HAS_SPECIAL_INSTRUCTIONS_FIELD_NUMBER = 11;
     private boolean hasSpecialInstructions_;
     /**
-     * <code>optional bool has_special_instructions = 11;</code>
+     * <code>bool has_special_instructions = 11;</code>
      */
     public boolean getHasSpecialInstructions() {
       return hasSpecialInstructions_;
@@ -12769,7 +12857,7 @@ public final class NestedEnumTest {
     public static final int SPECIAL_INSTRUCTIONS_EQUALS_FIELD_NUMBER = 12;
     private volatile java.lang.Object specialInstructionsEquals_;
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     public java.lang.String getSpecialInstructionsEquals() {
       java.lang.Object ref = specialInstructionsEquals_;
@@ -12784,7 +12872,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     public com.google.protobuf.ByteString
         getSpecialInstructionsEqualsBytes() {
@@ -12803,7 +12891,7 @@ public final class NestedEnumTest {
     public static final int SPECIAL_INSTRUCTIONS_NOT_EQUALS_FIELD_NUMBER = 13;
     private volatile java.lang.Object specialInstructionsNotEquals_;
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     public java.lang.String getSpecialInstructionsNotEquals() {
       java.lang.Object ref = specialInstructionsNotEquals_;
@@ -12818,7 +12906,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     public com.google.protobuf.ByteString
         getSpecialInstructionsNotEqualsBytes() {
@@ -12988,7 +13076,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + SOURCE_NAME_FIELD_NUMBER;
@@ -13026,6 +13114,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13313,7 +13412,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -13328,7 +13427,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -13344,7 +13443,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -13357,7 +13456,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -13366,7 +13465,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -13382,7 +13481,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object sourceName_ = "";
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public java.lang.String getSourceName() {
         java.lang.Object ref = sourceName_;
@@ -13397,7 +13496,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getSourceNameBytes() {
@@ -13413,7 +13512,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public Builder setSourceName(
           java.lang.String value) {
@@ -13426,7 +13525,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public Builder clearSourceName() {
         
@@ -13435,7 +13534,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public Builder setSourceNameBytes(
           com.google.protobuf.ByteString value) {
@@ -13451,13 +13550,13 @@ public final class NestedEnumTest {
 
       private int sourceType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
        */
       public int getSourceTypeValue() {
         return sourceType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
        */
       public Builder setSourceTypeValue(int value) {
         sourceType_ = value;
@@ -13465,14 +13564,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
        */
       public Builder setSourceType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -13484,7 +13583,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_type = 3;</code>
        */
       public Builder clearSourceType() {
         
@@ -13495,13 +13594,13 @@ public final class NestedEnumTest {
 
       private long sourceIndex_ ;
       /**
-       * <code>optional int64 source_index = 4;</code>
+       * <code>int64 source_index = 4;</code>
        */
       public long getSourceIndex() {
         return sourceIndex_;
       }
       /**
-       * <code>optional int64 source_index = 4;</code>
+       * <code>int64 source_index = 4;</code>
        */
       public Builder setSourceIndex(long value) {
         
@@ -13510,7 +13609,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 source_index = 4;</code>
+       * <code>int64 source_index = 4;</code>
        */
       public Builder clearSourceIndex() {
         
@@ -13521,7 +13620,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object destinationName_ = "";
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public java.lang.String getDestinationName() {
         java.lang.Object ref = destinationName_;
@@ -13536,7 +13635,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationNameBytes() {
@@ -13552,7 +13651,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public Builder setDestinationName(
           java.lang.String value) {
@@ -13565,7 +13664,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public Builder clearDestinationName() {
         
@@ -13574,7 +13673,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public Builder setDestinationNameBytes(
           com.google.protobuf.ByteString value) {
@@ -13590,13 +13689,13 @@ public final class NestedEnumTest {
 
       private int destinationType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public int getDestinationTypeValue() {
         return destinationType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public Builder setDestinationTypeValue(int value) {
         destinationType_ = value;
@@ -13604,14 +13703,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public Builder setDestinationType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -13623,7 +13722,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public Builder clearDestinationType() {
         
@@ -13634,13 +13733,13 @@ public final class NestedEnumTest {
 
       private long destinationIndex_ ;
       /**
-       * <code>optional int64 destination_index = 7;</code>
+       * <code>int64 destination_index = 7;</code>
        */
       public long getDestinationIndex() {
         return destinationIndex_;
       }
       /**
-       * <code>optional int64 destination_index = 7;</code>
+       * <code>int64 destination_index = 7;</code>
        */
       public Builder setDestinationIndex(long value) {
         
@@ -13649,7 +13748,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 destination_index = 7;</code>
+       * <code>int64 destination_index = 7;</code>
        */
       public Builder clearDestinationIndex() {
         
@@ -13660,13 +13759,13 @@ public final class NestedEnumTest {
 
       private long fixedWidthStart_ ;
       /**
-       * <code>optional int64 fixed_width_start = 8;</code>
+       * <code>int64 fixed_width_start = 8;</code>
        */
       public long getFixedWidthStart() {
         return fixedWidthStart_;
       }
       /**
-       * <code>optional int64 fixed_width_start = 8;</code>
+       * <code>int64 fixed_width_start = 8;</code>
        */
       public Builder setFixedWidthStart(long value) {
         
@@ -13675,7 +13774,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 fixed_width_start = 8;</code>
+       * <code>int64 fixed_width_start = 8;</code>
        */
       public Builder clearFixedWidthStart() {
         
@@ -13686,13 +13785,13 @@ public final class NestedEnumTest {
 
       private long fixedWidthEnd_ ;
       /**
-       * <code>optional int64 fixed_width_end = 9;</code>
+       * <code>int64 fixed_width_end = 9;</code>
        */
       public long getFixedWidthEnd() {
         return fixedWidthEnd_;
       }
       /**
-       * <code>optional int64 fixed_width_end = 9;</code>
+       * <code>int64 fixed_width_end = 9;</code>
        */
       public Builder setFixedWidthEnd(long value) {
         
@@ -13701,7 +13800,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 fixed_width_end = 9;</code>
+       * <code>int64 fixed_width_end = 9;</code>
        */
       public Builder clearFixedWidthEnd() {
         
@@ -13712,13 +13811,13 @@ public final class NestedEnumTest {
 
       private boolean isOverpunch_ ;
       /**
-       * <code>optional bool is_overpunch = 10;</code>
+       * <code>bool is_overpunch = 10;</code>
        */
       public boolean getIsOverpunch() {
         return isOverpunch_;
       }
       /**
-       * <code>optional bool is_overpunch = 10;</code>
+       * <code>bool is_overpunch = 10;</code>
        */
       public Builder setIsOverpunch(boolean value) {
         
@@ -13727,7 +13826,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_overpunch = 10;</code>
+       * <code>bool is_overpunch = 10;</code>
        */
       public Builder clearIsOverpunch() {
         
@@ -13738,13 +13837,13 @@ public final class NestedEnumTest {
 
       private boolean hasSpecialInstructions_ ;
       /**
-       * <code>optional bool has_special_instructions = 11;</code>
+       * <code>bool has_special_instructions = 11;</code>
        */
       public boolean getHasSpecialInstructions() {
         return hasSpecialInstructions_;
       }
       /**
-       * <code>optional bool has_special_instructions = 11;</code>
+       * <code>bool has_special_instructions = 11;</code>
        */
       public Builder setHasSpecialInstructions(boolean value) {
         
@@ -13753,7 +13852,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool has_special_instructions = 11;</code>
+       * <code>bool has_special_instructions = 11;</code>
        */
       public Builder clearHasSpecialInstructions() {
         
@@ -13764,7 +13863,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object specialInstructionsEquals_ = "";
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public java.lang.String getSpecialInstructionsEquals() {
         java.lang.Object ref = specialInstructionsEquals_;
@@ -13779,7 +13878,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public com.google.protobuf.ByteString
           getSpecialInstructionsEqualsBytes() {
@@ -13795,7 +13894,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public Builder setSpecialInstructionsEquals(
           java.lang.String value) {
@@ -13808,7 +13907,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public Builder clearSpecialInstructionsEquals() {
         
@@ -13817,7 +13916,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public Builder setSpecialInstructionsEqualsBytes(
           com.google.protobuf.ByteString value) {
@@ -13833,7 +13932,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object specialInstructionsNotEquals_ = "";
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public java.lang.String getSpecialInstructionsNotEquals() {
         java.lang.Object ref = specialInstructionsNotEquals_;
@@ -13848,7 +13947,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public com.google.protobuf.ByteString
           getSpecialInstructionsNotEqualsBytes() {
@@ -13864,7 +13963,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public Builder setSpecialInstructionsNotEquals(
           java.lang.String value) {
@@ -13877,7 +13976,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public Builder clearSpecialInstructionsNotEquals() {
         
@@ -13886,7 +13985,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public Builder setSpecialInstructionsNotEqualsBytes(
           com.google.protobuf.ByteString value) {
@@ -13953,21 +14052,21 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string table_name = 2;</code>
+     * <code>string table_name = 2;</code>
      */
     java.lang.String getTableName();
     /**
-     * <code>optional string table_name = 2;</code>
+     * <code>string table_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getTableNameBytes();
@@ -14051,7 +14150,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -14066,7 +14165,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -14085,7 +14184,7 @@ public final class NestedEnumTest {
     public static final int TABLE_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object tableName_;
     /**
-     * <code>optional string table_name = 2;</code>
+     * <code>string table_name = 2;</code>
      */
     public java.lang.String getTableName() {
       java.lang.Object ref = tableName_;
@@ -14100,7 +14199,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string table_name = 2;</code>
+     * <code>string table_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTableNameBytes() {
@@ -14176,7 +14275,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
@@ -14186,6 +14285,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.MySQLRedshiftTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14404,7 +14514,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -14419,7 +14529,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -14435,7 +14545,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -14448,7 +14558,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -14457,7 +14567,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -14473,7 +14583,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object tableName_ = "";
       /**
-       * <code>optional string table_name = 2;</code>
+       * <code>string table_name = 2;</code>
        */
       public java.lang.String getTableName() {
         java.lang.Object ref = tableName_;
@@ -14488,7 +14598,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string table_name = 2;</code>
+       * <code>string table_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTableNameBytes() {
@@ -14504,7 +14614,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string table_name = 2;</code>
+       * <code>string table_name = 2;</code>
        */
       public Builder setTableName(
           java.lang.String value) {
@@ -14517,7 +14627,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string table_name = 2;</code>
+       * <code>string table_name = 2;</code>
        */
       public Builder clearTableName() {
         
@@ -14526,7 +14636,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string table_name = 2;</code>
+       * <code>string table_name = 2;</code>
        */
       public Builder setTableNameBytes(
           com.google.protobuf.ByteString value) {
@@ -14593,106 +14703,106 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string user = 3;</code>
+     * <code>string user = 3;</code>
      */
     java.lang.String getUser();
     /**
-     * <code>optional string user = 3;</code>
+     * <code>string user = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserBytes();
 
     /**
-     * <code>optional string password = 4;</code>
+     * <code>string password = 4;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>optional string password = 4;</code>
+     * <code>string password = 4;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>optional string host = 5;</code>
+     * <code>string host = 5;</code>
      */
     java.lang.String getHost();
     /**
-     * <code>optional string host = 5;</code>
+     * <code>string host = 5;</code>
      */
     com.google.protobuf.ByteString
         getHostBytes();
 
     /**
-     * <code>optional int32 port = 6;</code>
+     * <code>int32 port = 6;</code>
      */
     int getPort();
 
     /**
-     * <code>optional string database = 7;</code>
+     * <code>string database = 7;</code>
      */
     java.lang.String getDatabase();
     /**
-     * <code>optional string database = 7;</code>
+     * <code>string database = 7;</code>
      */
     com.google.protobuf.ByteString
         getDatabaseBytes();
 
     /**
-     * <code>optional string extra = 8;</code>
+     * <code>string extra = 8;</code>
      */
     java.lang.String getExtra();
     /**
-     * <code>optional string extra = 8;</code>
+     * <code>string extra = 8;</code>
      */
     com.google.protobuf.ByteString
         getExtraBytes();
 
     /**
-     * <code>optional string aws_access = 9;</code>
+     * <code>string aws_access = 9;</code>
      */
     java.lang.String getAwsAccess();
     /**
-     * <code>optional string aws_access = 9;</code>
+     * <code>string aws_access = 9;</code>
      */
     com.google.protobuf.ByteString
         getAwsAccessBytes();
 
     /**
-     * <code>optional string aws_secret = 10;</code>
+     * <code>string aws_secret = 10;</code>
      */
     java.lang.String getAwsSecret();
     /**
-     * <code>optional string aws_secret = 10;</code>
+     * <code>string aws_secret = 10;</code>
      */
     com.google.protobuf.ByteString
         getAwsSecretBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
      */
     int getDbtypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType getDbtype();
   }
@@ -14953,7 +15063,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -14968,7 +15078,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -14987,7 +15097,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -15002,7 +15112,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -15021,7 +15131,7 @@ public final class NestedEnumTest {
     public static final int USER_FIELD_NUMBER = 3;
     private volatile java.lang.Object user_;
     /**
-     * <code>optional string user = 3;</code>
+     * <code>string user = 3;</code>
      */
     public java.lang.String getUser() {
       java.lang.Object ref = user_;
@@ -15036,7 +15146,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string user = 3;</code>
+     * <code>string user = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserBytes() {
@@ -15055,7 +15165,7 @@ public final class NestedEnumTest {
     public static final int PASSWORD_FIELD_NUMBER = 4;
     private volatile java.lang.Object password_;
     /**
-     * <code>optional string password = 4;</code>
+     * <code>string password = 4;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -15070,7 +15180,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string password = 4;</code>
+     * <code>string password = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -15089,7 +15199,7 @@ public final class NestedEnumTest {
     public static final int HOST_FIELD_NUMBER = 5;
     private volatile java.lang.Object host_;
     /**
-     * <code>optional string host = 5;</code>
+     * <code>string host = 5;</code>
      */
     public java.lang.String getHost() {
       java.lang.Object ref = host_;
@@ -15104,7 +15214,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string host = 5;</code>
+     * <code>string host = 5;</code>
      */
     public com.google.protobuf.ByteString
         getHostBytes() {
@@ -15123,7 +15233,7 @@ public final class NestedEnumTest {
     public static final int PORT_FIELD_NUMBER = 6;
     private int port_;
     /**
-     * <code>optional int32 port = 6;</code>
+     * <code>int32 port = 6;</code>
      */
     public int getPort() {
       return port_;
@@ -15132,7 +15242,7 @@ public final class NestedEnumTest {
     public static final int DATABASE_FIELD_NUMBER = 7;
     private volatile java.lang.Object database_;
     /**
-     * <code>optional string database = 7;</code>
+     * <code>string database = 7;</code>
      */
     public java.lang.String getDatabase() {
       java.lang.Object ref = database_;
@@ -15147,7 +15257,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string database = 7;</code>
+     * <code>string database = 7;</code>
      */
     public com.google.protobuf.ByteString
         getDatabaseBytes() {
@@ -15166,7 +15276,7 @@ public final class NestedEnumTest {
     public static final int EXTRA_FIELD_NUMBER = 8;
     private volatile java.lang.Object extra_;
     /**
-     * <code>optional string extra = 8;</code>
+     * <code>string extra = 8;</code>
      */
     public java.lang.String getExtra() {
       java.lang.Object ref = extra_;
@@ -15181,7 +15291,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string extra = 8;</code>
+     * <code>string extra = 8;</code>
      */
     public com.google.protobuf.ByteString
         getExtraBytes() {
@@ -15200,7 +15310,7 @@ public final class NestedEnumTest {
     public static final int AWS_ACCESS_FIELD_NUMBER = 9;
     private volatile java.lang.Object awsAccess_;
     /**
-     * <code>optional string aws_access = 9;</code>
+     * <code>string aws_access = 9;</code>
      */
     public java.lang.String getAwsAccess() {
       java.lang.Object ref = awsAccess_;
@@ -15215,7 +15325,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string aws_access = 9;</code>
+     * <code>string aws_access = 9;</code>
      */
     public com.google.protobuf.ByteString
         getAwsAccessBytes() {
@@ -15234,7 +15344,7 @@ public final class NestedEnumTest {
     public static final int AWS_SECRET_FIELD_NUMBER = 10;
     private volatile java.lang.Object awsSecret_;
     /**
-     * <code>optional string aws_secret = 10;</code>
+     * <code>string aws_secret = 10;</code>
      */
     public java.lang.String getAwsSecret() {
       java.lang.Object ref = awsSecret_;
@@ -15249,7 +15359,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string aws_secret = 10;</code>
+     * <code>string aws_secret = 10;</code>
      */
     public com.google.protobuf.ByteString
         getAwsSecretBytes() {
@@ -15268,13 +15378,13 @@ public final class NestedEnumTest {
     public static final int DBTYPE_FIELD_NUMBER = 11;
     private int dbtype_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
      */
     public int getDbtypeValue() {
       return dbtype_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType getDbtype() {
       org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType result = org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.valueOf(dbtype_);
@@ -15414,7 +15524,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -15442,6 +15552,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ConnectionInformation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15721,7 +15842,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -15736,7 +15857,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -15752,7 +15873,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -15765,7 +15886,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -15774,7 +15895,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -15790,7 +15911,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -15805,7 +15926,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -15821,7 +15942,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -15834,7 +15955,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -15843,7 +15964,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -15859,7 +15980,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object user_ = "";
       /**
-       * <code>optional string user = 3;</code>
+       * <code>string user = 3;</code>
        */
       public java.lang.String getUser() {
         java.lang.Object ref = user_;
@@ -15874,7 +15995,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string user = 3;</code>
+       * <code>string user = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserBytes() {
@@ -15890,7 +16011,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string user = 3;</code>
+       * <code>string user = 3;</code>
        */
       public Builder setUser(
           java.lang.String value) {
@@ -15903,7 +16024,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string user = 3;</code>
+       * <code>string user = 3;</code>
        */
       public Builder clearUser() {
         
@@ -15912,7 +16033,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string user = 3;</code>
+       * <code>string user = 3;</code>
        */
       public Builder setUserBytes(
           com.google.protobuf.ByteString value) {
@@ -15928,7 +16049,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>optional string password = 4;</code>
+       * <code>string password = 4;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -15943,7 +16064,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string password = 4;</code>
+       * <code>string password = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -15959,7 +16080,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string password = 4;</code>
+       * <code>string password = 4;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -15972,7 +16093,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string password = 4;</code>
+       * <code>string password = 4;</code>
        */
       public Builder clearPassword() {
         
@@ -15981,7 +16102,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string password = 4;</code>
+       * <code>string password = 4;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -15997,7 +16118,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object host_ = "";
       /**
-       * <code>optional string host = 5;</code>
+       * <code>string host = 5;</code>
        */
       public java.lang.String getHost() {
         java.lang.Object ref = host_;
@@ -16012,7 +16133,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string host = 5;</code>
+       * <code>string host = 5;</code>
        */
       public com.google.protobuf.ByteString
           getHostBytes() {
@@ -16028,7 +16149,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string host = 5;</code>
+       * <code>string host = 5;</code>
        */
       public Builder setHost(
           java.lang.String value) {
@@ -16041,7 +16162,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string host = 5;</code>
+       * <code>string host = 5;</code>
        */
       public Builder clearHost() {
         
@@ -16050,7 +16171,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string host = 5;</code>
+       * <code>string host = 5;</code>
        */
       public Builder setHostBytes(
           com.google.protobuf.ByteString value) {
@@ -16066,13 +16187,13 @@ public final class NestedEnumTest {
 
       private int port_ ;
       /**
-       * <code>optional int32 port = 6;</code>
+       * <code>int32 port = 6;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>optional int32 port = 6;</code>
+       * <code>int32 port = 6;</code>
        */
       public Builder setPort(int value) {
         
@@ -16081,7 +16202,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int32 port = 6;</code>
+       * <code>int32 port = 6;</code>
        */
       public Builder clearPort() {
         
@@ -16092,7 +16213,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object database_ = "";
       /**
-       * <code>optional string database = 7;</code>
+       * <code>string database = 7;</code>
        */
       public java.lang.String getDatabase() {
         java.lang.Object ref = database_;
@@ -16107,7 +16228,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string database = 7;</code>
+       * <code>string database = 7;</code>
        */
       public com.google.protobuf.ByteString
           getDatabaseBytes() {
@@ -16123,7 +16244,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string database = 7;</code>
+       * <code>string database = 7;</code>
        */
       public Builder setDatabase(
           java.lang.String value) {
@@ -16136,7 +16257,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string database = 7;</code>
+       * <code>string database = 7;</code>
        */
       public Builder clearDatabase() {
         
@@ -16145,7 +16266,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string database = 7;</code>
+       * <code>string database = 7;</code>
        */
       public Builder setDatabaseBytes(
           com.google.protobuf.ByteString value) {
@@ -16161,7 +16282,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object extra_ = "";
       /**
-       * <code>optional string extra = 8;</code>
+       * <code>string extra = 8;</code>
        */
       public java.lang.String getExtra() {
         java.lang.Object ref = extra_;
@@ -16176,7 +16297,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string extra = 8;</code>
+       * <code>string extra = 8;</code>
        */
       public com.google.protobuf.ByteString
           getExtraBytes() {
@@ -16192,7 +16313,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string extra = 8;</code>
+       * <code>string extra = 8;</code>
        */
       public Builder setExtra(
           java.lang.String value) {
@@ -16205,7 +16326,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string extra = 8;</code>
+       * <code>string extra = 8;</code>
        */
       public Builder clearExtra() {
         
@@ -16214,7 +16335,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string extra = 8;</code>
+       * <code>string extra = 8;</code>
        */
       public Builder setExtraBytes(
           com.google.protobuf.ByteString value) {
@@ -16230,7 +16351,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object awsAccess_ = "";
       /**
-       * <code>optional string aws_access = 9;</code>
+       * <code>string aws_access = 9;</code>
        */
       public java.lang.String getAwsAccess() {
         java.lang.Object ref = awsAccess_;
@@ -16245,7 +16366,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string aws_access = 9;</code>
+       * <code>string aws_access = 9;</code>
        */
       public com.google.protobuf.ByteString
           getAwsAccessBytes() {
@@ -16261,7 +16382,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string aws_access = 9;</code>
+       * <code>string aws_access = 9;</code>
        */
       public Builder setAwsAccess(
           java.lang.String value) {
@@ -16274,7 +16395,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string aws_access = 9;</code>
+       * <code>string aws_access = 9;</code>
        */
       public Builder clearAwsAccess() {
         
@@ -16283,7 +16404,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string aws_access = 9;</code>
+       * <code>string aws_access = 9;</code>
        */
       public Builder setAwsAccessBytes(
           com.google.protobuf.ByteString value) {
@@ -16299,7 +16420,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object awsSecret_ = "";
       /**
-       * <code>optional string aws_secret = 10;</code>
+       * <code>string aws_secret = 10;</code>
        */
       public java.lang.String getAwsSecret() {
         java.lang.Object ref = awsSecret_;
@@ -16314,7 +16435,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string aws_secret = 10;</code>
+       * <code>string aws_secret = 10;</code>
        */
       public com.google.protobuf.ByteString
           getAwsSecretBytes() {
@@ -16330,7 +16451,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string aws_secret = 10;</code>
+       * <code>string aws_secret = 10;</code>
        */
       public Builder setAwsSecret(
           java.lang.String value) {
@@ -16343,7 +16464,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string aws_secret = 10;</code>
+       * <code>string aws_secret = 10;</code>
        */
       public Builder clearAwsSecret() {
         
@@ -16352,7 +16473,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string aws_secret = 10;</code>
+       * <code>string aws_secret = 10;</code>
        */
       public Builder setAwsSecretBytes(
           com.google.protobuf.ByteString value) {
@@ -16368,13 +16489,13 @@ public final class NestedEnumTest {
 
       private int dbtype_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
        */
       public int getDbtypeValue() {
         return dbtype_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
        */
       public Builder setDbtypeValue(int value) {
         dbtype_ = value;
@@ -16382,14 +16503,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType getDbtype() {
         org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType result = org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.valueOf(dbtype_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
        */
       public Builder setDbtype(org.roylance.yaorm.NestedEnumTest.ConnectionInformation.DBType value) {
         if (value == null) {
@@ -16401,7 +16522,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation.DBType dbtype = 11;</code>
        */
       public Builder clearDbtype() {
         
@@ -16463,31 +16584,31 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
@@ -16578,7 +16699,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -16593,7 +16714,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -16612,7 +16733,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -16627,7 +16748,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -16646,7 +16767,7 @@ public final class NestedEnumTest {
     public static final int VALUE_FIELD_NUMBER = 3;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -16661,7 +16782,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -16745,7 +16866,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -16757,6 +16878,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.RegularExpression parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16982,7 +17114,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -16997,7 +17129,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -17013,7 +17145,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -17026,7 +17158,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -17035,7 +17167,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -17051,7 +17183,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -17066,7 +17198,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -17082,7 +17214,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -17095,7 +17227,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -17104,7 +17236,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -17120,7 +17252,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -17135,7 +17267,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -17151,7 +17283,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -17164,7 +17296,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder clearValue() {
         
@@ -17173,7 +17305,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -17240,35 +17372,35 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
      */
     boolean hasTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Transformation getTransformation();
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder();
 
@@ -17439,7 +17571,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -17454,7 +17586,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -17473,7 +17605,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -17488,7 +17620,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -17507,19 +17639,19 @@ public final class NestedEnumTest {
     public static final int TRANSFORMATION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.Transformation transformation_;
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
      */
     public boolean hasTransformation() {
       return transformation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Transformation getTransformation() {
       return transformation_ == null ? org.roylance.yaorm.NestedEnumTest.Transformation.getDefaultInstance() : transformation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+     * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder() {
       return getTransformation();
@@ -17685,7 +17817,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -17707,6 +17839,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Validation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18027,7 +18170,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -18042,7 +18185,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -18058,7 +18201,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -18071,7 +18214,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -18080,7 +18223,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -18096,7 +18239,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -18111,7 +18254,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -18127,7 +18270,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -18140,7 +18283,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -18149,7 +18292,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -18167,13 +18310,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> transformationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public boolean hasTransformation() {
         return transformationBuilder_ != null || transformation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation getTransformation() {
         if (transformationBuilder_ == null) {
@@ -18183,7 +18326,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public Builder setTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (transformationBuilder_ == null) {
@@ -18199,7 +18342,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public Builder setTransformation(
           org.roylance.yaorm.NestedEnumTest.Transformation.Builder builderForValue) {
@@ -18213,7 +18356,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public Builder mergeTransformation(org.roylance.yaorm.NestedEnumTest.Transformation value) {
         if (transformationBuilder_ == null) {
@@ -18231,7 +18374,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public Builder clearTransformation() {
         if (transformationBuilder_ == null) {
@@ -18245,7 +18388,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Transformation.Builder getTransformationBuilder() {
         
@@ -18253,7 +18396,7 @@ public final class NestedEnumTest {
         return getTransformationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder getTransformationOrBuilder() {
         if (transformationBuilder_ != null) {
@@ -18264,7 +18407,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Transformation transformation = 3;</code>
+       * <code>.org.roylance.yaorm.Transformation transformation = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Transformation, org.roylance.yaorm.NestedEnumTest.Transformation.Builder, org.roylance.yaorm.NestedEnumTest.TransformationOrBuilder> 
@@ -18813,61 +18956,61 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+     * <code>.org.roylance.yaorm.Output output = 3;</code>
      */
     boolean hasOutput();
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+     * <code>.org.roylance.yaorm.Output output = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Output getOutput();
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+     * <code>.org.roylance.yaorm.Output output = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.OutputOrBuilder getOutputOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
      */
     boolean hasRegularExpression();
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RegularExpression getRegularExpression();
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder getRegularExpressionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 5;</code>
      */
     boolean hasValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Validation getValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder getValidationOrBuilder();
   }
@@ -18989,7 +19132,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -19004,7 +19147,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -19023,7 +19166,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -19038,7 +19181,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -19057,19 +19200,19 @@ public final class NestedEnumTest {
     public static final int OUTPUT_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.Output output_;
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+     * <code>.org.roylance.yaorm.Output output = 3;</code>
      */
     public boolean hasOutput() {
       return output_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+     * <code>.org.roylance.yaorm.Output output = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Output getOutput() {
       return output_ == null ? org.roylance.yaorm.NestedEnumTest.Output.getDefaultInstance() : output_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+     * <code>.org.roylance.yaorm.Output output = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.OutputOrBuilder getOutputOrBuilder() {
       return getOutput();
@@ -19078,19 +19221,19 @@ public final class NestedEnumTest {
     public static final int REGULAR_EXPRESSION_FIELD_NUMBER = 4;
     private org.roylance.yaorm.NestedEnumTest.RegularExpression regularExpression_;
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
      */
     public boolean hasRegularExpression() {
       return regularExpression_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RegularExpression getRegularExpression() {
       return regularExpression_ == null ? org.roylance.yaorm.NestedEnumTest.RegularExpression.getDefaultInstance() : regularExpression_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder getRegularExpressionOrBuilder() {
       return getRegularExpression();
@@ -19099,19 +19242,19 @@ public final class NestedEnumTest {
     public static final int VALIDATION_FIELD_NUMBER = 5;
     private org.roylance.yaorm.NestedEnumTest.Validation validation_;
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 5;</code>
      */
     public boolean hasValidation() {
       return validation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Validation getValidation() {
       return validation_ == null ? org.roylance.yaorm.NestedEnumTest.Validation.getDefaultInstance() : validation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder getValidationOrBuilder() {
       return getValidation();
@@ -19213,7 +19356,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -19235,6 +19378,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.OutputValidation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19495,7 +19649,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -19510,7 +19664,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -19526,7 +19680,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -19539,7 +19693,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -19548,7 +19702,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -19564,7 +19718,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -19579,7 +19733,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -19595,7 +19749,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -19608,7 +19762,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -19617,7 +19771,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -19635,13 +19789,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> outputBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public boolean hasOutput() {
         return outputBuilder_ != null || output_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Output getOutput() {
         if (outputBuilder_ == null) {
@@ -19651,7 +19805,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public Builder setOutput(org.roylance.yaorm.NestedEnumTest.Output value) {
         if (outputBuilder_ == null) {
@@ -19667,7 +19821,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public Builder setOutput(
           org.roylance.yaorm.NestedEnumTest.Output.Builder builderForValue) {
@@ -19681,7 +19835,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public Builder mergeOutput(org.roylance.yaorm.NestedEnumTest.Output value) {
         if (outputBuilder_ == null) {
@@ -19699,7 +19853,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public Builder clearOutput() {
         if (outputBuilder_ == null) {
@@ -19713,7 +19867,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Output.Builder getOutputBuilder() {
         
@@ -19721,7 +19875,7 @@ public final class NestedEnumTest {
         return getOutputFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.OutputOrBuilder getOutputOrBuilder() {
         if (outputBuilder_ != null) {
@@ -19732,7 +19886,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 3;</code>
+       * <code>.org.roylance.yaorm.Output output = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> 
@@ -19752,13 +19906,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> regularExpressionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public boolean hasRegularExpression() {
         return regularExpressionBuilder_ != null || regularExpression_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RegularExpression getRegularExpression() {
         if (regularExpressionBuilder_ == null) {
@@ -19768,7 +19922,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public Builder setRegularExpression(org.roylance.yaorm.NestedEnumTest.RegularExpression value) {
         if (regularExpressionBuilder_ == null) {
@@ -19784,7 +19938,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public Builder setRegularExpression(
           org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder builderForValue) {
@@ -19798,7 +19952,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public Builder mergeRegularExpression(org.roylance.yaorm.NestedEnumTest.RegularExpression value) {
         if (regularExpressionBuilder_ == null) {
@@ -19816,7 +19970,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public Builder clearRegularExpression() {
         if (regularExpressionBuilder_ == null) {
@@ -19830,7 +19984,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder getRegularExpressionBuilder() {
         
@@ -19838,7 +19992,7 @@ public final class NestedEnumTest {
         return getRegularExpressionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder getRegularExpressionOrBuilder() {
         if (regularExpressionBuilder_ != null) {
@@ -19849,7 +20003,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> 
@@ -19869,13 +20023,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> validationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public boolean hasValidation() {
         return validationBuilder_ != null || validation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Validation getValidation() {
         if (validationBuilder_ == null) {
@@ -19885,7 +20039,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public Builder setValidation(org.roylance.yaorm.NestedEnumTest.Validation value) {
         if (validationBuilder_ == null) {
@@ -19901,7 +20055,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public Builder setValidation(
           org.roylance.yaorm.NestedEnumTest.Validation.Builder builderForValue) {
@@ -19915,7 +20069,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public Builder mergeValidation(org.roylance.yaorm.NestedEnumTest.Validation value) {
         if (validationBuilder_ == null) {
@@ -19933,7 +20087,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public Builder clearValidation() {
         if (validationBuilder_ == null) {
@@ -19947,7 +20101,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Validation.Builder getValidationBuilder() {
         
@@ -19955,7 +20109,7 @@ public final class NestedEnumTest {
         return getValidationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder getValidationOrBuilder() {
         if (validationBuilder_ != null) {
@@ -19966,7 +20120,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 5;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> 
@@ -20035,50 +20189,50 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional int64 date_run = 2;</code>
+     * <code>int64 date_run = 2;</code>
      */
     long getDateRun();
 
     /**
-     * <code>optional string date_run_display = 3;</code>
+     * <code>string date_run_display = 3;</code>
      */
     java.lang.String getDateRunDisplay();
     /**
-     * <code>optional string date_run_display = 3;</code>
+     * <code>string date_run_display = 3;</code>
      */
     com.google.protobuf.ByteString
         getDateRunDisplayBytes();
 
     /**
-     * <code>optional int64 number_passed = 4;</code>
+     * <code>int64 number_passed = 4;</code>
      */
     long getNumberPassed();
 
     /**
-     * <code>optional int64 number_failed = 5;</code>
+     * <code>int64 number_failed = 5;</code>
      */
     long getNumberFailed();
 
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 6;</code>
      */
     boolean hasValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Validation getValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder getValidationOrBuilder();
   }
@@ -20192,7 +20346,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -20207,7 +20361,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -20226,7 +20380,7 @@ public final class NestedEnumTest {
     public static final int DATE_RUN_FIELD_NUMBER = 2;
     private long dateRun_;
     /**
-     * <code>optional int64 date_run = 2;</code>
+     * <code>int64 date_run = 2;</code>
      */
     public long getDateRun() {
       return dateRun_;
@@ -20235,7 +20389,7 @@ public final class NestedEnumTest {
     public static final int DATE_RUN_DISPLAY_FIELD_NUMBER = 3;
     private volatile java.lang.Object dateRunDisplay_;
     /**
-     * <code>optional string date_run_display = 3;</code>
+     * <code>string date_run_display = 3;</code>
      */
     public java.lang.String getDateRunDisplay() {
       java.lang.Object ref = dateRunDisplay_;
@@ -20250,7 +20404,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string date_run_display = 3;</code>
+     * <code>string date_run_display = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDateRunDisplayBytes() {
@@ -20269,7 +20423,7 @@ public final class NestedEnumTest {
     public static final int NUMBER_PASSED_FIELD_NUMBER = 4;
     private long numberPassed_;
     /**
-     * <code>optional int64 number_passed = 4;</code>
+     * <code>int64 number_passed = 4;</code>
      */
     public long getNumberPassed() {
       return numberPassed_;
@@ -20278,7 +20432,7 @@ public final class NestedEnumTest {
     public static final int NUMBER_FAILED_FIELD_NUMBER = 5;
     private long numberFailed_;
     /**
-     * <code>optional int64 number_failed = 5;</code>
+     * <code>int64 number_failed = 5;</code>
      */
     public long getNumberFailed() {
       return numberFailed_;
@@ -20287,19 +20441,19 @@ public final class NestedEnumTest {
     public static final int VALIDATION_FIELD_NUMBER = 6;
     private org.roylance.yaorm.NestedEnumTest.Validation validation_;
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 6;</code>
      */
     public boolean hasValidation() {
       return validation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Validation getValidation() {
       return validation_ == null ? org.roylance.yaorm.NestedEnumTest.Validation.getDefaultInstance() : validation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+     * <code>.org.roylance.yaorm.Validation validation = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder getValidationOrBuilder() {
       return getValidation();
@@ -20404,7 +20558,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DATE_RUN_FIELD_NUMBER;
@@ -20427,6 +20581,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ValidationReport parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20677,7 +20842,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -20692,7 +20857,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -20708,7 +20873,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -20721,7 +20886,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -20730,7 +20895,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -20746,13 +20911,13 @@ public final class NestedEnumTest {
 
       private long dateRun_ ;
       /**
-       * <code>optional int64 date_run = 2;</code>
+       * <code>int64 date_run = 2;</code>
        */
       public long getDateRun() {
         return dateRun_;
       }
       /**
-       * <code>optional int64 date_run = 2;</code>
+       * <code>int64 date_run = 2;</code>
        */
       public Builder setDateRun(long value) {
         
@@ -20761,7 +20926,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 date_run = 2;</code>
+       * <code>int64 date_run = 2;</code>
        */
       public Builder clearDateRun() {
         
@@ -20772,7 +20937,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object dateRunDisplay_ = "";
       /**
-       * <code>optional string date_run_display = 3;</code>
+       * <code>string date_run_display = 3;</code>
        */
       public java.lang.String getDateRunDisplay() {
         java.lang.Object ref = dateRunDisplay_;
@@ -20787,7 +20952,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string date_run_display = 3;</code>
+       * <code>string date_run_display = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDateRunDisplayBytes() {
@@ -20803,7 +20968,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string date_run_display = 3;</code>
+       * <code>string date_run_display = 3;</code>
        */
       public Builder setDateRunDisplay(
           java.lang.String value) {
@@ -20816,7 +20981,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string date_run_display = 3;</code>
+       * <code>string date_run_display = 3;</code>
        */
       public Builder clearDateRunDisplay() {
         
@@ -20825,7 +20990,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string date_run_display = 3;</code>
+       * <code>string date_run_display = 3;</code>
        */
       public Builder setDateRunDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -20841,13 +21006,13 @@ public final class NestedEnumTest {
 
       private long numberPassed_ ;
       /**
-       * <code>optional int64 number_passed = 4;</code>
+       * <code>int64 number_passed = 4;</code>
        */
       public long getNumberPassed() {
         return numberPassed_;
       }
       /**
-       * <code>optional int64 number_passed = 4;</code>
+       * <code>int64 number_passed = 4;</code>
        */
       public Builder setNumberPassed(long value) {
         
@@ -20856,7 +21021,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 number_passed = 4;</code>
+       * <code>int64 number_passed = 4;</code>
        */
       public Builder clearNumberPassed() {
         
@@ -20867,13 +21032,13 @@ public final class NestedEnumTest {
 
       private long numberFailed_ ;
       /**
-       * <code>optional int64 number_failed = 5;</code>
+       * <code>int64 number_failed = 5;</code>
        */
       public long getNumberFailed() {
         return numberFailed_;
       }
       /**
-       * <code>optional int64 number_failed = 5;</code>
+       * <code>int64 number_failed = 5;</code>
        */
       public Builder setNumberFailed(long value) {
         
@@ -20882,7 +21047,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 number_failed = 5;</code>
+       * <code>int64 number_failed = 5;</code>
        */
       public Builder clearNumberFailed() {
         
@@ -20895,13 +21060,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> validationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public boolean hasValidation() {
         return validationBuilder_ != null || validation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Validation getValidation() {
         if (validationBuilder_ == null) {
@@ -20911,7 +21076,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public Builder setValidation(org.roylance.yaorm.NestedEnumTest.Validation value) {
         if (validationBuilder_ == null) {
@@ -20927,7 +21092,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public Builder setValidation(
           org.roylance.yaorm.NestedEnumTest.Validation.Builder builderForValue) {
@@ -20941,7 +21106,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public Builder mergeValidation(org.roylance.yaorm.NestedEnumTest.Validation value) {
         if (validationBuilder_ == null) {
@@ -20959,7 +21124,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public Builder clearValidation() {
         if (validationBuilder_ == null) {
@@ -20973,7 +21138,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Validation.Builder getValidationBuilder() {
         
@@ -20981,7 +21146,7 @@ public final class NestedEnumTest {
         return getValidationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder getValidationOrBuilder() {
         if (validationBuilder_ != null) {
@@ -20992,7 +21157,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation validation = 6;</code>
+       * <code>.org.roylance.yaorm.Validation validation = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Validation, org.roylance.yaorm.NestedEnumTest.Validation.Builder, org.roylance.yaorm.NestedEnumTest.ValidationOrBuilder> 
@@ -21061,56 +21226,56 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     java.lang.String getColumnName();
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getColumnNameBytes();
 
     /**
-     * <code>optional string column_description = 3;</code>
+     * <code>string column_description = 3;</code>
      */
     java.lang.String getColumnDescription();
     /**
-     * <code>optional string column_description = 3;</code>
+     * <code>string column_description = 3;</code>
      */
     com.google.protobuf.ByteString
         getColumnDescriptionBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     int getColumnTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType();
 
     /**
-     * <code>optional float discovery_weight = 5;</code>
+     * <code>float discovery_weight = 5;</code>
      */
     float getDiscoveryWeight();
 
     /**
-     * <code>optional bool is_numeric = 6;</code>
+     * <code>bool is_numeric = 6;</code>
      */
     boolean getIsNumeric();
 
     /**
-     * <code>optional bool is_date = 7;</code>
+     * <code>bool is_date = 7;</code>
      */
     boolean getIsDate();
 
@@ -21300,7 +21465,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -21315,7 +21480,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -21334,7 +21499,7 @@ public final class NestedEnumTest {
     public static final int COLUMN_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object columnName_;
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     public java.lang.String getColumnName() {
       java.lang.Object ref = columnName_;
@@ -21349,7 +21514,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getColumnNameBytes() {
@@ -21368,7 +21533,7 @@ public final class NestedEnumTest {
     public static final int COLUMN_DESCRIPTION_FIELD_NUMBER = 3;
     private volatile java.lang.Object columnDescription_;
     /**
-     * <code>optional string column_description = 3;</code>
+     * <code>string column_description = 3;</code>
      */
     public java.lang.String getColumnDescription() {
       java.lang.Object ref = columnDescription_;
@@ -21383,7 +21548,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string column_description = 3;</code>
+     * <code>string column_description = 3;</code>
      */
     public com.google.protobuf.ByteString
         getColumnDescriptionBytes() {
@@ -21402,13 +21567,13 @@ public final class NestedEnumTest {
     public static final int COLUMN_TYPE_FIELD_NUMBER = 4;
     private int columnType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     public int getColumnTypeValue() {
       return columnType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
@@ -21418,7 +21583,7 @@ public final class NestedEnumTest {
     public static final int DISCOVERY_WEIGHT_FIELD_NUMBER = 5;
     private float discoveryWeight_;
     /**
-     * <code>optional float discovery_weight = 5;</code>
+     * <code>float discovery_weight = 5;</code>
      */
     public float getDiscoveryWeight() {
       return discoveryWeight_;
@@ -21427,7 +21592,7 @@ public final class NestedEnumTest {
     public static final int IS_NUMERIC_FIELD_NUMBER = 6;
     private boolean isNumeric_;
     /**
-     * <code>optional bool is_numeric = 6;</code>
+     * <code>bool is_numeric = 6;</code>
      */
     public boolean getIsNumeric() {
       return isNumeric_;
@@ -21436,7 +21601,7 @@ public final class NestedEnumTest {
     public static final int IS_DATE_FIELD_NUMBER = 7;
     private boolean isDate_;
     /**
-     * <code>optional bool is_date = 7;</code>
+     * <code>bool is_date = 7;</code>
      */
     public boolean getIsDate() {
       return isDate_;
@@ -21635,7 +21800,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
@@ -21666,6 +21831,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -22003,7 +22179,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -22018,7 +22194,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -22034,7 +22210,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -22047,7 +22223,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -22056,7 +22232,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -22072,7 +22248,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object columnName_ = "";
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public java.lang.String getColumnName() {
         java.lang.Object ref = columnName_;
@@ -22087,7 +22263,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getColumnNameBytes() {
@@ -22103,7 +22279,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public Builder setColumnName(
           java.lang.String value) {
@@ -22116,7 +22292,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public Builder clearColumnName() {
         
@@ -22125,7 +22301,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public Builder setColumnNameBytes(
           com.google.protobuf.ByteString value) {
@@ -22141,7 +22317,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object columnDescription_ = "";
       /**
-       * <code>optional string column_description = 3;</code>
+       * <code>string column_description = 3;</code>
        */
       public java.lang.String getColumnDescription() {
         java.lang.Object ref = columnDescription_;
@@ -22156,7 +22332,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_description = 3;</code>
+       * <code>string column_description = 3;</code>
        */
       public com.google.protobuf.ByteString
           getColumnDescriptionBytes() {
@@ -22172,7 +22348,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_description = 3;</code>
+       * <code>string column_description = 3;</code>
        */
       public Builder setColumnDescription(
           java.lang.String value) {
@@ -22185,7 +22361,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_description = 3;</code>
+       * <code>string column_description = 3;</code>
        */
       public Builder clearColumnDescription() {
         
@@ -22194,7 +22370,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_description = 3;</code>
+       * <code>string column_description = 3;</code>
        */
       public Builder setColumnDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -22210,13 +22386,13 @@ public final class NestedEnumTest {
 
       private int columnType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public int getColumnTypeValue() {
         return columnType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public Builder setColumnTypeValue(int value) {
         columnType_ = value;
@@ -22224,14 +22400,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public Builder setColumnType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -22243,7 +22419,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 4;</code>
        */
       public Builder clearColumnType() {
         
@@ -22254,13 +22430,13 @@ public final class NestedEnumTest {
 
       private float discoveryWeight_ ;
       /**
-       * <code>optional float discovery_weight = 5;</code>
+       * <code>float discovery_weight = 5;</code>
        */
       public float getDiscoveryWeight() {
         return discoveryWeight_;
       }
       /**
-       * <code>optional float discovery_weight = 5;</code>
+       * <code>float discovery_weight = 5;</code>
        */
       public Builder setDiscoveryWeight(float value) {
         
@@ -22269,7 +22445,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional float discovery_weight = 5;</code>
+       * <code>float discovery_weight = 5;</code>
        */
       public Builder clearDiscoveryWeight() {
         
@@ -22280,13 +22456,13 @@ public final class NestedEnumTest {
 
       private boolean isNumeric_ ;
       /**
-       * <code>optional bool is_numeric = 6;</code>
+       * <code>bool is_numeric = 6;</code>
        */
       public boolean getIsNumeric() {
         return isNumeric_;
       }
       /**
-       * <code>optional bool is_numeric = 6;</code>
+       * <code>bool is_numeric = 6;</code>
        */
       public Builder setIsNumeric(boolean value) {
         
@@ -22295,7 +22471,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_numeric = 6;</code>
+       * <code>bool is_numeric = 6;</code>
        */
       public Builder clearIsNumeric() {
         
@@ -22306,13 +22482,13 @@ public final class NestedEnumTest {
 
       private boolean isDate_ ;
       /**
-       * <code>optional bool is_date = 7;</code>
+       * <code>bool is_date = 7;</code>
        */
       public boolean getIsDate() {
         return isDate_;
       }
       /**
-       * <code>optional bool is_date = 7;</code>
+       * <code>bool is_date = 7;</code>
        */
       public Builder setIsDate(boolean value) {
         
@@ -22321,7 +22497,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_date = 7;</code>
+       * <code>bool is_date = 7;</code>
        */
       public Builder clearIsDate() {
         
@@ -22863,48 +23039,48 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
      */
     boolean hasRegularExpression();
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RegularExpression getRegularExpression();
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder getRegularExpressionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
      */
     boolean hasColumn();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn getColumn();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder getColumnOrBuilder();
   }
@@ -23013,7 +23189,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -23028,7 +23204,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -23047,7 +23223,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -23062,7 +23238,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -23081,19 +23257,19 @@ public final class NestedEnumTest {
     public static final int REGULAR_EXPRESSION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.RegularExpression regularExpression_;
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
      */
     public boolean hasRegularExpression() {
       return regularExpression_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RegularExpression getRegularExpression() {
       return regularExpression_ == null ? org.roylance.yaorm.NestedEnumTest.RegularExpression.getDefaultInstance() : regularExpression_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+     * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder getRegularExpressionOrBuilder() {
       return getRegularExpression();
@@ -23102,19 +23278,19 @@ public final class NestedEnumTest {
     public static final int COLUMN_FIELD_NUMBER = 4;
     private org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn column_;
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
      */
     public boolean hasColumn() {
       return column_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn getColumn() {
       return column_ == null ? org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.getDefaultInstance() : column_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder getColumnOrBuilder() {
       return getColumn();
@@ -23204,7 +23380,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -23222,6 +23398,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnValidation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -23468,7 +23655,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -23483,7 +23670,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -23499,7 +23686,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -23512,7 +23699,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -23521,7 +23708,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -23537,7 +23724,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -23552,7 +23739,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -23568,7 +23755,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -23581,7 +23768,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -23590,7 +23777,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -23608,13 +23795,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> regularExpressionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public boolean hasRegularExpression() {
         return regularExpressionBuilder_ != null || regularExpression_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RegularExpression getRegularExpression() {
         if (regularExpressionBuilder_ == null) {
@@ -23624,7 +23811,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public Builder setRegularExpression(org.roylance.yaorm.NestedEnumTest.RegularExpression value) {
         if (regularExpressionBuilder_ == null) {
@@ -23640,7 +23827,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public Builder setRegularExpression(
           org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder builderForValue) {
@@ -23654,7 +23841,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public Builder mergeRegularExpression(org.roylance.yaorm.NestedEnumTest.RegularExpression value) {
         if (regularExpressionBuilder_ == null) {
@@ -23672,7 +23859,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public Builder clearRegularExpression() {
         if (regularExpressionBuilder_ == null) {
@@ -23686,7 +23873,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder getRegularExpressionBuilder() {
         
@@ -23694,7 +23881,7 @@ public final class NestedEnumTest {
         return getRegularExpressionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder getRegularExpressionOrBuilder() {
         if (regularExpressionBuilder_ != null) {
@@ -23705,7 +23892,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
+       * <code>.org.roylance.yaorm.RegularExpression regular_expression = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RegularExpression, org.roylance.yaorm.NestedEnumTest.RegularExpression.Builder, org.roylance.yaorm.NestedEnumTest.RegularExpressionOrBuilder> 
@@ -23725,13 +23912,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> columnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public boolean hasColumn() {
         return columnBuilder_ != null || column_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn getColumn() {
         if (columnBuilder_ == null) {
@@ -23741,7 +23928,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public Builder setColumn(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn value) {
         if (columnBuilder_ == null) {
@@ -23757,7 +23944,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public Builder setColumn(
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder builderForValue) {
@@ -23771,7 +23958,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public Builder mergeColumn(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn value) {
         if (columnBuilder_ == null) {
@@ -23789,7 +23976,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public Builder clearColumn() {
         if (columnBuilder_ == null) {
@@ -23803,7 +23990,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder getColumnBuilder() {
         
@@ -23811,7 +23998,7 @@ public final class NestedEnumTest {
         return getColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder getColumnOrBuilder() {
         if (columnBuilder_ != null) {
@@ -23822,7 +24009,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> 
@@ -23891,31 +24078,31 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -24044,7 +24231,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -24059,7 +24246,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -24078,7 +24265,7 @@ public final class NestedEnumTest {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -24093,7 +24280,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -24112,7 +24299,7 @@ public final class NestedEnumTest {
     public static final int DESCRIPTION_FIELD_NUMBER = 3;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -24127,7 +24314,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string description = 3;</code>
+     * <code>string description = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -24255,7 +24442,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -24271,6 +24458,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -24542,7 +24740,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -24557,7 +24755,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -24573,7 +24771,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -24586,7 +24784,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -24595,7 +24793,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -24611,7 +24809,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -24626,7 +24824,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -24642,7 +24840,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -24655,7 +24853,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -24664,7 +24862,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -24680,7 +24878,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -24695,7 +24893,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -24711,7 +24909,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -24724,7 +24922,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public Builder clearDescription() {
         
@@ -24733,7 +24931,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>string description = 3;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -25040,57 +25238,57 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     java.lang.String getColumnName();
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getColumnNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
      */
     int getColumnTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType();
 
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
      */
     boolean hasTable();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseTable getTable();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder getTableOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
      */
     boolean hasColumn();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn getColumn();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder getColumnOrBuilder();
 
@@ -25244,7 +25442,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -25259,7 +25457,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -25278,7 +25476,7 @@ public final class NestedEnumTest {
     public static final int COLUMN_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object columnName_;
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     public java.lang.String getColumnName() {
       java.lang.Object ref = columnName_;
@@ -25293,7 +25491,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string column_name = 2;</code>
+     * <code>string column_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getColumnNameBytes() {
@@ -25312,13 +25510,13 @@ public final class NestedEnumTest {
     public static final int COLUMN_TYPE_FIELD_NUMBER = 3;
     private int columnType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
      */
     public int getColumnTypeValue() {
       return columnType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
@@ -25328,19 +25526,19 @@ public final class NestedEnumTest {
     public static final int TABLE_FIELD_NUMBER = 4;
     private org.roylance.yaorm.NestedEnumTest.DataWarehouseTable table_;
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
      */
     public boolean hasTable() {
       return table_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseTable getTable() {
       return table_ == null ? org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.getDefaultInstance() : table_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder getTableOrBuilder() {
       return getTable();
@@ -25349,19 +25547,19 @@ public final class NestedEnumTest {
     public static final int COLUMN_FIELD_NUMBER = 5;
     private org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn column_;
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
      */
     public boolean hasColumn() {
       return column_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn getColumn() {
       return column_ == null ? org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.getDefaultInstance() : column_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder getColumnOrBuilder() {
       return getColumn();
@@ -25503,7 +25701,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + COLUMN_NAME_FIELD_NUMBER;
@@ -25527,6 +25725,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -25825,7 +26034,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -25840,7 +26049,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -25856,7 +26065,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -25869,7 +26078,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -25878,7 +26087,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -25894,7 +26103,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object columnName_ = "";
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public java.lang.String getColumnName() {
         java.lang.Object ref = columnName_;
@@ -25909,7 +26118,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getColumnNameBytes() {
@@ -25925,7 +26134,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public Builder setColumnName(
           java.lang.String value) {
@@ -25938,7 +26147,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public Builder clearColumnName() {
         
@@ -25947,7 +26156,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string column_name = 2;</code>
+       * <code>string column_name = 2;</code>
        */
       public Builder setColumnNameBytes(
           com.google.protobuf.ByteString value) {
@@ -25963,13 +26172,13 @@ public final class NestedEnumTest {
 
       private int columnType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
        */
       public int getColumnTypeValue() {
         return columnType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
        */
       public Builder setColumnTypeValue(int value) {
         columnType_ = value;
@@ -25977,14 +26186,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getColumnType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
        */
       public Builder setColumnType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -25996,7 +26205,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType column_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType column_type = 3;</code>
        */
       public Builder clearColumnType() {
         
@@ -26009,13 +26218,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> tableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public boolean hasTable() {
         return tableBuilder_ != null || table_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTable getTable() {
         if (tableBuilder_ == null) {
@@ -26025,7 +26234,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public Builder setTable(org.roylance.yaorm.NestedEnumTest.DataWarehouseTable value) {
         if (tableBuilder_ == null) {
@@ -26041,7 +26250,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public Builder setTable(
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder builderForValue) {
@@ -26055,7 +26264,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public Builder mergeTable(org.roylance.yaorm.NestedEnumTest.DataWarehouseTable value) {
         if (tableBuilder_ == null) {
@@ -26073,7 +26282,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public Builder clearTable() {
         if (tableBuilder_ == null) {
@@ -26087,7 +26296,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder getTableBuilder() {
         
@@ -26095,7 +26304,7 @@ public final class NestedEnumTest {
         return getTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder getTableOrBuilder() {
         if (tableBuilder_ != null) {
@@ -26106,7 +26315,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 4;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> 
@@ -26126,13 +26335,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> columnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public boolean hasColumn() {
         return columnBuilder_ != null || column_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn getColumn() {
         if (columnBuilder_ == null) {
@@ -26142,7 +26351,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public Builder setColumn(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn value) {
         if (columnBuilder_ == null) {
@@ -26158,7 +26367,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public Builder setColumn(
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder builderForValue) {
@@ -26172,7 +26381,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public Builder mergeColumn(org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn value) {
         if (columnBuilder_ == null) {
@@ -26190,7 +26399,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public Builder clearColumn() {
         if (columnBuilder_ == null) {
@@ -26204,7 +26413,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder getColumnBuilder() {
         
@@ -26212,7 +26421,7 @@ public final class NestedEnumTest {
         return getColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder getColumnOrBuilder() {
         if (columnBuilder_ != null) {
@@ -26223,7 +26432,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseColumn column = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseColumnOrBuilder> 
@@ -26532,89 +26741,89 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string from_name = 2;</code>
+     * <code>string from_name = 2;</code>
      */
     java.lang.String getFromName();
     /**
-     * <code>optional string from_name = 2;</code>
+     * <code>string from_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getFromNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
      */
     int getFromTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getFromType();
 
     /**
-     * <code>optional string to_name = 4;</code>
+     * <code>string to_name = 4;</code>
      */
     java.lang.String getToName();
     /**
-     * <code>optional string to_name = 4;</code>
+     * <code>string to_name = 4;</code>
      */
     com.google.protobuf.ByteString
         getToNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+     * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
      */
     int getToTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+     * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getToType();
 
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+     * <code>.org.roylance.yaorm.Output output = 6;</code>
      */
     boolean hasOutput();
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+     * <code>.org.roylance.yaorm.Output output = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.Output getOutput();
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+     * <code>.org.roylance.yaorm.Output output = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.OutputOrBuilder getOutputOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
      */
     boolean hasTableColumn();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn getTableColumn();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder getTableColumnOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
      */
     boolean hasTable();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseTable getTable();
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder getTableOrBuilder();
   }
@@ -26757,7 +26966,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -26772,7 +26981,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -26791,7 +27000,7 @@ public final class NestedEnumTest {
     public static final int FROM_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object fromName_;
     /**
-     * <code>optional string from_name = 2;</code>
+     * <code>string from_name = 2;</code>
      */
     public java.lang.String getFromName() {
       java.lang.Object ref = fromName_;
@@ -26806,7 +27015,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string from_name = 2;</code>
+     * <code>string from_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFromNameBytes() {
@@ -26825,13 +27034,13 @@ public final class NestedEnumTest {
     public static final int FROM_TYPE_FIELD_NUMBER = 3;
     private int fromType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
      */
     public int getFromTypeValue() {
       return fromType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getFromType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(fromType_);
@@ -26841,7 +27050,7 @@ public final class NestedEnumTest {
     public static final int TO_NAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object toName_;
     /**
-     * <code>optional string to_name = 4;</code>
+     * <code>string to_name = 4;</code>
      */
     public java.lang.String getToName() {
       java.lang.Object ref = toName_;
@@ -26856,7 +27065,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string to_name = 4;</code>
+     * <code>string to_name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getToNameBytes() {
@@ -26875,13 +27084,13 @@ public final class NestedEnumTest {
     public static final int TO_TYPE_FIELD_NUMBER = 5;
     private int toType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+     * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
      */
     public int getToTypeValue() {
       return toType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+     * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getToType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(toType_);
@@ -26891,19 +27100,19 @@ public final class NestedEnumTest {
     public static final int OUTPUT_FIELD_NUMBER = 6;
     private org.roylance.yaorm.NestedEnumTest.Output output_;
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+     * <code>.org.roylance.yaorm.Output output = 6;</code>
      */
     public boolean hasOutput() {
       return output_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+     * <code>.org.roylance.yaorm.Output output = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.Output getOutput() {
       return output_ == null ? org.roylance.yaorm.NestedEnumTest.Output.getDefaultInstance() : output_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+     * <code>.org.roylance.yaorm.Output output = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.OutputOrBuilder getOutputOrBuilder() {
       return getOutput();
@@ -26912,19 +27121,19 @@ public final class NestedEnumTest {
     public static final int TABLE_COLUMN_FIELD_NUMBER = 7;
     private org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn tableColumn_;
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
      */
     public boolean hasTableColumn() {
       return tableColumn_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn getTableColumn() {
       return tableColumn_ == null ? org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.getDefaultInstance() : tableColumn_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder getTableColumnOrBuilder() {
       return getTableColumn();
@@ -26933,19 +27142,19 @@ public final class NestedEnumTest {
     public static final int TABLE_FIELD_NUMBER = 8;
     private org.roylance.yaorm.NestedEnumTest.DataWarehouseTable table_;
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
      */
     public boolean hasTable() {
       return table_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseTable getTable() {
       return table_ == null ? org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.getDefaultInstance() : table_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+     * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder getTableOrBuilder() {
       return getTable();
@@ -27071,7 +27280,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + FROM_NAME_FIELD_NUMBER;
@@ -27099,6 +27308,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.Mapping parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -27378,7 +27598,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -27393,7 +27613,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -27409,7 +27629,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -27422,7 +27642,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -27431,7 +27651,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -27447,7 +27667,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object fromName_ = "";
       /**
-       * <code>optional string from_name = 2;</code>
+       * <code>string from_name = 2;</code>
        */
       public java.lang.String getFromName() {
         java.lang.Object ref = fromName_;
@@ -27462,7 +27682,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string from_name = 2;</code>
+       * <code>string from_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFromNameBytes() {
@@ -27478,7 +27698,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string from_name = 2;</code>
+       * <code>string from_name = 2;</code>
        */
       public Builder setFromName(
           java.lang.String value) {
@@ -27491,7 +27711,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string from_name = 2;</code>
+       * <code>string from_name = 2;</code>
        */
       public Builder clearFromName() {
         
@@ -27500,7 +27720,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string from_name = 2;</code>
+       * <code>string from_name = 2;</code>
        */
       public Builder setFromNameBytes(
           com.google.protobuf.ByteString value) {
@@ -27516,13 +27736,13 @@ public final class NestedEnumTest {
 
       private int fromType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
        */
       public int getFromTypeValue() {
         return fromType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
        */
       public Builder setFromTypeValue(int value) {
         fromType_ = value;
@@ -27530,14 +27750,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getFromType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(fromType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
        */
       public Builder setFromType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -27549,7 +27769,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType from_type = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType from_type = 3;</code>
        */
       public Builder clearFromType() {
         
@@ -27560,7 +27780,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object toName_ = "";
       /**
-       * <code>optional string to_name = 4;</code>
+       * <code>string to_name = 4;</code>
        */
       public java.lang.String getToName() {
         java.lang.Object ref = toName_;
@@ -27575,7 +27795,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string to_name = 4;</code>
+       * <code>string to_name = 4;</code>
        */
       public com.google.protobuf.ByteString
           getToNameBytes() {
@@ -27591,7 +27811,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string to_name = 4;</code>
+       * <code>string to_name = 4;</code>
        */
       public Builder setToName(
           java.lang.String value) {
@@ -27604,7 +27824,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string to_name = 4;</code>
+       * <code>string to_name = 4;</code>
        */
       public Builder clearToName() {
         
@@ -27613,7 +27833,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string to_name = 4;</code>
+       * <code>string to_name = 4;</code>
        */
       public Builder setToNameBytes(
           com.google.protobuf.ByteString value) {
@@ -27629,13 +27849,13 @@ public final class NestedEnumTest {
 
       private int toType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+       * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
        */
       public int getToTypeValue() {
         return toType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+       * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
        */
       public Builder setToTypeValue(int value) {
         toType_ = value;
@@ -27643,14 +27863,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+       * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getToType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(toType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+       * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
        */
       public Builder setToType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -27662,7 +27882,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType to_type = 5;</code>
+       * <code>.org.roylance.yaorm.ProtobufType to_type = 5;</code>
        */
       public Builder clearToType() {
         
@@ -27675,13 +27895,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> outputBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public boolean hasOutput() {
         return outputBuilder_ != null || output_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Output getOutput() {
         if (outputBuilder_ == null) {
@@ -27691,7 +27911,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public Builder setOutput(org.roylance.yaorm.NestedEnumTest.Output value) {
         if (outputBuilder_ == null) {
@@ -27707,7 +27927,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public Builder setOutput(
           org.roylance.yaorm.NestedEnumTest.Output.Builder builderForValue) {
@@ -27721,7 +27941,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public Builder mergeOutput(org.roylance.yaorm.NestedEnumTest.Output value) {
         if (outputBuilder_ == null) {
@@ -27739,7 +27959,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public Builder clearOutput() {
         if (outputBuilder_ == null) {
@@ -27753,7 +27973,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.Output.Builder getOutputBuilder() {
         
@@ -27761,7 +27981,7 @@ public final class NestedEnumTest {
         return getOutputFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.OutputOrBuilder getOutputOrBuilder() {
         if (outputBuilder_ != null) {
@@ -27772,7 +27992,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Output output = 6;</code>
+       * <code>.org.roylance.yaorm.Output output = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.Output, org.roylance.yaorm.NestedEnumTest.Output.Builder, org.roylance.yaorm.NestedEnumTest.OutputOrBuilder> 
@@ -27792,13 +28012,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> tableColumnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public boolean hasTableColumn() {
         return tableColumnBuilder_ != null || tableColumn_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn getTableColumn() {
         if (tableColumnBuilder_ == null) {
@@ -27808,7 +28028,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public Builder setTableColumn(org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn value) {
         if (tableColumnBuilder_ == null) {
@@ -27824,7 +28044,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public Builder setTableColumn(
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder builderForValue) {
@@ -27838,7 +28058,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public Builder mergeTableColumn(org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn value) {
         if (tableColumnBuilder_ == null) {
@@ -27856,7 +28076,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public Builder clearTableColumn() {
         if (tableColumnBuilder_ == null) {
@@ -27870,7 +28090,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder getTableColumnBuilder() {
         
@@ -27878,7 +28098,7 @@ public final class NestedEnumTest {
         return getTableColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder getTableColumnOrBuilder() {
         if (tableColumnBuilder_ != null) {
@@ -27889,7 +28109,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTableColumn table_column = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumn.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableColumnOrBuilder> 
@@ -27909,13 +28129,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> tableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public boolean hasTable() {
         return tableBuilder_ != null || table_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTable getTable() {
         if (tableBuilder_ == null) {
@@ -27925,7 +28145,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public Builder setTable(org.roylance.yaorm.NestedEnumTest.DataWarehouseTable value) {
         if (tableBuilder_ == null) {
@@ -27941,7 +28161,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public Builder setTable(
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder builderForValue) {
@@ -27955,7 +28175,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public Builder mergeTable(org.roylance.yaorm.NestedEnumTest.DataWarehouseTable value) {
         if (tableBuilder_ == null) {
@@ -27973,7 +28193,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public Builder clearTable() {
         if (tableBuilder_ == null) {
@@ -27987,7 +28207,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder getTableBuilder() {
         
@@ -27995,7 +28215,7 @@ public final class NestedEnumTest {
         return getTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder getTableOrBuilder() {
         if (tableBuilder_ != null) {
@@ -28006,7 +28226,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DataWarehouseTable table = 8;</code>
+       * <code>.org.roylance.yaorm.DataWarehouseTable table = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.DataWarehouseTable, org.roylance.yaorm.NestedEnumTest.DataWarehouseTable.Builder, org.roylance.yaorm.NestedEnumTest.DataWarehouseTableOrBuilder> 
@@ -28075,40 +28295,40 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     java.lang.String getDestinationName();
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getDestinationNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     int getColumnDelimiterValue();
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter();
 
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     int getRowDelimiterValue();
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter();
 
@@ -28137,12 +28357,12 @@ public final class NestedEnumTest {
         int index);
 
     /**
-     * <code>optional bool has_headers = 6;</code>
+     * <code>bool has_headers = 6;</code>
      */
     boolean getHasHeaders();
 
     /**
-     * <code>optional bool is_fixed_width = 7;</code>
+     * <code>bool is_fixed_width = 7;</code>
      */
     boolean getIsFixedWidth();
   }
@@ -28265,7 +28485,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -28280,7 +28500,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -28299,7 +28519,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object destinationName_;
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     public java.lang.String getDestinationName() {
       java.lang.Object ref = destinationName_;
@@ -28314,7 +28534,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string destination_name = 2;</code>
+     * <code>string destination_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationNameBytes() {
@@ -28333,13 +28553,13 @@ public final class NestedEnumTest {
     public static final int COLUMN_DELIMITER_FIELD_NUMBER = 3;
     private int columnDelimiter_;
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     public int getColumnDelimiterValue() {
       return columnDelimiter_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+     * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
       org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
@@ -28349,13 +28569,13 @@ public final class NestedEnumTest {
     public static final int ROW_DELIMITER_FIELD_NUMBER = 4;
     private int rowDelimiter_;
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     public int getRowDelimiterValue() {
       return rowDelimiter_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+     * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
       org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
@@ -28400,7 +28620,7 @@ public final class NestedEnumTest {
     public static final int HAS_HEADERS_FIELD_NUMBER = 6;
     private boolean hasHeaders_;
     /**
-     * <code>optional bool has_headers = 6;</code>
+     * <code>bool has_headers = 6;</code>
      */
     public boolean getHasHeaders() {
       return hasHeaders_;
@@ -28409,7 +28629,7 @@ public final class NestedEnumTest {
     public static final int IS_FIXED_WIDTH_FIELD_NUMBER = 7;
     private boolean isFixedWidth_;
     /**
-     * <code>optional bool is_fixed_width = 7;</code>
+     * <code>bool is_fixed_width = 7;</code>
      */
     public boolean getIsFixedWidth() {
       return isFixedWidth_;
@@ -28518,7 +28738,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESTINATION_NAME_FIELD_NUMBER;
@@ -28542,6 +28762,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.DataSetTemplate parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -28830,7 +29061,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -28845,7 +29076,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -28861,7 +29092,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -28874,7 +29105,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -28883,7 +29114,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -28899,7 +29130,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object destinationName_ = "";
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public java.lang.String getDestinationName() {
         java.lang.Object ref = destinationName_;
@@ -28914,7 +29145,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationNameBytes() {
@@ -28930,7 +29161,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public Builder setDestinationName(
           java.lang.String value) {
@@ -28943,7 +29174,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public Builder clearDestinationName() {
         
@@ -28952,7 +29183,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 2;</code>
+       * <code>string destination_name = 2;</code>
        */
       public Builder setDestinationNameBytes(
           com.google.protobuf.ByteString value) {
@@ -28968,13 +29199,13 @@ public final class NestedEnumTest {
 
       private int columnDelimiter_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public int getColumnDelimiterValue() {
         return columnDelimiter_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public Builder setColumnDelimiterValue(int value) {
         columnDelimiter_ = value;
@@ -28982,14 +29213,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getColumnDelimiter() {
         org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(columnDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public Builder setColumnDelimiter(org.roylance.yaorm.NestedEnumTest.DelimiterType value) {
         if (value == null) {
@@ -29001,7 +29232,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
+       * <code>.org.roylance.yaorm.DelimiterType column_delimiter = 3;</code>
        */
       public Builder clearColumnDelimiter() {
         
@@ -29012,13 +29243,13 @@ public final class NestedEnumTest {
 
       private int rowDelimiter_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public int getRowDelimiterValue() {
         return rowDelimiter_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public Builder setRowDelimiterValue(int value) {
         rowDelimiter_ = value;
@@ -29026,14 +29257,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.DelimiterType getRowDelimiter() {
         org.roylance.yaorm.NestedEnumTest.DelimiterType result = org.roylance.yaorm.NestedEnumTest.DelimiterType.valueOf(rowDelimiter_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.DelimiterType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public Builder setRowDelimiter(org.roylance.yaorm.NestedEnumTest.DelimiterType value) {
         if (value == null) {
@@ -29045,7 +29276,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
+       * <code>.org.roylance.yaorm.DelimiterType row_delimiter = 4;</code>
        */
       public Builder clearRowDelimiter() {
         
@@ -29296,13 +29527,13 @@ public final class NestedEnumTest {
 
       private boolean hasHeaders_ ;
       /**
-       * <code>optional bool has_headers = 6;</code>
+       * <code>bool has_headers = 6;</code>
        */
       public boolean getHasHeaders() {
         return hasHeaders_;
       }
       /**
-       * <code>optional bool has_headers = 6;</code>
+       * <code>bool has_headers = 6;</code>
        */
       public Builder setHasHeaders(boolean value) {
         
@@ -29311,7 +29542,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool has_headers = 6;</code>
+       * <code>bool has_headers = 6;</code>
        */
       public Builder clearHasHeaders() {
         
@@ -29322,13 +29553,13 @@ public final class NestedEnumTest {
 
       private boolean isFixedWidth_ ;
       /**
-       * <code>optional bool is_fixed_width = 7;</code>
+       * <code>bool is_fixed_width = 7;</code>
        */
       public boolean getIsFixedWidth() {
         return isFixedWidth_;
       }
       /**
-       * <code>optional bool is_fixed_width = 7;</code>
+       * <code>bool is_fixed_width = 7;</code>
        */
       public Builder setIsFixedWidth(boolean value) {
         
@@ -29337,7 +29568,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_fixed_width = 7;</code>
+       * <code>bool is_fixed_width = 7;</code>
        */
       public Builder clearIsFixedWidth() {
         
@@ -29399,99 +29630,99 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     java.lang.String getSourceName();
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getSourceNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
      */
     int getSourceDatatypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceDatatype();
 
     /**
-     * <code>optional int64 source_index = 4;</code>
+     * <code>int64 source_index = 4;</code>
      */
     long getSourceIndex();
 
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     java.lang.String getDestinationName();
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     com.google.protobuf.ByteString
         getDestinationNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     int getDestinationTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType();
 
     /**
-     * <code>optional int64 destination_index = 7;</code>
+     * <code>int64 destination_index = 7;</code>
      */
     long getDestinationIndex();
 
     /**
-     * <code>optional int64 fixed_width_start = 8;</code>
+     * <code>int64 fixed_width_start = 8;</code>
      */
     long getFixedWidthStart();
 
     /**
-     * <code>optional int64 fixed_width_end = 9;</code>
+     * <code>int64 fixed_width_end = 9;</code>
      */
     long getFixedWidthEnd();
 
     /**
-     * <code>optional bool is_overpunch = 10;</code>
+     * <code>bool is_overpunch = 10;</code>
      */
     boolean getIsOverpunch();
 
     /**
-     * <code>optional bool has_special_instructions = 11;</code>
+     * <code>bool has_special_instructions = 11;</code>
      */
     boolean getHasSpecialInstructions();
 
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     java.lang.String getSpecialInstructionsEquals();
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     com.google.protobuf.ByteString
         getSpecialInstructionsEqualsBytes();
 
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     java.lang.String getSpecialInstructionsNotEquals();
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     com.google.protobuf.ByteString
         getSpecialInstructionsNotEqualsBytes();
@@ -29646,7 +29877,7 @@ public final class NestedEnumTest {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -29661,7 +29892,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -29680,7 +29911,7 @@ public final class NestedEnumTest {
     public static final int SOURCE_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object sourceName_;
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     public java.lang.String getSourceName() {
       java.lang.Object ref = sourceName_;
@@ -29695,7 +29926,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string source_name = 2;</code>
+     * <code>string source_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getSourceNameBytes() {
@@ -29714,13 +29945,13 @@ public final class NestedEnumTest {
     public static final int SOURCE_DATATYPE_FIELD_NUMBER = 3;
     private int sourceDatatype_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
      */
     public int getSourceDatatypeValue() {
       return sourceDatatype_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+     * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceDatatype() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceDatatype_);
@@ -29730,7 +29961,7 @@ public final class NestedEnumTest {
     public static final int SOURCE_INDEX_FIELD_NUMBER = 4;
     private long sourceIndex_;
     /**
-     * <code>optional int64 source_index = 4;</code>
+     * <code>int64 source_index = 4;</code>
      */
     public long getSourceIndex() {
       return sourceIndex_;
@@ -29739,7 +29970,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_NAME_FIELD_NUMBER = 5;
     private volatile java.lang.Object destinationName_;
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     public java.lang.String getDestinationName() {
       java.lang.Object ref = destinationName_;
@@ -29754,7 +29985,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string destination_name = 5;</code>
+     * <code>string destination_name = 5;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationNameBytes() {
@@ -29773,13 +30004,13 @@ public final class NestedEnumTest {
     public static final int DESTINATION_TYPE_FIELD_NUMBER = 6;
     private int destinationType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     public int getDestinationTypeValue() {
       return destinationType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+     * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
       org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
@@ -29789,7 +30020,7 @@ public final class NestedEnumTest {
     public static final int DESTINATION_INDEX_FIELD_NUMBER = 7;
     private long destinationIndex_;
     /**
-     * <code>optional int64 destination_index = 7;</code>
+     * <code>int64 destination_index = 7;</code>
      */
     public long getDestinationIndex() {
       return destinationIndex_;
@@ -29798,7 +30029,7 @@ public final class NestedEnumTest {
     public static final int FIXED_WIDTH_START_FIELD_NUMBER = 8;
     private long fixedWidthStart_;
     /**
-     * <code>optional int64 fixed_width_start = 8;</code>
+     * <code>int64 fixed_width_start = 8;</code>
      */
     public long getFixedWidthStart() {
       return fixedWidthStart_;
@@ -29807,7 +30038,7 @@ public final class NestedEnumTest {
     public static final int FIXED_WIDTH_END_FIELD_NUMBER = 9;
     private long fixedWidthEnd_;
     /**
-     * <code>optional int64 fixed_width_end = 9;</code>
+     * <code>int64 fixed_width_end = 9;</code>
      */
     public long getFixedWidthEnd() {
       return fixedWidthEnd_;
@@ -29816,7 +30047,7 @@ public final class NestedEnumTest {
     public static final int IS_OVERPUNCH_FIELD_NUMBER = 10;
     private boolean isOverpunch_;
     /**
-     * <code>optional bool is_overpunch = 10;</code>
+     * <code>bool is_overpunch = 10;</code>
      */
     public boolean getIsOverpunch() {
       return isOverpunch_;
@@ -29825,7 +30056,7 @@ public final class NestedEnumTest {
     public static final int HAS_SPECIAL_INSTRUCTIONS_FIELD_NUMBER = 11;
     private boolean hasSpecialInstructions_;
     /**
-     * <code>optional bool has_special_instructions = 11;</code>
+     * <code>bool has_special_instructions = 11;</code>
      */
     public boolean getHasSpecialInstructions() {
       return hasSpecialInstructions_;
@@ -29834,7 +30065,7 @@ public final class NestedEnumTest {
     public static final int SPECIAL_INSTRUCTIONS_EQUALS_FIELD_NUMBER = 12;
     private volatile java.lang.Object specialInstructionsEquals_;
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     public java.lang.String getSpecialInstructionsEquals() {
       java.lang.Object ref = specialInstructionsEquals_;
@@ -29849,7 +30080,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string special_instructions_equals = 12;</code>
+     * <code>string special_instructions_equals = 12;</code>
      */
     public com.google.protobuf.ByteString
         getSpecialInstructionsEqualsBytes() {
@@ -29868,7 +30099,7 @@ public final class NestedEnumTest {
     public static final int SPECIAL_INSTRUCTIONS_NOT_EQUALS_FIELD_NUMBER = 13;
     private volatile java.lang.Object specialInstructionsNotEquals_;
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     public java.lang.String getSpecialInstructionsNotEquals() {
       java.lang.Object ref = specialInstructionsNotEquals_;
@@ -29883,7 +30114,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string special_instructions_not_equals = 13;</code>
+     * <code>string special_instructions_not_equals = 13;</code>
      */
     public com.google.protobuf.ByteString
         getSpecialInstructionsNotEqualsBytes() {
@@ -30053,7 +30284,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + SOURCE_NAME_FIELD_NUMBER;
@@ -30091,6 +30322,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ColumnInfoTemplate parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -30378,7 +30620,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -30393,7 +30635,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -30409,7 +30651,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -30422,7 +30664,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -30431,7 +30673,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -30447,7 +30689,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object sourceName_ = "";
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public java.lang.String getSourceName() {
         java.lang.Object ref = sourceName_;
@@ -30462,7 +30704,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getSourceNameBytes() {
@@ -30478,7 +30720,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public Builder setSourceName(
           java.lang.String value) {
@@ -30491,7 +30733,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public Builder clearSourceName() {
         
@@ -30500,7 +30742,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string source_name = 2;</code>
+       * <code>string source_name = 2;</code>
        */
       public Builder setSourceNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30516,13 +30758,13 @@ public final class NestedEnumTest {
 
       private int sourceDatatype_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
        */
       public int getSourceDatatypeValue() {
         return sourceDatatype_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
        */
       public Builder setSourceDatatypeValue(int value) {
         sourceDatatype_ = value;
@@ -30530,14 +30772,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getSourceDatatype() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(sourceDatatype_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
        */
       public Builder setSourceDatatype(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -30549,7 +30791,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
+       * <code>.org.roylance.yaorm.ProtobufType source_datatype = 3;</code>
        */
       public Builder clearSourceDatatype() {
         
@@ -30560,13 +30802,13 @@ public final class NestedEnumTest {
 
       private long sourceIndex_ ;
       /**
-       * <code>optional int64 source_index = 4;</code>
+       * <code>int64 source_index = 4;</code>
        */
       public long getSourceIndex() {
         return sourceIndex_;
       }
       /**
-       * <code>optional int64 source_index = 4;</code>
+       * <code>int64 source_index = 4;</code>
        */
       public Builder setSourceIndex(long value) {
         
@@ -30575,7 +30817,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 source_index = 4;</code>
+       * <code>int64 source_index = 4;</code>
        */
       public Builder clearSourceIndex() {
         
@@ -30586,7 +30828,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object destinationName_ = "";
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public java.lang.String getDestinationName() {
         java.lang.Object ref = destinationName_;
@@ -30601,7 +30843,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationNameBytes() {
@@ -30617,7 +30859,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public Builder setDestinationName(
           java.lang.String value) {
@@ -30630,7 +30872,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public Builder clearDestinationName() {
         
@@ -30639,7 +30881,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string destination_name = 5;</code>
+       * <code>string destination_name = 5;</code>
        */
       public Builder setDestinationNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30655,13 +30897,13 @@ public final class NestedEnumTest {
 
       private int destinationType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public int getDestinationTypeValue() {
         return destinationType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public Builder setDestinationTypeValue(int value) {
         destinationType_ = value;
@@ -30669,14 +30911,14 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ProtobufType getDestinationType() {
         org.roylance.yaorm.NestedEnumTest.ProtobufType result = org.roylance.yaorm.NestedEnumTest.ProtobufType.valueOf(destinationType_);
         return result == null ? org.roylance.yaorm.NestedEnumTest.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public Builder setDestinationType(org.roylance.yaorm.NestedEnumTest.ProtobufType value) {
         if (value == null) {
@@ -30688,7 +30930,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType destination_type = 6;</code>
+       * <code>.org.roylance.yaorm.ProtobufType destination_type = 6;</code>
        */
       public Builder clearDestinationType() {
         
@@ -30699,13 +30941,13 @@ public final class NestedEnumTest {
 
       private long destinationIndex_ ;
       /**
-       * <code>optional int64 destination_index = 7;</code>
+       * <code>int64 destination_index = 7;</code>
        */
       public long getDestinationIndex() {
         return destinationIndex_;
       }
       /**
-       * <code>optional int64 destination_index = 7;</code>
+       * <code>int64 destination_index = 7;</code>
        */
       public Builder setDestinationIndex(long value) {
         
@@ -30714,7 +30956,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 destination_index = 7;</code>
+       * <code>int64 destination_index = 7;</code>
        */
       public Builder clearDestinationIndex() {
         
@@ -30725,13 +30967,13 @@ public final class NestedEnumTest {
 
       private long fixedWidthStart_ ;
       /**
-       * <code>optional int64 fixed_width_start = 8;</code>
+       * <code>int64 fixed_width_start = 8;</code>
        */
       public long getFixedWidthStart() {
         return fixedWidthStart_;
       }
       /**
-       * <code>optional int64 fixed_width_start = 8;</code>
+       * <code>int64 fixed_width_start = 8;</code>
        */
       public Builder setFixedWidthStart(long value) {
         
@@ -30740,7 +30982,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 fixed_width_start = 8;</code>
+       * <code>int64 fixed_width_start = 8;</code>
        */
       public Builder clearFixedWidthStart() {
         
@@ -30751,13 +30993,13 @@ public final class NestedEnumTest {
 
       private long fixedWidthEnd_ ;
       /**
-       * <code>optional int64 fixed_width_end = 9;</code>
+       * <code>int64 fixed_width_end = 9;</code>
        */
       public long getFixedWidthEnd() {
         return fixedWidthEnd_;
       }
       /**
-       * <code>optional int64 fixed_width_end = 9;</code>
+       * <code>int64 fixed_width_end = 9;</code>
        */
       public Builder setFixedWidthEnd(long value) {
         
@@ -30766,7 +31008,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional int64 fixed_width_end = 9;</code>
+       * <code>int64 fixed_width_end = 9;</code>
        */
       public Builder clearFixedWidthEnd() {
         
@@ -30777,13 +31019,13 @@ public final class NestedEnumTest {
 
       private boolean isOverpunch_ ;
       /**
-       * <code>optional bool is_overpunch = 10;</code>
+       * <code>bool is_overpunch = 10;</code>
        */
       public boolean getIsOverpunch() {
         return isOverpunch_;
       }
       /**
-       * <code>optional bool is_overpunch = 10;</code>
+       * <code>bool is_overpunch = 10;</code>
        */
       public Builder setIsOverpunch(boolean value) {
         
@@ -30792,7 +31034,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool is_overpunch = 10;</code>
+       * <code>bool is_overpunch = 10;</code>
        */
       public Builder clearIsOverpunch() {
         
@@ -30803,13 +31045,13 @@ public final class NestedEnumTest {
 
       private boolean hasSpecialInstructions_ ;
       /**
-       * <code>optional bool has_special_instructions = 11;</code>
+       * <code>bool has_special_instructions = 11;</code>
        */
       public boolean getHasSpecialInstructions() {
         return hasSpecialInstructions_;
       }
       /**
-       * <code>optional bool has_special_instructions = 11;</code>
+       * <code>bool has_special_instructions = 11;</code>
        */
       public Builder setHasSpecialInstructions(boolean value) {
         
@@ -30818,7 +31060,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool has_special_instructions = 11;</code>
+       * <code>bool has_special_instructions = 11;</code>
        */
       public Builder clearHasSpecialInstructions() {
         
@@ -30829,7 +31071,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object specialInstructionsEquals_ = "";
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public java.lang.String getSpecialInstructionsEquals() {
         java.lang.Object ref = specialInstructionsEquals_;
@@ -30844,7 +31086,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public com.google.protobuf.ByteString
           getSpecialInstructionsEqualsBytes() {
@@ -30860,7 +31102,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public Builder setSpecialInstructionsEquals(
           java.lang.String value) {
@@ -30873,7 +31115,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public Builder clearSpecialInstructionsEquals() {
         
@@ -30882,7 +31124,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_equals = 12;</code>
+       * <code>string special_instructions_equals = 12;</code>
        */
       public Builder setSpecialInstructionsEqualsBytes(
           com.google.protobuf.ByteString value) {
@@ -30898,7 +31140,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object specialInstructionsNotEquals_ = "";
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public java.lang.String getSpecialInstructionsNotEquals() {
         java.lang.Object ref = specialInstructionsNotEquals_;
@@ -30913,7 +31155,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public com.google.protobuf.ByteString
           getSpecialInstructionsNotEqualsBytes() {
@@ -30929,7 +31171,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public Builder setSpecialInstructionsNotEquals(
           java.lang.String value) {
@@ -30942,7 +31184,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public Builder clearSpecialInstructionsNotEquals() {
         
@@ -30951,7 +31193,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string special_instructions_not_equals = 13;</code>
+       * <code>string special_instructions_not_equals = 13;</code>
        */
       public Builder setSpecialInstructionsNotEqualsBytes(
           com.google.protobuf.ByteString value) {
@@ -31066,35 +31308,35 @@ public final class NestedEnumTest {
         int index);
 
     /**
-     * <code>optional string acg_java_home = 3;</code>
+     * <code>string acg_java_home = 3;</code>
      */
     java.lang.String getAcgJavaHome();
     /**
-     * <code>optional string acg_java_home = 3;</code>
+     * <code>string acg_java_home = 3;</code>
      */
     com.google.protobuf.ByteString
         getAcgJavaHomeBytes();
 
     /**
-     * <code>optional string ecr_java_home = 4;</code>
+     * <code>string ecr_java_home = 4;</code>
      */
     java.lang.String getEcrJavaHome();
     /**
-     * <code>optional string ecr_java_home = 4;</code>
+     * <code>string ecr_java_home = 4;</code>
      */
     com.google.protobuf.ByteString
         getEcrJavaHomeBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
      */
     boolean hasS3FileRetrieveConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformation getS3FileRetrieveConnection();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
      */
     org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getS3FileRetrieveConnectionOrBuilder();
 
@@ -31171,7 +31413,7 @@ public final class NestedEnumTest {
         int index);
 
     /**
-     * <code>optional bool license_exists = 9;</code>
+     * <code>bool license_exists = 9;</code>
      */
     boolean getLicenseExists();
   }
@@ -31409,7 +31651,7 @@ public final class NestedEnumTest {
     public static final int ACG_JAVA_HOME_FIELD_NUMBER = 3;
     private volatile java.lang.Object acgJavaHome_;
     /**
-     * <code>optional string acg_java_home = 3;</code>
+     * <code>string acg_java_home = 3;</code>
      */
     public java.lang.String getAcgJavaHome() {
       java.lang.Object ref = acgJavaHome_;
@@ -31424,7 +31666,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string acg_java_home = 3;</code>
+     * <code>string acg_java_home = 3;</code>
      */
     public com.google.protobuf.ByteString
         getAcgJavaHomeBytes() {
@@ -31443,7 +31685,7 @@ public final class NestedEnumTest {
     public static final int ECR_JAVA_HOME_FIELD_NUMBER = 4;
     private volatile java.lang.Object ecrJavaHome_;
     /**
-     * <code>optional string ecr_java_home = 4;</code>
+     * <code>string ecr_java_home = 4;</code>
      */
     public java.lang.String getEcrJavaHome() {
       java.lang.Object ref = ecrJavaHome_;
@@ -31458,7 +31700,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string ecr_java_home = 4;</code>
+     * <code>string ecr_java_home = 4;</code>
      */
     public com.google.protobuf.ByteString
         getEcrJavaHomeBytes() {
@@ -31477,19 +31719,19 @@ public final class NestedEnumTest {
     public static final int S3_FILE_RETRIEVE_CONNECTION_FIELD_NUMBER = 5;
     private org.roylance.yaorm.NestedEnumTest.ConnectionInformation s3FileRetrieveConnection_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
      */
     public boolean hasS3FileRetrieveConnection() {
       return s3FileRetrieveConnection_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getS3FileRetrieveConnection() {
       return s3FileRetrieveConnection_ == null ? org.roylance.yaorm.NestedEnumTest.ConnectionInformation.getDefaultInstance() : s3FileRetrieveConnection_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+     * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getS3FileRetrieveConnectionOrBuilder() {
       return getS3FileRetrieveConnection();
@@ -31603,7 +31845,7 @@ public final class NestedEnumTest {
     public static final int LICENSE_EXISTS_FIELD_NUMBER = 9;
     private boolean licenseExists_;
     /**
-     * <code>optional bool license_exists = 9;</code>
+     * <code>bool license_exists = 9;</code>
      */
     public boolean getLicenseExists() {
       return licenseExists_;
@@ -31735,7 +31977,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getCustomersCount() > 0) {
         hash = (37 * hash) + CUSTOMERS_FIELD_NUMBER;
         hash = (53 * hash) + getCustomersList().hashCode();
@@ -31772,6 +32014,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.RestCustomers parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -32704,7 +32957,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object acgJavaHome_ = "";
       /**
-       * <code>optional string acg_java_home = 3;</code>
+       * <code>string acg_java_home = 3;</code>
        */
       public java.lang.String getAcgJavaHome() {
         java.lang.Object ref = acgJavaHome_;
@@ -32719,7 +32972,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string acg_java_home = 3;</code>
+       * <code>string acg_java_home = 3;</code>
        */
       public com.google.protobuf.ByteString
           getAcgJavaHomeBytes() {
@@ -32735,7 +32988,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string acg_java_home = 3;</code>
+       * <code>string acg_java_home = 3;</code>
        */
       public Builder setAcgJavaHome(
           java.lang.String value) {
@@ -32748,7 +33001,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string acg_java_home = 3;</code>
+       * <code>string acg_java_home = 3;</code>
        */
       public Builder clearAcgJavaHome() {
         
@@ -32757,7 +33010,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string acg_java_home = 3;</code>
+       * <code>string acg_java_home = 3;</code>
        */
       public Builder setAcgJavaHomeBytes(
           com.google.protobuf.ByteString value) {
@@ -32773,7 +33026,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object ecrJavaHome_ = "";
       /**
-       * <code>optional string ecr_java_home = 4;</code>
+       * <code>string ecr_java_home = 4;</code>
        */
       public java.lang.String getEcrJavaHome() {
         java.lang.Object ref = ecrJavaHome_;
@@ -32788,7 +33041,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string ecr_java_home = 4;</code>
+       * <code>string ecr_java_home = 4;</code>
        */
       public com.google.protobuf.ByteString
           getEcrJavaHomeBytes() {
@@ -32804,7 +33057,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string ecr_java_home = 4;</code>
+       * <code>string ecr_java_home = 4;</code>
        */
       public Builder setEcrJavaHome(
           java.lang.String value) {
@@ -32817,7 +33070,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string ecr_java_home = 4;</code>
+       * <code>string ecr_java_home = 4;</code>
        */
       public Builder clearEcrJavaHome() {
         
@@ -32826,7 +33079,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string ecr_java_home = 4;</code>
+       * <code>string ecr_java_home = 4;</code>
        */
       public Builder setEcrJavaHomeBytes(
           com.google.protobuf.ByteString value) {
@@ -32844,13 +33097,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> s3FileRetrieveConnectionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public boolean hasS3FileRetrieveConnection() {
         return s3FileRetrieveConnectionBuilder_ != null || s3FileRetrieveConnection_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation getS3FileRetrieveConnection() {
         if (s3FileRetrieveConnectionBuilder_ == null) {
@@ -32860,7 +33113,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public Builder setS3FileRetrieveConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (s3FileRetrieveConnectionBuilder_ == null) {
@@ -32876,7 +33129,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public Builder setS3FileRetrieveConnection(
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder builderForValue) {
@@ -32890,7 +33143,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public Builder mergeS3FileRetrieveConnection(org.roylance.yaorm.NestedEnumTest.ConnectionInformation value) {
         if (s3FileRetrieveConnectionBuilder_ == null) {
@@ -32908,7 +33161,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public Builder clearS3FileRetrieveConnection() {
         if (s3FileRetrieveConnectionBuilder_ == null) {
@@ -32922,7 +33175,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder getS3FileRetrieveConnectionBuilder() {
         
@@ -32930,7 +33183,7 @@ public final class NestedEnumTest {
         return getS3FileRetrieveConnectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder getS3FileRetrieveConnectionOrBuilder() {
         if (s3FileRetrieveConnectionBuilder_ != null) {
@@ -32941,7 +33194,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
+       * <code>.org.roylance.yaorm.ConnectionInformation s3_file_retrieve_connection = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.ConnectionInformation, org.roylance.yaorm.NestedEnumTest.ConnectionInformation.Builder, org.roylance.yaorm.NestedEnumTest.ConnectionInformationOrBuilder> 
@@ -33679,13 +33932,13 @@ public final class NestedEnumTest {
 
       private boolean licenseExists_ ;
       /**
-       * <code>optional bool license_exists = 9;</code>
+       * <code>bool license_exists = 9;</code>
        */
       public boolean getLicenseExists() {
         return licenseExists_;
       }
       /**
-       * <code>optional bool license_exists = 9;</code>
+       * <code>bool license_exists = 9;</code>
        */
       public Builder setLicenseExists(boolean value) {
         
@@ -33694,7 +33947,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool license_exists = 9;</code>
+       * <code>bool license_exists = 9;</code>
        */
       public Builder clearLicenseExists() {
         
@@ -34023,7 +34276,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getColumnsCount() > 0) {
         hash = (37 * hash) + COLUMNS_FIELD_NUMBER;
         hash = (53 * hash) + getColumnsList().hashCode();
@@ -34037,6 +34290,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -34858,38 +35122,38 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     boolean hasRestCustomers();
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestCustomers getRestCustomers();
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder getRestCustomersOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     boolean hasDataWarehouseInfo();
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo getDataWarehouseInfo();
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder getDataWarehouseInfoOrBuilder();
   }
@@ -34991,7 +35255,7 @@ public final class NestedEnumTest {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -35006,7 +35270,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -35025,19 +35289,19 @@ public final class NestedEnumTest {
     public static final int REST_CUSTOMERS_FIELD_NUMBER = 2;
     private org.roylance.yaorm.NestedEnumTest.RestCustomers restCustomers_;
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     public boolean hasRestCustomers() {
       return restCustomers_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestCustomers getRestCustomers() {
       return restCustomers_ == null ? org.roylance.yaorm.NestedEnumTest.RestCustomers.getDefaultInstance() : restCustomers_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder getRestCustomersOrBuilder() {
       return getRestCustomers();
@@ -35046,19 +35310,19 @@ public final class NestedEnumTest {
     public static final int DATA_WAREHOUSE_INFO_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo dataWarehouseInfo_;
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     public boolean hasDataWarehouseInfo() {
       return dataWarehouseInfo_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo getDataWarehouseInfo() {
       return dataWarehouseInfo_ == null ? org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.getDefaultInstance() : dataWarehouseInfo_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder getDataWarehouseInfoOrBuilder() {
       return getDataWarehouseInfo();
@@ -35140,7 +35404,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       if (hasRestCustomers()) {
@@ -35156,6 +35420,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.UILetoRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -35395,7 +35670,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -35410,7 +35685,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -35426,7 +35701,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -35439,7 +35714,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -35448,7 +35723,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -35466,13 +35741,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> restCustomersBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public boolean hasRestCustomers() {
         return restCustomersBuilder_ != null || restCustomers_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestCustomers getRestCustomers() {
         if (restCustomersBuilder_ == null) {
@@ -35482,7 +35757,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder setRestCustomers(org.roylance.yaorm.NestedEnumTest.RestCustomers value) {
         if (restCustomersBuilder_ == null) {
@@ -35498,7 +35773,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder setRestCustomers(
           org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder builderForValue) {
@@ -35512,7 +35787,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder mergeRestCustomers(org.roylance.yaorm.NestedEnumTest.RestCustomers value) {
         if (restCustomersBuilder_ == null) {
@@ -35530,7 +35805,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder clearRestCustomers() {
         if (restCustomersBuilder_ == null) {
@@ -35544,7 +35819,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder getRestCustomersBuilder() {
         
@@ -35552,7 +35827,7 @@ public final class NestedEnumTest {
         return getRestCustomersFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder getRestCustomersOrBuilder() {
         if (restCustomersBuilder_ != null) {
@@ -35563,7 +35838,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> 
@@ -35583,13 +35858,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> dataWarehouseInfoBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public boolean hasDataWarehouseInfo() {
         return dataWarehouseInfoBuilder_ != null || dataWarehouseInfo_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo getDataWarehouseInfo() {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -35599,7 +35874,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder setDataWarehouseInfo(org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo value) {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -35615,7 +35890,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder setDataWarehouseInfo(
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder builderForValue) {
@@ -35629,7 +35904,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder mergeDataWarehouseInfo(org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo value) {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -35647,7 +35922,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder clearDataWarehouseInfo() {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -35661,7 +35936,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder getDataWarehouseInfoBuilder() {
         
@@ -35669,7 +35944,7 @@ public final class NestedEnumTest {
         return getDataWarehouseInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder getDataWarehouseInfoOrBuilder() {
         if (dataWarehouseInfoBuilder_ != null) {
@@ -35680,7 +35955,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> 
@@ -35749,33 +36024,33 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool successful = 1;</code>
+     * <code>bool successful = 1;</code>
      */
     boolean getSuccessful();
 
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     boolean hasRestCustomers();
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestCustomers getRestCustomers();
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder getRestCustomersOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     boolean hasDataWarehouseInfo();
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo getDataWarehouseInfo();
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder getDataWarehouseInfoOrBuilder();
   }
@@ -35876,7 +36151,7 @@ public final class NestedEnumTest {
     public static final int SUCCESSFUL_FIELD_NUMBER = 1;
     private boolean successful_;
     /**
-     * <code>optional bool successful = 1;</code>
+     * <code>bool successful = 1;</code>
      */
     public boolean getSuccessful() {
       return successful_;
@@ -35885,19 +36160,19 @@ public final class NestedEnumTest {
     public static final int REST_CUSTOMERS_FIELD_NUMBER = 2;
     private org.roylance.yaorm.NestedEnumTest.RestCustomers restCustomers_;
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     public boolean hasRestCustomers() {
       return restCustomers_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestCustomers getRestCustomers() {
       return restCustomers_ == null ? org.roylance.yaorm.NestedEnumTest.RestCustomers.getDefaultInstance() : restCustomers_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+     * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder getRestCustomersOrBuilder() {
       return getRestCustomers();
@@ -35906,19 +36181,19 @@ public final class NestedEnumTest {
     public static final int DATA_WAREHOUSE_INFO_FIELD_NUMBER = 3;
     private org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo dataWarehouseInfo_;
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     public boolean hasDataWarehouseInfo() {
       return dataWarehouseInfo_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo getDataWarehouseInfo() {
       return dataWarehouseInfo_ == null ? org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.getDefaultInstance() : dataWarehouseInfo_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+     * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
      */
     public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder getDataWarehouseInfoOrBuilder() {
       return getDataWarehouseInfo();
@@ -36001,7 +36276,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SUCCESSFUL_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuccessful());
@@ -36018,6 +36293,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.UILetoResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -36256,13 +36542,13 @@ public final class NestedEnumTest {
 
       private boolean successful_ ;
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public boolean getSuccessful() {
         return successful_;
       }
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public Builder setSuccessful(boolean value) {
         
@@ -36271,7 +36557,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public Builder clearSuccessful() {
         
@@ -36284,13 +36570,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> restCustomersBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public boolean hasRestCustomers() {
         return restCustomersBuilder_ != null || restCustomers_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestCustomers getRestCustomers() {
         if (restCustomersBuilder_ == null) {
@@ -36300,7 +36586,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder setRestCustomers(org.roylance.yaorm.NestedEnumTest.RestCustomers value) {
         if (restCustomersBuilder_ == null) {
@@ -36316,7 +36602,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder setRestCustomers(
           org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder builderForValue) {
@@ -36330,7 +36616,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder mergeRestCustomers(org.roylance.yaorm.NestedEnumTest.RestCustomers value) {
         if (restCustomersBuilder_ == null) {
@@ -36348,7 +36634,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public Builder clearRestCustomers() {
         if (restCustomersBuilder_ == null) {
@@ -36362,7 +36648,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder getRestCustomersBuilder() {
         
@@ -36370,7 +36656,7 @@ public final class NestedEnumTest {
         return getRestCustomersFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder getRestCustomersOrBuilder() {
         if (restCustomersBuilder_ != null) {
@@ -36381,7 +36667,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
+       * <code>.org.roylance.yaorm.RestCustomers rest_customers = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestCustomers, org.roylance.yaorm.NestedEnumTest.RestCustomers.Builder, org.roylance.yaorm.NestedEnumTest.RestCustomersOrBuilder> 
@@ -36401,13 +36687,13 @@ public final class NestedEnumTest {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> dataWarehouseInfoBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public boolean hasDataWarehouseInfo() {
         return dataWarehouseInfoBuilder_ != null || dataWarehouseInfo_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo getDataWarehouseInfo() {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -36417,7 +36703,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder setDataWarehouseInfo(org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo value) {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -36433,7 +36719,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder setDataWarehouseInfo(
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder builderForValue) {
@@ -36447,7 +36733,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder mergeDataWarehouseInfo(org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo value) {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -36465,7 +36751,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public Builder clearDataWarehouseInfo() {
         if (dataWarehouseInfoBuilder_ == null) {
@@ -36479,7 +36765,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder getDataWarehouseInfoBuilder() {
         
@@ -36487,7 +36773,7 @@ public final class NestedEnumTest {
         return getDataWarehouseInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       public org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder getDataWarehouseInfoOrBuilder() {
         if (dataWarehouseInfoBuilder_ != null) {
@@ -36498,7 +36784,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
+       * <code>.org.roylance.yaorm.RestDataWarehouseInfo data_warehouse_info = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfo.Builder, org.roylance.yaorm.NestedEnumTest.RestDataWarehouseInfoOrBuilder> 
@@ -36567,22 +36853,22 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string month = 1;</code>
+     * <code>string month = 1;</code>
      */
     java.lang.String getMonth();
     /**
-     * <code>optional string month = 1;</code>
+     * <code>string month = 1;</code>
      */
     com.google.protobuf.ByteString
         getMonthBytes();
 
     /**
-     * <code>optional double medical_eligibile = 2;</code>
+     * <code>double medical_eligibile = 2;</code>
      */
     double getMedicalEligibile();
 
     /**
-     * <code>optional double ineligibile_all = 3;</code>
+     * <code>double ineligibile_all = 3;</code>
      */
     double getIneligibileAll();
   }
@@ -36670,7 +36956,7 @@ public final class NestedEnumTest {
     public static final int MONTH_FIELD_NUMBER = 1;
     private volatile java.lang.Object month_;
     /**
-     * <code>optional string month = 1;</code>
+     * <code>string month = 1;</code>
      */
     public java.lang.String getMonth() {
       java.lang.Object ref = month_;
@@ -36685,7 +36971,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string month = 1;</code>
+     * <code>string month = 1;</code>
      */
     public com.google.protobuf.ByteString
         getMonthBytes() {
@@ -36704,7 +36990,7 @@ public final class NestedEnumTest {
     public static final int MEDICAL_ELIGIBILE_FIELD_NUMBER = 2;
     private double medicalEligibile_;
     /**
-     * <code>optional double medical_eligibile = 2;</code>
+     * <code>double medical_eligibile = 2;</code>
      */
     public double getMedicalEligibile() {
       return medicalEligibile_;
@@ -36713,7 +36999,7 @@ public final class NestedEnumTest {
     public static final int INELIGIBILE_ALL_FIELD_NUMBER = 3;
     private double ineligibileAll_;
     /**
-     * <code>optional double ineligibile_all = 3;</code>
+     * <code>double ineligibile_all = 3;</code>
      */
     public double getIneligibileAll() {
       return ineligibileAll_;
@@ -36793,7 +37079,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MONTH_FIELD_NUMBER;
       hash = (53 * hash) + getMonth().hashCode();
       hash = (37 * hash) + MEDICAL_ELIGIBILE_FIELD_NUMBER;
@@ -36807,6 +37093,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ReportEligibility parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -37030,7 +37327,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object month_ = "";
       /**
-       * <code>optional string month = 1;</code>
+       * <code>string month = 1;</code>
        */
       public java.lang.String getMonth() {
         java.lang.Object ref = month_;
@@ -37045,7 +37342,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string month = 1;</code>
+       * <code>string month = 1;</code>
        */
       public com.google.protobuf.ByteString
           getMonthBytes() {
@@ -37061,7 +37358,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string month = 1;</code>
+       * <code>string month = 1;</code>
        */
       public Builder setMonth(
           java.lang.String value) {
@@ -37074,7 +37371,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string month = 1;</code>
+       * <code>string month = 1;</code>
        */
       public Builder clearMonth() {
         
@@ -37083,7 +37380,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string month = 1;</code>
+       * <code>string month = 1;</code>
        */
       public Builder setMonthBytes(
           com.google.protobuf.ByteString value) {
@@ -37099,13 +37396,13 @@ public final class NestedEnumTest {
 
       private double medicalEligibile_ ;
       /**
-       * <code>optional double medical_eligibile = 2;</code>
+       * <code>double medical_eligibile = 2;</code>
        */
       public double getMedicalEligibile() {
         return medicalEligibile_;
       }
       /**
-       * <code>optional double medical_eligibile = 2;</code>
+       * <code>double medical_eligibile = 2;</code>
        */
       public Builder setMedicalEligibile(double value) {
         
@@ -37114,7 +37411,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional double medical_eligibile = 2;</code>
+       * <code>double medical_eligibile = 2;</code>
        */
       public Builder clearMedicalEligibile() {
         
@@ -37125,13 +37422,13 @@ public final class NestedEnumTest {
 
       private double ineligibileAll_ ;
       /**
-       * <code>optional double ineligibile_all = 3;</code>
+       * <code>double ineligibile_all = 3;</code>
        */
       public double getIneligibileAll() {
         return ineligibileAll_;
       }
       /**
-       * <code>optional double ineligibile_all = 3;</code>
+       * <code>double ineligibile_all = 3;</code>
        */
       public Builder setIneligibileAll(double value) {
         
@@ -37140,7 +37437,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional double ineligibile_all = 3;</code>
+       * <code>double ineligibile_all = 3;</code>
        */
       public Builder clearIneligibileAll() {
         
@@ -37202,27 +37499,27 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string paid_date = 1;</code>
+     * <code>string paid_date = 1;</code>
      */
     java.lang.String getPaidDate();
     /**
-     * <code>optional string paid_date = 1;</code>
+     * <code>string paid_date = 1;</code>
      */
     com.google.protobuf.ByteString
         getPaidDateBytes();
 
     /**
-     * <code>optional string service_date = 2;</code>
+     * <code>string service_date = 2;</code>
      */
     java.lang.String getServiceDate();
     /**
-     * <code>optional string service_date = 2;</code>
+     * <code>string service_date = 2;</code>
      */
     com.google.protobuf.ByteString
         getServiceDateBytes();
 
     /**
-     * <code>optional double medical_allowed_amount = 3;</code>
+     * <code>double medical_allowed_amount = 3;</code>
      */
     double getMedicalAllowedAmount();
   }
@@ -37311,7 +37608,7 @@ public final class NestedEnumTest {
     public static final int PAID_DATE_FIELD_NUMBER = 1;
     private volatile java.lang.Object paidDate_;
     /**
-     * <code>optional string paid_date = 1;</code>
+     * <code>string paid_date = 1;</code>
      */
     public java.lang.String getPaidDate() {
       java.lang.Object ref = paidDate_;
@@ -37326,7 +37623,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string paid_date = 1;</code>
+     * <code>string paid_date = 1;</code>
      */
     public com.google.protobuf.ByteString
         getPaidDateBytes() {
@@ -37345,7 +37642,7 @@ public final class NestedEnumTest {
     public static final int SERVICE_DATE_FIELD_NUMBER = 2;
     private volatile java.lang.Object serviceDate_;
     /**
-     * <code>optional string service_date = 2;</code>
+     * <code>string service_date = 2;</code>
      */
     public java.lang.String getServiceDate() {
       java.lang.Object ref = serviceDate_;
@@ -37360,7 +37657,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string service_date = 2;</code>
+     * <code>string service_date = 2;</code>
      */
     public com.google.protobuf.ByteString
         getServiceDateBytes() {
@@ -37379,7 +37676,7 @@ public final class NestedEnumTest {
     public static final int MEDICAL_ALLOWED_AMOUNT_FIELD_NUMBER = 3;
     private double medicalAllowedAmount_;
     /**
-     * <code>optional double medical_allowed_amount = 3;</code>
+     * <code>double medical_allowed_amount = 3;</code>
      */
     public double getMedicalAllowedAmount() {
       return medicalAllowedAmount_;
@@ -37456,7 +37753,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PAID_DATE_FIELD_NUMBER;
       hash = (53 * hash) + getPaidDate().hashCode();
       hash = (37 * hash) + SERVICE_DATE_FIELD_NUMBER;
@@ -37469,6 +37766,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ClaimsTriangle parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -37693,7 +38001,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object paidDate_ = "";
       /**
-       * <code>optional string paid_date = 1;</code>
+       * <code>string paid_date = 1;</code>
        */
       public java.lang.String getPaidDate() {
         java.lang.Object ref = paidDate_;
@@ -37708,7 +38016,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string paid_date = 1;</code>
+       * <code>string paid_date = 1;</code>
        */
       public com.google.protobuf.ByteString
           getPaidDateBytes() {
@@ -37724,7 +38032,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string paid_date = 1;</code>
+       * <code>string paid_date = 1;</code>
        */
       public Builder setPaidDate(
           java.lang.String value) {
@@ -37737,7 +38045,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string paid_date = 1;</code>
+       * <code>string paid_date = 1;</code>
        */
       public Builder clearPaidDate() {
         
@@ -37746,7 +38054,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string paid_date = 1;</code>
+       * <code>string paid_date = 1;</code>
        */
       public Builder setPaidDateBytes(
           com.google.protobuf.ByteString value) {
@@ -37762,7 +38070,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object serviceDate_ = "";
       /**
-       * <code>optional string service_date = 2;</code>
+       * <code>string service_date = 2;</code>
        */
       public java.lang.String getServiceDate() {
         java.lang.Object ref = serviceDate_;
@@ -37777,7 +38085,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string service_date = 2;</code>
+       * <code>string service_date = 2;</code>
        */
       public com.google.protobuf.ByteString
           getServiceDateBytes() {
@@ -37793,7 +38101,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string service_date = 2;</code>
+       * <code>string service_date = 2;</code>
        */
       public Builder setServiceDate(
           java.lang.String value) {
@@ -37806,7 +38114,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string service_date = 2;</code>
+       * <code>string service_date = 2;</code>
        */
       public Builder clearServiceDate() {
         
@@ -37815,7 +38123,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string service_date = 2;</code>
+       * <code>string service_date = 2;</code>
        */
       public Builder setServiceDateBytes(
           com.google.protobuf.ByteString value) {
@@ -37831,13 +38139,13 @@ public final class NestedEnumTest {
 
       private double medicalAllowedAmount_ ;
       /**
-       * <code>optional double medical_allowed_amount = 3;</code>
+       * <code>double medical_allowed_amount = 3;</code>
        */
       public double getMedicalAllowedAmount() {
         return medicalAllowedAmount_;
       }
       /**
-       * <code>optional double medical_allowed_amount = 3;</code>
+       * <code>double medical_allowed_amount = 3;</code>
        */
       public Builder setMedicalAllowedAmount(double value) {
         
@@ -37846,7 +38154,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional double medical_allowed_amount = 3;</code>
+       * <code>double medical_allowed_amount = 3;</code>
        */
       public Builder clearMedicalAllowedAmount() {
         
@@ -37908,47 +38216,47 @@ public final class NestedEnumTest {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string l1 = 1;</code>
+     * <code>string l1 = 1;</code>
      */
     java.lang.String getL1();
     /**
-     * <code>optional string l1 = 1;</code>
+     * <code>string l1 = 1;</code>
      */
     com.google.protobuf.ByteString
         getL1Bytes();
 
     /**
-     * <code>optional string l2 = 2;</code>
+     * <code>string l2 = 2;</code>
      */
     java.lang.String getL2();
     /**
-     * <code>optional string l2 = 2;</code>
+     * <code>string l2 = 2;</code>
      */
     com.google.protobuf.ByteString
         getL2Bytes();
 
     /**
-     * <code>optional string art_tos_code = 3;</code>
+     * <code>string art_tos_code = 3;</code>
      */
     java.lang.String getArtTosCode();
     /**
-     * <code>optional string art_tos_code = 3;</code>
+     * <code>string art_tos_code = 3;</code>
      */
     com.google.protobuf.ByteString
         getArtTosCodeBytes();
 
     /**
-     * <code>optional string scg_l2 = 4;</code>
+     * <code>string scg_l2 = 4;</code>
      */
     java.lang.String getScgL2();
     /**
-     * <code>optional string scg_l2 = 4;</code>
+     * <code>string scg_l2 = 4;</code>
      */
     com.google.protobuf.ByteString
         getScgL2Bytes();
 
     /**
-     * <code>optional double medical_allowed_amount = 5;</code>
+     * <code>double medical_allowed_amount = 5;</code>
      */
     double getMedicalAllowedAmount();
   }
@@ -38051,7 +38359,7 @@ public final class NestedEnumTest {
     public static final int L1_FIELD_NUMBER = 1;
     private volatile java.lang.Object l1_;
     /**
-     * <code>optional string l1 = 1;</code>
+     * <code>string l1 = 1;</code>
      */
     public java.lang.String getL1() {
       java.lang.Object ref = l1_;
@@ -38066,7 +38374,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string l1 = 1;</code>
+     * <code>string l1 = 1;</code>
      */
     public com.google.protobuf.ByteString
         getL1Bytes() {
@@ -38085,7 +38393,7 @@ public final class NestedEnumTest {
     public static final int L2_FIELD_NUMBER = 2;
     private volatile java.lang.Object l2_;
     /**
-     * <code>optional string l2 = 2;</code>
+     * <code>string l2 = 2;</code>
      */
     public java.lang.String getL2() {
       java.lang.Object ref = l2_;
@@ -38100,7 +38408,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string l2 = 2;</code>
+     * <code>string l2 = 2;</code>
      */
     public com.google.protobuf.ByteString
         getL2Bytes() {
@@ -38119,7 +38427,7 @@ public final class NestedEnumTest {
     public static final int ART_TOS_CODE_FIELD_NUMBER = 3;
     private volatile java.lang.Object artTosCode_;
     /**
-     * <code>optional string art_tos_code = 3;</code>
+     * <code>string art_tos_code = 3;</code>
      */
     public java.lang.String getArtTosCode() {
       java.lang.Object ref = artTosCode_;
@@ -38134,7 +38442,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string art_tos_code = 3;</code>
+     * <code>string art_tos_code = 3;</code>
      */
     public com.google.protobuf.ByteString
         getArtTosCodeBytes() {
@@ -38153,7 +38461,7 @@ public final class NestedEnumTest {
     public static final int SCG_L2_FIELD_NUMBER = 4;
     private volatile java.lang.Object scgL2_;
     /**
-     * <code>optional string scg_l2 = 4;</code>
+     * <code>string scg_l2 = 4;</code>
      */
     public java.lang.String getScgL2() {
       java.lang.Object ref = scgL2_;
@@ -38168,7 +38476,7 @@ public final class NestedEnumTest {
       }
     }
     /**
-     * <code>optional string scg_l2 = 4;</code>
+     * <code>string scg_l2 = 4;</code>
      */
     public com.google.protobuf.ByteString
         getScgL2Bytes() {
@@ -38187,7 +38495,7 @@ public final class NestedEnumTest {
     public static final int MEDICAL_ALLOWED_AMOUNT_FIELD_NUMBER = 5;
     private double medicalAllowedAmount_;
     /**
-     * <code>optional double medical_allowed_amount = 5;</code>
+     * <code>double medical_allowed_amount = 5;</code>
      */
     public double getMedicalAllowedAmount() {
       return medicalAllowedAmount_;
@@ -38280,7 +38588,7 @@ public final class NestedEnumTest {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + L1_FIELD_NUMBER;
       hash = (53 * hash) + getL1().hashCode();
       hash = (37 * hash) + L2_FIELD_NUMBER;
@@ -38297,6 +38605,17 @@ public final class NestedEnumTest {
       return hash;
     }
 
+    public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.NestedEnumTest.ServiceCategory parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -38535,7 +38854,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object l1_ = "";
       /**
-       * <code>optional string l1 = 1;</code>
+       * <code>string l1 = 1;</code>
        */
       public java.lang.String getL1() {
         java.lang.Object ref = l1_;
@@ -38550,7 +38869,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string l1 = 1;</code>
+       * <code>string l1 = 1;</code>
        */
       public com.google.protobuf.ByteString
           getL1Bytes() {
@@ -38566,7 +38885,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string l1 = 1;</code>
+       * <code>string l1 = 1;</code>
        */
       public Builder setL1(
           java.lang.String value) {
@@ -38579,7 +38898,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string l1 = 1;</code>
+       * <code>string l1 = 1;</code>
        */
       public Builder clearL1() {
         
@@ -38588,7 +38907,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string l1 = 1;</code>
+       * <code>string l1 = 1;</code>
        */
       public Builder setL1Bytes(
           com.google.protobuf.ByteString value) {
@@ -38604,7 +38923,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object l2_ = "";
       /**
-       * <code>optional string l2 = 2;</code>
+       * <code>string l2 = 2;</code>
        */
       public java.lang.String getL2() {
         java.lang.Object ref = l2_;
@@ -38619,7 +38938,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string l2 = 2;</code>
+       * <code>string l2 = 2;</code>
        */
       public com.google.protobuf.ByteString
           getL2Bytes() {
@@ -38635,7 +38954,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string l2 = 2;</code>
+       * <code>string l2 = 2;</code>
        */
       public Builder setL2(
           java.lang.String value) {
@@ -38648,7 +38967,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string l2 = 2;</code>
+       * <code>string l2 = 2;</code>
        */
       public Builder clearL2() {
         
@@ -38657,7 +38976,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string l2 = 2;</code>
+       * <code>string l2 = 2;</code>
        */
       public Builder setL2Bytes(
           com.google.protobuf.ByteString value) {
@@ -38673,7 +38992,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object artTosCode_ = "";
       /**
-       * <code>optional string art_tos_code = 3;</code>
+       * <code>string art_tos_code = 3;</code>
        */
       public java.lang.String getArtTosCode() {
         java.lang.Object ref = artTosCode_;
@@ -38688,7 +39007,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string art_tos_code = 3;</code>
+       * <code>string art_tos_code = 3;</code>
        */
       public com.google.protobuf.ByteString
           getArtTosCodeBytes() {
@@ -38704,7 +39023,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string art_tos_code = 3;</code>
+       * <code>string art_tos_code = 3;</code>
        */
       public Builder setArtTosCode(
           java.lang.String value) {
@@ -38717,7 +39036,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string art_tos_code = 3;</code>
+       * <code>string art_tos_code = 3;</code>
        */
       public Builder clearArtTosCode() {
         
@@ -38726,7 +39045,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string art_tos_code = 3;</code>
+       * <code>string art_tos_code = 3;</code>
        */
       public Builder setArtTosCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -38742,7 +39061,7 @@ public final class NestedEnumTest {
 
       private java.lang.Object scgL2_ = "";
       /**
-       * <code>optional string scg_l2 = 4;</code>
+       * <code>string scg_l2 = 4;</code>
        */
       public java.lang.String getScgL2() {
         java.lang.Object ref = scgL2_;
@@ -38757,7 +39076,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string scg_l2 = 4;</code>
+       * <code>string scg_l2 = 4;</code>
        */
       public com.google.protobuf.ByteString
           getScgL2Bytes() {
@@ -38773,7 +39092,7 @@ public final class NestedEnumTest {
         }
       }
       /**
-       * <code>optional string scg_l2 = 4;</code>
+       * <code>string scg_l2 = 4;</code>
        */
       public Builder setScgL2(
           java.lang.String value) {
@@ -38786,7 +39105,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string scg_l2 = 4;</code>
+       * <code>string scg_l2 = 4;</code>
        */
       public Builder clearScgL2() {
         
@@ -38795,7 +39114,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional string scg_l2 = 4;</code>
+       * <code>string scg_l2 = 4;</code>
        */
       public Builder setScgL2Bytes(
           com.google.protobuf.ByteString value) {
@@ -38811,13 +39130,13 @@ public final class NestedEnumTest {
 
       private double medicalAllowedAmount_ ;
       /**
-       * <code>optional double medical_allowed_amount = 5;</code>
+       * <code>double medical_allowed_amount = 5;</code>
        */
       public double getMedicalAllowedAmount() {
         return medicalAllowedAmount_;
       }
       /**
-       * <code>optional double medical_allowed_amount = 5;</code>
+       * <code>double medical_allowed_amount = 5;</code>
        */
       public Builder setMedicalAllowedAmount(double value) {
         
@@ -38826,7 +39145,7 @@ public final class NestedEnumTest {
         return this;
       }
       /**
-       * <code>optional double medical_allowed_amount = 5;</code>
+       * <code>double medical_allowed_amount = 5;</code>
        */
       public Builder clearMedicalAllowedAmount() {
         

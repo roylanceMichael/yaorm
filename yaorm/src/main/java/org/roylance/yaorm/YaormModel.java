@@ -475,20 +475,20 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+     * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
      */
     int getProtoTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+     * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
      */
     org.roylance.yaorm.YaormModel.ProtobufType getProtoType();
 
     /**
-     * <code>optional string sql_type = 2;</code>
+     * <code>string sql_type = 2;</code>
      */
     java.lang.String getSqlType();
     /**
-     * <code>optional string sql_type = 2;</code>
+     * <code>string sql_type = 2;</code>
      */
     com.google.protobuf.ByteString
         getSqlTypeBytes();
@@ -572,13 +572,13 @@ public final class YaormModel {
     public static final int PROTO_TYPE_FIELD_NUMBER = 1;
     private int protoType_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+     * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
      */
     public int getProtoTypeValue() {
       return protoType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+     * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.ProtobufType getProtoType() {
       org.roylance.yaorm.YaormModel.ProtobufType result = org.roylance.yaorm.YaormModel.ProtobufType.valueOf(protoType_);
@@ -588,7 +588,7 @@ public final class YaormModel {
     public static final int SQL_TYPE_FIELD_NUMBER = 2;
     private volatile java.lang.Object sqlType_;
     /**
-     * <code>optional string sql_type = 2;</code>
+     * <code>string sql_type = 2;</code>
      */
     public java.lang.String getSqlType() {
       java.lang.Object ref = sqlType_;
@@ -603,7 +603,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string sql_type = 2;</code>
+     * <code>string sql_type = 2;</code>
      */
     public com.google.protobuf.ByteString
         getSqlTypeBytes() {
@@ -679,7 +679,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PROTO_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + protoType_;
       hash = (37 * hash) + SQL_TYPE_FIELD_NUMBER;
@@ -689,6 +689,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.ProtoTypeToSqlType parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.ProtoTypeToSqlType parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.ProtoTypeToSqlType parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -906,13 +917,13 @@ public final class YaormModel {
 
       private int protoType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+       * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
        */
       public int getProtoTypeValue() {
         return protoType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+       * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
        */
       public Builder setProtoTypeValue(int value) {
         protoType_ = value;
@@ -920,14 +931,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+       * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ProtobufType getProtoType() {
         org.roylance.yaorm.YaormModel.ProtobufType result = org.roylance.yaorm.YaormModel.ProtobufType.valueOf(protoType_);
         return result == null ? org.roylance.yaorm.YaormModel.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+       * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
        */
       public Builder setProtoType(org.roylance.yaorm.YaormModel.ProtobufType value) {
         if (value == null) {
@@ -939,7 +950,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType proto_type = 1;</code>
+       * <code>.org.roylance.yaorm.ProtobufType proto_type = 1;</code>
        */
       public Builder clearProtoType() {
         
@@ -950,7 +961,7 @@ public final class YaormModel {
 
       private java.lang.Object sqlType_ = "";
       /**
-       * <code>optional string sql_type = 2;</code>
+       * <code>string sql_type = 2;</code>
        */
       public java.lang.String getSqlType() {
         java.lang.Object ref = sqlType_;
@@ -965,7 +976,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string sql_type = 2;</code>
+       * <code>string sql_type = 2;</code>
        */
       public com.google.protobuf.ByteString
           getSqlTypeBytes() {
@@ -981,7 +992,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string sql_type = 2;</code>
+       * <code>string sql_type = 2;</code>
        */
       public Builder setSqlType(
           java.lang.String value) {
@@ -994,7 +1005,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string sql_type = 2;</code>
+       * <code>string sql_type = 2;</code>
        */
       public Builder clearSqlType() {
         
@@ -1003,7 +1014,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string sql_type = 2;</code>
+       * <code>string sql_type = 2;</code>
        */
       public Builder setSqlTypeBytes(
           com.google.protobuf.ByteString value) {
@@ -1256,7 +1267,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getResultsCount() > 0) {
         hash = (37 * hash) + RESULTS_FIELD_NUMBER;
         hash = (53 * hash) + getResultsList().hashCode();
@@ -1266,6 +1277,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1805,46 +1827,46 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+     * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
      */
     boolean hasNameAndProperty();
     /**
-     * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+     * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
      */
     org.roylance.yaorm.YaormModel.Column getNameAndProperty();
     /**
-     * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+     * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+     * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
      */
     int getOperatorTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+     * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause.OperatorType getOperatorType();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+     * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
     int getConnectingAndOrValue();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+     * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr getConnectingAndOr();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     boolean hasConnectingWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause getConnectingWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getConnectingWhereClauseOrBuilder();
 
@@ -2218,19 +2240,19 @@ public final class YaormModel {
     public static final int NAME_AND_PROPERTY_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.Column nameAndProperty_;
     /**
-     * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+     * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
      */
     public boolean hasNameAndProperty() {
       return nameAndProperty_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+     * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.Column getNameAndProperty() {
       return nameAndProperty_ == null ? org.roylance.yaorm.YaormModel.Column.getDefaultInstance() : nameAndProperty_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+     * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder() {
       return getNameAndProperty();
@@ -2239,13 +2261,13 @@ public final class YaormModel {
     public static final int OPERATOR_TYPE_FIELD_NUMBER = 2;
     private int operatorType_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+     * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
      */
     public int getOperatorTypeValue() {
       return operatorType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+     * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause.OperatorType getOperatorType() {
       org.roylance.yaorm.YaormModel.WhereClause.OperatorType result = org.roylance.yaorm.YaormModel.WhereClause.OperatorType.valueOf(operatorType_);
@@ -2255,13 +2277,13 @@ public final class YaormModel {
     public static final int CONNECTING_AND_OR_FIELD_NUMBER = 3;
     private int connectingAndOr_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+     * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
     public int getConnectingAndOrValue() {
       return connectingAndOr_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+     * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr getConnectingAndOr() {
       org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr result = org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr.valueOf(connectingAndOr_);
@@ -2271,19 +2293,19 @@ public final class YaormModel {
     public static final int CONNECTING_WHERE_CLAUSE_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.WhereClause connectingWhereClause_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     public boolean hasConnectingWhereClause() {
       return connectingWhereClause_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause getConnectingWhereClause() {
       return connectingWhereClause_ == null ? org.roylance.yaorm.YaormModel.WhereClause.getDefaultInstance() : connectingWhereClause_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getConnectingWhereClauseOrBuilder() {
       return getConnectingWhereClause();
@@ -2415,7 +2437,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasNameAndProperty()) {
         hash = (37 * hash) + NAME_AND_PROPERTY_FIELD_NUMBER;
         hash = (53 * hash) + getNameAndProperty().hashCode();
@@ -2437,6 +2459,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.WhereClause parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.WhereClause parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.WhereClause parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2704,13 +2737,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Column, org.roylance.yaorm.YaormModel.Column.Builder, org.roylance.yaorm.YaormModel.ColumnOrBuilder> nameAndPropertyBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public boolean hasNameAndProperty() {
         return nameAndPropertyBuilder_ != null || nameAndProperty_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.Column getNameAndProperty() {
         if (nameAndPropertyBuilder_ == null) {
@@ -2720,7 +2753,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public Builder setNameAndProperty(org.roylance.yaorm.YaormModel.Column value) {
         if (nameAndPropertyBuilder_ == null) {
@@ -2736,7 +2769,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public Builder setNameAndProperty(
           org.roylance.yaorm.YaormModel.Column.Builder builderForValue) {
@@ -2750,7 +2783,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public Builder mergeNameAndProperty(org.roylance.yaorm.YaormModel.Column value) {
         if (nameAndPropertyBuilder_ == null) {
@@ -2768,7 +2801,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public Builder clearNameAndProperty() {
         if (nameAndPropertyBuilder_ == null) {
@@ -2782,7 +2815,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.Column.Builder getNameAndPropertyBuilder() {
         
@@ -2790,7 +2823,7 @@ public final class YaormModel {
         return getNameAndPropertyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnOrBuilder getNameAndPropertyOrBuilder() {
         if (nameAndPropertyBuilder_ != null) {
@@ -2801,7 +2834,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column name_and_property = 1;</code>
+       * <code>.org.roylance.yaorm.Column name_and_property = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Column, org.roylance.yaorm.YaormModel.Column.Builder, org.roylance.yaorm.YaormModel.ColumnOrBuilder> 
@@ -2819,13 +2852,13 @@ public final class YaormModel {
 
       private int operatorType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+       * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
        */
       public int getOperatorTypeValue() {
         return operatorType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+       * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
        */
       public Builder setOperatorTypeValue(int value) {
         operatorType_ = value;
@@ -2833,14 +2866,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+       * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.OperatorType getOperatorType() {
         org.roylance.yaorm.YaormModel.WhereClause.OperatorType result = org.roylance.yaorm.YaormModel.WhereClause.OperatorType.valueOf(operatorType_);
         return result == null ? org.roylance.yaorm.YaormModel.WhereClause.OperatorType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+       * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
        */
       public Builder setOperatorType(org.roylance.yaorm.YaormModel.WhereClause.OperatorType value) {
         if (value == null) {
@@ -2852,7 +2885,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
+       * <code>.org.roylance.yaorm.WhereClause.OperatorType operator_type = 2;</code>
        */
       public Builder clearOperatorType() {
         
@@ -2863,13 +2896,13 @@ public final class YaormModel {
 
       private int connectingAndOr_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+       * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public int getConnectingAndOrValue() {
         return connectingAndOr_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+       * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public Builder setConnectingAndOrValue(int value) {
         connectingAndOr_ = value;
@@ -2877,14 +2910,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+       * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr getConnectingAndOr() {
         org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr result = org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr.valueOf(connectingAndOr_);
         return result == null ? org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+       * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public Builder setConnectingAndOr(org.roylance.yaorm.YaormModel.WhereClause.ConnectingAndOr value) {
         if (value == null) {
@@ -2896,7 +2929,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
+       * <code>.org.roylance.yaorm.WhereClause.ConnectingAndOr connecting_and_or = 3;</code>
        */
       public Builder clearConnectingAndOr() {
         
@@ -2909,13 +2942,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> connectingWhereClauseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public boolean hasConnectingWhereClause() {
         return connectingWhereClauseBuilder_ != null || connectingWhereClause_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause getConnectingWhereClause() {
         if (connectingWhereClauseBuilder_ == null) {
@@ -2925,7 +2958,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public Builder setConnectingWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (connectingWhereClauseBuilder_ == null) {
@@ -2941,7 +2974,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public Builder setConnectingWhereClause(
           org.roylance.yaorm.YaormModel.WhereClause.Builder builderForValue) {
@@ -2955,7 +2988,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public Builder mergeConnectingWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (connectingWhereClauseBuilder_ == null) {
@@ -2973,7 +3006,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public Builder clearConnectingWhereClause() {
         if (connectingWhereClauseBuilder_ == null) {
@@ -2987,7 +3020,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.Builder getConnectingWhereClauseBuilder() {
         
@@ -2995,7 +3028,7 @@ public final class YaormModel {
         return getConnectingWhereClauseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getConnectingWhereClauseOrBuilder() {
         if (connectingWhereClauseBuilder_ != null) {
@@ -3006,7 +3039,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause connecting_where_clause = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> 
@@ -3169,87 +3202,87 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+     * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
      */
     int getTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+     * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
      */
     org.roylance.yaorm.YaormModel.ProtobufType getType();
 
     /**
-     * <code>optional bool is_key = 3;</code>
+     * <code>bool is_key = 3;</code>
      */
     boolean getIsKey();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
      */
     int getColumnTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType getColumnType();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
     int getLinkerTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType getLinkerType();
 
     /**
-     * <code>optional int32 order = 6;</code>
+     * <code>int32 order = 6;</code>
      */
     int getOrder();
 
     /**
-     * <code>optional string alias = 7;</code>
+     * <code>string alias = 7;</code>
      */
     java.lang.String getAlias();
     /**
-     * <code>optional string alias = 7;</code>
+     * <code>string alias = 7;</code>
      */
     com.google.protobuf.ByteString
         getAliasBytes();
 
     /**
-     * <code>optional string table_alias = 8;</code>
+     * <code>string table_alias = 8;</code>
      */
     java.lang.String getTableAlias();
     /**
-     * <code>optional string table_alias = 8;</code>
+     * <code>string table_alias = 8;</code>
      */
     com.google.protobuf.ByteString
         getTableAliasBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+     * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
      */
     int getFunctionTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+     * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
      */
     org.roylance.yaorm.YaormModel.SelectFunctionType getFunctionType();
 
     /**
-     * <code>optional string function_text = 10;</code>
+     * <code>string function_text = 10;</code>
      */
     java.lang.String getFunctionText();
     /**
-     * <code>optional string function_text = 10;</code>
+     * <code>string function_text = 10;</code>
      */
     com.google.protobuf.ByteString
         getFunctionTextBytes();
@@ -3619,7 +3652,7 @@ public final class YaormModel {
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -3634,7 +3667,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -3653,13 +3686,13 @@ public final class YaormModel {
     public static final int TYPE_FIELD_NUMBER = 2;
     private int type_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+     * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+     * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.ProtobufType getType() {
       org.roylance.yaorm.YaormModel.ProtobufType result = org.roylance.yaorm.YaormModel.ProtobufType.valueOf(type_);
@@ -3669,7 +3702,7 @@ public final class YaormModel {
     public static final int IS_KEY_FIELD_NUMBER = 3;
     private boolean isKey_;
     /**
-     * <code>optional bool is_key = 3;</code>
+     * <code>bool is_key = 3;</code>
      */
     public boolean getIsKey() {
       return isKey_;
@@ -3678,13 +3711,13 @@ public final class YaormModel {
     public static final int COLUMN_TYPE_FIELD_NUMBER = 4;
     private int columnType_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
      */
     public int getColumnTypeValue() {
       return columnType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType getColumnType() {
       org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType result = org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType.valueOf(columnType_);
@@ -3694,13 +3727,13 @@ public final class YaormModel {
     public static final int LINKER_TYPE_FIELD_NUMBER = 5;
     private int linkerType_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
     public int getLinkerTypeValue() {
       return linkerType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType getLinkerType() {
       org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType result = org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType.valueOf(linkerType_);
@@ -3710,7 +3743,7 @@ public final class YaormModel {
     public static final int ORDER_FIELD_NUMBER = 6;
     private int order_;
     /**
-     * <code>optional int32 order = 6;</code>
+     * <code>int32 order = 6;</code>
      */
     public int getOrder() {
       return order_;
@@ -3719,7 +3752,7 @@ public final class YaormModel {
     public static final int ALIAS_FIELD_NUMBER = 7;
     private volatile java.lang.Object alias_;
     /**
-     * <code>optional string alias = 7;</code>
+     * <code>string alias = 7;</code>
      */
     public java.lang.String getAlias() {
       java.lang.Object ref = alias_;
@@ -3734,7 +3767,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string alias = 7;</code>
+     * <code>string alias = 7;</code>
      */
     public com.google.protobuf.ByteString
         getAliasBytes() {
@@ -3753,7 +3786,7 @@ public final class YaormModel {
     public static final int TABLE_ALIAS_FIELD_NUMBER = 8;
     private volatile java.lang.Object tableAlias_;
     /**
-     * <code>optional string table_alias = 8;</code>
+     * <code>string table_alias = 8;</code>
      */
     public java.lang.String getTableAlias() {
       java.lang.Object ref = tableAlias_;
@@ -3768,7 +3801,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string table_alias = 8;</code>
+     * <code>string table_alias = 8;</code>
      */
     public com.google.protobuf.ByteString
         getTableAliasBytes() {
@@ -3787,13 +3820,13 @@ public final class YaormModel {
     public static final int FUNCTION_TYPE_FIELD_NUMBER = 9;
     private int functionType_;
     /**
-     * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+     * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
      */
     public int getFunctionTypeValue() {
       return functionType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+     * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
      */
     public org.roylance.yaorm.YaormModel.SelectFunctionType getFunctionType() {
       org.roylance.yaorm.YaormModel.SelectFunctionType result = org.roylance.yaorm.YaormModel.SelectFunctionType.valueOf(functionType_);
@@ -3803,7 +3836,7 @@ public final class YaormModel {
     public static final int FUNCTION_TEXT_FIELD_NUMBER = 10;
     private volatile java.lang.Object functionText_;
     /**
-     * <code>optional string function_text = 10;</code>
+     * <code>string function_text = 10;</code>
      */
     public java.lang.String getFunctionText() {
       java.lang.Object ref = functionText_;
@@ -3818,7 +3851,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string function_text = 10;</code>
+     * <code>string function_text = 10;</code>
      */
     public com.google.protobuf.ByteString
         getFunctionTextBytes() {
@@ -3960,7 +3993,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -3987,6 +4020,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.ColumnDefinition parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.ColumnDefinition parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.ColumnDefinition parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4255,7 +4299,7 @@ public final class YaormModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -4270,7 +4314,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -4286,7 +4330,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -4299,7 +4343,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -4308,7 +4352,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -4324,13 +4368,13 @@ public final class YaormModel {
 
       private int type_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+       * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+       * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -4338,14 +4382,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+       * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.ProtobufType getType() {
         org.roylance.yaorm.YaormModel.ProtobufType result = org.roylance.yaorm.YaormModel.ProtobufType.valueOf(type_);
         return result == null ? org.roylance.yaorm.YaormModel.ProtobufType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+       * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
        */
       public Builder setType(org.roylance.yaorm.YaormModel.ProtobufType value) {
         if (value == null) {
@@ -4357,7 +4401,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtobufType type = 2;</code>
+       * <code>.org.roylance.yaorm.ProtobufType type = 2;</code>
        */
       public Builder clearType() {
         
@@ -4368,13 +4412,13 @@ public final class YaormModel {
 
       private boolean isKey_ ;
       /**
-       * <code>optional bool is_key = 3;</code>
+       * <code>bool is_key = 3;</code>
        */
       public boolean getIsKey() {
         return isKey_;
       }
       /**
-       * <code>optional bool is_key = 3;</code>
+       * <code>bool is_key = 3;</code>
        */
       public Builder setIsKey(boolean value) {
         
@@ -4383,7 +4427,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool is_key = 3;</code>
+       * <code>bool is_key = 3;</code>
        */
       public Builder clearIsKey() {
         
@@ -4394,13 +4438,13 @@ public final class YaormModel {
 
       private int columnType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public int getColumnTypeValue() {
         return columnType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public Builder setColumnTypeValue(int value) {
         columnType_ = value;
@@ -4408,14 +4452,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType getColumnType() {
         org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType result = org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType.valueOf(columnType_);
         return result == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public Builder setColumnType(org.roylance.yaorm.YaormModel.ColumnDefinition.ColumnType value) {
         if (value == null) {
@@ -4427,7 +4471,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.ColumnType column_type = 4;</code>
        */
       public Builder clearColumnType() {
         
@@ -4438,13 +4482,13 @@ public final class YaormModel {
 
       private int linkerType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public int getLinkerTypeValue() {
         return linkerType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public Builder setLinkerTypeValue(int value) {
         linkerType_ = value;
@@ -4452,14 +4496,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType getLinkerType() {
         org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType result = org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType.valueOf(linkerType_);
         return result == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public Builder setLinkerType(org.roylance.yaorm.YaormModel.ColumnDefinition.LinkerType value) {
         if (value == null) {
@@ -4471,7 +4515,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition.LinkerType linker_type = 5;</code>
        */
       public Builder clearLinkerType() {
         
@@ -4482,13 +4526,13 @@ public final class YaormModel {
 
       private int order_ ;
       /**
-       * <code>optional int32 order = 6;</code>
+       * <code>int32 order = 6;</code>
        */
       public int getOrder() {
         return order_;
       }
       /**
-       * <code>optional int32 order = 6;</code>
+       * <code>int32 order = 6;</code>
        */
       public Builder setOrder(int value) {
         
@@ -4497,7 +4541,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int32 order = 6;</code>
+       * <code>int32 order = 6;</code>
        */
       public Builder clearOrder() {
         
@@ -4508,7 +4552,7 @@ public final class YaormModel {
 
       private java.lang.Object alias_ = "";
       /**
-       * <code>optional string alias = 7;</code>
+       * <code>string alias = 7;</code>
        */
       public java.lang.String getAlias() {
         java.lang.Object ref = alias_;
@@ -4523,7 +4567,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string alias = 7;</code>
+       * <code>string alias = 7;</code>
        */
       public com.google.protobuf.ByteString
           getAliasBytes() {
@@ -4539,7 +4583,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string alias = 7;</code>
+       * <code>string alias = 7;</code>
        */
       public Builder setAlias(
           java.lang.String value) {
@@ -4552,7 +4596,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string alias = 7;</code>
+       * <code>string alias = 7;</code>
        */
       public Builder clearAlias() {
         
@@ -4561,7 +4605,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string alias = 7;</code>
+       * <code>string alias = 7;</code>
        */
       public Builder setAliasBytes(
           com.google.protobuf.ByteString value) {
@@ -4577,7 +4621,7 @@ public final class YaormModel {
 
       private java.lang.Object tableAlias_ = "";
       /**
-       * <code>optional string table_alias = 8;</code>
+       * <code>string table_alias = 8;</code>
        */
       public java.lang.String getTableAlias() {
         java.lang.Object ref = tableAlias_;
@@ -4592,7 +4636,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_alias = 8;</code>
+       * <code>string table_alias = 8;</code>
        */
       public com.google.protobuf.ByteString
           getTableAliasBytes() {
@@ -4608,7 +4652,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_alias = 8;</code>
+       * <code>string table_alias = 8;</code>
        */
       public Builder setTableAlias(
           java.lang.String value) {
@@ -4621,7 +4665,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_alias = 8;</code>
+       * <code>string table_alias = 8;</code>
        */
       public Builder clearTableAlias() {
         
@@ -4630,7 +4674,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_alias = 8;</code>
+       * <code>string table_alias = 8;</code>
        */
       public Builder setTableAliasBytes(
           com.google.protobuf.ByteString value) {
@@ -4646,13 +4690,13 @@ public final class YaormModel {
 
       private int functionType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+       * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
        */
       public int getFunctionTypeValue() {
         return functionType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+       * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
        */
       public Builder setFunctionTypeValue(int value) {
         functionType_ = value;
@@ -4660,14 +4704,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+       * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
        */
       public org.roylance.yaorm.YaormModel.SelectFunctionType getFunctionType() {
         org.roylance.yaorm.YaormModel.SelectFunctionType result = org.roylance.yaorm.YaormModel.SelectFunctionType.valueOf(functionType_);
         return result == null ? org.roylance.yaorm.YaormModel.SelectFunctionType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+       * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
        */
       public Builder setFunctionType(org.roylance.yaorm.YaormModel.SelectFunctionType value) {
         if (value == null) {
@@ -4679,7 +4723,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
+       * <code>.org.roylance.yaorm.SelectFunctionType function_type = 9;</code>
        */
       public Builder clearFunctionType() {
         
@@ -4690,7 +4734,7 @@ public final class YaormModel {
 
       private java.lang.Object functionText_ = "";
       /**
-       * <code>optional string function_text = 10;</code>
+       * <code>string function_text = 10;</code>
        */
       public java.lang.String getFunctionText() {
         java.lang.Object ref = functionText_;
@@ -4705,7 +4749,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string function_text = 10;</code>
+       * <code>string function_text = 10;</code>
        */
       public com.google.protobuf.ByteString
           getFunctionTextBytes() {
@@ -4721,7 +4765,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string function_text = 10;</code>
+       * <code>string function_text = 10;</code>
        */
       public Builder setFunctionText(
           java.lang.String value) {
@@ -4734,7 +4778,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string function_text = 10;</code>
+       * <code>string function_text = 10;</code>
        */
       public Builder clearFunctionText() {
         
@@ -4743,7 +4787,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string function_text = 10;</code>
+       * <code>string function_text = 10;</code>
        */
       public Builder setFunctionTextBytes(
           com.google.protobuf.ByteString value) {
@@ -5077,7 +5121,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getColumnNamesCount() > 0) {
         hash = (37 * hash) + COLUMN_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + getColumnNamesList().hashCode();
@@ -5091,6 +5135,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Index parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Index parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Index parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5912,69 +5967,69 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+     * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
      */
     int getEntityTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+     * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
      */
     org.roylance.yaorm.YaormModel.Difference.EntityType getEntityType();
 
     /**
-     * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+     * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
      */
     int getOperationValue();
     /**
-     * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+     * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
      */
     org.roylance.yaorm.YaormModel.Difference.Operation getOperation();
 
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+     * <code>.org.roylance.yaorm.Index index = 4;</code>
      */
     boolean hasIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+     * <code>.org.roylance.yaorm.Index index = 4;</code>
      */
     org.roylance.yaorm.YaormModel.Index getIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+     * <code>.org.roylance.yaorm.Index index = 4;</code>
      */
     org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
      */
     boolean hasPropertyDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getPropertyDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getPropertyDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
      */
     boolean hasTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder();
   }
@@ -6308,13 +6363,13 @@ public final class YaormModel {
     public static final int ENTITY_TYPE_FIELD_NUMBER = 1;
     private int entityType_;
     /**
-     * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+     * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
      */
     public int getEntityTypeValue() {
       return entityType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+     * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.Difference.EntityType getEntityType() {
       org.roylance.yaorm.YaormModel.Difference.EntityType result = org.roylance.yaorm.YaormModel.Difference.EntityType.valueOf(entityType_);
@@ -6324,13 +6379,13 @@ public final class YaormModel {
     public static final int OPERATION_FIELD_NUMBER = 2;
     private int operation_;
     /**
-     * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+     * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
      */
     public int getOperationValue() {
       return operation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+     * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.Difference.Operation getOperation() {
       org.roylance.yaorm.YaormModel.Difference.Operation result = org.roylance.yaorm.YaormModel.Difference.Operation.valueOf(operation_);
@@ -6340,7 +6395,7 @@ public final class YaormModel {
     public static final int NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -6355,7 +6410,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -6374,19 +6429,19 @@ public final class YaormModel {
     public static final int INDEX_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.Index index_;
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+     * <code>.org.roylance.yaorm.Index index = 4;</code>
      */
     public boolean hasIndex() {
       return index_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+     * <code>.org.roylance.yaorm.Index index = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.Index getIndex() {
       return index_ == null ? org.roylance.yaorm.YaormModel.Index.getDefaultInstance() : index_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+     * <code>.org.roylance.yaorm.Index index = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
       return getIndex();
@@ -6395,19 +6450,19 @@ public final class YaormModel {
     public static final int PROPERTY_DEFINITION_FIELD_NUMBER = 5;
     private org.roylance.yaorm.YaormModel.ColumnDefinition propertyDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
      */
     public boolean hasPropertyDefinition() {
       return propertyDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getPropertyDefinition() {
       return propertyDefinition_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : propertyDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getPropertyDefinitionOrBuilder() {
       return getPropertyDefinition();
@@ -6416,19 +6471,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 6;
     private org.roylance.yaorm.YaormModel.TableDefinition tableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
      */
     public boolean hasTableDefinition() {
       return tableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
       return tableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
       return getTableDefinition();
@@ -6538,7 +6593,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ENTITY_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + entityType_;
       hash = (37 * hash) + OPERATION_FIELD_NUMBER;
@@ -6562,6 +6617,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Difference parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Difference parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Difference parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6827,13 +6893,13 @@ public final class YaormModel {
 
       private int entityType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+       * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
        */
       public int getEntityTypeValue() {
         return entityType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+       * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
        */
       public Builder setEntityTypeValue(int value) {
         entityType_ = value;
@@ -6841,14 +6907,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+       * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.Difference.EntityType getEntityType() {
         org.roylance.yaorm.YaormModel.Difference.EntityType result = org.roylance.yaorm.YaormModel.Difference.EntityType.valueOf(entityType_);
         return result == null ? org.roylance.yaorm.YaormModel.Difference.EntityType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+       * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
        */
       public Builder setEntityType(org.roylance.yaorm.YaormModel.Difference.EntityType value) {
         if (value == null) {
@@ -6860,7 +6926,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
+       * <code>.org.roylance.yaorm.Difference.EntityType entity_type = 1;</code>
        */
       public Builder clearEntityType() {
         
@@ -6871,13 +6937,13 @@ public final class YaormModel {
 
       private int operation_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+       * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
        */
       public int getOperationValue() {
         return operation_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+       * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
        */
       public Builder setOperationValue(int value) {
         operation_ = value;
@@ -6885,14 +6951,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+       * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Difference.Operation getOperation() {
         org.roylance.yaorm.YaormModel.Difference.Operation result = org.roylance.yaorm.YaormModel.Difference.Operation.valueOf(operation_);
         return result == null ? org.roylance.yaorm.YaormModel.Difference.Operation.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+       * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
        */
       public Builder setOperation(org.roylance.yaorm.YaormModel.Difference.Operation value) {
         if (value == null) {
@@ -6904,7 +6970,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Difference.Operation operation = 2;</code>
+       * <code>.org.roylance.yaorm.Difference.Operation operation = 2;</code>
        */
       public Builder clearOperation() {
         
@@ -6915,7 +6981,7 @@ public final class YaormModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -6930,7 +6996,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -6946,7 +7012,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -6959,7 +7025,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public Builder clearName() {
         
@@ -6968,7 +7034,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -6986,13 +7052,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public boolean hasIndex() {
         return indexBuilder_ != null || index_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
@@ -7002,7 +7068,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public Builder setIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -7018,7 +7084,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public Builder setIndex(
           org.roylance.yaorm.YaormModel.Index.Builder builderForValue) {
@@ -7032,7 +7098,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public Builder mergeIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -7050,7 +7116,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
@@ -7064,7 +7130,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.Index.Builder getIndexBuilder() {
         
@@ -7072,7 +7138,7 @@ public final class YaormModel {
         return getIndexFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
         if (indexBuilder_ != null) {
@@ -7083,7 +7149,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 4;</code>
+       * <code>.org.roylance.yaorm.Index index = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> 
@@ -7103,13 +7169,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> propertyDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public boolean hasPropertyDefinition() {
         return propertyDefinitionBuilder_ != null || propertyDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getPropertyDefinition() {
         if (propertyDefinitionBuilder_ == null) {
@@ -7119,7 +7185,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public Builder setPropertyDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (propertyDefinitionBuilder_ == null) {
@@ -7135,7 +7201,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public Builder setPropertyDefinition(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -7149,7 +7215,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public Builder mergePropertyDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (propertyDefinitionBuilder_ == null) {
@@ -7167,7 +7233,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public Builder clearPropertyDefinition() {
         if (propertyDefinitionBuilder_ == null) {
@@ -7181,7 +7247,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getPropertyDefinitionBuilder() {
         
@@ -7189,7 +7255,7 @@ public final class YaormModel {
         return getPropertyDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getPropertyDefinitionOrBuilder() {
         if (propertyDefinitionBuilder_ != null) {
@@ -7200,7 +7266,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition property_definition = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -7220,13 +7286,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public boolean hasTableDefinition() {
         return tableDefinitionBuilder_ != null || tableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -7236,7 +7302,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public Builder setTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -7252,7 +7318,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public Builder setTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -7266,7 +7332,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -7284,7 +7350,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -7298,7 +7364,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
         
@@ -7306,7 +7372,7 @@ public final class YaormModel {
         return getTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
         if (tableDefinitionBuilder_ != null) {
@@ -7317,7 +7383,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 6;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -7386,11 +7452,11 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -7420,33 +7486,33 @@ public final class YaormModel {
         int index);
 
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     boolean hasIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     org.roylance.yaorm.YaormModel.Index getIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
      */
     int getTableTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition.TableType getTableType();
 
     /**
-     * <code>optional string alias = 5;</code>
+     * <code>string alias = 5;</code>
      */
     java.lang.String getAlias();
     /**
-     * <code>optional string alias = 5;</code>
+     * <code>string alias = 5;</code>
      */
     com.google.protobuf.ByteString
         getAliasBytes();
@@ -7671,7 +7737,7 @@ public final class YaormModel {
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -7686,7 +7752,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string name = 1;</code>
+     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -7740,19 +7806,19 @@ public final class YaormModel {
     public static final int INDEX_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.Index index_;
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public boolean hasIndex() {
       return index_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.Index getIndex() {
       return index_ == null ? org.roylance.yaorm.YaormModel.Index.getDefaultInstance() : index_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
       return getIndex();
@@ -7761,13 +7827,13 @@ public final class YaormModel {
     public static final int TABLE_TYPE_FIELD_NUMBER = 4;
     private int tableType_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
      */
     public int getTableTypeValue() {
       return tableType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition.TableType getTableType() {
       org.roylance.yaorm.YaormModel.TableDefinition.TableType result = org.roylance.yaorm.YaormModel.TableDefinition.TableType.valueOf(tableType_);
@@ -7777,7 +7843,7 @@ public final class YaormModel {
     public static final int ALIAS_FIELD_NUMBER = 5;
     private volatile java.lang.Object alias_;
     /**
-     * <code>optional string alias = 5;</code>
+     * <code>string alias = 5;</code>
      */
     public java.lang.String getAlias() {
       java.lang.Object ref = alias_;
@@ -7792,7 +7858,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string alias = 5;</code>
+     * <code>string alias = 5;</code>
      */
     public com.google.protobuf.ByteString
         getAliasBytes() {
@@ -7897,7 +7963,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       if (getColumnDefinitionsCount() > 0) {
@@ -7917,6 +7983,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.TableDefinition parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.TableDefinition parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.TableDefinition parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8201,7 +8278,7 @@ public final class YaormModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -8216,7 +8293,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -8232,7 +8309,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -8245,7 +8322,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -8254,7 +8331,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 1;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -8512,13 +8589,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public boolean hasIndex() {
         return indexBuilder_ != null || index_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
@@ -8528,7 +8605,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder setIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -8544,7 +8621,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder setIndex(
           org.roylance.yaorm.YaormModel.Index.Builder builderForValue) {
@@ -8558,7 +8635,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder mergeIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -8576,7 +8653,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
@@ -8590,7 +8667,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Index.Builder getIndexBuilder() {
         
@@ -8598,7 +8675,7 @@ public final class YaormModel {
         return getIndexFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
         if (indexBuilder_ != null) {
@@ -8609,7 +8686,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> 
@@ -8627,13 +8704,13 @@ public final class YaormModel {
 
       private int tableType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
        */
       public int getTableTypeValue() {
         return tableType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
        */
       public Builder setTableTypeValue(int value) {
         tableType_ = value;
@@ -8641,14 +8718,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.TableType getTableType() {
         org.roylance.yaorm.YaormModel.TableDefinition.TableType result = org.roylance.yaorm.YaormModel.TableDefinition.TableType.valueOf(tableType_);
         return result == null ? org.roylance.yaorm.YaormModel.TableDefinition.TableType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
        */
       public Builder setTableType(org.roylance.yaorm.YaormModel.TableDefinition.TableType value) {
         if (value == null) {
@@ -8660,7 +8737,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition.TableType table_type = 4;</code>
        */
       public Builder clearTableType() {
         
@@ -8671,7 +8748,7 @@ public final class YaormModel {
 
       private java.lang.Object alias_ = "";
       /**
-       * <code>optional string alias = 5;</code>
+       * <code>string alias = 5;</code>
        */
       public java.lang.String getAlias() {
         java.lang.Object ref = alias_;
@@ -8686,7 +8763,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string alias = 5;</code>
+       * <code>string alias = 5;</code>
        */
       public com.google.protobuf.ByteString
           getAliasBytes() {
@@ -8702,7 +8779,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string alias = 5;</code>
+       * <code>string alias = 5;</code>
        */
       public Builder setAlias(
           java.lang.String value) {
@@ -8715,7 +8792,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string alias = 5;</code>
+       * <code>string alias = 5;</code>
        */
       public Builder clearAlias() {
         
@@ -8724,7 +8801,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string alias = 5;</code>
+       * <code>string alias = 5;</code>
        */
       public Builder setAliasBytes(
           com.google.protobuf.ByteString value) {
@@ -8977,7 +9054,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getTableDefinitionsCount() > 0) {
         hash = (37 * hash) + TABLE_DEFINITIONS_FIELD_NUMBER;
         hash = (53 * hash) + getTableDefinitionsList().hashCode();
@@ -8987,6 +9064,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.TableDefinitions parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.TableDefinitions parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.TableDefinitions parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9526,7 +9614,7 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool migration_exists = 1;</code>
+     * <code>bool migration_exists = 1;</code>
      */
     boolean getMigrationExists();
 
@@ -9639,7 +9727,7 @@ public final class YaormModel {
     public static final int MIGRATION_EXISTS_FIELD_NUMBER = 1;
     private boolean migrationExists_;
     /**
-     * <code>optional bool migration_exists = 1;</code>
+     * <code>bool migration_exists = 1;</code>
      */
     public boolean getMigrationExists() {
       return migrationExists_;
@@ -9742,7 +9830,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MIGRATION_EXISTS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getMigrationExists());
@@ -9755,6 +9843,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.DifferenceReport parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DifferenceReport parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.DifferenceReport parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10011,13 +10110,13 @@ public final class YaormModel {
 
       private boolean migrationExists_ ;
       /**
-       * <code>optional bool migration_exists = 1;</code>
+       * <code>bool migration_exists = 1;</code>
        */
       public boolean getMigrationExists() {
         return migrationExists_;
       }
       /**
-       * <code>optional bool migration_exists = 1;</code>
+       * <code>bool migration_exists = 1;</code>
        */
       public Builder setMigrationExists(boolean value) {
         
@@ -10026,7 +10125,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool migration_exists = 1;</code>
+       * <code>bool migration_exists = 1;</code>
        */
       public Builder clearMigrationExists() {
         
@@ -10328,95 +10427,95 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
      */
     boolean hasDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getDefinitionOrBuilder();
 
     /**
-     * <code>optional double double_holder = 2;</code>
+     * <code>double double_holder = 2;</code>
      */
     double getDoubleHolder();
 
     /**
-     * <code>optional float float_holder = 3;</code>
+     * <code>float float_holder = 3;</code>
      */
     float getFloatHolder();
 
     /**
-     * <code>optional int32 int32_holder = 4;</code>
+     * <code>int32 int32_holder = 4;</code>
      */
     int getInt32Holder();
 
     /**
-     * <code>optional int64 int64_holder = 5;</code>
+     * <code>int64 int64_holder = 5;</code>
      */
     long getInt64Holder();
 
     /**
-     * <code>optional uint32 uint32_holder = 6;</code>
+     * <code>uint32 uint32_holder = 6;</code>
      */
     int getUint32Holder();
 
     /**
-     * <code>optional uint64 uint64_holder = 7;</code>
+     * <code>uint64 uint64_holder = 7;</code>
      */
     long getUint64Holder();
 
     /**
-     * <code>optional sint32 sint32_holder = 8;</code>
+     * <code>sint32 sint32_holder = 8;</code>
      */
     int getSint32Holder();
 
     /**
-     * <code>optional sint64 sint64_holder = 9;</code>
+     * <code>sint64 sint64_holder = 9;</code>
      */
     long getSint64Holder();
 
     /**
-     * <code>optional fixed32 fixed32_holder = 10;</code>
+     * <code>fixed32 fixed32_holder = 10;</code>
      */
     int getFixed32Holder();
 
     /**
-     * <code>optional fixed64 fixed64_holder = 11;</code>
+     * <code>fixed64 fixed64_holder = 11;</code>
      */
     long getFixed64Holder();
 
     /**
-     * <code>optional sfixed32 sfixed32_holder = 12;</code>
+     * <code>sfixed32 sfixed32_holder = 12;</code>
      */
     int getSfixed32Holder();
 
     /**
-     * <code>optional sfixed64 sfixed64_holder = 13;</code>
+     * <code>sfixed64 sfixed64_holder = 13;</code>
      */
     long getSfixed64Holder();
 
     /**
-     * <code>optional bool bool_holder = 14;</code>
+     * <code>bool bool_holder = 14;</code>
      */
     boolean getBoolHolder();
 
     /**
-     * <code>optional string string_holder = 15;</code>
+     * <code>string string_holder = 15;</code>
      */
     java.lang.String getStringHolder();
     /**
-     * <code>optional string string_holder = 15;</code>
+     * <code>string string_holder = 15;</code>
      */
     com.google.protobuf.ByteString
         getStringHolderBytes();
 
     /**
-     * <code>optional bytes bytes_holder = 16;</code>
+     * <code>bytes bytes_holder = 16;</code>
      */
     com.google.protobuf.ByteString getBytesHolder();
   }
@@ -10589,19 +10688,19 @@ public final class YaormModel {
     public static final int DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.ColumnDefinition definition_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
      */
     public boolean hasDefinition() {
       return definition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getDefinition() {
       return definition_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : definition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getDefinitionOrBuilder() {
       return getDefinition();
@@ -10610,7 +10709,7 @@ public final class YaormModel {
     public static final int DOUBLE_HOLDER_FIELD_NUMBER = 2;
     private double doubleHolder_;
     /**
-     * <code>optional double double_holder = 2;</code>
+     * <code>double double_holder = 2;</code>
      */
     public double getDoubleHolder() {
       return doubleHolder_;
@@ -10619,7 +10718,7 @@ public final class YaormModel {
     public static final int FLOAT_HOLDER_FIELD_NUMBER = 3;
     private float floatHolder_;
     /**
-     * <code>optional float float_holder = 3;</code>
+     * <code>float float_holder = 3;</code>
      */
     public float getFloatHolder() {
       return floatHolder_;
@@ -10628,7 +10727,7 @@ public final class YaormModel {
     public static final int INT32_HOLDER_FIELD_NUMBER = 4;
     private int int32Holder_;
     /**
-     * <code>optional int32 int32_holder = 4;</code>
+     * <code>int32 int32_holder = 4;</code>
      */
     public int getInt32Holder() {
       return int32Holder_;
@@ -10637,7 +10736,7 @@ public final class YaormModel {
     public static final int INT64_HOLDER_FIELD_NUMBER = 5;
     private long int64Holder_;
     /**
-     * <code>optional int64 int64_holder = 5;</code>
+     * <code>int64 int64_holder = 5;</code>
      */
     public long getInt64Holder() {
       return int64Holder_;
@@ -10646,7 +10745,7 @@ public final class YaormModel {
     public static final int UINT32_HOLDER_FIELD_NUMBER = 6;
     private int uint32Holder_;
     /**
-     * <code>optional uint32 uint32_holder = 6;</code>
+     * <code>uint32 uint32_holder = 6;</code>
      */
     public int getUint32Holder() {
       return uint32Holder_;
@@ -10655,7 +10754,7 @@ public final class YaormModel {
     public static final int UINT64_HOLDER_FIELD_NUMBER = 7;
     private long uint64Holder_;
     /**
-     * <code>optional uint64 uint64_holder = 7;</code>
+     * <code>uint64 uint64_holder = 7;</code>
      */
     public long getUint64Holder() {
       return uint64Holder_;
@@ -10664,7 +10763,7 @@ public final class YaormModel {
     public static final int SINT32_HOLDER_FIELD_NUMBER = 8;
     private int sint32Holder_;
     /**
-     * <code>optional sint32 sint32_holder = 8;</code>
+     * <code>sint32 sint32_holder = 8;</code>
      */
     public int getSint32Holder() {
       return sint32Holder_;
@@ -10673,7 +10772,7 @@ public final class YaormModel {
     public static final int SINT64_HOLDER_FIELD_NUMBER = 9;
     private long sint64Holder_;
     /**
-     * <code>optional sint64 sint64_holder = 9;</code>
+     * <code>sint64 sint64_holder = 9;</code>
      */
     public long getSint64Holder() {
       return sint64Holder_;
@@ -10682,7 +10781,7 @@ public final class YaormModel {
     public static final int FIXED32_HOLDER_FIELD_NUMBER = 10;
     private int fixed32Holder_;
     /**
-     * <code>optional fixed32 fixed32_holder = 10;</code>
+     * <code>fixed32 fixed32_holder = 10;</code>
      */
     public int getFixed32Holder() {
       return fixed32Holder_;
@@ -10691,7 +10790,7 @@ public final class YaormModel {
     public static final int FIXED64_HOLDER_FIELD_NUMBER = 11;
     private long fixed64Holder_;
     /**
-     * <code>optional fixed64 fixed64_holder = 11;</code>
+     * <code>fixed64 fixed64_holder = 11;</code>
      */
     public long getFixed64Holder() {
       return fixed64Holder_;
@@ -10700,7 +10799,7 @@ public final class YaormModel {
     public static final int SFIXED32_HOLDER_FIELD_NUMBER = 12;
     private int sfixed32Holder_;
     /**
-     * <code>optional sfixed32 sfixed32_holder = 12;</code>
+     * <code>sfixed32 sfixed32_holder = 12;</code>
      */
     public int getSfixed32Holder() {
       return sfixed32Holder_;
@@ -10709,7 +10808,7 @@ public final class YaormModel {
     public static final int SFIXED64_HOLDER_FIELD_NUMBER = 13;
     private long sfixed64Holder_;
     /**
-     * <code>optional sfixed64 sfixed64_holder = 13;</code>
+     * <code>sfixed64 sfixed64_holder = 13;</code>
      */
     public long getSfixed64Holder() {
       return sfixed64Holder_;
@@ -10718,7 +10817,7 @@ public final class YaormModel {
     public static final int BOOL_HOLDER_FIELD_NUMBER = 14;
     private boolean boolHolder_;
     /**
-     * <code>optional bool bool_holder = 14;</code>
+     * <code>bool bool_holder = 14;</code>
      */
     public boolean getBoolHolder() {
       return boolHolder_;
@@ -10727,7 +10826,7 @@ public final class YaormModel {
     public static final int STRING_HOLDER_FIELD_NUMBER = 15;
     private volatile java.lang.Object stringHolder_;
     /**
-     * <code>optional string string_holder = 15;</code>
+     * <code>string string_holder = 15;</code>
      */
     public java.lang.String getStringHolder() {
       java.lang.Object ref = stringHolder_;
@@ -10742,7 +10841,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string string_holder = 15;</code>
+     * <code>string string_holder = 15;</code>
      */
     public com.google.protobuf.ByteString
         getStringHolderBytes() {
@@ -10761,7 +10860,7 @@ public final class YaormModel {
     public static final int BYTES_HOLDER_FIELD_NUMBER = 16;
     private com.google.protobuf.ByteString bytesHolder_;
     /**
-     * <code>optional bytes bytes_holder = 16;</code>
+     * <code>bytes bytes_holder = 16;</code>
      */
     public com.google.protobuf.ByteString getBytesHolder() {
       return bytesHolder_;
@@ -10961,7 +11060,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasDefinition()) {
         hash = (37 * hash) + DEFINITION_FIELD_NUMBER;
         hash = (53 * hash) + getDefinition().hashCode();
@@ -11009,6 +11108,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Column parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Column parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Column parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11320,13 +11430,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> definitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public boolean hasDefinition() {
         return definitionBuilder_ != null || definition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getDefinition() {
         if (definitionBuilder_ == null) {
@@ -11336,7 +11446,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public Builder setDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (definitionBuilder_ == null) {
@@ -11352,7 +11462,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public Builder setDefinition(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -11366,7 +11476,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public Builder mergeDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (definitionBuilder_ == null) {
@@ -11384,7 +11494,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public Builder clearDefinition() {
         if (definitionBuilder_ == null) {
@@ -11398,7 +11508,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getDefinitionBuilder() {
         
@@ -11406,7 +11516,7 @@ public final class YaormModel {
         return getDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getDefinitionOrBuilder() {
         if (definitionBuilder_ != null) {
@@ -11417,7 +11527,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition definition = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -11435,13 +11545,13 @@ public final class YaormModel {
 
       private double doubleHolder_ ;
       /**
-       * <code>optional double double_holder = 2;</code>
+       * <code>double double_holder = 2;</code>
        */
       public double getDoubleHolder() {
         return doubleHolder_;
       }
       /**
-       * <code>optional double double_holder = 2;</code>
+       * <code>double double_holder = 2;</code>
        */
       public Builder setDoubleHolder(double value) {
         
@@ -11450,7 +11560,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional double double_holder = 2;</code>
+       * <code>double double_holder = 2;</code>
        */
       public Builder clearDoubleHolder() {
         
@@ -11461,13 +11571,13 @@ public final class YaormModel {
 
       private float floatHolder_ ;
       /**
-       * <code>optional float float_holder = 3;</code>
+       * <code>float float_holder = 3;</code>
        */
       public float getFloatHolder() {
         return floatHolder_;
       }
       /**
-       * <code>optional float float_holder = 3;</code>
+       * <code>float float_holder = 3;</code>
        */
       public Builder setFloatHolder(float value) {
         
@@ -11476,7 +11586,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional float float_holder = 3;</code>
+       * <code>float float_holder = 3;</code>
        */
       public Builder clearFloatHolder() {
         
@@ -11487,13 +11597,13 @@ public final class YaormModel {
 
       private int int32Holder_ ;
       /**
-       * <code>optional int32 int32_holder = 4;</code>
+       * <code>int32 int32_holder = 4;</code>
        */
       public int getInt32Holder() {
         return int32Holder_;
       }
       /**
-       * <code>optional int32 int32_holder = 4;</code>
+       * <code>int32 int32_holder = 4;</code>
        */
       public Builder setInt32Holder(int value) {
         
@@ -11502,7 +11612,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int32 int32_holder = 4;</code>
+       * <code>int32 int32_holder = 4;</code>
        */
       public Builder clearInt32Holder() {
         
@@ -11513,13 +11623,13 @@ public final class YaormModel {
 
       private long int64Holder_ ;
       /**
-       * <code>optional int64 int64_holder = 5;</code>
+       * <code>int64 int64_holder = 5;</code>
        */
       public long getInt64Holder() {
         return int64Holder_;
       }
       /**
-       * <code>optional int64 int64_holder = 5;</code>
+       * <code>int64 int64_holder = 5;</code>
        */
       public Builder setInt64Holder(long value) {
         
@@ -11528,7 +11638,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 int64_holder = 5;</code>
+       * <code>int64 int64_holder = 5;</code>
        */
       public Builder clearInt64Holder() {
         
@@ -11539,13 +11649,13 @@ public final class YaormModel {
 
       private int uint32Holder_ ;
       /**
-       * <code>optional uint32 uint32_holder = 6;</code>
+       * <code>uint32 uint32_holder = 6;</code>
        */
       public int getUint32Holder() {
         return uint32Holder_;
       }
       /**
-       * <code>optional uint32 uint32_holder = 6;</code>
+       * <code>uint32 uint32_holder = 6;</code>
        */
       public Builder setUint32Holder(int value) {
         
@@ -11554,7 +11664,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional uint32 uint32_holder = 6;</code>
+       * <code>uint32 uint32_holder = 6;</code>
        */
       public Builder clearUint32Holder() {
         
@@ -11565,13 +11675,13 @@ public final class YaormModel {
 
       private long uint64Holder_ ;
       /**
-       * <code>optional uint64 uint64_holder = 7;</code>
+       * <code>uint64 uint64_holder = 7;</code>
        */
       public long getUint64Holder() {
         return uint64Holder_;
       }
       /**
-       * <code>optional uint64 uint64_holder = 7;</code>
+       * <code>uint64 uint64_holder = 7;</code>
        */
       public Builder setUint64Holder(long value) {
         
@@ -11580,7 +11690,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional uint64 uint64_holder = 7;</code>
+       * <code>uint64 uint64_holder = 7;</code>
        */
       public Builder clearUint64Holder() {
         
@@ -11591,13 +11701,13 @@ public final class YaormModel {
 
       private int sint32Holder_ ;
       /**
-       * <code>optional sint32 sint32_holder = 8;</code>
+       * <code>sint32 sint32_holder = 8;</code>
        */
       public int getSint32Holder() {
         return sint32Holder_;
       }
       /**
-       * <code>optional sint32 sint32_holder = 8;</code>
+       * <code>sint32 sint32_holder = 8;</code>
        */
       public Builder setSint32Holder(int value) {
         
@@ -11606,7 +11716,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional sint32 sint32_holder = 8;</code>
+       * <code>sint32 sint32_holder = 8;</code>
        */
       public Builder clearSint32Holder() {
         
@@ -11617,13 +11727,13 @@ public final class YaormModel {
 
       private long sint64Holder_ ;
       /**
-       * <code>optional sint64 sint64_holder = 9;</code>
+       * <code>sint64 sint64_holder = 9;</code>
        */
       public long getSint64Holder() {
         return sint64Holder_;
       }
       /**
-       * <code>optional sint64 sint64_holder = 9;</code>
+       * <code>sint64 sint64_holder = 9;</code>
        */
       public Builder setSint64Holder(long value) {
         
@@ -11632,7 +11742,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional sint64 sint64_holder = 9;</code>
+       * <code>sint64 sint64_holder = 9;</code>
        */
       public Builder clearSint64Holder() {
         
@@ -11643,13 +11753,13 @@ public final class YaormModel {
 
       private int fixed32Holder_ ;
       /**
-       * <code>optional fixed32 fixed32_holder = 10;</code>
+       * <code>fixed32 fixed32_holder = 10;</code>
        */
       public int getFixed32Holder() {
         return fixed32Holder_;
       }
       /**
-       * <code>optional fixed32 fixed32_holder = 10;</code>
+       * <code>fixed32 fixed32_holder = 10;</code>
        */
       public Builder setFixed32Holder(int value) {
         
@@ -11658,7 +11768,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional fixed32 fixed32_holder = 10;</code>
+       * <code>fixed32 fixed32_holder = 10;</code>
        */
       public Builder clearFixed32Holder() {
         
@@ -11669,13 +11779,13 @@ public final class YaormModel {
 
       private long fixed64Holder_ ;
       /**
-       * <code>optional fixed64 fixed64_holder = 11;</code>
+       * <code>fixed64 fixed64_holder = 11;</code>
        */
       public long getFixed64Holder() {
         return fixed64Holder_;
       }
       /**
-       * <code>optional fixed64 fixed64_holder = 11;</code>
+       * <code>fixed64 fixed64_holder = 11;</code>
        */
       public Builder setFixed64Holder(long value) {
         
@@ -11684,7 +11794,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional fixed64 fixed64_holder = 11;</code>
+       * <code>fixed64 fixed64_holder = 11;</code>
        */
       public Builder clearFixed64Holder() {
         
@@ -11695,13 +11805,13 @@ public final class YaormModel {
 
       private int sfixed32Holder_ ;
       /**
-       * <code>optional sfixed32 sfixed32_holder = 12;</code>
+       * <code>sfixed32 sfixed32_holder = 12;</code>
        */
       public int getSfixed32Holder() {
         return sfixed32Holder_;
       }
       /**
-       * <code>optional sfixed32 sfixed32_holder = 12;</code>
+       * <code>sfixed32 sfixed32_holder = 12;</code>
        */
       public Builder setSfixed32Holder(int value) {
         
@@ -11710,7 +11820,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional sfixed32 sfixed32_holder = 12;</code>
+       * <code>sfixed32 sfixed32_holder = 12;</code>
        */
       public Builder clearSfixed32Holder() {
         
@@ -11721,13 +11831,13 @@ public final class YaormModel {
 
       private long sfixed64Holder_ ;
       /**
-       * <code>optional sfixed64 sfixed64_holder = 13;</code>
+       * <code>sfixed64 sfixed64_holder = 13;</code>
        */
       public long getSfixed64Holder() {
         return sfixed64Holder_;
       }
       /**
-       * <code>optional sfixed64 sfixed64_holder = 13;</code>
+       * <code>sfixed64 sfixed64_holder = 13;</code>
        */
       public Builder setSfixed64Holder(long value) {
         
@@ -11736,7 +11846,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional sfixed64 sfixed64_holder = 13;</code>
+       * <code>sfixed64 sfixed64_holder = 13;</code>
        */
       public Builder clearSfixed64Holder() {
         
@@ -11747,13 +11857,13 @@ public final class YaormModel {
 
       private boolean boolHolder_ ;
       /**
-       * <code>optional bool bool_holder = 14;</code>
+       * <code>bool bool_holder = 14;</code>
        */
       public boolean getBoolHolder() {
         return boolHolder_;
       }
       /**
-       * <code>optional bool bool_holder = 14;</code>
+       * <code>bool bool_holder = 14;</code>
        */
       public Builder setBoolHolder(boolean value) {
         
@@ -11762,7 +11872,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool bool_holder = 14;</code>
+       * <code>bool bool_holder = 14;</code>
        */
       public Builder clearBoolHolder() {
         
@@ -11773,7 +11883,7 @@ public final class YaormModel {
 
       private java.lang.Object stringHolder_ = "";
       /**
-       * <code>optional string string_holder = 15;</code>
+       * <code>string string_holder = 15;</code>
        */
       public java.lang.String getStringHolder() {
         java.lang.Object ref = stringHolder_;
@@ -11788,7 +11898,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string string_holder = 15;</code>
+       * <code>string string_holder = 15;</code>
        */
       public com.google.protobuf.ByteString
           getStringHolderBytes() {
@@ -11804,7 +11914,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string string_holder = 15;</code>
+       * <code>string string_holder = 15;</code>
        */
       public Builder setStringHolder(
           java.lang.String value) {
@@ -11817,7 +11927,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string string_holder = 15;</code>
+       * <code>string string_holder = 15;</code>
        */
       public Builder clearStringHolder() {
         
@@ -11826,7 +11936,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string string_holder = 15;</code>
+       * <code>string string_holder = 15;</code>
        */
       public Builder setStringHolderBytes(
           com.google.protobuf.ByteString value) {
@@ -11842,13 +11952,13 @@ public final class YaormModel {
 
       private com.google.protobuf.ByteString bytesHolder_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes bytes_holder = 16;</code>
+       * <code>bytes bytes_holder = 16;</code>
        */
       public com.google.protobuf.ByteString getBytesHolder() {
         return bytesHolder_;
       }
       /**
-       * <code>optional bytes bytes_holder = 16;</code>
+       * <code>bytes bytes_holder = 16;</code>
        */
       public Builder setBytesHolder(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -11860,7 +11970,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bytes bytes_holder = 16;</code>
+       * <code>bytes bytes_holder = 16;</code>
        */
       public Builder clearBytesHolder() {
         
@@ -12108,7 +12218,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getColumnsCount() > 0) {
         hash = (37 * hash) + COLUMNS_FIELD_NUMBER;
         hash = (53 * hash) + getColumnsList().hashCode();
@@ -12118,6 +12228,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Record parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Record parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Record parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12843,7 +12964,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getRecordsCount() > 0) {
         hash = (37 * hash) + RECORDS_FIELD_NUMBER;
         hash = (53 * hash) + getRecordsList().hashCode();
@@ -12853,6 +12974,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Records parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Records parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Records parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13392,37 +13524,37 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     boolean hasTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     boolean hasRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder();
 
     /**
-     * <code>optional string table_name = 3;</code>
+     * <code>string table_name = 3;</code>
      */
     java.lang.String getTableName();
     /**
-     * <code>optional string table_name = 3;</code>
+     * <code>string table_name = 3;</code>
      */
     com.google.protobuf.ByteString
         getTableNameBytes();
@@ -13525,19 +13657,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.TableDefinition tableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     public boolean hasTableDefinition() {
       return tableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
       return tableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
       return getTableDefinition();
@@ -13546,19 +13678,19 @@ public final class YaormModel {
     public static final int RECORDS_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.Records records_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public boolean hasRecords() {
       return records_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecords() {
       return records_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : records_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
       return getRecords();
@@ -13567,7 +13699,7 @@ public final class YaormModel {
     public static final int TABLE_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object tableName_;
     /**
-     * <code>optional string table_name = 3;</code>
+     * <code>string table_name = 3;</code>
      */
     public java.lang.String getTableName() {
       java.lang.Object ref = tableName_;
@@ -13582,7 +13714,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string table_name = 3;</code>
+     * <code>string table_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTableNameBytes() {
@@ -13674,7 +13806,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasTableDefinition()) {
         hash = (37 * hash) + TABLE_DEFINITION_FIELD_NUMBER;
         hash = (53 * hash) + getTableDefinition().hashCode();
@@ -13690,6 +13822,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.TableRecords parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.TableRecords parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.TableRecords parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13931,13 +14074,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public boolean hasTableDefinition() {
         return tableDefinitionBuilder_ != null || tableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -13947,7 +14090,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder setTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -13963,7 +14106,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder setTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -13977,7 +14120,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -13995,7 +14138,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -14009,7 +14152,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
         
@@ -14017,7 +14160,7 @@ public final class YaormModel {
         return getTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
         if (tableDefinitionBuilder_ != null) {
@@ -14028,7 +14171,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -14048,13 +14191,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public boolean hasRecords() {
         return recordsBuilder_ != null || records_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
@@ -14064,7 +14207,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder setRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -14080,7 +14223,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder setRecords(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -14094,7 +14237,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder mergeRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -14112,7 +14255,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
@@ -14126,7 +14269,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsBuilder() {
         
@@ -14134,7 +14277,7 @@ public final class YaormModel {
         return getRecordsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
         if (recordsBuilder_ != null) {
@@ -14145,7 +14288,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -14163,7 +14306,7 @@ public final class YaormModel {
 
       private java.lang.Object tableName_ = "";
       /**
-       * <code>optional string table_name = 3;</code>
+       * <code>string table_name = 3;</code>
        */
       public java.lang.String getTableName() {
         java.lang.Object ref = tableName_;
@@ -14178,7 +14321,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_name = 3;</code>
+       * <code>string table_name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTableNameBytes() {
@@ -14194,7 +14337,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_name = 3;</code>
+       * <code>string table_name = 3;</code>
        */
       public Builder setTableName(
           java.lang.String value) {
@@ -14207,7 +14350,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_name = 3;</code>
+       * <code>string table_name = 3;</code>
        */
       public Builder clearTableName() {
         
@@ -14216,7 +14359,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_name = 3;</code>
+       * <code>string table_name = 3;</code>
        */
       public Builder setTableNameBytes(
           com.google.protobuf.ByteString value) {
@@ -14469,7 +14612,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getTableRecordsCount() > 0) {
         hash = (37 * hash) + TABLE_RECORDS_FIELD_NUMBER;
         hash = (53 * hash) + getTableRecordsList().hashCode();
@@ -14479,6 +14622,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.AllTableRecords parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.AllTableRecords parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.AllTableRecords parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15018,76 +15172,76 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     boolean hasTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     boolean hasRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     boolean hasIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     org.roylance.yaorm.YaormModel.Index getIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
      */
     boolean hasColumnDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getColumnDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     boolean hasWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause getWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
     int getDatabaseOperationTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
     org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType getDatabaseOperationType();
   }
@@ -15479,19 +15633,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.TableDefinition tableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     public boolean hasTableDefinition() {
       return tableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
       return tableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
       return getTableDefinition();
@@ -15500,19 +15654,19 @@ public final class YaormModel {
     public static final int RECORDS_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.Records records_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public boolean hasRecords() {
       return records_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecords() {
       return records_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : records_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
       return getRecords();
@@ -15521,19 +15675,19 @@ public final class YaormModel {
     public static final int INDEX_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.Index index_;
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public boolean hasIndex() {
       return index_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.Index getIndex() {
       return index_ == null ? org.roylance.yaorm.YaormModel.Index.getDefaultInstance() : index_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
       return getIndex();
@@ -15542,19 +15696,19 @@ public final class YaormModel {
     public static final int COLUMN_DEFINITION_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.ColumnDefinition columnDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
      */
     public boolean hasColumnDefinition() {
       return columnDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getColumnDefinition() {
       return columnDefinition_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : columnDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder() {
       return getColumnDefinition();
@@ -15563,19 +15717,19 @@ public final class YaormModel {
     public static final int WHERE_CLAUSE_FIELD_NUMBER = 5;
     private org.roylance.yaorm.YaormModel.WhereClause whereClause_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public boolean hasWhereClause() {
       return whereClause_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
       return whereClause_ == null ? org.roylance.yaorm.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
       return getWhereClause();
@@ -15584,13 +15738,13 @@ public final class YaormModel {
     public static final int DATABASE_OPERATION_TYPE_FIELD_NUMBER = 6;
     private int databaseOperationType_;
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
     public int getDatabaseOperationTypeValue() {
       return databaseOperationType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType getDatabaseOperationType() {
       org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType result = org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType.valueOf(databaseOperationType_);
@@ -15709,7 +15863,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasTableDefinition()) {
         hash = (37 * hash) + TABLE_DEFINITION_FIELD_NUMBER;
         hash = (53 * hash) + getTableDefinition().hashCode();
@@ -15737,6 +15891,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.DatabaseOperation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseOperation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.DatabaseOperation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16019,13 +16184,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public boolean hasTableDefinition() {
         return tableDefinitionBuilder_ != null || tableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -16035,7 +16200,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder setTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -16051,7 +16216,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder setTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -16065,7 +16230,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -16083,7 +16248,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -16097,7 +16262,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
         
@@ -16105,7 +16270,7 @@ public final class YaormModel {
         return getTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
         if (tableDefinitionBuilder_ != null) {
@@ -16116,7 +16281,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -16136,13 +16301,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public boolean hasRecords() {
         return recordsBuilder_ != null || records_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
@@ -16152,7 +16317,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder setRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -16168,7 +16333,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder setRecords(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -16182,7 +16347,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder mergeRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -16200,7 +16365,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
@@ -16214,7 +16379,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsBuilder() {
         
@@ -16222,7 +16387,7 @@ public final class YaormModel {
         return getRecordsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
         if (recordsBuilder_ != null) {
@@ -16233,7 +16398,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -16253,13 +16418,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public boolean hasIndex() {
         return indexBuilder_ != null || index_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
@@ -16269,7 +16434,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder setIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -16285,7 +16450,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder setIndex(
           org.roylance.yaorm.YaormModel.Index.Builder builderForValue) {
@@ -16299,7 +16464,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder mergeIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -16317,7 +16482,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
@@ -16331,7 +16496,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Index.Builder getIndexBuilder() {
         
@@ -16339,7 +16504,7 @@ public final class YaormModel {
         return getIndexFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
         if (indexBuilder_ != null) {
@@ -16350,7 +16515,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> 
@@ -16370,13 +16535,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> columnDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public boolean hasColumnDefinition() {
         return columnDefinitionBuilder_ != null || columnDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getColumnDefinition() {
         if (columnDefinitionBuilder_ == null) {
@@ -16386,7 +16551,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public Builder setColumnDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (columnDefinitionBuilder_ == null) {
@@ -16402,7 +16567,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public Builder setColumnDefinition(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -16416,7 +16581,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public Builder mergeColumnDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (columnDefinitionBuilder_ == null) {
@@ -16434,7 +16599,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public Builder clearColumnDefinition() {
         if (columnDefinitionBuilder_ == null) {
@@ -16448,7 +16613,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getColumnDefinitionBuilder() {
         
@@ -16456,7 +16621,7 @@ public final class YaormModel {
         return getColumnDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder() {
         if (columnDefinitionBuilder_ != null) {
@@ -16467,7 +16632,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -16487,13 +16652,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> whereClauseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public boolean hasWhereClause() {
         return whereClauseBuilder_ != null || whereClause_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -16503,7 +16668,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder setWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -16519,7 +16684,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder setWhereClause(
           org.roylance.yaorm.YaormModel.WhereClause.Builder builderForValue) {
@@ -16533,7 +16698,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder mergeWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -16551,7 +16716,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder clearWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -16565,7 +16730,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.Builder getWhereClauseBuilder() {
         
@@ -16573,7 +16738,7 @@ public final class YaormModel {
         return getWhereClauseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
         if (whereClauseBuilder_ != null) {
@@ -16584,7 +16749,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> 
@@ -16602,13 +16767,13 @@ public final class YaormModel {
 
       private int databaseOperationType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public int getDatabaseOperationTypeValue() {
         return databaseOperationType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public Builder setDatabaseOperationTypeValue(int value) {
         databaseOperationType_ = value;
@@ -16616,14 +16781,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType getDatabaseOperationType() {
         org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType result = org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType.valueOf(databaseOperationType_);
         return result == null ? org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public Builder setDatabaseOperationType(org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType value) {
         if (value == null) {
@@ -16635,7 +16800,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation.DatabaseOperationType database_operation_type = 6;</code>
        */
       public Builder clearDatabaseOperationType() {
         
@@ -16697,61 +16862,61 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool bool_result = 1;</code>
+     * <code>bool bool_result = 1;</code>
      */
     boolean getBoolResult();
 
     /**
-     * <code>optional int64 count_result = 2;</code>
+     * <code>int64 count_result = 2;</code>
      */
     long getCountResult();
 
     /**
-     * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+     * <code>.org.roylance.yaorm.Record record_result = 3;</code>
      */
     boolean hasRecordResult();
     /**
-     * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+     * <code>.org.roylance.yaorm.Record record_result = 3;</code>
      */
     org.roylance.yaorm.YaormModel.Record getRecordResult();
     /**
-     * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+     * <code>.org.roylance.yaorm.Record record_result = 3;</code>
      */
     org.roylance.yaorm.YaormModel.RecordOrBuilder getRecordResultOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+     * <code>.org.roylance.yaorm.Records records_result = 4;</code>
      */
     boolean hasRecordsResult();
     /**
-     * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+     * <code>.org.roylance.yaorm.Records records_result = 4;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecordsResult();
     /**
-     * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+     * <code>.org.roylance.yaorm.Records records_result = 4;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsResultOrBuilder();
 
     /**
-     * <code>optional string error_message = 5;</code>
+     * <code>string error_message = 5;</code>
      */
     java.lang.String getErrorMessage();
     /**
-     * <code>optional string error_message = 5;</code>
+     * <code>string error_message = 5;</code>
      */
     com.google.protobuf.ByteString
         getErrorMessageBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
      */
     boolean hasDatabaseOperation();
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
      */
     org.roylance.yaorm.YaormModel.DatabaseOperation getDatabaseOperation();
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
      */
     org.roylance.yaorm.YaormModel.DatabaseOperationOrBuilder getDatabaseOperationOrBuilder();
   }
@@ -16878,7 +17043,7 @@ public final class YaormModel {
     public static final int BOOL_RESULT_FIELD_NUMBER = 1;
     private boolean boolResult_;
     /**
-     * <code>optional bool bool_result = 1;</code>
+     * <code>bool bool_result = 1;</code>
      */
     public boolean getBoolResult() {
       return boolResult_;
@@ -16887,7 +17052,7 @@ public final class YaormModel {
     public static final int COUNT_RESULT_FIELD_NUMBER = 2;
     private long countResult_;
     /**
-     * <code>optional int64 count_result = 2;</code>
+     * <code>int64 count_result = 2;</code>
      */
     public long getCountResult() {
       return countResult_;
@@ -16896,19 +17061,19 @@ public final class YaormModel {
     public static final int RECORD_RESULT_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.Record recordResult_;
     /**
-     * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+     * <code>.org.roylance.yaorm.Record record_result = 3;</code>
      */
     public boolean hasRecordResult() {
       return recordResult_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+     * <code>.org.roylance.yaorm.Record record_result = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.Record getRecordResult() {
       return recordResult_ == null ? org.roylance.yaorm.YaormModel.Record.getDefaultInstance() : recordResult_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+     * <code>.org.roylance.yaorm.Record record_result = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordOrBuilder getRecordResultOrBuilder() {
       return getRecordResult();
@@ -16917,19 +17082,19 @@ public final class YaormModel {
     public static final int RECORDS_RESULT_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.Records recordsResult_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+     * <code>.org.roylance.yaorm.Records records_result = 4;</code>
      */
     public boolean hasRecordsResult() {
       return recordsResult_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+     * <code>.org.roylance.yaorm.Records records_result = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecordsResult() {
       return recordsResult_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : recordsResult_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+     * <code>.org.roylance.yaorm.Records records_result = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsResultOrBuilder() {
       return getRecordsResult();
@@ -16938,7 +17103,7 @@ public final class YaormModel {
     public static final int ERROR_MESSAGE_FIELD_NUMBER = 5;
     private volatile java.lang.Object errorMessage_;
     /**
-     * <code>optional string error_message = 5;</code>
+     * <code>string error_message = 5;</code>
      */
     public java.lang.String getErrorMessage() {
       java.lang.Object ref = errorMessage_;
@@ -16953,7 +17118,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string error_message = 5;</code>
+     * <code>string error_message = 5;</code>
      */
     public com.google.protobuf.ByteString
         getErrorMessageBytes() {
@@ -16972,19 +17137,19 @@ public final class YaormModel {
     public static final int DATABASE_OPERATION_FIELD_NUMBER = 6;
     private org.roylance.yaorm.YaormModel.DatabaseOperation databaseOperation_;
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
      */
     public boolean hasDatabaseOperation() {
       return databaseOperation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.DatabaseOperation getDatabaseOperation() {
       return databaseOperation_ == null ? org.roylance.yaorm.YaormModel.DatabaseOperation.getDefaultInstance() : databaseOperation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+     * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.DatabaseOperationOrBuilder getDatabaseOperationOrBuilder() {
       return getDatabaseOperation();
@@ -17096,7 +17261,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + BOOL_RESULT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getBoolResult());
@@ -17122,6 +17287,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.DatabaseOperationResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseOperationResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.DatabaseOperationResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17387,13 +17563,13 @@ public final class YaormModel {
 
       private boolean boolResult_ ;
       /**
-       * <code>optional bool bool_result = 1;</code>
+       * <code>bool bool_result = 1;</code>
        */
       public boolean getBoolResult() {
         return boolResult_;
       }
       /**
-       * <code>optional bool bool_result = 1;</code>
+       * <code>bool bool_result = 1;</code>
        */
       public Builder setBoolResult(boolean value) {
         
@@ -17402,7 +17578,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool bool_result = 1;</code>
+       * <code>bool bool_result = 1;</code>
        */
       public Builder clearBoolResult() {
         
@@ -17413,13 +17589,13 @@ public final class YaormModel {
 
       private long countResult_ ;
       /**
-       * <code>optional int64 count_result = 2;</code>
+       * <code>int64 count_result = 2;</code>
        */
       public long getCountResult() {
         return countResult_;
       }
       /**
-       * <code>optional int64 count_result = 2;</code>
+       * <code>int64 count_result = 2;</code>
        */
       public Builder setCountResult(long value) {
         
@@ -17428,7 +17604,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 count_result = 2;</code>
+       * <code>int64 count_result = 2;</code>
        */
       public Builder clearCountResult() {
         
@@ -17441,13 +17617,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Record, org.roylance.yaorm.YaormModel.Record.Builder, org.roylance.yaorm.YaormModel.RecordOrBuilder> recordResultBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public boolean hasRecordResult() {
         return recordResultBuilder_ != null || recordResult_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Record getRecordResult() {
         if (recordResultBuilder_ == null) {
@@ -17457,7 +17633,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public Builder setRecordResult(org.roylance.yaorm.YaormModel.Record value) {
         if (recordResultBuilder_ == null) {
@@ -17473,7 +17649,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public Builder setRecordResult(
           org.roylance.yaorm.YaormModel.Record.Builder builderForValue) {
@@ -17487,7 +17663,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public Builder mergeRecordResult(org.roylance.yaorm.YaormModel.Record value) {
         if (recordResultBuilder_ == null) {
@@ -17505,7 +17681,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public Builder clearRecordResult() {
         if (recordResultBuilder_ == null) {
@@ -17519,7 +17695,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Record.Builder getRecordResultBuilder() {
         
@@ -17527,7 +17703,7 @@ public final class YaormModel {
         return getRecordResultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordOrBuilder getRecordResultOrBuilder() {
         if (recordResultBuilder_ != null) {
@@ -17538,7 +17714,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Record record_result = 3;</code>
+       * <code>.org.roylance.yaorm.Record record_result = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Record, org.roylance.yaorm.YaormModel.Record.Builder, org.roylance.yaorm.YaormModel.RecordOrBuilder> 
@@ -17558,13 +17734,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsResultBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public boolean hasRecordsResult() {
         return recordsResultBuilder_ != null || recordsResult_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecordsResult() {
         if (recordsResultBuilder_ == null) {
@@ -17574,7 +17750,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public Builder setRecordsResult(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsResultBuilder_ == null) {
@@ -17590,7 +17766,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public Builder setRecordsResult(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -17604,7 +17780,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public Builder mergeRecordsResult(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsResultBuilder_ == null) {
@@ -17622,7 +17798,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public Builder clearRecordsResult() {
         if (recordsResultBuilder_ == null) {
@@ -17636,7 +17812,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsResultBuilder() {
         
@@ -17644,7 +17820,7 @@ public final class YaormModel {
         return getRecordsResultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsResultOrBuilder() {
         if (recordsResultBuilder_ != null) {
@@ -17655,7 +17831,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records_result = 4;</code>
+       * <code>.org.roylance.yaorm.Records records_result = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -17673,7 +17849,7 @@ public final class YaormModel {
 
       private java.lang.Object errorMessage_ = "";
       /**
-       * <code>optional string error_message = 5;</code>
+       * <code>string error_message = 5;</code>
        */
       public java.lang.String getErrorMessage() {
         java.lang.Object ref = errorMessage_;
@@ -17688,7 +17864,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string error_message = 5;</code>
+       * <code>string error_message = 5;</code>
        */
       public com.google.protobuf.ByteString
           getErrorMessageBytes() {
@@ -17704,7 +17880,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string error_message = 5;</code>
+       * <code>string error_message = 5;</code>
        */
       public Builder setErrorMessage(
           java.lang.String value) {
@@ -17717,7 +17893,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string error_message = 5;</code>
+       * <code>string error_message = 5;</code>
        */
       public Builder clearErrorMessage() {
         
@@ -17726,7 +17902,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string error_message = 5;</code>
+       * <code>string error_message = 5;</code>
        */
       public Builder setErrorMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -17744,13 +17920,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.DatabaseOperation, org.roylance.yaorm.YaormModel.DatabaseOperation.Builder, org.roylance.yaorm.YaormModel.DatabaseOperationOrBuilder> databaseOperationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public boolean hasDatabaseOperation() {
         return databaseOperationBuilder_ != null || databaseOperation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.DatabaseOperation getDatabaseOperation() {
         if (databaseOperationBuilder_ == null) {
@@ -17760,7 +17936,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public Builder setDatabaseOperation(org.roylance.yaorm.YaormModel.DatabaseOperation value) {
         if (databaseOperationBuilder_ == null) {
@@ -17776,7 +17952,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public Builder setDatabaseOperation(
           org.roylance.yaorm.YaormModel.DatabaseOperation.Builder builderForValue) {
@@ -17790,7 +17966,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public Builder mergeDatabaseOperation(org.roylance.yaorm.YaormModel.DatabaseOperation value) {
         if (databaseOperationBuilder_ == null) {
@@ -17808,7 +17984,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public Builder clearDatabaseOperation() {
         if (databaseOperationBuilder_ == null) {
@@ -17822,7 +17998,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.DatabaseOperation.Builder getDatabaseOperationBuilder() {
         
@@ -17830,7 +18006,7 @@ public final class YaormModel {
         return getDatabaseOperationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.DatabaseOperationOrBuilder getDatabaseOperationOrBuilder() {
         if (databaseOperationBuilder_ != null) {
@@ -17841,7 +18017,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
+       * <code>.org.roylance.yaorm.DatabaseOperation database_operation = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.DatabaseOperation, org.roylance.yaorm.YaormModel.DatabaseOperation.Builder, org.roylance.yaorm.YaormModel.DatabaseOperationOrBuilder> 
@@ -17910,35 +18086,35 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string schema = 1;</code>
+     * <code>string schema = 1;</code>
      */
     java.lang.String getSchema();
     /**
-     * <code>optional string schema = 1;</code>
+     * <code>string schema = 1;</code>
      */
     com.google.protobuf.ByteString
         getSchemaBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
      */
     boolean hasTableDefinitions();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitions getTableDefinitions();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder();
 
@@ -18072,7 +18248,7 @@ public final class YaormModel {
     public static final int SCHEMA_FIELD_NUMBER = 1;
     private volatile java.lang.Object schema_;
     /**
-     * <code>optional string schema = 1;</code>
+     * <code>string schema = 1;</code>
      */
     public java.lang.String getSchema() {
       java.lang.Object ref = schema_;
@@ -18087,7 +18263,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string schema = 1;</code>
+     * <code>string schema = 1;</code>
      */
     public com.google.protobuf.ByteString
         getSchemaBytes() {
@@ -18106,7 +18282,7 @@ public final class YaormModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -18121,7 +18297,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -18140,19 +18316,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.TableDefinitions tableDefinitions_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
      */
     public boolean hasTableDefinitions() {
       return tableDefinitions_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitions getTableDefinitions() {
       return tableDefinitions_ == null ? org.roylance.yaorm.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
       return getTableDefinitions();
@@ -18274,7 +18450,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SCHEMA_FIELD_NUMBER;
       hash = (53 * hash) + getSchema().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -18292,6 +18468,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.DatabaseDefinition parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseDefinition parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.DatabaseDefinition parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18570,7 +18757,7 @@ public final class YaormModel {
 
       private java.lang.Object schema_ = "";
       /**
-       * <code>optional string schema = 1;</code>
+       * <code>string schema = 1;</code>
        */
       public java.lang.String getSchema() {
         java.lang.Object ref = schema_;
@@ -18585,7 +18772,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema = 1;</code>
+       * <code>string schema = 1;</code>
        */
       public com.google.protobuf.ByteString
           getSchemaBytes() {
@@ -18601,7 +18788,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema = 1;</code>
+       * <code>string schema = 1;</code>
        */
       public Builder setSchema(
           java.lang.String value) {
@@ -18614,7 +18801,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema = 1;</code>
+       * <code>string schema = 1;</code>
        */
       public Builder clearSchema() {
         
@@ -18623,7 +18810,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema = 1;</code>
+       * <code>string schema = 1;</code>
        */
       public Builder setSchemaBytes(
           com.google.protobuf.ByteString value) {
@@ -18639,7 +18826,7 @@ public final class YaormModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -18654,7 +18841,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -18670,7 +18857,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -18683,7 +18870,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -18692,7 +18879,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -18710,13 +18897,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinitions, org.roylance.yaorm.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder> tableDefinitionsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public boolean hasTableDefinitions() {
         return tableDefinitionsBuilder_ != null || tableDefinitions_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitions getTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
@@ -18726,7 +18913,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public Builder setTableDefinitions(org.roylance.yaorm.YaormModel.TableDefinitions value) {
         if (tableDefinitionsBuilder_ == null) {
@@ -18742,7 +18929,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public Builder setTableDefinitions(
           org.roylance.yaorm.YaormModel.TableDefinitions.Builder builderForValue) {
@@ -18756,7 +18943,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public Builder mergeTableDefinitions(org.roylance.yaorm.YaormModel.TableDefinitions value) {
         if (tableDefinitionsBuilder_ == null) {
@@ -18774,7 +18961,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public Builder clearTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
@@ -18788,7 +18975,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitions.Builder getTableDefinitionsBuilder() {
         
@@ -18796,7 +18983,7 @@ public final class YaormModel {
         return getTableDefinitionsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
         if (tableDefinitionsBuilder_ != null) {
@@ -18807,7 +18994,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinitions, org.roylance.yaorm.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder> 
@@ -19116,79 +19303,79 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     boolean hasMainTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getMainTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
      */
     boolean hasOtherTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getOtherTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getOtherTableDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
      */
     boolean hasLinkerTableTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getLinkerTableTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getLinkerTableTableOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
     int getDefinitionGraphTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType getDefinitionGraphType();
 
     /**
-     * <code>optional string main_name = 5;</code>
+     * <code>string main_name = 5;</code>
      */
     java.lang.String getMainName();
     /**
-     * <code>optional string main_name = 5;</code>
+     * <code>string main_name = 5;</code>
      */
     com.google.protobuf.ByteString
         getMainNameBytes();
 
     /**
-     * <code>optional string other_name = 6;</code>
+     * <code>string other_name = 6;</code>
      */
     java.lang.String getOtherName();
     /**
-     * <code>optional string other_name = 6;</code>
+     * <code>string other_name = 6;</code>
      */
     com.google.protobuf.ByteString
         getOtherNameBytes();
 
     /**
-     * <code>optional string column_name = 7;</code>
+     * <code>string column_name = 7;</code>
      */
     java.lang.String getColumnName();
     /**
-     * <code>optional string column_name = 7;</code>
+     * <code>string column_name = 7;</code>
      */
     com.google.protobuf.ByteString
         getColumnNameBytes();
@@ -19423,19 +19610,19 @@ public final class YaormModel {
     public static final int MAIN_TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.TableDefinition mainTableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     public boolean hasMainTableDefinition() {
       return mainTableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getMainTableDefinition() {
       return mainTableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder() {
       return getMainTableDefinition();
@@ -19444,19 +19631,19 @@ public final class YaormModel {
     public static final int OTHER_TABLE_DEFINITION_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.TableDefinition otherTableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
      */
     public boolean hasOtherTableDefinition() {
       return otherTableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getOtherTableDefinition() {
       return otherTableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : otherTableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getOtherTableDefinitionOrBuilder() {
       return getOtherTableDefinition();
@@ -19465,19 +19652,19 @@ public final class YaormModel {
     public static final int LINKER_TABLE_TABLE_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.TableDefinition linkerTableTable_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
      */
     public boolean hasLinkerTableTable() {
       return linkerTableTable_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getLinkerTableTable() {
       return linkerTableTable_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : linkerTableTable_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+     * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getLinkerTableTableOrBuilder() {
       return getLinkerTableTable();
@@ -19486,13 +19673,13 @@ public final class YaormModel {
     public static final int DEFINITION_GRAPH_TYPE_FIELD_NUMBER = 4;
     private int definitionGraphType_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
     public int getDefinitionGraphTypeValue() {
       return definitionGraphType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType getDefinitionGraphType() {
       org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType result = org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.valueOf(definitionGraphType_);
@@ -19502,7 +19689,7 @@ public final class YaormModel {
     public static final int MAIN_NAME_FIELD_NUMBER = 5;
     private volatile java.lang.Object mainName_;
     /**
-     * <code>optional string main_name = 5;</code>
+     * <code>string main_name = 5;</code>
      */
     public java.lang.String getMainName() {
       java.lang.Object ref = mainName_;
@@ -19517,7 +19704,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string main_name = 5;</code>
+     * <code>string main_name = 5;</code>
      */
     public com.google.protobuf.ByteString
         getMainNameBytes() {
@@ -19536,7 +19723,7 @@ public final class YaormModel {
     public static final int OTHER_NAME_FIELD_NUMBER = 6;
     private volatile java.lang.Object otherName_;
     /**
-     * <code>optional string other_name = 6;</code>
+     * <code>string other_name = 6;</code>
      */
     public java.lang.String getOtherName() {
       java.lang.Object ref = otherName_;
@@ -19551,7 +19738,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string other_name = 6;</code>
+     * <code>string other_name = 6;</code>
      */
     public com.google.protobuf.ByteString
         getOtherNameBytes() {
@@ -19570,7 +19757,7 @@ public final class YaormModel {
     public static final int COLUMN_NAME_FIELD_NUMBER = 7;
     private volatile java.lang.Object columnName_;
     /**
-     * <code>optional string column_name = 7;</code>
+     * <code>string column_name = 7;</code>
      */
     public java.lang.String getColumnName() {
       java.lang.Object ref = columnName_;
@@ -19585,7 +19772,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string column_name = 7;</code>
+     * <code>string column_name = 7;</code>
      */
     public com.google.protobuf.ByteString
         getColumnNameBytes() {
@@ -19713,7 +19900,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasMainTableDefinition()) {
         hash = (37 * hash) + MAIN_TABLE_DEFINITION_FIELD_NUMBER;
         hash = (53 * hash) + getMainTableDefinition().hashCode();
@@ -19739,6 +19926,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.TableDefinitionGraph parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.TableDefinitionGraph parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.TableDefinitionGraph parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20014,13 +20212,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> mainTableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public boolean hasMainTableDefinition() {
         return mainTableDefinitionBuilder_ != null || mainTableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
@@ -20030,7 +20228,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder setMainTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (mainTableDefinitionBuilder_ == null) {
@@ -20046,7 +20244,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder setMainTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -20060,7 +20258,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder mergeMainTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (mainTableDefinitionBuilder_ == null) {
@@ -20078,7 +20276,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder clearMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
@@ -20092,7 +20290,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getMainTableDefinitionBuilder() {
         
@@ -20100,7 +20298,7 @@ public final class YaormModel {
         return getMainTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder() {
         if (mainTableDefinitionBuilder_ != null) {
@@ -20111,7 +20309,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -20131,13 +20329,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> otherTableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public boolean hasOtherTableDefinition() {
         return otherTableDefinitionBuilder_ != null || otherTableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getOtherTableDefinition() {
         if (otherTableDefinitionBuilder_ == null) {
@@ -20147,7 +20345,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public Builder setOtherTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (otherTableDefinitionBuilder_ == null) {
@@ -20163,7 +20361,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public Builder setOtherTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -20177,7 +20375,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public Builder mergeOtherTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (otherTableDefinitionBuilder_ == null) {
@@ -20195,7 +20393,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public Builder clearOtherTableDefinition() {
         if (otherTableDefinitionBuilder_ == null) {
@@ -20209,7 +20407,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getOtherTableDefinitionBuilder() {
         
@@ -20217,7 +20415,7 @@ public final class YaormModel {
         return getOtherTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getOtherTableDefinitionOrBuilder() {
         if (otherTableDefinitionBuilder_ != null) {
@@ -20228,7 +20426,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition other_table_definition = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -20248,13 +20446,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> linkerTableTableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public boolean hasLinkerTableTable() {
         return linkerTableTableBuilder_ != null || linkerTableTable_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getLinkerTableTable() {
         if (linkerTableTableBuilder_ == null) {
@@ -20264,7 +20462,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public Builder setLinkerTableTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (linkerTableTableBuilder_ == null) {
@@ -20280,7 +20478,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public Builder setLinkerTableTable(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -20294,7 +20492,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public Builder mergeLinkerTableTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (linkerTableTableBuilder_ == null) {
@@ -20312,7 +20510,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public Builder clearLinkerTableTable() {
         if (linkerTableTableBuilder_ == null) {
@@ -20326,7 +20524,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getLinkerTableTableBuilder() {
         
@@ -20334,7 +20532,7 @@ public final class YaormModel {
         return getLinkerTableTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getLinkerTableTableOrBuilder() {
         if (linkerTableTableBuilder_ != null) {
@@ -20345,7 +20543,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
+       * <code>.org.roylance.yaorm.TableDefinition linker_table_table = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -20363,13 +20561,13 @@ public final class YaormModel {
 
       private int definitionGraphType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public int getDefinitionGraphTypeValue() {
         return definitionGraphType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public Builder setDefinitionGraphTypeValue(int value) {
         definitionGraphType_ = value;
@@ -20377,14 +20575,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType getDefinitionGraphType() {
         org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType result = org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.valueOf(definitionGraphType_);
         return result == null ? org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public Builder setDefinitionGraphType(org.roylance.yaorm.YaormModel.TableDefinitionGraph.TableDefinitionGraphType value) {
         if (value == null) {
@@ -20396,7 +20594,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinitionGraph.TableDefinitionGraphType definition_graph_type = 4;</code>
        */
       public Builder clearDefinitionGraphType() {
         
@@ -20407,7 +20605,7 @@ public final class YaormModel {
 
       private java.lang.Object mainName_ = "";
       /**
-       * <code>optional string main_name = 5;</code>
+       * <code>string main_name = 5;</code>
        */
       public java.lang.String getMainName() {
         java.lang.Object ref = mainName_;
@@ -20422,7 +20620,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string main_name = 5;</code>
+       * <code>string main_name = 5;</code>
        */
       public com.google.protobuf.ByteString
           getMainNameBytes() {
@@ -20438,7 +20636,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string main_name = 5;</code>
+       * <code>string main_name = 5;</code>
        */
       public Builder setMainName(
           java.lang.String value) {
@@ -20451,7 +20649,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string main_name = 5;</code>
+       * <code>string main_name = 5;</code>
        */
       public Builder clearMainName() {
         
@@ -20460,7 +20658,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string main_name = 5;</code>
+       * <code>string main_name = 5;</code>
        */
       public Builder setMainNameBytes(
           com.google.protobuf.ByteString value) {
@@ -20476,7 +20674,7 @@ public final class YaormModel {
 
       private java.lang.Object otherName_ = "";
       /**
-       * <code>optional string other_name = 6;</code>
+       * <code>string other_name = 6;</code>
        */
       public java.lang.String getOtherName() {
         java.lang.Object ref = otherName_;
@@ -20491,7 +20689,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string other_name = 6;</code>
+       * <code>string other_name = 6;</code>
        */
       public com.google.protobuf.ByteString
           getOtherNameBytes() {
@@ -20507,7 +20705,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string other_name = 6;</code>
+       * <code>string other_name = 6;</code>
        */
       public Builder setOtherName(
           java.lang.String value) {
@@ -20520,7 +20718,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string other_name = 6;</code>
+       * <code>string other_name = 6;</code>
        */
       public Builder clearOtherName() {
         
@@ -20529,7 +20727,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string other_name = 6;</code>
+       * <code>string other_name = 6;</code>
        */
       public Builder setOtherNameBytes(
           com.google.protobuf.ByteString value) {
@@ -20545,7 +20743,7 @@ public final class YaormModel {
 
       private java.lang.Object columnName_ = "";
       /**
-       * <code>optional string column_name = 7;</code>
+       * <code>string column_name = 7;</code>
        */
       public java.lang.String getColumnName() {
         java.lang.Object ref = columnName_;
@@ -20560,7 +20758,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string column_name = 7;</code>
+       * <code>string column_name = 7;</code>
        */
       public com.google.protobuf.ByteString
           getColumnNameBytes() {
@@ -20576,7 +20774,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string column_name = 7;</code>
+       * <code>string column_name = 7;</code>
        */
       public Builder setColumnName(
           java.lang.String value) {
@@ -20589,7 +20787,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string column_name = 7;</code>
+       * <code>string column_name = 7;</code>
        */
       public Builder clearColumnName() {
         
@@ -20598,7 +20796,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string column_name = 7;</code>
+       * <code>string column_name = 7;</code>
        */
       public Builder setColumnNameBytes(
           com.google.protobuf.ByteString value) {
@@ -20665,15 +20863,15 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     boolean hasMainTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getMainTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder();
 
@@ -20793,19 +20991,19 @@ public final class YaormModel {
     public static final int MAIN_TABLE_DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.TableDefinition mainTableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     public boolean hasMainTableDefinition() {
       return mainTableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getMainTableDefinition() {
       return mainTableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : mainTableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder() {
       return getMainTableDefinition();
@@ -20911,7 +21109,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasMainTableDefinition()) {
         hash = (37 * hash) + MAIN_TABLE_DEFINITION_FIELD_NUMBER;
         hash = (53 * hash) + getMainTableDefinition().hashCode();
@@ -20925,6 +21123,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.TableDefinitionGraphs parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.TableDefinitionGraphs parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.TableDefinitionGraphs parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21191,13 +21400,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> mainTableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public boolean hasMainTableDefinition() {
         return mainTableDefinitionBuilder_ != null || mainTableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
@@ -21207,7 +21416,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder setMainTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (mainTableDefinitionBuilder_ == null) {
@@ -21223,7 +21432,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder setMainTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -21237,7 +21446,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder mergeMainTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (mainTableDefinitionBuilder_ == null) {
@@ -21255,7 +21464,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public Builder clearMainTableDefinition() {
         if (mainTableDefinitionBuilder_ == null) {
@@ -21269,7 +21478,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getMainTableDefinitionBuilder() {
         
@@ -21277,7 +21486,7 @@ public final class YaormModel {
         return getMainTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableDefinitionOrBuilder() {
         if (mainTableDefinitionBuilder_ != null) {
@@ -21288,7 +21497,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table_definition = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -21597,52 +21806,52 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string host = 1;</code>
+     * <code>string host = 1;</code>
      */
     java.lang.String getHost();
     /**
-     * <code>optional string host = 1;</code>
+     * <code>string host = 1;</code>
      */
     com.google.protobuf.ByteString
         getHostBytes();
 
     /**
-     * <code>optional string user = 2;</code>
+     * <code>string user = 2;</code>
      */
     java.lang.String getUser();
     /**
-     * <code>optional string user = 2;</code>
+     * <code>string user = 2;</code>
      */
     com.google.protobuf.ByteString
         getUserBytes();
 
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>optional string schema = 4;</code>
+     * <code>string schema = 4;</code>
      */
     java.lang.String getSchema();
     /**
-     * <code>optional string schema = 4;</code>
+     * <code>string schema = 4;</code>
      */
     com.google.protobuf.ByteString
         getSchemaBytes();
 
     /**
-     * <code>optional bool should_create_schema = 5;</code>
+     * <code>bool should_create_schema = 5;</code>
      */
     boolean getShouldCreateSchema();
 
     /**
-     * <code>optional int32 port = 6;</code>
+     * <code>int32 port = 6;</code>
      */
     int getPort();
   }
@@ -21751,7 +21960,7 @@ public final class YaormModel {
     public static final int HOST_FIELD_NUMBER = 1;
     private volatile java.lang.Object host_;
     /**
-     * <code>optional string host = 1;</code>
+     * <code>string host = 1;</code>
      */
     public java.lang.String getHost() {
       java.lang.Object ref = host_;
@@ -21766,7 +21975,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string host = 1;</code>
+     * <code>string host = 1;</code>
      */
     public com.google.protobuf.ByteString
         getHostBytes() {
@@ -21785,7 +21994,7 @@ public final class YaormModel {
     public static final int USER_FIELD_NUMBER = 2;
     private volatile java.lang.Object user_;
     /**
-     * <code>optional string user = 2;</code>
+     * <code>string user = 2;</code>
      */
     public java.lang.String getUser() {
       java.lang.Object ref = user_;
@@ -21800,7 +22009,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string user = 2;</code>
+     * <code>string user = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUserBytes() {
@@ -21819,7 +22028,7 @@ public final class YaormModel {
     public static final int PASSWORD_FIELD_NUMBER = 3;
     private volatile java.lang.Object password_;
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -21834,7 +22043,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -21853,7 +22062,7 @@ public final class YaormModel {
     public static final int SCHEMA_FIELD_NUMBER = 4;
     private volatile java.lang.Object schema_;
     /**
-     * <code>optional string schema = 4;</code>
+     * <code>string schema = 4;</code>
      */
     public java.lang.String getSchema() {
       java.lang.Object ref = schema_;
@@ -21868,7 +22077,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string schema = 4;</code>
+     * <code>string schema = 4;</code>
      */
     public com.google.protobuf.ByteString
         getSchemaBytes() {
@@ -21887,7 +22096,7 @@ public final class YaormModel {
     public static final int SHOULD_CREATE_SCHEMA_FIELD_NUMBER = 5;
     private boolean shouldCreateSchema_;
     /**
-     * <code>optional bool should_create_schema = 5;</code>
+     * <code>bool should_create_schema = 5;</code>
      */
     public boolean getShouldCreateSchema() {
       return shouldCreateSchema_;
@@ -21896,7 +22105,7 @@ public final class YaormModel {
     public static final int PORT_FIELD_NUMBER = 6;
     private int port_;
     /**
-     * <code>optional int32 port = 6;</code>
+     * <code>int32 port = 6;</code>
      */
     public int getPort() {
       return port_;
@@ -21996,7 +22205,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + HOST_FIELD_NUMBER;
       hash = (53 * hash) + getHost().hashCode();
       hash = (37 * hash) + USER_FIELD_NUMBER;
@@ -22015,6 +22224,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.ConnectionInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.ConnectionInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.ConnectionInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -22259,7 +22479,7 @@ public final class YaormModel {
 
       private java.lang.Object host_ = "";
       /**
-       * <code>optional string host = 1;</code>
+       * <code>string host = 1;</code>
        */
       public java.lang.String getHost() {
         java.lang.Object ref = host_;
@@ -22274,7 +22494,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string host = 1;</code>
+       * <code>string host = 1;</code>
        */
       public com.google.protobuf.ByteString
           getHostBytes() {
@@ -22290,7 +22510,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string host = 1;</code>
+       * <code>string host = 1;</code>
        */
       public Builder setHost(
           java.lang.String value) {
@@ -22303,7 +22523,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string host = 1;</code>
+       * <code>string host = 1;</code>
        */
       public Builder clearHost() {
         
@@ -22312,7 +22532,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string host = 1;</code>
+       * <code>string host = 1;</code>
        */
       public Builder setHostBytes(
           com.google.protobuf.ByteString value) {
@@ -22328,7 +22548,7 @@ public final class YaormModel {
 
       private java.lang.Object user_ = "";
       /**
-       * <code>optional string user = 2;</code>
+       * <code>string user = 2;</code>
        */
       public java.lang.String getUser() {
         java.lang.Object ref = user_;
@@ -22343,7 +22563,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string user = 2;</code>
+       * <code>string user = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUserBytes() {
@@ -22359,7 +22579,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string user = 2;</code>
+       * <code>string user = 2;</code>
        */
       public Builder setUser(
           java.lang.String value) {
@@ -22372,7 +22592,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string user = 2;</code>
+       * <code>string user = 2;</code>
        */
       public Builder clearUser() {
         
@@ -22381,7 +22601,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string user = 2;</code>
+       * <code>string user = 2;</code>
        */
       public Builder setUserBytes(
           com.google.protobuf.ByteString value) {
@@ -22397,7 +22617,7 @@ public final class YaormModel {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -22412,7 +22632,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -22428,7 +22648,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -22441,7 +22661,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder clearPassword() {
         
@@ -22450,7 +22670,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -22466,7 +22686,7 @@ public final class YaormModel {
 
       private java.lang.Object schema_ = "";
       /**
-       * <code>optional string schema = 4;</code>
+       * <code>string schema = 4;</code>
        */
       public java.lang.String getSchema() {
         java.lang.Object ref = schema_;
@@ -22481,7 +22701,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema = 4;</code>
+       * <code>string schema = 4;</code>
        */
       public com.google.protobuf.ByteString
           getSchemaBytes() {
@@ -22497,7 +22717,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema = 4;</code>
+       * <code>string schema = 4;</code>
        */
       public Builder setSchema(
           java.lang.String value) {
@@ -22510,7 +22730,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema = 4;</code>
+       * <code>string schema = 4;</code>
        */
       public Builder clearSchema() {
         
@@ -22519,7 +22739,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema = 4;</code>
+       * <code>string schema = 4;</code>
        */
       public Builder setSchemaBytes(
           com.google.protobuf.ByteString value) {
@@ -22535,13 +22755,13 @@ public final class YaormModel {
 
       private boolean shouldCreateSchema_ ;
       /**
-       * <code>optional bool should_create_schema = 5;</code>
+       * <code>bool should_create_schema = 5;</code>
        */
       public boolean getShouldCreateSchema() {
         return shouldCreateSchema_;
       }
       /**
-       * <code>optional bool should_create_schema = 5;</code>
+       * <code>bool should_create_schema = 5;</code>
        */
       public Builder setShouldCreateSchema(boolean value) {
         
@@ -22550,7 +22770,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool should_create_schema = 5;</code>
+       * <code>bool should_create_schema = 5;</code>
        */
       public Builder clearShouldCreateSchema() {
         
@@ -22561,13 +22781,13 @@ public final class YaormModel {
 
       private int port_ ;
       /**
-       * <code>optional int32 port = 6;</code>
+       * <code>int32 port = 6;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>optional int32 port = 6;</code>
+       * <code>int32 port = 6;</code>
        */
       public Builder setPort(int value) {
         
@@ -22576,7 +22796,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int32 port = 6;</code>
+       * <code>int32 port = 6;</code>
        */
       public Builder clearPort() {
         
@@ -22638,37 +22858,37 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string context_name = 2;</code>
+     * <code>string context_name = 2;</code>
      */
     java.lang.String getContextName();
     /**
-     * <code>optional string context_name = 2;</code>
+     * <code>string context_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getContextNameBytes();
 
     /**
-     * <code>optional string model_definition_base64 = 3;</code>
+     * <code>string model_definition_base64 = 3;</code>
      */
     java.lang.String getModelDefinitionBase64();
     /**
-     * <code>optional string model_definition_base64 = 3;</code>
+     * <code>string model_definition_base64 = 3;</code>
      */
     com.google.protobuf.ByteString
         getModelDefinitionBase64Bytes();
 
     /**
-     * <code>optional int64 insert_date = 4;</code>
+     * <code>int64 insert_date = 4;</code>
      */
     long getInsertDate();
   }
@@ -22764,7 +22984,7 @@ public final class YaormModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -22779,7 +22999,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -22798,7 +23018,7 @@ public final class YaormModel {
     public static final int CONTEXT_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object contextName_;
     /**
-     * <code>optional string context_name = 2;</code>
+     * <code>string context_name = 2;</code>
      */
     public java.lang.String getContextName() {
       java.lang.Object ref = contextName_;
@@ -22813,7 +23033,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string context_name = 2;</code>
+     * <code>string context_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getContextNameBytes() {
@@ -22832,7 +23052,7 @@ public final class YaormModel {
     public static final int MODEL_DEFINITION_BASE64_FIELD_NUMBER = 3;
     private volatile java.lang.Object modelDefinitionBase64_;
     /**
-     * <code>optional string model_definition_base64 = 3;</code>
+     * <code>string model_definition_base64 = 3;</code>
      */
     public java.lang.String getModelDefinitionBase64() {
       java.lang.Object ref = modelDefinitionBase64_;
@@ -22847,7 +23067,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string model_definition_base64 = 3;</code>
+     * <code>string model_definition_base64 = 3;</code>
      */
     public com.google.protobuf.ByteString
         getModelDefinitionBase64Bytes() {
@@ -22866,7 +23086,7 @@ public final class YaormModel {
     public static final int INSERT_DATE_FIELD_NUMBER = 4;
     private long insertDate_;
     /**
-     * <code>optional int64 insert_date = 4;</code>
+     * <code>int64 insert_date = 4;</code>
      */
     public long getInsertDate() {
       return insertDate_;
@@ -22949,7 +23169,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + CONTEXT_NAME_FIELD_NUMBER;
@@ -22964,6 +23184,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Migration parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Migration parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Migration parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -23195,7 +23426,7 @@ public final class YaormModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -23210,7 +23441,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -23226,7 +23457,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -23239,7 +23470,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -23248,7 +23479,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -23264,7 +23495,7 @@ public final class YaormModel {
 
       private java.lang.Object contextName_ = "";
       /**
-       * <code>optional string context_name = 2;</code>
+       * <code>string context_name = 2;</code>
        */
       public java.lang.String getContextName() {
         java.lang.Object ref = contextName_;
@@ -23279,7 +23510,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string context_name = 2;</code>
+       * <code>string context_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getContextNameBytes() {
@@ -23295,7 +23526,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string context_name = 2;</code>
+       * <code>string context_name = 2;</code>
        */
       public Builder setContextName(
           java.lang.String value) {
@@ -23308,7 +23539,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string context_name = 2;</code>
+       * <code>string context_name = 2;</code>
        */
       public Builder clearContextName() {
         
@@ -23317,7 +23548,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string context_name = 2;</code>
+       * <code>string context_name = 2;</code>
        */
       public Builder setContextNameBytes(
           com.google.protobuf.ByteString value) {
@@ -23333,7 +23564,7 @@ public final class YaormModel {
 
       private java.lang.Object modelDefinitionBase64_ = "";
       /**
-       * <code>optional string model_definition_base64 = 3;</code>
+       * <code>string model_definition_base64 = 3;</code>
        */
       public java.lang.String getModelDefinitionBase64() {
         java.lang.Object ref = modelDefinitionBase64_;
@@ -23348,7 +23579,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string model_definition_base64 = 3;</code>
+       * <code>string model_definition_base64 = 3;</code>
        */
       public com.google.protobuf.ByteString
           getModelDefinitionBase64Bytes() {
@@ -23364,7 +23595,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string model_definition_base64 = 3;</code>
+       * <code>string model_definition_base64 = 3;</code>
        */
       public Builder setModelDefinitionBase64(
           java.lang.String value) {
@@ -23377,7 +23608,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string model_definition_base64 = 3;</code>
+       * <code>string model_definition_base64 = 3;</code>
        */
       public Builder clearModelDefinitionBase64() {
         
@@ -23386,7 +23617,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string model_definition_base64 = 3;</code>
+       * <code>string model_definition_base64 = 3;</code>
        */
       public Builder setModelDefinitionBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -23402,13 +23633,13 @@ public final class YaormModel {
 
       private long insertDate_ ;
       /**
-       * <code>optional int64 insert_date = 4;</code>
+       * <code>int64 insert_date = 4;</code>
        */
       public long getInsertDate() {
         return insertDate_;
       }
       /**
-       * <code>optional int64 insert_date = 4;</code>
+       * <code>int64 insert_date = 4;</code>
        */
       public Builder setInsertDate(long value) {
         
@@ -23417,7 +23648,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 insert_date = 4;</code>
+       * <code>int64 insert_date = 4;</code>
        */
       public Builder clearInsertDate() {
         
@@ -23479,27 +23710,27 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string raw_sql = 1;</code>
+     * <code>string raw_sql = 1;</code>
      */
     java.lang.String getRawSql();
     /**
-     * <code>optional string raw_sql = 1;</code>
+     * <code>string raw_sql = 1;</code>
      */
     com.google.protobuf.ByteString
         getRawSqlBytes();
 
     /**
-     * <code>optional int64 time_called = 2;</code>
+     * <code>int64 time_called = 2;</code>
      */
     long getTimeCalled();
 
     /**
-     * <code>optional bool result = 3;</code>
+     * <code>bool result = 3;</code>
      */
     boolean getResult();
 
     /**
-     * <code>optional int64 order_called = 4;</code>
+     * <code>int64 order_called = 4;</code>
      */
     long getOrderCalled();
   }
@@ -23593,7 +23824,7 @@ public final class YaormModel {
     public static final int RAW_SQL_FIELD_NUMBER = 1;
     private volatile java.lang.Object rawSql_;
     /**
-     * <code>optional string raw_sql = 1;</code>
+     * <code>string raw_sql = 1;</code>
      */
     public java.lang.String getRawSql() {
       java.lang.Object ref = rawSql_;
@@ -23608,7 +23839,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string raw_sql = 1;</code>
+     * <code>string raw_sql = 1;</code>
      */
     public com.google.protobuf.ByteString
         getRawSqlBytes() {
@@ -23627,7 +23858,7 @@ public final class YaormModel {
     public static final int TIME_CALLED_FIELD_NUMBER = 2;
     private long timeCalled_;
     /**
-     * <code>optional int64 time_called = 2;</code>
+     * <code>int64 time_called = 2;</code>
      */
     public long getTimeCalled() {
       return timeCalled_;
@@ -23636,7 +23867,7 @@ public final class YaormModel {
     public static final int RESULT_FIELD_NUMBER = 3;
     private boolean result_;
     /**
-     * <code>optional bool result = 3;</code>
+     * <code>bool result = 3;</code>
      */
     public boolean getResult() {
       return result_;
@@ -23645,7 +23876,7 @@ public final class YaormModel {
     public static final int ORDER_CALLED_FIELD_NUMBER = 4;
     private long orderCalled_;
     /**
-     * <code>optional int64 order_called = 4;</code>
+     * <code>int64 order_called = 4;</code>
      */
     public long getOrderCalled() {
       return orderCalled_;
@@ -23730,7 +23961,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + RAW_SQL_FIELD_NUMBER;
       hash = (53 * hash) + getRawSql().hashCode();
       hash = (37 * hash) + TIME_CALLED_FIELD_NUMBER;
@@ -23747,6 +23978,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.DatabaseExecution parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecution parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.DatabaseExecution parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -23976,7 +24218,7 @@ public final class YaormModel {
 
       private java.lang.Object rawSql_ = "";
       /**
-       * <code>optional string raw_sql = 1;</code>
+       * <code>string raw_sql = 1;</code>
        */
       public java.lang.String getRawSql() {
         java.lang.Object ref = rawSql_;
@@ -23991,7 +24233,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string raw_sql = 1;</code>
+       * <code>string raw_sql = 1;</code>
        */
       public com.google.protobuf.ByteString
           getRawSqlBytes() {
@@ -24007,7 +24249,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string raw_sql = 1;</code>
+       * <code>string raw_sql = 1;</code>
        */
       public Builder setRawSql(
           java.lang.String value) {
@@ -24020,7 +24262,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string raw_sql = 1;</code>
+       * <code>string raw_sql = 1;</code>
        */
       public Builder clearRawSql() {
         
@@ -24029,7 +24271,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string raw_sql = 1;</code>
+       * <code>string raw_sql = 1;</code>
        */
       public Builder setRawSqlBytes(
           com.google.protobuf.ByteString value) {
@@ -24045,13 +24287,13 @@ public final class YaormModel {
 
       private long timeCalled_ ;
       /**
-       * <code>optional int64 time_called = 2;</code>
+       * <code>int64 time_called = 2;</code>
        */
       public long getTimeCalled() {
         return timeCalled_;
       }
       /**
-       * <code>optional int64 time_called = 2;</code>
+       * <code>int64 time_called = 2;</code>
        */
       public Builder setTimeCalled(long value) {
         
@@ -24060,7 +24302,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 time_called = 2;</code>
+       * <code>int64 time_called = 2;</code>
        */
       public Builder clearTimeCalled() {
         
@@ -24071,13 +24313,13 @@ public final class YaormModel {
 
       private boolean result_ ;
       /**
-       * <code>optional bool result = 3;</code>
+       * <code>bool result = 3;</code>
        */
       public boolean getResult() {
         return result_;
       }
       /**
-       * <code>optional bool result = 3;</code>
+       * <code>bool result = 3;</code>
        */
       public Builder setResult(boolean value) {
         
@@ -24086,7 +24328,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool result = 3;</code>
+       * <code>bool result = 3;</code>
        */
       public Builder clearResult() {
         
@@ -24097,13 +24339,13 @@ public final class YaormModel {
 
       private long orderCalled_ ;
       /**
-       * <code>optional int64 order_called = 4;</code>
+       * <code>int64 order_called = 4;</code>
        */
       public long getOrderCalled() {
         return orderCalled_;
       }
       /**
-       * <code>optional int64 order_called = 4;</code>
+       * <code>int64 order_called = 4;</code>
        */
       public Builder setOrderCalled(long value) {
         
@@ -24112,7 +24354,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 order_called = 4;</code>
+       * <code>int64 order_called = 4;</code>
        */
       public Builder clearOrderCalled() {
         
@@ -24174,7 +24416,7 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int64 calls_to_database = 1;</code>
+     * <code>int64 calls_to_database = 1;</code>
      */
     long getCallsToDatabase();
 
@@ -24287,7 +24529,7 @@ public final class YaormModel {
     public static final int CALLS_TO_DATABASE_FIELD_NUMBER = 1;
     private long callsToDatabase_;
     /**
-     * <code>optional int64 calls_to_database = 1;</code>
+     * <code>int64 calls_to_database = 1;</code>
      */
     public long getCallsToDatabase() {
       return callsToDatabase_;
@@ -24390,7 +24632,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CALLS_TO_DATABASE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCallsToDatabase());
@@ -24403,6 +24645,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.DatabaseExecutionReport parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -24659,13 +24912,13 @@ public final class YaormModel {
 
       private long callsToDatabase_ ;
       /**
-       * <code>optional int64 calls_to_database = 1;</code>
+       * <code>int64 calls_to_database = 1;</code>
        */
       public long getCallsToDatabase() {
         return callsToDatabase_;
       }
       /**
-       * <code>optional int64 calls_to_database = 1;</code>
+       * <code>int64 calls_to_database = 1;</code>
        */
       public Builder setCallsToDatabase(long value) {
         
@@ -24674,7 +24927,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 calls_to_database = 1;</code>
+       * <code>int64 calls_to_database = 1;</code>
        */
       public Builder clearCallsToDatabase() {
         
@@ -24976,67 +25229,67 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
      */
     boolean hasFirstTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getFirstTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getFirstTableOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
      */
     boolean hasSecondTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getSecondTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getSecondTableOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
      */
     boolean hasFirstColumn();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getFirstColumn();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getFirstColumnOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
      */
     boolean hasSecondColumn();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getSecondColumn();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getSecondColumnOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
      */
     boolean hasWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause getWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder();
   }
@@ -25174,19 +25427,19 @@ public final class YaormModel {
     public static final int FIRST_TABLE_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.TableDefinition firstTable_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
      */
     public boolean hasFirstTable() {
       return firstTable_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getFirstTable() {
       return firstTable_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : firstTable_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getFirstTableOrBuilder() {
       return getFirstTable();
@@ -25195,19 +25448,19 @@ public final class YaormModel {
     public static final int SECOND_TABLE_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.TableDefinition secondTable_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
      */
     public boolean hasSecondTable() {
       return secondTable_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getSecondTable() {
       return secondTable_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : secondTable_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getSecondTableOrBuilder() {
       return getSecondTable();
@@ -25216,19 +25469,19 @@ public final class YaormModel {
     public static final int FIRST_COLUMN_FIELD_NUMBER = 7;
     private org.roylance.yaorm.YaormModel.ColumnDefinition firstColumn_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
      */
     public boolean hasFirstColumn() {
       return firstColumn_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getFirstColumn() {
       return firstColumn_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : firstColumn_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getFirstColumnOrBuilder() {
       return getFirstColumn();
@@ -25237,19 +25490,19 @@ public final class YaormModel {
     public static final int SECOND_COLUMN_FIELD_NUMBER = 8;
     private org.roylance.yaorm.YaormModel.ColumnDefinition secondColumn_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
      */
     public boolean hasSecondColumn() {
       return secondColumn_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getSecondColumn() {
       return secondColumn_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : secondColumn_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getSecondColumnOrBuilder() {
       return getSecondColumn();
@@ -25258,19 +25511,19 @@ public final class YaormModel {
     public static final int WHERE_CLAUSE_FIELD_NUMBER = 9;
     private org.roylance.yaorm.YaormModel.WhereClause whereClause_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
      */
     public boolean hasWhereClause() {
       return whereClause_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
       return whereClause_ == null ? org.roylance.yaorm.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
       return getWhereClause();
@@ -25380,7 +25633,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasFirstTable()) {
         hash = (37 * hash) + FIRST_TABLE_FIELD_NUMBER;
         hash = (53 * hash) + getFirstTable().hashCode();
@@ -25406,6 +25659,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.JoinTable parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.JoinTable parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.JoinTable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -25686,13 +25950,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> firstTableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public boolean hasFirstTable() {
         return firstTableBuilder_ != null || firstTable_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getFirstTable() {
         if (firstTableBuilder_ == null) {
@@ -25702,7 +25966,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public Builder setFirstTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (firstTableBuilder_ == null) {
@@ -25718,7 +25982,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public Builder setFirstTable(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -25732,7 +25996,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public Builder mergeFirstTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (firstTableBuilder_ == null) {
@@ -25750,7 +26014,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public Builder clearFirstTable() {
         if (firstTableBuilder_ == null) {
@@ -25764,7 +26028,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getFirstTableBuilder() {
         
@@ -25772,7 +26036,7 @@ public final class YaormModel {
         return getFirstTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getFirstTableOrBuilder() {
         if (firstTableBuilder_ != null) {
@@ -25783,7 +26047,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition first_table = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition first_table = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -25803,13 +26067,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> secondTableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public boolean hasSecondTable() {
         return secondTableBuilder_ != null || secondTable_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getSecondTable() {
         if (secondTableBuilder_ == null) {
@@ -25819,7 +26083,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public Builder setSecondTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (secondTableBuilder_ == null) {
@@ -25835,7 +26099,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public Builder setSecondTable(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -25849,7 +26113,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public Builder mergeSecondTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (secondTableBuilder_ == null) {
@@ -25867,7 +26131,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public Builder clearSecondTable() {
         if (secondTableBuilder_ == null) {
@@ -25881,7 +26145,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getSecondTableBuilder() {
         
@@ -25889,7 +26153,7 @@ public final class YaormModel {
         return getSecondTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getSecondTableOrBuilder() {
         if (secondTableBuilder_ != null) {
@@ -25900,7 +26164,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition second_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition second_table = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -25920,13 +26184,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> firstColumnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public boolean hasFirstColumn() {
         return firstColumnBuilder_ != null || firstColumn_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getFirstColumn() {
         if (firstColumnBuilder_ == null) {
@@ -25936,7 +26200,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public Builder setFirstColumn(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (firstColumnBuilder_ == null) {
@@ -25952,7 +26216,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public Builder setFirstColumn(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -25966,7 +26230,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public Builder mergeFirstColumn(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (firstColumnBuilder_ == null) {
@@ -25984,7 +26248,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public Builder clearFirstColumn() {
         if (firstColumnBuilder_ == null) {
@@ -25998,7 +26262,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getFirstColumnBuilder() {
         
@@ -26006,7 +26270,7 @@ public final class YaormModel {
         return getFirstColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getFirstColumnOrBuilder() {
         if (firstColumnBuilder_ != null) {
@@ -26017,7 +26281,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition first_column = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -26037,13 +26301,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> secondColumnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public boolean hasSecondColumn() {
         return secondColumnBuilder_ != null || secondColumn_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getSecondColumn() {
         if (secondColumnBuilder_ == null) {
@@ -26053,7 +26317,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public Builder setSecondColumn(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (secondColumnBuilder_ == null) {
@@ -26069,7 +26333,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public Builder setSecondColumn(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -26083,7 +26347,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public Builder mergeSecondColumn(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (secondColumnBuilder_ == null) {
@@ -26101,7 +26365,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public Builder clearSecondColumn() {
         if (secondColumnBuilder_ == null) {
@@ -26115,7 +26379,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getSecondColumnBuilder() {
         
@@ -26123,7 +26387,7 @@ public final class YaormModel {
         return getSecondColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getSecondColumnOrBuilder() {
         if (secondColumnBuilder_ != null) {
@@ -26134,7 +26398,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition second_column = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -26154,13 +26418,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> whereClauseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public boolean hasWhereClause() {
         return whereClauseBuilder_ != null || whereClause_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -26170,7 +26434,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public Builder setWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -26186,7 +26450,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public Builder setWhereClause(
           org.roylance.yaorm.YaormModel.WhereClause.Builder builderForValue) {
@@ -26200,7 +26464,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public Builder mergeWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -26218,7 +26482,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public Builder clearWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -26232,7 +26496,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.Builder getWhereClauseBuilder() {
         
@@ -26240,7 +26504,7 @@ public final class YaormModel {
         return getWhereClauseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
         if (whereClauseBuilder_ != null) {
@@ -26251,7 +26515,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 9;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> 
@@ -26320,28 +26584,28 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+     * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
      */
     boolean hasJoinTable();
     /**
-     * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+     * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
      */
     org.roylance.yaorm.YaormModel.JoinTable getJoinTable();
     /**
-     * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+     * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
      */
     org.roylance.yaorm.YaormModel.JoinTableOrBuilder getJoinTableOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     boolean hasRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder();
   }
@@ -26436,19 +26700,19 @@ public final class YaormModel {
     public static final int JOIN_TABLE_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.JoinTable joinTable_;
     /**
-     * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+     * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
      */
     public boolean hasJoinTable() {
       return joinTable_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+     * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.JoinTable getJoinTable() {
       return joinTable_ == null ? org.roylance.yaorm.YaormModel.JoinTable.getDefaultInstance() : joinTable_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+     * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.JoinTableOrBuilder getJoinTableOrBuilder() {
       return getJoinTable();
@@ -26457,19 +26721,19 @@ public final class YaormModel {
     public static final int RECORDS_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.Records records_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public boolean hasRecords() {
       return records_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecords() {
       return records_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : records_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+     * <code>.org.roylance.yaorm.Records records = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
       return getRecords();
@@ -26543,7 +26807,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasJoinTable()) {
         hash = (37 * hash) + JOIN_TABLE_FIELD_NUMBER;
         hash = (53 * hash) + getJoinTable().hashCode();
@@ -26557,6 +26821,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.JoinTableRecords parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.JoinTableRecords parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.JoinTableRecords parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -26791,13 +27066,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.JoinTable, org.roylance.yaorm.YaormModel.JoinTable.Builder, org.roylance.yaorm.YaormModel.JoinTableOrBuilder> joinTableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public boolean hasJoinTable() {
         return joinTableBuilder_ != null || joinTable_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.JoinTable getJoinTable() {
         if (joinTableBuilder_ == null) {
@@ -26807,7 +27082,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public Builder setJoinTable(org.roylance.yaorm.YaormModel.JoinTable value) {
         if (joinTableBuilder_ == null) {
@@ -26823,7 +27098,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public Builder setJoinTable(
           org.roylance.yaorm.YaormModel.JoinTable.Builder builderForValue) {
@@ -26837,7 +27112,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public Builder mergeJoinTable(org.roylance.yaorm.YaormModel.JoinTable value) {
         if (joinTableBuilder_ == null) {
@@ -26855,7 +27130,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public Builder clearJoinTable() {
         if (joinTableBuilder_ == null) {
@@ -26869,7 +27144,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.JoinTable.Builder getJoinTableBuilder() {
         
@@ -26877,7 +27152,7 @@ public final class YaormModel {
         return getJoinTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.JoinTableOrBuilder getJoinTableOrBuilder() {
         if (joinTableBuilder_ != null) {
@@ -26888,7 +27163,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.JoinTable join_table = 1;</code>
+       * <code>.org.roylance.yaorm.JoinTable join_table = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.JoinTable, org.roylance.yaorm.YaormModel.JoinTable.Builder, org.roylance.yaorm.YaormModel.JoinTableOrBuilder> 
@@ -26908,13 +27183,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public boolean hasRecords() {
         return recordsBuilder_ != null || records_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
@@ -26924,7 +27199,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder setRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -26940,7 +27215,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder setRecords(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -26954,7 +27229,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder mergeRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -26972,7 +27247,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
@@ -26986,7 +27261,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsBuilder() {
         
@@ -26994,7 +27269,7 @@ public final class YaormModel {
         return getRecordsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
         if (recordsBuilder_ != null) {
@@ -27005,7 +27280,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 2;</code>
+       * <code>.org.roylance.yaorm.Records records = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -27260,7 +27535,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getColumnsCount() > 0) {
         hash = (37 * hash) + COLUMNS_FIELD_NUMBER;
         hash = (53 * hash) + getColumnsList().hashCode();
@@ -27270,6 +27545,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.GroupBy parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.GroupBy parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.GroupBy parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -27809,24 +28095,24 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
      */
     boolean hasColumn();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getColumn();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+     * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
      */
     int getTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+     * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
      */
     org.roylance.yaorm.YaormModel.OrderByType getType();
   }
@@ -27915,19 +28201,19 @@ public final class YaormModel {
     public static final int COLUMN_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.ColumnDefinition column_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
      */
     public boolean hasColumn() {
       return column_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getColumn() {
       return column_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : column_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnOrBuilder() {
       return getColumn();
@@ -27936,13 +28222,13 @@ public final class YaormModel {
     public static final int TYPE_FIELD_NUMBER = 2;
     private int type_;
     /**
-     * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+     * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+     * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.OrderByType getType() {
       org.roylance.yaorm.YaormModel.OrderByType result = org.roylance.yaorm.YaormModel.OrderByType.valueOf(type_);
@@ -28013,7 +28299,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasColumn()) {
         hash = (37 * hash) + COLUMN_FIELD_NUMBER;
         hash = (53 * hash) + getColumn().hashCode();
@@ -28025,6 +28311,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.OrderBy parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.OrderBy parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.OrderBy parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -28251,13 +28548,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> columnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public boolean hasColumn() {
         return columnBuilder_ != null || column_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getColumn() {
         if (columnBuilder_ == null) {
@@ -28267,7 +28564,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public Builder setColumn(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (columnBuilder_ == null) {
@@ -28283,7 +28580,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public Builder setColumn(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -28297,7 +28594,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public Builder mergeColumn(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (columnBuilder_ == null) {
@@ -28315,7 +28612,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public Builder clearColumn() {
         if (columnBuilder_ == null) {
@@ -28329,7 +28626,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getColumnBuilder() {
         
@@ -28337,7 +28634,7 @@ public final class YaormModel {
         return getColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnOrBuilder() {
         if (columnBuilder_ != null) {
@@ -28348,7 +28645,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column = 1;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -28366,13 +28663,13 @@ public final class YaormModel {
 
       private int type_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+       * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+       * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -28380,14 +28677,14 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+       * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.OrderByType getType() {
         org.roylance.yaorm.YaormModel.OrderByType result = org.roylance.yaorm.YaormModel.OrderByType.valueOf(type_);
         return result == null ? org.roylance.yaorm.YaormModel.OrderByType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+       * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
        */
       public Builder setType(org.roylance.yaorm.YaormModel.OrderByType value) {
         if (value == null) {
@@ -28399,7 +28696,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.OrderByType type = 2;</code>
+       * <code>.org.roylance.yaorm.OrderByType type = 2;</code>
        */
       public Builder clearType() {
         
@@ -28485,15 +28782,15 @@ public final class YaormModel {
         int index);
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
      */
     boolean hasMainTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getMainTable();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableOrBuilder();
 
@@ -28522,28 +28819,28 @@ public final class YaormModel {
         int index);
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
      */
     boolean hasWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause getWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+     * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
      */
     boolean hasGroupBy();
     /**
-     * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+     * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
      */
     org.roylance.yaorm.YaormModel.GroupBy getGroupBy();
     /**
-     * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+     * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
      */
     org.roylance.yaorm.YaormModel.GroupByOrBuilder getGroupByOrBuilder();
 
@@ -28572,22 +28869,22 @@ public final class YaormModel {
         int index);
 
     /**
-     * <code>optional string name = 7;</code>
+     * <code>string name = 7;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 7;</code>
+     * <code>string name = 7;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional int64 limit = 8;</code>
+     * <code>int64 limit = 8;</code>
      */
     long getLimit();
 
     /**
-     * <code>optional int64 offset = 9;</code>
+     * <code>int64 offset = 9;</code>
      */
     long getOffset();
   }
@@ -28789,19 +29086,19 @@ public final class YaormModel {
     public static final int MAIN_TABLE_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.TableDefinition mainTable_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
      */
     public boolean hasMainTable() {
       return mainTable_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getMainTable() {
       return mainTable_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : mainTable_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableOrBuilder() {
       return getMainTable();
@@ -28845,19 +29142,19 @@ public final class YaormModel {
     public static final int WHERE_CLAUSE_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.WhereClause whereClause_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
      */
     public boolean hasWhereClause() {
       return whereClause_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
       return whereClause_ == null ? org.roylance.yaorm.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
       return getWhereClause();
@@ -28866,19 +29163,19 @@ public final class YaormModel {
     public static final int GROUP_BY_FIELD_NUMBER = 5;
     private org.roylance.yaorm.YaormModel.GroupBy groupBy_;
     /**
-     * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+     * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
      */
     public boolean hasGroupBy() {
       return groupBy_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+     * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.GroupBy getGroupBy() {
       return groupBy_ == null ? org.roylance.yaorm.YaormModel.GroupBy.getDefaultInstance() : groupBy_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+     * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.GroupByOrBuilder getGroupByOrBuilder() {
       return getGroupBy();
@@ -28922,7 +29219,7 @@ public final class YaormModel {
     public static final int NAME_FIELD_NUMBER = 7;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 7;</code>
+     * <code>string name = 7;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -28937,7 +29234,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string name = 7;</code>
+     * <code>string name = 7;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -28956,7 +29253,7 @@ public final class YaormModel {
     public static final int LIMIT_FIELD_NUMBER = 8;
     private long limit_;
     /**
-     * <code>optional int64 limit = 8;</code>
+     * <code>int64 limit = 8;</code>
      */
     public long getLimit() {
       return limit_;
@@ -28965,7 +29262,7 @@ public final class YaormModel {
     public static final int OFFSET_FIELD_NUMBER = 9;
     private long offset_;
     /**
-     * <code>optional int64 offset = 9;</code>
+     * <code>int64 offset = 9;</code>
      */
     public long getOffset() {
       return offset_;
@@ -29104,7 +29401,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getLabelsCount() > 0) {
         hash = (37 * hash) + LABELS_FIELD_NUMBER;
         hash = (53 * hash) + getLabelsList().hashCode();
@@ -29142,6 +29439,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.Projection parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.Projection parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.Projection parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -29779,13 +30087,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> mainTableBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public boolean hasMainTable() {
         return mainTableBuilder_ != null || mainTable_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getMainTable() {
         if (mainTableBuilder_ == null) {
@@ -29795,7 +30103,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public Builder setMainTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (mainTableBuilder_ == null) {
@@ -29811,7 +30119,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public Builder setMainTable(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -29825,7 +30133,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public Builder mergeMainTable(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (mainTableBuilder_ == null) {
@@ -29843,7 +30151,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public Builder clearMainTable() {
         if (mainTableBuilder_ == null) {
@@ -29857,7 +30165,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getMainTableBuilder() {
         
@@ -29865,7 +30173,7 @@ public final class YaormModel {
         return getMainTableFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getMainTableOrBuilder() {
         if (mainTableBuilder_ != null) {
@@ -29876,7 +30184,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition main_table = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition main_table = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -30136,13 +30444,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> whereClauseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public boolean hasWhereClause() {
         return whereClauseBuilder_ != null || whereClause_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -30152,7 +30460,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public Builder setWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -30168,7 +30476,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public Builder setWhereClause(
           org.roylance.yaorm.YaormModel.WhereClause.Builder builderForValue) {
@@ -30182,7 +30490,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public Builder mergeWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -30200,7 +30508,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public Builder clearWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -30214,7 +30522,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.Builder getWhereClauseBuilder() {
         
@@ -30222,7 +30530,7 @@ public final class YaormModel {
         return getWhereClauseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
         if (whereClauseBuilder_ != null) {
@@ -30233,7 +30541,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 4;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> 
@@ -30253,13 +30561,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.GroupBy, org.roylance.yaorm.YaormModel.GroupBy.Builder, org.roylance.yaorm.YaormModel.GroupByOrBuilder> groupByBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public boolean hasGroupBy() {
         return groupByBuilder_ != null || groupBy_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.GroupBy getGroupBy() {
         if (groupByBuilder_ == null) {
@@ -30269,7 +30577,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public Builder setGroupBy(org.roylance.yaorm.YaormModel.GroupBy value) {
         if (groupByBuilder_ == null) {
@@ -30285,7 +30593,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public Builder setGroupBy(
           org.roylance.yaorm.YaormModel.GroupBy.Builder builderForValue) {
@@ -30299,7 +30607,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public Builder mergeGroupBy(org.roylance.yaorm.YaormModel.GroupBy value) {
         if (groupByBuilder_ == null) {
@@ -30317,7 +30625,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public Builder clearGroupBy() {
         if (groupByBuilder_ == null) {
@@ -30331,7 +30639,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.GroupBy.Builder getGroupByBuilder() {
         
@@ -30339,7 +30647,7 @@ public final class YaormModel {
         return getGroupByFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.GroupByOrBuilder getGroupByOrBuilder() {
         if (groupByBuilder_ != null) {
@@ -30350,7 +30658,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.GroupBy group_by = 5;</code>
+       * <code>.org.roylance.yaorm.GroupBy group_by = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.GroupBy, org.roylance.yaorm.YaormModel.GroupBy.Builder, org.roylance.yaorm.YaormModel.GroupByOrBuilder> 
@@ -30608,7 +30916,7 @@ public final class YaormModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 7;</code>
+       * <code>string name = 7;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -30623,7 +30931,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 7;</code>
+       * <code>string name = 7;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -30639,7 +30947,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string name = 7;</code>
+       * <code>string name = 7;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -30652,7 +30960,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 7;</code>
+       * <code>string name = 7;</code>
        */
       public Builder clearName() {
         
@@ -30661,7 +30969,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string name = 7;</code>
+       * <code>string name = 7;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30677,13 +30985,13 @@ public final class YaormModel {
 
       private long limit_ ;
       /**
-       * <code>optional int64 limit = 8;</code>
+       * <code>int64 limit = 8;</code>
        */
       public long getLimit() {
         return limit_;
       }
       /**
-       * <code>optional int64 limit = 8;</code>
+       * <code>int64 limit = 8;</code>
        */
       public Builder setLimit(long value) {
         
@@ -30692,7 +31000,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 limit = 8;</code>
+       * <code>int64 limit = 8;</code>
        */
       public Builder clearLimit() {
         
@@ -30703,13 +31011,13 @@ public final class YaormModel {
 
       private long offset_ ;
       /**
-       * <code>optional int64 offset = 9;</code>
+       * <code>int64 offset = 9;</code>
        */
       public long getOffset() {
         return offset_;
       }
       /**
-       * <code>optional int64 offset = 9;</code>
+       * <code>int64 offset = 9;</code>
        */
       public Builder setOffset(long value) {
         
@@ -30718,7 +31026,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 offset = 9;</code>
+       * <code>int64 offset = 9;</code>
        */
       public Builder clearOffset() {
         
@@ -30780,118 +31088,118 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
      */
     boolean hasTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+     * <code>.org.roylance.yaorm.Records records = 3;</code>
      */
     boolean hasRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+     * <code>.org.roylance.yaorm.Records records = 3;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+     * <code>.org.roylance.yaorm.Records records = 3;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+     * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
      */
     boolean hasConnectionInfo();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+     * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
      */
     org.roylance.yaorm.YaormModel.ConnectionInfo getConnectionInfo();
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+     * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
      */
     org.roylance.yaorm.YaormModel.ConnectionInfoOrBuilder getConnectionInfoOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     boolean hasWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause getWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder();
 
     /**
-     * <code>optional int64 limit = 6;</code>
+     * <code>int64 limit = 6;</code>
      */
     long getLimit();
 
     /**
-     * <code>optional int64 offset = 7;</code>
+     * <code>int64 offset = 7;</code>
      */
     long getOffset();
 
     /**
-     * <code>optional bool insert_same_as_update = 8;</code>
+     * <code>bool insert_same_as_update = 8;</code>
      */
     boolean getInsertSameAsUpdate();
 
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     java.lang.String getSchemaName();
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     com.google.protobuf.ByteString
         getSchemaNameBytes();
 
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     java.lang.String getTableName();
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     com.google.protobuf.ByteString
         getTableNameBytes();
 
     /**
-     * <code>optional string custom_sql = 11;</code>
+     * <code>string custom_sql = 11;</code>
      */
     java.lang.String getCustomSql();
     /**
-     * <code>optional string custom_sql = 11;</code>
+     * <code>string custom_sql = 11;</code>
      */
     com.google.protobuf.ByteString
         getCustomSqlBytes();
 
     /**
-     * <code>optional string file_descriptor = 13;</code>
+     * <code>string file_descriptor = 13;</code>
      */
     java.lang.String getFileDescriptor();
     /**
-     * <code>optional string file_descriptor = 13;</code>
+     * <code>string file_descriptor = 13;</code>
      */
     com.google.protobuf.ByteString
         getFileDescriptorBytes();
@@ -31099,7 +31407,7 @@ public final class YaormModel {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -31114,7 +31422,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -31133,19 +31441,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.TableDefinition tableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
      */
     public boolean hasTableDefinition() {
       return tableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
       return tableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
       return getTableDefinition();
@@ -31154,19 +31462,19 @@ public final class YaormModel {
     public static final int RECORDS_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.Records records_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+     * <code>.org.roylance.yaorm.Records records = 3;</code>
      */
     public boolean hasRecords() {
       return records_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+     * <code>.org.roylance.yaorm.Records records = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecords() {
       return records_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : records_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+     * <code>.org.roylance.yaorm.Records records = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
       return getRecords();
@@ -31175,19 +31483,19 @@ public final class YaormModel {
     public static final int CONNECTION_INFO_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.ConnectionInfo connectionInfo_;
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+     * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
      */
     public boolean hasConnectionInfo() {
       return connectionInfo_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+     * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.ConnectionInfo getConnectionInfo() {
       return connectionInfo_ == null ? org.roylance.yaorm.YaormModel.ConnectionInfo.getDefaultInstance() : connectionInfo_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+     * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.ConnectionInfoOrBuilder getConnectionInfoOrBuilder() {
       return getConnectionInfo();
@@ -31196,19 +31504,19 @@ public final class YaormModel {
     public static final int WHERE_CLAUSE_FIELD_NUMBER = 5;
     private org.roylance.yaorm.YaormModel.WhereClause whereClause_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public boolean hasWhereClause() {
       return whereClause_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
       return whereClause_ == null ? org.roylance.yaorm.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
       return getWhereClause();
@@ -31217,7 +31525,7 @@ public final class YaormModel {
     public static final int LIMIT_FIELD_NUMBER = 6;
     private long limit_;
     /**
-     * <code>optional int64 limit = 6;</code>
+     * <code>int64 limit = 6;</code>
      */
     public long getLimit() {
       return limit_;
@@ -31226,7 +31534,7 @@ public final class YaormModel {
     public static final int OFFSET_FIELD_NUMBER = 7;
     private long offset_;
     /**
-     * <code>optional int64 offset = 7;</code>
+     * <code>int64 offset = 7;</code>
      */
     public long getOffset() {
       return offset_;
@@ -31235,7 +31543,7 @@ public final class YaormModel {
     public static final int INSERT_SAME_AS_UPDATE_FIELD_NUMBER = 8;
     private boolean insertSameAsUpdate_;
     /**
-     * <code>optional bool insert_same_as_update = 8;</code>
+     * <code>bool insert_same_as_update = 8;</code>
      */
     public boolean getInsertSameAsUpdate() {
       return insertSameAsUpdate_;
@@ -31244,7 +31552,7 @@ public final class YaormModel {
     public static final int SCHEMA_NAME_FIELD_NUMBER = 9;
     private volatile java.lang.Object schemaName_;
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     public java.lang.String getSchemaName() {
       java.lang.Object ref = schemaName_;
@@ -31259,7 +31567,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     public com.google.protobuf.ByteString
         getSchemaNameBytes() {
@@ -31278,7 +31586,7 @@ public final class YaormModel {
     public static final int TABLE_NAME_FIELD_NUMBER = 10;
     private volatile java.lang.Object tableName_;
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     public java.lang.String getTableName() {
       java.lang.Object ref = tableName_;
@@ -31293,7 +31601,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTableNameBytes() {
@@ -31312,7 +31620,7 @@ public final class YaormModel {
     public static final int CUSTOM_SQL_FIELD_NUMBER = 11;
     private volatile java.lang.Object customSql_;
     /**
-     * <code>optional string custom_sql = 11;</code>
+     * <code>string custom_sql = 11;</code>
      */
     public java.lang.String getCustomSql() {
       java.lang.Object ref = customSql_;
@@ -31327,7 +31635,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string custom_sql = 11;</code>
+     * <code>string custom_sql = 11;</code>
      */
     public com.google.protobuf.ByteString
         getCustomSqlBytes() {
@@ -31346,7 +31654,7 @@ public final class YaormModel {
     public static final int FILE_DESCRIPTOR_FIELD_NUMBER = 13;
     private volatile java.lang.Object fileDescriptor_;
     /**
-     * <code>optional string file_descriptor = 13;</code>
+     * <code>string file_descriptor = 13;</code>
      */
     public java.lang.String getFileDescriptor() {
       java.lang.Object ref = fileDescriptor_;
@@ -31361,7 +31669,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string file_descriptor = 13;</code>
+     * <code>string file_descriptor = 13;</code>
      */
     public com.google.protobuf.ByteString
         getFileDescriptorBytes() {
@@ -31578,7 +31886,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       if (hasTableDefinition()) {
@@ -31623,6 +31931,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.UIYaormRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.UIYaormRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.UIYaormRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -31957,7 +32276,7 @@ public final class YaormModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -31972,7 +32291,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -31988,7 +32307,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -32001,7 +32320,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -32010,7 +32329,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -32028,13 +32347,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public boolean hasTableDefinition() {
         return tableDefinitionBuilder_ != null || tableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -32044,7 +32363,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public Builder setTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -32060,7 +32379,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public Builder setTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -32074,7 +32393,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -32092,7 +32411,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -32106,7 +32425,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
         
@@ -32114,7 +32433,7 @@ public final class YaormModel {
         return getTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
         if (tableDefinitionBuilder_ != null) {
@@ -32125,7 +32444,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 2;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -32145,13 +32464,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public boolean hasRecords() {
         return recordsBuilder_ != null || records_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
@@ -32161,7 +32480,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public Builder setRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -32177,7 +32496,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public Builder setRecords(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -32191,7 +32510,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public Builder mergeRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -32209,7 +32528,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
@@ -32223,7 +32542,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsBuilder() {
         
@@ -32231,7 +32550,7 @@ public final class YaormModel {
         return getRecordsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
         if (recordsBuilder_ != null) {
@@ -32242,7 +32561,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 3;</code>
+       * <code>.org.roylance.yaorm.Records records = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -32262,13 +32581,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ConnectionInfo, org.roylance.yaorm.YaormModel.ConnectionInfo.Builder, org.roylance.yaorm.YaormModel.ConnectionInfoOrBuilder> connectionInfoBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public boolean hasConnectionInfo() {
         return connectionInfoBuilder_ != null || connectionInfo_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ConnectionInfo getConnectionInfo() {
         if (connectionInfoBuilder_ == null) {
@@ -32278,7 +32597,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public Builder setConnectionInfo(org.roylance.yaorm.YaormModel.ConnectionInfo value) {
         if (connectionInfoBuilder_ == null) {
@@ -32294,7 +32613,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public Builder setConnectionInfo(
           org.roylance.yaorm.YaormModel.ConnectionInfo.Builder builderForValue) {
@@ -32308,7 +32627,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public Builder mergeConnectionInfo(org.roylance.yaorm.YaormModel.ConnectionInfo value) {
         if (connectionInfoBuilder_ == null) {
@@ -32326,7 +32645,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public Builder clearConnectionInfo() {
         if (connectionInfoBuilder_ == null) {
@@ -32340,7 +32659,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ConnectionInfo.Builder getConnectionInfoBuilder() {
         
@@ -32348,7 +32667,7 @@ public final class YaormModel {
         return getConnectionInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ConnectionInfoOrBuilder getConnectionInfoOrBuilder() {
         if (connectionInfoBuilder_ != null) {
@@ -32359,7 +32678,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
+       * <code>.org.roylance.yaorm.ConnectionInfo connection_info = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ConnectionInfo, org.roylance.yaorm.YaormModel.ConnectionInfo.Builder, org.roylance.yaorm.YaormModel.ConnectionInfoOrBuilder> 
@@ -32379,13 +32698,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> whereClauseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public boolean hasWhereClause() {
         return whereClauseBuilder_ != null || whereClause_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -32395,7 +32714,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder setWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -32411,7 +32730,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder setWhereClause(
           org.roylance.yaorm.YaormModel.WhereClause.Builder builderForValue) {
@@ -32425,7 +32744,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder mergeWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -32443,7 +32762,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder clearWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -32457,7 +32776,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.Builder getWhereClauseBuilder() {
         
@@ -32465,7 +32784,7 @@ public final class YaormModel {
         return getWhereClauseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
         if (whereClauseBuilder_ != null) {
@@ -32476,7 +32795,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> 
@@ -32494,13 +32813,13 @@ public final class YaormModel {
 
       private long limit_ ;
       /**
-       * <code>optional int64 limit = 6;</code>
+       * <code>int64 limit = 6;</code>
        */
       public long getLimit() {
         return limit_;
       }
       /**
-       * <code>optional int64 limit = 6;</code>
+       * <code>int64 limit = 6;</code>
        */
       public Builder setLimit(long value) {
         
@@ -32509,7 +32828,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 limit = 6;</code>
+       * <code>int64 limit = 6;</code>
        */
       public Builder clearLimit() {
         
@@ -32520,13 +32839,13 @@ public final class YaormModel {
 
       private long offset_ ;
       /**
-       * <code>optional int64 offset = 7;</code>
+       * <code>int64 offset = 7;</code>
        */
       public long getOffset() {
         return offset_;
       }
       /**
-       * <code>optional int64 offset = 7;</code>
+       * <code>int64 offset = 7;</code>
        */
       public Builder setOffset(long value) {
         
@@ -32535,7 +32854,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 offset = 7;</code>
+       * <code>int64 offset = 7;</code>
        */
       public Builder clearOffset() {
         
@@ -32546,13 +32865,13 @@ public final class YaormModel {
 
       private boolean insertSameAsUpdate_ ;
       /**
-       * <code>optional bool insert_same_as_update = 8;</code>
+       * <code>bool insert_same_as_update = 8;</code>
        */
       public boolean getInsertSameAsUpdate() {
         return insertSameAsUpdate_;
       }
       /**
-       * <code>optional bool insert_same_as_update = 8;</code>
+       * <code>bool insert_same_as_update = 8;</code>
        */
       public Builder setInsertSameAsUpdate(boolean value) {
         
@@ -32561,7 +32880,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool insert_same_as_update = 8;</code>
+       * <code>bool insert_same_as_update = 8;</code>
        */
       public Builder clearInsertSameAsUpdate() {
         
@@ -32572,7 +32891,7 @@ public final class YaormModel {
 
       private java.lang.Object schemaName_ = "";
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public java.lang.String getSchemaName() {
         java.lang.Object ref = schemaName_;
@@ -32587,7 +32906,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public com.google.protobuf.ByteString
           getSchemaNameBytes() {
@@ -32603,7 +32922,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public Builder setSchemaName(
           java.lang.String value) {
@@ -32616,7 +32935,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public Builder clearSchemaName() {
         
@@ -32625,7 +32944,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public Builder setSchemaNameBytes(
           com.google.protobuf.ByteString value) {
@@ -32641,7 +32960,7 @@ public final class YaormModel {
 
       private java.lang.Object tableName_ = "";
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public java.lang.String getTableName() {
         java.lang.Object ref = tableName_;
@@ -32656,7 +32975,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTableNameBytes() {
@@ -32672,7 +32991,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public Builder setTableName(
           java.lang.String value) {
@@ -32685,7 +33004,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public Builder clearTableName() {
         
@@ -32694,7 +33013,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public Builder setTableNameBytes(
           com.google.protobuf.ByteString value) {
@@ -32710,7 +33029,7 @@ public final class YaormModel {
 
       private java.lang.Object customSql_ = "";
       /**
-       * <code>optional string custom_sql = 11;</code>
+       * <code>string custom_sql = 11;</code>
        */
       public java.lang.String getCustomSql() {
         java.lang.Object ref = customSql_;
@@ -32725,7 +33044,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string custom_sql = 11;</code>
+       * <code>string custom_sql = 11;</code>
        */
       public com.google.protobuf.ByteString
           getCustomSqlBytes() {
@@ -32741,7 +33060,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string custom_sql = 11;</code>
+       * <code>string custom_sql = 11;</code>
        */
       public Builder setCustomSql(
           java.lang.String value) {
@@ -32754,7 +33073,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string custom_sql = 11;</code>
+       * <code>string custom_sql = 11;</code>
        */
       public Builder clearCustomSql() {
         
@@ -32763,7 +33082,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string custom_sql = 11;</code>
+       * <code>string custom_sql = 11;</code>
        */
       public Builder setCustomSqlBytes(
           com.google.protobuf.ByteString value) {
@@ -32779,7 +33098,7 @@ public final class YaormModel {
 
       private java.lang.Object fileDescriptor_ = "";
       /**
-       * <code>optional string file_descriptor = 13;</code>
+       * <code>string file_descriptor = 13;</code>
        */
       public java.lang.String getFileDescriptor() {
         java.lang.Object ref = fileDescriptor_;
@@ -32794,7 +33113,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string file_descriptor = 13;</code>
+       * <code>string file_descriptor = 13;</code>
        */
       public com.google.protobuf.ByteString
           getFileDescriptorBytes() {
@@ -32810,7 +33129,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string file_descriptor = 13;</code>
+       * <code>string file_descriptor = 13;</code>
        */
       public Builder setFileDescriptor(
           java.lang.String value) {
@@ -32823,7 +33142,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string file_descriptor = 13;</code>
+       * <code>string file_descriptor = 13;</code>
        */
       public Builder clearFileDescriptor() {
         
@@ -32832,7 +33151,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string file_descriptor = 13;</code>
+       * <code>string file_descriptor = 13;</code>
        */
       public Builder setFileDescriptorBytes(
           com.google.protobuf.ByteString value) {
@@ -32993,15 +33312,15 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+     * <code>.org.roylance.yaorm.Records records = 1;</code>
      */
     boolean hasRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+     * <code>.org.roylance.yaorm.Records records = 1;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+     * <code>.org.roylance.yaorm.Records records = 1;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder();
 
@@ -33044,38 +33363,38 @@ public final class YaormModel {
         getTablesBytes(int index);
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
      */
     boolean hasTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
      */
     boolean hasTableDefinitions();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitions getTableDefinitions();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder();
 
     /**
-     * <code>optional int64 record_count = 6;</code>
+     * <code>int64 record_count = 6;</code>
      */
     long getRecordCount();
 
     /**
-     * <code>optional bool result = 7;</code>
+     * <code>bool result = 7;</code>
      */
     boolean getResult();
 
@@ -33104,11 +33423,11 @@ public final class YaormModel {
         int index);
 
     /**
-     * <code>optional string string_result = 9;</code>
+     * <code>string string_result = 9;</code>
      */
     java.lang.String getStringResult();
     /**
-     * <code>optional string string_result = 9;</code>
+     * <code>string string_result = 9;</code>
      */
     com.google.protobuf.ByteString
         getStringResultBytes();
@@ -33276,19 +33595,19 @@ public final class YaormModel {
     public static final int RECORDS_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.Records records_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+     * <code>.org.roylance.yaorm.Records records = 1;</code>
      */
     public boolean hasRecords() {
       return records_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+     * <code>.org.roylance.yaorm.Records records = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecords() {
       return records_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : records_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+     * <code>.org.roylance.yaorm.Records records = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
       return getRecords();
@@ -33355,19 +33674,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITION_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.TableDefinition tableDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
      */
     public boolean hasTableDefinition() {
       return tableDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
       return tableDefinition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : tableDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+     * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
       return getTableDefinition();
@@ -33376,19 +33695,19 @@ public final class YaormModel {
     public static final int TABLE_DEFINITIONS_FIELD_NUMBER = 5;
     private org.roylance.yaorm.YaormModel.TableDefinitions tableDefinitions_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
      */
     public boolean hasTableDefinitions() {
       return tableDefinitions_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitions getTableDefinitions() {
       return tableDefinitions_ == null ? org.roylance.yaorm.YaormModel.TableDefinitions.getDefaultInstance() : tableDefinitions_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+     * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
       return getTableDefinitions();
@@ -33397,7 +33716,7 @@ public final class YaormModel {
     public static final int RECORD_COUNT_FIELD_NUMBER = 6;
     private long recordCount_;
     /**
-     * <code>optional int64 record_count = 6;</code>
+     * <code>int64 record_count = 6;</code>
      */
     public long getRecordCount() {
       return recordCount_;
@@ -33406,7 +33725,7 @@ public final class YaormModel {
     public static final int RESULT_FIELD_NUMBER = 7;
     private boolean result_;
     /**
-     * <code>optional bool result = 7;</code>
+     * <code>bool result = 7;</code>
      */
     public boolean getResult() {
       return result_;
@@ -33450,7 +33769,7 @@ public final class YaormModel {
     public static final int STRING_RESULT_FIELD_NUMBER = 9;
     private volatile java.lang.Object stringResult_;
     /**
-     * <code>optional string string_result = 9;</code>
+     * <code>string string_result = 9;</code>
      */
     public java.lang.String getStringResult() {
       java.lang.Object ref = stringResult_;
@@ -33465,7 +33784,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string string_result = 9;</code>
+     * <code>string string_result = 9;</code>
      */
     public com.google.protobuf.ByteString
         getStringResultBytes() {
@@ -33622,7 +33941,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasRecords()) {
         hash = (37 * hash) + RECORDS_FIELD_NUMBER;
         hash = (53 * hash) + getRecords().hashCode();
@@ -33660,6 +33979,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.UIYaormResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.UIYaormResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.UIYaormResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -34007,13 +34337,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public boolean hasRecords() {
         return recordsBuilder_ != null || records_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
@@ -34023,7 +34353,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public Builder setRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -34039,7 +34369,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public Builder setRecords(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -34053,7 +34383,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public Builder mergeRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -34071,7 +34401,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
@@ -34085,7 +34415,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsBuilder() {
         
@@ -34093,7 +34423,7 @@ public final class YaormModel {
         return getRecordsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
         if (recordsBuilder_ != null) {
@@ -34104,7 +34434,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 1;</code>
+       * <code>.org.roylance.yaorm.Records records = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -34312,13 +34642,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> tableDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public boolean hasTableDefinition() {
         return tableDefinitionBuilder_ != null || tableDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -34328,7 +34658,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public Builder setTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -34344,7 +34674,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public Builder setTableDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -34358,7 +34688,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public Builder mergeTableDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (tableDefinitionBuilder_ == null) {
@@ -34376,7 +34706,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public Builder clearTableDefinition() {
         if (tableDefinitionBuilder_ == null) {
@@ -34390,7 +34720,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getTableDefinitionBuilder() {
         
@@ -34398,7 +34728,7 @@ public final class YaormModel {
         return getTableDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getTableDefinitionOrBuilder() {
         if (tableDefinitionBuilder_ != null) {
@@ -34409,7 +34739,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition table_definition = 4;</code>
+       * <code>.org.roylance.yaorm.TableDefinition table_definition = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -34429,13 +34759,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinitions, org.roylance.yaorm.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder> tableDefinitionsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public boolean hasTableDefinitions() {
         return tableDefinitionsBuilder_ != null || tableDefinitions_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitions getTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
@@ -34445,7 +34775,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public Builder setTableDefinitions(org.roylance.yaorm.YaormModel.TableDefinitions value) {
         if (tableDefinitionsBuilder_ == null) {
@@ -34461,7 +34791,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public Builder setTableDefinitions(
           org.roylance.yaorm.YaormModel.TableDefinitions.Builder builderForValue) {
@@ -34475,7 +34805,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public Builder mergeTableDefinitions(org.roylance.yaorm.YaormModel.TableDefinitions value) {
         if (tableDefinitionsBuilder_ == null) {
@@ -34493,7 +34823,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public Builder clearTableDefinitions() {
         if (tableDefinitionsBuilder_ == null) {
@@ -34507,7 +34837,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitions.Builder getTableDefinitionsBuilder() {
         
@@ -34515,7 +34845,7 @@ public final class YaormModel {
         return getTableDefinitionsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder getTableDefinitionsOrBuilder() {
         if (tableDefinitionsBuilder_ != null) {
@@ -34526,7 +34856,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
+       * <code>.org.roylance.yaorm.TableDefinitions table_definitions = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinitions, org.roylance.yaorm.YaormModel.TableDefinitions.Builder, org.roylance.yaorm.YaormModel.TableDefinitionsOrBuilder> 
@@ -34544,13 +34874,13 @@ public final class YaormModel {
 
       private long recordCount_ ;
       /**
-       * <code>optional int64 record_count = 6;</code>
+       * <code>int64 record_count = 6;</code>
        */
       public long getRecordCount() {
         return recordCount_;
       }
       /**
-       * <code>optional int64 record_count = 6;</code>
+       * <code>int64 record_count = 6;</code>
        */
       public Builder setRecordCount(long value) {
         
@@ -34559,7 +34889,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 record_count = 6;</code>
+       * <code>int64 record_count = 6;</code>
        */
       public Builder clearRecordCount() {
         
@@ -34570,13 +34900,13 @@ public final class YaormModel {
 
       private boolean result_ ;
       /**
-       * <code>optional bool result = 7;</code>
+       * <code>bool result = 7;</code>
        */
       public boolean getResult() {
         return result_;
       }
       /**
-       * <code>optional bool result = 7;</code>
+       * <code>bool result = 7;</code>
        */
       public Builder setResult(boolean value) {
         
@@ -34585,7 +34915,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional bool result = 7;</code>
+       * <code>bool result = 7;</code>
        */
       public Builder clearResult() {
         
@@ -34836,7 +35166,7 @@ public final class YaormModel {
 
       private java.lang.Object stringResult_ = "";
       /**
-       * <code>optional string string_result = 9;</code>
+       * <code>string string_result = 9;</code>
        */
       public java.lang.String getStringResult() {
         java.lang.Object ref = stringResult_;
@@ -34851,7 +35181,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string string_result = 9;</code>
+       * <code>string string_result = 9;</code>
        */
       public com.google.protobuf.ByteString
           getStringResultBytes() {
@@ -34867,7 +35197,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string string_result = 9;</code>
+       * <code>string string_result = 9;</code>
        */
       public Builder setStringResult(
           java.lang.String value) {
@@ -34880,7 +35210,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string string_result = 9;</code>
+       * <code>string string_result = 9;</code>
        */
       public Builder clearStringResult() {
         
@@ -34889,7 +35219,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string string_result = 9;</code>
+       * <code>string string_result = 9;</code>
        */
       public Builder setStringResultBytes(
           com.google.protobuf.ByteString value) {
@@ -34956,133 +35286,133 @@ public final class YaormModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
      */
     boolean hasDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinition getDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
      */
     org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
      */
     boolean hasColumnDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinition getColumnDefinition();
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     boolean hasIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     org.roylance.yaorm.YaormModel.Index getIndex();
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+     * <code>.org.roylance.yaorm.Column column = 4;</code>
      */
     boolean hasColumn();
     /**
-     * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+     * <code>.org.roylance.yaorm.Column column = 4;</code>
      */
     org.roylance.yaorm.YaormModel.Column getColumn();
     /**
-     * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+     * <code>.org.roylance.yaorm.Column column = 4;</code>
      */
     org.roylance.yaorm.YaormModel.ColumnOrBuilder getColumnOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     boolean hasWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClause getWhereClause();
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+     * <code>.org.roylance.yaorm.Records records = 6;</code>
      */
     boolean hasRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+     * <code>.org.roylance.yaorm.Records records = 6;</code>
      */
     org.roylance.yaorm.YaormModel.Records getRecords();
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+     * <code>.org.roylance.yaorm.Records records = 6;</code>
      */
     org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder();
 
     /**
-     * <code>optional int64 limit = 7;</code>
+     * <code>int64 limit = 7;</code>
      */
     long getLimit();
 
     /**
-     * <code>optional int64 offset = 8;</code>
+     * <code>int64 offset = 8;</code>
      */
     long getOffset();
 
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     java.lang.String getSchemaName();
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     com.google.protobuf.ByteString
         getSchemaNameBytes();
 
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     java.lang.String getTableName();
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     com.google.protobuf.ByteString
         getTableNameBytes();
 
     /**
-     * <code>optional string response = 11;</code>
+     * <code>string response = 11;</code>
      */
     java.lang.String getResponse();
     /**
-     * <code>optional string response = 11;</code>
+     * <code>string response = 11;</code>
      */
     com.google.protobuf.ByteString
         getResponseBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+     * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
      */
     boolean hasProtoTypeToSqlTypes();
     /**
-     * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+     * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
      */
     org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes getProtoTypeToSqlTypes();
     /**
-     * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+     * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
      */
     org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypesOrBuilder getProtoTypeToSqlTypesOrBuilder();
   }
@@ -35275,19 +35605,19 @@ public final class YaormModel {
     public static final int DEFINITION_FIELD_NUMBER = 1;
     private org.roylance.yaorm.YaormModel.TableDefinition definition_;
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
      */
     public boolean hasDefinition() {
       return definition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinition getDefinition() {
       return definition_ == null ? org.roylance.yaorm.YaormModel.TableDefinition.getDefaultInstance() : definition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+     * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
      */
     public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getDefinitionOrBuilder() {
       return getDefinition();
@@ -35296,19 +35626,19 @@ public final class YaormModel {
     public static final int COLUMN_DEFINITION_FIELD_NUMBER = 2;
     private org.roylance.yaorm.YaormModel.ColumnDefinition columnDefinition_;
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
      */
     public boolean hasColumnDefinition() {
       return columnDefinition_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinition getColumnDefinition() {
       return columnDefinition_ == null ? org.roylance.yaorm.YaormModel.ColumnDefinition.getDefaultInstance() : columnDefinition_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+     * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder() {
       return getColumnDefinition();
@@ -35317,19 +35647,19 @@ public final class YaormModel {
     public static final int INDEX_FIELD_NUMBER = 3;
     private org.roylance.yaorm.YaormModel.Index index_;
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public boolean hasIndex() {
       return index_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.Index getIndex() {
       return index_ == null ? org.roylance.yaorm.YaormModel.Index.getDefaultInstance() : index_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+     * <code>.org.roylance.yaorm.Index index = 3;</code>
      */
     public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
       return getIndex();
@@ -35338,19 +35668,19 @@ public final class YaormModel {
     public static final int COLUMN_FIELD_NUMBER = 4;
     private org.roylance.yaorm.YaormModel.Column column_;
     /**
-     * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+     * <code>.org.roylance.yaorm.Column column = 4;</code>
      */
     public boolean hasColumn() {
       return column_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+     * <code>.org.roylance.yaorm.Column column = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.Column getColumn() {
       return column_ == null ? org.roylance.yaorm.YaormModel.Column.getDefaultInstance() : column_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+     * <code>.org.roylance.yaorm.Column column = 4;</code>
      */
     public org.roylance.yaorm.YaormModel.ColumnOrBuilder getColumnOrBuilder() {
       return getColumn();
@@ -35359,19 +35689,19 @@ public final class YaormModel {
     public static final int WHERE_CLAUSE_FIELD_NUMBER = 5;
     private org.roylance.yaorm.YaormModel.WhereClause whereClause_;
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public boolean hasWhereClause() {
       return whereClause_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
       return whereClause_ == null ? org.roylance.yaorm.YaormModel.WhereClause.getDefaultInstance() : whereClause_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+     * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
      */
     public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
       return getWhereClause();
@@ -35380,19 +35710,19 @@ public final class YaormModel {
     public static final int RECORDS_FIELD_NUMBER = 6;
     private org.roylance.yaorm.YaormModel.Records records_;
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+     * <code>.org.roylance.yaorm.Records records = 6;</code>
      */
     public boolean hasRecords() {
       return records_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+     * <code>.org.roylance.yaorm.Records records = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.Records getRecords() {
       return records_ == null ? org.roylance.yaorm.YaormModel.Records.getDefaultInstance() : records_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+     * <code>.org.roylance.yaorm.Records records = 6;</code>
      */
     public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
       return getRecords();
@@ -35401,7 +35731,7 @@ public final class YaormModel {
     public static final int LIMIT_FIELD_NUMBER = 7;
     private long limit_;
     /**
-     * <code>optional int64 limit = 7;</code>
+     * <code>int64 limit = 7;</code>
      */
     public long getLimit() {
       return limit_;
@@ -35410,7 +35740,7 @@ public final class YaormModel {
     public static final int OFFSET_FIELD_NUMBER = 8;
     private long offset_;
     /**
-     * <code>optional int64 offset = 8;</code>
+     * <code>int64 offset = 8;</code>
      */
     public long getOffset() {
       return offset_;
@@ -35419,7 +35749,7 @@ public final class YaormModel {
     public static final int SCHEMA_NAME_FIELD_NUMBER = 9;
     private volatile java.lang.Object schemaName_;
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     public java.lang.String getSchemaName() {
       java.lang.Object ref = schemaName_;
@@ -35434,7 +35764,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string schema_name = 9;</code>
+     * <code>string schema_name = 9;</code>
      */
     public com.google.protobuf.ByteString
         getSchemaNameBytes() {
@@ -35453,7 +35783,7 @@ public final class YaormModel {
     public static final int TABLE_NAME_FIELD_NUMBER = 10;
     private volatile java.lang.Object tableName_;
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     public java.lang.String getTableName() {
       java.lang.Object ref = tableName_;
@@ -35468,7 +35798,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string table_name = 10;</code>
+     * <code>string table_name = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTableNameBytes() {
@@ -35487,7 +35817,7 @@ public final class YaormModel {
     public static final int RESPONSE_FIELD_NUMBER = 11;
     private volatile java.lang.Object response_;
     /**
-     * <code>optional string response = 11;</code>
+     * <code>string response = 11;</code>
      */
     public java.lang.String getResponse() {
       java.lang.Object ref = response_;
@@ -35502,7 +35832,7 @@ public final class YaormModel {
       }
     }
     /**
-     * <code>optional string response = 11;</code>
+     * <code>string response = 11;</code>
      */
     public com.google.protobuf.ByteString
         getResponseBytes() {
@@ -35521,19 +35851,19 @@ public final class YaormModel {
     public static final int PROTO_TYPE_TO_SQL_TYPES_FIELD_NUMBER = 12;
     private org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes protoTypeToSqlTypes_;
     /**
-     * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+     * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
      */
     public boolean hasProtoTypeToSqlTypes() {
       return protoTypeToSqlTypes_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+     * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
      */
     public org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes getProtoTypeToSqlTypes() {
       return protoTypeToSqlTypes_ == null ? org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes.getDefaultInstance() : protoTypeToSqlTypes_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+     * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
      */
     public org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypesOrBuilder getProtoTypeToSqlTypesOrBuilder() {
       return getProtoTypeToSqlTypes();
@@ -35709,7 +36039,7 @@ public final class YaormModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasDefinition()) {
         hash = (37 * hash) + DEFINITION_FIELD_NUMBER;
         hash = (53 * hash) + getDefinition().hashCode();
@@ -35755,6 +36085,17 @@ public final class YaormModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.YaormModel.SqlGeneratorRequestResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.YaormModel.SqlGeneratorRequestResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.YaormModel.SqlGeneratorRequestResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -36092,13 +36433,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> definitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public boolean hasDefinition() {
         return definitionBuilder_ != null || definition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition getDefinition() {
         if (definitionBuilder_ == null) {
@@ -36108,7 +36449,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public Builder setDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (definitionBuilder_ == null) {
@@ -36124,7 +36465,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public Builder setDefinition(
           org.roylance.yaorm.YaormModel.TableDefinition.Builder builderForValue) {
@@ -36138,7 +36479,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public Builder mergeDefinition(org.roylance.yaorm.YaormModel.TableDefinition value) {
         if (definitionBuilder_ == null) {
@@ -36156,7 +36497,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public Builder clearDefinition() {
         if (definitionBuilder_ == null) {
@@ -36170,7 +36511,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinition.Builder getDefinitionBuilder() {
         
@@ -36178,7 +36519,7 @@ public final class YaormModel {
         return getDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       public org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder getDefinitionOrBuilder() {
         if (definitionBuilder_ != null) {
@@ -36189,7 +36530,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.TableDefinition definition = 1;</code>
+       * <code>.org.roylance.yaorm.TableDefinition definition = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.TableDefinition, org.roylance.yaorm.YaormModel.TableDefinition.Builder, org.roylance.yaorm.YaormModel.TableDefinitionOrBuilder> 
@@ -36209,13 +36550,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> columnDefinitionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public boolean hasColumnDefinition() {
         return columnDefinitionBuilder_ != null || columnDefinition_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition getColumnDefinition() {
         if (columnDefinitionBuilder_ == null) {
@@ -36225,7 +36566,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public Builder setColumnDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (columnDefinitionBuilder_ == null) {
@@ -36241,7 +36582,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public Builder setColumnDefinition(
           org.roylance.yaorm.YaormModel.ColumnDefinition.Builder builderForValue) {
@@ -36255,7 +36596,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public Builder mergeColumnDefinition(org.roylance.yaorm.YaormModel.ColumnDefinition value) {
         if (columnDefinitionBuilder_ == null) {
@@ -36273,7 +36614,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public Builder clearColumnDefinition() {
         if (columnDefinitionBuilder_ == null) {
@@ -36287,7 +36628,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinition.Builder getColumnDefinitionBuilder() {
         
@@ -36295,7 +36636,7 @@ public final class YaormModel {
         return getColumnDefinitionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder getColumnDefinitionOrBuilder() {
         if (columnDefinitionBuilder_ != null) {
@@ -36306,7 +36647,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
+       * <code>.org.roylance.yaorm.ColumnDefinition column_definition = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ColumnDefinition, org.roylance.yaorm.YaormModel.ColumnDefinition.Builder, org.roylance.yaorm.YaormModel.ColumnDefinitionOrBuilder> 
@@ -36326,13 +36667,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> indexBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public boolean hasIndex() {
         return indexBuilder_ != null || index_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Index getIndex() {
         if (indexBuilder_ == null) {
@@ -36342,7 +36683,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder setIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -36358,7 +36699,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder setIndex(
           org.roylance.yaorm.YaormModel.Index.Builder builderForValue) {
@@ -36372,7 +36713,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder mergeIndex(org.roylance.yaorm.YaormModel.Index value) {
         if (indexBuilder_ == null) {
@@ -36390,7 +36731,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public Builder clearIndex() {
         if (indexBuilder_ == null) {
@@ -36404,7 +36745,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.Index.Builder getIndexBuilder() {
         
@@ -36412,7 +36753,7 @@ public final class YaormModel {
         return getIndexFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       public org.roylance.yaorm.YaormModel.IndexOrBuilder getIndexOrBuilder() {
         if (indexBuilder_ != null) {
@@ -36423,7 +36764,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Index index = 3;</code>
+       * <code>.org.roylance.yaorm.Index index = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Index, org.roylance.yaorm.YaormModel.Index.Builder, org.roylance.yaorm.YaormModel.IndexOrBuilder> 
@@ -36443,13 +36784,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Column, org.roylance.yaorm.YaormModel.Column.Builder, org.roylance.yaorm.YaormModel.ColumnOrBuilder> columnBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public boolean hasColumn() {
         return columnBuilder_ != null || column_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.Column getColumn() {
         if (columnBuilder_ == null) {
@@ -36459,7 +36800,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public Builder setColumn(org.roylance.yaorm.YaormModel.Column value) {
         if (columnBuilder_ == null) {
@@ -36475,7 +36816,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public Builder setColumn(
           org.roylance.yaorm.YaormModel.Column.Builder builderForValue) {
@@ -36489,7 +36830,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public Builder mergeColumn(org.roylance.yaorm.YaormModel.Column value) {
         if (columnBuilder_ == null) {
@@ -36507,7 +36848,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public Builder clearColumn() {
         if (columnBuilder_ == null) {
@@ -36521,7 +36862,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.Column.Builder getColumnBuilder() {
         
@@ -36529,7 +36870,7 @@ public final class YaormModel {
         return getColumnFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       public org.roylance.yaorm.YaormModel.ColumnOrBuilder getColumnOrBuilder() {
         if (columnBuilder_ != null) {
@@ -36540,7 +36881,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Column column = 4;</code>
+       * <code>.org.roylance.yaorm.Column column = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Column, org.roylance.yaorm.YaormModel.Column.Builder, org.roylance.yaorm.YaormModel.ColumnOrBuilder> 
@@ -36560,13 +36901,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> whereClauseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public boolean hasWhereClause() {
         return whereClauseBuilder_ != null || whereClause_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause getWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -36576,7 +36917,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder setWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -36592,7 +36933,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder setWhereClause(
           org.roylance.yaorm.YaormModel.WhereClause.Builder builderForValue) {
@@ -36606,7 +36947,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder mergeWhereClause(org.roylance.yaorm.YaormModel.WhereClause value) {
         if (whereClauseBuilder_ == null) {
@@ -36624,7 +36965,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public Builder clearWhereClause() {
         if (whereClauseBuilder_ == null) {
@@ -36638,7 +36979,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClause.Builder getWhereClauseBuilder() {
         
@@ -36646,7 +36987,7 @@ public final class YaormModel {
         return getWhereClauseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       public org.roylance.yaorm.YaormModel.WhereClauseOrBuilder getWhereClauseOrBuilder() {
         if (whereClauseBuilder_ != null) {
@@ -36657,7 +36998,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WhereClause where_clause = 5;</code>
+       * <code>.org.roylance.yaorm.WhereClause where_clause = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.WhereClause, org.roylance.yaorm.YaormModel.WhereClause.Builder, org.roylance.yaorm.YaormModel.WhereClauseOrBuilder> 
@@ -36677,13 +37018,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> recordsBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public boolean hasRecords() {
         return recordsBuilder_ != null || records_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.Records getRecords() {
         if (recordsBuilder_ == null) {
@@ -36693,7 +37034,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public Builder setRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -36709,7 +37050,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public Builder setRecords(
           org.roylance.yaorm.YaormModel.Records.Builder builderForValue) {
@@ -36723,7 +37064,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public Builder mergeRecords(org.roylance.yaorm.YaormModel.Records value) {
         if (recordsBuilder_ == null) {
@@ -36741,7 +37082,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public Builder clearRecords() {
         if (recordsBuilder_ == null) {
@@ -36755,7 +37096,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.Records.Builder getRecordsBuilder() {
         
@@ -36763,7 +37104,7 @@ public final class YaormModel {
         return getRecordsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       public org.roylance.yaorm.YaormModel.RecordsOrBuilder getRecordsOrBuilder() {
         if (recordsBuilder_ != null) {
@@ -36774,7 +37115,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Records records = 6;</code>
+       * <code>.org.roylance.yaorm.Records records = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.Records, org.roylance.yaorm.YaormModel.Records.Builder, org.roylance.yaorm.YaormModel.RecordsOrBuilder> 
@@ -36792,13 +37133,13 @@ public final class YaormModel {
 
       private long limit_ ;
       /**
-       * <code>optional int64 limit = 7;</code>
+       * <code>int64 limit = 7;</code>
        */
       public long getLimit() {
         return limit_;
       }
       /**
-       * <code>optional int64 limit = 7;</code>
+       * <code>int64 limit = 7;</code>
        */
       public Builder setLimit(long value) {
         
@@ -36807,7 +37148,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 limit = 7;</code>
+       * <code>int64 limit = 7;</code>
        */
       public Builder clearLimit() {
         
@@ -36818,13 +37159,13 @@ public final class YaormModel {
 
       private long offset_ ;
       /**
-       * <code>optional int64 offset = 8;</code>
+       * <code>int64 offset = 8;</code>
        */
       public long getOffset() {
         return offset_;
       }
       /**
-       * <code>optional int64 offset = 8;</code>
+       * <code>int64 offset = 8;</code>
        */
       public Builder setOffset(long value) {
         
@@ -36833,7 +37174,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional int64 offset = 8;</code>
+       * <code>int64 offset = 8;</code>
        */
       public Builder clearOffset() {
         
@@ -36844,7 +37185,7 @@ public final class YaormModel {
 
       private java.lang.Object schemaName_ = "";
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public java.lang.String getSchemaName() {
         java.lang.Object ref = schemaName_;
@@ -36859,7 +37200,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public com.google.protobuf.ByteString
           getSchemaNameBytes() {
@@ -36875,7 +37216,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public Builder setSchemaName(
           java.lang.String value) {
@@ -36888,7 +37229,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public Builder clearSchemaName() {
         
@@ -36897,7 +37238,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string schema_name = 9;</code>
+       * <code>string schema_name = 9;</code>
        */
       public Builder setSchemaNameBytes(
           com.google.protobuf.ByteString value) {
@@ -36913,7 +37254,7 @@ public final class YaormModel {
 
       private java.lang.Object tableName_ = "";
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public java.lang.String getTableName() {
         java.lang.Object ref = tableName_;
@@ -36928,7 +37269,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTableNameBytes() {
@@ -36944,7 +37285,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public Builder setTableName(
           java.lang.String value) {
@@ -36957,7 +37298,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public Builder clearTableName() {
         
@@ -36966,7 +37307,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string table_name = 10;</code>
+       * <code>string table_name = 10;</code>
        */
       public Builder setTableNameBytes(
           com.google.protobuf.ByteString value) {
@@ -36982,7 +37323,7 @@ public final class YaormModel {
 
       private java.lang.Object response_ = "";
       /**
-       * <code>optional string response = 11;</code>
+       * <code>string response = 11;</code>
        */
       public java.lang.String getResponse() {
         java.lang.Object ref = response_;
@@ -36997,7 +37338,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string response = 11;</code>
+       * <code>string response = 11;</code>
        */
       public com.google.protobuf.ByteString
           getResponseBytes() {
@@ -37013,7 +37354,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional string response = 11;</code>
+       * <code>string response = 11;</code>
        */
       public Builder setResponse(
           java.lang.String value) {
@@ -37026,7 +37367,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string response = 11;</code>
+       * <code>string response = 11;</code>
        */
       public Builder clearResponse() {
         
@@ -37035,7 +37376,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional string response = 11;</code>
+       * <code>string response = 11;</code>
        */
       public Builder setResponseBytes(
           com.google.protobuf.ByteString value) {
@@ -37053,13 +37394,13 @@ public final class YaormModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes, org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes.Builder, org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypesOrBuilder> protoTypeToSqlTypesBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public boolean hasProtoTypeToSqlTypes() {
         return protoTypeToSqlTypesBuilder_ != null || protoTypeToSqlTypes_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes getProtoTypeToSqlTypes() {
         if (protoTypeToSqlTypesBuilder_ == null) {
@@ -37069,7 +37410,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public Builder setProtoTypeToSqlTypes(org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes value) {
         if (protoTypeToSqlTypesBuilder_ == null) {
@@ -37085,7 +37426,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public Builder setProtoTypeToSqlTypes(
           org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes.Builder builderForValue) {
@@ -37099,7 +37440,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public Builder mergeProtoTypeToSqlTypes(org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes value) {
         if (protoTypeToSqlTypesBuilder_ == null) {
@@ -37117,7 +37458,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public Builder clearProtoTypeToSqlTypes() {
         if (protoTypeToSqlTypesBuilder_ == null) {
@@ -37131,7 +37472,7 @@ public final class YaormModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes.Builder getProtoTypeToSqlTypesBuilder() {
         
@@ -37139,7 +37480,7 @@ public final class YaormModel {
         return getProtoTypeToSqlTypesFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       public org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypesOrBuilder getProtoTypeToSqlTypesOrBuilder() {
         if (protoTypeToSqlTypesBuilder_ != null) {
@@ -37150,7 +37491,7 @@ public final class YaormModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
+       * <code>.org.roylance.yaorm.ProtoTypeToSqlTypes proto_type_to_sql_types = 12;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes, org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypes.Builder, org.roylance.yaorm.YaormModel.ProtoTypeToSqlTypesOrBuilder> 

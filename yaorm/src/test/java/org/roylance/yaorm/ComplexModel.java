@@ -19,21 +19,21 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string some_field = 2;</code>
+     * <code>string some_field = 2;</code>
      */
     java.lang.String getSomeField();
     /**
-     * <code>optional string some_field = 2;</code>
+     * <code>string some_field = 2;</code>
      */
     com.google.protobuf.ByteString
         getSomeFieldBytes();
@@ -117,7 +117,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -132,7 +132,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -151,7 +151,7 @@ public final class ComplexModel {
     public static final int SOME_FIELD_FIELD_NUMBER = 2;
     private volatile java.lang.Object someField_;
     /**
-     * <code>optional string some_field = 2;</code>
+     * <code>string some_field = 2;</code>
      */
     public java.lang.String getSomeField() {
       java.lang.Object ref = someField_;
@@ -166,7 +166,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string some_field = 2;</code>
+     * <code>string some_field = 2;</code>
      */
     public com.google.protobuf.ByteString
         getSomeFieldBytes() {
@@ -242,7 +242,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + SOME_FIELD_FIELD_NUMBER;
@@ -252,6 +252,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.WeakChild parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -470,7 +481,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -485,7 +496,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -501,7 +512,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -514,7 +525,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -523,7 +534,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -539,7 +550,7 @@ public final class ComplexModel {
 
       private java.lang.Object someField_ = "";
       /**
-       * <code>optional string some_field = 2;</code>
+       * <code>string some_field = 2;</code>
        */
       public java.lang.String getSomeField() {
         java.lang.Object ref = someField_;
@@ -554,7 +565,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string some_field = 2;</code>
+       * <code>string some_field = 2;</code>
        */
       public com.google.protobuf.ByteString
           getSomeFieldBytes() {
@@ -570,7 +581,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string some_field = 2;</code>
+       * <code>string some_field = 2;</code>
        */
       public Builder setSomeField(
           java.lang.String value) {
@@ -583,7 +594,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string some_field = 2;</code>
+       * <code>string some_field = 2;</code>
        */
       public Builder clearSomeField() {
         
@@ -592,7 +603,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string some_field = 2;</code>
+       * <code>string some_field = 2;</code>
        */
       public Builder setSomeFieldBytes(
           com.google.protobuf.ByteString value) {
@@ -659,41 +670,41 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     java.lang.String getId1();
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     com.google.protobuf.ByteString
         getId1Bytes();
 
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     java.lang.String getId2();
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     com.google.protobuf.ByteString
         getId2Bytes();
 
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     java.lang.String getId3();
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     com.google.protobuf.ByteString
         getId3Bytes();
@@ -791,7 +802,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -806,7 +817,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -825,7 +836,7 @@ public final class ComplexModel {
     public static final int ID1_FIELD_NUMBER = 2;
     private volatile java.lang.Object id1_;
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     public java.lang.String getId1() {
       java.lang.Object ref = id1_;
@@ -840,7 +851,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     public com.google.protobuf.ByteString
         getId1Bytes() {
@@ -859,7 +870,7 @@ public final class ComplexModel {
     public static final int ID2_FIELD_NUMBER = 3;
     private volatile java.lang.Object id2_;
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     public java.lang.String getId2() {
       java.lang.Object ref = id2_;
@@ -874,7 +885,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     public com.google.protobuf.ByteString
         getId2Bytes() {
@@ -893,7 +904,7 @@ public final class ComplexModel {
     public static final int ID3_FIELD_NUMBER = 4;
     private volatile java.lang.Object id3_;
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     public java.lang.String getId3() {
       java.lang.Object ref = id3_;
@@ -908,7 +919,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     public com.google.protobuf.ByteString
         getId3Bytes() {
@@ -1000,7 +1011,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + ID1_FIELD_NUMBER;
@@ -1014,6 +1025,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Beacon parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1246,7 +1268,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -1261,7 +1283,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -1277,7 +1299,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -1290,7 +1312,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -1299,7 +1321,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1315,7 +1337,7 @@ public final class ComplexModel {
 
       private java.lang.Object id1_ = "";
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public java.lang.String getId1() {
         java.lang.Object ref = id1_;
@@ -1330,7 +1352,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public com.google.protobuf.ByteString
           getId1Bytes() {
@@ -1346,7 +1368,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public Builder setId1(
           java.lang.String value) {
@@ -1359,7 +1381,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public Builder clearId1() {
         
@@ -1368,7 +1390,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public Builder setId1Bytes(
           com.google.protobuf.ByteString value) {
@@ -1384,7 +1406,7 @@ public final class ComplexModel {
 
       private java.lang.Object id2_ = "";
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public java.lang.String getId2() {
         java.lang.Object ref = id2_;
@@ -1399,7 +1421,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public com.google.protobuf.ByteString
           getId2Bytes() {
@@ -1415,7 +1437,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public Builder setId2(
           java.lang.String value) {
@@ -1428,7 +1450,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public Builder clearId2() {
         
@@ -1437,7 +1459,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public Builder setId2Bytes(
           com.google.protobuf.ByteString value) {
@@ -1453,7 +1475,7 @@ public final class ComplexModel {
 
       private java.lang.Object id3_ = "";
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public java.lang.String getId3() {
         java.lang.Object ref = id3_;
@@ -1468,7 +1490,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public com.google.protobuf.ByteString
           getId3Bytes() {
@@ -1484,7 +1506,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public Builder setId3(
           java.lang.String value) {
@@ -1497,7 +1519,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public Builder clearId3() {
         
@@ -1506,7 +1528,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public Builder setId3Bytes(
           com.google.protobuf.ByteString value) {
@@ -1573,48 +1595,48 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     boolean hasBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     org.roylance.yaorm.ComplexModel.Beacon getBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.Request getRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder();
 
@@ -1761,7 +1783,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -1776,7 +1798,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -1795,7 +1817,7 @@ public final class ComplexModel {
     public static final int USER_ID_FIELD_NUMBER = 2;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -1810,7 +1832,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -1829,19 +1851,19 @@ public final class ComplexModel {
     public static final int BEACON_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.Beacon beacon_;
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     public boolean hasBeacon() {
       return beacon_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
       return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
       return getBeacon();
@@ -1850,19 +1872,19 @@ public final class ComplexModel {
     public static final int REQUEST_FIELD_NUMBER = 4;
     private org.roylance.yaorm.ComplexModel.Request request_;
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
       return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -1996,7 +2018,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + USER_ID_FIELD_NUMBER;
@@ -2018,6 +2040,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.ClientBeacon parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2310,7 +2343,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -2325,7 +2358,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -2341,7 +2374,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -2354,7 +2387,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -2363,7 +2396,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -2379,7 +2412,7 @@ public final class ComplexModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -2394,7 +2427,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -2410,7 +2443,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -2423,7 +2456,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public Builder clearUserId() {
         
@@ -2432,7 +2465,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -2450,13 +2483,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public boolean hasBeacon() {
         return beaconBuilder_ != null || beacon_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
@@ -2466,7 +2499,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder setBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -2482,7 +2515,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder setBeacon(
           org.roylance.yaorm.ComplexModel.Beacon.Builder builderForValue) {
@@ -2496,7 +2529,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -2514,7 +2547,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
@@ -2528,7 +2561,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
         
@@ -2536,7 +2569,7 @@ public final class ComplexModel {
         return getBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
         if (beaconBuilder_ != null) {
@@ -2547,7 +2580,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> 
@@ -2567,13 +2600,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -2583,7 +2616,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder setRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -2599,7 +2632,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder setRequest(
           org.roylance.yaorm.ComplexModel.Request.Builder builderForValue) {
@@ -2613,7 +2646,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -2631,7 +2664,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -2645,7 +2678,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
         
@@ -2653,7 +2686,7 @@ public final class ComplexModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -2664,7 +2697,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> 
@@ -2973,31 +3006,31 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     java.lang.String getBase64();
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     com.google.protobuf.ByteString
         getBase64Bytes();
@@ -3088,7 +3121,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -3103,7 +3136,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -3122,7 +3155,7 @@ public final class ComplexModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -3137,7 +3170,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -3156,7 +3189,7 @@ public final class ComplexModel {
     public static final int BASE64_FIELD_NUMBER = 3;
     private volatile java.lang.Object base64_;
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     public java.lang.String getBase64() {
       java.lang.Object ref = base64_;
@@ -3171,7 +3204,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     public com.google.protobuf.ByteString
         getBase64Bytes() {
@@ -3255,7 +3288,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -3267,6 +3300,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.RequestImage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3492,7 +3536,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -3507,7 +3551,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -3523,7 +3567,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -3536,7 +3580,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -3545,7 +3589,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -3561,7 +3605,7 @@ public final class ComplexModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -3576,7 +3620,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -3592,7 +3636,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -3605,7 +3649,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder clearDescription() {
         
@@ -3614,7 +3658,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -3630,7 +3674,7 @@ public final class ComplexModel {
 
       private java.lang.Object base64_ = "";
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public java.lang.String getBase64() {
         java.lang.Object ref = base64_;
@@ -3645,7 +3689,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public com.google.protobuf.ByteString
           getBase64Bytes() {
@@ -3661,7 +3705,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public Builder setBase64(
           java.lang.String value) {
@@ -3674,7 +3718,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public Builder clearBase64() {
         
@@ -3683,7 +3727,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public Builder setBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -3750,21 +3794,21 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
@@ -3848,7 +3892,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -3863,7 +3907,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -3882,7 +3926,7 @@ public final class ComplexModel {
     public static final int VALUE_FIELD_NUMBER = 2;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -3897,7 +3941,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -3973,7 +4017,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -3983,6 +4027,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.ExpectedAnswer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4201,7 +4256,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -4216,7 +4271,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -4232,7 +4287,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -4245,7 +4300,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -4254,7 +4309,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -4270,7 +4325,7 @@ public final class ComplexModel {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -4285,7 +4340,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -4301,7 +4356,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -4314,7 +4369,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public Builder clearValue() {
         
@@ -4323,7 +4378,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -4390,40 +4445,40 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional int32 form_order = 2;</code>
+     * <code>int32 form_order = 2;</code>
      */
     int getFormOrder();
 
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
      */
     boolean hasImage();
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestImage getImage();
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder();
 
@@ -4563,7 +4618,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -4578,7 +4633,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -4597,7 +4652,7 @@ public final class ComplexModel {
     public static final int FORM_ORDER_FIELD_NUMBER = 2;
     private int formOrder_;
     /**
-     * <code>optional int32 form_order = 2;</code>
+     * <code>int32 form_order = 2;</code>
      */
     public int getFormOrder() {
       return formOrder_;
@@ -4606,7 +4661,7 @@ public final class ComplexModel {
     public static final int DISPLAY_FIELD_NUMBER = 3;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -4621,7 +4676,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -4640,19 +4695,19 @@ public final class ComplexModel {
     public static final int IMAGE_FIELD_NUMBER = 4;
     private org.roylance.yaorm.ComplexModel.RequestImage image_;
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
      */
     public boolean hasImage() {
       return image_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
       return image_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder() {
       return getImage();
@@ -4783,7 +4838,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + FORM_ORDER_FIELD_NUMBER;
@@ -4803,6 +4858,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Question parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Question parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Question parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5087,7 +5153,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -5102,7 +5168,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -5118,7 +5184,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -5131,7 +5197,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -5140,7 +5206,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -5156,13 +5222,13 @@ public final class ComplexModel {
 
       private int formOrder_ ;
       /**
-       * <code>optional int32 form_order = 2;</code>
+       * <code>int32 form_order = 2;</code>
        */
       public int getFormOrder() {
         return formOrder_;
       }
       /**
-       * <code>optional int32 form_order = 2;</code>
+       * <code>int32 form_order = 2;</code>
        */
       public Builder setFormOrder(int value) {
         
@@ -5171,7 +5237,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional int32 form_order = 2;</code>
+       * <code>int32 form_order = 2;</code>
        */
       public Builder clearFormOrder() {
         
@@ -5182,7 +5248,7 @@ public final class ComplexModel {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -5197,7 +5263,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -5213,7 +5279,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -5226,7 +5292,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public Builder clearDisplay() {
         
@@ -5235,7 +5301,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -5253,13 +5319,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> imageBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public boolean hasImage() {
         return imageBuilder_ != null || image_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
         if (imageBuilder_ == null) {
@@ -5269,7 +5335,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public Builder setImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -5285,7 +5351,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public Builder setImage(
           org.roylance.yaorm.ComplexModel.RequestImage.Builder builderForValue) {
@@ -5299,7 +5365,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public Builder mergeImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -5317,7 +5383,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -5331,7 +5397,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage.Builder getImageBuilder() {
         
@@ -5339,7 +5405,7 @@ public final class ComplexModel {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder() {
         if (imageBuilder_ != null) {
@@ -5350,7 +5416,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 4;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> 
@@ -5659,34 +5725,81 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
+
+    /**
+     * <code>string parent_id = 4;</code>
+     */
+    java.lang.String getParentId();
+    /**
+     * <code>string parent_id = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getParentIdBytes();
+
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    java.util.List<org.roylance.yaorm.ComplexModel.Validation> 
+        getChildrenList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    org.roylance.yaorm.ComplexModel.Validation getChildren(int index);
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    int getChildrenCount();
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    java.util.List<? extends org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
+        getChildrenOrBuilderList();
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    org.roylance.yaorm.ComplexModel.ValidationOrBuilder getChildrenOrBuilder(
+        int index);
+
+    /**
+     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+     */
+    boolean hasActualParent();
+    /**
+     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+     */
+    org.roylance.yaorm.ComplexModel.Validation getActualParent();
+    /**
+     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+     */
+    org.roylance.yaorm.ComplexModel.ValidationOrBuilder getActualParentOrBuilder();
   }
   /**
    * Protobuf type {@code org.roylance.yaorm.Validation}
@@ -5703,6 +5816,8 @@ public final class ComplexModel {
       id_ = "";
       name_ = "";
       value_ = "";
+      parentId_ = "";
+      children_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -5748,6 +5863,34 @@ public final class ComplexModel {
               value_ = s;
               break;
             }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              parentId_ = s;
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                children_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Validation>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              children_.add(
+                  input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry));
+              break;
+            }
+            case 50: {
+              org.roylance.yaorm.ComplexModel.Validation.Builder subBuilder = null;
+              if (actualParent_ != null) {
+                subBuilder = actualParent_.toBuilder();
+              }
+              actualParent_ = input.readMessage(org.roylance.yaorm.ComplexModel.Validation.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(actualParent_);
+                actualParent_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5756,6 +5899,9 @@ public final class ComplexModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          children_ = java.util.Collections.unmodifiableList(children_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -5771,10 +5917,11 @@ public final class ComplexModel {
               org.roylance.yaorm.ComplexModel.Validation.class, org.roylance.yaorm.ComplexModel.Validation.Builder.class);
     }
 
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -5789,7 +5936,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -5808,7 +5955,7 @@ public final class ComplexModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -5823,7 +5970,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -5842,7 +5989,7 @@ public final class ComplexModel {
     public static final int VALUE_FIELD_NUMBER = 3;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -5857,7 +6004,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -5871,6 +6018,96 @@ public final class ComplexModel {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int PARENT_ID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object parentId_;
+    /**
+     * <code>string parent_id = 4;</code>
+     */
+    public java.lang.String getParentId() {
+      java.lang.Object ref = parentId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        parentId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string parent_id = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getParentIdBytes() {
+      java.lang.Object ref = parentId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        parentId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CHILDREN_FIELD_NUMBER = 5;
+    private java.util.List<org.roylance.yaorm.ComplexModel.Validation> children_;
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    public java.util.List<org.roylance.yaorm.ComplexModel.Validation> getChildrenList() {
+      return children_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    public java.util.List<? extends org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
+        getChildrenOrBuilderList() {
+      return children_;
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    public int getChildrenCount() {
+      return children_.size();
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    public org.roylance.yaorm.ComplexModel.Validation getChildren(int index) {
+      return children_.get(index);
+    }
+    /**
+     * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+     */
+    public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getChildrenOrBuilder(
+        int index) {
+      return children_.get(index);
+    }
+
+    public static final int ACTUAL_PARENT_FIELD_NUMBER = 6;
+    private org.roylance.yaorm.ComplexModel.Validation actualParent_;
+    /**
+     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+     */
+    public boolean hasActualParent() {
+      return actualParent_ != null;
+    }
+    /**
+     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+     */
+    public org.roylance.yaorm.ComplexModel.Validation getActualParent() {
+      return actualParent_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : actualParent_;
+    }
+    /**
+     * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+     */
+    public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getActualParentOrBuilder() {
+      return getActualParent();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5894,6 +6131,15 @@ public final class ComplexModel {
       if (!getValueBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
       }
+      if (!getParentIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, parentId_);
+      }
+      for (int i = 0; i < children_.size(); i++) {
+        output.writeMessage(5, children_.get(i));
+      }
+      if (actualParent_ != null) {
+        output.writeMessage(6, getActualParent());
+      }
     }
 
     public int getSerializedSize() {
@@ -5909,6 +6155,17 @@ public final class ComplexModel {
       }
       if (!getValueBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
+      }
+      if (!getParentIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, parentId_);
+      }
+      for (int i = 0; i < children_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, children_.get(i));
+      }
+      if (actualParent_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getActualParent());
       }
       memoizedSize = size;
       return size;
@@ -5932,6 +6189,15 @@ public final class ComplexModel {
           .equals(other.getName());
       result = result && getValue()
           .equals(other.getValue());
+      result = result && getParentId()
+          .equals(other.getParentId());
+      result = result && getChildrenList()
+          .equals(other.getChildrenList());
+      result = result && (hasActualParent() == other.hasActualParent());
+      if (hasActualParent()) {
+        result = result && getActualParent()
+            .equals(other.getActualParent());
+      }
       return result;
     }
 
@@ -5941,18 +6207,39 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + getValue().hashCode();
+      hash = (37 * hash) + PARENT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getParentId().hashCode();
+      if (getChildrenCount() > 0) {
+        hash = (37 * hash) + CHILDREN_FIELD_NUMBER;
+        hash = (53 * hash) + getChildrenList().hashCode();
+      }
+      if (hasActualParent()) {
+        hash = (37 * hash) + ACTUAL_PARENT_FIELD_NUMBER;
+        hash = (53 * hash) + getActualParent().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Validation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6062,6 +6349,7 @@ public final class ComplexModel {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getChildrenFieldBuilder();
         }
       }
       public Builder clear() {
@@ -6072,6 +6360,20 @@ public final class ComplexModel {
 
         value_ = "";
 
+        parentId_ = "";
+
+        if (childrenBuilder_ == null) {
+          children_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          childrenBuilder_.clear();
+        }
+        if (actualParentBuilder_ == null) {
+          actualParent_ = null;
+        } else {
+          actualParent_ = null;
+          actualParentBuilder_ = null;
+        }
         return this;
       }
 
@@ -6094,9 +6396,27 @@ public final class ComplexModel {
 
       public org.roylance.yaorm.ComplexModel.Validation buildPartial() {
         org.roylance.yaorm.ComplexModel.Validation result = new org.roylance.yaorm.ComplexModel.Validation(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.id_ = id_;
         result.name_ = name_;
         result.value_ = value_;
+        result.parentId_ = parentId_;
+        if (childrenBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            children_ = java.util.Collections.unmodifiableList(children_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.children_ = children_;
+        } else {
+          result.children_ = childrenBuilder_.build();
+        }
+        if (actualParentBuilder_ == null) {
+          result.actualParent_ = actualParent_;
+        } else {
+          result.actualParent_ = actualParentBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6150,6 +6470,39 @@ public final class ComplexModel {
           value_ = other.value_;
           onChanged();
         }
+        if (!other.getParentId().isEmpty()) {
+          parentId_ = other.parentId_;
+          onChanged();
+        }
+        if (childrenBuilder_ == null) {
+          if (!other.children_.isEmpty()) {
+            if (children_.isEmpty()) {
+              children_ = other.children_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureChildrenIsMutable();
+              children_.addAll(other.children_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.children_.isEmpty()) {
+            if (childrenBuilder_.isEmpty()) {
+              childrenBuilder_.dispose();
+              childrenBuilder_ = null;
+              children_ = other.children_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              childrenBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getChildrenFieldBuilder() : null;
+            } else {
+              childrenBuilder_.addAllMessages(other.children_);
+            }
+          }
+        }
+        if (other.hasActualParent()) {
+          mergeActualParent(other.getActualParent());
+        }
         onChanged();
         return this;
       }
@@ -6175,10 +6528,11 @@ public final class ComplexModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -6193,7 +6547,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -6209,7 +6563,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -6222,7 +6576,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -6231,7 +6585,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6247,7 +6601,7 @@ public final class ComplexModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -6262,7 +6616,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -6278,7 +6632,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -6291,7 +6645,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -6300,7 +6654,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -6316,7 +6670,7 @@ public final class ComplexModel {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -6331,7 +6685,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -6347,7 +6701,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -6360,7 +6714,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder clearValue() {
         
@@ -6369,7 +6723,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -6381,6 +6735,432 @@ public final class ComplexModel {
         value_ = value;
         onChanged();
         return this;
+      }
+
+      private java.lang.Object parentId_ = "";
+      /**
+       * <code>string parent_id = 4;</code>
+       */
+      public java.lang.String getParentId() {
+        java.lang.Object ref = parentId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          parentId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string parent_id = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getParentIdBytes() {
+        java.lang.Object ref = parentId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          parentId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string parent_id = 4;</code>
+       */
+      public Builder setParentId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        parentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string parent_id = 4;</code>
+       */
+      public Builder clearParentId() {
+        
+        parentId_ = getDefaultInstance().getParentId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string parent_id = 4;</code>
+       */
+      public Builder setParentIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        parentId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.roylance.yaorm.ComplexModel.Validation> children_ =
+        java.util.Collections.emptyList();
+      private void ensureChildrenIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          children_ = new java.util.ArrayList<org.roylance.yaorm.ComplexModel.Validation>(children_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> childrenBuilder_;
+
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public java.util.List<org.roylance.yaorm.ComplexModel.Validation> getChildrenList() {
+        if (childrenBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(children_);
+        } else {
+          return childrenBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public int getChildrenCount() {
+        if (childrenBuilder_ == null) {
+          return children_.size();
+        } else {
+          return childrenBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.Validation getChildren(int index) {
+        if (childrenBuilder_ == null) {
+          return children_.get(index);
+        } else {
+          return childrenBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder setChildren(
+          int index, org.roylance.yaorm.ComplexModel.Validation value) {
+        if (childrenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChildrenIsMutable();
+          children_.set(index, value);
+          onChanged();
+        } else {
+          childrenBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder setChildren(
+          int index, org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
+        if (childrenBuilder_ == null) {
+          ensureChildrenIsMutable();
+          children_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          childrenBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder addChildren(org.roylance.yaorm.ComplexModel.Validation value) {
+        if (childrenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChildrenIsMutable();
+          children_.add(value);
+          onChanged();
+        } else {
+          childrenBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder addChildren(
+          int index, org.roylance.yaorm.ComplexModel.Validation value) {
+        if (childrenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChildrenIsMutable();
+          children_.add(index, value);
+          onChanged();
+        } else {
+          childrenBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder addChildren(
+          org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
+        if (childrenBuilder_ == null) {
+          ensureChildrenIsMutable();
+          children_.add(builderForValue.build());
+          onChanged();
+        } else {
+          childrenBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder addChildren(
+          int index, org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
+        if (childrenBuilder_ == null) {
+          ensureChildrenIsMutable();
+          children_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          childrenBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder addAllChildren(
+          java.lang.Iterable<? extends org.roylance.yaorm.ComplexModel.Validation> values) {
+        if (childrenBuilder_ == null) {
+          ensureChildrenIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, children_);
+          onChanged();
+        } else {
+          childrenBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder clearChildren() {
+        if (childrenBuilder_ == null) {
+          children_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          childrenBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public Builder removeChildren(int index) {
+        if (childrenBuilder_ == null) {
+          ensureChildrenIsMutable();
+          children_.remove(index);
+          onChanged();
+        } else {
+          childrenBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.Validation.Builder getChildrenBuilder(
+          int index) {
+        return getChildrenFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getChildrenOrBuilder(
+          int index) {
+        if (childrenBuilder_ == null) {
+          return children_.get(index);  } else {
+          return childrenBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public java.util.List<? extends org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
+           getChildrenOrBuilderList() {
+        if (childrenBuilder_ != null) {
+          return childrenBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(children_);
+        }
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.Validation.Builder addChildrenBuilder() {
+        return getChildrenFieldBuilder().addBuilder(
+            org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.Validation.Builder addChildrenBuilder(
+          int index) {
+        return getChildrenFieldBuilder().addBuilder(
+            index, org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.roylance.yaorm.Validation children = 5;</code>
+       */
+      public java.util.List<org.roylance.yaorm.ComplexModel.Validation.Builder> 
+           getChildrenBuilderList() {
+        return getChildrenFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
+          getChildrenFieldBuilder() {
+        if (childrenBuilder_ == null) {
+          childrenBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder>(
+                  children_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          children_ = null;
+        }
+        return childrenBuilder_;
+      }
+
+      private org.roylance.yaorm.ComplexModel.Validation actualParent_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> actualParentBuilder_;
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public boolean hasActualParent() {
+        return actualParentBuilder_ != null || actualParent_ != null;
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.Validation getActualParent() {
+        if (actualParentBuilder_ == null) {
+          return actualParent_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : actualParent_;
+        } else {
+          return actualParentBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public Builder setActualParent(org.roylance.yaorm.ComplexModel.Validation value) {
+        if (actualParentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          actualParent_ = value;
+          onChanged();
+        } else {
+          actualParentBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public Builder setActualParent(
+          org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
+        if (actualParentBuilder_ == null) {
+          actualParent_ = builderForValue.build();
+          onChanged();
+        } else {
+          actualParentBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public Builder mergeActualParent(org.roylance.yaorm.ComplexModel.Validation value) {
+        if (actualParentBuilder_ == null) {
+          if (actualParent_ != null) {
+            actualParent_ =
+              org.roylance.yaorm.ComplexModel.Validation.newBuilder(actualParent_).mergeFrom(value).buildPartial();
+          } else {
+            actualParent_ = value;
+          }
+          onChanged();
+        } else {
+          actualParentBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public Builder clearActualParent() {
+        if (actualParentBuilder_ == null) {
+          actualParent_ = null;
+          onChanged();
+        } else {
+          actualParent_ = null;
+          actualParentBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.Validation.Builder getActualParentBuilder() {
+        
+        onChanged();
+        return getActualParentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getActualParentOrBuilder() {
+        if (actualParentBuilder_ != null) {
+          return actualParentBuilder_.getMessageOrBuilder();
+        } else {
+          return actualParent_ == null ?
+              org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : actualParent_;
+        }
+      }
+      /**
+       * <code>.org.roylance.yaorm.Validation actual_parent = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
+          getActualParentFieldBuilder() {
+        if (actualParentBuilder_ == null) {
+          actualParentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder>(
+                  getActualParent(),
+                  getParentForChildren(),
+                  isClean());
+          actualParent_ = null;
+        }
+        return actualParentBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6436,108 +7216,108 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
     int getTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type getType();
 
     /**
-     * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+     * <code>.org.roylance.yaorm.Question first_question = 3;</code>
      */
     boolean hasFirstQuestion();
     /**
-     * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+     * <code>.org.roylance.yaorm.Question first_question = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.Question getFirstQuestion();
     /**
-     * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+     * <code>.org.roylance.yaorm.Question first_question = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.QuestionOrBuilder getFirstQuestionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+     * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     boolean hasFirstValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+     * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.Validation getFirstValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+     * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.ValidationOrBuilder getFirstValidationOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     boolean hasFirstCombiner();
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     org.roylance.yaorm.ComplexModel.HeuristicCombiner getFirstCombiner();
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+     * <code>.org.roylance.yaorm.Question second_question = 6;</code>
      */
     boolean hasSecondQuestion();
     /**
-     * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+     * <code>.org.roylance.yaorm.Question second_question = 6;</code>
      */
     org.roylance.yaorm.ComplexModel.Question getSecondQuestion();
     /**
-     * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+     * <code>.org.roylance.yaorm.Question second_question = 6;</code>
      */
     org.roylance.yaorm.ComplexModel.QuestionOrBuilder getSecondQuestionOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+     * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     boolean hasSecondValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+     * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     org.roylance.yaorm.ComplexModel.Validation getSecondValidation();
     /**
-     * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+     * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     org.roylance.yaorm.ComplexModel.ValidationOrBuilder getSecondValidationOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     boolean hasSecondCombiner();
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     org.roylance.yaorm.ComplexModel.HeuristicCombiner getSecondCombiner();
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder();
 
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
@@ -6804,7 +7584,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -6819,7 +7599,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -6838,13 +7618,13 @@ public final class ComplexModel {
     public static final int TYPE_FIELD_NUMBER = 2;
     private int type_;
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type getType() {
       org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type result = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.valueOf(type_);
@@ -6854,19 +7634,19 @@ public final class ComplexModel {
     public static final int FIRST_QUESTION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.Question firstQuestion_;
     /**
-     * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+     * <code>.org.roylance.yaorm.Question first_question = 3;</code>
      */
     public boolean hasFirstQuestion() {
       return firstQuestion_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+     * <code>.org.roylance.yaorm.Question first_question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Question getFirstQuestion() {
       return firstQuestion_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : firstQuestion_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+     * <code>.org.roylance.yaorm.Question first_question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getFirstQuestionOrBuilder() {
       return getFirstQuestion();
@@ -6875,19 +7655,19 @@ public final class ComplexModel {
     public static final int FIRST_VALIDATION_FIELD_NUMBER = 4;
     private org.roylance.yaorm.ComplexModel.Validation firstValidation_;
     /**
-     * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+     * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     public boolean hasFirstValidation() {
       return firstValidation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+     * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.Validation getFirstValidation() {
       return firstValidation_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : firstValidation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+     * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getFirstValidationOrBuilder() {
       return getFirstValidation();
@@ -6896,19 +7676,19 @@ public final class ComplexModel {
     public static final int FIRST_COMBINER_FIELD_NUMBER = 5;
     private org.roylance.yaorm.ComplexModel.HeuristicCombiner firstCombiner_;
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     public boolean hasFirstCombiner() {
       return firstCombiner_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombiner getFirstCombiner() {
       return firstCombiner_ == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : firstCombiner_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder() {
       return getFirstCombiner();
@@ -6917,19 +7697,19 @@ public final class ComplexModel {
     public static final int SECOND_QUESTION_FIELD_NUMBER = 6;
     private org.roylance.yaorm.ComplexModel.Question secondQuestion_;
     /**
-     * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+     * <code>.org.roylance.yaorm.Question second_question = 6;</code>
      */
     public boolean hasSecondQuestion() {
       return secondQuestion_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+     * <code>.org.roylance.yaorm.Question second_question = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.Question getSecondQuestion() {
       return secondQuestion_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : secondQuestion_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+     * <code>.org.roylance.yaorm.Question second_question = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getSecondQuestionOrBuilder() {
       return getSecondQuestion();
@@ -6938,19 +7718,19 @@ public final class ComplexModel {
     public static final int SECOND_VALIDATION_FIELD_NUMBER = 7;
     private org.roylance.yaorm.ComplexModel.Validation secondValidation_;
     /**
-     * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+     * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     public boolean hasSecondValidation() {
       return secondValidation_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+     * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     public org.roylance.yaorm.ComplexModel.Validation getSecondValidation() {
       return secondValidation_ == null ? org.roylance.yaorm.ComplexModel.Validation.getDefaultInstance() : secondValidation_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+     * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
      */
     public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getSecondValidationOrBuilder() {
       return getSecondValidation();
@@ -6959,19 +7739,19 @@ public final class ComplexModel {
     public static final int SECOND_COMBINER_FIELD_NUMBER = 8;
     private org.roylance.yaorm.ComplexModel.HeuristicCombiner secondCombiner_;
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     public boolean hasSecondCombiner() {
       return secondCombiner_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombiner getSecondCombiner() {
       return secondCombiner_ == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.getDefaultInstance() : secondCombiner_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+     * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
      */
     public org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder() {
       return getSecondCombiner();
@@ -6980,7 +7760,7 @@ public final class ComplexModel {
     public static final int DISPLAY_FIELD_NUMBER = 9;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -6995,7 +7775,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -7151,7 +7931,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -7187,6 +7967,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.HeuristicCombiner parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7495,7 +8286,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -7510,7 +8301,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -7526,7 +8317,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -7539,7 +8330,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -7548,7 +8339,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -7564,13 +8355,13 @@ public final class ComplexModel {
 
       private int type_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -7578,14 +8369,14 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type getType() {
         org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type result = org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.valueOf(type_);
         return result == null ? org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder setType(org.roylance.yaorm.ComplexModel.HeuristicCombiner.Type value) {
         if (value == null) {
@@ -7597,7 +8388,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder clearType() {
         
@@ -7610,13 +8401,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> firstQuestionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public boolean hasFirstQuestion() {
         return firstQuestionBuilder_ != null || firstQuestion_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question getFirstQuestion() {
         if (firstQuestionBuilder_ == null) {
@@ -7626,7 +8417,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public Builder setFirstQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (firstQuestionBuilder_ == null) {
@@ -7642,7 +8433,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public Builder setFirstQuestion(
           org.roylance.yaorm.ComplexModel.Question.Builder builderForValue) {
@@ -7656,7 +8447,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public Builder mergeFirstQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (firstQuestionBuilder_ == null) {
@@ -7674,7 +8465,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public Builder clearFirstQuestion() {
         if (firstQuestionBuilder_ == null) {
@@ -7688,7 +8479,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question.Builder getFirstQuestionBuilder() {
         
@@ -7696,7 +8487,7 @@ public final class ComplexModel {
         return getFirstQuestionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getFirstQuestionOrBuilder() {
         if (firstQuestionBuilder_ != null) {
@@ -7707,7 +8498,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question first_question = 3;</code>
+       * <code>.org.roylance.yaorm.Question first_question = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> 
@@ -7727,13 +8518,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> firstValidationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public boolean hasFirstValidation() {
         return firstValidationBuilder_ != null || firstValidation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation getFirstValidation() {
         if (firstValidationBuilder_ == null) {
@@ -7743,7 +8534,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public Builder setFirstValidation(org.roylance.yaorm.ComplexModel.Validation value) {
         if (firstValidationBuilder_ == null) {
@@ -7759,7 +8550,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public Builder setFirstValidation(
           org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
@@ -7773,7 +8564,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public Builder mergeFirstValidation(org.roylance.yaorm.ComplexModel.Validation value) {
         if (firstValidationBuilder_ == null) {
@@ -7791,7 +8582,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public Builder clearFirstValidation() {
         if (firstValidationBuilder_ == null) {
@@ -7805,7 +8596,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation.Builder getFirstValidationBuilder() {
         
@@ -7813,7 +8604,7 @@ public final class ComplexModel {
         return getFirstValidationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getFirstValidationOrBuilder() {
         if (firstValidationBuilder_ != null) {
@@ -7824,7 +8615,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation first_validation = 4;</code>
+       * <code>.org.roylance.yaorm.Validation first_validation = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
@@ -7844,13 +8635,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.HeuristicCombiner, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder, org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder> firstCombinerBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public boolean hasFirstCombiner() {
         return firstCombinerBuilder_ != null || firstCombiner_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner getFirstCombiner() {
         if (firstCombinerBuilder_ == null) {
@@ -7860,7 +8651,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public Builder setFirstCombiner(org.roylance.yaorm.ComplexModel.HeuristicCombiner value) {
         if (firstCombinerBuilder_ == null) {
@@ -7876,7 +8667,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public Builder setFirstCombiner(
           org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder builderForValue) {
@@ -7890,7 +8681,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public Builder mergeFirstCombiner(org.roylance.yaorm.ComplexModel.HeuristicCombiner value) {
         if (firstCombinerBuilder_ == null) {
@@ -7908,7 +8699,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public Builder clearFirstCombiner() {
         if (firstCombinerBuilder_ == null) {
@@ -7922,7 +8713,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder getFirstCombinerBuilder() {
         
@@ -7930,7 +8721,7 @@ public final class ComplexModel {
         return getFirstCombinerFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder() {
         if (firstCombinerBuilder_ != null) {
@@ -7941,7 +8732,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner first_combiner = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.HeuristicCombiner, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder, org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder> 
@@ -7961,13 +8752,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> secondQuestionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public boolean hasSecondQuestion() {
         return secondQuestionBuilder_ != null || secondQuestion_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question getSecondQuestion() {
         if (secondQuestionBuilder_ == null) {
@@ -7977,7 +8768,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public Builder setSecondQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (secondQuestionBuilder_ == null) {
@@ -7993,7 +8784,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public Builder setSecondQuestion(
           org.roylance.yaorm.ComplexModel.Question.Builder builderForValue) {
@@ -8007,7 +8798,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public Builder mergeSecondQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (secondQuestionBuilder_ == null) {
@@ -8025,7 +8816,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public Builder clearSecondQuestion() {
         if (secondQuestionBuilder_ == null) {
@@ -8039,7 +8830,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question.Builder getSecondQuestionBuilder() {
         
@@ -8047,7 +8838,7 @@ public final class ComplexModel {
         return getSecondQuestionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getSecondQuestionOrBuilder() {
         if (secondQuestionBuilder_ != null) {
@@ -8058,7 +8849,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question second_question = 6;</code>
+       * <code>.org.roylance.yaorm.Question second_question = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> 
@@ -8078,13 +8869,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> secondValidationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public boolean hasSecondValidation() {
         return secondValidationBuilder_ != null || secondValidation_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation getSecondValidation() {
         if (secondValidationBuilder_ == null) {
@@ -8094,7 +8885,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public Builder setSecondValidation(org.roylance.yaorm.ComplexModel.Validation value) {
         if (secondValidationBuilder_ == null) {
@@ -8110,7 +8901,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public Builder setSecondValidation(
           org.roylance.yaorm.ComplexModel.Validation.Builder builderForValue) {
@@ -8124,7 +8915,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public Builder mergeSecondValidation(org.roylance.yaorm.ComplexModel.Validation value) {
         if (secondValidationBuilder_ == null) {
@@ -8142,7 +8933,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public Builder clearSecondValidation() {
         if (secondValidationBuilder_ == null) {
@@ -8156,7 +8947,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public org.roylance.yaorm.ComplexModel.Validation.Builder getSecondValidationBuilder() {
         
@@ -8164,7 +8955,7 @@ public final class ComplexModel {
         return getSecondValidationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       public org.roylance.yaorm.ComplexModel.ValidationOrBuilder getSecondValidationOrBuilder() {
         if (secondValidationBuilder_ != null) {
@@ -8175,7 +8966,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Validation second_validation = 7;</code>
+       * <code>.org.roylance.yaorm.Validation second_validation = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Validation, org.roylance.yaorm.ComplexModel.Validation.Builder, org.roylance.yaorm.ComplexModel.ValidationOrBuilder> 
@@ -8195,13 +8986,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.HeuristicCombiner, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder, org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder> secondCombinerBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public boolean hasSecondCombiner() {
         return secondCombinerBuilder_ != null || secondCombiner_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner getSecondCombiner() {
         if (secondCombinerBuilder_ == null) {
@@ -8211,7 +9002,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public Builder setSecondCombiner(org.roylance.yaorm.ComplexModel.HeuristicCombiner value) {
         if (secondCombinerBuilder_ == null) {
@@ -8227,7 +9018,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public Builder setSecondCombiner(
           org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder builderForValue) {
@@ -8241,7 +9032,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public Builder mergeSecondCombiner(org.roylance.yaorm.ComplexModel.HeuristicCombiner value) {
         if (secondCombinerBuilder_ == null) {
@@ -8259,7 +9050,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public Builder clearSecondCombiner() {
         if (secondCombinerBuilder_ == null) {
@@ -8273,7 +9064,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder getSecondCombinerBuilder() {
         
@@ -8281,7 +9072,7 @@ public final class ComplexModel {
         return getSecondCombinerFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       public org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder() {
         if (secondCombinerBuilder_ != null) {
@@ -8292,7 +9083,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
+       * <code>.org.roylance.yaorm.HeuristicCombiner second_combiner = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.HeuristicCombiner, org.roylance.yaorm.ComplexModel.HeuristicCombiner.Builder, org.roylance.yaorm.ComplexModel.HeuristicCombinerOrBuilder> 
@@ -8310,7 +9101,7 @@ public final class ComplexModel {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -8325,7 +9116,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -8341,7 +9132,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -8354,7 +9145,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public Builder clearDisplay() {
         
@@ -8363,7 +9154,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -8430,35 +9221,35 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
      */
     boolean hasImage();
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestImage getImage();
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder();
 
@@ -8592,7 +9383,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -8607,7 +9398,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -8626,7 +9417,7 @@ public final class ComplexModel {
     public static final int DISPLAY_FIELD_NUMBER = 2;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -8641,7 +9432,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -8660,19 +9451,19 @@ public final class ComplexModel {
     public static final int IMAGE_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.RequestImage image_;
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
      */
     public boolean hasImage() {
       return image_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
       return image_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : image_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+     * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder() {
       return getImage();
@@ -8794,7 +9585,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
@@ -8812,6 +9603,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Form parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Form parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Form parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9090,7 +9892,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -9105,7 +9907,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -9121,7 +9923,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -9134,7 +9936,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -9143,7 +9945,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -9159,7 +9961,7 @@ public final class ComplexModel {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -9174,7 +9976,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -9190,7 +9992,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -9203,7 +10005,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder clearDisplay() {
         
@@ -9212,7 +10014,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -9230,13 +10032,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> imageBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public boolean hasImage() {
         return imageBuilder_ != null || image_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage getImage() {
         if (imageBuilder_ == null) {
@@ -9246,7 +10048,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public Builder setImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -9262,7 +10064,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public Builder setImage(
           org.roylance.yaorm.ComplexModel.RequestImage.Builder builderForValue) {
@@ -9276,7 +10078,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public Builder mergeImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -9294,7 +10096,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -9308,7 +10110,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage.Builder getImageBuilder() {
         
@@ -9316,7 +10118,7 @@ public final class ComplexModel {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getImageOrBuilder() {
         if (imageBuilder_ != null) {
@@ -9327,7 +10129,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage image = 3;</code>
+       * <code>.org.roylance.yaorm.RequestImage image = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> 
@@ -9636,44 +10438,44 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+     * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     boolean hasBackgroundImage();
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+     * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestImage getBackgroundImage();
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+     * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getBackgroundImageOrBuilder();
 
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -9889,7 +10691,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -9904,7 +10706,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -9923,19 +10725,19 @@ public final class ComplexModel {
     public static final int BACKGROUND_IMAGE_FIELD_NUMBER = 2;
     private org.roylance.yaorm.ComplexModel.RequestImage backgroundImage_;
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+     * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     public boolean hasBackgroundImage() {
       return backgroundImage_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+     * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImage getBackgroundImage() {
       return backgroundImage_ == null ? org.roylance.yaorm.ComplexModel.RequestImage.getDefaultInstance() : backgroundImage_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+     * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getBackgroundImageOrBuilder() {
       return getBackgroundImage();
@@ -9944,7 +10746,7 @@ public final class ComplexModel {
     public static final int TITLE_FIELD_NUMBER = 3;
     private volatile java.lang.Object title_;
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -9959,7 +10761,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -9978,7 +10780,7 @@ public final class ComplexModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 4;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -9993,7 +10795,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -10221,7 +11023,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasBackgroundImage()) {
@@ -10249,6 +11051,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.View parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.View parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.View parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10618,7 +11431,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -10633,7 +11446,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -10649,7 +11462,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -10662,7 +11475,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -10671,7 +11484,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -10689,13 +11502,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> backgroundImageBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public boolean hasBackgroundImage() {
         return backgroundImageBuilder_ != null || backgroundImage_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage getBackgroundImage() {
         if (backgroundImageBuilder_ == null) {
@@ -10705,7 +11518,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public Builder setBackgroundImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (backgroundImageBuilder_ == null) {
@@ -10721,7 +11534,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public Builder setBackgroundImage(
           org.roylance.yaorm.ComplexModel.RequestImage.Builder builderForValue) {
@@ -10735,7 +11548,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public Builder mergeBackgroundImage(org.roylance.yaorm.ComplexModel.RequestImage value) {
         if (backgroundImageBuilder_ == null) {
@@ -10753,7 +11566,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public Builder clearBackgroundImage() {
         if (backgroundImageBuilder_ == null) {
@@ -10767,7 +11580,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImage.Builder getBackgroundImageBuilder() {
         
@@ -10775,7 +11588,7 @@ public final class ComplexModel {
         return getBackgroundImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestImageOrBuilder getBackgroundImageOrBuilder() {
         if (backgroundImageBuilder_ != null) {
@@ -10786,7 +11599,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.RequestImage background_image = 2;</code>
+       * <code>.org.roylance.yaorm.RequestImage background_image = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.RequestImage, org.roylance.yaorm.ComplexModel.RequestImage.Builder, org.roylance.yaorm.ComplexModel.RequestImageOrBuilder> 
@@ -10804,7 +11617,7 @@ public final class ComplexModel {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -10819,7 +11632,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -10835,7 +11648,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -10848,7 +11661,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder clearTitle() {
         
@@ -10857,7 +11670,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -10873,7 +11686,7 @@ public final class ComplexModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -10888,7 +11701,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -10904,7 +11717,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -10917,7 +11730,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder clearDescription() {
         
@@ -10926,7 +11739,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -11713,35 +12526,35 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+     * <code>.org.roylance.yaorm.View next_view = 3;</code>
      */
     boolean hasNextView();
     /**
-     * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+     * <code>.org.roylance.yaorm.View next_view = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.View getNextView();
     /**
-     * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+     * <code>.org.roylance.yaorm.View next_view = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.ViewOrBuilder getNextViewOrBuilder();
 
@@ -11770,11 +12583,11 @@ public final class ComplexModel {
         int index);
 
     /**
-     * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+     * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
     int getHeuristicGroupTypeValue();
     /**
-     * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+     * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
     org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType getHeuristicGroupType();
   }
@@ -11980,7 +12793,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -11995,7 +12808,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -12014,7 +12827,7 @@ public final class ComplexModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -12029,7 +12842,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -12048,19 +12861,19 @@ public final class ComplexModel {
     public static final int NEXT_VIEW_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.View nextView_;
     /**
-     * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+     * <code>.org.roylance.yaorm.View next_view = 3;</code>
      */
     public boolean hasNextView() {
       return nextView_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+     * <code>.org.roylance.yaorm.View next_view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.View getNextView() {
       return nextView_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : nextView_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+     * <code>.org.roylance.yaorm.View next_view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.ViewOrBuilder getNextViewOrBuilder() {
       return getNextView();
@@ -12104,13 +12917,13 @@ public final class ComplexModel {
     public static final int HEURISTIC_GROUP_TYPE_FIELD_NUMBER = 5;
     private int heuristicGroupType_;
     /**
-     * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+     * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
     public int getHeuristicGroupTypeValue() {
       return heuristicGroupType_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+     * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType getHeuristicGroupType() {
       org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType result = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.valueOf(heuristicGroupType_);
@@ -12206,7 +13019,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -12226,6 +13039,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Heuristic parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12510,7 +13334,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -12525,7 +13349,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -12541,7 +13365,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -12554,7 +13378,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -12563,7 +13387,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -12579,7 +13403,7 @@ public final class ComplexModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -12594,7 +13418,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -12610,7 +13434,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -12623,7 +13447,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder clearDescription() {
         
@@ -12632,7 +13456,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -12650,13 +13474,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> nextViewBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public boolean hasNextView() {
         return nextViewBuilder_ != null || nextView_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View getNextView() {
         if (nextViewBuilder_ == null) {
@@ -12666,7 +13490,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public Builder setNextView(org.roylance.yaorm.ComplexModel.View value) {
         if (nextViewBuilder_ == null) {
@@ -12682,7 +13506,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public Builder setNextView(
           org.roylance.yaorm.ComplexModel.View.Builder builderForValue) {
@@ -12696,7 +13520,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public Builder mergeNextView(org.roylance.yaorm.ComplexModel.View value) {
         if (nextViewBuilder_ == null) {
@@ -12714,7 +13538,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public Builder clearNextView() {
         if (nextViewBuilder_ == null) {
@@ -12728,7 +13552,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View.Builder getNextViewBuilder() {
         
@@ -12736,7 +13560,7 @@ public final class ComplexModel {
         return getNextViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.ViewOrBuilder getNextViewOrBuilder() {
         if (nextViewBuilder_ != null) {
@@ -12747,7 +13571,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.View next_view = 3;</code>
+       * <code>.org.roylance.yaorm.View next_view = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> 
@@ -13005,13 +13829,13 @@ public final class ComplexModel {
 
       private int heuristicGroupType_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+       * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public int getHeuristicGroupTypeValue() {
         return heuristicGroupType_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+       * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public Builder setHeuristicGroupTypeValue(int value) {
         heuristicGroupType_ = value;
@@ -13019,14 +13843,14 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+       * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType getHeuristicGroupType() {
         org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType result = org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.valueOf(heuristicGroupType_);
         return result == null ? org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+       * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public Builder setHeuristicGroupType(org.roylance.yaorm.ComplexModel.Heuristic.HeuristicGroupType value) {
         if (value == null) {
@@ -13038,7 +13862,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
+       * <code>.org.roylance.yaorm.Heuristic.HeuristicGroupType heuristic_group_type = 5;</code>
        */
       public Builder clearHeuristicGroupType() {
         
@@ -13100,35 +13924,35 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.View view = 3;</code>
+     * <code>.org.roylance.yaorm.View view = 3;</code>
      */
     boolean hasView();
     /**
-     * <code>optional .org.roylance.yaorm.View view = 3;</code>
+     * <code>.org.roylance.yaorm.View view = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.View getView();
     /**
-     * <code>optional .org.roylance.yaorm.View view = 3;</code>
+     * <code>.org.roylance.yaorm.View view = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder();
   }
@@ -13224,7 +14048,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -13239,7 +14063,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -13258,7 +14082,7 @@ public final class ComplexModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -13273,7 +14097,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -13292,19 +14116,19 @@ public final class ComplexModel {
     public static final int VIEW_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.View view_;
     /**
-     * <code>optional .org.roylance.yaorm.View view = 3;</code>
+     * <code>.org.roylance.yaorm.View view = 3;</code>
      */
     public boolean hasView() {
       return view_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.View view = 3;</code>
+     * <code>.org.roylance.yaorm.View view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.View getView() {
       return view_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.View view = 3;</code>
+     * <code>.org.roylance.yaorm.View view = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder() {
       return getView();
@@ -13382,7 +14206,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -13396,6 +14220,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Request parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Request parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Request parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13628,7 +14463,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -13643,7 +14478,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -13659,7 +14494,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -13672,7 +14507,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -13681,7 +14516,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -13697,7 +14532,7 @@ public final class ComplexModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -13712,7 +14547,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -13728,7 +14563,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -13741,7 +14576,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -13750,7 +14585,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -13768,13 +14603,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> viewBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public boolean hasView() {
         return viewBuilder_ != null || view_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View getView() {
         if (viewBuilder_ == null) {
@@ -13784,7 +14619,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public Builder setView(org.roylance.yaorm.ComplexModel.View value) {
         if (viewBuilder_ == null) {
@@ -13800,7 +14635,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public Builder setView(
           org.roylance.yaorm.ComplexModel.View.Builder builderForValue) {
@@ -13814,7 +14649,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public Builder mergeView(org.roylance.yaorm.ComplexModel.View value) {
         if (viewBuilder_ == null) {
@@ -13832,7 +14667,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
@@ -13846,7 +14681,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.View.Builder getViewBuilder() {
         
@@ -13854,7 +14689,7 @@ public final class ComplexModel {
         return getViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder() {
         if (viewBuilder_ != null) {
@@ -13865,7 +14700,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 3;</code>
+       * <code>.org.roylance.yaorm.View view = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> 
@@ -13934,25 +14769,25 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.Request getRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder();
 
@@ -14079,7 +14914,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -14094,7 +14929,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -14113,19 +14948,19 @@ public final class ComplexModel {
     public static final int REQUEST_FIELD_NUMBER = 2;
     private org.roylance.yaorm.ComplexModel.Request request_;
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
       return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -14239,7 +15074,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasRequest()) {
@@ -14255,6 +15090,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Response parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Response parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Response parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14526,7 +15372,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -14541,7 +15387,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -14557,7 +15403,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -14570,7 +15416,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -14579,7 +15425,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -14597,13 +15443,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -14613,7 +15459,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder setRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -14629,7 +15475,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder setRequest(
           org.roylance.yaorm.ComplexModel.Request.Builder builderForValue) {
@@ -14643,7 +15489,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -14661,7 +15507,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -14675,7 +15521,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
         
@@ -14683,7 +15529,7 @@ public final class ComplexModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -14694,7 +15540,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> 
@@ -15003,86 +15849,86 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+     * <code>.org.roylance.yaorm.Question question = 3;</code>
      */
     boolean hasQuestion();
     /**
-     * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+     * <code>.org.roylance.yaorm.Question question = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.Question getQuestion();
     /**
-     * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+     * <code>.org.roylance.yaorm.Question question = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.QuestionOrBuilder getQuestionOrBuilder();
 
     /**
-     * <code>optional string value = 4;</code>
+     * <code>string value = 4;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 4;</code>
+     * <code>string value = 4;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+     * <code>.org.roylance.yaorm.Request request = 5;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+     * <code>.org.roylance.yaorm.Request request = 5;</code>
      */
     org.roylance.yaorm.ComplexModel.Request getRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+     * <code>.org.roylance.yaorm.Request request = 5;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+     * <code>.org.roylance.yaorm.Response response = 6;</code>
      */
     boolean hasResponse();
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+     * <code>.org.roylance.yaorm.Response response = 6;</code>
      */
     org.roylance.yaorm.ComplexModel.Response getResponse();
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+     * <code>.org.roylance.yaorm.Response response = 6;</code>
      */
     org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder();
 
     /**
-     * <code>optional int64 test = 7;</code>
+     * <code>int64 test = 7;</code>
      */
     long getTest();
 
     /**
-     * <code>optional bool test_1 = 8;</code>
+     * <code>bool test_1 = 8;</code>
      */
     boolean getTest1();
 
     /**
-     * <code>optional double test_2 = 9;</code>
+     * <code>double test_2 = 9;</code>
      */
     double getTest2();
   }
@@ -15229,7 +16075,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -15244,7 +16090,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -15263,7 +16109,7 @@ public final class ComplexModel {
     public static final int USER_ID_FIELD_NUMBER = 2;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -15278,7 +16124,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string user_id = 2;</code>
+     * <code>string user_id = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -15297,19 +16143,19 @@ public final class ComplexModel {
     public static final int QUESTION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.Question question_;
     /**
-     * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+     * <code>.org.roylance.yaorm.Question question = 3;</code>
      */
     public boolean hasQuestion() {
       return question_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+     * <code>.org.roylance.yaorm.Question question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Question getQuestion() {
       return question_ == null ? org.roylance.yaorm.ComplexModel.Question.getDefaultInstance() : question_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+     * <code>.org.roylance.yaorm.Question question = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getQuestionOrBuilder() {
       return getQuestion();
@@ -15318,7 +16164,7 @@ public final class ComplexModel {
     public static final int VALUE_FIELD_NUMBER = 4;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 4;</code>
+     * <code>string value = 4;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -15333,7 +16179,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string value = 4;</code>
+     * <code>string value = 4;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -15352,19 +16198,19 @@ public final class ComplexModel {
     public static final int REQUEST_FIELD_NUMBER = 5;
     private org.roylance.yaorm.ComplexModel.Request request_;
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+     * <code>.org.roylance.yaorm.Request request = 5;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+     * <code>.org.roylance.yaorm.Request request = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
       return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+     * <code>.org.roylance.yaorm.Request request = 5;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -15373,19 +16219,19 @@ public final class ComplexModel {
     public static final int RESPONSE_FIELD_NUMBER = 6;
     private org.roylance.yaorm.ComplexModel.Response response_;
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+     * <code>.org.roylance.yaorm.Response response = 6;</code>
      */
     public boolean hasResponse() {
       return response_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+     * <code>.org.roylance.yaorm.Response response = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.Response getResponse() {
       return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+     * <code>.org.roylance.yaorm.Response response = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
@@ -15394,7 +16240,7 @@ public final class ComplexModel {
     public static final int TEST_FIELD_NUMBER = 7;
     private long test_;
     /**
-     * <code>optional int64 test = 7;</code>
+     * <code>int64 test = 7;</code>
      */
     public long getTest() {
       return test_;
@@ -15403,7 +16249,7 @@ public final class ComplexModel {
     public static final int TEST_1_FIELD_NUMBER = 8;
     private boolean test1_;
     /**
-     * <code>optional bool test_1 = 8;</code>
+     * <code>bool test_1 = 8;</code>
      */
     public boolean getTest1() {
       return test1_;
@@ -15412,7 +16258,7 @@ public final class ComplexModel {
     public static final int TEST_2_FIELD_NUMBER = 9;
     private double test2_;
     /**
-     * <code>optional double test_2 = 9;</code>
+     * <code>double test_2 = 9;</code>
      */
     public double getTest2() {
       return test2_;
@@ -15551,7 +16397,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + USER_ID_FIELD_NUMBER;
@@ -15584,6 +16430,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.Answer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15869,7 +16726,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -15884,7 +16741,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -15900,7 +16757,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -15913,7 +16770,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -15922,7 +16779,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -15938,7 +16795,7 @@ public final class ComplexModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -15953,7 +16810,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -15969,7 +16826,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -15982,7 +16839,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public Builder clearUserId() {
         
@@ -15991,7 +16848,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 2;</code>
+       * <code>string user_id = 2;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -16009,13 +16866,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> questionBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public boolean hasQuestion() {
         return questionBuilder_ != null || question_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question getQuestion() {
         if (questionBuilder_ == null) {
@@ -16025,7 +16882,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public Builder setQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (questionBuilder_ == null) {
@@ -16041,7 +16898,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public Builder setQuestion(
           org.roylance.yaorm.ComplexModel.Question.Builder builderForValue) {
@@ -16055,7 +16912,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public Builder mergeQuestion(org.roylance.yaorm.ComplexModel.Question value) {
         if (questionBuilder_ == null) {
@@ -16073,7 +16930,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public Builder clearQuestion() {
         if (questionBuilder_ == null) {
@@ -16087,7 +16944,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Question.Builder getQuestionBuilder() {
         
@@ -16095,7 +16952,7 @@ public final class ComplexModel {
         return getQuestionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.QuestionOrBuilder getQuestionOrBuilder() {
         if (questionBuilder_ != null) {
@@ -16106,7 +16963,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Question question = 3;</code>
+       * <code>.org.roylance.yaorm.Question question = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Question, org.roylance.yaorm.ComplexModel.Question.Builder, org.roylance.yaorm.ComplexModel.QuestionOrBuilder> 
@@ -16124,7 +16981,7 @@ public final class ComplexModel {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 4;</code>
+       * <code>string value = 4;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -16139,7 +16996,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string value = 4;</code>
+       * <code>string value = 4;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -16155,7 +17012,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string value = 4;</code>
+       * <code>string value = 4;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -16168,7 +17025,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string value = 4;</code>
+       * <code>string value = 4;</code>
        */
       public Builder clearValue() {
         
@@ -16177,7 +17034,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string value = 4;</code>
+       * <code>string value = 4;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -16195,13 +17052,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -16211,7 +17068,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public Builder setRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -16227,7 +17084,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public Builder setRequest(
           org.roylance.yaorm.ComplexModel.Request.Builder builderForValue) {
@@ -16241,7 +17098,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -16259,7 +17116,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -16273,7 +17130,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
         
@@ -16281,7 +17138,7 @@ public final class ComplexModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -16292,7 +17149,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 5;</code>
+       * <code>.org.roylance.yaorm.Request request = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> 
@@ -16312,13 +17169,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> responseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public boolean hasResponse() {
         return responseBuilder_ != null || response_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response getResponse() {
         if (responseBuilder_ == null) {
@@ -16328,7 +17185,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public Builder setResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
@@ -16344,7 +17201,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public Builder setResponse(
           org.roylance.yaorm.ComplexModel.Response.Builder builderForValue) {
@@ -16358,7 +17215,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public Builder mergeResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
@@ -16376,7 +17233,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
@@ -16390,7 +17247,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response.Builder getResponseBuilder() {
         
@@ -16398,7 +17255,7 @@ public final class ComplexModel {
         return getResponseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
@@ -16409,7 +17266,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 6;</code>
+       * <code>.org.roylance.yaorm.Response response = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> 
@@ -16427,13 +17284,13 @@ public final class ComplexModel {
 
       private long test_ ;
       /**
-       * <code>optional int64 test = 7;</code>
+       * <code>int64 test = 7;</code>
        */
       public long getTest() {
         return test_;
       }
       /**
-       * <code>optional int64 test = 7;</code>
+       * <code>int64 test = 7;</code>
        */
       public Builder setTest(long value) {
         
@@ -16442,7 +17299,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional int64 test = 7;</code>
+       * <code>int64 test = 7;</code>
        */
       public Builder clearTest() {
         
@@ -16453,13 +17310,13 @@ public final class ComplexModel {
 
       private boolean test1_ ;
       /**
-       * <code>optional bool test_1 = 8;</code>
+       * <code>bool test_1 = 8;</code>
        */
       public boolean getTest1() {
         return test1_;
       }
       /**
-       * <code>optional bool test_1 = 8;</code>
+       * <code>bool test_1 = 8;</code>
        */
       public Builder setTest1(boolean value) {
         
@@ -16468,7 +17325,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional bool test_1 = 8;</code>
+       * <code>bool test_1 = 8;</code>
        */
       public Builder clearTest1() {
         
@@ -16479,13 +17336,13 @@ public final class ComplexModel {
 
       private double test2_ ;
       /**
-       * <code>optional double test_2 = 9;</code>
+       * <code>double test_2 = 9;</code>
        */
       public double getTest2() {
         return test2_;
       }
       /**
-       * <code>optional double test_2 = 9;</code>
+       * <code>double test_2 = 9;</code>
        */
       public Builder setTest2(double value) {
         
@@ -16494,7 +17351,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional double test_2 = 9;</code>
+       * <code>double test_2 = 9;</code>
        */
       public Builder clearTest2() {
         
@@ -16556,47 +17413,47 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     boolean hasResponse();
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.Response getResponse();
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     boolean hasBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.Beacon getBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder();
 
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
@@ -16706,7 +17563,7 @@ public final class ComplexModel {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -16721,7 +17578,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -16740,19 +17597,19 @@ public final class ComplexModel {
     public static final int RESPONSE_FIELD_NUMBER = 2;
     private org.roylance.yaorm.ComplexModel.Response response_;
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     public boolean hasResponse() {
       return response_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Response getResponse() {
       return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
@@ -16761,19 +17618,19 @@ public final class ComplexModel {
     public static final int BEACON_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.Beacon beacon_;
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
       return beacon_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
       return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
       return getBeacon();
@@ -16782,7 +17639,7 @@ public final class ComplexModel {
     public static final int USER_ID_FIELD_NUMBER = 4;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -16797,7 +17654,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -16897,7 +17754,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       if (hasResponse()) {
@@ -16915,6 +17772,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.UINaruRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17161,7 +18029,7 @@ public final class ComplexModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -17176,7 +18044,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -17192,7 +18060,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -17205,7 +18073,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -17214,7 +18082,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -17232,13 +18100,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> responseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public boolean hasResponse() {
         return responseBuilder_ != null || response_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response getResponse() {
         if (responseBuilder_ == null) {
@@ -17248,7 +18116,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder setResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
@@ -17264,7 +18132,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder setResponse(
           org.roylance.yaorm.ComplexModel.Response.Builder builderForValue) {
@@ -17278,7 +18146,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder mergeResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
@@ -17296,7 +18164,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
@@ -17310,7 +18178,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response.Builder getResponseBuilder() {
         
@@ -17318,7 +18186,7 @@ public final class ComplexModel {
         return getResponseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
@@ -17329,7 +18197,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> 
@@ -17349,13 +18217,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
         return beaconBuilder_ != null || beacon_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
@@ -17365,7 +18233,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -17381,7 +18249,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(
           org.roylance.yaorm.ComplexModel.Beacon.Builder builderForValue) {
@@ -17395,7 +18263,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -17413,7 +18281,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
@@ -17427,7 +18295,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
         
@@ -17435,7 +18303,7 @@ public final class ComplexModel {
         return getBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
         if (beaconBuilder_ != null) {
@@ -17446,7 +18314,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> 
@@ -17464,7 +18332,7 @@ public final class ComplexModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -17479,7 +18347,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -17495,7 +18363,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -17508,7 +18376,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public Builder clearUserId() {
         
@@ -17517,7 +18385,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -17584,20 +18452,20 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool successful = 1;</code>
+     * <code>bool successful = 1;</code>
      */
     boolean getSuccessful();
 
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.Request getRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder();
   }
@@ -17685,7 +18553,7 @@ public final class ComplexModel {
     public static final int SUCCESSFUL_FIELD_NUMBER = 1;
     private boolean successful_;
     /**
-     * <code>optional bool successful = 1;</code>
+     * <code>bool successful = 1;</code>
      */
     public boolean getSuccessful() {
       return successful_;
@@ -17694,19 +18562,19 @@ public final class ComplexModel {
     public static final int REQUEST_FIELD_NUMBER = 2;
     private org.roylance.yaorm.ComplexModel.Request request_;
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
       return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+     * <code>.org.roylance.yaorm.Request request = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -17777,7 +18645,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SUCCESSFUL_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuccessful());
@@ -17790,6 +18658,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.UINaruResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18014,13 +18893,13 @@ public final class ComplexModel {
 
       private boolean successful_ ;
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public boolean getSuccessful() {
         return successful_;
       }
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public Builder setSuccessful(boolean value) {
         
@@ -18029,7 +18908,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public Builder clearSuccessful() {
         
@@ -18042,13 +18921,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -18058,7 +18937,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder setRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -18074,7 +18953,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder setRequest(
           org.roylance.yaorm.ComplexModel.Request.Builder builderForValue) {
@@ -18088,7 +18967,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -18106,7 +18985,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -18120,7 +18999,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
         
@@ -18128,7 +19007,7 @@ public final class ComplexModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -18139,7 +19018,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 2;</code>
+       * <code>.org.roylance.yaorm.Request request = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> 
@@ -18208,74 +19087,74 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     boolean hasResponse();
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.Response getResponse();
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     boolean hasBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.Beacon getBeacon();
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.Request getRequest();
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder();
 
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.View view = 6;</code>
+     * <code>.org.roylance.yaorm.View view = 6;</code>
      */
     boolean hasView();
     /**
-     * <code>optional .org.roylance.yaorm.View view = 6;</code>
+     * <code>.org.roylance.yaorm.View view = 6;</code>
      */
     org.roylance.yaorm.ComplexModel.View getView();
     /**
-     * <code>optional .org.roylance.yaorm.View view = 6;</code>
+     * <code>.org.roylance.yaorm.View view = 6;</code>
      */
     org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder();
   }
@@ -18410,7 +19289,7 @@ public final class ComplexModel {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -18425,7 +19304,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -18444,19 +19323,19 @@ public final class ComplexModel {
     public static final int RESPONSE_FIELD_NUMBER = 2;
     private org.roylance.yaorm.ComplexModel.Response response_;
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     public boolean hasResponse() {
       return response_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.Response getResponse() {
       return response_ == null ? org.roylance.yaorm.ComplexModel.Response.getDefaultInstance() : response_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+     * <code>.org.roylance.yaorm.Response response = 2;</code>
      */
     public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
@@ -18465,19 +19344,19 @@ public final class ComplexModel {
     public static final int BEACON_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.Beacon beacon_;
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
       return beacon_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
       return beacon_ == null ? org.roylance.yaorm.ComplexModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+     * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
       return getBeacon();
@@ -18486,19 +19365,19 @@ public final class ComplexModel {
     public static final int REQUEST_FIELD_NUMBER = 4;
     private org.roylance.yaorm.ComplexModel.Request request_;
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.Request getRequest() {
       return request_ == null ? org.roylance.yaorm.ComplexModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+     * <code>.org.roylance.yaorm.Request request = 4;</code>
      */
     public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -18507,7 +19386,7 @@ public final class ComplexModel {
     public static final int USER_ID_FIELD_NUMBER = 5;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -18522,7 +19401,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -18541,19 +19420,19 @@ public final class ComplexModel {
     public static final int VIEW_FIELD_NUMBER = 6;
     private org.roylance.yaorm.ComplexModel.View view_;
     /**
-     * <code>optional .org.roylance.yaorm.View view = 6;</code>
+     * <code>.org.roylance.yaorm.View view = 6;</code>
      */
     public boolean hasView() {
       return view_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.View view = 6;</code>
+     * <code>.org.roylance.yaorm.View view = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.View getView() {
       return view_ == null ? org.roylance.yaorm.ComplexModel.View.getDefaultInstance() : view_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.View view = 6;</code>
+     * <code>.org.roylance.yaorm.View view = 6;</code>
      */
     public org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder() {
       return getView();
@@ -18667,7 +19546,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       if (hasResponse()) {
@@ -18693,6 +19572,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18967,7 +19857,7 @@ public final class ComplexModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -18982,7 +19872,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -18998,7 +19888,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -19011,7 +19901,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -19020,7 +19910,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -19038,13 +19928,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> responseBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public boolean hasResponse() {
         return responseBuilder_ != null || response_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response getResponse() {
         if (responseBuilder_ == null) {
@@ -19054,7 +19944,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder setResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
@@ -19070,7 +19960,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder setResponse(
           org.roylance.yaorm.ComplexModel.Response.Builder builderForValue) {
@@ -19084,7 +19974,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder mergeResponse(org.roylance.yaorm.ComplexModel.Response value) {
         if (responseBuilder_ == null) {
@@ -19102,7 +19992,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
@@ -19116,7 +20006,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.Response.Builder getResponseBuilder() {
         
@@ -19124,7 +20014,7 @@ public final class ComplexModel {
         return getResponseFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       public org.roylance.yaorm.ComplexModel.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
@@ -19135,7 +20025,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Response response = 2;</code>
+       * <code>.org.roylance.yaorm.Response response = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Response, org.roylance.yaorm.ComplexModel.Response.Builder, org.roylance.yaorm.ComplexModel.ResponseOrBuilder> 
@@ -19155,13 +20045,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> beaconBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
         return beaconBuilder_ != null || beacon_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
@@ -19171,7 +20061,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -19187,7 +20077,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(
           org.roylance.yaorm.ComplexModel.Beacon.Builder builderForValue) {
@@ -19201,7 +20091,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder mergeBeacon(org.roylance.yaorm.ComplexModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -19219,7 +20109,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
@@ -19233,7 +20123,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.Beacon.Builder getBeaconBuilder() {
         
@@ -19241,7 +20131,7 @@ public final class ComplexModel {
         return getBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.BeaconOrBuilder getBeaconOrBuilder() {
         if (beaconBuilder_ != null) {
@@ -19252,7 +20142,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Beacon beacon = 3;</code>
+       * <code>.org.roylance.yaorm.Beacon beacon = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Beacon, org.roylance.yaorm.ComplexModel.Beacon.Builder, org.roylance.yaorm.ComplexModel.BeaconOrBuilder> 
@@ -19272,13 +20162,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -19288,7 +20178,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder setRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -19304,7 +20194,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder setRequest(
           org.roylance.yaorm.ComplexModel.Request.Builder builderForValue) {
@@ -19318,7 +20208,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder mergeRequest(org.roylance.yaorm.ComplexModel.Request value) {
         if (requestBuilder_ == null) {
@@ -19336,7 +20226,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -19350,7 +20240,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.Request.Builder getRequestBuilder() {
         
@@ -19358,7 +20248,7 @@ public final class ComplexModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       public org.roylance.yaorm.ComplexModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -19369,7 +20259,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Request request = 4;</code>
+       * <code>.org.roylance.yaorm.Request request = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.Request, org.roylance.yaorm.ComplexModel.Request.Builder, org.roylance.yaorm.ComplexModel.RequestOrBuilder> 
@@ -19387,7 +20277,7 @@ public final class ComplexModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -19402,7 +20292,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -19418,7 +20308,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -19431,7 +20321,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public Builder clearUserId() {
         
@@ -19440,7 +20330,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -19458,13 +20348,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> viewBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public boolean hasView() {
         return viewBuilder_ != null || view_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.View getView() {
         if (viewBuilder_ == null) {
@@ -19474,7 +20364,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public Builder setView(org.roylance.yaorm.ComplexModel.View value) {
         if (viewBuilder_ == null) {
@@ -19490,7 +20380,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public Builder setView(
           org.roylance.yaorm.ComplexModel.View.Builder builderForValue) {
@@ -19504,7 +20394,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public Builder mergeView(org.roylance.yaorm.ComplexModel.View value) {
         if (viewBuilder_ == null) {
@@ -19522,7 +20412,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
@@ -19536,7 +20426,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.View.Builder getViewBuilder() {
         
@@ -19544,7 +20434,7 @@ public final class ComplexModel {
         return getViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       public org.roylance.yaorm.ComplexModel.ViewOrBuilder getViewOrBuilder() {
         if (viewBuilder_ != null) {
@@ -19555,7 +20445,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.View view = 6;</code>
+       * <code>.org.roylance.yaorm.View view = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.View, org.roylance.yaorm.ComplexModel.View.Builder, org.roylance.yaorm.ComplexModel.ViewOrBuilder> 
@@ -19972,7 +20862,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getRequestsCount() > 0) {
         hash = (37 * hash) + REQUESTS_FIELD_NUMBER;
         hash = (53 * hash) + getRequestsList().hashCode();
@@ -19990,6 +20880,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.UINaruAdminResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21093,35 +21994,35 @@ public final class ComplexModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+     * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
      */
     boolean hasParent();
     /**
-     * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+     * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.MappedFile getParent();
     /**
-     * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+     * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
      */
     org.roylance.yaorm.ComplexModel.MappedFileOrBuilder getParentOrBuilder();
 
@@ -21255,7 +22156,7 @@ public final class ComplexModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -21270,7 +22171,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -21289,7 +22190,7 @@ public final class ComplexModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -21304,7 +22205,7 @@ public final class ComplexModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -21323,19 +22224,19 @@ public final class ComplexModel {
     public static final int PARENT_FIELD_NUMBER = 3;
     private org.roylance.yaorm.ComplexModel.MappedFile parent_;
     /**
-     * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+     * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
      */
     public boolean hasParent() {
       return parent_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+     * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.MappedFile getParent() {
       return parent_ == null ? org.roylance.yaorm.ComplexModel.MappedFile.getDefaultInstance() : parent_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+     * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
      */
     public org.roylance.yaorm.ComplexModel.MappedFileOrBuilder getParentOrBuilder() {
       return getParent();
@@ -21457,7 +22358,7 @@ public final class ComplexModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -21475,6 +22376,17 @@ public final class ComplexModel {
       return hash;
     }
 
+    public static org.roylance.yaorm.ComplexModel.MappedFile parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.ComplexModel.MappedFile parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.ComplexModel.MappedFile parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21753,7 +22665,7 @@ public final class ComplexModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -21768,7 +22680,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -21784,7 +22696,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -21797,7 +22709,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -21806,7 +22718,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -21822,7 +22734,7 @@ public final class ComplexModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -21837,7 +22749,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -21853,7 +22765,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -21866,7 +22778,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -21875,7 +22787,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -21893,13 +22805,13 @@ public final class ComplexModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.MappedFile, org.roylance.yaorm.ComplexModel.MappedFile.Builder, org.roylance.yaorm.ComplexModel.MappedFileOrBuilder> parentBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public boolean hasParent() {
         return parentBuilder_ != null || parent_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.MappedFile getParent() {
         if (parentBuilder_ == null) {
@@ -21909,7 +22821,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public Builder setParent(org.roylance.yaorm.ComplexModel.MappedFile value) {
         if (parentBuilder_ == null) {
@@ -21925,7 +22837,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public Builder setParent(
           org.roylance.yaorm.ComplexModel.MappedFile.Builder builderForValue) {
@@ -21939,7 +22851,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public Builder mergeParent(org.roylance.yaorm.ComplexModel.MappedFile value) {
         if (parentBuilder_ == null) {
@@ -21957,7 +22869,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public Builder clearParent() {
         if (parentBuilder_ == null) {
@@ -21971,7 +22883,7 @@ public final class ComplexModel {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.MappedFile.Builder getParentBuilder() {
         
@@ -21979,7 +22891,7 @@ public final class ComplexModel {
         return getParentFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       public org.roylance.yaorm.ComplexModel.MappedFileOrBuilder getParentOrBuilder() {
         if (parentBuilder_ != null) {
@@ -21990,7 +22902,7 @@ public final class ComplexModel {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.MappedFile parent = 3;</code>
+       * <code>.org.roylance.yaorm.MappedFile parent = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.ComplexModel.MappedFile, org.roylance.yaorm.ComplexModel.MappedFile.Builder, org.roylance.yaorm.ComplexModel.MappedFileOrBuilder> 
@@ -22413,67 +23325,71 @@ public final class ComplexModel {
       "\022\022\n\nform_order\030\002 \001(\005\022\017\n\007display\030\003 \001(\t\022/\n" +
       "\005image\030\004 \001(\0132 .org.roylance.yaorm.Reques" +
       "tImage\022<\n\020expected_answers\030\005 \003(\0132\".org.r" +
-      "oylance.yaorm.ExpectedAnswer\"5\n\nValidati" +
-      "on\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\003 " +
-      "\001(\t\"\344\003\n\021HeuristicCombiner\022\n\n\002id\030\001 \001(\t\0228\n" +
-      "\004type\030\002 \001(\0162*.org.roylance.yaorm.Heurist" +
-      "icCombiner.Type\0224\n\016first_question\030\003 \001(\0132",
-      "\034.org.roylance.yaorm.Question\0228\n\020first_v" +
-      "alidation\030\004 \001(\0132\036.org.roylance.yaorm.Val" +
-      "idation\022=\n\016first_combiner\030\005 \001(\0132%.org.ro" +
-      "ylance.yaorm.HeuristicCombiner\0225\n\017second" +
-      "_question\030\006 \001(\0132\034.org.roylance.yaorm.Que" +
-      "stion\0229\n\021second_validation\030\007 \001(\0132\036.org.r" +
-      "oylance.yaorm.Validation\022>\n\017second_combi" +
-      "ner\030\010 \001(\0132%.org.roylance.yaorm.Heuristic" +
-      "Combiner\022\017\n\007display\030\t \001(\t\"\027\n\004Type\022\007\n\003AND" +
-      "\020\000\022\006\n\002OR\020\001\"\205\001\n\004Form\022\n\n\002id\030\001 \001(\t\022\017\n\007displ",
-      "ay\030\002 \001(\t\022/\n\005image\030\003 \001(\0132 .org.roylance.y" +
-      "aorm.RequestImage\022/\n\tquestions\030\004 \003(\0132\034.o" +
-      "rg.roylance.yaorm.Question\"\203\002\n\004View\022\n\n\002i" +
-      "d\030\001 \001(\t\022:\n\020background_image\030\002 \001(\0132 .org." +
-      "roylance.yaorm.RequestImage\022\r\n\005title\030\003 \001" +
-      "(\t\022\023\n\013description\030\004 \001(\t\022\'\n\005forms\030\005 \003(\0132\030" +
-      ".org.roylance.yaorm.Form\0221\n\nheuristics\030\006" +
-      " \003(\0132\035.org.roylance.yaorm.Heuristic\0223\n\013v" +
-      "alidations\030\007 \003(\0132\036.org.roylance.yaorm.Va" +
-      "lidation\"\217\002\n\tHeuristic\022\n\n\002id\030\001 \001(\t\022\023\n\013de",
-      "scription\030\002 \001(\t\022+\n\tnext_view\030\003 \001(\0132\030.org" +
-      ".roylance.yaorm.View\022B\n\023heuristic_combin" +
-      "ers\030\004 \003(\0132%.org.roylance.yaorm.Heuristic" +
-      "Combiner\022N\n\024heuristic_group_type\030\005 \001(\01620" +
-      ".org.roylance.yaorm.Heuristic.HeuristicG" +
-      "roupType\" \n\022HeuristicGroupType\022\n\n\006BUTTON" +
-      "\020\000\"K\n\007Request\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022" +
-      "&\n\004view\030\003 \001(\0132\030.org.roylance.yaorm.View\"" +
-      "q\n\010Response\022\n\n\002id\030\001 \001(\t\022,\n\007request\030\002 \001(\013" +
-      "2\033.org.roylance.yaorm.Request\022+\n\007answers",
-      "\030\003 \003(\0132\032.org.roylance.yaorm.Answer\"\360\001\n\006A" +
-      "nswer\022\n\n\002id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022.\n\010qu" +
-      "estion\030\003 \001(\0132\034.org.roylance.yaorm.Questi" +
-      "on\022\r\n\005value\030\004 \001(\t\022,\n\007request\030\005 \001(\0132\033.org" +
-      ".roylance.yaorm.Request\022.\n\010response\030\006 \001(" +
-      "\0132\034.org.roylance.yaorm.Response\022\014\n\004test\030" +
-      "\007 \001(\003\022\016\n\006test_1\030\010 \001(\010\022\016\n\006test_2\030\t \001(\001\"\213\001" +
-      "\n\rUINaruRequest\022\r\n\005token\030\001 \001(\t\022.\n\010respon" +
-      "se\030\002 \001(\0132\034.org.roylance.yaorm.Response\022*" +
-      "\n\006beacon\030\003 \001(\0132\032.org.roylance.yaorm.Beac",
-      "on\022\017\n\007user_id\030\004 \001(\t\"R\n\016UINaruResponse\022\022\n" +
-      "\nsuccessful\030\001 \001(\010\022,\n\007request\030\002 \001(\0132\033.org" +
-      ".roylance.yaorm.Request\"\346\001\n\022UINaruAdminR" +
-      "equest\022\r\n\005token\030\001 \001(\t\022.\n\010response\030\002 \001(\0132" +
-      "\034.org.roylance.yaorm.Response\022*\n\006beacon\030" +
-      "\003 \001(\0132\032.org.roylance.yaorm.Beacon\022,\n\007req" +
-      "uest\030\004 \001(\0132\033.org.roylance.yaorm.Request\022" +
-      "\017\n\007user_id\030\005 \001(\t\022&\n\004view\030\006 \001(\0132\030.org.roy" +
-      "lance.yaorm.View\"\232\001\n\023UINaruAdminResponse" +
-      "\022-\n\010requests\030\001 \003(\0132\033.org.roylance.yaorm.",
-      "Request\022+\n\007beacons\030\002 \003(\0132\032.org.roylance." +
-      "yaorm.Beacon\022\'\n\005views\030\003 \003(\0132\030.org.roylan" +
-      "ce.yaorm.View\"\210\001\n\nMappedFile\022\n\n\002id\030\001 \001(\t" +
-      "\022\014\n\004name\030\002 \001(\t\022.\n\006parent\030\003 \001(\0132\036.org.roy" +
-      "lance.yaorm.MappedFile\0220\n\010children\030\004 \003(\013" +
-      "2\036.org.roylance.yaorm.MappedFileb\006proto3"
+      "oylance.yaorm.ExpectedAnswer\"\261\001\n\nValidat" +
+      "ion\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\003" +
+      " \001(\t\022\021\n\tparent_id\030\004 \001(\t\0220\n\010children\030\005 \003(" +
+      "\0132\036.org.roylance.yaorm.Validation\0225\n\ract" +
+      "ual_parent\030\006 \001(\0132\036.org.roylance.yaorm.Va",
+      "lidation\"\344\003\n\021HeuristicCombiner\022\n\n\002id\030\001 \001" +
+      "(\t\0228\n\004type\030\002 \001(\0162*.org.roylance.yaorm.He" +
+      "uristicCombiner.Type\0224\n\016first_question\030\003" +
+      " \001(\0132\034.org.roylance.yaorm.Question\0228\n\020fi" +
+      "rst_validation\030\004 \001(\0132\036.org.roylance.yaor" +
+      "m.Validation\022=\n\016first_combiner\030\005 \001(\0132%.o" +
+      "rg.roylance.yaorm.HeuristicCombiner\0225\n\017s" +
+      "econd_question\030\006 \001(\0132\034.org.roylance.yaor" +
+      "m.Question\0229\n\021second_validation\030\007 \001(\0132\036." +
+      "org.roylance.yaorm.Validation\022>\n\017second_",
+      "combiner\030\010 \001(\0132%.org.roylance.yaorm.Heur" +
+      "isticCombiner\022\017\n\007display\030\t \001(\t\"\027\n\004Type\022\007" +
+      "\n\003AND\020\000\022\006\n\002OR\020\001\"\205\001\n\004Form\022\n\n\002id\030\001 \001(\t\022\017\n\007" +
+      "display\030\002 \001(\t\022/\n\005image\030\003 \001(\0132 .org.royla" +
+      "nce.yaorm.RequestImage\022/\n\tquestions\030\004 \003(" +
+      "\0132\034.org.roylance.yaorm.Question\"\203\002\n\004View" +
+      "\022\n\n\002id\030\001 \001(\t\022:\n\020background_image\030\002 \001(\0132 " +
+      ".org.roylance.yaorm.RequestImage\022\r\n\005titl" +
+      "e\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\022\'\n\005forms\030\005 " +
+      "\003(\0132\030.org.roylance.yaorm.Form\0221\n\nheurist",
+      "ics\030\006 \003(\0132\035.org.roylance.yaorm.Heuristic" +
+      "\0223\n\013validations\030\007 \003(\0132\036.org.roylance.yao" +
+      "rm.Validation\"\217\002\n\tHeuristic\022\n\n\002id\030\001 \001(\t\022" +
+      "\023\n\013description\030\002 \001(\t\022+\n\tnext_view\030\003 \001(\0132" +
+      "\030.org.roylance.yaorm.View\022B\n\023heuristic_c" +
+      "ombiners\030\004 \003(\0132%.org.roylance.yaorm.Heur" +
+      "isticCombiner\022N\n\024heuristic_group_type\030\005 " +
+      "\001(\01620.org.roylance.yaorm.Heuristic.Heuri" +
+      "sticGroupType\" \n\022HeuristicGroupType\022\n\n\006B" +
+      "UTTON\020\000\"K\n\007Request\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002",
+      " \001(\t\022&\n\004view\030\003 \001(\0132\030.org.roylance.yaorm." +
+      "View\"q\n\010Response\022\n\n\002id\030\001 \001(\t\022,\n\007request\030" +
+      "\002 \001(\0132\033.org.roylance.yaorm.Request\022+\n\007an" +
+      "swers\030\003 \003(\0132\032.org.roylance.yaorm.Answer\"" +
+      "\360\001\n\006Answer\022\n\n\002id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022" +
+      ".\n\010question\030\003 \001(\0132\034.org.roylance.yaorm.Q" +
+      "uestion\022\r\n\005value\030\004 \001(\t\022,\n\007request\030\005 \001(\0132" +
+      "\033.org.roylance.yaorm.Request\022.\n\010response" +
+      "\030\006 \001(\0132\034.org.roylance.yaorm.Response\022\014\n\004" +
+      "test\030\007 \001(\003\022\016\n\006test_1\030\010 \001(\010\022\016\n\006test_2\030\t \001",
+      "(\001\"\213\001\n\rUINaruRequest\022\r\n\005token\030\001 \001(\t\022.\n\010r" +
+      "esponse\030\002 \001(\0132\034.org.roylance.yaorm.Respo" +
+      "nse\022*\n\006beacon\030\003 \001(\0132\032.org.roylance.yaorm" +
+      ".Beacon\022\017\n\007user_id\030\004 \001(\t\"R\n\016UINaruRespon" +
+      "se\022\022\n\nsuccessful\030\001 \001(\010\022,\n\007request\030\002 \001(\0132" +
+      "\033.org.roylance.yaorm.Request\"\346\001\n\022UINaruA" +
+      "dminRequest\022\r\n\005token\030\001 \001(\t\022.\n\010response\030\002" +
+      " \001(\0132\034.org.roylance.yaorm.Response\022*\n\006be" +
+      "acon\030\003 \001(\0132\032.org.roylance.yaorm.Beacon\022," +
+      "\n\007request\030\004 \001(\0132\033.org.roylance.yaorm.Req",
+      "uest\022\017\n\007user_id\030\005 \001(\t\022&\n\004view\030\006 \001(\0132\030.or" +
+      "g.roylance.yaorm.View\"\232\001\n\023UINaruAdminRes" +
+      "ponse\022-\n\010requests\030\001 \003(\0132\033.org.roylance.y" +
+      "aorm.Request\022+\n\007beacons\030\002 \003(\0132\032.org.royl" +
+      "ance.yaorm.Beacon\022\'\n\005views\030\003 \003(\0132\030.org.r" +
+      "oylance.yaorm.View\"\210\001\n\nMappedFile\022\n\n\002id\030" +
+      "\001 \001(\t\022\014\n\004name\030\002 \001(\t\022.\n\006parent\030\003 \001(\0132\036.or" +
+      "g.roylance.yaorm.MappedFile\0220\n\010children\030" +
+      "\004 \003(\0132\036.org.roylance.yaorm.MappedFileb\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -22528,7 +23444,7 @@ public final class ComplexModel {
     internal_static_org_roylance_yaorm_Validation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_roylance_yaorm_Validation_descriptor,
-        new java.lang.String[] { "Id", "Name", "Value", });
+        new java.lang.String[] { "Id", "Name", "Value", "ParentId", "Children", "ActualParent", });
     internal_static_org_roylance_yaorm_HeuristicCombiner_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_org_roylance_yaorm_HeuristicCombiner_fieldAccessorTable = new

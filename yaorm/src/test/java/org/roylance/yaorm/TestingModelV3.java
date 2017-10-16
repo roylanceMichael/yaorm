@@ -393,56 +393,56 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string ip = 2;</code>
+     * <code>string ip = 2;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>optional string ip = 2;</code>
+     * <code>string ip = 2;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>optional string port = 3;</code>
+     * <code>string port = 3;</code>
      */
     java.lang.String getPort();
     /**
-     * <code>optional string port = 3;</code>
+     * <code>string port = 3;</code>
      */
     com.google.protobuf.ByteString
         getPortBytes();
 
     /**
-     * <code>optional string host = 4;</code>
+     * <code>string host = 4;</code>
      */
     java.lang.String getHost();
     /**
-     * <code>optional string host = 4;</code>
+     * <code>string host = 4;</code>
      */
     com.google.protobuf.ByteString
         getHostBytes();
 
     /**
-     * <code>optional uint64 initialized_time = 5;</code>
+     * <code>uint64 initialized_time = 5;</code>
      */
     long getInitializedTime();
 
     /**
-     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
      */
     int getStateValue();
     /**
-     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
      */
     org.roylance.yaorm.TestingModelV3.WorkerState getState();
   }
@@ -552,7 +552,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -567,7 +567,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -586,7 +586,7 @@ public final class TestingModelV3 {
     public static final int IP_FIELD_NUMBER = 2;
     private volatile java.lang.Object ip_;
     /**
-     * <code>optional string ip = 2;</code>
+     * <code>string ip = 2;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -601,7 +601,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string ip = 2;</code>
+     * <code>string ip = 2;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -620,7 +620,7 @@ public final class TestingModelV3 {
     public static final int PORT_FIELD_NUMBER = 3;
     private volatile java.lang.Object port_;
     /**
-     * <code>optional string port = 3;</code>
+     * <code>string port = 3;</code>
      */
     public java.lang.String getPort() {
       java.lang.Object ref = port_;
@@ -635,7 +635,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string port = 3;</code>
+     * <code>string port = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPortBytes() {
@@ -654,7 +654,7 @@ public final class TestingModelV3 {
     public static final int HOST_FIELD_NUMBER = 4;
     private volatile java.lang.Object host_;
     /**
-     * <code>optional string host = 4;</code>
+     * <code>string host = 4;</code>
      */
     public java.lang.String getHost() {
       java.lang.Object ref = host_;
@@ -669,7 +669,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string host = 4;</code>
+     * <code>string host = 4;</code>
      */
     public com.google.protobuf.ByteString
         getHostBytes() {
@@ -688,7 +688,7 @@ public final class TestingModelV3 {
     public static final int INITIALIZED_TIME_FIELD_NUMBER = 5;
     private long initializedTime_;
     /**
-     * <code>optional uint64 initialized_time = 5;</code>
+     * <code>uint64 initialized_time = 5;</code>
      */
     public long getInitializedTime() {
       return initializedTime_;
@@ -697,13 +697,13 @@ public final class TestingModelV3 {
     public static final int STATE_FIELD_NUMBER = 6;
     private int state_;
     /**
-     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
      */
     public int getStateValue() {
       return state_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+     * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
      */
     public org.roylance.yaorm.TestingModelV3.WorkerState getState() {
       org.roylance.yaorm.TestingModelV3.WorkerState result = org.roylance.yaorm.TestingModelV3.WorkerState.valueOf(state_);
@@ -803,7 +803,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
@@ -822,6 +822,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.WorkerConfiguration parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.WorkerConfiguration parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.WorkerConfiguration parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1066,7 +1077,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -1081,7 +1092,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -1097,7 +1108,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -1110,7 +1121,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -1119,7 +1130,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1135,7 +1146,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>optional string ip = 2;</code>
+       * <code>string ip = 2;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -1150,7 +1161,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string ip = 2;</code>
+       * <code>string ip = 2;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
@@ -1166,7 +1177,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string ip = 2;</code>
+       * <code>string ip = 2;</code>
        */
       public Builder setIp(
           java.lang.String value) {
@@ -1179,7 +1190,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string ip = 2;</code>
+       * <code>string ip = 2;</code>
        */
       public Builder clearIp() {
         
@@ -1188,7 +1199,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string ip = 2;</code>
+       * <code>string ip = 2;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -1204,7 +1215,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object port_ = "";
       /**
-       * <code>optional string port = 3;</code>
+       * <code>string port = 3;</code>
        */
       public java.lang.String getPort() {
         java.lang.Object ref = port_;
@@ -1219,7 +1230,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string port = 3;</code>
+       * <code>string port = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPortBytes() {
@@ -1235,7 +1246,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string port = 3;</code>
+       * <code>string port = 3;</code>
        */
       public Builder setPort(
           java.lang.String value) {
@@ -1248,7 +1259,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string port = 3;</code>
+       * <code>string port = 3;</code>
        */
       public Builder clearPort() {
         
@@ -1257,7 +1268,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string port = 3;</code>
+       * <code>string port = 3;</code>
        */
       public Builder setPortBytes(
           com.google.protobuf.ByteString value) {
@@ -1273,7 +1284,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object host_ = "";
       /**
-       * <code>optional string host = 4;</code>
+       * <code>string host = 4;</code>
        */
       public java.lang.String getHost() {
         java.lang.Object ref = host_;
@@ -1288,7 +1299,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string host = 4;</code>
+       * <code>string host = 4;</code>
        */
       public com.google.protobuf.ByteString
           getHostBytes() {
@@ -1304,7 +1315,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string host = 4;</code>
+       * <code>string host = 4;</code>
        */
       public Builder setHost(
           java.lang.String value) {
@@ -1317,7 +1328,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string host = 4;</code>
+       * <code>string host = 4;</code>
        */
       public Builder clearHost() {
         
@@ -1326,7 +1337,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string host = 4;</code>
+       * <code>string host = 4;</code>
        */
       public Builder setHostBytes(
           com.google.protobuf.ByteString value) {
@@ -1342,13 +1353,13 @@ public final class TestingModelV3 {
 
       private long initializedTime_ ;
       /**
-       * <code>optional uint64 initialized_time = 5;</code>
+       * <code>uint64 initialized_time = 5;</code>
        */
       public long getInitializedTime() {
         return initializedTime_;
       }
       /**
-       * <code>optional uint64 initialized_time = 5;</code>
+       * <code>uint64 initialized_time = 5;</code>
        */
       public Builder setInitializedTime(long value) {
         
@@ -1357,7 +1368,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional uint64 initialized_time = 5;</code>
+       * <code>uint64 initialized_time = 5;</code>
        */
       public Builder clearInitializedTime() {
         
@@ -1368,13 +1379,13 @@ public final class TestingModelV3 {
 
       private int state_ = 0;
       /**
-       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public int getStateValue() {
         return state_;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public Builder setStateValue(int value) {
         state_ = value;
@@ -1382,14 +1393,14 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public org.roylance.yaorm.TestingModelV3.WorkerState getState() {
         org.roylance.yaorm.TestingModelV3.WorkerState result = org.roylance.yaorm.TestingModelV3.WorkerState.valueOf(state_);
         return result == null ? org.roylance.yaorm.TestingModelV3.WorkerState.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public Builder setState(org.roylance.yaorm.TestingModelV3.WorkerState value) {
         if (value == null) {
@@ -1401,7 +1412,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerState state = 6;</code>
+       * <code>.org.roylance.yaorm.WorkerState state = 6;</code>
        */
       public Builder clearState() {
         
@@ -1463,21 +1474,21 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     java.lang.String getMessage();
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -1561,7 +1572,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -1576,7 +1587,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -1595,7 +1606,7 @@ public final class TestingModelV3 {
     public static final int MESSAGE_FIELD_NUMBER = 2;
     private volatile java.lang.Object message_;
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
@@ -1610,7 +1621,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     public com.google.protobuf.ByteString
         getMessageBytes() {
@@ -1686,7 +1697,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
@@ -1696,6 +1707,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.Log parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.Log parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.Log parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1914,7 +1936,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -1929,7 +1951,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -1945,7 +1967,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -1958,7 +1980,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -1967,7 +1989,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1983,7 +2005,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object message_ = "";
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
@@ -1998,7 +2020,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -2014,7 +2036,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public Builder setMessage(
           java.lang.String value) {
@@ -2027,7 +2049,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public Builder clearMessage() {
         
@@ -2036,7 +2058,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -2103,21 +2125,21 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
@@ -2147,22 +2169,22 @@ public final class TestingModelV3 {
         int index);
 
     /**
-     * <code>optional int64 execution_date = 4;</code>
+     * <code>int64 execution_date = 4;</code>
      */
     long getExecutionDate();
 
     /**
-     * <code>optional int64 start_date = 5;</code>
+     * <code>int64 start_date = 5;</code>
      */
     long getStartDate();
 
     /**
-     * <code>optional int64 end_date = 6;</code>
+     * <code>int64 end_date = 6;</code>
      */
     long getEndDate();
 
     /**
-     * <code>optional int64 duration = 7;</code>
+     * <code>int64 duration = 7;</code>
      */
     long getDuration();
 
@@ -2263,21 +2285,21 @@ public final class TestingModelV3 {
         int index);
 
     /**
-     * <code>optional string new_field_1 = 12;</code>
+     * <code>string new_field_1 = 12;</code>
      */
     java.lang.String getNewField1();
     /**
-     * <code>optional string new_field_1 = 12;</code>
+     * <code>string new_field_1 = 12;</code>
      */
     com.google.protobuf.ByteString
         getNewField1Bytes();
 
     /**
-     * <code>optional string new_field_2 = 13;</code>
+     * <code>string new_field_2 = 13;</code>
      */
     java.lang.String getNewField2();
     /**
-     * <code>optional string new_field_2 = 13;</code>
+     * <code>string new_field_2 = 13;</code>
      */
     com.google.protobuf.ByteString
         getNewField2Bytes();
@@ -2465,7 +2487,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -2480,7 +2502,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -2499,7 +2521,7 @@ public final class TestingModelV3 {
     public static final int DISPLAY_FIELD_NUMBER = 2;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -2514,7 +2536,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -2568,7 +2590,7 @@ public final class TestingModelV3 {
     public static final int EXECUTION_DATE_FIELD_NUMBER = 4;
     private long executionDate_;
     /**
-     * <code>optional int64 execution_date = 4;</code>
+     * <code>int64 execution_date = 4;</code>
      */
     public long getExecutionDate() {
       return executionDate_;
@@ -2577,7 +2599,7 @@ public final class TestingModelV3 {
     public static final int START_DATE_FIELD_NUMBER = 5;
     private long startDate_;
     /**
-     * <code>optional int64 start_date = 5;</code>
+     * <code>int64 start_date = 5;</code>
      */
     public long getStartDate() {
       return startDate_;
@@ -2586,7 +2608,7 @@ public final class TestingModelV3 {
     public static final int END_DATE_FIELD_NUMBER = 6;
     private long endDate_;
     /**
-     * <code>optional int64 end_date = 6;</code>
+     * <code>int64 end_date = 6;</code>
      */
     public long getEndDate() {
       return endDate_;
@@ -2595,7 +2617,7 @@ public final class TestingModelV3 {
     public static final int DURATION_FIELD_NUMBER = 7;
     private long duration_;
     /**
-     * <code>optional int64 duration = 7;</code>
+     * <code>int64 duration = 7;</code>
      */
     public long getDuration() {
       return duration_;
@@ -2744,7 +2766,7 @@ public final class TestingModelV3 {
     public static final int NEW_FIELD_1_FIELD_NUMBER = 12;
     private volatile java.lang.Object newField1_;
     /**
-     * <code>optional string new_field_1 = 12;</code>
+     * <code>string new_field_1 = 12;</code>
      */
     public java.lang.String getNewField1() {
       java.lang.Object ref = newField1_;
@@ -2759,7 +2781,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string new_field_1 = 12;</code>
+     * <code>string new_field_1 = 12;</code>
      */
     public com.google.protobuf.ByteString
         getNewField1Bytes() {
@@ -2778,7 +2800,7 @@ public final class TestingModelV3 {
     public static final int NEW_FIELD_2_FIELD_NUMBER = 13;
     private volatile java.lang.Object newField2_;
     /**
-     * <code>optional string new_field_2 = 13;</code>
+     * <code>string new_field_2 = 13;</code>
      */
     public java.lang.String getNewField2() {
       java.lang.Object ref = newField2_;
@@ -2793,7 +2815,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string new_field_2 = 13;</code>
+     * <code>string new_field_2 = 13;</code>
      */
     public com.google.protobuf.ByteString
         getNewField2Bytes() {
@@ -2966,7 +2988,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
@@ -3012,6 +3034,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.Dag parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.Dag parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.Dag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3482,7 +3515,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -3497,7 +3530,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -3513,7 +3546,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -3526,7 +3559,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -3535,7 +3568,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -3551,7 +3584,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -3566,7 +3599,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -3582,7 +3615,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -3595,7 +3628,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder clearDisplay() {
         
@@ -3604,7 +3637,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -3860,13 +3893,13 @@ public final class TestingModelV3 {
 
       private long executionDate_ ;
       /**
-       * <code>optional int64 execution_date = 4;</code>
+       * <code>int64 execution_date = 4;</code>
        */
       public long getExecutionDate() {
         return executionDate_;
       }
       /**
-       * <code>optional int64 execution_date = 4;</code>
+       * <code>int64 execution_date = 4;</code>
        */
       public Builder setExecutionDate(long value) {
         
@@ -3875,7 +3908,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 execution_date = 4;</code>
+       * <code>int64 execution_date = 4;</code>
        */
       public Builder clearExecutionDate() {
         
@@ -3886,13 +3919,13 @@ public final class TestingModelV3 {
 
       private long startDate_ ;
       /**
-       * <code>optional int64 start_date = 5;</code>
+       * <code>int64 start_date = 5;</code>
        */
       public long getStartDate() {
         return startDate_;
       }
       /**
-       * <code>optional int64 start_date = 5;</code>
+       * <code>int64 start_date = 5;</code>
        */
       public Builder setStartDate(long value) {
         
@@ -3901,7 +3934,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 start_date = 5;</code>
+       * <code>int64 start_date = 5;</code>
        */
       public Builder clearStartDate() {
         
@@ -3912,13 +3945,13 @@ public final class TestingModelV3 {
 
       private long endDate_ ;
       /**
-       * <code>optional int64 end_date = 6;</code>
+       * <code>int64 end_date = 6;</code>
        */
       public long getEndDate() {
         return endDate_;
       }
       /**
-       * <code>optional int64 end_date = 6;</code>
+       * <code>int64 end_date = 6;</code>
        */
       public Builder setEndDate(long value) {
         
@@ -3927,7 +3960,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 end_date = 6;</code>
+       * <code>int64 end_date = 6;</code>
        */
       public Builder clearEndDate() {
         
@@ -3938,13 +3971,13 @@ public final class TestingModelV3 {
 
       private long duration_ ;
       /**
-       * <code>optional int64 duration = 7;</code>
+       * <code>int64 duration = 7;</code>
        */
       public long getDuration() {
         return duration_;
       }
       /**
-       * <code>optional int64 duration = 7;</code>
+       * <code>int64 duration = 7;</code>
        */
       public Builder setDuration(long value) {
         
@@ -3953,7 +3986,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 duration = 7;</code>
+       * <code>int64 duration = 7;</code>
        */
       public Builder clearDuration() {
         
@@ -4924,7 +4957,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object newField1_ = "";
       /**
-       * <code>optional string new_field_1 = 12;</code>
+       * <code>string new_field_1 = 12;</code>
        */
       public java.lang.String getNewField1() {
         java.lang.Object ref = newField1_;
@@ -4939,7 +4972,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string new_field_1 = 12;</code>
+       * <code>string new_field_1 = 12;</code>
        */
       public com.google.protobuf.ByteString
           getNewField1Bytes() {
@@ -4955,7 +4988,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string new_field_1 = 12;</code>
+       * <code>string new_field_1 = 12;</code>
        */
       public Builder setNewField1(
           java.lang.String value) {
@@ -4968,7 +5001,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string new_field_1 = 12;</code>
+       * <code>string new_field_1 = 12;</code>
        */
       public Builder clearNewField1() {
         
@@ -4977,7 +5010,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string new_field_1 = 12;</code>
+       * <code>string new_field_1 = 12;</code>
        */
       public Builder setNewField1Bytes(
           com.google.protobuf.ByteString value) {
@@ -4993,7 +5026,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object newField2_ = "";
       /**
-       * <code>optional string new_field_2 = 13;</code>
+       * <code>string new_field_2 = 13;</code>
        */
       public java.lang.String getNewField2() {
         java.lang.Object ref = newField2_;
@@ -5008,7 +5041,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string new_field_2 = 13;</code>
+       * <code>string new_field_2 = 13;</code>
        */
       public com.google.protobuf.ByteString
           getNewField2Bytes() {
@@ -5024,7 +5057,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string new_field_2 = 13;</code>
+       * <code>string new_field_2 = 13;</code>
        */
       public Builder setNewField2(
           java.lang.String value) {
@@ -5037,7 +5070,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string new_field_2 = 13;</code>
+       * <code>string new_field_2 = 13;</code>
        */
       public Builder clearNewField2() {
         
@@ -5046,7 +5079,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string new_field_2 = 13;</code>
+       * <code>string new_field_2 = 13;</code>
        */
       public Builder setNewField2Bytes(
           com.google.protobuf.ByteString value) {
@@ -5113,21 +5146,21 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
@@ -5157,11 +5190,11 @@ public final class TestingModelV3 {
         int index);
 
     /**
-     * <code>optional string dag_id = 4;</code>
+     * <code>string dag_id = 4;</code>
      */
     java.lang.String getDagId();
     /**
-     * <code>optional string dag_id = 4;</code>
+     * <code>string dag_id = 4;</code>
      */
     com.google.protobuf.ByteString
         getDagIdBytes();
@@ -5191,51 +5224,51 @@ public final class TestingModelV3 {
         int index);
 
     /**
-     * <code>optional int64 execution_date = 6;</code>
+     * <code>int64 execution_date = 6;</code>
      */
     long getExecutionDate();
 
     /**
-     * <code>optional int64 start_date = 7;</code>
+     * <code>int64 start_date = 7;</code>
      */
     long getStartDate();
 
     /**
-     * <code>optional int64 end_date = 8;</code>
+     * <code>int64 end_date = 8;</code>
      */
     long getEndDate();
 
     /**
-     * <code>optional int64 duration = 9;</code>
+     * <code>int64 duration = 9;</code>
      */
     long getDuration();
 
     /**
-     * <code>optional string first_context_base_64 = 10;</code>
+     * <code>string first_context_base_64 = 10;</code>
      */
     java.lang.String getFirstContextBase64();
     /**
-     * <code>optional string first_context_base_64 = 10;</code>
+     * <code>string first_context_base_64 = 10;</code>
      */
     com.google.protobuf.ByteString
         getFirstContextBase64Bytes();
 
     /**
-     * <code>optional string second_context_base_64 = 11;</code>
+     * <code>string second_context_base_64 = 11;</code>
      */
     java.lang.String getSecondContextBase64();
     /**
-     * <code>optional string second_context_base_64 = 11;</code>
+     * <code>string second_context_base_64 = 11;</code>
      */
     com.google.protobuf.ByteString
         getSecondContextBase64Bytes();
 
     /**
-     * <code>optional string third_context_base_64 = 12;</code>
+     * <code>string third_context_base_64 = 12;</code>
      */
     java.lang.String getThirdContextBase64();
     /**
-     * <code>optional string third_context_base_64 = 12;</code>
+     * <code>string third_context_base_64 = 12;</code>
      */
     com.google.protobuf.ByteString
         getThirdContextBase64Bytes();
@@ -5398,7 +5431,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -5413,7 +5446,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -5432,7 +5465,7 @@ public final class TestingModelV3 {
     public static final int DISPLAY_FIELD_NUMBER = 2;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -5447,7 +5480,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -5501,7 +5534,7 @@ public final class TestingModelV3 {
     public static final int DAG_ID_FIELD_NUMBER = 4;
     private volatile java.lang.Object dagId_;
     /**
-     * <code>optional string dag_id = 4;</code>
+     * <code>string dag_id = 4;</code>
      */
     public java.lang.String getDagId() {
       java.lang.Object ref = dagId_;
@@ -5516,7 +5549,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string dag_id = 4;</code>
+     * <code>string dag_id = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDagIdBytes() {
@@ -5570,7 +5603,7 @@ public final class TestingModelV3 {
     public static final int EXECUTION_DATE_FIELD_NUMBER = 6;
     private long executionDate_;
     /**
-     * <code>optional int64 execution_date = 6;</code>
+     * <code>int64 execution_date = 6;</code>
      */
     public long getExecutionDate() {
       return executionDate_;
@@ -5579,7 +5612,7 @@ public final class TestingModelV3 {
     public static final int START_DATE_FIELD_NUMBER = 7;
     private long startDate_;
     /**
-     * <code>optional int64 start_date = 7;</code>
+     * <code>int64 start_date = 7;</code>
      */
     public long getStartDate() {
       return startDate_;
@@ -5588,7 +5621,7 @@ public final class TestingModelV3 {
     public static final int END_DATE_FIELD_NUMBER = 8;
     private long endDate_;
     /**
-     * <code>optional int64 end_date = 8;</code>
+     * <code>int64 end_date = 8;</code>
      */
     public long getEndDate() {
       return endDate_;
@@ -5597,7 +5630,7 @@ public final class TestingModelV3 {
     public static final int DURATION_FIELD_NUMBER = 9;
     private long duration_;
     /**
-     * <code>optional int64 duration = 9;</code>
+     * <code>int64 duration = 9;</code>
      */
     public long getDuration() {
       return duration_;
@@ -5606,7 +5639,7 @@ public final class TestingModelV3 {
     public static final int FIRST_CONTEXT_BASE_64_FIELD_NUMBER = 10;
     private volatile java.lang.Object firstContextBase64_;
     /**
-     * <code>optional string first_context_base_64 = 10;</code>
+     * <code>string first_context_base_64 = 10;</code>
      */
     public java.lang.String getFirstContextBase64() {
       java.lang.Object ref = firstContextBase64_;
@@ -5621,7 +5654,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string first_context_base_64 = 10;</code>
+     * <code>string first_context_base_64 = 10;</code>
      */
     public com.google.protobuf.ByteString
         getFirstContextBase64Bytes() {
@@ -5640,7 +5673,7 @@ public final class TestingModelV3 {
     public static final int SECOND_CONTEXT_BASE_64_FIELD_NUMBER = 11;
     private volatile java.lang.Object secondContextBase64_;
     /**
-     * <code>optional string second_context_base_64 = 11;</code>
+     * <code>string second_context_base_64 = 11;</code>
      */
     public java.lang.String getSecondContextBase64() {
       java.lang.Object ref = secondContextBase64_;
@@ -5655,7 +5688,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string second_context_base_64 = 11;</code>
+     * <code>string second_context_base_64 = 11;</code>
      */
     public com.google.protobuf.ByteString
         getSecondContextBase64Bytes() {
@@ -5674,7 +5707,7 @@ public final class TestingModelV3 {
     public static final int THIRD_CONTEXT_BASE_64_FIELD_NUMBER = 12;
     private volatile java.lang.Object thirdContextBase64_;
     /**
-     * <code>optional string third_context_base_64 = 12;</code>
+     * <code>string third_context_base_64 = 12;</code>
      */
     public java.lang.String getThirdContextBase64() {
       java.lang.Object ref = thirdContextBase64_;
@@ -5689,7 +5722,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string third_context_base_64 = 12;</code>
+     * <code>string third_context_base_64 = 12;</code>
      */
     public com.google.protobuf.ByteString
         getThirdContextBase64Bytes() {
@@ -5851,7 +5884,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
@@ -5889,6 +5922,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.Task parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.Task parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.Task parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6247,7 +6291,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -6262,7 +6306,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -6278,7 +6322,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -6291,7 +6335,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -6300,7 +6344,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6316,7 +6360,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -6331,7 +6375,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -6347,7 +6391,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -6360,7 +6404,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder clearDisplay() {
         
@@ -6369,7 +6413,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -6625,7 +6669,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object dagId_ = "";
       /**
-       * <code>optional string dag_id = 4;</code>
+       * <code>string dag_id = 4;</code>
        */
       public java.lang.String getDagId() {
         java.lang.Object ref = dagId_;
@@ -6640,7 +6684,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string dag_id = 4;</code>
+       * <code>string dag_id = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDagIdBytes() {
@@ -6656,7 +6700,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string dag_id = 4;</code>
+       * <code>string dag_id = 4;</code>
        */
       public Builder setDagId(
           java.lang.String value) {
@@ -6669,7 +6713,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string dag_id = 4;</code>
+       * <code>string dag_id = 4;</code>
        */
       public Builder clearDagId() {
         
@@ -6678,7 +6722,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string dag_id = 4;</code>
+       * <code>string dag_id = 4;</code>
        */
       public Builder setDagIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6934,13 +6978,13 @@ public final class TestingModelV3 {
 
       private long executionDate_ ;
       /**
-       * <code>optional int64 execution_date = 6;</code>
+       * <code>int64 execution_date = 6;</code>
        */
       public long getExecutionDate() {
         return executionDate_;
       }
       /**
-       * <code>optional int64 execution_date = 6;</code>
+       * <code>int64 execution_date = 6;</code>
        */
       public Builder setExecutionDate(long value) {
         
@@ -6949,7 +6993,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 execution_date = 6;</code>
+       * <code>int64 execution_date = 6;</code>
        */
       public Builder clearExecutionDate() {
         
@@ -6960,13 +7004,13 @@ public final class TestingModelV3 {
 
       private long startDate_ ;
       /**
-       * <code>optional int64 start_date = 7;</code>
+       * <code>int64 start_date = 7;</code>
        */
       public long getStartDate() {
         return startDate_;
       }
       /**
-       * <code>optional int64 start_date = 7;</code>
+       * <code>int64 start_date = 7;</code>
        */
       public Builder setStartDate(long value) {
         
@@ -6975,7 +7019,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 start_date = 7;</code>
+       * <code>int64 start_date = 7;</code>
        */
       public Builder clearStartDate() {
         
@@ -6986,13 +7030,13 @@ public final class TestingModelV3 {
 
       private long endDate_ ;
       /**
-       * <code>optional int64 end_date = 8;</code>
+       * <code>int64 end_date = 8;</code>
        */
       public long getEndDate() {
         return endDate_;
       }
       /**
-       * <code>optional int64 end_date = 8;</code>
+       * <code>int64 end_date = 8;</code>
        */
       public Builder setEndDate(long value) {
         
@@ -7001,7 +7045,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 end_date = 8;</code>
+       * <code>int64 end_date = 8;</code>
        */
       public Builder clearEndDate() {
         
@@ -7012,13 +7056,13 @@ public final class TestingModelV3 {
 
       private long duration_ ;
       /**
-       * <code>optional int64 duration = 9;</code>
+       * <code>int64 duration = 9;</code>
        */
       public long getDuration() {
         return duration_;
       }
       /**
-       * <code>optional int64 duration = 9;</code>
+       * <code>int64 duration = 9;</code>
        */
       public Builder setDuration(long value) {
         
@@ -7027,7 +7071,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional int64 duration = 9;</code>
+       * <code>int64 duration = 9;</code>
        */
       public Builder clearDuration() {
         
@@ -7038,7 +7082,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object firstContextBase64_ = "";
       /**
-       * <code>optional string first_context_base_64 = 10;</code>
+       * <code>string first_context_base_64 = 10;</code>
        */
       public java.lang.String getFirstContextBase64() {
         java.lang.Object ref = firstContextBase64_;
@@ -7053,7 +7097,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string first_context_base_64 = 10;</code>
+       * <code>string first_context_base_64 = 10;</code>
        */
       public com.google.protobuf.ByteString
           getFirstContextBase64Bytes() {
@@ -7069,7 +7113,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string first_context_base_64 = 10;</code>
+       * <code>string first_context_base_64 = 10;</code>
        */
       public Builder setFirstContextBase64(
           java.lang.String value) {
@@ -7082,7 +7126,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string first_context_base_64 = 10;</code>
+       * <code>string first_context_base_64 = 10;</code>
        */
       public Builder clearFirstContextBase64() {
         
@@ -7091,7 +7135,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string first_context_base_64 = 10;</code>
+       * <code>string first_context_base_64 = 10;</code>
        */
       public Builder setFirstContextBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -7107,7 +7151,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object secondContextBase64_ = "";
       /**
-       * <code>optional string second_context_base_64 = 11;</code>
+       * <code>string second_context_base_64 = 11;</code>
        */
       public java.lang.String getSecondContextBase64() {
         java.lang.Object ref = secondContextBase64_;
@@ -7122,7 +7166,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string second_context_base_64 = 11;</code>
+       * <code>string second_context_base_64 = 11;</code>
        */
       public com.google.protobuf.ByteString
           getSecondContextBase64Bytes() {
@@ -7138,7 +7182,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string second_context_base_64 = 11;</code>
+       * <code>string second_context_base_64 = 11;</code>
        */
       public Builder setSecondContextBase64(
           java.lang.String value) {
@@ -7151,7 +7195,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string second_context_base_64 = 11;</code>
+       * <code>string second_context_base_64 = 11;</code>
        */
       public Builder clearSecondContextBase64() {
         
@@ -7160,7 +7204,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string second_context_base_64 = 11;</code>
+       * <code>string second_context_base_64 = 11;</code>
        */
       public Builder setSecondContextBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -7176,7 +7220,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object thirdContextBase64_ = "";
       /**
-       * <code>optional string third_context_base_64 = 12;</code>
+       * <code>string third_context_base_64 = 12;</code>
        */
       public java.lang.String getThirdContextBase64() {
         java.lang.Object ref = thirdContextBase64_;
@@ -7191,7 +7235,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string third_context_base_64 = 12;</code>
+       * <code>string third_context_base_64 = 12;</code>
        */
       public com.google.protobuf.ByteString
           getThirdContextBase64Bytes() {
@@ -7207,7 +7251,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string third_context_base_64 = 12;</code>
+       * <code>string third_context_base_64 = 12;</code>
        */
       public Builder setThirdContextBase64(
           java.lang.String value) {
@@ -7220,7 +7264,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string third_context_base_64 = 12;</code>
+       * <code>string third_context_base_64 = 12;</code>
        */
       public Builder clearThirdContextBase64() {
         
@@ -7229,7 +7273,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string third_context_base_64 = 12;</code>
+       * <code>string third_context_base_64 = 12;</code>
        */
       public Builder setThirdContextBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -7296,21 +7340,21 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string parent_task_id = 2;</code>
+     * <code>string parent_task_id = 2;</code>
      */
     java.lang.String getParentTaskId();
     /**
-     * <code>optional string parent_task_id = 2;</code>
+     * <code>string parent_task_id = 2;</code>
      */
     com.google.protobuf.ByteString
         getParentTaskIdBytes();
@@ -7394,7 +7438,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -7409,7 +7453,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -7428,7 +7472,7 @@ public final class TestingModelV3 {
     public static final int PARENT_TASK_ID_FIELD_NUMBER = 2;
     private volatile java.lang.Object parentTaskId_;
     /**
-     * <code>optional string parent_task_id = 2;</code>
+     * <code>string parent_task_id = 2;</code>
      */
     public java.lang.String getParentTaskId() {
       java.lang.Object ref = parentTaskId_;
@@ -7443,7 +7487,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string parent_task_id = 2;</code>
+     * <code>string parent_task_id = 2;</code>
      */
     public com.google.protobuf.ByteString
         getParentTaskIdBytes() {
@@ -7519,7 +7563,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + PARENT_TASK_ID_FIELD_NUMBER;
@@ -7529,6 +7573,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.TaskDependency parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.TaskDependency parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.TaskDependency parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7747,7 +7802,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -7762,7 +7817,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -7778,7 +7833,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -7791,7 +7846,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -7800,7 +7855,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -7816,7 +7871,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object parentTaskId_ = "";
       /**
-       * <code>optional string parent_task_id = 2;</code>
+       * <code>string parent_task_id = 2;</code>
        */
       public java.lang.String getParentTaskId() {
         java.lang.Object ref = parentTaskId_;
@@ -7831,7 +7886,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string parent_task_id = 2;</code>
+       * <code>string parent_task_id = 2;</code>
        */
       public com.google.protobuf.ByteString
           getParentTaskIdBytes() {
@@ -7847,7 +7902,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string parent_task_id = 2;</code>
+       * <code>string parent_task_id = 2;</code>
        */
       public Builder setParentTaskId(
           java.lang.String value) {
@@ -7860,7 +7915,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string parent_task_id = 2;</code>
+       * <code>string parent_task_id = 2;</code>
        */
       public Builder clearParentTaskId() {
         
@@ -7869,7 +7924,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string parent_task_id = 2;</code>
+       * <code>string parent_task_id = 2;</code>
        */
       public Builder setParentTaskIdBytes(
           com.google.protobuf.ByteString value) {
@@ -7936,67 +7991,67 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
      */
     boolean hasParentTask();
     /**
-     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
      */
     org.roylance.yaorm.TestingModelV3.Task getParentTask();
     /**
-     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
      */
     org.roylance.yaorm.TestingModelV3.TaskOrBuilder getParentTaskOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     * <code>.org.roylance.yaorm.Task new_task = 3;</code>
      */
     boolean hasNewTask();
     /**
-     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     * <code>.org.roylance.yaorm.Task new_task = 3;</code>
      */
     org.roylance.yaorm.TestingModelV3.Task getNewTask();
     /**
-     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     * <code>.org.roylance.yaorm.Task new_task = 3;</code>
      */
     org.roylance.yaorm.TestingModelV3.TaskOrBuilder getNewTaskOrBuilder();
 
     /**
-     * <code>optional string first_context_base_64 = 4;</code>
+     * <code>string first_context_base_64 = 4;</code>
      */
     java.lang.String getFirstContextBase64();
     /**
-     * <code>optional string first_context_base_64 = 4;</code>
+     * <code>string first_context_base_64 = 4;</code>
      */
     com.google.protobuf.ByteString
         getFirstContextBase64Bytes();
 
     /**
-     * <code>optional string second_context_base_64 = 5;</code>
+     * <code>string second_context_base_64 = 5;</code>
      */
     java.lang.String getSecondContextBase64();
     /**
-     * <code>optional string second_context_base_64 = 5;</code>
+     * <code>string second_context_base_64 = 5;</code>
      */
     com.google.protobuf.ByteString
         getSecondContextBase64Bytes();
 
     /**
-     * <code>optional string third_context_base_64 = 6;</code>
+     * <code>string third_context_base_64 = 6;</code>
      */
     java.lang.String getThirdContextBase64();
     /**
-     * <code>optional string third_context_base_64 = 6;</code>
+     * <code>string third_context_base_64 = 6;</code>
      */
     com.google.protobuf.ByteString
         getThirdContextBase64Bytes();
@@ -8120,7 +8175,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -8135,7 +8190,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -8154,19 +8209,19 @@ public final class TestingModelV3 {
     public static final int PARENT_TASK_FIELD_NUMBER = 2;
     private org.roylance.yaorm.TestingModelV3.Task parentTask_;
     /**
-     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
      */
     public boolean hasParentTask() {
       return parentTask_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
      */
     public org.roylance.yaorm.TestingModelV3.Task getParentTask() {
       return parentTask_ == null ? org.roylance.yaorm.TestingModelV3.Task.getDefaultInstance() : parentTask_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+     * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
      */
     public org.roylance.yaorm.TestingModelV3.TaskOrBuilder getParentTaskOrBuilder() {
       return getParentTask();
@@ -8175,19 +8230,19 @@ public final class TestingModelV3 {
     public static final int NEW_TASK_FIELD_NUMBER = 3;
     private org.roylance.yaorm.TestingModelV3.Task newTask_;
     /**
-     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     * <code>.org.roylance.yaorm.Task new_task = 3;</code>
      */
     public boolean hasNewTask() {
       return newTask_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     * <code>.org.roylance.yaorm.Task new_task = 3;</code>
      */
     public org.roylance.yaorm.TestingModelV3.Task getNewTask() {
       return newTask_ == null ? org.roylance.yaorm.TestingModelV3.Task.getDefaultInstance() : newTask_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+     * <code>.org.roylance.yaorm.Task new_task = 3;</code>
      */
     public org.roylance.yaorm.TestingModelV3.TaskOrBuilder getNewTaskOrBuilder() {
       return getNewTask();
@@ -8196,7 +8251,7 @@ public final class TestingModelV3 {
     public static final int FIRST_CONTEXT_BASE_64_FIELD_NUMBER = 4;
     private volatile java.lang.Object firstContextBase64_;
     /**
-     * <code>optional string first_context_base_64 = 4;</code>
+     * <code>string first_context_base_64 = 4;</code>
      */
     public java.lang.String getFirstContextBase64() {
       java.lang.Object ref = firstContextBase64_;
@@ -8211,7 +8266,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string first_context_base_64 = 4;</code>
+     * <code>string first_context_base_64 = 4;</code>
      */
     public com.google.protobuf.ByteString
         getFirstContextBase64Bytes() {
@@ -8230,7 +8285,7 @@ public final class TestingModelV3 {
     public static final int SECOND_CONTEXT_BASE_64_FIELD_NUMBER = 5;
     private volatile java.lang.Object secondContextBase64_;
     /**
-     * <code>optional string second_context_base_64 = 5;</code>
+     * <code>string second_context_base_64 = 5;</code>
      */
     public java.lang.String getSecondContextBase64() {
       java.lang.Object ref = secondContextBase64_;
@@ -8245,7 +8300,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string second_context_base_64 = 5;</code>
+     * <code>string second_context_base_64 = 5;</code>
      */
     public com.google.protobuf.ByteString
         getSecondContextBase64Bytes() {
@@ -8264,7 +8319,7 @@ public final class TestingModelV3 {
     public static final int THIRD_CONTEXT_BASE_64_FIELD_NUMBER = 6;
     private volatile java.lang.Object thirdContextBase64_;
     /**
-     * <code>optional string third_context_base_64 = 6;</code>
+     * <code>string third_context_base_64 = 6;</code>
      */
     public java.lang.String getThirdContextBase64() {
       java.lang.Object ref = thirdContextBase64_;
@@ -8279,7 +8334,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string third_context_base_64 = 6;</code>
+     * <code>string third_context_base_64 = 6;</code>
      */
     public com.google.protobuf.ByteString
         getThirdContextBase64Bytes() {
@@ -8395,7 +8450,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasParentTask()) {
@@ -8417,6 +8472,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.AddTaskToDag parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.AddTaskToDag parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.AddTaskToDag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8677,7 +8743,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -8692,7 +8758,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -8708,7 +8774,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -8721,7 +8787,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -8730,7 +8796,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -8748,13 +8814,13 @@ public final class TestingModelV3 {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.Task, org.roylance.yaorm.TestingModelV3.Task.Builder, org.roylance.yaorm.TestingModelV3.TaskOrBuilder> parentTaskBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public boolean hasParentTask() {
         return parentTaskBuilder_ != null || parentTask_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public org.roylance.yaorm.TestingModelV3.Task getParentTask() {
         if (parentTaskBuilder_ == null) {
@@ -8764,7 +8830,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public Builder setParentTask(org.roylance.yaorm.TestingModelV3.Task value) {
         if (parentTaskBuilder_ == null) {
@@ -8780,7 +8846,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public Builder setParentTask(
           org.roylance.yaorm.TestingModelV3.Task.Builder builderForValue) {
@@ -8794,7 +8860,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public Builder mergeParentTask(org.roylance.yaorm.TestingModelV3.Task value) {
         if (parentTaskBuilder_ == null) {
@@ -8812,7 +8878,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public Builder clearParentTask() {
         if (parentTaskBuilder_ == null) {
@@ -8826,7 +8892,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public org.roylance.yaorm.TestingModelV3.Task.Builder getParentTaskBuilder() {
         
@@ -8834,7 +8900,7 @@ public final class TestingModelV3 {
         return getParentTaskFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       public org.roylance.yaorm.TestingModelV3.TaskOrBuilder getParentTaskOrBuilder() {
         if (parentTaskBuilder_ != null) {
@@ -8845,7 +8911,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task parent_task = 2;</code>
+       * <code>.org.roylance.yaorm.Task parent_task = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.Task, org.roylance.yaorm.TestingModelV3.Task.Builder, org.roylance.yaorm.TestingModelV3.TaskOrBuilder> 
@@ -8865,13 +8931,13 @@ public final class TestingModelV3 {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.Task, org.roylance.yaorm.TestingModelV3.Task.Builder, org.roylance.yaorm.TestingModelV3.TaskOrBuilder> newTaskBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public boolean hasNewTask() {
         return newTaskBuilder_ != null || newTask_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public org.roylance.yaorm.TestingModelV3.Task getNewTask() {
         if (newTaskBuilder_ == null) {
@@ -8881,7 +8947,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public Builder setNewTask(org.roylance.yaorm.TestingModelV3.Task value) {
         if (newTaskBuilder_ == null) {
@@ -8897,7 +8963,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public Builder setNewTask(
           org.roylance.yaorm.TestingModelV3.Task.Builder builderForValue) {
@@ -8911,7 +8977,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public Builder mergeNewTask(org.roylance.yaorm.TestingModelV3.Task value) {
         if (newTaskBuilder_ == null) {
@@ -8929,7 +8995,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public Builder clearNewTask() {
         if (newTaskBuilder_ == null) {
@@ -8943,7 +9009,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public org.roylance.yaorm.TestingModelV3.Task.Builder getNewTaskBuilder() {
         
@@ -8951,7 +9017,7 @@ public final class TestingModelV3 {
         return getNewTaskFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       public org.roylance.yaorm.TestingModelV3.TaskOrBuilder getNewTaskOrBuilder() {
         if (newTaskBuilder_ != null) {
@@ -8962,7 +9028,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task new_task = 3;</code>
+       * <code>.org.roylance.yaorm.Task new_task = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.Task, org.roylance.yaorm.TestingModelV3.Task.Builder, org.roylance.yaorm.TestingModelV3.TaskOrBuilder> 
@@ -8980,7 +9046,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object firstContextBase64_ = "";
       /**
-       * <code>optional string first_context_base_64 = 4;</code>
+       * <code>string first_context_base_64 = 4;</code>
        */
       public java.lang.String getFirstContextBase64() {
         java.lang.Object ref = firstContextBase64_;
@@ -8995,7 +9061,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string first_context_base_64 = 4;</code>
+       * <code>string first_context_base_64 = 4;</code>
        */
       public com.google.protobuf.ByteString
           getFirstContextBase64Bytes() {
@@ -9011,7 +9077,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string first_context_base_64 = 4;</code>
+       * <code>string first_context_base_64 = 4;</code>
        */
       public Builder setFirstContextBase64(
           java.lang.String value) {
@@ -9024,7 +9090,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string first_context_base_64 = 4;</code>
+       * <code>string first_context_base_64 = 4;</code>
        */
       public Builder clearFirstContextBase64() {
         
@@ -9033,7 +9099,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string first_context_base_64 = 4;</code>
+       * <code>string first_context_base_64 = 4;</code>
        */
       public Builder setFirstContextBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -9049,7 +9115,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object secondContextBase64_ = "";
       /**
-       * <code>optional string second_context_base_64 = 5;</code>
+       * <code>string second_context_base_64 = 5;</code>
        */
       public java.lang.String getSecondContextBase64() {
         java.lang.Object ref = secondContextBase64_;
@@ -9064,7 +9130,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string second_context_base_64 = 5;</code>
+       * <code>string second_context_base_64 = 5;</code>
        */
       public com.google.protobuf.ByteString
           getSecondContextBase64Bytes() {
@@ -9080,7 +9146,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string second_context_base_64 = 5;</code>
+       * <code>string second_context_base_64 = 5;</code>
        */
       public Builder setSecondContextBase64(
           java.lang.String value) {
@@ -9093,7 +9159,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string second_context_base_64 = 5;</code>
+       * <code>string second_context_base_64 = 5;</code>
        */
       public Builder clearSecondContextBase64() {
         
@@ -9102,7 +9168,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string second_context_base_64 = 5;</code>
+       * <code>string second_context_base_64 = 5;</code>
        */
       public Builder setSecondContextBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -9118,7 +9184,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object thirdContextBase64_ = "";
       /**
-       * <code>optional string third_context_base_64 = 6;</code>
+       * <code>string third_context_base_64 = 6;</code>
        */
       public java.lang.String getThirdContextBase64() {
         java.lang.Object ref = thirdContextBase64_;
@@ -9133,7 +9199,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string third_context_base_64 = 6;</code>
+       * <code>string third_context_base_64 = 6;</code>
        */
       public com.google.protobuf.ByteString
           getThirdContextBase64Bytes() {
@@ -9149,7 +9215,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string third_context_base_64 = 6;</code>
+       * <code>string third_context_base_64 = 6;</code>
        */
       public Builder setThirdContextBase64(
           java.lang.String value) {
@@ -9162,7 +9228,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string third_context_base_64 = 6;</code>
+       * <code>string third_context_base_64 = 6;</code>
        */
       public Builder clearThirdContextBase64() {
         
@@ -9171,7 +9237,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string third_context_base_64 = 6;</code>
+       * <code>string third_context_base_64 = 6;</code>
        */
       public Builder setThirdContextBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -9238,38 +9304,38 @@ public final class TestingModelV3 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     * <code>.org.roylance.yaorm.Task task = 2;</code>
      */
     boolean hasTask();
     /**
-     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     * <code>.org.roylance.yaorm.Task task = 2;</code>
      */
     org.roylance.yaorm.TestingModelV3.Task getTask();
     /**
-     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     * <code>.org.roylance.yaorm.Task task = 2;</code>
      */
     org.roylance.yaorm.TestingModelV3.TaskOrBuilder getTaskOrBuilder();
 
     /**
-     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     boolean hasWorkerConfiguration();
     /**
-     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     org.roylance.yaorm.TestingModelV3.WorkerConfiguration getWorkerConfiguration();
     /**
-     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     org.roylance.yaorm.TestingModelV3.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder();
 
@@ -9293,7 +9359,7 @@ public final class TestingModelV3 {
         getLogsBytes(int index);
 
     /**
-     * <code>optional bool is_error = 5;</code>
+     * <code>bool is_error = 5;</code>
      */
     boolean getIsError();
   }
@@ -9415,7 +9481,7 @@ public final class TestingModelV3 {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -9430,7 +9496,7 @@ public final class TestingModelV3 {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -9449,19 +9515,19 @@ public final class TestingModelV3 {
     public static final int TASK_FIELD_NUMBER = 2;
     private org.roylance.yaorm.TestingModelV3.Task task_;
     /**
-     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     * <code>.org.roylance.yaorm.Task task = 2;</code>
      */
     public boolean hasTask() {
       return task_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     * <code>.org.roylance.yaorm.Task task = 2;</code>
      */
     public org.roylance.yaorm.TestingModelV3.Task getTask() {
       return task_ == null ? org.roylance.yaorm.TestingModelV3.Task.getDefaultInstance() : task_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+     * <code>.org.roylance.yaorm.Task task = 2;</code>
      */
     public org.roylance.yaorm.TestingModelV3.TaskOrBuilder getTaskOrBuilder() {
       return getTask();
@@ -9470,19 +9536,19 @@ public final class TestingModelV3 {
     public static final int WORKER_CONFIGURATION_FIELD_NUMBER = 3;
     private org.roylance.yaorm.TestingModelV3.WorkerConfiguration workerConfiguration_;
     /**
-     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     public boolean hasWorkerConfiguration() {
       return workerConfiguration_ != null;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     public org.roylance.yaorm.TestingModelV3.WorkerConfiguration getWorkerConfiguration() {
       return workerConfiguration_ == null ? org.roylance.yaorm.TestingModelV3.WorkerConfiguration.getDefaultInstance() : workerConfiguration_;
     }
     /**
-     * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+     * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
      */
     public org.roylance.yaorm.TestingModelV3.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder() {
       return getWorkerConfiguration();
@@ -9520,7 +9586,7 @@ public final class TestingModelV3 {
     public static final int IS_ERROR_FIELD_NUMBER = 5;
     private boolean isError_;
     /**
-     * <code>optional bool is_error = 5;</code>
+     * <code>bool is_error = 5;</code>
      */
     public boolean getIsError() {
       return isError_;
@@ -9624,7 +9690,7 @@ public final class TestingModelV3 {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasTask()) {
@@ -9647,6 +9713,17 @@ public final class TestingModelV3 {
       return hash;
     }
 
+    public static org.roylance.yaorm.TestingModelV3.CompleteTask parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.roylance.yaorm.TestingModelV3.CompleteTask parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.roylance.yaorm.TestingModelV3.CompleteTask parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9913,7 +9990,7 @@ public final class TestingModelV3 {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -9928,7 +10005,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -9944,7 +10021,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -9957,7 +10034,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -9966,7 +10043,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -9984,13 +10061,13 @@ public final class TestingModelV3 {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.Task, org.roylance.yaorm.TestingModelV3.Task.Builder, org.roylance.yaorm.TestingModelV3.TaskOrBuilder> taskBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public boolean hasTask() {
         return taskBuilder_ != null || task_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public org.roylance.yaorm.TestingModelV3.Task getTask() {
         if (taskBuilder_ == null) {
@@ -10000,7 +10077,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public Builder setTask(org.roylance.yaorm.TestingModelV3.Task value) {
         if (taskBuilder_ == null) {
@@ -10016,7 +10093,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public Builder setTask(
           org.roylance.yaorm.TestingModelV3.Task.Builder builderForValue) {
@@ -10030,7 +10107,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public Builder mergeTask(org.roylance.yaorm.TestingModelV3.Task value) {
         if (taskBuilder_ == null) {
@@ -10048,7 +10125,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public Builder clearTask() {
         if (taskBuilder_ == null) {
@@ -10062,7 +10139,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public org.roylance.yaorm.TestingModelV3.Task.Builder getTaskBuilder() {
         
@@ -10070,7 +10147,7 @@ public final class TestingModelV3 {
         return getTaskFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       public org.roylance.yaorm.TestingModelV3.TaskOrBuilder getTaskOrBuilder() {
         if (taskBuilder_ != null) {
@@ -10081,7 +10158,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.Task task = 2;</code>
+       * <code>.org.roylance.yaorm.Task task = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.Task, org.roylance.yaorm.TestingModelV3.Task.Builder, org.roylance.yaorm.TestingModelV3.TaskOrBuilder> 
@@ -10101,13 +10178,13 @@ public final class TestingModelV3 {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.WorkerConfiguration, org.roylance.yaorm.TestingModelV3.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModelV3.WorkerConfigurationOrBuilder> workerConfigurationBuilder_;
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public boolean hasWorkerConfiguration() {
         return workerConfigurationBuilder_ != null || workerConfiguration_ != null;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public org.roylance.yaorm.TestingModelV3.WorkerConfiguration getWorkerConfiguration() {
         if (workerConfigurationBuilder_ == null) {
@@ -10117,7 +10194,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public Builder setWorkerConfiguration(org.roylance.yaorm.TestingModelV3.WorkerConfiguration value) {
         if (workerConfigurationBuilder_ == null) {
@@ -10133,7 +10210,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public Builder setWorkerConfiguration(
           org.roylance.yaorm.TestingModelV3.WorkerConfiguration.Builder builderForValue) {
@@ -10147,7 +10224,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public Builder mergeWorkerConfiguration(org.roylance.yaorm.TestingModelV3.WorkerConfiguration value) {
         if (workerConfigurationBuilder_ == null) {
@@ -10165,7 +10242,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public Builder clearWorkerConfiguration() {
         if (workerConfigurationBuilder_ == null) {
@@ -10179,7 +10256,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public org.roylance.yaorm.TestingModelV3.WorkerConfiguration.Builder getWorkerConfigurationBuilder() {
         
@@ -10187,7 +10264,7 @@ public final class TestingModelV3 {
         return getWorkerConfigurationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       public org.roylance.yaorm.TestingModelV3.WorkerConfigurationOrBuilder getWorkerConfigurationOrBuilder() {
         if (workerConfigurationBuilder_ != null) {
@@ -10198,7 +10275,7 @@ public final class TestingModelV3 {
         }
       }
       /**
-       * <code>optional .org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
+       * <code>.org.roylance.yaorm.WorkerConfiguration worker_configuration = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.roylance.yaorm.TestingModelV3.WorkerConfiguration, org.roylance.yaorm.TestingModelV3.WorkerConfiguration.Builder, org.roylance.yaorm.TestingModelV3.WorkerConfigurationOrBuilder> 
@@ -10310,13 +10387,13 @@ public final class TestingModelV3 {
 
       private boolean isError_ ;
       /**
-       * <code>optional bool is_error = 5;</code>
+       * <code>bool is_error = 5;</code>
        */
       public boolean getIsError() {
         return isError_;
       }
       /**
-       * <code>optional bool is_error = 5;</code>
+       * <code>bool is_error = 5;</code>
        */
       public Builder setIsError(boolean value) {
         
@@ -10325,7 +10402,7 @@ public final class TestingModelV3 {
         return this;
       }
       /**
-       * <code>optional bool is_error = 5;</code>
+       * <code>bool is_error = 5;</code>
        */
       public Builder clearIsError() {
         

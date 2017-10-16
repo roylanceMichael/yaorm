@@ -144,51 +144,51 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     java.lang.String getId1();
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     com.google.protobuf.ByteString
         getId1Bytes();
 
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     java.lang.String getId2();
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     com.google.protobuf.ByteString
         getId2Bytes();
 
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     java.lang.String getId3();
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     com.google.protobuf.ByteString
         getId3Bytes();
 
     /**
-     * <code>optional string description = 5;</code>
+     * <code>string description = 5;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 5;</code>
+     * <code>string description = 5;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -293,7 +293,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -308,7 +308,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -327,7 +327,7 @@ public final class NaruModel {
     public static final int ID1_FIELD_NUMBER = 2;
     private volatile java.lang.Object id1_;
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     public java.lang.String getId1() {
       java.lang.Object ref = id1_;
@@ -342,7 +342,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id1 = 2;</code>
+     * <code>string id1 = 2;</code>
      */
     public com.google.protobuf.ByteString
         getId1Bytes() {
@@ -361,7 +361,7 @@ public final class NaruModel {
     public static final int ID2_FIELD_NUMBER = 3;
     private volatile java.lang.Object id2_;
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     public java.lang.String getId2() {
       java.lang.Object ref = id2_;
@@ -376,7 +376,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id2 = 3;</code>
+     * <code>string id2 = 3;</code>
      */
     public com.google.protobuf.ByteString
         getId2Bytes() {
@@ -395,7 +395,7 @@ public final class NaruModel {
     public static final int ID3_FIELD_NUMBER = 4;
     private volatile java.lang.Object id3_;
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     public java.lang.String getId3() {
       java.lang.Object ref = id3_;
@@ -410,7 +410,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id3 = 4;</code>
+     * <code>string id3 = 4;</code>
      */
     public com.google.protobuf.ByteString
         getId3Bytes() {
@@ -429,7 +429,7 @@ public final class NaruModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 5;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 5;</code>
+     * <code>string description = 5;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -444,7 +444,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string description = 5;</code>
+     * <code>string description = 5;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -544,7 +544,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + ID1_FIELD_NUMBER;
@@ -560,6 +560,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Beacon parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Beacon parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Beacon parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -799,7 +810,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -814,7 +825,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -830,7 +841,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -843,7 +854,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -852,7 +863,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -868,7 +879,7 @@ public final class NaruModel {
 
       private java.lang.Object id1_ = "";
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public java.lang.String getId1() {
         java.lang.Object ref = id1_;
@@ -883,7 +894,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public com.google.protobuf.ByteString
           getId1Bytes() {
@@ -899,7 +910,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public Builder setId1(
           java.lang.String value) {
@@ -912,7 +923,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public Builder clearId1() {
         
@@ -921,7 +932,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id1 = 2;</code>
+       * <code>string id1 = 2;</code>
        */
       public Builder setId1Bytes(
           com.google.protobuf.ByteString value) {
@@ -937,7 +948,7 @@ public final class NaruModel {
 
       private java.lang.Object id2_ = "";
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public java.lang.String getId2() {
         java.lang.Object ref = id2_;
@@ -952,7 +963,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public com.google.protobuf.ByteString
           getId2Bytes() {
@@ -968,7 +979,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public Builder setId2(
           java.lang.String value) {
@@ -981,7 +992,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public Builder clearId2() {
         
@@ -990,7 +1001,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id2 = 3;</code>
+       * <code>string id2 = 3;</code>
        */
       public Builder setId2Bytes(
           com.google.protobuf.ByteString value) {
@@ -1006,7 +1017,7 @@ public final class NaruModel {
 
       private java.lang.Object id3_ = "";
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public java.lang.String getId3() {
         java.lang.Object ref = id3_;
@@ -1021,7 +1032,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public com.google.protobuf.ByteString
           getId3Bytes() {
@@ -1037,7 +1048,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public Builder setId3(
           java.lang.String value) {
@@ -1050,7 +1061,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public Builder clearId3() {
         
@@ -1059,7 +1070,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id3 = 4;</code>
+       * <code>string id3 = 4;</code>
        */
       public Builder setId3Bytes(
           com.google.protobuf.ByteString value) {
@@ -1075,7 +1086,7 @@ public final class NaruModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 5;</code>
+       * <code>string description = 5;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -1090,7 +1101,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>string description = 5;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -1106,7 +1117,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>string description = 5;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -1119,7 +1130,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>string description = 5;</code>
        */
       public Builder clearDescription() {
         
@@ -1128,7 +1139,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>string description = 5;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -1195,51 +1206,51 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     java.lang.String getBase64();
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     com.google.protobuf.ByteString
         getBase64Bytes();
 
     /**
-     * <code>optional string name = 4;</code>
+     * <code>string name = 4;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 4;</code>
+     * <code>string name = 4;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string user_owner = 5;</code>
+     * <code>string user_owner = 5;</code>
      */
     java.lang.String getUserOwner();
     /**
-     * <code>optional string user_owner = 5;</code>
+     * <code>string user_owner = 5;</code>
      */
     com.google.protobuf.ByteString
         getUserOwnerBytes();
@@ -1344,7 +1355,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -1359,7 +1370,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -1378,7 +1389,7 @@ public final class NaruModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -1393,7 +1404,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -1412,7 +1423,7 @@ public final class NaruModel {
     public static final int BASE64_FIELD_NUMBER = 3;
     private volatile java.lang.Object base64_;
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     public java.lang.String getBase64() {
       java.lang.Object ref = base64_;
@@ -1427,7 +1438,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string base64 = 3;</code>
+     * <code>string base64 = 3;</code>
      */
     public com.google.protobuf.ByteString
         getBase64Bytes() {
@@ -1446,7 +1457,7 @@ public final class NaruModel {
     public static final int NAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 4;</code>
+     * <code>string name = 4;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1461,7 +1472,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string name = 4;</code>
+     * <code>string name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -1480,7 +1491,7 @@ public final class NaruModel {
     public static final int USER_OWNER_FIELD_NUMBER = 5;
     private volatile java.lang.Object userOwner_;
     /**
-     * <code>optional string user_owner = 5;</code>
+     * <code>string user_owner = 5;</code>
      */
     public java.lang.String getUserOwner() {
       java.lang.Object ref = userOwner_;
@@ -1495,7 +1506,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_owner = 5;</code>
+     * <code>string user_owner = 5;</code>
      */
     public com.google.protobuf.ByteString
         getUserOwnerBytes() {
@@ -1595,7 +1606,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -1611,6 +1622,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.RequestImage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.RequestImage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.RequestImage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1850,7 +1872,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -1865,7 +1887,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -1881,7 +1903,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -1894,7 +1916,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -1903,7 +1925,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1919,7 +1941,7 @@ public final class NaruModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -1934,7 +1956,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -1950,7 +1972,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -1963,7 +1985,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder clearDescription() {
         
@@ -1972,7 +1994,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -1988,7 +2010,7 @@ public final class NaruModel {
 
       private java.lang.Object base64_ = "";
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public java.lang.String getBase64() {
         java.lang.Object ref = base64_;
@@ -2003,7 +2025,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public com.google.protobuf.ByteString
           getBase64Bytes() {
@@ -2019,7 +2041,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public Builder setBase64(
           java.lang.String value) {
@@ -2032,7 +2054,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public Builder clearBase64() {
         
@@ -2041,7 +2063,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string base64 = 3;</code>
+       * <code>string base64 = 3;</code>
        */
       public Builder setBase64Bytes(
           com.google.protobuf.ByteString value) {
@@ -2057,7 +2079,7 @@ public final class NaruModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 4;</code>
+       * <code>string name = 4;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2072,7 +2094,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>string name = 4;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2088,7 +2110,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>string name = 4;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2101,7 +2123,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>string name = 4;</code>
        */
       public Builder clearName() {
         
@@ -2110,7 +2132,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>string name = 4;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2126,7 +2148,7 @@ public final class NaruModel {
 
       private java.lang.Object userOwner_ = "";
       /**
-       * <code>optional string user_owner = 5;</code>
+       * <code>string user_owner = 5;</code>
        */
       public java.lang.String getUserOwner() {
         java.lang.Object ref = userOwner_;
@@ -2141,7 +2163,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_owner = 5;</code>
+       * <code>string user_owner = 5;</code>
        */
       public com.google.protobuf.ByteString
           getUserOwnerBytes() {
@@ -2157,7 +2179,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_owner = 5;</code>
+       * <code>string user_owner = 5;</code>
        */
       public Builder setUserOwner(
           java.lang.String value) {
@@ -2170,7 +2192,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_owner = 5;</code>
+       * <code>string user_owner = 5;</code>
        */
       public Builder clearUserOwner() {
         
@@ -2179,7 +2201,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_owner = 5;</code>
+       * <code>string user_owner = 5;</code>
        */
       public Builder setUserOwnerBytes(
           com.google.protobuf.ByteString value) {
@@ -2246,50 +2268,50 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
 
     /**
-     * <code>optional int32 index = 3;</code>
+     * <code>int32 index = 3;</code>
      */
     int getIndex();
 
     /**
-     * <code>optional bool has_price = 4;</code>
+     * <code>bool has_price = 4;</code>
      */
     boolean getHasPrice();
 
     /**
-     * <code>optional double price = 5;</code>
+     * <code>double price = 5;</code>
      */
     double getPrice();
 
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
      */
     boolean hasProductDetail();
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
      */
     org.naru.NaruModel.ProductDetail getProductDetail();
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
      */
     org.naru.NaruModel.ProductDetailOrBuilder getProductDetailOrBuilder();
   }
@@ -2403,7 +2425,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -2418,7 +2440,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -2437,7 +2459,7 @@ public final class NaruModel {
     public static final int VALUE_FIELD_NUMBER = 2;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -2452,7 +2474,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string value = 2;</code>
+     * <code>string value = 2;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -2471,7 +2493,7 @@ public final class NaruModel {
     public static final int INDEX_FIELD_NUMBER = 3;
     private int index_;
     /**
-     * <code>optional int32 index = 3;</code>
+     * <code>int32 index = 3;</code>
      */
     public int getIndex() {
       return index_;
@@ -2480,7 +2502,7 @@ public final class NaruModel {
     public static final int HAS_PRICE_FIELD_NUMBER = 4;
     private boolean hasPrice_;
     /**
-     * <code>optional bool has_price = 4;</code>
+     * <code>bool has_price = 4;</code>
      */
     public boolean getHasPrice() {
       return hasPrice_;
@@ -2489,7 +2511,7 @@ public final class NaruModel {
     public static final int PRICE_FIELD_NUMBER = 5;
     private double price_;
     /**
-     * <code>optional double price = 5;</code>
+     * <code>double price = 5;</code>
      */
     public double getPrice() {
       return price_;
@@ -2498,19 +2520,19 @@ public final class NaruModel {
     public static final int PRODUCT_DETAIL_FIELD_NUMBER = 6;
     private org.naru.NaruModel.ProductDetail productDetail_;
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
      */
     public boolean hasProductDetail() {
       return productDetail_ != null;
     }
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
      */
     public org.naru.NaruModel.ProductDetail getProductDetail() {
       return productDetail_ == null ? org.naru.NaruModel.ProductDetail.getDefaultInstance() : productDetail_;
     }
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
      */
     public org.naru.NaruModel.ProductDetailOrBuilder getProductDetailOrBuilder() {
       return getProductDetail();
@@ -2617,7 +2639,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -2639,6 +2661,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.ExpectedAnswer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.ExpectedAnswer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.ExpectedAnswer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2889,7 +2922,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -2904,7 +2937,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -2920,7 +2953,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -2933,7 +2966,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -2942,7 +2975,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -2958,7 +2991,7 @@ public final class NaruModel {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -2973,7 +3006,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -2989,7 +3022,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -3002,7 +3035,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public Builder clearValue() {
         
@@ -3011,7 +3044,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string value = 2;</code>
+       * <code>string value = 2;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -3027,13 +3060,13 @@ public final class NaruModel {
 
       private int index_ ;
       /**
-       * <code>optional int32 index = 3;</code>
+       * <code>int32 index = 3;</code>
        */
       public int getIndex() {
         return index_;
       }
       /**
-       * <code>optional int32 index = 3;</code>
+       * <code>int32 index = 3;</code>
        */
       public Builder setIndex(int value) {
         
@@ -3042,7 +3075,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int32 index = 3;</code>
+       * <code>int32 index = 3;</code>
        */
       public Builder clearIndex() {
         
@@ -3053,13 +3086,13 @@ public final class NaruModel {
 
       private boolean hasPrice_ ;
       /**
-       * <code>optional bool has_price = 4;</code>
+       * <code>bool has_price = 4;</code>
        */
       public boolean getHasPrice() {
         return hasPrice_;
       }
       /**
-       * <code>optional bool has_price = 4;</code>
+       * <code>bool has_price = 4;</code>
        */
       public Builder setHasPrice(boolean value) {
         
@@ -3068,7 +3101,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional bool has_price = 4;</code>
+       * <code>bool has_price = 4;</code>
        */
       public Builder clearHasPrice() {
         
@@ -3079,13 +3112,13 @@ public final class NaruModel {
 
       private double price_ ;
       /**
-       * <code>optional double price = 5;</code>
+       * <code>double price = 5;</code>
        */
       public double getPrice() {
         return price_;
       }
       /**
-       * <code>optional double price = 5;</code>
+       * <code>double price = 5;</code>
        */
       public Builder setPrice(double value) {
         
@@ -3094,7 +3127,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional double price = 5;</code>
+       * <code>double price = 5;</code>
        */
       public Builder clearPrice() {
         
@@ -3107,13 +3140,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.ProductDetail, org.naru.NaruModel.ProductDetail.Builder, org.naru.NaruModel.ProductDetailOrBuilder> productDetailBuilder_;
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public boolean hasProductDetail() {
         return productDetailBuilder_ != null || productDetail_ != null;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public org.naru.NaruModel.ProductDetail getProductDetail() {
         if (productDetailBuilder_ == null) {
@@ -3123,7 +3156,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public Builder setProductDetail(org.naru.NaruModel.ProductDetail value) {
         if (productDetailBuilder_ == null) {
@@ -3139,7 +3172,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public Builder setProductDetail(
           org.naru.NaruModel.ProductDetail.Builder builderForValue) {
@@ -3153,7 +3186,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public Builder mergeProductDetail(org.naru.NaruModel.ProductDetail value) {
         if (productDetailBuilder_ == null) {
@@ -3171,7 +3204,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public Builder clearProductDetail() {
         if (productDetailBuilder_ == null) {
@@ -3185,7 +3218,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public org.naru.NaruModel.ProductDetail.Builder getProductDetailBuilder() {
         
@@ -3193,7 +3226,7 @@ public final class NaruModel {
         return getProductDetailFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       public org.naru.NaruModel.ProductDetailOrBuilder getProductDetailOrBuilder() {
         if (productDetailBuilder_ != null) {
@@ -3204,7 +3237,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 6 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 6 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.ProductDetail, org.naru.NaruModel.ProductDetail.Builder, org.naru.NaruModel.ProductDetailOrBuilder> 
@@ -3273,40 +3306,40 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional int32 form_order = 2;</code>
+     * <code>int32 form_order = 2;</code>
      */
     int getFormOrder();
 
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
 
     /**
-     * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
      */
     boolean hasImage();
     /**
-     * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
      */
     org.naru.NaruModel.RequestImage getImage();
     /**
-     * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
      */
     org.naru.NaruModel.RequestImageOrBuilder getImageOrBuilder();
 
@@ -3335,7 +3368,7 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional bool display_question_in_summary = 6;</code>
+     * <code>bool display_question_in_summary = 6;</code>
      */
     boolean getDisplayQuestionInSummary();
   }
@@ -3457,7 +3490,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -3472,7 +3505,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -3491,7 +3524,7 @@ public final class NaruModel {
     public static final int FORM_ORDER_FIELD_NUMBER = 2;
     private int formOrder_;
     /**
-     * <code>optional int32 form_order = 2;</code>
+     * <code>int32 form_order = 2;</code>
      */
     public int getFormOrder() {
       return formOrder_;
@@ -3500,7 +3533,7 @@ public final class NaruModel {
     public static final int DISPLAY_FIELD_NUMBER = 3;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -3515,7 +3548,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string display = 3;</code>
+     * <code>string display = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -3534,19 +3567,19 @@ public final class NaruModel {
     public static final int IMAGE_FIELD_NUMBER = 4;
     private org.naru.NaruModel.RequestImage image_;
     /**
-     * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
      */
     public boolean hasImage() {
       return image_ != null;
     }
     /**
-     * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
      */
     public org.naru.NaruModel.RequestImage getImage() {
       return image_ == null ? org.naru.NaruModel.RequestImage.getDefaultInstance() : image_;
     }
     /**
-     * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
      */
     public org.naru.NaruModel.RequestImageOrBuilder getImageOrBuilder() {
       return getImage();
@@ -3590,7 +3623,7 @@ public final class NaruModel {
     public static final int DISPLAY_QUESTION_IN_SUMMARY_FIELD_NUMBER = 6;
     private boolean displayQuestionInSummary_;
     /**
-     * <code>optional bool display_question_in_summary = 6;</code>
+     * <code>bool display_question_in_summary = 6;</code>
      */
     public boolean getDisplayQuestionInSummary() {
       return displayQuestionInSummary_;
@@ -3695,7 +3728,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + FORM_ORDER_FIELD_NUMBER;
@@ -3718,6 +3751,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Question parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Question parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Question parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4008,7 +4052,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -4023,7 +4067,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -4039,7 +4083,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -4052,7 +4096,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -4061,7 +4105,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -4077,13 +4121,13 @@ public final class NaruModel {
 
       private int formOrder_ ;
       /**
-       * <code>optional int32 form_order = 2;</code>
+       * <code>int32 form_order = 2;</code>
        */
       public int getFormOrder() {
         return formOrder_;
       }
       /**
-       * <code>optional int32 form_order = 2;</code>
+       * <code>int32 form_order = 2;</code>
        */
       public Builder setFormOrder(int value) {
         
@@ -4092,7 +4136,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int32 form_order = 2;</code>
+       * <code>int32 form_order = 2;</code>
        */
       public Builder clearFormOrder() {
         
@@ -4103,7 +4147,7 @@ public final class NaruModel {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -4118,7 +4162,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -4134,7 +4178,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -4147,7 +4191,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public Builder clearDisplay() {
         
@@ -4156,7 +4200,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string display = 3;</code>
+       * <code>string display = 3;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -4174,13 +4218,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.RequestImage, org.naru.NaruModel.RequestImage.Builder, org.naru.NaruModel.RequestImageOrBuilder> imageBuilder_;
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public boolean hasImage() {
         return imageBuilder_ != null || image_ != null;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImage getImage() {
         if (imageBuilder_ == null) {
@@ -4190,7 +4234,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public Builder setImage(org.naru.NaruModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -4206,7 +4250,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public Builder setImage(
           org.naru.NaruModel.RequestImage.Builder builderForValue) {
@@ -4220,7 +4264,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public Builder mergeImage(org.naru.NaruModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -4238,7 +4282,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -4252,7 +4296,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImage.Builder getImageBuilder() {
         
@@ -4260,7 +4304,7 @@ public final class NaruModel {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImageOrBuilder getImageOrBuilder() {
         if (imageBuilder_ != null) {
@@ -4271,7 +4315,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 4 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 4 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.RequestImage, org.naru.NaruModel.RequestImage.Builder, org.naru.NaruModel.RequestImageOrBuilder> 
@@ -4529,13 +4573,13 @@ public final class NaruModel {
 
       private boolean displayQuestionInSummary_ ;
       /**
-       * <code>optional bool display_question_in_summary = 6;</code>
+       * <code>bool display_question_in_summary = 6;</code>
        */
       public boolean getDisplayQuestionInSummary() {
         return displayQuestionInSummary_;
       }
       /**
-       * <code>optional bool display_question_in_summary = 6;</code>
+       * <code>bool display_question_in_summary = 6;</code>
        */
       public Builder setDisplayQuestionInSummary(boolean value) {
         
@@ -4544,7 +4588,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional bool display_question_in_summary = 6;</code>
+       * <code>bool display_question_in_summary = 6;</code>
        */
       public Builder clearDisplayQuestionInSummary() {
         
@@ -4606,38 +4650,38 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+     * <code>.org.naru.Question question = 2 [weak = true];</code>
      */
     boolean hasQuestion();
     /**
-     * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+     * <code>.org.naru.Question question = 2 [weak = true];</code>
      */
     org.naru.NaruModel.Question getQuestion();
     /**
-     * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+     * <code>.org.naru.Question question = 2 [weak = true];</code>
      */
     org.naru.NaruModel.QuestionOrBuilder getQuestionOrBuilder();
 
     /**
-     * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+     * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
      */
     boolean hasAnswer();
     /**
-     * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+     * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
      */
     org.naru.NaruModel.ExpectedAnswer getAnswer();
     /**
-     * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+     * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
      */
     org.naru.NaruModel.ExpectedAnswerOrBuilder getAnswerOrBuilder();
   }
@@ -4739,7 +4783,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -4754,7 +4798,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -4773,19 +4817,19 @@ public final class NaruModel {
     public static final int QUESTION_FIELD_NUMBER = 2;
     private org.naru.NaruModel.Question question_;
     /**
-     * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+     * <code>.org.naru.Question question = 2 [weak = true];</code>
      */
     public boolean hasQuestion() {
       return question_ != null;
     }
     /**
-     * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+     * <code>.org.naru.Question question = 2 [weak = true];</code>
      */
     public org.naru.NaruModel.Question getQuestion() {
       return question_ == null ? org.naru.NaruModel.Question.getDefaultInstance() : question_;
     }
     /**
-     * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+     * <code>.org.naru.Question question = 2 [weak = true];</code>
      */
     public org.naru.NaruModel.QuestionOrBuilder getQuestionOrBuilder() {
       return getQuestion();
@@ -4794,19 +4838,19 @@ public final class NaruModel {
     public static final int ANSWER_FIELD_NUMBER = 3;
     private org.naru.NaruModel.ExpectedAnswer answer_;
     /**
-     * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+     * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
      */
     public boolean hasAnswer() {
       return answer_ != null;
     }
     /**
-     * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+     * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
      */
     public org.naru.NaruModel.ExpectedAnswer getAnswer() {
       return answer_ == null ? org.naru.NaruModel.ExpectedAnswer.getDefaultInstance() : answer_;
     }
     /**
-     * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+     * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
      */
     public org.naru.NaruModel.ExpectedAnswerOrBuilder getAnswerOrBuilder() {
       return getAnswer();
@@ -4888,7 +4932,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasQuestion()) {
@@ -4904,6 +4948,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.QuestionAnswer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.QuestionAnswer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.QuestionAnswer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5143,7 +5198,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -5158,7 +5213,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -5174,7 +5229,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -5187,7 +5242,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -5196,7 +5251,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -5214,13 +5269,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Question, org.naru.NaruModel.Question.Builder, org.naru.NaruModel.QuestionOrBuilder> questionBuilder_;
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public boolean hasQuestion() {
         return questionBuilder_ != null || question_ != null;
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.Question getQuestion() {
         if (questionBuilder_ == null) {
@@ -5230,7 +5285,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public Builder setQuestion(org.naru.NaruModel.Question value) {
         if (questionBuilder_ == null) {
@@ -5246,7 +5301,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public Builder setQuestion(
           org.naru.NaruModel.Question.Builder builderForValue) {
@@ -5260,7 +5315,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public Builder mergeQuestion(org.naru.NaruModel.Question value) {
         if (questionBuilder_ == null) {
@@ -5278,7 +5333,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public Builder clearQuestion() {
         if (questionBuilder_ == null) {
@@ -5292,7 +5347,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.Question.Builder getQuestionBuilder() {
         
@@ -5300,7 +5355,7 @@ public final class NaruModel {
         return getQuestionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.QuestionOrBuilder getQuestionOrBuilder() {
         if (questionBuilder_ != null) {
@@ -5311,7 +5366,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Question question = 2 [weak = true];</code>
+       * <code>.org.naru.Question question = 2 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Question, org.naru.NaruModel.Question.Builder, org.naru.NaruModel.QuestionOrBuilder> 
@@ -5331,13 +5386,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.ExpectedAnswer, org.naru.NaruModel.ExpectedAnswer.Builder, org.naru.NaruModel.ExpectedAnswerOrBuilder> answerBuilder_;
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public boolean hasAnswer() {
         return answerBuilder_ != null || answer_ != null;
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public org.naru.NaruModel.ExpectedAnswer getAnswer() {
         if (answerBuilder_ == null) {
@@ -5347,7 +5402,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public Builder setAnswer(org.naru.NaruModel.ExpectedAnswer value) {
         if (answerBuilder_ == null) {
@@ -5363,7 +5418,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public Builder setAnswer(
           org.naru.NaruModel.ExpectedAnswer.Builder builderForValue) {
@@ -5377,7 +5432,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public Builder mergeAnswer(org.naru.NaruModel.ExpectedAnswer value) {
         if (answerBuilder_ == null) {
@@ -5395,7 +5450,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public Builder clearAnswer() {
         if (answerBuilder_ == null) {
@@ -5409,7 +5464,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public org.naru.NaruModel.ExpectedAnswer.Builder getAnswerBuilder() {
         
@@ -5417,7 +5472,7 @@ public final class NaruModel {
         return getAnswerFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       public org.naru.NaruModel.ExpectedAnswerOrBuilder getAnswerOrBuilder() {
         if (answerBuilder_ != null) {
@@ -5428,7 +5483,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
+       * <code>.org.naru.ExpectedAnswer answer = 3 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.ExpectedAnswer, org.naru.NaruModel.ExpectedAnswer.Builder, org.naru.NaruModel.ExpectedAnswerOrBuilder> 
@@ -5497,25 +5552,25 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+     * <code>.org.naru.Form form = 2 [weak = true];</code>
      */
     boolean hasForm();
     /**
-     * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+     * <code>.org.naru.Form form = 2 [weak = true];</code>
      */
     org.naru.NaruModel.Form getForm();
     /**
-     * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+     * <code>.org.naru.Form form = 2 [weak = true];</code>
      */
     org.naru.NaruModel.FormOrBuilder getFormOrBuilder();
 
@@ -5544,26 +5599,26 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional int64 date_recorded = 4;</code>
+     * <code>int64 date_recorded = 4;</code>
      */
     long getDateRecorded();
 
     /**
-     * <code>optional string token = 5;</code>
+     * <code>string token = 5;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 5;</code>
+     * <code>string token = 5;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional string user_id = 6;</code>
+     * <code>string user_id = 6;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 6;</code>
+     * <code>string user_id = 6;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
@@ -5687,7 +5742,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -5702,7 +5757,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -5721,19 +5776,19 @@ public final class NaruModel {
     public static final int FORM_FIELD_NUMBER = 2;
     private org.naru.NaruModel.Form form_;
     /**
-     * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+     * <code>.org.naru.Form form = 2 [weak = true];</code>
      */
     public boolean hasForm() {
       return form_ != null;
     }
     /**
-     * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+     * <code>.org.naru.Form form = 2 [weak = true];</code>
      */
     public org.naru.NaruModel.Form getForm() {
       return form_ == null ? org.naru.NaruModel.Form.getDefaultInstance() : form_;
     }
     /**
-     * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+     * <code>.org.naru.Form form = 2 [weak = true];</code>
      */
     public org.naru.NaruModel.FormOrBuilder getFormOrBuilder() {
       return getForm();
@@ -5777,7 +5832,7 @@ public final class NaruModel {
     public static final int DATE_RECORDED_FIELD_NUMBER = 4;
     private long dateRecorded_;
     /**
-     * <code>optional int64 date_recorded = 4;</code>
+     * <code>int64 date_recorded = 4;</code>
      */
     public long getDateRecorded() {
       return dateRecorded_;
@@ -5786,7 +5841,7 @@ public final class NaruModel {
     public static final int TOKEN_FIELD_NUMBER = 5;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 5;</code>
+     * <code>string token = 5;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -5801,7 +5856,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string token = 5;</code>
+     * <code>string token = 5;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -5820,7 +5875,7 @@ public final class NaruModel {
     public static final int USER_ID_FIELD_NUMBER = 6;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 6;</code>
+     * <code>string user_id = 6;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -5835,7 +5890,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_id = 6;</code>
+     * <code>string user_id = 6;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -5949,7 +6004,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasForm()) {
@@ -5972,6 +6027,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.FormQuestions parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.FormQuestions parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.FormQuestions parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6263,7 +6329,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -6278,7 +6344,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -6294,7 +6360,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -6307,7 +6373,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -6316,7 +6382,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6334,13 +6400,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Form, org.naru.NaruModel.Form.Builder, org.naru.NaruModel.FormOrBuilder> formBuilder_;
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public boolean hasForm() {
         return formBuilder_ != null || form_ != null;
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.Form getForm() {
         if (formBuilder_ == null) {
@@ -6350,7 +6416,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public Builder setForm(org.naru.NaruModel.Form value) {
         if (formBuilder_ == null) {
@@ -6366,7 +6432,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public Builder setForm(
           org.naru.NaruModel.Form.Builder builderForValue) {
@@ -6380,7 +6446,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public Builder mergeForm(org.naru.NaruModel.Form value) {
         if (formBuilder_ == null) {
@@ -6398,7 +6464,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public Builder clearForm() {
         if (formBuilder_ == null) {
@@ -6412,7 +6478,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.Form.Builder getFormBuilder() {
         
@@ -6420,7 +6486,7 @@ public final class NaruModel {
         return getFormFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.FormOrBuilder getFormOrBuilder() {
         if (formBuilder_ != null) {
@@ -6431,7 +6497,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Form form = 2 [weak = true];</code>
+       * <code>.org.naru.Form form = 2 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Form, org.naru.NaruModel.Form.Builder, org.naru.NaruModel.FormOrBuilder> 
@@ -6689,13 +6755,13 @@ public final class NaruModel {
 
       private long dateRecorded_ ;
       /**
-       * <code>optional int64 date_recorded = 4;</code>
+       * <code>int64 date_recorded = 4;</code>
        */
       public long getDateRecorded() {
         return dateRecorded_;
       }
       /**
-       * <code>optional int64 date_recorded = 4;</code>
+       * <code>int64 date_recorded = 4;</code>
        */
       public Builder setDateRecorded(long value) {
         
@@ -6704,7 +6770,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 date_recorded = 4;</code>
+       * <code>int64 date_recorded = 4;</code>
        */
       public Builder clearDateRecorded() {
         
@@ -6715,7 +6781,7 @@ public final class NaruModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 5;</code>
+       * <code>string token = 5;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -6730,7 +6796,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 5;</code>
+       * <code>string token = 5;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -6746,7 +6812,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 5;</code>
+       * <code>string token = 5;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -6759,7 +6825,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 5;</code>
+       * <code>string token = 5;</code>
        */
       public Builder clearToken() {
         
@@ -6768,7 +6834,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 5;</code>
+       * <code>string token = 5;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -6784,7 +6850,7 @@ public final class NaruModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 6;</code>
+       * <code>string user_id = 6;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -6799,7 +6865,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 6;</code>
+       * <code>string user_id = 6;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -6815,7 +6881,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 6;</code>
+       * <code>string user_id = 6;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -6828,7 +6894,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 6;</code>
+       * <code>string user_id = 6;</code>
        */
       public Builder clearUserId() {
         
@@ -6837,7 +6903,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 6;</code>
+       * <code>string user_id = 6;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6904,21 +6970,21 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string form_name = 2;</code>
+     * <code>string form_name = 2;</code>
      */
     java.lang.String getFormName();
     /**
-     * <code>optional string form_name = 2;</code>
+     * <code>string form_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getFormNameBytes();
@@ -6948,15 +7014,15 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional .org.naru.View view = 4 [weak = true];</code>
+     * <code>.org.naru.View view = 4 [weak = true];</code>
      */
     boolean hasView();
     /**
-     * <code>optional .org.naru.View view = 4 [weak = true];</code>
+     * <code>.org.naru.View view = 4 [weak = true];</code>
      */
     org.naru.NaruModel.View getView();
     /**
-     * <code>optional .org.naru.View view = 4 [weak = true];</code>
+     * <code>.org.naru.View view = 4 [weak = true];</code>
      */
     org.naru.NaruModel.ViewOrBuilder getViewOrBuilder();
   }
@@ -7066,7 +7132,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -7081,7 +7147,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -7100,7 +7166,7 @@ public final class NaruModel {
     public static final int FORM_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object formName_;
     /**
-     * <code>optional string form_name = 2;</code>
+     * <code>string form_name = 2;</code>
      */
     public java.lang.String getFormName() {
       java.lang.Object ref = formName_;
@@ -7115,7 +7181,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string form_name = 2;</code>
+     * <code>string form_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFormNameBytes() {
@@ -7169,19 +7235,19 @@ public final class NaruModel {
     public static final int VIEW_FIELD_NUMBER = 4;
     private org.naru.NaruModel.View view_;
     /**
-     * <code>optional .org.naru.View view = 4 [weak = true];</code>
+     * <code>.org.naru.View view = 4 [weak = true];</code>
      */
     public boolean hasView() {
       return view_ != null;
     }
     /**
-     * <code>optional .org.naru.View view = 4 [weak = true];</code>
+     * <code>.org.naru.View view = 4 [weak = true];</code>
      */
     public org.naru.NaruModel.View getView() {
       return view_ == null ? org.naru.NaruModel.View.getDefaultInstance() : view_;
     }
     /**
-     * <code>optional .org.naru.View view = 4 [weak = true];</code>
+     * <code>.org.naru.View view = 4 [weak = true];</code>
      */
     public org.naru.NaruModel.ViewOrBuilder getViewOrBuilder() {
       return getView();
@@ -7268,7 +7334,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + FORM_NAME_FIELD_NUMBER;
@@ -7286,6 +7352,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.FormQuestionsGroup parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.FormQuestionsGroup parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.FormQuestionsGroup parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7564,7 +7641,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -7579,7 +7656,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -7595,7 +7672,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -7608,7 +7685,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -7617,7 +7694,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -7633,7 +7710,7 @@ public final class NaruModel {
 
       private java.lang.Object formName_ = "";
       /**
-       * <code>optional string form_name = 2;</code>
+       * <code>string form_name = 2;</code>
        */
       public java.lang.String getFormName() {
         java.lang.Object ref = formName_;
@@ -7648,7 +7725,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string form_name = 2;</code>
+       * <code>string form_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFormNameBytes() {
@@ -7664,7 +7741,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string form_name = 2;</code>
+       * <code>string form_name = 2;</code>
        */
       public Builder setFormName(
           java.lang.String value) {
@@ -7677,7 +7754,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string form_name = 2;</code>
+       * <code>string form_name = 2;</code>
        */
       public Builder clearFormName() {
         
@@ -7686,7 +7763,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string form_name = 2;</code>
+       * <code>string form_name = 2;</code>
        */
       public Builder setFormNameBytes(
           com.google.protobuf.ByteString value) {
@@ -7944,13 +8021,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> viewBuilder_;
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public boolean hasView() {
         return viewBuilder_ != null || view_ != null;
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public org.naru.NaruModel.View getView() {
         if (viewBuilder_ == null) {
@@ -7960,7 +8037,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public Builder setView(org.naru.NaruModel.View value) {
         if (viewBuilder_ == null) {
@@ -7976,7 +8053,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public Builder setView(
           org.naru.NaruModel.View.Builder builderForValue) {
@@ -7990,7 +8067,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public Builder mergeView(org.naru.NaruModel.View value) {
         if (viewBuilder_ == null) {
@@ -8008,7 +8085,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
@@ -8022,7 +8099,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public org.naru.NaruModel.View.Builder getViewBuilder() {
         
@@ -8030,7 +8107,7 @@ public final class NaruModel {
         return getViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       public org.naru.NaruModel.ViewOrBuilder getViewOrBuilder() {
         if (viewBuilder_ != null) {
@@ -8041,7 +8118,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View view = 4 [weak = true];</code>
+       * <code>.org.naru.View view = 4 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> 
@@ -8110,26 +8187,26 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional int64 date_recorded = 5;</code>
+     * <code>int64 date_recorded = 5;</code>
      */
     long getDateRecorded();
 
     /**
-     * <code>optional string date_recorded_display = 6;</code>
+     * <code>string date_recorded_display = 6;</code>
      */
     java.lang.String getDateRecordedDisplay();
     /**
-     * <code>optional string date_recorded_display = 6;</code>
+     * <code>string date_recorded_display = 6;</code>
      */
     com.google.protobuf.ByteString
         getDateRecordedDisplayBytes();
@@ -8159,128 +8236,128 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional string user_id = 8;</code>
+     * <code>string user_id = 8;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 8;</code>
+     * <code>string user_id = 8;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
 
     /**
-     * <code>optional double amount_total = 9;</code>
+     * <code>double amount_total = 9;</code>
      */
     double getAmountTotal();
 
     /**
-     * <code>optional int64 time_ready = 11;</code>
+     * <code>int64 time_ready = 11;</code>
      */
     long getTimeReady();
 
     /**
-     * <code>optional string time_ready_display = 12;</code>
+     * <code>string time_ready_display = 12;</code>
      */
     java.lang.String getTimeReadyDisplay();
     /**
-     * <code>optional string time_ready_display = 12;</code>
+     * <code>string time_ready_display = 12;</code>
      */
     com.google.protobuf.ByteString
         getTimeReadyDisplayBytes();
 
     /**
-     * <code>optional int64 time_delivered = 14;</code>
+     * <code>int64 time_delivered = 14;</code>
      */
     long getTimeDelivered();
 
     /**
-     * <code>optional string time_delivered_display = 15;</code>
+     * <code>string time_delivered_display = 15;</code>
      */
     java.lang.String getTimeDeliveredDisplay();
     /**
-     * <code>optional string time_delivered_display = 15;</code>
+     * <code>string time_delivered_display = 15;</code>
      */
     com.google.protobuf.ByteString
         getTimeDeliveredDisplayBytes();
 
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
      */
     boolean hasCheckoutBeacon();
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
      */
     org.naru.NaruModel.Beacon getCheckoutBeacon();
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
      */
     org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder();
 
     /**
-     * <code>optional string organization_id = 18;</code>
+     * <code>string organization_id = 18;</code>
      */
     java.lang.String getOrganizationId();
     /**
-     * <code>optional string organization_id = 18;</code>
+     * <code>string organization_id = 18;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationIdBytes();
 
     /**
-     * <code>optional .org.naru.OrderState order_state = 19;</code>
+     * <code>.org.naru.OrderState order_state = 19;</code>
      */
     int getOrderStateValue();
     /**
-     * <code>optional .org.naru.OrderState order_state = 19;</code>
+     * <code>.org.naru.OrderState order_state = 19;</code>
      */
     org.naru.NaruModel.OrderState getOrderState();
 
     /**
-     * <code>optional int64 time_processing = 20;</code>
+     * <code>int64 time_processing = 20;</code>
      */
     long getTimeProcessing();
 
     /**
-     * <code>optional string time_processing_display = 21;</code>
+     * <code>string time_processing_display = 21;</code>
      */
     java.lang.String getTimeProcessingDisplay();
     /**
-     * <code>optional string time_processing_display = 21;</code>
+     * <code>string time_processing_display = 21;</code>
      */
     com.google.protobuf.ByteString
         getTimeProcessingDisplayBytes();
 
     /**
-     * <code>optional int64 time_canceled = 22;</code>
+     * <code>int64 time_canceled = 22;</code>
      */
     long getTimeCanceled();
 
     /**
-     * <code>optional string time_canceled_display = 23;</code>
+     * <code>string time_canceled_display = 23;</code>
      */
     java.lang.String getTimeCanceledDisplay();
     /**
-     * <code>optional string time_canceled_display = 23;</code>
+     * <code>string time_canceled_display = 23;</code>
      */
     com.google.protobuf.ByteString
         getTimeCanceledDisplayBytes();
 
     /**
-     * <code>optional string google_id = 24;</code>
+     * <code>string google_id = 24;</code>
      */
     java.lang.String getGoogleId();
     /**
-     * <code>optional string google_id = 24;</code>
+     * <code>string google_id = 24;</code>
      */
     com.google.protobuf.ByteString
         getGoogleIdBytes();
 
     /**
-     * <code>optional string apple_id = 25;</code>
+     * <code>string apple_id = 25;</code>
      */
     java.lang.String getAppleId();
     /**
-     * <code>optional string apple_id = 25;</code>
+     * <code>string apple_id = 25;</code>
      */
     com.google.protobuf.ByteString
         getAppleIdBytes();
@@ -8490,7 +8567,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -8505,7 +8582,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -8524,7 +8601,7 @@ public final class NaruModel {
     public static final int DATE_RECORDED_FIELD_NUMBER = 5;
     private long dateRecorded_;
     /**
-     * <code>optional int64 date_recorded = 5;</code>
+     * <code>int64 date_recorded = 5;</code>
      */
     public long getDateRecorded() {
       return dateRecorded_;
@@ -8533,7 +8610,7 @@ public final class NaruModel {
     public static final int DATE_RECORDED_DISPLAY_FIELD_NUMBER = 6;
     private volatile java.lang.Object dateRecordedDisplay_;
     /**
-     * <code>optional string date_recorded_display = 6;</code>
+     * <code>string date_recorded_display = 6;</code>
      */
     public java.lang.String getDateRecordedDisplay() {
       java.lang.Object ref = dateRecordedDisplay_;
@@ -8548,7 +8625,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string date_recorded_display = 6;</code>
+     * <code>string date_recorded_display = 6;</code>
      */
     public com.google.protobuf.ByteString
         getDateRecordedDisplayBytes() {
@@ -8602,7 +8679,7 @@ public final class NaruModel {
     public static final int USER_ID_FIELD_NUMBER = 8;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 8;</code>
+     * <code>string user_id = 8;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -8617,7 +8694,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_id = 8;</code>
+     * <code>string user_id = 8;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -8636,7 +8713,7 @@ public final class NaruModel {
     public static final int AMOUNT_TOTAL_FIELD_NUMBER = 9;
     private double amountTotal_;
     /**
-     * <code>optional double amount_total = 9;</code>
+     * <code>double amount_total = 9;</code>
      */
     public double getAmountTotal() {
       return amountTotal_;
@@ -8645,7 +8722,7 @@ public final class NaruModel {
     public static final int TIME_READY_FIELD_NUMBER = 11;
     private long timeReady_;
     /**
-     * <code>optional int64 time_ready = 11;</code>
+     * <code>int64 time_ready = 11;</code>
      */
     public long getTimeReady() {
       return timeReady_;
@@ -8654,7 +8731,7 @@ public final class NaruModel {
     public static final int TIME_READY_DISPLAY_FIELD_NUMBER = 12;
     private volatile java.lang.Object timeReadyDisplay_;
     /**
-     * <code>optional string time_ready_display = 12;</code>
+     * <code>string time_ready_display = 12;</code>
      */
     public java.lang.String getTimeReadyDisplay() {
       java.lang.Object ref = timeReadyDisplay_;
@@ -8669,7 +8746,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string time_ready_display = 12;</code>
+     * <code>string time_ready_display = 12;</code>
      */
     public com.google.protobuf.ByteString
         getTimeReadyDisplayBytes() {
@@ -8688,7 +8765,7 @@ public final class NaruModel {
     public static final int TIME_DELIVERED_FIELD_NUMBER = 14;
     private long timeDelivered_;
     /**
-     * <code>optional int64 time_delivered = 14;</code>
+     * <code>int64 time_delivered = 14;</code>
      */
     public long getTimeDelivered() {
       return timeDelivered_;
@@ -8697,7 +8774,7 @@ public final class NaruModel {
     public static final int TIME_DELIVERED_DISPLAY_FIELD_NUMBER = 15;
     private volatile java.lang.Object timeDeliveredDisplay_;
     /**
-     * <code>optional string time_delivered_display = 15;</code>
+     * <code>string time_delivered_display = 15;</code>
      */
     public java.lang.String getTimeDeliveredDisplay() {
       java.lang.Object ref = timeDeliveredDisplay_;
@@ -8712,7 +8789,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string time_delivered_display = 15;</code>
+     * <code>string time_delivered_display = 15;</code>
      */
     public com.google.protobuf.ByteString
         getTimeDeliveredDisplayBytes() {
@@ -8731,19 +8808,19 @@ public final class NaruModel {
     public static final int CHECKOUT_BEACON_FIELD_NUMBER = 17;
     private org.naru.NaruModel.Beacon checkoutBeacon_;
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
      */
     public boolean hasCheckoutBeacon() {
       return checkoutBeacon_ != null;
     }
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
      */
     public org.naru.NaruModel.Beacon getCheckoutBeacon() {
       return checkoutBeacon_ == null ? org.naru.NaruModel.Beacon.getDefaultInstance() : checkoutBeacon_;
     }
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
      */
     public org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder() {
       return getCheckoutBeacon();
@@ -8752,7 +8829,7 @@ public final class NaruModel {
     public static final int ORGANIZATION_ID_FIELD_NUMBER = 18;
     private volatile java.lang.Object organizationId_;
     /**
-     * <code>optional string organization_id = 18;</code>
+     * <code>string organization_id = 18;</code>
      */
     public java.lang.String getOrganizationId() {
       java.lang.Object ref = organizationId_;
@@ -8767,7 +8844,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string organization_id = 18;</code>
+     * <code>string organization_id = 18;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationIdBytes() {
@@ -8786,13 +8863,13 @@ public final class NaruModel {
     public static final int ORDER_STATE_FIELD_NUMBER = 19;
     private int orderState_;
     /**
-     * <code>optional .org.naru.OrderState order_state = 19;</code>
+     * <code>.org.naru.OrderState order_state = 19;</code>
      */
     public int getOrderStateValue() {
       return orderState_;
     }
     /**
-     * <code>optional .org.naru.OrderState order_state = 19;</code>
+     * <code>.org.naru.OrderState order_state = 19;</code>
      */
     public org.naru.NaruModel.OrderState getOrderState() {
       org.naru.NaruModel.OrderState result = org.naru.NaruModel.OrderState.valueOf(orderState_);
@@ -8802,7 +8879,7 @@ public final class NaruModel {
     public static final int TIME_PROCESSING_FIELD_NUMBER = 20;
     private long timeProcessing_;
     /**
-     * <code>optional int64 time_processing = 20;</code>
+     * <code>int64 time_processing = 20;</code>
      */
     public long getTimeProcessing() {
       return timeProcessing_;
@@ -8811,7 +8888,7 @@ public final class NaruModel {
     public static final int TIME_PROCESSING_DISPLAY_FIELD_NUMBER = 21;
     private volatile java.lang.Object timeProcessingDisplay_;
     /**
-     * <code>optional string time_processing_display = 21;</code>
+     * <code>string time_processing_display = 21;</code>
      */
     public java.lang.String getTimeProcessingDisplay() {
       java.lang.Object ref = timeProcessingDisplay_;
@@ -8826,7 +8903,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string time_processing_display = 21;</code>
+     * <code>string time_processing_display = 21;</code>
      */
     public com.google.protobuf.ByteString
         getTimeProcessingDisplayBytes() {
@@ -8845,7 +8922,7 @@ public final class NaruModel {
     public static final int TIME_CANCELED_FIELD_NUMBER = 22;
     private long timeCanceled_;
     /**
-     * <code>optional int64 time_canceled = 22;</code>
+     * <code>int64 time_canceled = 22;</code>
      */
     public long getTimeCanceled() {
       return timeCanceled_;
@@ -8854,7 +8931,7 @@ public final class NaruModel {
     public static final int TIME_CANCELED_DISPLAY_FIELD_NUMBER = 23;
     private volatile java.lang.Object timeCanceledDisplay_;
     /**
-     * <code>optional string time_canceled_display = 23;</code>
+     * <code>string time_canceled_display = 23;</code>
      */
     public java.lang.String getTimeCanceledDisplay() {
       java.lang.Object ref = timeCanceledDisplay_;
@@ -8869,7 +8946,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string time_canceled_display = 23;</code>
+     * <code>string time_canceled_display = 23;</code>
      */
     public com.google.protobuf.ByteString
         getTimeCanceledDisplayBytes() {
@@ -8888,7 +8965,7 @@ public final class NaruModel {
     public static final int GOOGLE_ID_FIELD_NUMBER = 24;
     private volatile java.lang.Object googleId_;
     /**
-     * <code>optional string google_id = 24;</code>
+     * <code>string google_id = 24;</code>
      */
     public java.lang.String getGoogleId() {
       java.lang.Object ref = googleId_;
@@ -8903,7 +8980,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string google_id = 24;</code>
+     * <code>string google_id = 24;</code>
      */
     public com.google.protobuf.ByteString
         getGoogleIdBytes() {
@@ -8922,7 +8999,7 @@ public final class NaruModel {
     public static final int APPLE_ID_FIELD_NUMBER = 25;
     private volatile java.lang.Object appleId_;
     /**
-     * <code>optional string apple_id = 25;</code>
+     * <code>string apple_id = 25;</code>
      */
     public java.lang.String getAppleId() {
       java.lang.Object ref = appleId_;
@@ -8937,7 +9014,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string apple_id = 25;</code>
+     * <code>string apple_id = 25;</code>
      */
     public com.google.protobuf.ByteString
         getAppleIdBytes() {
@@ -9162,7 +9239,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DATE_RECORDED_FIELD_NUMBER;
@@ -9216,6 +9293,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Order parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Order parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Order parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9592,7 +9680,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -9607,7 +9695,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -9623,7 +9711,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -9636,7 +9724,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -9645,7 +9733,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -9661,13 +9749,13 @@ public final class NaruModel {
 
       private long dateRecorded_ ;
       /**
-       * <code>optional int64 date_recorded = 5;</code>
+       * <code>int64 date_recorded = 5;</code>
        */
       public long getDateRecorded() {
         return dateRecorded_;
       }
       /**
-       * <code>optional int64 date_recorded = 5;</code>
+       * <code>int64 date_recorded = 5;</code>
        */
       public Builder setDateRecorded(long value) {
         
@@ -9676,7 +9764,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 date_recorded = 5;</code>
+       * <code>int64 date_recorded = 5;</code>
        */
       public Builder clearDateRecorded() {
         
@@ -9687,7 +9775,7 @@ public final class NaruModel {
 
       private java.lang.Object dateRecordedDisplay_ = "";
       /**
-       * <code>optional string date_recorded_display = 6;</code>
+       * <code>string date_recorded_display = 6;</code>
        */
       public java.lang.String getDateRecordedDisplay() {
         java.lang.Object ref = dateRecordedDisplay_;
@@ -9702,7 +9790,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string date_recorded_display = 6;</code>
+       * <code>string date_recorded_display = 6;</code>
        */
       public com.google.protobuf.ByteString
           getDateRecordedDisplayBytes() {
@@ -9718,7 +9806,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string date_recorded_display = 6;</code>
+       * <code>string date_recorded_display = 6;</code>
        */
       public Builder setDateRecordedDisplay(
           java.lang.String value) {
@@ -9731,7 +9819,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string date_recorded_display = 6;</code>
+       * <code>string date_recorded_display = 6;</code>
        */
       public Builder clearDateRecordedDisplay() {
         
@@ -9740,7 +9828,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string date_recorded_display = 6;</code>
+       * <code>string date_recorded_display = 6;</code>
        */
       public Builder setDateRecordedDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -9996,7 +10084,7 @@ public final class NaruModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 8;</code>
+       * <code>string user_id = 8;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -10011,7 +10099,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 8;</code>
+       * <code>string user_id = 8;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -10027,7 +10115,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 8;</code>
+       * <code>string user_id = 8;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -10040,7 +10128,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 8;</code>
+       * <code>string user_id = 8;</code>
        */
       public Builder clearUserId() {
         
@@ -10049,7 +10137,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 8;</code>
+       * <code>string user_id = 8;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -10065,13 +10153,13 @@ public final class NaruModel {
 
       private double amountTotal_ ;
       /**
-       * <code>optional double amount_total = 9;</code>
+       * <code>double amount_total = 9;</code>
        */
       public double getAmountTotal() {
         return amountTotal_;
       }
       /**
-       * <code>optional double amount_total = 9;</code>
+       * <code>double amount_total = 9;</code>
        */
       public Builder setAmountTotal(double value) {
         
@@ -10080,7 +10168,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional double amount_total = 9;</code>
+       * <code>double amount_total = 9;</code>
        */
       public Builder clearAmountTotal() {
         
@@ -10091,13 +10179,13 @@ public final class NaruModel {
 
       private long timeReady_ ;
       /**
-       * <code>optional int64 time_ready = 11;</code>
+       * <code>int64 time_ready = 11;</code>
        */
       public long getTimeReady() {
         return timeReady_;
       }
       /**
-       * <code>optional int64 time_ready = 11;</code>
+       * <code>int64 time_ready = 11;</code>
        */
       public Builder setTimeReady(long value) {
         
@@ -10106,7 +10194,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 time_ready = 11;</code>
+       * <code>int64 time_ready = 11;</code>
        */
       public Builder clearTimeReady() {
         
@@ -10117,7 +10205,7 @@ public final class NaruModel {
 
       private java.lang.Object timeReadyDisplay_ = "";
       /**
-       * <code>optional string time_ready_display = 12;</code>
+       * <code>string time_ready_display = 12;</code>
        */
       public java.lang.String getTimeReadyDisplay() {
         java.lang.Object ref = timeReadyDisplay_;
@@ -10132,7 +10220,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_ready_display = 12;</code>
+       * <code>string time_ready_display = 12;</code>
        */
       public com.google.protobuf.ByteString
           getTimeReadyDisplayBytes() {
@@ -10148,7 +10236,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_ready_display = 12;</code>
+       * <code>string time_ready_display = 12;</code>
        */
       public Builder setTimeReadyDisplay(
           java.lang.String value) {
@@ -10161,7 +10249,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_ready_display = 12;</code>
+       * <code>string time_ready_display = 12;</code>
        */
       public Builder clearTimeReadyDisplay() {
         
@@ -10170,7 +10258,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_ready_display = 12;</code>
+       * <code>string time_ready_display = 12;</code>
        */
       public Builder setTimeReadyDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -10186,13 +10274,13 @@ public final class NaruModel {
 
       private long timeDelivered_ ;
       /**
-       * <code>optional int64 time_delivered = 14;</code>
+       * <code>int64 time_delivered = 14;</code>
        */
       public long getTimeDelivered() {
         return timeDelivered_;
       }
       /**
-       * <code>optional int64 time_delivered = 14;</code>
+       * <code>int64 time_delivered = 14;</code>
        */
       public Builder setTimeDelivered(long value) {
         
@@ -10201,7 +10289,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 time_delivered = 14;</code>
+       * <code>int64 time_delivered = 14;</code>
        */
       public Builder clearTimeDelivered() {
         
@@ -10212,7 +10300,7 @@ public final class NaruModel {
 
       private java.lang.Object timeDeliveredDisplay_ = "";
       /**
-       * <code>optional string time_delivered_display = 15;</code>
+       * <code>string time_delivered_display = 15;</code>
        */
       public java.lang.String getTimeDeliveredDisplay() {
         java.lang.Object ref = timeDeliveredDisplay_;
@@ -10227,7 +10315,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_delivered_display = 15;</code>
+       * <code>string time_delivered_display = 15;</code>
        */
       public com.google.protobuf.ByteString
           getTimeDeliveredDisplayBytes() {
@@ -10243,7 +10331,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_delivered_display = 15;</code>
+       * <code>string time_delivered_display = 15;</code>
        */
       public Builder setTimeDeliveredDisplay(
           java.lang.String value) {
@@ -10256,7 +10344,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_delivered_display = 15;</code>
+       * <code>string time_delivered_display = 15;</code>
        */
       public Builder clearTimeDeliveredDisplay() {
         
@@ -10265,7 +10353,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_delivered_display = 15;</code>
+       * <code>string time_delivered_display = 15;</code>
        */
       public Builder setTimeDeliveredDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -10283,13 +10371,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> checkoutBeaconBuilder_;
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public boolean hasCheckoutBeacon() {
         return checkoutBeaconBuilder_ != null || checkoutBeacon_ != null;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon getCheckoutBeacon() {
         if (checkoutBeaconBuilder_ == null) {
@@ -10299,7 +10387,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public Builder setCheckoutBeacon(org.naru.NaruModel.Beacon value) {
         if (checkoutBeaconBuilder_ == null) {
@@ -10315,7 +10403,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public Builder setCheckoutBeacon(
           org.naru.NaruModel.Beacon.Builder builderForValue) {
@@ -10329,7 +10417,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public Builder mergeCheckoutBeacon(org.naru.NaruModel.Beacon value) {
         if (checkoutBeaconBuilder_ == null) {
@@ -10347,7 +10435,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public Builder clearCheckoutBeacon() {
         if (checkoutBeaconBuilder_ == null) {
@@ -10361,7 +10449,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon.Builder getCheckoutBeaconBuilder() {
         
@@ -10369,7 +10457,7 @@ public final class NaruModel {
         return getCheckoutBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       public org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder() {
         if (checkoutBeaconBuilder_ != null) {
@@ -10380,7 +10468,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 17 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> 
@@ -10398,7 +10486,7 @@ public final class NaruModel {
 
       private java.lang.Object organizationId_ = "";
       /**
-       * <code>optional string organization_id = 18;</code>
+       * <code>string organization_id = 18;</code>
        */
       public java.lang.String getOrganizationId() {
         java.lang.Object ref = organizationId_;
@@ -10413,7 +10501,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 18;</code>
+       * <code>string organization_id = 18;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationIdBytes() {
@@ -10429,7 +10517,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 18;</code>
+       * <code>string organization_id = 18;</code>
        */
       public Builder setOrganizationId(
           java.lang.String value) {
@@ -10442,7 +10530,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 18;</code>
+       * <code>string organization_id = 18;</code>
        */
       public Builder clearOrganizationId() {
         
@@ -10451,7 +10539,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 18;</code>
+       * <code>string organization_id = 18;</code>
        */
       public Builder setOrganizationIdBytes(
           com.google.protobuf.ByteString value) {
@@ -10467,13 +10555,13 @@ public final class NaruModel {
 
       private int orderState_ = 0;
       /**
-       * <code>optional .org.naru.OrderState order_state = 19;</code>
+       * <code>.org.naru.OrderState order_state = 19;</code>
        */
       public int getOrderStateValue() {
         return orderState_;
       }
       /**
-       * <code>optional .org.naru.OrderState order_state = 19;</code>
+       * <code>.org.naru.OrderState order_state = 19;</code>
        */
       public Builder setOrderStateValue(int value) {
         orderState_ = value;
@@ -10481,14 +10569,14 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.OrderState order_state = 19;</code>
+       * <code>.org.naru.OrderState order_state = 19;</code>
        */
       public org.naru.NaruModel.OrderState getOrderState() {
         org.naru.NaruModel.OrderState result = org.naru.NaruModel.OrderState.valueOf(orderState_);
         return result == null ? org.naru.NaruModel.OrderState.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.naru.OrderState order_state = 19;</code>
+       * <code>.org.naru.OrderState order_state = 19;</code>
        */
       public Builder setOrderState(org.naru.NaruModel.OrderState value) {
         if (value == null) {
@@ -10500,7 +10588,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.OrderState order_state = 19;</code>
+       * <code>.org.naru.OrderState order_state = 19;</code>
        */
       public Builder clearOrderState() {
         
@@ -10511,13 +10599,13 @@ public final class NaruModel {
 
       private long timeProcessing_ ;
       /**
-       * <code>optional int64 time_processing = 20;</code>
+       * <code>int64 time_processing = 20;</code>
        */
       public long getTimeProcessing() {
         return timeProcessing_;
       }
       /**
-       * <code>optional int64 time_processing = 20;</code>
+       * <code>int64 time_processing = 20;</code>
        */
       public Builder setTimeProcessing(long value) {
         
@@ -10526,7 +10614,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 time_processing = 20;</code>
+       * <code>int64 time_processing = 20;</code>
        */
       public Builder clearTimeProcessing() {
         
@@ -10537,7 +10625,7 @@ public final class NaruModel {
 
       private java.lang.Object timeProcessingDisplay_ = "";
       /**
-       * <code>optional string time_processing_display = 21;</code>
+       * <code>string time_processing_display = 21;</code>
        */
       public java.lang.String getTimeProcessingDisplay() {
         java.lang.Object ref = timeProcessingDisplay_;
@@ -10552,7 +10640,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_processing_display = 21;</code>
+       * <code>string time_processing_display = 21;</code>
        */
       public com.google.protobuf.ByteString
           getTimeProcessingDisplayBytes() {
@@ -10568,7 +10656,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_processing_display = 21;</code>
+       * <code>string time_processing_display = 21;</code>
        */
       public Builder setTimeProcessingDisplay(
           java.lang.String value) {
@@ -10581,7 +10669,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_processing_display = 21;</code>
+       * <code>string time_processing_display = 21;</code>
        */
       public Builder clearTimeProcessingDisplay() {
         
@@ -10590,7 +10678,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_processing_display = 21;</code>
+       * <code>string time_processing_display = 21;</code>
        */
       public Builder setTimeProcessingDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -10606,13 +10694,13 @@ public final class NaruModel {
 
       private long timeCanceled_ ;
       /**
-       * <code>optional int64 time_canceled = 22;</code>
+       * <code>int64 time_canceled = 22;</code>
        */
       public long getTimeCanceled() {
         return timeCanceled_;
       }
       /**
-       * <code>optional int64 time_canceled = 22;</code>
+       * <code>int64 time_canceled = 22;</code>
        */
       public Builder setTimeCanceled(long value) {
         
@@ -10621,7 +10709,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 time_canceled = 22;</code>
+       * <code>int64 time_canceled = 22;</code>
        */
       public Builder clearTimeCanceled() {
         
@@ -10632,7 +10720,7 @@ public final class NaruModel {
 
       private java.lang.Object timeCanceledDisplay_ = "";
       /**
-       * <code>optional string time_canceled_display = 23;</code>
+       * <code>string time_canceled_display = 23;</code>
        */
       public java.lang.String getTimeCanceledDisplay() {
         java.lang.Object ref = timeCanceledDisplay_;
@@ -10647,7 +10735,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_canceled_display = 23;</code>
+       * <code>string time_canceled_display = 23;</code>
        */
       public com.google.protobuf.ByteString
           getTimeCanceledDisplayBytes() {
@@ -10663,7 +10751,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string time_canceled_display = 23;</code>
+       * <code>string time_canceled_display = 23;</code>
        */
       public Builder setTimeCanceledDisplay(
           java.lang.String value) {
@@ -10676,7 +10764,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_canceled_display = 23;</code>
+       * <code>string time_canceled_display = 23;</code>
        */
       public Builder clearTimeCanceledDisplay() {
         
@@ -10685,7 +10773,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string time_canceled_display = 23;</code>
+       * <code>string time_canceled_display = 23;</code>
        */
       public Builder setTimeCanceledDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -10701,7 +10789,7 @@ public final class NaruModel {
 
       private java.lang.Object googleId_ = "";
       /**
-       * <code>optional string google_id = 24;</code>
+       * <code>string google_id = 24;</code>
        */
       public java.lang.String getGoogleId() {
         java.lang.Object ref = googleId_;
@@ -10716,7 +10804,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string google_id = 24;</code>
+       * <code>string google_id = 24;</code>
        */
       public com.google.protobuf.ByteString
           getGoogleIdBytes() {
@@ -10732,7 +10820,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string google_id = 24;</code>
+       * <code>string google_id = 24;</code>
        */
       public Builder setGoogleId(
           java.lang.String value) {
@@ -10745,7 +10833,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string google_id = 24;</code>
+       * <code>string google_id = 24;</code>
        */
       public Builder clearGoogleId() {
         
@@ -10754,7 +10842,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string google_id = 24;</code>
+       * <code>string google_id = 24;</code>
        */
       public Builder setGoogleIdBytes(
           com.google.protobuf.ByteString value) {
@@ -10770,7 +10858,7 @@ public final class NaruModel {
 
       private java.lang.Object appleId_ = "";
       /**
-       * <code>optional string apple_id = 25;</code>
+       * <code>string apple_id = 25;</code>
        */
       public java.lang.String getAppleId() {
         java.lang.Object ref = appleId_;
@@ -10785,7 +10873,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string apple_id = 25;</code>
+       * <code>string apple_id = 25;</code>
        */
       public com.google.protobuf.ByteString
           getAppleIdBytes() {
@@ -10801,7 +10889,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string apple_id = 25;</code>
+       * <code>string apple_id = 25;</code>
        */
       public Builder setAppleId(
           java.lang.String value) {
@@ -10814,7 +10902,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string apple_id = 25;</code>
+       * <code>string apple_id = 25;</code>
        */
       public Builder clearAppleId() {
         
@@ -10823,7 +10911,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string apple_id = 25;</code>
+       * <code>string apple_id = 25;</code>
        */
       public Builder setAppleIdBytes(
           com.google.protobuf.ByteString value) {
@@ -10890,31 +10978,31 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     com.google.protobuf.ByteString
         getValueBytes();
@@ -11005,7 +11093,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -11020,7 +11108,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -11039,7 +11127,7 @@ public final class NaruModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -11054,7 +11142,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -11073,7 +11161,7 @@ public final class NaruModel {
     public static final int VALUE_FIELD_NUMBER = 3;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
@@ -11088,7 +11176,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string value = 3;</code>
+     * <code>string value = 3;</code>
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
@@ -11172,7 +11260,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -11184,6 +11272,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Validation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Validation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Validation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11409,7 +11508,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -11424,7 +11523,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -11440,7 +11539,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -11453,7 +11552,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -11462,7 +11561,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -11478,7 +11577,7 @@ public final class NaruModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -11493,7 +11592,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -11509,7 +11608,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -11522,7 +11621,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -11531,7 +11630,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -11547,7 +11646,7 @@ public final class NaruModel {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -11562,7 +11661,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -11578,7 +11677,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder setValue(
           java.lang.String value) {
@@ -11591,7 +11690,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder clearValue() {
         
@@ -11600,7 +11699,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string value = 3;</code>
+       * <code>string value = 3;</code>
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -11667,109 +11766,109 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
      */
     int getTypeValue();
     /**
-     * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
      */
     org.naru.NaruModel.HeuristicCombiner.Type getType();
 
     /**
-     * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
      */
     boolean hasFirstCombiner();
     /**
-     * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
      */
     org.naru.NaruModel.HeuristicCombiner getFirstCombiner();
     /**
-     * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
      */
     org.naru.NaruModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder();
 
     /**
-     * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
      */
     boolean hasSecondCombiner();
     /**
-     * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
      */
     org.naru.NaruModel.HeuristicCombiner getSecondCombiner();
     /**
-     * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
      */
     org.naru.NaruModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder();
 
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
 
     /**
-     * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+     * <code>.org.naru.Question first_question = 10 [weak = true];</code>
      */
     boolean hasFirstQuestion();
     /**
-     * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+     * <code>.org.naru.Question first_question = 10 [weak = true];</code>
      */
     org.naru.NaruModel.Question getFirstQuestion();
     /**
-     * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+     * <code>.org.naru.Question first_question = 10 [weak = true];</code>
      */
     org.naru.NaruModel.QuestionOrBuilder getFirstQuestionOrBuilder();
 
     /**
-     * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+     * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
      */
     boolean hasFirstValidation();
     /**
-     * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+     * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
      */
     org.naru.NaruModel.Validation getFirstValidation();
     /**
-     * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+     * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
      */
     org.naru.NaruModel.ValidationOrBuilder getFirstValidationOrBuilder();
 
     /**
-     * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+     * <code>.org.naru.Question second_question = 12 [weak = true];</code>
      */
     boolean hasSecondQuestion();
     /**
-     * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+     * <code>.org.naru.Question second_question = 12 [weak = true];</code>
      */
     org.naru.NaruModel.Question getSecondQuestion();
     /**
-     * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+     * <code>.org.naru.Question second_question = 12 [weak = true];</code>
      */
     org.naru.NaruModel.QuestionOrBuilder getSecondQuestionOrBuilder();
 
     /**
-     * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+     * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
      */
     boolean hasSecondValidation();
     /**
-     * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+     * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
      */
     org.naru.NaruModel.Validation getSecondValidation();
     /**
-     * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+     * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
      */
     org.naru.NaruModel.ValidationOrBuilder getSecondValidationOrBuilder();
   }
@@ -12035,7 +12134,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -12050,7 +12149,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -12069,13 +12168,13 @@ public final class NaruModel {
     public static final int TYPE_FIELD_NUMBER = 2;
     private int type_;
     /**
-     * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+     * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
      */
     public org.naru.NaruModel.HeuristicCombiner.Type getType() {
       org.naru.NaruModel.HeuristicCombiner.Type result = org.naru.NaruModel.HeuristicCombiner.Type.valueOf(type_);
@@ -12085,19 +12184,19 @@ public final class NaruModel {
     public static final int FIRST_COMBINER_FIELD_NUMBER = 5;
     private org.naru.NaruModel.HeuristicCombiner firstCombiner_;
     /**
-     * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
      */
     public boolean hasFirstCombiner() {
       return firstCombiner_ != null;
     }
     /**
-     * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
      */
     public org.naru.NaruModel.HeuristicCombiner getFirstCombiner() {
       return firstCombiner_ == null ? org.naru.NaruModel.HeuristicCombiner.getDefaultInstance() : firstCombiner_;
     }
     /**
-     * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
      */
     public org.naru.NaruModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder() {
       return getFirstCombiner();
@@ -12106,19 +12205,19 @@ public final class NaruModel {
     public static final int SECOND_COMBINER_FIELD_NUMBER = 8;
     private org.naru.NaruModel.HeuristicCombiner secondCombiner_;
     /**
-     * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
      */
     public boolean hasSecondCombiner() {
       return secondCombiner_ != null;
     }
     /**
-     * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
      */
     public org.naru.NaruModel.HeuristicCombiner getSecondCombiner() {
       return secondCombiner_ == null ? org.naru.NaruModel.HeuristicCombiner.getDefaultInstance() : secondCombiner_;
     }
     /**
-     * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+     * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
      */
     public org.naru.NaruModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder() {
       return getSecondCombiner();
@@ -12127,7 +12226,7 @@ public final class NaruModel {
     public static final int DISPLAY_FIELD_NUMBER = 9;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -12142,7 +12241,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string display = 9;</code>
+     * <code>string display = 9;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -12161,19 +12260,19 @@ public final class NaruModel {
     public static final int FIRST_QUESTION_FIELD_NUMBER = 10;
     private org.naru.NaruModel.Question firstQuestion_;
     /**
-     * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+     * <code>.org.naru.Question first_question = 10 [weak = true];</code>
      */
     public boolean hasFirstQuestion() {
       return firstQuestion_ != null;
     }
     /**
-     * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+     * <code>.org.naru.Question first_question = 10 [weak = true];</code>
      */
     public org.naru.NaruModel.Question getFirstQuestion() {
       return firstQuestion_ == null ? org.naru.NaruModel.Question.getDefaultInstance() : firstQuestion_;
     }
     /**
-     * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+     * <code>.org.naru.Question first_question = 10 [weak = true];</code>
      */
     public org.naru.NaruModel.QuestionOrBuilder getFirstQuestionOrBuilder() {
       return getFirstQuestion();
@@ -12182,19 +12281,19 @@ public final class NaruModel {
     public static final int FIRST_VALIDATION_FIELD_NUMBER = 11;
     private org.naru.NaruModel.Validation firstValidation_;
     /**
-     * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+     * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
      */
     public boolean hasFirstValidation() {
       return firstValidation_ != null;
     }
     /**
-     * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+     * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
      */
     public org.naru.NaruModel.Validation getFirstValidation() {
       return firstValidation_ == null ? org.naru.NaruModel.Validation.getDefaultInstance() : firstValidation_;
     }
     /**
-     * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+     * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
      */
     public org.naru.NaruModel.ValidationOrBuilder getFirstValidationOrBuilder() {
       return getFirstValidation();
@@ -12203,19 +12302,19 @@ public final class NaruModel {
     public static final int SECOND_QUESTION_FIELD_NUMBER = 12;
     private org.naru.NaruModel.Question secondQuestion_;
     /**
-     * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+     * <code>.org.naru.Question second_question = 12 [weak = true];</code>
      */
     public boolean hasSecondQuestion() {
       return secondQuestion_ != null;
     }
     /**
-     * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+     * <code>.org.naru.Question second_question = 12 [weak = true];</code>
      */
     public org.naru.NaruModel.Question getSecondQuestion() {
       return secondQuestion_ == null ? org.naru.NaruModel.Question.getDefaultInstance() : secondQuestion_;
     }
     /**
-     * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+     * <code>.org.naru.Question second_question = 12 [weak = true];</code>
      */
     public org.naru.NaruModel.QuestionOrBuilder getSecondQuestionOrBuilder() {
       return getSecondQuestion();
@@ -12224,19 +12323,19 @@ public final class NaruModel {
     public static final int SECOND_VALIDATION_FIELD_NUMBER = 13;
     private org.naru.NaruModel.Validation secondValidation_;
     /**
-     * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+     * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
      */
     public boolean hasSecondValidation() {
       return secondValidation_ != null;
     }
     /**
-     * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+     * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
      */
     public org.naru.NaruModel.Validation getSecondValidation() {
       return secondValidation_ == null ? org.naru.NaruModel.Validation.getDefaultInstance() : secondValidation_;
     }
     /**
-     * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+     * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
      */
     public org.naru.NaruModel.ValidationOrBuilder getSecondValidationOrBuilder() {
       return getSecondValidation();
@@ -12382,7 +12481,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -12418,6 +12517,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.HeuristicCombiner parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.HeuristicCombiner parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.HeuristicCombiner parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12726,7 +12836,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -12741,7 +12851,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -12757,7 +12867,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -12770,7 +12880,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -12779,7 +12889,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -12795,13 +12905,13 @@ public final class NaruModel {
 
       private int type_ = 0;
       /**
-       * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -12809,14 +12919,14 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
        */
       public org.naru.NaruModel.HeuristicCombiner.Type getType() {
         org.naru.NaruModel.HeuristicCombiner.Type result = org.naru.NaruModel.HeuristicCombiner.Type.valueOf(type_);
         return result == null ? org.naru.NaruModel.HeuristicCombiner.Type.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder setType(org.naru.NaruModel.HeuristicCombiner.Type value) {
         if (value == null) {
@@ -12828,7 +12938,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner.Type type = 2;</code>
+       * <code>.org.naru.HeuristicCombiner.Type type = 2;</code>
        */
       public Builder clearType() {
         
@@ -12841,13 +12951,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.HeuristicCombiner, org.naru.NaruModel.HeuristicCombiner.Builder, org.naru.NaruModel.HeuristicCombinerOrBuilder> firstCombinerBuilder_;
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public boolean hasFirstCombiner() {
         return firstCombinerBuilder_ != null || firstCombiner_ != null;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public org.naru.NaruModel.HeuristicCombiner getFirstCombiner() {
         if (firstCombinerBuilder_ == null) {
@@ -12857,7 +12967,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public Builder setFirstCombiner(org.naru.NaruModel.HeuristicCombiner value) {
         if (firstCombinerBuilder_ == null) {
@@ -12873,7 +12983,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public Builder setFirstCombiner(
           org.naru.NaruModel.HeuristicCombiner.Builder builderForValue) {
@@ -12887,7 +12997,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public Builder mergeFirstCombiner(org.naru.NaruModel.HeuristicCombiner value) {
         if (firstCombinerBuilder_ == null) {
@@ -12905,7 +13015,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public Builder clearFirstCombiner() {
         if (firstCombinerBuilder_ == null) {
@@ -12919,7 +13029,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public org.naru.NaruModel.HeuristicCombiner.Builder getFirstCombinerBuilder() {
         
@@ -12927,7 +13037,7 @@ public final class NaruModel {
         return getFirstCombinerFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       public org.naru.NaruModel.HeuristicCombinerOrBuilder getFirstCombinerOrBuilder() {
         if (firstCombinerBuilder_ != null) {
@@ -12938,7 +13048,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner first_combiner = 5 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.HeuristicCombiner, org.naru.NaruModel.HeuristicCombiner.Builder, org.naru.NaruModel.HeuristicCombinerOrBuilder> 
@@ -12958,13 +13068,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.HeuristicCombiner, org.naru.NaruModel.HeuristicCombiner.Builder, org.naru.NaruModel.HeuristicCombinerOrBuilder> secondCombinerBuilder_;
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public boolean hasSecondCombiner() {
         return secondCombinerBuilder_ != null || secondCombiner_ != null;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.HeuristicCombiner getSecondCombiner() {
         if (secondCombinerBuilder_ == null) {
@@ -12974,7 +13084,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public Builder setSecondCombiner(org.naru.NaruModel.HeuristicCombiner value) {
         if (secondCombinerBuilder_ == null) {
@@ -12990,7 +13100,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public Builder setSecondCombiner(
           org.naru.NaruModel.HeuristicCombiner.Builder builderForValue) {
@@ -13004,7 +13114,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public Builder mergeSecondCombiner(org.naru.NaruModel.HeuristicCombiner value) {
         if (secondCombinerBuilder_ == null) {
@@ -13022,7 +13132,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public Builder clearSecondCombiner() {
         if (secondCombinerBuilder_ == null) {
@@ -13036,7 +13146,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.HeuristicCombiner.Builder getSecondCombinerBuilder() {
         
@@ -13044,7 +13154,7 @@ public final class NaruModel {
         return getSecondCombinerFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.HeuristicCombinerOrBuilder getSecondCombinerOrBuilder() {
         if (secondCombinerBuilder_ != null) {
@@ -13055,7 +13165,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
+       * <code>.org.naru.HeuristicCombiner second_combiner = 8 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.HeuristicCombiner, org.naru.NaruModel.HeuristicCombiner.Builder, org.naru.NaruModel.HeuristicCombinerOrBuilder> 
@@ -13073,7 +13183,7 @@ public final class NaruModel {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -13088,7 +13198,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -13104,7 +13214,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -13117,7 +13227,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public Builder clearDisplay() {
         
@@ -13126,7 +13236,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string display = 9;</code>
+       * <code>string display = 9;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -13144,13 +13254,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Question, org.naru.NaruModel.Question.Builder, org.naru.NaruModel.QuestionOrBuilder> firstQuestionBuilder_;
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public boolean hasFirstQuestion() {
         return firstQuestionBuilder_ != null || firstQuestion_ != null;
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public org.naru.NaruModel.Question getFirstQuestion() {
         if (firstQuestionBuilder_ == null) {
@@ -13160,7 +13270,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public Builder setFirstQuestion(org.naru.NaruModel.Question value) {
         if (firstQuestionBuilder_ == null) {
@@ -13176,7 +13286,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public Builder setFirstQuestion(
           org.naru.NaruModel.Question.Builder builderForValue) {
@@ -13190,7 +13300,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public Builder mergeFirstQuestion(org.naru.NaruModel.Question value) {
         if (firstQuestionBuilder_ == null) {
@@ -13208,7 +13318,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public Builder clearFirstQuestion() {
         if (firstQuestionBuilder_ == null) {
@@ -13222,7 +13332,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public org.naru.NaruModel.Question.Builder getFirstQuestionBuilder() {
         
@@ -13230,7 +13340,7 @@ public final class NaruModel {
         return getFirstQuestionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       public org.naru.NaruModel.QuestionOrBuilder getFirstQuestionOrBuilder() {
         if (firstQuestionBuilder_ != null) {
@@ -13241,7 +13351,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Question first_question = 10 [weak = true];</code>
+       * <code>.org.naru.Question first_question = 10 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Question, org.naru.NaruModel.Question.Builder, org.naru.NaruModel.QuestionOrBuilder> 
@@ -13261,13 +13371,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Validation, org.naru.NaruModel.Validation.Builder, org.naru.NaruModel.ValidationOrBuilder> firstValidationBuilder_;
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public boolean hasFirstValidation() {
         return firstValidationBuilder_ != null || firstValidation_ != null;
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public org.naru.NaruModel.Validation getFirstValidation() {
         if (firstValidationBuilder_ == null) {
@@ -13277,7 +13387,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public Builder setFirstValidation(org.naru.NaruModel.Validation value) {
         if (firstValidationBuilder_ == null) {
@@ -13293,7 +13403,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public Builder setFirstValidation(
           org.naru.NaruModel.Validation.Builder builderForValue) {
@@ -13307,7 +13417,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public Builder mergeFirstValidation(org.naru.NaruModel.Validation value) {
         if (firstValidationBuilder_ == null) {
@@ -13325,7 +13435,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public Builder clearFirstValidation() {
         if (firstValidationBuilder_ == null) {
@@ -13339,7 +13449,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public org.naru.NaruModel.Validation.Builder getFirstValidationBuilder() {
         
@@ -13347,7 +13457,7 @@ public final class NaruModel {
         return getFirstValidationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       public org.naru.NaruModel.ValidationOrBuilder getFirstValidationOrBuilder() {
         if (firstValidationBuilder_ != null) {
@@ -13358,7 +13468,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Validation first_validation = 11 [weak = true];</code>
+       * <code>.org.naru.Validation first_validation = 11 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Validation, org.naru.NaruModel.Validation.Builder, org.naru.NaruModel.ValidationOrBuilder> 
@@ -13378,13 +13488,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Question, org.naru.NaruModel.Question.Builder, org.naru.NaruModel.QuestionOrBuilder> secondQuestionBuilder_;
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public boolean hasSecondQuestion() {
         return secondQuestionBuilder_ != null || secondQuestion_ != null;
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public org.naru.NaruModel.Question getSecondQuestion() {
         if (secondQuestionBuilder_ == null) {
@@ -13394,7 +13504,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public Builder setSecondQuestion(org.naru.NaruModel.Question value) {
         if (secondQuestionBuilder_ == null) {
@@ -13410,7 +13520,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public Builder setSecondQuestion(
           org.naru.NaruModel.Question.Builder builderForValue) {
@@ -13424,7 +13534,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public Builder mergeSecondQuestion(org.naru.NaruModel.Question value) {
         if (secondQuestionBuilder_ == null) {
@@ -13442,7 +13552,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public Builder clearSecondQuestion() {
         if (secondQuestionBuilder_ == null) {
@@ -13456,7 +13566,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public org.naru.NaruModel.Question.Builder getSecondQuestionBuilder() {
         
@@ -13464,7 +13574,7 @@ public final class NaruModel {
         return getSecondQuestionFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       public org.naru.NaruModel.QuestionOrBuilder getSecondQuestionOrBuilder() {
         if (secondQuestionBuilder_ != null) {
@@ -13475,7 +13585,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Question second_question = 12 [weak = true];</code>
+       * <code>.org.naru.Question second_question = 12 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Question, org.naru.NaruModel.Question.Builder, org.naru.NaruModel.QuestionOrBuilder> 
@@ -13495,13 +13605,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Validation, org.naru.NaruModel.Validation.Builder, org.naru.NaruModel.ValidationOrBuilder> secondValidationBuilder_;
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public boolean hasSecondValidation() {
         return secondValidationBuilder_ != null || secondValidation_ != null;
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public org.naru.NaruModel.Validation getSecondValidation() {
         if (secondValidationBuilder_ == null) {
@@ -13511,7 +13621,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public Builder setSecondValidation(org.naru.NaruModel.Validation value) {
         if (secondValidationBuilder_ == null) {
@@ -13527,7 +13637,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public Builder setSecondValidation(
           org.naru.NaruModel.Validation.Builder builderForValue) {
@@ -13541,7 +13651,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public Builder mergeSecondValidation(org.naru.NaruModel.Validation value) {
         if (secondValidationBuilder_ == null) {
@@ -13559,7 +13669,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public Builder clearSecondValidation() {
         if (secondValidationBuilder_ == null) {
@@ -13573,7 +13683,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public org.naru.NaruModel.Validation.Builder getSecondValidationBuilder() {
         
@@ -13581,7 +13691,7 @@ public final class NaruModel {
         return getSecondValidationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       public org.naru.NaruModel.ValidationOrBuilder getSecondValidationOrBuilder() {
         if (secondValidationBuilder_ != null) {
@@ -13592,7 +13702,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Validation second_validation = 13 [weak = true];</code>
+       * <code>.org.naru.Validation second_validation = 13 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Validation, org.naru.NaruModel.Validation.Builder, org.naru.NaruModel.ValidationOrBuilder> 
@@ -13661,35 +13771,35 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     java.lang.String getDisplay();
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     com.google.protobuf.ByteString
         getDisplayBytes();
 
     /**
-     * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
      */
     boolean hasImage();
     /**
-     * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
      */
     org.naru.NaruModel.RequestImage getImage();
     /**
-     * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
      */
     org.naru.NaruModel.RequestImageOrBuilder getImageOrBuilder();
 
@@ -13742,20 +13852,20 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional int32 order = 6;</code>
+     * <code>int32 order = 6;</code>
      */
     int getOrder();
 
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
      */
     boolean hasProductDetail();
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
      */
     org.naru.NaruModel.ProductDetail getProductDetail();
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
      */
     org.naru.NaruModel.ProductDetailOrBuilder getProductDetailOrBuilder();
   }
@@ -13897,7 +14007,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -13912,7 +14022,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -13931,7 +14041,7 @@ public final class NaruModel {
     public static final int DISPLAY_FIELD_NUMBER = 2;
     private volatile java.lang.Object display_;
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public java.lang.String getDisplay() {
       java.lang.Object ref = display_;
@@ -13946,7 +14056,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string display = 2;</code>
+     * <code>string display = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDisplayBytes() {
@@ -13965,19 +14075,19 @@ public final class NaruModel {
     public static final int IMAGE_FIELD_NUMBER = 3;
     private org.naru.NaruModel.RequestImage image_;
     /**
-     * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
      */
     public boolean hasImage() {
       return image_ != null;
     }
     /**
-     * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
      */
     public org.naru.NaruModel.RequestImage getImage() {
       return image_ == null ? org.naru.NaruModel.RequestImage.getDefaultInstance() : image_;
     }
     /**
-     * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+     * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
      */
     public org.naru.NaruModel.RequestImageOrBuilder getImageOrBuilder() {
       return getImage();
@@ -14056,7 +14166,7 @@ public final class NaruModel {
     public static final int ORDER_FIELD_NUMBER = 6;
     private int order_;
     /**
-     * <code>optional int32 order = 6;</code>
+     * <code>int32 order = 6;</code>
      */
     public int getOrder() {
       return order_;
@@ -14065,19 +14175,19 @@ public final class NaruModel {
     public static final int PRODUCT_DETAIL_FIELD_NUMBER = 7;
     private org.naru.NaruModel.ProductDetail productDetail_;
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
      */
     public boolean hasProductDetail() {
       return productDetail_ != null;
     }
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.ProductDetail getProductDetail() {
       return productDetail_ == null ? org.naru.NaruModel.ProductDetail.getDefaultInstance() : productDetail_;
     }
     /**
-     * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+     * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.ProductDetailOrBuilder getProductDetailOrBuilder() {
       return getProductDetail();
@@ -14194,7 +14304,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
@@ -14222,6 +14332,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Form parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Form parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Form parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14562,7 +14683,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -14577,7 +14698,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -14593,7 +14714,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -14606,7 +14727,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -14615,7 +14736,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -14631,7 +14752,7 @@ public final class NaruModel {
 
       private java.lang.Object display_ = "";
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public java.lang.String getDisplay() {
         java.lang.Object ref = display_;
@@ -14646,7 +14767,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDisplayBytes() {
@@ -14662,7 +14783,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplay(
           java.lang.String value) {
@@ -14675,7 +14796,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder clearDisplay() {
         
@@ -14684,7 +14805,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string display = 2;</code>
+       * <code>string display = 2;</code>
        */
       public Builder setDisplayBytes(
           com.google.protobuf.ByteString value) {
@@ -14702,13 +14823,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.RequestImage, org.naru.NaruModel.RequestImage.Builder, org.naru.NaruModel.RequestImageOrBuilder> imageBuilder_;
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public boolean hasImage() {
         return imageBuilder_ != null || image_ != null;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImage getImage() {
         if (imageBuilder_ == null) {
@@ -14718,7 +14839,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public Builder setImage(org.naru.NaruModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -14734,7 +14855,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public Builder setImage(
           org.naru.NaruModel.RequestImage.Builder builderForValue) {
@@ -14748,7 +14869,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public Builder mergeImage(org.naru.NaruModel.RequestImage value) {
         if (imageBuilder_ == null) {
@@ -14766,7 +14887,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -14780,7 +14901,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImage.Builder getImageBuilder() {
         
@@ -14788,7 +14909,7 @@ public final class NaruModel {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImageOrBuilder getImageOrBuilder() {
         if (imageBuilder_ != null) {
@@ -14799,7 +14920,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.RequestImage image = 3 [weak = true];</code>
+       * <code>.org.naru.RequestImage image = 3 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.RequestImage, org.naru.NaruModel.RequestImage.Builder, org.naru.NaruModel.RequestImageOrBuilder> 
@@ -15297,13 +15418,13 @@ public final class NaruModel {
 
       private int order_ ;
       /**
-       * <code>optional int32 order = 6;</code>
+       * <code>int32 order = 6;</code>
        */
       public int getOrder() {
         return order_;
       }
       /**
-       * <code>optional int32 order = 6;</code>
+       * <code>int32 order = 6;</code>
        */
       public Builder setOrder(int value) {
         
@@ -15312,7 +15433,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int32 order = 6;</code>
+       * <code>int32 order = 6;</code>
        */
       public Builder clearOrder() {
         
@@ -15325,13 +15446,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.ProductDetail, org.naru.NaruModel.ProductDetail.Builder, org.naru.NaruModel.ProductDetailOrBuilder> productDetailBuilder_;
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public boolean hasProductDetail() {
         return productDetailBuilder_ != null || productDetail_ != null;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.ProductDetail getProductDetail() {
         if (productDetailBuilder_ == null) {
@@ -15341,7 +15462,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public Builder setProductDetail(org.naru.NaruModel.ProductDetail value) {
         if (productDetailBuilder_ == null) {
@@ -15357,7 +15478,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public Builder setProductDetail(
           org.naru.NaruModel.ProductDetail.Builder builderForValue) {
@@ -15371,7 +15492,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public Builder mergeProductDetail(org.naru.NaruModel.ProductDetail value) {
         if (productDetailBuilder_ == null) {
@@ -15389,7 +15510,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public Builder clearProductDetail() {
         if (productDetailBuilder_ == null) {
@@ -15403,7 +15524,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.ProductDetail.Builder getProductDetailBuilder() {
         
@@ -15411,7 +15532,7 @@ public final class NaruModel {
         return getProductDetailFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.ProductDetailOrBuilder getProductDetailOrBuilder() {
         if (productDetailBuilder_ != null) {
@@ -15422,7 +15543,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.ProductDetail product_detail = 7 [weak = true];</code>
+       * <code>.org.naru.ProductDetail product_detail = 7 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.ProductDetail, org.naru.NaruModel.ProductDetail.Builder, org.naru.NaruModel.ProductDetailOrBuilder> 
@@ -15491,44 +15612,44 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+     * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
      */
     boolean hasBackgroundImage();
     /**
-     * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+     * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
      */
     org.naru.NaruModel.RequestImage getBackgroundImage();
     /**
-     * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+     * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
      */
     org.naru.NaruModel.RequestImageOrBuilder getBackgroundImageOrBuilder();
 
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -15558,25 +15679,25 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+     * <code>.org.naru.View parent = 7 [weak = true];</code>
      */
     boolean hasParent();
     /**
-     * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+     * <code>.org.naru.View parent = 7 [weak = true];</code>
      */
     org.naru.NaruModel.View getParent();
     /**
-     * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+     * <code>.org.naru.View parent = 7 [weak = true];</code>
      */
     org.naru.NaruModel.ViewOrBuilder getParentOrBuilder();
 
     /**
-     * <code>optional int64 start_date = 8;</code>
+     * <code>int64 start_date = 8;</code>
      */
     long getStartDate();
 
     /**
-     * <code>optional int64 expire_date = 9;</code>
+     * <code>int64 expire_date = 9;</code>
      */
     long getExpireDate();
   }
@@ -15718,7 +15839,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -15733,7 +15854,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -15752,19 +15873,19 @@ public final class NaruModel {
     public static final int BACKGROUND_IMAGE_FIELD_NUMBER = 2;
     private org.naru.NaruModel.RequestImage backgroundImage_;
     /**
-     * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+     * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
      */
     public boolean hasBackgroundImage() {
       return backgroundImage_ != null;
     }
     /**
-     * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+     * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
      */
     public org.naru.NaruModel.RequestImage getBackgroundImage() {
       return backgroundImage_ == null ? org.naru.NaruModel.RequestImage.getDefaultInstance() : backgroundImage_;
     }
     /**
-     * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+     * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
      */
     public org.naru.NaruModel.RequestImageOrBuilder getBackgroundImageOrBuilder() {
       return getBackgroundImage();
@@ -15773,7 +15894,7 @@ public final class NaruModel {
     public static final int TITLE_FIELD_NUMBER = 3;
     private volatile java.lang.Object title_;
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -15788,7 +15909,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -15807,7 +15928,7 @@ public final class NaruModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 4;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -15822,7 +15943,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -15876,19 +15997,19 @@ public final class NaruModel {
     public static final int PARENT_FIELD_NUMBER = 7;
     private org.naru.NaruModel.View parent_;
     /**
-     * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+     * <code>.org.naru.View parent = 7 [weak = true];</code>
      */
     public boolean hasParent() {
       return parent_ != null;
     }
     /**
-     * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+     * <code>.org.naru.View parent = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.View getParent() {
       return parent_ == null ? org.naru.NaruModel.View.getDefaultInstance() : parent_;
     }
     /**
-     * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+     * <code>.org.naru.View parent = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.ViewOrBuilder getParentOrBuilder() {
       return getParent();
@@ -15897,7 +16018,7 @@ public final class NaruModel {
     public static final int START_DATE_FIELD_NUMBER = 8;
     private long startDate_;
     /**
-     * <code>optional int64 start_date = 8;</code>
+     * <code>int64 start_date = 8;</code>
      */
     public long getStartDate() {
       return startDate_;
@@ -15906,7 +16027,7 @@ public final class NaruModel {
     public static final int EXPIRE_DATE_FIELD_NUMBER = 9;
     private long expireDate_;
     /**
-     * <code>optional int64 expire_date = 9;</code>
+     * <code>int64 expire_date = 9;</code>
      */
     public long getExpireDate() {
       return expireDate_;
@@ -16031,7 +16152,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       if (hasBackgroundImage()) {
@@ -16061,6 +16182,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.View parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.View parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.View parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16372,7 +16504,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -16387,7 +16519,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -16403,7 +16535,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -16416,7 +16548,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -16425,7 +16557,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -16443,13 +16575,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.RequestImage, org.naru.NaruModel.RequestImage.Builder, org.naru.NaruModel.RequestImageOrBuilder> backgroundImageBuilder_;
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public boolean hasBackgroundImage() {
         return backgroundImageBuilder_ != null || backgroundImage_ != null;
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImage getBackgroundImage() {
         if (backgroundImageBuilder_ == null) {
@@ -16459,7 +16591,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public Builder setBackgroundImage(org.naru.NaruModel.RequestImage value) {
         if (backgroundImageBuilder_ == null) {
@@ -16475,7 +16607,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public Builder setBackgroundImage(
           org.naru.NaruModel.RequestImage.Builder builderForValue) {
@@ -16489,7 +16621,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public Builder mergeBackgroundImage(org.naru.NaruModel.RequestImage value) {
         if (backgroundImageBuilder_ == null) {
@@ -16507,7 +16639,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public Builder clearBackgroundImage() {
         if (backgroundImageBuilder_ == null) {
@@ -16521,7 +16653,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImage.Builder getBackgroundImageBuilder() {
         
@@ -16529,7 +16661,7 @@ public final class NaruModel {
         return getBackgroundImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       public org.naru.NaruModel.RequestImageOrBuilder getBackgroundImageOrBuilder() {
         if (backgroundImageBuilder_ != null) {
@@ -16540,7 +16672,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.RequestImage background_image = 2 [weak = true];</code>
+       * <code>.org.naru.RequestImage background_image = 2 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.RequestImage, org.naru.NaruModel.RequestImage.Builder, org.naru.NaruModel.RequestImageOrBuilder> 
@@ -16558,7 +16690,7 @@ public final class NaruModel {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -16573,7 +16705,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -16589,7 +16721,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -16602,7 +16734,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder clearTitle() {
         
@@ -16611,7 +16743,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -16627,7 +16759,7 @@ public final class NaruModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -16642,7 +16774,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -16658,7 +16790,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -16671,7 +16803,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder clearDescription() {
         
@@ -16680,7 +16812,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -16938,13 +17070,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> parentBuilder_;
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public boolean hasParent() {
         return parentBuilder_ != null || parent_ != null;
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.View getParent() {
         if (parentBuilder_ == null) {
@@ -16954,7 +17086,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public Builder setParent(org.naru.NaruModel.View value) {
         if (parentBuilder_ == null) {
@@ -16970,7 +17102,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public Builder setParent(
           org.naru.NaruModel.View.Builder builderForValue) {
@@ -16984,7 +17116,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public Builder mergeParent(org.naru.NaruModel.View value) {
         if (parentBuilder_ == null) {
@@ -17002,7 +17134,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public Builder clearParent() {
         if (parentBuilder_ == null) {
@@ -17016,7 +17148,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.View.Builder getParentBuilder() {
         
@@ -17024,7 +17156,7 @@ public final class NaruModel {
         return getParentFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.ViewOrBuilder getParentOrBuilder() {
         if (parentBuilder_ != null) {
@@ -17035,7 +17167,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View parent = 7 [weak = true];</code>
+       * <code>.org.naru.View parent = 7 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> 
@@ -17053,13 +17185,13 @@ public final class NaruModel {
 
       private long startDate_ ;
       /**
-       * <code>optional int64 start_date = 8;</code>
+       * <code>int64 start_date = 8;</code>
        */
       public long getStartDate() {
         return startDate_;
       }
       /**
-       * <code>optional int64 start_date = 8;</code>
+       * <code>int64 start_date = 8;</code>
        */
       public Builder setStartDate(long value) {
         
@@ -17068,7 +17200,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 start_date = 8;</code>
+       * <code>int64 start_date = 8;</code>
        */
       public Builder clearStartDate() {
         
@@ -17079,13 +17211,13 @@ public final class NaruModel {
 
       private long expireDate_ ;
       /**
-       * <code>optional int64 expire_date = 9;</code>
+       * <code>int64 expire_date = 9;</code>
        */
       public long getExpireDate() {
         return expireDate_;
       }
       /**
-       * <code>optional int64 expire_date = 9;</code>
+       * <code>int64 expire_date = 9;</code>
        */
       public Builder setExpireDate(long value) {
         
@@ -17094,7 +17226,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 expire_date = 9;</code>
+       * <code>int64 expire_date = 9;</code>
        */
       public Builder clearExpireDate() {
         
@@ -17156,21 +17288,21 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -17200,37 +17332,37 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+     * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
      */
     int getHeuristicGroupTypeValue();
     /**
-     * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+     * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
      */
     org.naru.NaruModel.Heuristic.HeuristicGroupType getHeuristicGroupType();
 
     /**
-     * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+     * <code>.org.naru.View next_view = 7 [weak = true];</code>
      */
     boolean hasNextView();
     /**
-     * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+     * <code>.org.naru.View next_view = 7 [weak = true];</code>
      */
     org.naru.NaruModel.View getNextView();
     /**
-     * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+     * <code>.org.naru.View next_view = 7 [weak = true];</code>
      */
     org.naru.NaruModel.ViewOrBuilder getNextViewOrBuilder();
 
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     boolean hasCheckoutBeacon();
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     org.naru.NaruModel.Beacon getCheckoutBeacon();
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder();
   }
@@ -17458,7 +17590,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -17473,7 +17605,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -17492,7 +17624,7 @@ public final class NaruModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -17507,7 +17639,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -17561,13 +17693,13 @@ public final class NaruModel {
     public static final int HEURISTIC_GROUP_TYPE_FIELD_NUMBER = 4;
     private int heuristicGroupType_;
     /**
-     * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+     * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
      */
     public int getHeuristicGroupTypeValue() {
       return heuristicGroupType_;
     }
     /**
-     * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+     * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
      */
     public org.naru.NaruModel.Heuristic.HeuristicGroupType getHeuristicGroupType() {
       org.naru.NaruModel.Heuristic.HeuristicGroupType result = org.naru.NaruModel.Heuristic.HeuristicGroupType.valueOf(heuristicGroupType_);
@@ -17577,19 +17709,19 @@ public final class NaruModel {
     public static final int NEXT_VIEW_FIELD_NUMBER = 7;
     private org.naru.NaruModel.View nextView_;
     /**
-     * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+     * <code>.org.naru.View next_view = 7 [weak = true];</code>
      */
     public boolean hasNextView() {
       return nextView_ != null;
     }
     /**
-     * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+     * <code>.org.naru.View next_view = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.View getNextView() {
       return nextView_ == null ? org.naru.NaruModel.View.getDefaultInstance() : nextView_;
     }
     /**
-     * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+     * <code>.org.naru.View next_view = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.ViewOrBuilder getNextViewOrBuilder() {
       return getNextView();
@@ -17598,19 +17730,19 @@ public final class NaruModel {
     public static final int CHECKOUT_BEACON_FIELD_NUMBER = 8;
     private org.naru.NaruModel.Beacon checkoutBeacon_;
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     public boolean hasCheckoutBeacon() {
       return checkoutBeacon_ != null;
     }
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     public org.naru.NaruModel.Beacon getCheckoutBeacon() {
       return checkoutBeacon_ == null ? org.naru.NaruModel.Beacon.getDefaultInstance() : checkoutBeacon_;
     }
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     public org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder() {
       return getCheckoutBeacon();
@@ -17717,7 +17849,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -17741,6 +17873,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Heuristic parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Heuristic parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Heuristic parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -18039,7 +18182,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -18054,7 +18197,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -18070,7 +18213,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -18083,7 +18226,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -18092,7 +18235,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -18108,7 +18251,7 @@ public final class NaruModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -18123,7 +18266,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -18139,7 +18282,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -18152,7 +18295,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder clearDescription() {
         
@@ -18161,7 +18304,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -18417,13 +18560,13 @@ public final class NaruModel {
 
       private int heuristicGroupType_ = 0;
       /**
-       * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+       * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
        */
       public int getHeuristicGroupTypeValue() {
         return heuristicGroupType_;
       }
       /**
-       * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+       * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
        */
       public Builder setHeuristicGroupTypeValue(int value) {
         heuristicGroupType_ = value;
@@ -18431,14 +18574,14 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+       * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
        */
       public org.naru.NaruModel.Heuristic.HeuristicGroupType getHeuristicGroupType() {
         org.naru.NaruModel.Heuristic.HeuristicGroupType result = org.naru.NaruModel.Heuristic.HeuristicGroupType.valueOf(heuristicGroupType_);
         return result == null ? org.naru.NaruModel.Heuristic.HeuristicGroupType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+       * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
        */
       public Builder setHeuristicGroupType(org.naru.NaruModel.Heuristic.HeuristicGroupType value) {
         if (value == null) {
@@ -18450,7 +18593,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
+       * <code>.org.naru.Heuristic.HeuristicGroupType heuristic_group_type = 4;</code>
        */
       public Builder clearHeuristicGroupType() {
         
@@ -18463,13 +18606,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> nextViewBuilder_;
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public boolean hasNextView() {
         return nextViewBuilder_ != null || nextView_ != null;
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.View getNextView() {
         if (nextViewBuilder_ == null) {
@@ -18479,7 +18622,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public Builder setNextView(org.naru.NaruModel.View value) {
         if (nextViewBuilder_ == null) {
@@ -18495,7 +18638,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public Builder setNextView(
           org.naru.NaruModel.View.Builder builderForValue) {
@@ -18509,7 +18652,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public Builder mergeNextView(org.naru.NaruModel.View value) {
         if (nextViewBuilder_ == null) {
@@ -18527,7 +18670,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public Builder clearNextView() {
         if (nextViewBuilder_ == null) {
@@ -18541,7 +18684,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.View.Builder getNextViewBuilder() {
         
@@ -18549,7 +18692,7 @@ public final class NaruModel {
         return getNextViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.ViewOrBuilder getNextViewOrBuilder() {
         if (nextViewBuilder_ != null) {
@@ -18560,7 +18703,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View next_view = 7 [weak = true];</code>
+       * <code>.org.naru.View next_view = 7 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> 
@@ -18580,13 +18723,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> checkoutBeaconBuilder_;
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public boolean hasCheckoutBeacon() {
         return checkoutBeaconBuilder_ != null || checkoutBeacon_ != null;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon getCheckoutBeacon() {
         if (checkoutBeaconBuilder_ == null) {
@@ -18596,7 +18739,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder setCheckoutBeacon(org.naru.NaruModel.Beacon value) {
         if (checkoutBeaconBuilder_ == null) {
@@ -18612,7 +18755,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder setCheckoutBeacon(
           org.naru.NaruModel.Beacon.Builder builderForValue) {
@@ -18626,7 +18769,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder mergeCheckoutBeacon(org.naru.NaruModel.Beacon value) {
         if (checkoutBeaconBuilder_ == null) {
@@ -18644,7 +18787,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder clearCheckoutBeacon() {
         if (checkoutBeaconBuilder_ == null) {
@@ -18658,7 +18801,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon.Builder getCheckoutBeaconBuilder() {
         
@@ -18666,7 +18809,7 @@ public final class NaruModel {
         return getCheckoutBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder() {
         if (checkoutBeaconBuilder_ != null) {
@@ -18677,7 +18820,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> 
@@ -18746,21 +18889,21 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -18790,69 +18933,69 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+     * <code>.org.naru.View root_view = 5 [weak = true];</code>
      */
     boolean hasRootView();
     /**
-     * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+     * <code>.org.naru.View root_view = 5 [weak = true];</code>
      */
     org.naru.NaruModel.View getRootView();
     /**
-     * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+     * <code>.org.naru.View root_view = 5 [weak = true];</code>
      */
     org.naru.NaruModel.ViewOrBuilder getRootViewOrBuilder();
 
     /**
-     * <code>optional string user_owner = 6;</code>
+     * <code>string user_owner = 6;</code>
      */
     java.lang.String getUserOwner();
     /**
-     * <code>optional string user_owner = 6;</code>
+     * <code>string user_owner = 6;</code>
      */
     com.google.protobuf.ByteString
         getUserOwnerBytes();
 
     /**
-     * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+     * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
      */
     boolean hasIncomingBeacon();
     /**
-     * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+     * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
      */
     org.naru.NaruModel.Beacon getIncomingBeacon();
     /**
-     * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+     * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
      */
     org.naru.NaruModel.BeaconOrBuilder getIncomingBeaconOrBuilder();
 
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     boolean hasCheckoutBeacon();
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     org.naru.NaruModel.Beacon getCheckoutBeacon();
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder();
 
     /**
-     * <code>optional bool is_active = 9;</code>
+     * <code>bool is_active = 9;</code>
      */
     boolean getIsActive();
 
     /**
-     * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+     * <code>.org.naru.Organization organization = 10 [weak = true];</code>
      */
     boolean hasOrganization();
     /**
-     * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+     * <code>.org.naru.Organization organization = 10 [weak = true];</code>
      */
     org.naru.NaruModel.Organization getOrganization();
     /**
-     * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+     * <code>.org.naru.Organization organization = 10 [weak = true];</code>
      */
     org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder();
 
@@ -19051,7 +19194,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -19066,7 +19209,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -19085,7 +19228,7 @@ public final class NaruModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -19100,7 +19243,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -19154,19 +19297,19 @@ public final class NaruModel {
     public static final int ROOT_VIEW_FIELD_NUMBER = 5;
     private org.naru.NaruModel.View rootView_;
     /**
-     * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+     * <code>.org.naru.View root_view = 5 [weak = true];</code>
      */
     public boolean hasRootView() {
       return rootView_ != null;
     }
     /**
-     * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+     * <code>.org.naru.View root_view = 5 [weak = true];</code>
      */
     public org.naru.NaruModel.View getRootView() {
       return rootView_ == null ? org.naru.NaruModel.View.getDefaultInstance() : rootView_;
     }
     /**
-     * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+     * <code>.org.naru.View root_view = 5 [weak = true];</code>
      */
     public org.naru.NaruModel.ViewOrBuilder getRootViewOrBuilder() {
       return getRootView();
@@ -19175,7 +19318,7 @@ public final class NaruModel {
     public static final int USER_OWNER_FIELD_NUMBER = 6;
     private volatile java.lang.Object userOwner_;
     /**
-     * <code>optional string user_owner = 6;</code>
+     * <code>string user_owner = 6;</code>
      */
     public java.lang.String getUserOwner() {
       java.lang.Object ref = userOwner_;
@@ -19190,7 +19333,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_owner = 6;</code>
+     * <code>string user_owner = 6;</code>
      */
     public com.google.protobuf.ByteString
         getUserOwnerBytes() {
@@ -19209,19 +19352,19 @@ public final class NaruModel {
     public static final int INCOMING_BEACON_FIELD_NUMBER = 7;
     private org.naru.NaruModel.Beacon incomingBeacon_;
     /**
-     * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+     * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
      */
     public boolean hasIncomingBeacon() {
       return incomingBeacon_ != null;
     }
     /**
-     * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+     * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.Beacon getIncomingBeacon() {
       return incomingBeacon_ == null ? org.naru.NaruModel.Beacon.getDefaultInstance() : incomingBeacon_;
     }
     /**
-     * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+     * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
      */
     public org.naru.NaruModel.BeaconOrBuilder getIncomingBeaconOrBuilder() {
       return getIncomingBeacon();
@@ -19230,19 +19373,19 @@ public final class NaruModel {
     public static final int CHECKOUT_BEACON_FIELD_NUMBER = 8;
     private org.naru.NaruModel.Beacon checkoutBeacon_;
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     public boolean hasCheckoutBeacon() {
       return checkoutBeacon_ != null;
     }
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     public org.naru.NaruModel.Beacon getCheckoutBeacon() {
       return checkoutBeacon_ == null ? org.naru.NaruModel.Beacon.getDefaultInstance() : checkoutBeacon_;
     }
     /**
-     * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+     * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
      */
     public org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder() {
       return getCheckoutBeacon();
@@ -19251,7 +19394,7 @@ public final class NaruModel {
     public static final int IS_ACTIVE_FIELD_NUMBER = 9;
     private boolean isActive_;
     /**
-     * <code>optional bool is_active = 9;</code>
+     * <code>bool is_active = 9;</code>
      */
     public boolean getIsActive() {
       return isActive_;
@@ -19260,19 +19403,19 @@ public final class NaruModel {
     public static final int ORGANIZATION_FIELD_NUMBER = 10;
     private org.naru.NaruModel.Organization organization_;
     /**
-     * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+     * <code>.org.naru.Organization organization = 10 [weak = true];</code>
      */
     public boolean hasOrganization() {
       return organization_ != null;
     }
     /**
-     * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+     * <code>.org.naru.Organization organization = 10 [weak = true];</code>
      */
     public org.naru.NaruModel.Organization getOrganization() {
       return organization_ == null ? org.naru.NaruModel.Organization.getDefaultInstance() : organization_;
     }
     /**
-     * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+     * <code>.org.naru.Organization organization = 10 [weak = true];</code>
      */
     public org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder() {
       return getOrganization();
@@ -19456,7 +19599,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -19495,6 +19638,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Request parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Request parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Request parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19870,7 +20024,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -19885,7 +20039,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -19901,7 +20055,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -19914,7 +20068,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -19923,7 +20077,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -19939,7 +20093,7 @@ public final class NaruModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -19954,7 +20108,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -19970,7 +20124,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -19983,7 +20137,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -19992,7 +20146,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -20250,13 +20404,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> rootViewBuilder_;
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public boolean hasRootView() {
         return rootViewBuilder_ != null || rootView_ != null;
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public org.naru.NaruModel.View getRootView() {
         if (rootViewBuilder_ == null) {
@@ -20266,7 +20420,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public Builder setRootView(org.naru.NaruModel.View value) {
         if (rootViewBuilder_ == null) {
@@ -20282,7 +20436,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public Builder setRootView(
           org.naru.NaruModel.View.Builder builderForValue) {
@@ -20296,7 +20450,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public Builder mergeRootView(org.naru.NaruModel.View value) {
         if (rootViewBuilder_ == null) {
@@ -20314,7 +20468,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public Builder clearRootView() {
         if (rootViewBuilder_ == null) {
@@ -20328,7 +20482,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public org.naru.NaruModel.View.Builder getRootViewBuilder() {
         
@@ -20336,7 +20490,7 @@ public final class NaruModel {
         return getRootViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       public org.naru.NaruModel.ViewOrBuilder getRootViewOrBuilder() {
         if (rootViewBuilder_ != null) {
@@ -20347,7 +20501,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View root_view = 5 [weak = true];</code>
+       * <code>.org.naru.View root_view = 5 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> 
@@ -20365,7 +20519,7 @@ public final class NaruModel {
 
       private java.lang.Object userOwner_ = "";
       /**
-       * <code>optional string user_owner = 6;</code>
+       * <code>string user_owner = 6;</code>
        */
       public java.lang.String getUserOwner() {
         java.lang.Object ref = userOwner_;
@@ -20380,7 +20534,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_owner = 6;</code>
+       * <code>string user_owner = 6;</code>
        */
       public com.google.protobuf.ByteString
           getUserOwnerBytes() {
@@ -20396,7 +20550,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_owner = 6;</code>
+       * <code>string user_owner = 6;</code>
        */
       public Builder setUserOwner(
           java.lang.String value) {
@@ -20409,7 +20563,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_owner = 6;</code>
+       * <code>string user_owner = 6;</code>
        */
       public Builder clearUserOwner() {
         
@@ -20418,7 +20572,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_owner = 6;</code>
+       * <code>string user_owner = 6;</code>
        */
       public Builder setUserOwnerBytes(
           com.google.protobuf.ByteString value) {
@@ -20436,13 +20590,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> incomingBeaconBuilder_;
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public boolean hasIncomingBeacon() {
         return incomingBeaconBuilder_ != null || incomingBeacon_ != null;
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon getIncomingBeacon() {
         if (incomingBeaconBuilder_ == null) {
@@ -20452,7 +20606,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public Builder setIncomingBeacon(org.naru.NaruModel.Beacon value) {
         if (incomingBeaconBuilder_ == null) {
@@ -20468,7 +20622,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public Builder setIncomingBeacon(
           org.naru.NaruModel.Beacon.Builder builderForValue) {
@@ -20482,7 +20636,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public Builder mergeIncomingBeacon(org.naru.NaruModel.Beacon value) {
         if (incomingBeaconBuilder_ == null) {
@@ -20500,7 +20654,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public Builder clearIncomingBeacon() {
         if (incomingBeaconBuilder_ == null) {
@@ -20514,7 +20668,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon.Builder getIncomingBeaconBuilder() {
         
@@ -20522,7 +20676,7 @@ public final class NaruModel {
         return getIncomingBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       public org.naru.NaruModel.BeaconOrBuilder getIncomingBeaconOrBuilder() {
         if (incomingBeaconBuilder_ != null) {
@@ -20533,7 +20687,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
+       * <code>.org.naru.Beacon incoming_beacon = 7 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> 
@@ -20553,13 +20707,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> checkoutBeaconBuilder_;
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public boolean hasCheckoutBeacon() {
         return checkoutBeaconBuilder_ != null || checkoutBeacon_ != null;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon getCheckoutBeacon() {
         if (checkoutBeaconBuilder_ == null) {
@@ -20569,7 +20723,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder setCheckoutBeacon(org.naru.NaruModel.Beacon value) {
         if (checkoutBeaconBuilder_ == null) {
@@ -20585,7 +20739,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder setCheckoutBeacon(
           org.naru.NaruModel.Beacon.Builder builderForValue) {
@@ -20599,7 +20753,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder mergeCheckoutBeacon(org.naru.NaruModel.Beacon value) {
         if (checkoutBeaconBuilder_ == null) {
@@ -20617,7 +20771,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public Builder clearCheckoutBeacon() {
         if (checkoutBeaconBuilder_ == null) {
@@ -20631,7 +20785,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.Beacon.Builder getCheckoutBeaconBuilder() {
         
@@ -20639,7 +20793,7 @@ public final class NaruModel {
         return getCheckoutBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       public org.naru.NaruModel.BeaconOrBuilder getCheckoutBeaconOrBuilder() {
         if (checkoutBeaconBuilder_ != null) {
@@ -20650,7 +20804,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
+       * <code>.org.naru.Beacon checkout_beacon = 8 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> 
@@ -20668,13 +20822,13 @@ public final class NaruModel {
 
       private boolean isActive_ ;
       /**
-       * <code>optional bool is_active = 9;</code>
+       * <code>bool is_active = 9;</code>
        */
       public boolean getIsActive() {
         return isActive_;
       }
       /**
-       * <code>optional bool is_active = 9;</code>
+       * <code>bool is_active = 9;</code>
        */
       public Builder setIsActive(boolean value) {
         
@@ -20683,7 +20837,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional bool is_active = 9;</code>
+       * <code>bool is_active = 9;</code>
        */
       public Builder clearIsActive() {
         
@@ -20696,13 +20850,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Organization, org.naru.NaruModel.Organization.Builder, org.naru.NaruModel.OrganizationOrBuilder> organizationBuilder_;
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public boolean hasOrganization() {
         return organizationBuilder_ != null || organization_ != null;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public org.naru.NaruModel.Organization getOrganization() {
         if (organizationBuilder_ == null) {
@@ -20712,7 +20866,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public Builder setOrganization(org.naru.NaruModel.Organization value) {
         if (organizationBuilder_ == null) {
@@ -20728,7 +20882,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public Builder setOrganization(
           org.naru.NaruModel.Organization.Builder builderForValue) {
@@ -20742,7 +20896,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public Builder mergeOrganization(org.naru.NaruModel.Organization value) {
         if (organizationBuilder_ == null) {
@@ -20760,7 +20914,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public Builder clearOrganization() {
         if (organizationBuilder_ == null) {
@@ -20774,7 +20928,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public org.naru.NaruModel.Organization.Builder getOrganizationBuilder() {
         
@@ -20782,7 +20936,7 @@ public final class NaruModel {
         return getOrganizationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       public org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder() {
         if (organizationBuilder_ != null) {
@@ -20793,7 +20947,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Organization organization = 10 [weak = true];</code>
+       * <code>.org.naru.Organization organization = 10 [weak = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Organization, org.naru.NaruModel.Organization.Builder, org.naru.NaruModel.OrganizationOrBuilder> 
@@ -21102,41 +21256,41 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string android_app_name = 3;</code>
+     * <code>string android_app_name = 3;</code>
      */
     java.lang.String getAndroidAppName();
     /**
-     * <code>optional string android_app_name = 3;</code>
+     * <code>string android_app_name = 3;</code>
      */
     com.google.protobuf.ByteString
         getAndroidAppNameBytes();
 
     /**
-     * <code>optional string ios_app_name = 4;</code>
+     * <code>string ios_app_name = 4;</code>
      */
     java.lang.String getIosAppName();
     /**
-     * <code>optional string ios_app_name = 4;</code>
+     * <code>string ios_app_name = 4;</code>
      */
     com.google.protobuf.ByteString
         getIosAppNameBytes();
@@ -21309,7 +21463,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -21324,7 +21478,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -21343,7 +21497,7 @@ public final class NaruModel {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -21358,7 +21512,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -21377,7 +21531,7 @@ public final class NaruModel {
     public static final int ANDROID_APP_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object androidAppName_;
     /**
-     * <code>optional string android_app_name = 3;</code>
+     * <code>string android_app_name = 3;</code>
      */
     public java.lang.String getAndroidAppName() {
       java.lang.Object ref = androidAppName_;
@@ -21392,7 +21546,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string android_app_name = 3;</code>
+     * <code>string android_app_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getAndroidAppNameBytes() {
@@ -21411,7 +21565,7 @@ public final class NaruModel {
     public static final int IOS_APP_NAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object iosAppName_;
     /**
-     * <code>optional string ios_app_name = 4;</code>
+     * <code>string ios_app_name = 4;</code>
      */
     public java.lang.String getIosAppName() {
       java.lang.Object ref = iosAppName_;
@@ -21426,7 +21580,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string ios_app_name = 4;</code>
+     * <code>string ios_app_name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getIosAppNameBytes() {
@@ -21606,7 +21760,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -21628,6 +21782,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.Organization parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.Organization parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.Organization parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21948,7 +22113,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -21963,7 +22128,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -21979,7 +22144,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -21992,7 +22157,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -22001,7 +22166,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -22017,7 +22182,7 @@ public final class NaruModel {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -22032,7 +22197,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -22048,7 +22213,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -22061,7 +22226,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -22070,7 +22235,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -22086,7 +22251,7 @@ public final class NaruModel {
 
       private java.lang.Object androidAppName_ = "";
       /**
-       * <code>optional string android_app_name = 3;</code>
+       * <code>string android_app_name = 3;</code>
        */
       public java.lang.String getAndroidAppName() {
         java.lang.Object ref = androidAppName_;
@@ -22101,7 +22266,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string android_app_name = 3;</code>
+       * <code>string android_app_name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getAndroidAppNameBytes() {
@@ -22117,7 +22282,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string android_app_name = 3;</code>
+       * <code>string android_app_name = 3;</code>
        */
       public Builder setAndroidAppName(
           java.lang.String value) {
@@ -22130,7 +22295,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string android_app_name = 3;</code>
+       * <code>string android_app_name = 3;</code>
        */
       public Builder clearAndroidAppName() {
         
@@ -22139,7 +22304,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string android_app_name = 3;</code>
+       * <code>string android_app_name = 3;</code>
        */
       public Builder setAndroidAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -22155,7 +22320,7 @@ public final class NaruModel {
 
       private java.lang.Object iosAppName_ = "";
       /**
-       * <code>optional string ios_app_name = 4;</code>
+       * <code>string ios_app_name = 4;</code>
        */
       public java.lang.String getIosAppName() {
         java.lang.Object ref = iosAppName_;
@@ -22170,7 +22335,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string ios_app_name = 4;</code>
+       * <code>string ios_app_name = 4;</code>
        */
       public com.google.protobuf.ByteString
           getIosAppNameBytes() {
@@ -22186,7 +22351,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string ios_app_name = 4;</code>
+       * <code>string ios_app_name = 4;</code>
        */
       public Builder setIosAppName(
           java.lang.String value) {
@@ -22199,7 +22364,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string ios_app_name = 4;</code>
+       * <code>string ios_app_name = 4;</code>
        */
       public Builder clearIosAppName() {
         
@@ -22208,7 +22373,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string ios_app_name = 4;</code>
+       * <code>string ios_app_name = 4;</code>
        */
       public Builder setIosAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -22755,31 +22920,31 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string user_name = 2;</code>
+     * <code>string user_name = 2;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>optional string user_name = 2;</code>
+     * <code>string user_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>optional string organization_id = 3;</code>
+     * <code>string organization_id = 3;</code>
      */
     java.lang.String getOrganizationId();
     /**
-     * <code>optional string organization_id = 3;</code>
+     * <code>string organization_id = 3;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationIdBytes();
@@ -22870,7 +23035,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -22885,7 +23050,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -22904,7 +23069,7 @@ public final class NaruModel {
     public static final int USER_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object userName_;
     /**
-     * <code>optional string user_name = 2;</code>
+     * <code>string user_name = 2;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -22919,7 +23084,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_name = 2;</code>
+     * <code>string user_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -22938,7 +23103,7 @@ public final class NaruModel {
     public static final int ORGANIZATION_ID_FIELD_NUMBER = 3;
     private volatile java.lang.Object organizationId_;
     /**
-     * <code>optional string organization_id = 3;</code>
+     * <code>string organization_id = 3;</code>
      */
     public java.lang.String getOrganizationId() {
       java.lang.Object ref = organizationId_;
@@ -22953,7 +23118,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string organization_id = 3;</code>
+     * <code>string organization_id = 3;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationIdBytes() {
@@ -23037,7 +23202,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + USER_NAME_FIELD_NUMBER;
@@ -23049,6 +23214,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.OrganizationUser parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.OrganizationUser parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.OrganizationUser parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -23274,7 +23450,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -23289,7 +23465,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -23305,7 +23481,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -23318,7 +23494,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -23327,7 +23503,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -23343,7 +23519,7 @@ public final class NaruModel {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>optional string user_name = 2;</code>
+       * <code>string user_name = 2;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -23358,7 +23534,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_name = 2;</code>
+       * <code>string user_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -23374,7 +23550,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_name = 2;</code>
+       * <code>string user_name = 2;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -23387,7 +23563,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_name = 2;</code>
+       * <code>string user_name = 2;</code>
        */
       public Builder clearUserName() {
         
@@ -23396,7 +23572,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_name = 2;</code>
+       * <code>string user_name = 2;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -23412,7 +23588,7 @@ public final class NaruModel {
 
       private java.lang.Object organizationId_ = "";
       /**
-       * <code>optional string organization_id = 3;</code>
+       * <code>string organization_id = 3;</code>
        */
       public java.lang.String getOrganizationId() {
         java.lang.Object ref = organizationId_;
@@ -23427,7 +23603,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 3;</code>
+       * <code>string organization_id = 3;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationIdBytes() {
@@ -23443,7 +23619,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 3;</code>
+       * <code>string organization_id = 3;</code>
        */
       public Builder setOrganizationId(
           java.lang.String value) {
@@ -23456,7 +23632,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 3;</code>
+       * <code>string organization_id = 3;</code>
        */
       public Builder clearOrganizationId() {
         
@@ -23465,7 +23641,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 3;</code>
+       * <code>string organization_id = 3;</code>
        */
       public Builder setOrganizationIdBytes(
           com.google.protobuf.ByteString value) {
@@ -23532,67 +23708,67 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string item_type = 2;</code>
+     * <code>string item_type = 2;</code>
      */
     java.lang.String getItemType();
     /**
-     * <code>optional string item_type = 2;</code>
+     * <code>string item_type = 2;</code>
      */
     com.google.protobuf.ByteString
         getItemTypeBytes();
 
     /**
-     * <code>optional string product_id = 3;</code>
+     * <code>string product_id = 3;</code>
      */
     java.lang.String getProductId();
     /**
-     * <code>optional string product_id = 3;</code>
+     * <code>string product_id = 3;</code>
      */
     com.google.protobuf.ByteString
         getProductIdBytes();
 
     /**
-     * <code>optional string type = 4;</code>
+     * <code>string type = 4;</code>
      */
     java.lang.String getType();
     /**
-     * <code>optional string type = 4;</code>
+     * <code>string type = 4;</code>
      */
     com.google.protobuf.ByteString
         getTypeBytes();
 
     /**
-     * <code>optional string title = 6;</code>
+     * <code>string title = 6;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>optional string title = 6;</code>
+     * <code>string title = 6;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>optional string description = 7;</code>
+     * <code>string description = 7;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 7;</code>
+     * <code>string description = 7;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional double product_price = 8;</code>
+     * <code>double product_price = 8;</code>
      */
     double getProductPrice();
   }
@@ -23709,7 +23885,7 @@ public final class NaruModel {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -23724,7 +23900,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIdBytes() {
@@ -23743,7 +23919,7 @@ public final class NaruModel {
     public static final int ITEM_TYPE_FIELD_NUMBER = 2;
     private volatile java.lang.Object itemType_;
     /**
-     * <code>optional string item_type = 2;</code>
+     * <code>string item_type = 2;</code>
      */
     public java.lang.String getItemType() {
       java.lang.Object ref = itemType_;
@@ -23758,7 +23934,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string item_type = 2;</code>
+     * <code>string item_type = 2;</code>
      */
     public com.google.protobuf.ByteString
         getItemTypeBytes() {
@@ -23777,7 +23953,7 @@ public final class NaruModel {
     public static final int PRODUCT_ID_FIELD_NUMBER = 3;
     private volatile java.lang.Object productId_;
     /**
-     * <code>optional string product_id = 3;</code>
+     * <code>string product_id = 3;</code>
      */
     public java.lang.String getProductId() {
       java.lang.Object ref = productId_;
@@ -23792,7 +23968,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string product_id = 3;</code>
+     * <code>string product_id = 3;</code>
      */
     public com.google.protobuf.ByteString
         getProductIdBytes() {
@@ -23811,7 +23987,7 @@ public final class NaruModel {
     public static final int TYPE_FIELD_NUMBER = 4;
     private volatile java.lang.Object type_;
     /**
-     * <code>optional string type = 4;</code>
+     * <code>string type = 4;</code>
      */
     public java.lang.String getType() {
       java.lang.Object ref = type_;
@@ -23826,7 +24002,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string type = 4;</code>
+     * <code>string type = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTypeBytes() {
@@ -23845,7 +24021,7 @@ public final class NaruModel {
     public static final int TITLE_FIELD_NUMBER = 6;
     private volatile java.lang.Object title_;
     /**
-     * <code>optional string title = 6;</code>
+     * <code>string title = 6;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -23860,7 +24036,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string title = 6;</code>
+     * <code>string title = 6;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -23879,7 +24055,7 @@ public final class NaruModel {
     public static final int DESCRIPTION_FIELD_NUMBER = 7;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 7;</code>
+     * <code>string description = 7;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -23894,7 +24070,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string description = 7;</code>
+     * <code>string description = 7;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -23913,7 +24089,7 @@ public final class NaruModel {
     public static final int PRODUCT_PRICE_FIELD_NUMBER = 8;
     private double productPrice_;
     /**
-     * <code>optional double product_price = 8;</code>
+     * <code>double product_price = 8;</code>
      */
     public double getProductPrice() {
       return productPrice_;
@@ -24022,7 +24198,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + ITEM_TYPE_FIELD_NUMBER;
@@ -24043,6 +24219,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.ProductDetail parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.ProductDetail parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.ProductDetail parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -24295,7 +24482,7 @@ public final class NaruModel {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -24310,7 +24497,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -24326,7 +24513,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setId(
           java.lang.String value) {
@@ -24339,7 +24526,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder clearId() {
         
@@ -24348,7 +24535,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -24364,7 +24551,7 @@ public final class NaruModel {
 
       private java.lang.Object itemType_ = "";
       /**
-       * <code>optional string item_type = 2;</code>
+       * <code>string item_type = 2;</code>
        */
       public java.lang.String getItemType() {
         java.lang.Object ref = itemType_;
@@ -24379,7 +24566,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string item_type = 2;</code>
+       * <code>string item_type = 2;</code>
        */
       public com.google.protobuf.ByteString
           getItemTypeBytes() {
@@ -24395,7 +24582,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string item_type = 2;</code>
+       * <code>string item_type = 2;</code>
        */
       public Builder setItemType(
           java.lang.String value) {
@@ -24408,7 +24595,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string item_type = 2;</code>
+       * <code>string item_type = 2;</code>
        */
       public Builder clearItemType() {
         
@@ -24417,7 +24604,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string item_type = 2;</code>
+       * <code>string item_type = 2;</code>
        */
       public Builder setItemTypeBytes(
           com.google.protobuf.ByteString value) {
@@ -24433,7 +24620,7 @@ public final class NaruModel {
 
       private java.lang.Object productId_ = "";
       /**
-       * <code>optional string product_id = 3;</code>
+       * <code>string product_id = 3;</code>
        */
       public java.lang.String getProductId() {
         java.lang.Object ref = productId_;
@@ -24448,7 +24635,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string product_id = 3;</code>
+       * <code>string product_id = 3;</code>
        */
       public com.google.protobuf.ByteString
           getProductIdBytes() {
@@ -24464,7 +24651,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string product_id = 3;</code>
+       * <code>string product_id = 3;</code>
        */
       public Builder setProductId(
           java.lang.String value) {
@@ -24477,7 +24664,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string product_id = 3;</code>
+       * <code>string product_id = 3;</code>
        */
       public Builder clearProductId() {
         
@@ -24486,7 +24673,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string product_id = 3;</code>
+       * <code>string product_id = 3;</code>
        */
       public Builder setProductIdBytes(
           com.google.protobuf.ByteString value) {
@@ -24502,7 +24689,7 @@ public final class NaruModel {
 
       private java.lang.Object type_ = "";
       /**
-       * <code>optional string type = 4;</code>
+       * <code>string type = 4;</code>
        */
       public java.lang.String getType() {
         java.lang.Object ref = type_;
@@ -24517,7 +24704,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string type = 4;</code>
+       * <code>string type = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTypeBytes() {
@@ -24533,7 +24720,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string type = 4;</code>
+       * <code>string type = 4;</code>
        */
       public Builder setType(
           java.lang.String value) {
@@ -24546,7 +24733,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string type = 4;</code>
+       * <code>string type = 4;</code>
        */
       public Builder clearType() {
         
@@ -24555,7 +24742,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string type = 4;</code>
+       * <code>string type = 4;</code>
        */
       public Builder setTypeBytes(
           com.google.protobuf.ByteString value) {
@@ -24571,7 +24758,7 @@ public final class NaruModel {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>optional string title = 6;</code>
+       * <code>string title = 6;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -24586,7 +24773,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string title = 6;</code>
+       * <code>string title = 6;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -24602,7 +24789,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string title = 6;</code>
+       * <code>string title = 6;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -24615,7 +24802,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string title = 6;</code>
+       * <code>string title = 6;</code>
        */
       public Builder clearTitle() {
         
@@ -24624,7 +24811,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string title = 6;</code>
+       * <code>string title = 6;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -24640,7 +24827,7 @@ public final class NaruModel {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 7;</code>
+       * <code>string description = 7;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -24655,7 +24842,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 7;</code>
+       * <code>string description = 7;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -24671,7 +24858,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string description = 7;</code>
+       * <code>string description = 7;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -24684,7 +24871,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 7;</code>
+       * <code>string description = 7;</code>
        */
       public Builder clearDescription() {
         
@@ -24693,7 +24880,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string description = 7;</code>
+       * <code>string description = 7;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -24709,13 +24896,13 @@ public final class NaruModel {
 
       private double productPrice_ ;
       /**
-       * <code>optional double product_price = 8;</code>
+       * <code>double product_price = 8;</code>
        */
       public double getProductPrice() {
         return productPrice_;
       }
       /**
-       * <code>optional double product_price = 8;</code>
+       * <code>double product_price = 8;</code>
        */
       public Builder setProductPrice(double value) {
         
@@ -24724,7 +24911,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional double product_price = 8;</code>
+       * <code>double product_price = 8;</code>
        */
       public Builder clearProductPrice() {
         
@@ -24786,107 +24973,107 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     boolean hasBeacon();
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     org.naru.NaruModel.Beacon getBeacon();
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     org.naru.NaruModel.BeaconOrBuilder getBeaconOrBuilder();
 
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
 
     /**
-     * <code>optional string view_id = 5;</code>
+     * <code>string view_id = 5;</code>
      */
     java.lang.String getViewId();
     /**
-     * <code>optional string view_id = 5;</code>
+     * <code>string view_id = 5;</code>
      */
     com.google.protobuf.ByteString
         getViewIdBytes();
 
     /**
-     * <code>optional string android_app_name = 6;</code>
+     * <code>string android_app_name = 6;</code>
      */
     java.lang.String getAndroidAppName();
     /**
-     * <code>optional string android_app_name = 6;</code>
+     * <code>string android_app_name = 6;</code>
      */
     com.google.protobuf.ByteString
         getAndroidAppNameBytes();
 
     /**
-     * <code>optional string ios_app_name = 7;</code>
+     * <code>string ios_app_name = 7;</code>
      */
     java.lang.String getIosAppName();
     /**
-     * <code>optional string ios_app_name = 7;</code>
+     * <code>string ios_app_name = 7;</code>
      */
     com.google.protobuf.ByteString
         getIosAppNameBytes();
 
     /**
-     * <code>optional .org.naru.Order order = 8;</code>
+     * <code>.org.naru.Order order = 8;</code>
      */
     boolean hasOrder();
     /**
-     * <code>optional .org.naru.Order order = 8;</code>
+     * <code>.org.naru.Order order = 8;</code>
      */
     org.naru.NaruModel.Order getOrder();
     /**
-     * <code>optional .org.naru.Order order = 8;</code>
+     * <code>.org.naru.Order order = 8;</code>
      */
     org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder();
 
     /**
-     * <code>optional string organization_id = 9;</code>
+     * <code>string organization_id = 9;</code>
      */
     java.lang.String getOrganizationId();
     /**
-     * <code>optional string organization_id = 9;</code>
+     * <code>string organization_id = 9;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationIdBytes();
 
     /**
-     * <code>optional string google_id = 10;</code>
+     * <code>string google_id = 10;</code>
      */
     java.lang.String getGoogleId();
     /**
-     * <code>optional string google_id = 10;</code>
+     * <code>string google_id = 10;</code>
      */
     com.google.protobuf.ByteString
         getGoogleIdBytes();
 
     /**
-     * <code>optional string apple_id = 11;</code>
+     * <code>string apple_id = 11;</code>
      */
     java.lang.String getAppleId();
     /**
-     * <code>optional string apple_id = 11;</code>
+     * <code>string apple_id = 11;</code>
      */
     com.google.protobuf.ByteString
         getAppleIdBytes();
@@ -25038,7 +25225,7 @@ public final class NaruModel {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -25053,7 +25240,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -25072,19 +25259,19 @@ public final class NaruModel {
     public static final int BEACON_FIELD_NUMBER = 3;
     private org.naru.NaruModel.Beacon beacon_;
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
       return beacon_ != null;
     }
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     public org.naru.NaruModel.Beacon getBeacon() {
       return beacon_ == null ? org.naru.NaruModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     public org.naru.NaruModel.BeaconOrBuilder getBeaconOrBuilder() {
       return getBeacon();
@@ -25093,7 +25280,7 @@ public final class NaruModel {
     public static final int USER_ID_FIELD_NUMBER = 4;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -25108,7 +25295,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_id = 4;</code>
+     * <code>string user_id = 4;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -25127,7 +25314,7 @@ public final class NaruModel {
     public static final int VIEW_ID_FIELD_NUMBER = 5;
     private volatile java.lang.Object viewId_;
     /**
-     * <code>optional string view_id = 5;</code>
+     * <code>string view_id = 5;</code>
      */
     public java.lang.String getViewId() {
       java.lang.Object ref = viewId_;
@@ -25142,7 +25329,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string view_id = 5;</code>
+     * <code>string view_id = 5;</code>
      */
     public com.google.protobuf.ByteString
         getViewIdBytes() {
@@ -25161,7 +25348,7 @@ public final class NaruModel {
     public static final int ANDROID_APP_NAME_FIELD_NUMBER = 6;
     private volatile java.lang.Object androidAppName_;
     /**
-     * <code>optional string android_app_name = 6;</code>
+     * <code>string android_app_name = 6;</code>
      */
     public java.lang.String getAndroidAppName() {
       java.lang.Object ref = androidAppName_;
@@ -25176,7 +25363,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string android_app_name = 6;</code>
+     * <code>string android_app_name = 6;</code>
      */
     public com.google.protobuf.ByteString
         getAndroidAppNameBytes() {
@@ -25195,7 +25382,7 @@ public final class NaruModel {
     public static final int IOS_APP_NAME_FIELD_NUMBER = 7;
     private volatile java.lang.Object iosAppName_;
     /**
-     * <code>optional string ios_app_name = 7;</code>
+     * <code>string ios_app_name = 7;</code>
      */
     public java.lang.String getIosAppName() {
       java.lang.Object ref = iosAppName_;
@@ -25210,7 +25397,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string ios_app_name = 7;</code>
+     * <code>string ios_app_name = 7;</code>
      */
     public com.google.protobuf.ByteString
         getIosAppNameBytes() {
@@ -25229,19 +25416,19 @@ public final class NaruModel {
     public static final int ORDER_FIELD_NUMBER = 8;
     private org.naru.NaruModel.Order order_;
     /**
-     * <code>optional .org.naru.Order order = 8;</code>
+     * <code>.org.naru.Order order = 8;</code>
      */
     public boolean hasOrder() {
       return order_ != null;
     }
     /**
-     * <code>optional .org.naru.Order order = 8;</code>
+     * <code>.org.naru.Order order = 8;</code>
      */
     public org.naru.NaruModel.Order getOrder() {
       return order_ == null ? org.naru.NaruModel.Order.getDefaultInstance() : order_;
     }
     /**
-     * <code>optional .org.naru.Order order = 8;</code>
+     * <code>.org.naru.Order order = 8;</code>
      */
     public org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder() {
       return getOrder();
@@ -25250,7 +25437,7 @@ public final class NaruModel {
     public static final int ORGANIZATION_ID_FIELD_NUMBER = 9;
     private volatile java.lang.Object organizationId_;
     /**
-     * <code>optional string organization_id = 9;</code>
+     * <code>string organization_id = 9;</code>
      */
     public java.lang.String getOrganizationId() {
       java.lang.Object ref = organizationId_;
@@ -25265,7 +25452,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string organization_id = 9;</code>
+     * <code>string organization_id = 9;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationIdBytes() {
@@ -25284,7 +25471,7 @@ public final class NaruModel {
     public static final int GOOGLE_ID_FIELD_NUMBER = 10;
     private volatile java.lang.Object googleId_;
     /**
-     * <code>optional string google_id = 10;</code>
+     * <code>string google_id = 10;</code>
      */
     public java.lang.String getGoogleId() {
       java.lang.Object ref = googleId_;
@@ -25299,7 +25486,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string google_id = 10;</code>
+     * <code>string google_id = 10;</code>
      */
     public com.google.protobuf.ByteString
         getGoogleIdBytes() {
@@ -25318,7 +25505,7 @@ public final class NaruModel {
     public static final int APPLE_ID_FIELD_NUMBER = 11;
     private volatile java.lang.Object appleId_;
     /**
-     * <code>optional string apple_id = 11;</code>
+     * <code>string apple_id = 11;</code>
      */
     public java.lang.String getAppleId() {
       java.lang.Object ref = appleId_;
@@ -25333,7 +25520,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string apple_id = 11;</code>
+     * <code>string apple_id = 11;</code>
      */
     public com.google.protobuf.ByteString
         getAppleIdBytes() {
@@ -25481,7 +25668,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       if (hasBeacon()) {
@@ -25511,6 +25698,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.UINaruRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.UINaruRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.UINaruRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -25799,7 +25997,7 @@ public final class NaruModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -25814,7 +26012,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -25830,7 +26028,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -25843,7 +26041,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -25852,7 +26050,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -25870,13 +26068,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> beaconBuilder_;
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
         return beaconBuilder_ != null || beacon_ != null;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public org.naru.NaruModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
@@ -25886,7 +26084,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(org.naru.NaruModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -25902,7 +26100,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(
           org.naru.NaruModel.Beacon.Builder builderForValue) {
@@ -25916,7 +26114,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder mergeBeacon(org.naru.NaruModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -25934,7 +26132,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
@@ -25948,7 +26146,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public org.naru.NaruModel.Beacon.Builder getBeaconBuilder() {
         
@@ -25956,7 +26154,7 @@ public final class NaruModel {
         return getBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public org.naru.NaruModel.BeaconOrBuilder getBeaconOrBuilder() {
         if (beaconBuilder_ != null) {
@@ -25967,7 +26165,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> 
@@ -25985,7 +26183,7 @@ public final class NaruModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -26000,7 +26198,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -26016,7 +26214,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -26029,7 +26227,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public Builder clearUserId() {
         
@@ -26038,7 +26236,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 4;</code>
+       * <code>string user_id = 4;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -26054,7 +26252,7 @@ public final class NaruModel {
 
       private java.lang.Object viewId_ = "";
       /**
-       * <code>optional string view_id = 5;</code>
+       * <code>string view_id = 5;</code>
        */
       public java.lang.String getViewId() {
         java.lang.Object ref = viewId_;
@@ -26069,7 +26267,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string view_id = 5;</code>
+       * <code>string view_id = 5;</code>
        */
       public com.google.protobuf.ByteString
           getViewIdBytes() {
@@ -26085,7 +26283,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string view_id = 5;</code>
+       * <code>string view_id = 5;</code>
        */
       public Builder setViewId(
           java.lang.String value) {
@@ -26098,7 +26296,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string view_id = 5;</code>
+       * <code>string view_id = 5;</code>
        */
       public Builder clearViewId() {
         
@@ -26107,7 +26305,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string view_id = 5;</code>
+       * <code>string view_id = 5;</code>
        */
       public Builder setViewIdBytes(
           com.google.protobuf.ByteString value) {
@@ -26123,7 +26321,7 @@ public final class NaruModel {
 
       private java.lang.Object androidAppName_ = "";
       /**
-       * <code>optional string android_app_name = 6;</code>
+       * <code>string android_app_name = 6;</code>
        */
       public java.lang.String getAndroidAppName() {
         java.lang.Object ref = androidAppName_;
@@ -26138,7 +26336,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string android_app_name = 6;</code>
+       * <code>string android_app_name = 6;</code>
        */
       public com.google.protobuf.ByteString
           getAndroidAppNameBytes() {
@@ -26154,7 +26352,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string android_app_name = 6;</code>
+       * <code>string android_app_name = 6;</code>
        */
       public Builder setAndroidAppName(
           java.lang.String value) {
@@ -26167,7 +26365,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string android_app_name = 6;</code>
+       * <code>string android_app_name = 6;</code>
        */
       public Builder clearAndroidAppName() {
         
@@ -26176,7 +26374,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string android_app_name = 6;</code>
+       * <code>string android_app_name = 6;</code>
        */
       public Builder setAndroidAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -26192,7 +26390,7 @@ public final class NaruModel {
 
       private java.lang.Object iosAppName_ = "";
       /**
-       * <code>optional string ios_app_name = 7;</code>
+       * <code>string ios_app_name = 7;</code>
        */
       public java.lang.String getIosAppName() {
         java.lang.Object ref = iosAppName_;
@@ -26207,7 +26405,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string ios_app_name = 7;</code>
+       * <code>string ios_app_name = 7;</code>
        */
       public com.google.protobuf.ByteString
           getIosAppNameBytes() {
@@ -26223,7 +26421,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string ios_app_name = 7;</code>
+       * <code>string ios_app_name = 7;</code>
        */
       public Builder setIosAppName(
           java.lang.String value) {
@@ -26236,7 +26434,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string ios_app_name = 7;</code>
+       * <code>string ios_app_name = 7;</code>
        */
       public Builder clearIosAppName() {
         
@@ -26245,7 +26443,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string ios_app_name = 7;</code>
+       * <code>string ios_app_name = 7;</code>
        */
       public Builder setIosAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -26263,13 +26461,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Order, org.naru.NaruModel.Order.Builder, org.naru.NaruModel.OrderOrBuilder> orderBuilder_;
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public boolean hasOrder() {
         return orderBuilder_ != null || order_ != null;
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public org.naru.NaruModel.Order getOrder() {
         if (orderBuilder_ == null) {
@@ -26279,7 +26477,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public Builder setOrder(org.naru.NaruModel.Order value) {
         if (orderBuilder_ == null) {
@@ -26295,7 +26493,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public Builder setOrder(
           org.naru.NaruModel.Order.Builder builderForValue) {
@@ -26309,7 +26507,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public Builder mergeOrder(org.naru.NaruModel.Order value) {
         if (orderBuilder_ == null) {
@@ -26327,7 +26525,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
@@ -26341,7 +26539,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public org.naru.NaruModel.Order.Builder getOrderBuilder() {
         
@@ -26349,7 +26547,7 @@ public final class NaruModel {
         return getOrderFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       public org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder() {
         if (orderBuilder_ != null) {
@@ -26360,7 +26558,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Order order = 8;</code>
+       * <code>.org.naru.Order order = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Order, org.naru.NaruModel.Order.Builder, org.naru.NaruModel.OrderOrBuilder> 
@@ -26378,7 +26576,7 @@ public final class NaruModel {
 
       private java.lang.Object organizationId_ = "";
       /**
-       * <code>optional string organization_id = 9;</code>
+       * <code>string organization_id = 9;</code>
        */
       public java.lang.String getOrganizationId() {
         java.lang.Object ref = organizationId_;
@@ -26393,7 +26591,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 9;</code>
+       * <code>string organization_id = 9;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationIdBytes() {
@@ -26409,7 +26607,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 9;</code>
+       * <code>string organization_id = 9;</code>
        */
       public Builder setOrganizationId(
           java.lang.String value) {
@@ -26422,7 +26620,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 9;</code>
+       * <code>string organization_id = 9;</code>
        */
       public Builder clearOrganizationId() {
         
@@ -26431,7 +26629,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 9;</code>
+       * <code>string organization_id = 9;</code>
        */
       public Builder setOrganizationIdBytes(
           com.google.protobuf.ByteString value) {
@@ -26447,7 +26645,7 @@ public final class NaruModel {
 
       private java.lang.Object googleId_ = "";
       /**
-       * <code>optional string google_id = 10;</code>
+       * <code>string google_id = 10;</code>
        */
       public java.lang.String getGoogleId() {
         java.lang.Object ref = googleId_;
@@ -26462,7 +26660,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string google_id = 10;</code>
+       * <code>string google_id = 10;</code>
        */
       public com.google.protobuf.ByteString
           getGoogleIdBytes() {
@@ -26478,7 +26676,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string google_id = 10;</code>
+       * <code>string google_id = 10;</code>
        */
       public Builder setGoogleId(
           java.lang.String value) {
@@ -26491,7 +26689,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string google_id = 10;</code>
+       * <code>string google_id = 10;</code>
        */
       public Builder clearGoogleId() {
         
@@ -26500,7 +26698,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string google_id = 10;</code>
+       * <code>string google_id = 10;</code>
        */
       public Builder setGoogleIdBytes(
           com.google.protobuf.ByteString value) {
@@ -26516,7 +26714,7 @@ public final class NaruModel {
 
       private java.lang.Object appleId_ = "";
       /**
-       * <code>optional string apple_id = 11;</code>
+       * <code>string apple_id = 11;</code>
        */
       public java.lang.String getAppleId() {
         java.lang.Object ref = appleId_;
@@ -26531,7 +26729,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string apple_id = 11;</code>
+       * <code>string apple_id = 11;</code>
        */
       public com.google.protobuf.ByteString
           getAppleIdBytes() {
@@ -26547,7 +26745,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string apple_id = 11;</code>
+       * <code>string apple_id = 11;</code>
        */
       public Builder setAppleId(
           java.lang.String value) {
@@ -26560,7 +26758,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string apple_id = 11;</code>
+       * <code>string apple_id = 11;</code>
        */
       public Builder clearAppleId() {
         
@@ -26569,7 +26767,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string apple_id = 11;</code>
+       * <code>string apple_id = 11;</code>
        */
       public Builder setAppleIdBytes(
           com.google.protobuf.ByteString value) {
@@ -26636,46 +26834,46 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool successful = 1;</code>
+     * <code>bool successful = 1;</code>
      */
     boolean getSuccessful();
 
     /**
-     * <code>optional .org.naru.Request request = 2;</code>
+     * <code>.org.naru.Request request = 2;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.naru.Request request = 2;</code>
+     * <code>.org.naru.Request request = 2;</code>
      */
     org.naru.NaruModel.Request getRequest();
     /**
-     * <code>optional .org.naru.Request request = 2;</code>
+     * <code>.org.naru.Request request = 2;</code>
      */
     org.naru.NaruModel.RequestOrBuilder getRequestOrBuilder();
 
     /**
-     * <code>optional .org.naru.View view = 3;</code>
+     * <code>.org.naru.View view = 3;</code>
      */
     boolean hasView();
     /**
-     * <code>optional .org.naru.View view = 3;</code>
+     * <code>.org.naru.View view = 3;</code>
      */
     org.naru.NaruModel.View getView();
     /**
-     * <code>optional .org.naru.View view = 3;</code>
+     * <code>.org.naru.View view = 3;</code>
      */
     org.naru.NaruModel.ViewOrBuilder getViewOrBuilder();
 
     /**
-     * <code>optional .org.naru.Organization organization = 4;</code>
+     * <code>.org.naru.Organization organization = 4;</code>
      */
     boolean hasOrganization();
     /**
-     * <code>optional .org.naru.Organization organization = 4;</code>
+     * <code>.org.naru.Organization organization = 4;</code>
      */
     org.naru.NaruModel.Organization getOrganization();
     /**
-     * <code>optional .org.naru.Organization organization = 4;</code>
+     * <code>.org.naru.Organization organization = 4;</code>
      */
     org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder();
 
@@ -26827,7 +27025,7 @@ public final class NaruModel {
     public static final int SUCCESSFUL_FIELD_NUMBER = 1;
     private boolean successful_;
     /**
-     * <code>optional bool successful = 1;</code>
+     * <code>bool successful = 1;</code>
      */
     public boolean getSuccessful() {
       return successful_;
@@ -26836,19 +27034,19 @@ public final class NaruModel {
     public static final int REQUEST_FIELD_NUMBER = 2;
     private org.naru.NaruModel.Request request_;
     /**
-     * <code>optional .org.naru.Request request = 2;</code>
+     * <code>.org.naru.Request request = 2;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.naru.Request request = 2;</code>
+     * <code>.org.naru.Request request = 2;</code>
      */
     public org.naru.NaruModel.Request getRequest() {
       return request_ == null ? org.naru.NaruModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.naru.Request request = 2;</code>
+     * <code>.org.naru.Request request = 2;</code>
      */
     public org.naru.NaruModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -26857,19 +27055,19 @@ public final class NaruModel {
     public static final int VIEW_FIELD_NUMBER = 3;
     private org.naru.NaruModel.View view_;
     /**
-     * <code>optional .org.naru.View view = 3;</code>
+     * <code>.org.naru.View view = 3;</code>
      */
     public boolean hasView() {
       return view_ != null;
     }
     /**
-     * <code>optional .org.naru.View view = 3;</code>
+     * <code>.org.naru.View view = 3;</code>
      */
     public org.naru.NaruModel.View getView() {
       return view_ == null ? org.naru.NaruModel.View.getDefaultInstance() : view_;
     }
     /**
-     * <code>optional .org.naru.View view = 3;</code>
+     * <code>.org.naru.View view = 3;</code>
      */
     public org.naru.NaruModel.ViewOrBuilder getViewOrBuilder() {
       return getView();
@@ -26878,19 +27076,19 @@ public final class NaruModel {
     public static final int ORGANIZATION_FIELD_NUMBER = 4;
     private org.naru.NaruModel.Organization organization_;
     /**
-     * <code>optional .org.naru.Organization organization = 4;</code>
+     * <code>.org.naru.Organization organization = 4;</code>
      */
     public boolean hasOrganization() {
       return organization_ != null;
     }
     /**
-     * <code>optional .org.naru.Organization organization = 4;</code>
+     * <code>.org.naru.Organization organization = 4;</code>
      */
     public org.naru.NaruModel.Organization getOrganization() {
       return organization_ == null ? org.naru.NaruModel.Organization.getDefaultInstance() : organization_;
     }
     /**
-     * <code>optional .org.naru.Organization organization = 4;</code>
+     * <code>.org.naru.Organization organization = 4;</code>
      */
     public org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder() {
       return getOrganization();
@@ -27029,7 +27227,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SUCCESSFUL_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuccessful());
@@ -27054,6 +27252,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.UINaruResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.UINaruResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.UINaruResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -27352,13 +27561,13 @@ public final class NaruModel {
 
       private boolean successful_ ;
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public boolean getSuccessful() {
         return successful_;
       }
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public Builder setSuccessful(boolean value) {
         
@@ -27367,7 +27576,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional bool successful = 1;</code>
+       * <code>bool successful = 1;</code>
        */
       public Builder clearSuccessful() {
         
@@ -27380,13 +27589,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Request, org.naru.NaruModel.Request.Builder, org.naru.NaruModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public org.naru.NaruModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -27396,7 +27605,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public Builder setRequest(org.naru.NaruModel.Request value) {
         if (requestBuilder_ == null) {
@@ -27412,7 +27621,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public Builder setRequest(
           org.naru.NaruModel.Request.Builder builderForValue) {
@@ -27426,7 +27635,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public Builder mergeRequest(org.naru.NaruModel.Request value) {
         if (requestBuilder_ == null) {
@@ -27444,7 +27653,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -27458,7 +27667,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public org.naru.NaruModel.Request.Builder getRequestBuilder() {
         
@@ -27466,7 +27675,7 @@ public final class NaruModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       public org.naru.NaruModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -27477,7 +27686,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Request request = 2;</code>
+       * <code>.org.naru.Request request = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Request, org.naru.NaruModel.Request.Builder, org.naru.NaruModel.RequestOrBuilder> 
@@ -27497,13 +27706,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> viewBuilder_;
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public boolean hasView() {
         return viewBuilder_ != null || view_ != null;
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public org.naru.NaruModel.View getView() {
         if (viewBuilder_ == null) {
@@ -27513,7 +27722,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public Builder setView(org.naru.NaruModel.View value) {
         if (viewBuilder_ == null) {
@@ -27529,7 +27738,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public Builder setView(
           org.naru.NaruModel.View.Builder builderForValue) {
@@ -27543,7 +27752,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public Builder mergeView(org.naru.NaruModel.View value) {
         if (viewBuilder_ == null) {
@@ -27561,7 +27770,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
@@ -27575,7 +27784,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public org.naru.NaruModel.View.Builder getViewBuilder() {
         
@@ -27583,7 +27792,7 @@ public final class NaruModel {
         return getViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       public org.naru.NaruModel.ViewOrBuilder getViewOrBuilder() {
         if (viewBuilder_ != null) {
@@ -27594,7 +27803,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View view = 3;</code>
+       * <code>.org.naru.View view = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> 
@@ -27614,13 +27823,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Organization, org.naru.NaruModel.Organization.Builder, org.naru.NaruModel.OrganizationOrBuilder> organizationBuilder_;
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public boolean hasOrganization() {
         return organizationBuilder_ != null || organization_ != null;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public org.naru.NaruModel.Organization getOrganization() {
         if (organizationBuilder_ == null) {
@@ -27630,7 +27839,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public Builder setOrganization(org.naru.NaruModel.Organization value) {
         if (organizationBuilder_ == null) {
@@ -27646,7 +27855,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public Builder setOrganization(
           org.naru.NaruModel.Organization.Builder builderForValue) {
@@ -27660,7 +27869,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public Builder mergeOrganization(org.naru.NaruModel.Organization value) {
         if (organizationBuilder_ == null) {
@@ -27678,7 +27887,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public Builder clearOrganization() {
         if (organizationBuilder_ == null) {
@@ -27692,7 +27901,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public org.naru.NaruModel.Organization.Builder getOrganizationBuilder() {
         
@@ -27700,7 +27909,7 @@ public final class NaruModel {
         return getOrganizationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       public org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder() {
         if (organizationBuilder_ != null) {
@@ -27711,7 +27920,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Organization organization = 4;</code>
+       * <code>.org.naru.Organization organization = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Organization, org.naru.NaruModel.Organization.Builder, org.naru.NaruModel.OrganizationOrBuilder> 
@@ -28020,61 +28229,61 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     boolean hasBeacon();
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     org.naru.NaruModel.Beacon getBeacon();
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     org.naru.NaruModel.BeaconOrBuilder getBeaconOrBuilder();
 
     /**
-     * <code>optional .org.naru.Request request = 4;</code>
+     * <code>.org.naru.Request request = 4;</code>
      */
     boolean hasRequest();
     /**
-     * <code>optional .org.naru.Request request = 4;</code>
+     * <code>.org.naru.Request request = 4;</code>
      */
     org.naru.NaruModel.Request getRequest();
     /**
-     * <code>optional .org.naru.Request request = 4;</code>
+     * <code>.org.naru.Request request = 4;</code>
      */
     org.naru.NaruModel.RequestOrBuilder getRequestOrBuilder();
 
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     java.lang.String getUserId();
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
 
     /**
-     * <code>optional .org.naru.View view = 6;</code>
+     * <code>.org.naru.View view = 6;</code>
      */
     boolean hasView();
     /**
-     * <code>optional .org.naru.View view = 6;</code>
+     * <code>.org.naru.View view = 6;</code>
      */
     org.naru.NaruModel.View getView();
     /**
-     * <code>optional .org.naru.View view = 6;</code>
+     * <code>.org.naru.View view = 6;</code>
      */
     org.naru.NaruModel.ViewOrBuilder getViewOrBuilder();
 
@@ -28103,52 +28312,52 @@ public final class NaruModel {
         int index);
 
     /**
-     * <code>optional int64 date = 9;</code>
+     * <code>int64 date = 9;</code>
      */
     long getDate();
 
     /**
-     * <code>optional .org.naru.Order order = 10;</code>
+     * <code>.org.naru.Order order = 10;</code>
      */
     boolean hasOrder();
     /**
-     * <code>optional .org.naru.Order order = 10;</code>
+     * <code>.org.naru.Order order = 10;</code>
      */
     org.naru.NaruModel.Order getOrder();
     /**
-     * <code>optional .org.naru.Order order = 10;</code>
+     * <code>.org.naru.Order order = 10;</code>
      */
     org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder();
 
     /**
-     * <code>optional .org.naru.Organization organization = 11;</code>
+     * <code>.org.naru.Organization organization = 11;</code>
      */
     boolean hasOrganization();
     /**
-     * <code>optional .org.naru.Organization organization = 11;</code>
+     * <code>.org.naru.Organization organization = 11;</code>
      */
     org.naru.NaruModel.Organization getOrganization();
     /**
-     * <code>optional .org.naru.Organization organization = 11;</code>
+     * <code>.org.naru.Organization organization = 11;</code>
      */
     org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder();
 
     /**
-     * <code>optional string android_app_name = 12;</code>
+     * <code>string android_app_name = 12;</code>
      */
     java.lang.String getAndroidAppName();
     /**
-     * <code>optional string android_app_name = 12;</code>
+     * <code>string android_app_name = 12;</code>
      */
     com.google.protobuf.ByteString
         getAndroidAppNameBytes();
 
     /**
-     * <code>optional string ios_app_name = 13;</code>
+     * <code>string ios_app_name = 13;</code>
      */
     java.lang.String getIosAppName();
     /**
-     * <code>optional string ios_app_name = 13;</code>
+     * <code>string ios_app_name = 13;</code>
      */
     com.google.protobuf.ByteString
         getIosAppNameBytes();
@@ -28331,7 +28540,7 @@ public final class NaruModel {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -28346,7 +28555,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -28365,19 +28574,19 @@ public final class NaruModel {
     public static final int BEACON_FIELD_NUMBER = 3;
     private org.naru.NaruModel.Beacon beacon_;
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     public boolean hasBeacon() {
       return beacon_ != null;
     }
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     public org.naru.NaruModel.Beacon getBeacon() {
       return beacon_ == null ? org.naru.NaruModel.Beacon.getDefaultInstance() : beacon_;
     }
     /**
-     * <code>optional .org.naru.Beacon beacon = 3;</code>
+     * <code>.org.naru.Beacon beacon = 3;</code>
      */
     public org.naru.NaruModel.BeaconOrBuilder getBeaconOrBuilder() {
       return getBeacon();
@@ -28386,19 +28595,19 @@ public final class NaruModel {
     public static final int REQUEST_FIELD_NUMBER = 4;
     private org.naru.NaruModel.Request request_;
     /**
-     * <code>optional .org.naru.Request request = 4;</code>
+     * <code>.org.naru.Request request = 4;</code>
      */
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
-     * <code>optional .org.naru.Request request = 4;</code>
+     * <code>.org.naru.Request request = 4;</code>
      */
     public org.naru.NaruModel.Request getRequest() {
       return request_ == null ? org.naru.NaruModel.Request.getDefaultInstance() : request_;
     }
     /**
-     * <code>optional .org.naru.Request request = 4;</code>
+     * <code>.org.naru.Request request = 4;</code>
      */
     public org.naru.NaruModel.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
@@ -28407,7 +28616,7 @@ public final class NaruModel {
     public static final int USER_ID_FIELD_NUMBER = 5;
     private volatile java.lang.Object userId_;
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     public java.lang.String getUserId() {
       java.lang.Object ref = userId_;
@@ -28422,7 +28631,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string user_id = 5;</code>
+     * <code>string user_id = 5;</code>
      */
     public com.google.protobuf.ByteString
         getUserIdBytes() {
@@ -28441,19 +28650,19 @@ public final class NaruModel {
     public static final int VIEW_FIELD_NUMBER = 6;
     private org.naru.NaruModel.View view_;
     /**
-     * <code>optional .org.naru.View view = 6;</code>
+     * <code>.org.naru.View view = 6;</code>
      */
     public boolean hasView() {
       return view_ != null;
     }
     /**
-     * <code>optional .org.naru.View view = 6;</code>
+     * <code>.org.naru.View view = 6;</code>
      */
     public org.naru.NaruModel.View getView() {
       return view_ == null ? org.naru.NaruModel.View.getDefaultInstance() : view_;
     }
     /**
-     * <code>optional .org.naru.View view = 6;</code>
+     * <code>.org.naru.View view = 6;</code>
      */
     public org.naru.NaruModel.ViewOrBuilder getViewOrBuilder() {
       return getView();
@@ -28497,7 +28706,7 @@ public final class NaruModel {
     public static final int DATE_FIELD_NUMBER = 9;
     private long date_;
     /**
-     * <code>optional int64 date = 9;</code>
+     * <code>int64 date = 9;</code>
      */
     public long getDate() {
       return date_;
@@ -28506,19 +28715,19 @@ public final class NaruModel {
     public static final int ORDER_FIELD_NUMBER = 10;
     private org.naru.NaruModel.Order order_;
     /**
-     * <code>optional .org.naru.Order order = 10;</code>
+     * <code>.org.naru.Order order = 10;</code>
      */
     public boolean hasOrder() {
       return order_ != null;
     }
     /**
-     * <code>optional .org.naru.Order order = 10;</code>
+     * <code>.org.naru.Order order = 10;</code>
      */
     public org.naru.NaruModel.Order getOrder() {
       return order_ == null ? org.naru.NaruModel.Order.getDefaultInstance() : order_;
     }
     /**
-     * <code>optional .org.naru.Order order = 10;</code>
+     * <code>.org.naru.Order order = 10;</code>
      */
     public org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder() {
       return getOrder();
@@ -28527,19 +28736,19 @@ public final class NaruModel {
     public static final int ORGANIZATION_FIELD_NUMBER = 11;
     private org.naru.NaruModel.Organization organization_;
     /**
-     * <code>optional .org.naru.Organization organization = 11;</code>
+     * <code>.org.naru.Organization organization = 11;</code>
      */
     public boolean hasOrganization() {
       return organization_ != null;
     }
     /**
-     * <code>optional .org.naru.Organization organization = 11;</code>
+     * <code>.org.naru.Organization organization = 11;</code>
      */
     public org.naru.NaruModel.Organization getOrganization() {
       return organization_ == null ? org.naru.NaruModel.Organization.getDefaultInstance() : organization_;
     }
     /**
-     * <code>optional .org.naru.Organization organization = 11;</code>
+     * <code>.org.naru.Organization organization = 11;</code>
      */
     public org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder() {
       return getOrganization();
@@ -28548,7 +28757,7 @@ public final class NaruModel {
     public static final int ANDROID_APP_NAME_FIELD_NUMBER = 12;
     private volatile java.lang.Object androidAppName_;
     /**
-     * <code>optional string android_app_name = 12;</code>
+     * <code>string android_app_name = 12;</code>
      */
     public java.lang.String getAndroidAppName() {
       java.lang.Object ref = androidAppName_;
@@ -28563,7 +28772,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string android_app_name = 12;</code>
+     * <code>string android_app_name = 12;</code>
      */
     public com.google.protobuf.ByteString
         getAndroidAppNameBytes() {
@@ -28582,7 +28791,7 @@ public final class NaruModel {
     public static final int IOS_APP_NAME_FIELD_NUMBER = 13;
     private volatile java.lang.Object iosAppName_;
     /**
-     * <code>optional string ios_app_name = 13;</code>
+     * <code>string ios_app_name = 13;</code>
      */
     public java.lang.String getIosAppName() {
       java.lang.Object ref = iosAppName_;
@@ -28597,7 +28806,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string ios_app_name = 13;</code>
+     * <code>string ios_app_name = 13;</code>
      */
     public com.google.protobuf.ByteString
         getIosAppNameBytes() {
@@ -28767,7 +28976,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       if (hasBeacon()) {
@@ -28808,6 +29017,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.UINaruAdminRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.UINaruAdminRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.UINaruAdminRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -29162,7 +29382,7 @@ public final class NaruModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -29177,7 +29397,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -29193,7 +29413,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -29206,7 +29426,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -29215,7 +29435,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -29233,13 +29453,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> beaconBuilder_;
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public boolean hasBeacon() {
         return beaconBuilder_ != null || beacon_ != null;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public org.naru.NaruModel.Beacon getBeacon() {
         if (beaconBuilder_ == null) {
@@ -29249,7 +29469,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(org.naru.NaruModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -29265,7 +29485,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder setBeacon(
           org.naru.NaruModel.Beacon.Builder builderForValue) {
@@ -29279,7 +29499,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder mergeBeacon(org.naru.NaruModel.Beacon value) {
         if (beaconBuilder_ == null) {
@@ -29297,7 +29517,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public Builder clearBeacon() {
         if (beaconBuilder_ == null) {
@@ -29311,7 +29531,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public org.naru.NaruModel.Beacon.Builder getBeaconBuilder() {
         
@@ -29319,7 +29539,7 @@ public final class NaruModel {
         return getBeaconFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       public org.naru.NaruModel.BeaconOrBuilder getBeaconOrBuilder() {
         if (beaconBuilder_ != null) {
@@ -29330,7 +29550,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Beacon beacon = 3;</code>
+       * <code>.org.naru.Beacon beacon = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Beacon, org.naru.NaruModel.Beacon.Builder, org.naru.NaruModel.BeaconOrBuilder> 
@@ -29350,13 +29570,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Request, org.naru.NaruModel.Request.Builder, org.naru.NaruModel.RequestOrBuilder> requestBuilder_;
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public org.naru.NaruModel.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -29366,7 +29586,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public Builder setRequest(org.naru.NaruModel.Request value) {
         if (requestBuilder_ == null) {
@@ -29382,7 +29602,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public Builder setRequest(
           org.naru.NaruModel.Request.Builder builderForValue) {
@@ -29396,7 +29616,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public Builder mergeRequest(org.naru.NaruModel.Request value) {
         if (requestBuilder_ == null) {
@@ -29414,7 +29634,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public Builder clearRequest() {
         if (requestBuilder_ == null) {
@@ -29428,7 +29648,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public org.naru.NaruModel.Request.Builder getRequestBuilder() {
         
@@ -29436,7 +29656,7 @@ public final class NaruModel {
         return getRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       public org.naru.NaruModel.RequestOrBuilder getRequestOrBuilder() {
         if (requestBuilder_ != null) {
@@ -29447,7 +29667,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Request request = 4;</code>
+       * <code>.org.naru.Request request = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Request, org.naru.NaruModel.Request.Builder, org.naru.NaruModel.RequestOrBuilder> 
@@ -29465,7 +29685,7 @@ public final class NaruModel {
 
       private java.lang.Object userId_ = "";
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public java.lang.String getUserId() {
         java.lang.Object ref = userId_;
@@ -29480,7 +29700,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public com.google.protobuf.ByteString
           getUserIdBytes() {
@@ -29496,7 +29716,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public Builder setUserId(
           java.lang.String value) {
@@ -29509,7 +29729,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public Builder clearUserId() {
         
@@ -29518,7 +29738,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string user_id = 5;</code>
+       * <code>string user_id = 5;</code>
        */
       public Builder setUserIdBytes(
           com.google.protobuf.ByteString value) {
@@ -29536,13 +29756,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> viewBuilder_;
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public boolean hasView() {
         return viewBuilder_ != null || view_ != null;
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public org.naru.NaruModel.View getView() {
         if (viewBuilder_ == null) {
@@ -29552,7 +29772,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public Builder setView(org.naru.NaruModel.View value) {
         if (viewBuilder_ == null) {
@@ -29568,7 +29788,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public Builder setView(
           org.naru.NaruModel.View.Builder builderForValue) {
@@ -29582,7 +29802,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public Builder mergeView(org.naru.NaruModel.View value) {
         if (viewBuilder_ == null) {
@@ -29600,7 +29820,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public Builder clearView() {
         if (viewBuilder_ == null) {
@@ -29614,7 +29834,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public org.naru.NaruModel.View.Builder getViewBuilder() {
         
@@ -29622,7 +29842,7 @@ public final class NaruModel {
         return getViewFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       public org.naru.NaruModel.ViewOrBuilder getViewOrBuilder() {
         if (viewBuilder_ != null) {
@@ -29633,7 +29853,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.View view = 6;</code>
+       * <code>.org.naru.View view = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.View, org.naru.NaruModel.View.Builder, org.naru.NaruModel.ViewOrBuilder> 
@@ -29891,13 +30111,13 @@ public final class NaruModel {
 
       private long date_ ;
       /**
-       * <code>optional int64 date = 9;</code>
+       * <code>int64 date = 9;</code>
        */
       public long getDate() {
         return date_;
       }
       /**
-       * <code>optional int64 date = 9;</code>
+       * <code>int64 date = 9;</code>
        */
       public Builder setDate(long value) {
         
@@ -29906,7 +30126,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional int64 date = 9;</code>
+       * <code>int64 date = 9;</code>
        */
       public Builder clearDate() {
         
@@ -29919,13 +30139,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Order, org.naru.NaruModel.Order.Builder, org.naru.NaruModel.OrderOrBuilder> orderBuilder_;
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public boolean hasOrder() {
         return orderBuilder_ != null || order_ != null;
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public org.naru.NaruModel.Order getOrder() {
         if (orderBuilder_ == null) {
@@ -29935,7 +30155,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public Builder setOrder(org.naru.NaruModel.Order value) {
         if (orderBuilder_ == null) {
@@ -29951,7 +30171,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public Builder setOrder(
           org.naru.NaruModel.Order.Builder builderForValue) {
@@ -29965,7 +30185,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public Builder mergeOrder(org.naru.NaruModel.Order value) {
         if (orderBuilder_ == null) {
@@ -29983,7 +30203,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
@@ -29997,7 +30217,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public org.naru.NaruModel.Order.Builder getOrderBuilder() {
         
@@ -30005,7 +30225,7 @@ public final class NaruModel {
         return getOrderFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       public org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder() {
         if (orderBuilder_ != null) {
@@ -30016,7 +30236,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Order order = 10;</code>
+       * <code>.org.naru.Order order = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Order, org.naru.NaruModel.Order.Builder, org.naru.NaruModel.OrderOrBuilder> 
@@ -30036,13 +30256,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Organization, org.naru.NaruModel.Organization.Builder, org.naru.NaruModel.OrganizationOrBuilder> organizationBuilder_;
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public boolean hasOrganization() {
         return organizationBuilder_ != null || organization_ != null;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public org.naru.NaruModel.Organization getOrganization() {
         if (organizationBuilder_ == null) {
@@ -30052,7 +30272,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public Builder setOrganization(org.naru.NaruModel.Organization value) {
         if (organizationBuilder_ == null) {
@@ -30068,7 +30288,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public Builder setOrganization(
           org.naru.NaruModel.Organization.Builder builderForValue) {
@@ -30082,7 +30302,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public Builder mergeOrganization(org.naru.NaruModel.Organization value) {
         if (organizationBuilder_ == null) {
@@ -30100,7 +30320,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public Builder clearOrganization() {
         if (organizationBuilder_ == null) {
@@ -30114,7 +30334,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public org.naru.NaruModel.Organization.Builder getOrganizationBuilder() {
         
@@ -30122,7 +30342,7 @@ public final class NaruModel {
         return getOrganizationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       public org.naru.NaruModel.OrganizationOrBuilder getOrganizationOrBuilder() {
         if (organizationBuilder_ != null) {
@@ -30133,7 +30353,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Organization organization = 11;</code>
+       * <code>.org.naru.Organization organization = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Organization, org.naru.NaruModel.Organization.Builder, org.naru.NaruModel.OrganizationOrBuilder> 
@@ -30151,7 +30371,7 @@ public final class NaruModel {
 
       private java.lang.Object androidAppName_ = "";
       /**
-       * <code>optional string android_app_name = 12;</code>
+       * <code>string android_app_name = 12;</code>
        */
       public java.lang.String getAndroidAppName() {
         java.lang.Object ref = androidAppName_;
@@ -30166,7 +30386,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string android_app_name = 12;</code>
+       * <code>string android_app_name = 12;</code>
        */
       public com.google.protobuf.ByteString
           getAndroidAppNameBytes() {
@@ -30182,7 +30402,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string android_app_name = 12;</code>
+       * <code>string android_app_name = 12;</code>
        */
       public Builder setAndroidAppName(
           java.lang.String value) {
@@ -30195,7 +30415,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string android_app_name = 12;</code>
+       * <code>string android_app_name = 12;</code>
        */
       public Builder clearAndroidAppName() {
         
@@ -30204,7 +30424,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string android_app_name = 12;</code>
+       * <code>string android_app_name = 12;</code>
        */
       public Builder setAndroidAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30220,7 +30440,7 @@ public final class NaruModel {
 
       private java.lang.Object iosAppName_ = "";
       /**
-       * <code>optional string ios_app_name = 13;</code>
+       * <code>string ios_app_name = 13;</code>
        */
       public java.lang.String getIosAppName() {
         java.lang.Object ref = iosAppName_;
@@ -30235,7 +30455,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string ios_app_name = 13;</code>
+       * <code>string ios_app_name = 13;</code>
        */
       public com.google.protobuf.ByteString
           getIosAppNameBytes() {
@@ -30251,7 +30471,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string ios_app_name = 13;</code>
+       * <code>string ios_app_name = 13;</code>
        */
       public Builder setIosAppName(
           java.lang.String value) {
@@ -30264,7 +30484,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string ios_app_name = 13;</code>
+       * <code>string ios_app_name = 13;</code>
        */
       public Builder clearIosAppName() {
         
@@ -30273,7 +30493,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string ios_app_name = 13;</code>
+       * <code>string ios_app_name = 13;</code>
        */
       public Builder setIosAppNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30931,7 +31151,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getRequestsCount() > 0) {
         hash = (37 * hash) + REQUESTS_FIELD_NUMBER;
         hash = (53 * hash) + getRequestsList().hashCode();
@@ -30961,6 +31181,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.UINaruAdminResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.UINaruAdminResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.UINaruAdminResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -32910,35 +33141,35 @@ public final class NaruModel {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional string organization_id = 2;</code>
+     * <code>string organization_id = 2;</code>
      */
     java.lang.String getOrganizationId();
     /**
-     * <code>optional string organization_id = 2;</code>
+     * <code>string organization_id = 2;</code>
      */
     com.google.protobuf.ByteString
         getOrganizationIdBytes();
 
     /**
-     * <code>optional .org.naru.Order order = 3;</code>
+     * <code>.org.naru.Order order = 3;</code>
      */
     boolean hasOrder();
     /**
-     * <code>optional .org.naru.Order order = 3;</code>
+     * <code>.org.naru.Order order = 3;</code>
      */
     org.naru.NaruModel.Order getOrder();
     /**
-     * <code>optional .org.naru.Order order = 3;</code>
+     * <code>.org.naru.Order order = 3;</code>
      */
     org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder();
   }
@@ -33034,7 +33265,7 @@ public final class NaruModel {
     public static final int TOKEN_FIELD_NUMBER = 1;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -33049,7 +33280,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string token = 1;</code>
+     * <code>string token = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -33068,7 +33299,7 @@ public final class NaruModel {
     public static final int ORGANIZATION_ID_FIELD_NUMBER = 2;
     private volatile java.lang.Object organizationId_;
     /**
-     * <code>optional string organization_id = 2;</code>
+     * <code>string organization_id = 2;</code>
      */
     public java.lang.String getOrganizationId() {
       java.lang.Object ref = organizationId_;
@@ -33083,7 +33314,7 @@ public final class NaruModel {
       }
     }
     /**
-     * <code>optional string organization_id = 2;</code>
+     * <code>string organization_id = 2;</code>
      */
     public com.google.protobuf.ByteString
         getOrganizationIdBytes() {
@@ -33102,19 +33333,19 @@ public final class NaruModel {
     public static final int ORDER_FIELD_NUMBER = 3;
     private org.naru.NaruModel.Order order_;
     /**
-     * <code>optional .org.naru.Order order = 3;</code>
+     * <code>.org.naru.Order order = 3;</code>
      */
     public boolean hasOrder() {
       return order_ != null;
     }
     /**
-     * <code>optional .org.naru.Order order = 3;</code>
+     * <code>.org.naru.Order order = 3;</code>
      */
     public org.naru.NaruModel.Order getOrder() {
       return order_ == null ? org.naru.NaruModel.Order.getDefaultInstance() : order_;
     }
     /**
-     * <code>optional .org.naru.Order order = 3;</code>
+     * <code>.org.naru.Order order = 3;</code>
      */
     public org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder() {
       return getOrder();
@@ -33192,7 +33423,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
       hash = (37 * hash) + ORGANIZATION_ID_FIELD_NUMBER;
@@ -33206,6 +33437,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.UINaruOrganizationRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.UINaruOrganizationRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.UINaruOrganizationRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -33438,7 +33680,7 @@ public final class NaruModel {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -33453,7 +33695,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -33469,7 +33711,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -33482,7 +33724,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder clearToken() {
         
@@ -33491,7 +33733,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string token = 1;</code>
+       * <code>string token = 1;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -33507,7 +33749,7 @@ public final class NaruModel {
 
       private java.lang.Object organizationId_ = "";
       /**
-       * <code>optional string organization_id = 2;</code>
+       * <code>string organization_id = 2;</code>
        */
       public java.lang.String getOrganizationId() {
         java.lang.Object ref = organizationId_;
@@ -33522,7 +33764,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 2;</code>
+       * <code>string organization_id = 2;</code>
        */
       public com.google.protobuf.ByteString
           getOrganizationIdBytes() {
@@ -33538,7 +33780,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional string organization_id = 2;</code>
+       * <code>string organization_id = 2;</code>
        */
       public Builder setOrganizationId(
           java.lang.String value) {
@@ -33551,7 +33793,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 2;</code>
+       * <code>string organization_id = 2;</code>
        */
       public Builder clearOrganizationId() {
         
@@ -33560,7 +33802,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional string organization_id = 2;</code>
+       * <code>string organization_id = 2;</code>
        */
       public Builder setOrganizationIdBytes(
           com.google.protobuf.ByteString value) {
@@ -33578,13 +33820,13 @@ public final class NaruModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Order, org.naru.NaruModel.Order.Builder, org.naru.NaruModel.OrderOrBuilder> orderBuilder_;
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public boolean hasOrder() {
         return orderBuilder_ != null || order_ != null;
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public org.naru.NaruModel.Order getOrder() {
         if (orderBuilder_ == null) {
@@ -33594,7 +33836,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public Builder setOrder(org.naru.NaruModel.Order value) {
         if (orderBuilder_ == null) {
@@ -33610,7 +33852,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public Builder setOrder(
           org.naru.NaruModel.Order.Builder builderForValue) {
@@ -33624,7 +33866,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public Builder mergeOrder(org.naru.NaruModel.Order value) {
         if (orderBuilder_ == null) {
@@ -33642,7 +33884,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
@@ -33656,7 +33898,7 @@ public final class NaruModel {
         return this;
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public org.naru.NaruModel.Order.Builder getOrderBuilder() {
         
@@ -33664,7 +33906,7 @@ public final class NaruModel {
         return getOrderFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       public org.naru.NaruModel.OrderOrBuilder getOrderOrBuilder() {
         if (orderBuilder_ != null) {
@@ -33675,7 +33917,7 @@ public final class NaruModel {
         }
       }
       /**
-       * <code>optional .org.naru.Order order = 3;</code>
+       * <code>.org.naru.Order order = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.naru.NaruModel.Order, org.naru.NaruModel.Order.Builder, org.naru.NaruModel.OrderOrBuilder> 
@@ -34011,7 +34253,7 @@ public final class NaruModel {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getOrdersCount() > 0) {
         hash = (37 * hash) + ORDERS_FIELD_NUMBER;
         hash = (53 * hash) + getOrdersList().hashCode();
@@ -34025,6 +34267,17 @@ public final class NaruModel {
       return hash;
     }
 
+    public static org.naru.NaruModel.UINaruOrganizationResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.naru.NaruModel.UINaruOrganizationResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static org.naru.NaruModel.UINaruOrganizationResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {

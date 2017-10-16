@@ -5,47 +5,63 @@ import org.roylance.yaorm.utilities.ConnectionUtilities
 import org.roylance.yaorm.utilities.common.IWeakTypeTests
 import org.roylance.yaorm.utilities.common.WeakTypeTestUtilities
 
-class MySQLWeakTypeTests: MySQLISAMBase(), IWeakTypeTests {
-    @Test
-    override fun repeatedAddRemoveTest() {
-        if (!ConnectionUtilities.runMySQLTests()) {
-            return
-        }
-        WeakTypeTestUtilities.repeatedAddRemoveTest(buildEntityService(), cleanup())
+class MySQLWeakTypeTests : MySQLISAMBase(), IWeakTypeTests {
+  @Test
+  override fun shouldBeAbleToSaveDeepNestedTree() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
     }
-    @Test
-    override fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated() {
-        if (!ConnectionUtilities.runMySQLTests()) {
-            return
-        }
-        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated(buildEntityService(), cleanup())
+    WeakTypeTestUtilities.shouldBeAbleToSaveDeepNestedTree(buildEntityService(), cleanup())
+  }
+
+  @Test
+  override fun repeatedAddRemoveTest() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
     }
-    @Test
-    override fun saveDeleteSaveNotRepeated() {
-        if (!ConnectionUtilities.runMySQLTests()) {
-            return
-        }
-        WeakTypeTestUtilities.saveDeleteSaveNotRepeated(buildEntityService(), cleanup())
+    WeakTypeTestUtilities.repeatedAddRemoveTest(buildEntityService(), cleanup())
+  }
+
+  @Test
+  override fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
     }
-    @Test
-    override fun shouldNotSaveChildMarkedAsWeakEvenIfNotExists() {
-        if (!ConnectionUtilities.runMySQLTests()) {
-            return
-        }
-        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakEvenIfNotExists(buildEntityService(), cleanup())
+    WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThroughRepeated(
+        buildEntityService(), cleanup())
+  }
+
+  @Test
+  override fun saveDeleteSaveNotRepeated() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
     }
-    @Test
-    override fun directChildRemove() {
-        if (!ConnectionUtilities.runMySQLTests()) {
-            return
-        }
-        WeakTypeTestUtilities.directChildRemove(buildEntityService(), cleanup())
+    WeakTypeTestUtilities.saveDeleteSaveNotRepeated(buildEntityService(), cleanup())
+  }
+
+  @Test
+  override fun shouldNotSaveChildMarkedAsWeakEvenIfNotExists() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
     }
-    @Test
-    override fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough() {
-        if (!ConnectionUtilities.runMySQLTests()) {
-            return
-        }
-        WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough(buildEntityService(), cleanup())
+    WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakEvenIfNotExists(buildEntityService(),
+        cleanup())
+  }
+
+  @Test
+  override fun directChildRemove() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
     }
+    WeakTypeTestUtilities.directChildRemove(buildEntityService(), cleanup())
+  }
+
+  @Test
+  override fun shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough() {
+    if (!ConnectionUtilities.runMySQLTests()) {
+      return
+    }
+    WeakTypeTestUtilities.shouldNotSaveChildMarkedAsWeakAfterAlreadySavedThrough(
+        buildEntityService(), cleanup())
+  }
 }
