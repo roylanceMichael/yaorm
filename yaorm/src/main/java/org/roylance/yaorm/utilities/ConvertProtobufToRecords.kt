@@ -3,6 +3,8 @@ package org.roylance.yaorm.utilities
 import com.google.protobuf.Descriptors
 import com.google.protobuf.Message
 import org.roylance.yaorm.YaormModel
+import org.roylance.yaorm.YaormModel.Record.Builder
+import org.roylance.yaorm.YaormModel.TableRecords
 import java.util.*
 
 internal class ConvertProtobufToRecords(
@@ -22,6 +24,26 @@ internal class ConvertProtobufToRecords(
           this.customIndexes)
     }
 
+    handleBuildingSchema(message, recordsMap)
+
+    // get base record
+    val baseRecord = YaormModel.Record.newBuilder()
+
+    // update the main record
+    handleMainScalars(message, baseRecord)
+    handleMainEnums(message, baseRecord)
+    handleMainMessages(message, baseRecord, recordsMap)
+
+    // add the records to record map
+    handleAddingBaseRecordToRecrds(message, baseRecord, recordsMap)
+    handleAddingInRepeatedEnums(message, mainMessageId, recordsMap)
+    handleAddingInRepeatedMessages(message, mainMessageId, recordsMap)
+
+    return recordsMap
+  }
+
+  private fun handleBuildingSchema(message: Message,
+      recordsMap: HashMap<String, YaormModel.TableRecords.Builder>) {
     definitions[message.descriptorForType.name]
         ?.tableDefinitionGraphsList
         ?.forEach {
@@ -41,9 +63,10 @@ internal class ConvertProtobufToRecords(
                 .setTableDefinition(it.otherTableDefinition)
           }
         }
+  }
 
-    // get base record
-    val baseRecord = YaormModel.Record.newBuilder()
+  private fun handleMainScalars(message: Message,
+      baseRecord: YaormModel.Record.Builder) {
     definitions[message.descriptorForType.name]
         ?.mainTableDefinition
         ?.columnDefinitionsList
@@ -58,7 +81,9 @@ internal class ConvertProtobufToRecords(
             baseRecord.addColumns(generatedColumn)
           }
         }
+  }
 
+  private fun handleMainEnums(message: Message, baseRecord: Builder) {
     // let's do enums first
     definitions[message.descriptorForType.name]
         ?.mainTableDefinition
@@ -82,7 +107,11 @@ internal class ConvertProtobufToRecords(
             }
           }
         }
+  }
 
+  private fun handleMainMessages(message: Message,
+      baseRecord: Builder,
+      recordsMap: HashMap<String, TableRecords.Builder>) {
     // now messages, we'll add a column for the foreign key, but then new records for the child object
     definitions[message.descriptorForType.name]
         ?.mainTableDefinition
@@ -105,7 +134,9 @@ internal class ConvertProtobufToRecords(
                 val childMessageRecords = this.build(foundField)
                 childMessageRecords.keys.forEach {
                   if (recordsMap.containsKey(it)) {
-                    recordsMap[it]!!.mergeRecords(childMessageRecords[it]?.records)
+                    recordsMap[it]
+                        ?.recordsBuilder
+                        ?.addAllRecords(childMessageRecords[it]?.records?.recordsList)
                   } else {
                     recordsMap[it] = childMessageRecords[it]!!
                   }
@@ -118,19 +149,27 @@ internal class ConvertProtobufToRecords(
             }
           }
         }
+  }
 
+  private fun handleAddingBaseRecordToRecrds(message: Message,
+      baseRecord: Builder,
+      recordsMap: HashMap<String, TableRecords.Builder>) {
     // add base
     if (recordsMap.containsKey(
         definitions[message.descriptorForType.name]!!.mainTableDefinition.name)) {
-      recordsMap[definitions[message.descriptorForType.name]!!.mainTableDefinition.name]!!.mergeRecords(
-          YaormModel.Records.newBuilder().addRecords(baseRecord).build())
+      recordsMap[definitions[message.descriptorForType.name]?.mainTableDefinition?.name]
+          ?.recordsBuilder?.addRecords(baseRecord)
     } else {
-      recordsMap[definitions[message.descriptorForType.name]!!.mainTableDefinition.name] = YaormModel.TableRecords.newBuilder()
+      recordsMap[definitions[message.descriptorForType.name]?.mainTableDefinition?.name!!] = YaormModel.TableRecords.newBuilder()
           .setTableDefinition(definitions[message.descriptorForType.name]!!.mainTableDefinition)
           .setTableName(definitions[message.descriptorForType.name]!!.mainTableDefinition.name)
           .setRecords(YaormModel.Records.newBuilder().addRecords(baseRecord))
     }
+  }
 
+  private fun handleAddingInRepeatedEnums(message: Message,
+      mainMessageId: String,
+      recordsMap: HashMap<String, TableRecords.Builder>) {
     // let's add the enum children now
     val repeatedEnumMap = ProtobufUtils.handleRepeatedEnumFields(
         message,
@@ -138,23 +177,29 @@ internal class ConvertProtobufToRecords(
         this.definitions[message.descriptorForType.name]!!)
     repeatedEnumMap.keys.forEach {
       if (recordsMap.containsKey(it)) {
-        recordsMap[it]?.mergeRecords(repeatedEnumMap[it]?.records)
+        recordsMap[it]?.recordsBuilder
+            ?.addAllRecords(repeatedEnumMap[it]?.records?.recordsList)
       } else {
         recordsMap[it] = repeatedEnumMap[it]!!
       }
     }
+  }
 
+  private fun handleAddingInRepeatedMessages(message: Message,
+      mainMessageId: String,
+      recordsMap: HashMap<String, TableRecords.Builder>) {
     // add in messageType children now
-    val repeatedMessageMap = ProtobufUtils.handleRepeatedMessageFields(message, mainMessageId, this)
+    val repeatedMessageMap = ProtobufUtils.handleRepeatedMessageFields(
+        message,
+        mainMessageId,
+        this)
     repeatedMessageMap.keys.forEach {
       if (recordsMap.containsKey(it)) {
-        recordsMap[it]?.mergeRecords(repeatedMessageMap[it]!!.records)
+        recordsMap[it]?.recordsBuilder
+            ?.addAllRecords(repeatedMessageMap[it]?.records?.recordsList)
       } else {
         recordsMap[it] = repeatedMessageMap[it]!!
       }
     }
-
-    return recordsMap
   }
-
 }

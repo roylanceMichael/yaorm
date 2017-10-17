@@ -163,7 +163,7 @@ object ProtobufUtils {
     val returnRecords = YaormModel.AllTableRecords.newBuilder()
 
     resultMap.keys.forEach {
-      returnRecords.addTableRecords(resultMap[it]!!)
+      returnRecords.addTableRecords(resultMap[it])
     }
 
     return returnRecords.build()
@@ -218,7 +218,7 @@ object ProtobufUtils {
                     subMessage.descriptorForType.name,
                     fieldKey.name)
                 linkerTableRecords.tableDefinition = foundTableDefinition
-                linkerTableRecords.tableName = foundTableDefinition!!.name
+                linkerTableRecords.tableName = foundTableDefinition?.name
               }
 
               val messageId = getIdFromMessage(subMessage)
@@ -230,20 +230,23 @@ object ProtobufUtils {
 
                 linkerTableRecords.recordsBuilder.addRecords(record)
 
+                if (foundTableDefinition != null) {
+                  returnMap[linkerTableRecords.tableName] = linkerTableRecords
+                }
+
                 // for weak records, we won't process the children
                 if (!fieldKey.options.weak) {
                   // recursively call for child...
                   val subRecords = convertProto.build(subMessage)
                   subRecords.keys.forEach { subRecordKey ->
                     if (returnMap.containsKey(subRecordKey)) {
-                      returnMap[subRecordKey]!!.mergeRecords(subRecords[subRecordKey]!!.records)
+                      returnMap[subRecordKey]
+                          ?.recordsBuilder
+                          ?.addAllRecords(subRecords[subRecordKey]?.records?.recordsList)
                     } else {
                       returnMap[subRecordKey] = subRecords[subRecordKey]!!
                     }
                   }
-                }
-                if (foundTableDefinition != null) {
-                  returnMap[linkerTableRecords.tableName] = linkerTableRecords
                 }
               }
             }

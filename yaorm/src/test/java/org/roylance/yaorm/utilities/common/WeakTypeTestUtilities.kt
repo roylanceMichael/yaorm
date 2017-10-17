@@ -282,17 +282,17 @@ object WeakTypeTestUtilities {
       val entityMessageService = EntityMessageService(entityService, HashMap())
 
       val firstValidation = ComplexModel.Validation.newBuilder()
-          .setId(UUID.randomUUID().toString())
+          .setId("first_id")
           .setName("first_name")
           .setValue("first_name")
 
       val secondValidation = ComplexModel.Validation.newBuilder()
-          .setId(UUID.randomUUID().toString())
+          .setId("second_id")
           .setName("second_name")
           .setValue("second_name")
 
       val thirdValidation = ComplexModel.Validation.newBuilder()
-          .setId(UUID.randomUUID().toString())
+          .setId("third_id")
           .setName("third_name")
           .setValue("third_name")
 
@@ -300,11 +300,11 @@ object WeakTypeTestUtilities {
       firstValidation.addChildren(secondValidation)
 
       val view = ComplexModel.View.newBuilder()
-          .setId(UUID.randomUUID().toString())
+          .setId("view_id")
       view.addValidations(firstValidation)
 
       val request = ComplexModel.Request.newBuilder()
-          .setId(UUID.randomUUID().toString())
+          .setId("request_id")
 
       request.setView(view)
 
@@ -314,12 +314,25 @@ object WeakTypeTestUtilities {
       entityMessageService.merge(request.build())
 
       // assert
-      val allRequests = entityMessageService.getMany(ComplexModel.Request.getDefaultInstance())
       val allValidations = entityMessageService.getMany(ComplexModel.Validation.getDefaultInstance())
 
-      println(allRequests)
-      println(allValidations)
-      assert(true)
+      assert(allValidations.size == 3)
+      allValidations.forEach {
+        if (it.id == firstValidation.id) {
+          assert(it.childrenCount == 1)
+          assert(it.childrenList.first().id == secondValidation.id)
+        }
+        else if (it.id == secondValidation.id) {
+          assert(it.childrenCount == 1)
+          assert(it.childrenList.first().id == thirdValidation.id)
+        }
+        else if (it.id == thirdValidation.id) {
+          assert(it.childrenCount == 0)
+        }
+        else {
+          assert(false)
+        }
+      }
     }
     finally {
       entityService.close()
