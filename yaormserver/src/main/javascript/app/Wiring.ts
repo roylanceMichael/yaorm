@@ -17,7 +17,7 @@ app.factory("httpExecute", function ($window, $http) {
 });
 
 app.factory("yaormModel", function () {
-    return YaormModel.org.roylance;
+    return YaormModel.org.roylance.yaorm;
 });
 
 app.factory("yaormMainService", function(httpExecute:HttpExecute, yaormModel:org.roylance.yaorm.ProtoBufBuilder) {
