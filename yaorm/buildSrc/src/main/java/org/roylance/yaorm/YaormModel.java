@@ -500,6 +500,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ProtoTypeToSqlType)
       ProtoTypeToSqlTypeOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ProtoTypeToSqlType.newBuilder() to construct.
     private ProtoTypeToSqlType(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -512,7 +513,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ProtoTypeToSqlType(
         com.google.protobuf.CodedInputStream input,
@@ -520,6 +521,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -529,7 +532,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -554,6 +558,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -637,6 +642,7 @@ public final class YaormModel {
       if (!getSqlTypeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sqlType_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -651,11 +657,11 @@ public final class YaormModel {
       if (!getSqlTypeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sqlType_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -670,6 +676,7 @@ public final class YaormModel {
       result = result && protoType_ == other.protoType_;
       result = result && getSqlType()
           .equals(other.getSqlType());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -850,7 +857,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -863,12 +870,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -889,6 +896,7 @@ public final class YaormModel {
           sqlType_ = other.sqlType_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1029,12 +1037,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1111,6 +1119,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ProtoTypeToSqlTypes)
       ProtoTypeToSqlTypesOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ProtoTypeToSqlTypes.newBuilder() to construct.
     private ProtoTypeToSqlTypes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1122,7 +1131,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ProtoTypeToSqlTypes(
         com.google.protobuf.CodedInputStream input,
@@ -1130,6 +1139,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1139,7 +1150,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1164,6 +1176,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           results_ = java.util.Collections.unmodifiableList(results_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1229,6 +1242,7 @@ public final class YaormModel {
       for (int i = 0; i < results_.size(); i++) {
         output.writeMessage(1, results_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1240,11 +1254,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, results_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1258,6 +1272,7 @@ public final class YaormModel {
       boolean result = true;
       result = result && getResultsList()
           .equals(other.getResultsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -1449,7 +1464,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -1462,12 +1477,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1507,6 +1522,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1775,12 +1791,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1896,6 +1912,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.WhereClause)
       WhereClauseOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use WhereClause.newBuilder() to construct.
     private WhereClause(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1909,7 +1926,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private WhereClause(
         com.google.protobuf.CodedInputStream input,
@@ -1917,6 +1934,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1926,7 +1945,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1989,6 +2009,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           inItems_ = inItems_.getUnmodifiableView();
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2367,6 +2388,7 @@ public final class YaormModel {
       for (int i = 0; i < inItems_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, inItems_.getRaw(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -2398,11 +2420,11 @@ public final class YaormModel {
         size += dataSize;
         size += 1 * getInItemsList().size();
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -2428,6 +2450,7 @@ public final class YaormModel {
       }
       result = result && getInItemsList()
           .equals(other.getInItemsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -2652,7 +2675,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -2665,12 +2688,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2706,6 +2729,7 @@ public final class YaormModel {
           }
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -3150,12 +3174,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -3294,6 +3318,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ColumnDefinition)
       ColumnDefinitionOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ColumnDefinition.newBuilder() to construct.
     private ColumnDefinition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -3314,7 +3339,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ColumnDefinition(
         com.google.protobuf.CodedInputStream input,
@@ -3322,6 +3347,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3331,7 +3358,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -3402,6 +3430,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -3909,6 +3938,7 @@ public final class YaormModel {
       if (!getFunctionTextBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, functionText_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -3952,11 +3982,11 @@ public final class YaormModel {
       if (!getFunctionTextBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, functionText_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -3984,6 +4014,7 @@ public final class YaormModel {
       result = result && functionType_ == other.functionType_;
       result = result && getFunctionText()
           .equals(other.getFunctionText());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -4205,7 +4236,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -4218,12 +4249,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4271,6 +4302,7 @@ public final class YaormModel {
           functionText_ = other.functionText_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -4802,12 +4834,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -4908,6 +4940,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Index)
       IndexOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Index.newBuilder() to construct.
     private Index(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -4920,7 +4953,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Index(
         com.google.protobuf.CodedInputStream input,
@@ -4928,6 +4961,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4937,7 +4972,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -4974,6 +5010,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           includeNames_ = java.util.Collections.unmodifiableList(includeNames_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -5077,6 +5114,7 @@ public final class YaormModel {
       for (int i = 0; i < includeNames_.size(); i++) {
         output.writeMessage(2, includeNames_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -5092,11 +5130,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, includeNames_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -5112,6 +5150,7 @@ public final class YaormModel {
           .equals(other.getColumnNamesList());
       result = result && getIncludeNamesList()
           .equals(other.getIncludeNamesList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -5323,7 +5362,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -5336,12 +5375,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -5407,6 +5446,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -5915,12 +5955,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -6040,6 +6080,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Difference)
       DifferenceOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Difference.newBuilder() to construct.
     private Difference(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -6053,7 +6094,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Difference(
         com.google.protobuf.CodedInputStream input,
@@ -6061,6 +6102,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -6070,7 +6113,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -6140,6 +6184,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -6519,6 +6564,7 @@ public final class YaormModel {
       if (tableDefinition_ != null) {
         output.writeMessage(6, getTableDefinition());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -6549,11 +6595,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getTableDefinition());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -6584,6 +6630,7 @@ public final class YaormModel {
         result = result && getTableDefinition()
             .equals(other.getTableDefinition());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -6814,7 +6861,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -6827,12 +6874,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -6865,6 +6912,7 @@ public final class YaormModel {
         if (other.hasTableDefinition()) {
           mergeTableDefinition(other.getTableDefinition());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -7400,12 +7448,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -7524,6 +7572,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TableDefinition)
       TableDefinitionOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use TableDefinition.newBuilder() to construct.
     private TableDefinition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -7538,7 +7587,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private TableDefinition(
         com.google.protobuf.CodedInputStream input,
@@ -7546,6 +7595,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7555,7 +7606,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -7611,6 +7663,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           columnDefinitions_ = java.util.Collections.unmodifiableList(columnDefinitions_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -7901,6 +7954,7 @@ public final class YaormModel {
       if (!getAliasBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, alias_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -7926,11 +7980,11 @@ public final class YaormModel {
       if (!getAliasBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, alias_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -7954,6 +8008,7 @@ public final class YaormModel {
       result = result && tableType_ == other.tableType_;
       result = result && getAlias()
           .equals(other.getAlias());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -8177,7 +8232,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -8190,12 +8245,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -8249,6 +8304,7 @@ public final class YaormModel {
           alias_ = other.alias_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -8816,12 +8872,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -8898,6 +8954,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TableDefinitions)
       TableDefinitionsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use TableDefinitions.newBuilder() to construct.
     private TableDefinitions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -8909,7 +8966,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private TableDefinitions(
         com.google.protobuf.CodedInputStream input,
@@ -8917,6 +8974,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -8926,7 +8985,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -8951,6 +9011,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           tableDefinitions_ = java.util.Collections.unmodifiableList(tableDefinitions_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -9016,6 +9077,7 @@ public final class YaormModel {
       for (int i = 0; i < tableDefinitions_.size(); i++) {
         output.writeMessage(1, tableDefinitions_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -9027,11 +9089,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, tableDefinitions_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -9045,6 +9107,7 @@ public final class YaormModel {
       boolean result = true;
       result = result && getTableDefinitionsList()
           .equals(other.getTableDefinitionsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -9236,7 +9299,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -9249,12 +9312,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -9294,6 +9357,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -9562,12 +9626,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -9649,6 +9713,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DifferenceReport)
       DifferenceReportOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use DifferenceReport.newBuilder() to construct.
     private DifferenceReport(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -9661,7 +9726,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private DifferenceReport(
         com.google.protobuf.CodedInputStream input,
@@ -9669,6 +9734,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -9678,7 +9745,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -9708,6 +9776,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           differences_ = java.util.Collections.unmodifiableList(differences_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -9786,6 +9855,7 @@ public final class YaormModel {
       for (int i = 0; i < differences_.size(); i++) {
         output.writeMessage(2, differences_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -9801,11 +9871,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, differences_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -9821,6 +9891,7 @@ public final class YaormModel {
           == other.getMigrationExists());
       result = result && getDifferencesList()
           .equals(other.getDifferencesList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -10020,7 +10091,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -10033,12 +10104,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -10081,6 +10152,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -10375,12 +10447,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -10526,6 +10598,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Column)
       ColumnOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Column.newBuilder() to construct.
     private Column(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -10551,7 +10624,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Column(
         com.google.protobuf.CodedInputStream input,
@@ -10559,6 +10632,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -10568,7 +10643,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -10670,6 +10746,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -10926,6 +11003,7 @@ public final class YaormModel {
       if (!bytesHolder_.isEmpty()) {
         output.writeBytes(16, bytesHolder_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -10996,11 +11074,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(16, bytesHolder_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -11051,6 +11129,7 @@ public final class YaormModel {
           .equals(other.getStringHolder());
       result = result && getBytesHolder()
           .equals(other.getBytesHolder());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -11319,7 +11398,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -11332,12 +11411,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -11400,6 +11479,7 @@ public final class YaormModel {
         if (other.getBytesHolder() != com.google.protobuf.ByteString.EMPTY) {
           setBytesHolder(other.getBytesHolder());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -11980,12 +12060,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -12062,6 +12142,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Record)
       RecordOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Record.newBuilder() to construct.
     private Record(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -12073,7 +12154,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Record(
         com.google.protobuf.CodedInputStream input,
@@ -12081,6 +12162,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12090,7 +12173,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -12115,6 +12199,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           columns_ = java.util.Collections.unmodifiableList(columns_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -12180,6 +12265,7 @@ public final class YaormModel {
       for (int i = 0; i < columns_.size(); i++) {
         output.writeMessage(1, columns_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -12191,11 +12277,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, columns_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -12209,6 +12295,7 @@ public final class YaormModel {
       boolean result = true;
       result = result && getColumnsList()
           .equals(other.getColumnsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -12400,7 +12487,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -12413,12 +12500,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -12458,6 +12545,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -12726,12 +12814,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -12808,6 +12896,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Records)
       RecordsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Records.newBuilder() to construct.
     private Records(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -12819,7 +12908,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Records(
         com.google.protobuf.CodedInputStream input,
@@ -12827,6 +12916,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12836,7 +12927,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -12861,6 +12953,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           records_ = java.util.Collections.unmodifiableList(records_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -12926,6 +13019,7 @@ public final class YaormModel {
       for (int i = 0; i < records_.size(); i++) {
         output.writeMessage(1, records_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -12937,11 +13031,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, records_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -12955,6 +13049,7 @@ public final class YaormModel {
       boolean result = true;
       result = result && getRecordsList()
           .equals(other.getRecordsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -13146,7 +13241,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -13159,12 +13254,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -13204,6 +13299,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -13472,12 +13568,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -13566,6 +13662,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TableRecords)
       TableRecordsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use TableRecords.newBuilder() to construct.
     private TableRecords(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -13577,7 +13674,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private TableRecords(
         com.google.protobuf.CodedInputStream input,
@@ -13585,6 +13682,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -13594,7 +13693,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -13639,6 +13739,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -13751,6 +13852,7 @@ public final class YaormModel {
       if (!getTableNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, tableName_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -13769,11 +13871,11 @@ public final class YaormModel {
       if (!getTableNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, tableName_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -13797,6 +13899,7 @@ public final class YaormModel {
       }
       result = result && getTableName()
           .equals(other.getTableName());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -14002,7 +14105,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -14015,12 +14118,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -14044,6 +14147,7 @@ public final class YaormModel {
           tableName_ = other.tableName_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -14374,12 +14478,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -14456,6 +14560,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.AllTableRecords)
       AllTableRecordsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use AllTableRecords.newBuilder() to construct.
     private AllTableRecords(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -14467,7 +14572,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private AllTableRecords(
         com.google.protobuf.CodedInputStream input,
@@ -14475,6 +14580,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -14484,7 +14591,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -14509,6 +14617,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           tableRecords_ = java.util.Collections.unmodifiableList(tableRecords_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -14574,6 +14683,7 @@ public final class YaormModel {
       for (int i = 0; i < tableRecords_.size(); i++) {
         output.writeMessage(1, tableRecords_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -14585,11 +14695,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, tableRecords_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -14603,6 +14713,7 @@ public final class YaormModel {
       boolean result = true;
       result = result && getTableRecordsList()
           .equals(other.getTableRecordsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -14794,7 +14905,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -14807,12 +14918,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -14852,6 +14963,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -15120,12 +15232,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -15252,6 +15364,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DatabaseOperation)
       DatabaseOperationOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use DatabaseOperation.newBuilder() to construct.
     private DatabaseOperation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -15263,7 +15376,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private DatabaseOperation(
         com.google.protobuf.CodedInputStream input,
@@ -15271,6 +15384,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -15280,7 +15395,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -15364,6 +15480,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -15781,6 +15898,7 @@ public final class YaormModel {
       if (databaseOperationType_ != org.roylance.yaorm.YaormModel.DatabaseOperation.DatabaseOperationType.CREATE_TABLE.getNumber()) {
         output.writeEnum(6, databaseOperationType_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -15812,11 +15930,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(6, databaseOperationType_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -15854,6 +15972,7 @@ public final class YaormModel {
             .equals(other.getWhereClause());
       }
       result = result && databaseOperationType_ == other.databaseOperationType_;
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -16104,7 +16223,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -16117,12 +16236,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -16154,6 +16273,7 @@ public final class YaormModel {
         if (other.databaseOperationType_ != 0) {
           setDatabaseOperationTypeValue(other.getDatabaseOperationTypeValue());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -16810,12 +16930,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -16927,6 +17047,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DatabaseOperationResult)
       DatabaseOperationResultOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use DatabaseOperationResult.newBuilder() to construct.
     private DatabaseOperationResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -16940,7 +17061,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private DatabaseOperationResult(
         com.google.protobuf.CodedInputStream input,
@@ -16948,6 +17069,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -16957,7 +17080,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -17025,6 +17149,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -17185,6 +17310,7 @@ public final class YaormModel {
       if (databaseOperation_ != null) {
         output.writeMessage(6, getDatabaseOperation());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -17215,11 +17341,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getDatabaseOperation());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -17252,6 +17378,7 @@ public final class YaormModel {
         result = result && getDatabaseOperation()
             .equals(other.getDatabaseOperation());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -17484,7 +17611,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -17497,12 +17624,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -17535,6 +17662,7 @@ public final class YaormModel {
         if (other.hasDatabaseOperation()) {
           mergeDatabaseOperation(other.getDatabaseOperation());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -18034,12 +18162,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -18149,6 +18277,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DatabaseDefinition)
       DatabaseDefinitionOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use DatabaseDefinition.newBuilder() to construct.
     private DatabaseDefinition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -18162,7 +18291,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private DatabaseDefinition(
         com.google.protobuf.CodedInputStream input,
@@ -18170,6 +18299,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -18179,7 +18310,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -18229,6 +18361,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           tableDefinitionGraphs_ = java.util.Collections.unmodifiableList(tableDefinitionGraphs_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -18393,6 +18526,7 @@ public final class YaormModel {
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         output.writeMessage(4, tableDefinitionGraphs_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -18414,11 +18548,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, tableDefinitionGraphs_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -18441,6 +18575,7 @@ public final class YaormModel {
       }
       result = result && getTableDefinitionGraphsList()
           .equals(other.getTableDefinitionGraphsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -18659,7 +18794,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -18672,12 +18807,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -18728,6 +18863,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -19251,12 +19387,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -19387,6 +19523,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TableDefinitionGraph)
       TableDefinitionGraphOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use TableDefinitionGraph.newBuilder() to construct.
     private TableDefinitionGraph(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -19401,7 +19538,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private TableDefinitionGraph(
         com.google.protobuf.CodedInputStream input,
@@ -19409,6 +19546,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -19418,7 +19557,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -19494,6 +19634,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -19821,6 +19962,7 @@ public final class YaormModel {
       if (!getColumnNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, columnName_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -19853,11 +19995,11 @@ public final class YaormModel {
       if (!getColumnNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, columnName_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -19891,6 +20033,7 @@ public final class YaormModel {
           .equals(other.getOtherName());
       result = result && getColumnName()
           .equals(other.getColumnName());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -20126,7 +20269,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -20139,12 +20282,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -20182,6 +20325,7 @@ public final class YaormModel {
           columnName_ = other.columnName_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -20811,12 +20955,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -20906,6 +21050,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.TableDefinitionGraphs)
       TableDefinitionGraphsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use TableDefinitionGraphs.newBuilder() to construct.
     private TableDefinitionGraphs(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -20917,7 +21062,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private TableDefinitionGraphs(
         com.google.protobuf.CodedInputStream input,
@@ -20925,6 +21070,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -20934,7 +21081,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -20972,6 +21120,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           tableDefinitionGraphs_ = java.util.Collections.unmodifiableList(tableDefinitionGraphs_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -21062,6 +21211,7 @@ public final class YaormModel {
       for (int i = 0; i < tableDefinitionGraphs_.size(); i++) {
         output.writeMessage(2, tableDefinitionGraphs_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -21077,11 +21227,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, tableDefinitionGraphs_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -21100,6 +21250,7 @@ public final class YaormModel {
       }
       result = result && getTableDefinitionGraphsList()
           .equals(other.getTableDefinitionGraphsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -21308,7 +21459,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -21321,12 +21472,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -21369,6 +21520,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -21754,12 +21906,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -21862,6 +22014,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.ConnectionInfo)
       ConnectionInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ConnectionInfo.newBuilder() to construct.
     private ConnectionInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -21878,7 +22031,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ConnectionInfo(
         com.google.protobuf.CodedInputStream input,
@@ -21886,6 +22039,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -21895,7 +22050,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -21942,6 +22098,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -22141,6 +22298,7 @@ public final class YaormModel {
       if (port_ != 0) {
         output.writeInt32(6, port_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -22168,11 +22326,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, port_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -22196,6 +22354,7 @@ public final class YaormModel {
           == other.getShouldCreateSchema());
       result = result && (getPort()
           == other.getPort());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -22397,7 +22556,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -22410,12 +22569,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -22451,6 +22610,7 @@ public final class YaormModel {
         if (other.getPort() != 0) {
           setPort(other.getPort());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -22806,12 +22966,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -22899,6 +23059,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Migration)
       MigrationOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Migration.newBuilder() to construct.
     private Migration(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -22913,7 +23074,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Migration(
         com.google.protobuf.CodedInputStream input,
@@ -22921,6 +23082,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -22930,7 +23093,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -22966,6 +23130,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -23116,6 +23281,7 @@ public final class YaormModel {
       if (insertDate_ != 0L) {
         output.writeInt64(4, insertDate_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -23136,11 +23302,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, insertDate_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -23160,6 +23326,7 @@ public final class YaormModel {
           .equals(other.getModelDefinitionBase64());
       result = result && (getInsertDate()
           == other.getInsertDate());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -23351,7 +23518,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -23364,12 +23531,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -23398,6 +23565,7 @@ public final class YaormModel {
         if (other.getInsertDate() != 0L) {
           setInsertDate(other.getInsertDate());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -23658,12 +23826,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -23741,6 +23909,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DatabaseExecution)
       DatabaseExecutionOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use DatabaseExecution.newBuilder() to construct.
     private DatabaseExecution(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -23755,7 +23924,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private DatabaseExecution(
         com.google.protobuf.CodedInputStream input,
@@ -23763,6 +23932,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -23772,7 +23943,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -23806,6 +23978,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -23906,6 +24079,7 @@ public final class YaormModel {
       if (orderCalled_ != 0L) {
         output.writeInt64(4, orderCalled_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -23928,11 +24102,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, orderCalled_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -23952,6 +24126,7 @@ public final class YaormModel {
           == other.getResult());
       result = result && (getOrderCalled()
           == other.getOrderCalled());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -24145,7 +24320,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -24158,12 +24333,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -24190,6 +24365,7 @@ public final class YaormModel {
         if (other.getOrderCalled() != 0L) {
           setOrderCalled(other.getOrderCalled());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -24364,12 +24540,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -24451,6 +24627,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.DatabaseExecutionReport)
       DatabaseExecutionReportOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use DatabaseExecutionReport.newBuilder() to construct.
     private DatabaseExecutionReport(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -24463,7 +24640,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private DatabaseExecutionReport(
         com.google.protobuf.CodedInputStream input,
@@ -24471,6 +24648,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -24480,7 +24659,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -24510,6 +24690,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           executions_ = java.util.Collections.unmodifiableList(executions_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -24588,6 +24769,7 @@ public final class YaormModel {
       for (int i = 0; i < executions_.size(); i++) {
         output.writeMessage(2, executions_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -24603,11 +24785,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, executions_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -24623,6 +24805,7 @@ public final class YaormModel {
           == other.getCallsToDatabase());
       result = result && getExecutionsList()
           .equals(other.getExecutionsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -24822,7 +25005,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -24835,12 +25018,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -24883,6 +25066,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -25177,12 +25361,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -25304,6 +25488,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.JoinTable)
       JoinTableOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use JoinTable.newBuilder() to construct.
     private JoinTable(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -25314,7 +25499,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private JoinTable(
         com.google.protobuf.CodedInputStream input,
@@ -25322,6 +25507,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -25331,7 +25518,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -25409,6 +25597,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -25556,6 +25745,7 @@ public final class YaormModel {
       if (whereClause_ != null) {
         output.writeMessage(9, getWhereClause());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -25583,11 +25773,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, getWhereClause());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -25624,6 +25814,7 @@ public final class YaormModel {
         result = result && getWhereClause()
             .equals(other.getWhereClause());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -25873,7 +26064,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -25886,12 +26077,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -25920,6 +26111,7 @@ public final class YaormModel {
         if (other.hasWhereClause()) {
           mergeWhereClause(other.getWhereClause());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -26532,12 +26724,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -26616,6 +26808,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.JoinTableRecords)
       JoinTableRecordsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use JoinTableRecords.newBuilder() to construct.
     private JoinTableRecords(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -26626,7 +26819,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private JoinTableRecords(
         com.google.protobuf.CodedInputStream input,
@@ -26634,6 +26827,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -26643,7 +26838,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -26682,6 +26878,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -26757,6 +26954,7 @@ public final class YaormModel {
       if (records_ != null) {
         output.writeMessage(2, getRecords());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -26772,11 +26970,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getRecords());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -26798,6 +26996,7 @@ public final class YaormModel {
         result = result && getRecords()
             .equals(other.getRecords());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -26998,7 +27197,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -27011,12 +27210,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -27036,6 +27235,7 @@ public final class YaormModel {
         if (other.hasRecords()) {
           mergeRecords(other.getRecords());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -27297,12 +27497,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -27379,6 +27579,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.GroupBy)
       GroupByOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use GroupBy.newBuilder() to construct.
     private GroupBy(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -27390,7 +27591,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private GroupBy(
         com.google.protobuf.CodedInputStream input,
@@ -27398,6 +27599,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -27407,7 +27610,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -27432,6 +27636,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           columns_ = java.util.Collections.unmodifiableList(columns_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -27497,6 +27702,7 @@ public final class YaormModel {
       for (int i = 0; i < columns_.size(); i++) {
         output.writeMessage(1, columns_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -27508,11 +27714,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, columns_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -27526,6 +27732,7 @@ public final class YaormModel {
       boolean result = true;
       result = result && getColumnsList()
           .equals(other.getColumnsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -27717,7 +27924,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -27730,12 +27937,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -27775,6 +27982,7 @@ public final class YaormModel {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -28043,12 +28251,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -28123,6 +28331,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.OrderBy)
       OrderByOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use OrderBy.newBuilder() to construct.
     private OrderBy(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -28134,7 +28343,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private OrderBy(
         com.google.protobuf.CodedInputStream input,
@@ -28142,6 +28351,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -28151,7 +28362,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -28183,6 +28395,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -28253,6 +28466,7 @@ public final class YaormModel {
       if (type_ != org.roylance.yaorm.YaormModel.OrderByType.ASC.getNumber()) {
         output.writeEnum(2, type_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -28268,11 +28482,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, type_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -28290,6 +28504,7 @@ public final class YaormModel {
             .equals(other.getColumn());
       }
       result = result && type_ == other.type_;
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -28480,7 +28695,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -28493,12 +28708,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -28518,6 +28733,7 @@ public final class YaormModel {
         if (other.type_ != 0) {
           setTypeValue(other.getTypeValue());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -28706,12 +28922,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -28895,6 +29111,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.Projection)
       ProjectionOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Projection.newBuilder() to construct.
     private Projection(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -28911,7 +29128,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Projection(
         com.google.protobuf.CodedInputStream input,
@@ -28919,6 +29136,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -28928,7 +29147,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -29032,6 +29252,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           orderBys_ = java.util.Collections.unmodifiableList(orderBys_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -29307,6 +29528,7 @@ public final class YaormModel {
       if (offset_ != 0L) {
         output.writeInt64(9, offset_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -29349,11 +29571,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(9, offset_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -29392,6 +29614,7 @@ public final class YaormModel {
           == other.getLimit());
       result = result && (getOffset()
           == other.getOffset());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -29687,7 +29910,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -29700,12 +29923,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -29816,6 +30039,7 @@ public final class YaormModel {
         if (other.getOffset() != 0L) {
           setOffset(other.getOffset());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -31036,12 +31260,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -31230,6 +31454,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UIYaormRequest)
       UIYaormRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use UIYaormRequest.newBuilder() to construct.
     private UIYaormRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -31249,7 +31474,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private UIYaormRequest(
         com.google.protobuf.CodedInputStream input,
@@ -31257,6 +31482,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -31266,7 +31493,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -31388,6 +31616,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
           ids_ = ids_.getUnmodifiableView();
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -31765,6 +31994,7 @@ public final class YaormModel {
       for (int i = 0; i < ids_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 14, ids_.getRaw(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -31823,11 +32053,11 @@ public final class YaormModel {
         size += dataSize;
         size += 1 * getIdsList().size();
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -31877,6 +32107,7 @@ public final class YaormModel {
           .equals(other.getFileDescriptor());
       result = result && getIdsList()
           .equals(other.getIdsList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -32164,7 +32395,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -32177,12 +32408,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -32247,6 +32478,7 @@ public final class YaormModel {
           }
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -33260,12 +33492,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -33439,6 +33671,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.UIYaormResponse)
       UIYaormResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use UIYaormResponse.newBuilder() to construct.
     private UIYaormResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -33455,7 +33688,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private UIYaormResponse(
         com.google.protobuf.CodedInputStream input,
@@ -33463,6 +33696,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -33472,7 +33707,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -33576,6 +33812,7 @@ public final class YaormModel {
         if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           protoTypeToSqlTypes_ = java.util.Collections.unmodifiableList(protoTypeToSqlTypes_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -33839,6 +34076,7 @@ public final class YaormModel {
       if (!getStringResultBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, stringResult_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -33889,11 +34127,11 @@ public final class YaormModel {
       if (!getStringResultBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, stringResult_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -33932,6 +34170,7 @@ public final class YaormModel {
           .equals(other.getProtoTypeToSqlTypesList());
       result = result && getStringResult()
           .equals(other.getStringResult());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -34209,7 +34448,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -34222,12 +34461,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -34306,6 +34545,7 @@ public final class YaormModel {
           stringResult_ = other.stringResult_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -35234,12 +35474,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -35423,6 +35663,7 @@ public final class YaormModel {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:org.roylance.yaorm.SqlGeneratorRequestResponse)
       SqlGeneratorRequestResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use SqlGeneratorRequestResponse.newBuilder() to construct.
     private SqlGeneratorRequestResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -35438,7 +35679,7 @@ public final class YaormModel {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private SqlGeneratorRequestResponse(
         com.google.protobuf.CodedInputStream input,
@@ -35446,6 +35687,8 @@ public final class YaormModel {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -35455,7 +35698,8 @@ public final class YaormModel {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -35587,6 +35831,7 @@ public final class YaormModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -35917,6 +36162,7 @@ public final class YaormModel {
       if (protoTypeToSqlTypes_ != null) {
         output.writeMessage(12, getProtoTypeToSqlTypes());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -35969,11 +36215,11 @@ public final class YaormModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, getProtoTypeToSqlTypes());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -36030,6 +36276,7 @@ public final class YaormModel {
         result = result && getProtoTypeToSqlTypes()
             .equals(other.getProtoTypeToSqlTypes());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -36332,7 +36579,7 @@ public final class YaormModel {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -36345,12 +36592,12 @@ public final class YaormModel {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -36403,6 +36650,7 @@ public final class YaormModel {
         if (other.hasProtoTypeToSqlTypes()) {
           mergeProtoTypeToSqlTypes(other.getProtoTypeToSqlTypes());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -37508,12 +37756,12 @@ public final class YaormModel {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 

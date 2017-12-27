@@ -11,8 +11,8 @@ buildscript {
   dependencies {
     classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
     classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
-    classpath "org.roylance:yaclib.core:${yaclibMajor}.${yaclibMinor}"
+    classpath "org.roylance:yaclib.core:${yaclib_version}"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${yaclib_kotlin}"
   }
 }
 
@@ -29,7 +29,7 @@ apply plugin: YaclibPlugin
 
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:3.3.0"
+    artifact = "com.google.protobuf:protoc:3.4.0"
   }
 }
 
@@ -83,7 +83,7 @@ dependencies {
   //    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
   //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
-  compile "org.roylance:roylance.common:$yaclib_roylance_common"
+  compile "org.roylance:roylance.common:${YaclibStatics.RoylanceCommonVersion}"
 }
 
 task runYaclib(type: YaclibPluginTask) {
@@ -138,7 +138,6 @@ task runYaclib(type: YaclibPluginTask) {
       .setMajorVersion(mainDependency.majorVersion)
       .setGroup("org.roylance")
       .setName("yaorm.android").build())
-      .addFromDependencies(mainDependency)
       .build()
 
   def csv = YaclibModel.AuxiliaryProject.newBuilder()
@@ -154,9 +153,7 @@ task runYaclib(type: YaclibPluginTask) {
       .setMajorVersion(mainDependency.majorVersion)
       .setGroup("org.roylance")
       .setName("yaorm.csv").build())
-      .addFromDependencies(mainDependency)
       .build()
-
 
   auxiliaryProjects = tempAuxiliaryProjects
       .addProjects(android)
