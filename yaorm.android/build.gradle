@@ -58,6 +58,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // pull in models
+    sourceSets {
+        main {
+          java.srcDirs = ['src/main/java',
+                          '../yaorm/src/main/java',
+                          '../yaormclient/src/main/java']
+        }
+    }
 }
 
 install {
@@ -113,6 +121,8 @@ bintray {
 }
 
 dependencies {
-    compile "org.roylance:yaorm:$org_roylance_yaorm"
+    // compile "org.roylance:yaorm:$org_roylance_yaorm"
+    compile "com.squareup.retrofit2:retrofit:$yaclib_retrofit"
+    compile "org.roylance:roylance.common:$yaclib_roylance_common"
     testCompile 'junit:junit:4.12'
 }

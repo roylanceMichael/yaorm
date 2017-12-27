@@ -1,84 +1,178 @@
-buildscript {
-    ext.project_version = "${actualMajor}.${actualMinor}"
+import org.roylance.yaclib.YaclibPlugin
+import org.roylance.yaclib.YaclibPluginTask
+import org.roylance.yaclib.YaclibModel
 
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven { url repoUrl_ }
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
-        classpath "org.roylance:yaclib.core:${yaclibMajor}.${yaclibMinor}"
-    }
+buildscript {
+  repositories {
+    mavenCentral()
+    jcenter()
+    maven { url repoUrl_ }
+  }
+  dependencies {
+    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
+    classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
+    classpath "org.roylance:yaclib.core:${yaclibMajor}.${yaclibMinor}"
+  }
 }
 
 group 'org.roylance'
-version project_version
+version "${major}.${minor}"
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'com.google.protobuf'
+apply plugin: YaclibPlugin
 
-sourceCompatibility = 1.7
+protobuf {
+  protoc {
+    artifact = "com.google.protobuf:protoc:3.3.0"
+  }
+}
 
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
     }
+  }
 }
 
 bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['mavenJava']
-    publish = true
-    pkg {
-        repo = "${repoName_}"
-        name = "${group}.${rootProject.name}"
-        userOrg = user
-        licenses = ["${license_}"]
-        labels = [rootProject.name]
-        publicDownloadNumbers = true
-        vcsUrl = "${githubRepo_}"
-        version {
-            name = project_version
-        }
+  user = System.getenv('BINTRAY_USER')
+  key = System.getenv('BINTRAY_KEY')
+  publications = ['mavenJava']
+  publish = true
+  pkg {
+    repo = "${repoName_}"
+    name = "${group}.${rootProject.name}"
+    userOrg = user
+    licenses = ["${license_}"]
+    labels = [rootProject.name]
+    publicDownloadNumbers = true
+    vcsUrl = "${githubRepo_}"
+    version {
+      name = "${major}.${minor}"
     }
+  }
 }
 
 repositories {
-    mavenCentral()
-    maven { url "http://dl.bintray.com/roylancemichael/maven" }
+  mavenCentral()
+  maven { url "http://dl.bintray.com/roylancemichael/maven" }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-    testCompile group: 'commons-codec', name: 'commons-codec', version: '1.9'
-    testCompile group: 'org.postgresql', name: 'postgresql', version: '9.4.1209.jre7'
+  testCompile group: 'junit', name: 'junit', version: '4.11'
+  testCompile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+  testCompile group: 'org.postgresql', name: 'postgresql', version: '9.4.1209.jre7'
 
-    testCompile 'mysql:mysql-connector-java:5.1.37'
-    testCompile 'org.xerial:sqlite-jdbc:3.8.10.1'
-    testCompile 'commons-io:commons-io:2.5'
+  testCompile 'mysql:mysql-connector-java:5.1.37'
+  testCompile 'org.xerial:sqlite-jdbc:3.8.10.1'
+  testCompile 'commons-io:commons-io:2.5'
 
-    // https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
-    testCompile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '6.1.0.jre8'
+  // https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
+  testCompile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '6.1.0.jre8'
 
-//    testCompile 'org.apache.hadoop:hadoop-client:2.3.0'
-//    testCompile 'org.apache.hive:hive-jdbc:1.2.1'
+  //    testCompile 'org.apache.hadoop:hadoop-client:2.3.0'
+  //    testCompile 'org.apache.hive:hive-jdbc:1.2.1'
 
-//    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
-//    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
+  //    testCompile files('libs/phoenix-4.4.0-HBase-1.1-client.jar')
+  //    testCompile 'org.apache.phoenix:phoenix-core:4.4.0-HBase-1.1'
 
-    compile "org.roylance:roylance.common:$yaclib_roylance_common"
-    compile 'org.apache.commons:commons-lang3:3.4'
+  compile "org.roylance:roylance.common:$yaclib_roylance_common"
 }
 
-task runYaclib(type: GradleBuild) {
-    buildFile = 'yaclib.gradle'
-    tasks = ['execute']
+task runYaclib(type: YaclibPluginTask) {
+  def parentDir = new File(System.getProperty("user.dir")).parentFile.toString()
+
+  processSwift = true
+  location = parentDir
+  mainModel = "org.roylance.yaorm.YaormModel"
+  mainController = "org.roylance.yaorm.YaormController"
+
+  dependencyDescriptors = new ArrayList<>()
+  thirdPartyServerDependencies = new ArrayList<>()
+
+  def commonsLangDependency = YaclibModel.Dependency.newBuilder().setType(YaclibModel.DependencyType.JAVA)
+      .setGroup("org.apache.commons")
+      .setName("commons-lang3")
+      .setThirdPartyDependencyVersion("3.4")
+      .build()
+
+  thirdPartyServerDependencies.add(commonsLangDependency)
+
+  nugetKey = System.getenv('NUGET_KEY')
+
+  mainDependency = YaclibModel.Dependency.newBuilder()
+      .setGroup("org.roylance")
+      .setName("yaorm")
+      .setAuthorName(author_)
+      .setLicense(license_)
+      .setGithubRepo(githubRepo_)
+      .setMajorVersion(major)
+      .setMinorVersion(minor)
+      .setTypescriptModelFile("YaormModel")
+      .setServerType(YaclibModel.ServerType.GRADLE_JETTY_EMBEDDED)
+      .setServerPort(8080)
+      .setMavenRepository(YaclibModel.Repository.newBuilder()
+      .setName(repoName_)
+      .setUrl(repoUrl_)
+      .setRepositoryType(YaclibModel.RepositoryType.BINTRAY).build())
+      .build()
+
+  def tempAuxiliaryProjects = YaclibModel.AuxiliaryProjects.newBuilder()
+  def android = YaclibModel.AuxiliaryProject.newBuilder()
+      .setProjectType(YaclibModel.ProjectType.GRADLE_PROJECT_TYPE)
+      .setHandleBefore(YaclibModel.ExecutionPhase.BUILD_PACKAGE_JAVA_SERVER)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_SET_VERSION)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_UPDATE_DEPENDENCIES)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_CLEAN)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_BUILD)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_PUBLISH)
+      .setTargetDependency(YaclibModel.Dependency.newBuilder()
+      .setMinorVersion(mainDependency.minorVersion)
+      .setMajorVersion(mainDependency.majorVersion)
+      .setGroup("org.roylance")
+      .setName("yaorm.android").build())
+      .addFromDependencies(mainDependency)
+      .build()
+
+  def csv = YaclibModel.AuxiliaryProject.newBuilder()
+      .setProjectType(YaclibModel.ProjectType.GRADLE_PROJECT_TYPE)
+      .setHandleBefore(YaclibModel.ExecutionPhase.BUILD_PACKAGE_JAVA_SERVER)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_SET_VERSION)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_UPDATE_DEPENDENCIES)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_CLEAN)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_BUILD)
+      .addExecutions(YaclibModel.CustomExecutionType.CUSTOM_PUBLISH)
+      .setTargetDependency(YaclibModel.Dependency.newBuilder()
+      .setMinorVersion(mainDependency.minorVersion)
+      .setMajorVersion(mainDependency.majorVersion)
+      .setGroup("org.roylance")
+      .setName("yaorm.csv").build())
+      .addFromDependencies(mainDependency)
+      .build()
+
+
+  auxiliaryProjects = tempAuxiliaryProjects
+      .addProjects(android)
+      .addProjects(csv).build()
+
+  println(nugetKey)
+  println(parentDir)
+}
+
+
+sourceSets {
+  main {
+    proto {
+      // In addition to the default 'src/main/proto'
+      srcDir 'src/main/proto'
+      include 'src/main/proto/*.proto'
+    }
+  }
 }
