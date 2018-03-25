@@ -1,5 +1,5 @@
 // This file was auto-generated, but can be altered. It will not be overwritten.
-import org.roylance.yaclib.YaclibPackagePlugin;
+import org.roylance.yaclib.YaclibPackageTask;
 
 buildscript {
     ext.kotlin_version = "$yaclib_kotlin"
@@ -32,7 +32,6 @@ repositories {
 }
 }
 
-// pull in models
 sourceSets {
     main {
       java.srcDirs = ['src/main/java',
@@ -54,15 +53,15 @@ dependencies {
     compile "org.glassfish.jersey.media:jersey-media-multipart:$yaclib_jersey"
 
     compile "org.apache.httpcomponents:httpclient:$yaclib_http_components"
+    compile "com.squareup.retrofit2:retrofit:$yaclib_retrofit"
+
+    compile "org.roylance:roylance.common:${YaclibStatics.RoylanceCommonVersion}"
 
     compile "org.apache.commons:commons-lang3:$org_apache_commons_commons_lang_"
-    compile "com.squareup.retrofit2:retrofit:$yaclib_retrofit"
-    compile "org.roylance:roylance.common:$yaclib_roylance_common"
-    // compile "org.roylance:yaormclient:$org_roylance_yaorm"
 
 }
 
-task packageApp(type: YaclibPackagePlugin) {
+task packageApp(type: YaclibPackageTask) {
     appName = rootProject.name
     serverVersion = "$major.$minor"
     maintainerInfo = "roylance.michael@gmail.com"
