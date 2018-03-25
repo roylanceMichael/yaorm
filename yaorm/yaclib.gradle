@@ -2,7 +2,7 @@ import org.roylance.yaclib.YaclibPlugin
 import org.roylance.yaclib.YaclibModel
 
 group 'org.roylance'
-version = "${actualMajor}.${actualMinor}"
+version = "${major}.${minor}"
 
 apply plugin: 'java'
 
@@ -14,7 +14,6 @@ buildscript {
     }
     dependencies {
         classpath "org.roylance:yaclib.core:${yaclibMajor}.${yaclibMinor}"
-        classpath "org.roylance:yaorm:${actualMajor}.${actualMinor}"
     }
 }
 
@@ -46,8 +45,8 @@ task execute(type: YaclibPlugin) {
             .setAuthorName(author_)
             .setLicense(license_)
             .setGithubRepo(githubRepo_)
-            .setMajorVersion(actualMajor.toInteger())
-            .setMinorVersion(actualMinor.toInteger())
+            .setMajorVersion(major.toInteger())
+            .setMinorVersion(minor.toInteger())
             .setTypescriptModelFile("YaormModel")
             .setServerType(YaclibModel.ServerType.GRADLE_JETTY_EMBEDDED)
             .setServerPort(8080)
