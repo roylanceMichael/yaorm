@@ -61,14 +61,14 @@ internal class GetProtoObjects(
   }
 
   private fun handleBuildChildMessageHandler(messageBuilder: Message.Builder,
-      keysToReconcile: HashMap<String, HashSet<String>>,
-      normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
-      messagesToReconcile: HashMap<String, Message>): IChildMessageHandler {
+                                             keysToReconcile: HashMap<String, HashSet<String>>,
+                                             normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
+                                             messagesToReconcile: HashMap<String, Message>): IChildMessageHandler {
 
     return object : IChildMessageHandler {
       override fun handle(fieldKey: FieldDescriptor,
-          idColumn: Column,
-          childBuilder: Builder) {
+                          idColumn: Column,
+                          childBuilder: Builder) {
         if (idColumn.stringHolder.isNotEmpty()) {
           val mainId = ProtobufUtils.getIdFromMessage(childBuilder)
           val childObject = messageBuilder.newBuilderForField(fieldKey).build()
@@ -100,7 +100,7 @@ internal class GetProtoObjects(
   }
 
   private fun <T> handleHaveSeenAllEntityIdsBefore(entityIds: List<String>,
-      message: Message): List<T> {
+                                                   message: Message): List<T> {
     var allFound = true
     entityIds.forEach { entityId ->
       if (!cacheStore.seenObject(message, entityId)) {
@@ -118,10 +118,10 @@ internal class GetProtoObjects(
   }
 
   private fun handleLoadObjects(message: Message,
-      entityIds: List<String>,
-      keysToReconcile: HashMap<String, HashSet<String>>,
-      normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
-      messagesToReconcile: HashMap<String, Message>): List<String> {
+                                entityIds: List<String>,
+                                keysToReconcile: HashMap<String, HashSet<String>>,
+                                normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
+                                messagesToReconcile: HashMap<String, Message>): List<String> {
     val tableDefinitionGraph = definitions[message.descriptorForType.name]!!
     val whereClause = YaormModel.WhereClause.newBuilder()
         .setNameAndProperty(
@@ -151,11 +151,11 @@ internal class GetProtoObjects(
   }
 
   private fun handleRepeatingMessages(message: Message,
-      entityIds: List<String>,
-      keysToReconcile: HashMap<String, HashSet<String>>,
-      messagesToReconcile: HashMap<String, Message>,
-      repeatedReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
-      normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>) {
+                                      entityIds: List<String>,
+                                      keysToReconcile: HashMap<String, HashSet<String>>,
+                                      messagesToReconcile: HashMap<String, Message>,
+                                      repeatedReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>,
+                                      normalReconciliation: HashMap<String, HashMap<String, HashMap<String, CachingObject>>>) {
     val tableDefinitionGraph = this.definitions[message.descriptorForType.name]!!
 
     val mainMessageColumnName = ProtobufUtils.buildLinkerMessageMainTableColumnName(
@@ -209,12 +209,12 @@ internal class GetProtoObjects(
                   }
 
                   if (!repeatedReconciliation[fieldKey.messageType.name]!!.containsKey(
-                      entityColumn.stringHolder)) {
+                          entityColumn.stringHolder)) {
                     repeatedReconciliation[fieldKey.messageType.name]!![entityColumn.stringHolder] = HashMap()
                   }
 
                   if (repeatedReconciliation[fieldKey.messageType.name]!![entityColumn.stringHolder]!!.containsKey(
-                      fieldKey.name)) {
+                          fieldKey.name)) {
                     repeatedReconciliation[fieldKey.messageType.name]!![entityColumn.stringHolder]!![fieldKey.name]?.id?.add(
                         nameColumn.stringHolder)
                   } else {
@@ -235,23 +235,23 @@ internal class GetProtoObjects(
       normalReconciliation.filter { it.key == childType }
           .flatMap { it.value.values }
           .flatMap { it.values }.forEach { cachingObject ->
-        val mainObject = cacheStore.getObject(message, cachingObject.mainId)
-        val childObject = cacheStore.getObject(childBuilder, cachingObject.id.first())
+            val mainObject = cacheStore.getObject(message, cachingObject.mainId)
+            val childObject = cacheStore.getObject(childBuilder, cachingObject.id.first())
 
-        mainObject.setField(cachingObject.fieldKey, childObject.build())
-      }
+            mainObject.setField(cachingObject.fieldKey, childObject.build())
+          }
 
       repeatedReconciliation.filter { it.key == childType }
           .flatMap { it.value.values }
           .flatMap { it.values }.forEach { cachingObject ->
-        val mainObject = cacheStore.getObject(message, cachingObject.mainId)
+            val mainObject = cacheStore.getObject(message, cachingObject.mainId)
 
-        mainObject.clearField(cachingObject.fieldKey)
-        cachingObject.id.forEach { id ->
-          val childObject = cacheStore.getObject(childBuilder, id)
-          mainObject.addRepeatedField(cachingObject.fieldKey, childObject.build())
-        }
-      }
+            mainObject.clearField(cachingObject.fieldKey)
+            cachingObject.id.forEach { id ->
+              val childObject = cacheStore.getObject(childBuilder, id)
+              mainObject.addRepeatedField(cachingObject.fieldKey, childObject.build())
+            }
+          }
     }
   }
 

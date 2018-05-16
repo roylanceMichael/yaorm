@@ -48,9 +48,10 @@ object ProtobufUtils {
   }
 
   fun buildDefinitionFromDescriptor(descriptor: Descriptors.Descriptor,
-      customIndexes: MutableMap<String, YaormModel.Index>): YaormModel.TableDefinition? {
+                                    customIndexes: MutableMap<String, YaormModel.Index>): YaormModel.TableDefinition? {
     // make sure we have an id, or return nothing
-    descriptor.fields.firstOrNull { YaormUtils.IdName == it.name && ProtoStringName == it.type.name } ?: return null
+    descriptor.fields.firstOrNull { YaormUtils.IdName == it.name && ProtoStringName == it.type.name }
+        ?: return null
 
     val definition = YaormModel.TableDefinition.newBuilder()
         .setName(descriptor.name)
@@ -82,8 +83,8 @@ object ProtobufUtils {
   }
 
   fun buildDefinitionGraph(descriptor: Descriptors.Descriptor,
-      customIndexes: MutableMap<String, YaormModel.Index>,
-      seenTables: MutableSet<String> = HashSet()): YaormModel.TableDefinitionGraphs {
+                           customIndexes: MutableMap<String, YaormModel.Index>,
+                           seenTables: MutableSet<String> = HashSet()): YaormModel.TableDefinitionGraphs {
     seenTables.add(descriptor.name)
 
     val mainDefinition = buildDefinitionFromDescriptor(descriptor,
@@ -139,10 +140,10 @@ object ProtobufUtils {
 
   // wrap in an object
   fun <T : Message> getProtoObjectFromBuilderSingle(builder: T,
-      entityService: IEntityService,
-      entityId: String,
-      definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
-      customIndexes: MutableMap<String, YaormModel.Index>): T? {
+                                                    entityService: IEntityService,
+                                                    entityId: String,
+                                                    definitions: MutableMap<String, YaormModel.TableDefinitionGraphs>,
+                                                    customIndexes: MutableMap<String, YaormModel.Index>): T? {
     val getObject = GetProtoObjects(
         entityService,
         definitions,
@@ -157,8 +158,8 @@ object ProtobufUtils {
   }
 
   fun convertProtobufObjectToRecords(message: Message,
-      definitions: MutableMap<String, YaormModel.TableDefinitionGraphs> = HashMap(),
-      customIndexes: MutableMap<String, YaormModel.Index> = HashMap()): YaormModel.AllTableRecords {
+                                     definitions: MutableMap<String, YaormModel.TableDefinitionGraphs> = HashMap(),
+                                     customIndexes: MutableMap<String, YaormModel.Index> = HashMap()): YaormModel.AllTableRecords {
     val resultMap = ConvertProtobufToRecords(definitions, customIndexes).build(message)
     val returnRecords = YaormModel.AllTableRecords.newBuilder()
 
@@ -196,8 +197,8 @@ object ProtobufUtils {
   }
 
   internal fun handleRepeatedMessageFields(message: Message,
-      mainMessageId: String,
-      convertProto: ConvertProtobufToRecords): Map<String, YaormModel.TableRecords.Builder> {
+                                           mainMessageId: String,
+                                           convertProto: ConvertProtobufToRecords): Map<String, YaormModel.TableRecords.Builder> {
     val returnMap = HashMap<String, YaormModel.TableRecords.Builder>()
     message.allFields.keys.filter { it.type.name == ProtoMessageType && it.isRepeated }
         .forEach { fieldKey ->
@@ -257,8 +258,8 @@ object ProtobufUtils {
   }
 
   internal fun handleRepeatedEnumFields(message: Message,
-      mainMessageId: String,
-      definitions: YaormModel.TableDefinitionGraphs): Map<String, YaormModel.TableRecords.Builder> {
+                                        mainMessageId: String,
+                                        definitions: YaormModel.TableDefinitionGraphs): Map<String, YaormModel.TableRecords.Builder> {
     val returnRecords = HashMap<String, YaormModel.TableRecords.Builder>()
     message.allFields.keys.filter { it.type.name == ProtoEnumType && it.isRepeated }
         .forEach { fieldKey ->
@@ -295,8 +296,8 @@ object ProtobufUtils {
   }
 
   private fun buildMessageRepeatedRecordTableDefinition(mainName: String,
-      otherName: String,
-      columnName: String): YaormModel.TableDefinition {
+                                                        otherName: String,
+                                                        columnName: String): YaormModel.TableDefinition {
     val tableDefinition = YaormModel.TableDefinition.newBuilder()
         .setTableType(YaormModel.TableDefinition.TableType.LINKER_MESSAGE)
         .setName(buildLinkerTableNameStr(mainName, otherName, columnName))
@@ -320,9 +321,9 @@ object ProtobufUtils {
   }
 
   private fun buildMessageRepeatedRecord(mainColumnName: String,
-      otherColumnName: String,
-      mainColumnId: String,
-      otherColumnId: String): YaormModel.Record {
+                                         otherColumnName: String,
+                                         mainColumnId: String,
+                                         otherColumnId: String): YaormModel.Record {
     val record = YaormModel.Record.newBuilder()
 
     val actualMainTableName = buildLinkerMessageMainTableColumnName(mainColumnName)
@@ -355,9 +356,9 @@ object ProtobufUtils {
 
 
   private fun buildEnumRepeatedRecord(mainColumnName: String,
-      enumName: String,
-      mainColumnId: String,
-      enumValueDescriptor: Descriptors.EnumValueDescriptor): YaormModel.Record {
+                                      enumName: String,
+                                      mainColumnId: String,
+                                      enumValueDescriptor: Descriptors.EnumValueDescriptor): YaormModel.Record {
     val record = YaormModel.Record.newBuilder()
 
     val idColumn = YaormUtils.buildIdColumn("$mainColumnId~${enumValueDescriptor.name}")
@@ -384,7 +385,7 @@ object ProtobufUtils {
   }
 
   private fun buildLinkerTableEnum(mainTableName: String, repeatedEnumName: String,
-      repeatedEnumColumnName: String): YaormModel.TableDefinition {
+                                   repeatedEnumColumnName: String): YaormModel.TableDefinition {
     val returnDefinition = YaormModel.TableDefinition.newBuilder()
         .setTableType(YaormModel.TableDefinition.TableType.LINKER_ENUM)
         .setName("${mainTableName}_${repeatedEnumName}_$repeatedEnumColumnName")
@@ -409,8 +410,8 @@ object ProtobufUtils {
   }
 
   private fun buildLinkerTableMessage(mainTableName: String,
-      linkerTableName: String,
-      linkerTableColumnName: String): YaormModel.TableDefinition {
+                                      linkerTableName: String,
+                                      linkerTableColumnName: String): YaormModel.TableDefinition {
     val returnDefinition = YaormModel.TableDefinition.newBuilder()
         .setName(buildLinkerTableNameStr(mainTableName, linkerTableName, linkerTableColumnName))
         .setTableType(YaormModel.TableDefinition.TableType.LINKER_MESSAGE)

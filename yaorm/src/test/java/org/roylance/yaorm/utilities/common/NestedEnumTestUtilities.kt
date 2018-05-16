@@ -1,6 +1,7 @@
 package org.roylance.yaorm.utilities.common
 
 import org.junit.Assert
+import org.naru.naru.model.NaruModel
 import org.roylance.common.service.IBuilder
 import org.roylance.yaorm.ComplexModel
 import org.roylance.yaorm.NestedEnumTest
@@ -10,287 +11,327 @@ import org.roylance.yaorm.utilities.TestBase64Service
 import java.util.*
 
 object NestedEnumTestUtilities {
-    fun simplePassThroughExecutionsTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
-        // arrange
-        try {
-            val protoContext = EntityProtoContext(
-                    NestedEnumTest.getDescriptor(),
-                    entityService,
-                    HashMap(),
-                    TestBase64Service())
-            protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
+  fun simpleMultipleStringsTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          NaruModel.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
+      protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
 
-            protoContext.handleMigrations()
+      protoContext.handleMigrations()
 
-            val columnOne = NestedEnumTest.ColumnInfo.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setSourceName("one")
-                    .setSourceType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationName("one")
+      val firstImage = NaruModel.RequestImage.newBuilder()
+          .setId("FIRST_IMAGE")
 
-            val columnTwo = NestedEnumTest.ColumnInfo.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setSourceName("two")
-                    .setSourceType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationName("two")
+      val secondImage = NaruModel.RequestImage.newBuilder()
+          .setId("SECOND_IMAGE")
 
-            val dataset = NestedEnumTest.DataSet.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setDestinationName("cool_destination")
-                    .setColumnDelimiter(NestedEnumTest.DelimiterType.COMMA)
-                    .setRowDelimiter(NestedEnumTest.DelimiterType.CARRIAGE_RETURN)
-                    .setHasHeaders(true)
-                    .setIsFixedWidth(false)
-                    .addColumnInfos(columnOne)
-                    .addColumnInfos(columnTwo)
+      val request = NaruModel.Request.newBuilder()
+          .setId("FIRST_REQUEST")
 
-            val customer = NestedEnumTest.Customer.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("test")
-                    .addDatasets(dataset)
-                    .build()
+      val firstView = NaruModel.View.newBuilder()
+          .setId("FIRST_VIEW")
+          .setImageId(firstImage.id)
 
-            // act
-            protoContext.entityMessageService.merge(customer)
+      request.addViews(firstView)
 
-            // assert
-            val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
-            Assert.assertTrue(allCustomers.size == 1)
-            Assert.assertTrue(protoContext.entityMessageService.getReport().executionsCount > 0)
+      protoContext.entityMessageService.merge(request.build())
 
-            println(protoContext.entityMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
-        }
-        finally {
-            entityService.close()
-            cleanup?.build()
-        }
+      protoContext.entityMessageService.merge(firstImage.build())
+      protoContext.entityMessageService.merge(secondImage.build())
+
+      // act
+      val foundRequests = protoContext.entityMessageService.getMany(NaruModel.Request.getDefaultInstance(), listOf(request.id))
+
+      // assert
+      Assert.assertTrue(foundRequests.size == 1)
+      Assert.assertTrue(foundRequests.first().viewsCount == 1)
+      Assert.assertTrue(foundRequests.first().viewsList.first().imageId.isNotBlank())
+      Assert.assertTrue(foundRequests.first().viewsList.first().imageId == firstImage.id)
+    } finally {
+      entityService.close()
+      cleanup?.build()
     }
+  }
 
-    fun simplePassThroughTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
-        // arrange
-        try {
-            val protoContext = EntityProtoContext(
-                    NestedEnumTest.getDescriptor(),
-                    entityService,
-                    HashMap(),
-                    TestBase64Service())
+  fun simplePassThroughExecutionsTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          NestedEnumTest.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
+      protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
 
-            protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
+      protoContext.handleMigrations()
 
-            protoContext.handleMigrations()
+      val columnOne = NestedEnumTest.ColumnInfo.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setSourceName("one")
+          .setSourceType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationName("one")
 
-            val columnOne = NestedEnumTest.ColumnInfo.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setSourceName("one")
-                    .setSourceType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationName("one")
+      val columnTwo = NestedEnumTest.ColumnInfo.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setSourceName("two")
+          .setSourceType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationName("two")
 
-            val columnTwo = NestedEnumTest.ColumnInfo.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setSourceName("two")
-                    .setSourceType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationType(NestedEnumTest.ProtobufType.STRING)
-                    .setDestinationName("two")
+      val dataset = NestedEnumTest.DataSet.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setDestinationName("cool_destination")
+          .setColumnDelimiter(NestedEnumTest.DelimiterType.COMMA)
+          .setRowDelimiter(NestedEnumTest.DelimiterType.CARRIAGE_RETURN)
+          .setHasHeaders(true)
+          .setIsFixedWidth(false)
+          .addColumnInfos(columnOne)
+          .addColumnInfos(columnTwo)
 
-            val dataset = NestedEnumTest.DataSet.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setDestinationName("cool_destination")
-                    .setColumnDelimiter(NestedEnumTest.DelimiterType.COMMA)
-                    .setRowDelimiter(NestedEnumTest.DelimiterType.CARRIAGE_RETURN)
-                    .setHasHeaders(true)
-                    .setIsFixedWidth(false)
-                    .addColumnInfos(columnOne)
-                    .addColumnInfos(columnTwo)
+      val customer = NestedEnumTest.Customer.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("test")
+          .addDatasets(dataset)
+          .build()
 
-            val customer = NestedEnumTest.Customer.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("test")
-                    .addDatasets(dataset)
-                    .build()
+      // act
+      protoContext.entityMessageService.merge(customer)
 
-            // act
-            protoContext.entityMessageService.merge(customer)
+      // assert
+      val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
+      Assert.assertTrue(allCustomers.size == 1)
+      Assert.assertTrue(protoContext.entityMessageService.getReport().executionsCount > 0)
 
-            // assert
-            val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
-            Assert.assertTrue(allCustomers.size == 1)
-        }
-        finally {
-            entityService.close()
-            cleanup?.build()
-        }
+      println(protoContext.entityMessageService.getReport().executionsList.map { it.rawSql }.joinToString("\n\n"))
+    } finally {
+      entityService.close()
+      cleanup?.build()
     }
+  }
 
-    fun simplePassThroughTest2(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
-        // arrange
-        try {
-            val protoContext = EntityProtoContext(
-                    ComplexModel.getDescriptor(),
-                    entityService,
-                    HashMap(),
-                    TestBase64Service())
+  fun simplePassThroughTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          NestedEnumTest.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
 
-            protoContext.handleMigrations()
+      protoContext.entityMessageService.dropAndCreateEntireSchema(NestedEnumTest.getDescriptor())
 
-            val firstFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("first")
+      protoContext.handleMigrations()
 
-            val secondFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("second")
-                    .setParent(firstFile)
+      val columnOne = NestedEnumTest.ColumnInfo.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setSourceName("one")
+          .setSourceType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationName("one")
 
-            firstFile.addChildren(secondFile)
+      val columnTwo = NestedEnumTest.ColumnInfo.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setSourceName("two")
+          .setSourceType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationType(NestedEnumTest.ProtobufType.STRING)
+          .setDestinationName("two")
 
-            val thirdFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("third")
-                    .setParent(secondFile)
+      val dataset = NestedEnumTest.DataSet.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setDestinationName("cool_destination")
+          .setColumnDelimiter(NestedEnumTest.DelimiterType.COMMA)
+          .setRowDelimiter(NestedEnumTest.DelimiterType.CARRIAGE_RETURN)
+          .setHasHeaders(true)
+          .setIsFixedWidth(false)
+          .addColumnInfos(columnOne)
+          .addColumnInfos(columnTwo)
 
-            secondFile.addChildren(thirdFile)
+      val customer = NestedEnumTest.Customer.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("test")
+          .addDatasets(dataset)
+          .build()
 
-            // act
-            protoContext.entityMessageService.merge(firstFile.build())
+      // act
+      protoContext.entityMessageService.merge(customer)
 
-            // assert
-            assert(true)
-        }
-        finally {
-            entityService.close()
-            cleanup?.build()
-        }
+      // assert
+      val allCustomers = protoContext.entityMessageService.getMany(NestedEnumTest.Customer.getDefaultInstance())
+      Assert.assertTrue(allCustomers.size == 1)
+    } finally {
+      entityService.close()
+      cleanup?.build()
     }
+  }
 
-    fun simpleTablesTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schemaName: String) {
-        // arrange
-        try {
-            val protoContext = EntityProtoContext(
-                    ComplexModel.getDescriptor(),
-                    entityService,
-                    HashMap(),
-                    TestBase64Service())
+  fun simplePassThroughTest2(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          ComplexModel.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
 
-            protoContext.handleMigrations()
+      protoContext.handleMigrations()
 
-            val firstFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("first")
+      val firstFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("first")
 
-            val secondFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("second")
-                    .setParent(firstFile)
+      val secondFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("second")
+          .setParent(firstFile)
 
-            firstFile.addChildren(secondFile)
+      firstFile.addChildren(secondFile)
 
-            val thirdFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("third")
-                    .setParent(secondFile)
+      val thirdFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("third")
+          .setParent(secondFile)
 
-            secondFile.addChildren(thirdFile)
-            protoContext.entityMessageService.merge(firstFile.build())
+      secondFile.addChildren(thirdFile)
 
-            // act
-            val tableNames = entityService.getTableNames(schemaName)
+      // act
+      protoContext.entityMessageService.merge(firstFile.build())
 
-            // assert
-            println(tableNames)
-            assert(tableNames.size > 1)
-        }
-        finally {
-            entityService.close()
-            cleanup?.build()
-        }
+      // assert
+      assert(true)
+    } finally {
+      entityService.close()
+      cleanup?.build()
     }
+  }
 
-    fun simpleTableDefinitionTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
-        // arrange
-        try {
-            val protoContext = EntityProtoContext(
-                    ComplexModel.getDescriptor(),
-                    entityService,
-                    HashMap(),
-                    TestBase64Service())
+  fun simpleTablesTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schemaName: String) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          ComplexModel.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
 
-            protoContext.handleMigrations()
+      protoContext.handleMigrations()
 
-            val firstFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("first")
+      val firstFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("first")
 
-            val secondFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("second")
-                    .setParent(firstFile)
+      val secondFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("second")
+          .setParent(firstFile)
 
-            firstFile.addChildren(secondFile)
+      firstFile.addChildren(secondFile)
 
-            val thirdFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("third")
-                    .setParent(secondFile)
+      val thirdFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("third")
+          .setParent(secondFile)
 
-            secondFile.addChildren(thirdFile)
-            protoContext.entityMessageService.merge(firstFile.build())
+      secondFile.addChildren(thirdFile)
+      protoContext.entityMessageService.merge(firstFile.build())
 
-            // act
-            val tableDefinition = entityService.getTableDefinition(schema, ComplexModel.Answer.getDescriptor().name)
+      // act
+      val tableNames = entityService.getTableNames(schemaName)
 
-            // assert
-            println(tableDefinition)
-            assert(tableDefinition.columnDefinitionsCount > 0)
-        }
-        finally {
-            entityService.close()
-            cleanup?.build()
-        }
+      // assert
+      println(tableNames)
+      assert(tableNames.size > 1)
+    } finally {
+      entityService.close()
+      cleanup?.build()
     }
+  }
 
-    fun simpleTableDefinitionNullableTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
-        // arrange
-        try {
-            val protoContext = EntityProtoContext(
-                    ComplexModel.getDescriptor(),
-                    entityService,
-                    HashMap(),
-                    TestBase64Service())
+  fun simpleTableDefinitionTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          ComplexModel.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
 
-            protoContext.handleMigrations()
+      protoContext.handleMigrations()
 
-            val firstFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("first")
+      val firstFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("first")
 
-            val secondFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("second")
-                    .setParent(firstFile)
+      val secondFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("second")
+          .setParent(firstFile)
 
-            firstFile.addChildren(secondFile)
+      firstFile.addChildren(secondFile)
 
-            val thirdFile = ComplexModel.MappedFile.newBuilder()
-                    .setId(UUID.randomUUID().toString())
-                    .setName("third")
-                    .setParent(secondFile)
+      val thirdFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("third")
+          .setParent(secondFile)
 
-            secondFile.addChildren(thirdFile)
-            protoContext.entityMessageService.merge(firstFile.build())
+      secondFile.addChildren(thirdFile)
+      protoContext.entityMessageService.merge(firstFile.build())
 
-            // act
-            val tableDefinition = entityService.getTableDefinition(schema, ComplexModel.Answer.getDescriptor().name)
+      // act
+      val tableDefinition = entityService.getTableDefinition(schema, ComplexModel.Answer.getDescriptor().name)
 
-            // assert
-            println(tableDefinition)
-            assert(tableDefinition.columnDefinitionsCount > 0)
-        }
-        finally {
-            entityService.close()
-            cleanup?.build()
-        }
+      // assert
+      println(tableDefinition)
+      assert(tableDefinition.columnDefinitionsCount > 0)
+    } finally {
+      entityService.close()
+      cleanup?.build()
     }
+  }
+
+  fun simpleTableDefinitionNullableTest(entityService: IEntityService, cleanup: IBuilder<Boolean>? = null, schema: String) {
+    // arrange
+    try {
+      val protoContext = EntityProtoContext(
+          ComplexModel.getDescriptor(),
+          entityService,
+          HashMap(),
+          TestBase64Service())
+
+      protoContext.handleMigrations()
+
+      val firstFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("first")
+
+      val secondFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("second")
+          .setParent(firstFile)
+
+      firstFile.addChildren(secondFile)
+
+      val thirdFile = ComplexModel.MappedFile.newBuilder()
+          .setId(UUID.randomUUID().toString())
+          .setName("third")
+          .setParent(secondFile)
+
+      secondFile.addChildren(thirdFile)
+      protoContext.entityMessageService.merge(firstFile.build())
+
+      // act
+      val tableDefinition = entityService.getTableDefinition(schema, ComplexModel.Answer.getDescriptor().name)
+
+      // assert
+      println(tableDefinition)
+      assert(tableDefinition.columnDefinitionsCount > 0)
+    } finally {
+      entityService.close()
+      cleanup?.build()
+    }
+  }
 }

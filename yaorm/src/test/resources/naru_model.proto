@@ -1,5 +1,5 @@
 syntax = "proto3";
-package org.naru;
+package org.naru.naru.model;
 
 enum OrderState {
     UNPROCESSED_ORDER = 0;
@@ -7,6 +7,12 @@ enum OrderState {
     READY_ORDER = 2;
     DELIVERED_ORDER = 3;
     CANCELED_ORDER = 4;
+}
+
+enum ClientType {
+    ANDROID_CLIENT_TYPE = 0;
+    IOS_CLIENT_TYPE = 1;
+    WEB_CLIENT_TYPE = 2;
 }
 
 message Beacon {
@@ -25,6 +31,12 @@ message RequestImage {
     string user_owner = 5;
 }
 
+message ImageDetail {
+    string id = 1;
+    float opacity = 2;
+    double seconds_between_images = 3;
+}
+
 message ExpectedAnswer {
     string id = 1;
     string value = 2;
@@ -32,15 +44,19 @@ message ExpectedAnswer {
     bool has_price = 4;
     double price = 5;
     ProductDetail product_detail = 6 [weak = true];
+    string description = 7;
+    ImageDetail image_detail = 10;
+    string image_id = 8;
 }
 
 message Question {
     string id = 1;
     int32 form_order = 2;
     string display = 3;
-    RequestImage image = 4 [weak = true];
     repeated ExpectedAnswer expected_answers = 5;
     bool display_question_in_summary = 6;
+    string image_id = 7;
+    ImageDetail image_detail = 9;
 }
 
 message QuestionAnswer {
@@ -63,6 +79,7 @@ message FormQuestionsGroup {
     string form_name = 2;
     repeated FormQuestions form_questions = 3;
     View view = 4 [weak = true];
+    string form_summary = 5;
 }
 
 message Order {
@@ -85,12 +102,19 @@ message Order {
     string time_canceled_display = 23;
     string google_id = 24;
     string apple_id = 25;
+    string account_name = 26;
+    bool payment_successful = 27;
+    int64 time_payment = 28;
+    ClientType client_type = 29;
 }
 
 message Validation {
     string id = 1;
     string name = 2;
     string value = 3;
+    string parent_id = 4;
+    repeated Validation children = 5;
+    Validation actual_parent = 6;
 }
 
 message HeuristicCombiner {
@@ -112,22 +136,25 @@ message HeuristicCombiner {
 message Form {
     string id = 1;
     string display = 2;
-    RequestImage image = 3 [weak = true];
     repeated Question questions = 4;
     repeated Heuristic heuristics = 5;
     int32 order = 6;
     ProductDetail product_detail = 7 [weak = true];
+    string summary = 8;
+    string image_id = 9;
+    ImageDetail image_detail = 11;
 }
 
 message View {
     string id = 1;
-    RequestImage background_image = 2 [weak = true];
     string title = 3;
     string description = 4;
     repeated Form forms = 5;
     View parent = 7 [weak = true];
     int64 start_date = 8;
     int64 expire_date = 9;
+    string image_id = 10;
+    ImageDetail image_detail = 12;
 }
 
 message Heuristic {
@@ -179,6 +206,8 @@ message ProductDetail {
     string title = 6;
     string description = 7;
     double product_price = 8;
+    string parent_id = 9;
+    repeated ProductDetail children = 10;
 }
 
 message UINaruRequest {
@@ -192,6 +221,10 @@ message UINaruRequest {
     string organization_id = 9;
     string google_id = 10;
     string apple_id = 11;
+    string braintree_client_token = 12;
+    string braintree_payment_nonce = 13;
+    repeated string order_ids = 14;
+    repeated RequestImage images = 17;
 }
 
 message UINaruResponse {
@@ -200,6 +233,10 @@ message UINaruResponse {
     View view = 3;
     Organization organization = 4;
     repeated Order orders = 5;
+    string braintree_client_token = 6;
+    string braintree_payment_nonce = 7;
+    string transaction_object_json = 8;
+    repeated RequestImage images = 10;
 }
 
 message UINaruAdminRequest {
@@ -208,21 +245,21 @@ message UINaruAdminRequest {
     Request request = 4;
     string user_id = 5;
     View view = 6;
-    repeated RequestImage images = 7;
     int64 date = 9;
     Order order = 10;
     Organization organization = 11;
     string android_app_name = 12;
     string ios_app_name = 13;
+    repeated RequestImage images = 16;
 }
 
 message UINaruAdminResponse {
     repeated Request requests = 1;
     repeated Beacon beacons = 2;
     repeated View views = 3;
-    repeated RequestImage images = 4;
     repeated Order orders = 6;
     repeated Organization organizations = 7;
+    repeated RequestImage images = 9;
 }
 
 message UINaruOrganizationRequest {
