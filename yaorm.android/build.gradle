@@ -3,13 +3,15 @@
 buildscript {
   repositories {
     jcenter()
+    google()
+    gradlePluginPortal()
     maven {
       url 'https://maven.google.com'
     }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.1'
-    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    classpath 'com.android.tools.build:gradle:3.1.4'
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$yaclib_kotlin"
     classpath "org.jetbrains.kotlin:kotlin-android-extensions:$yaclib_kotlin"
 
@@ -25,6 +27,7 @@ plugins {
 allprojects {
   repositories {
     jcenter()
+    google()
     maven {
       url 'https://roylance-repo.appspot.com'
       credentials {
@@ -44,11 +47,11 @@ group = "$group"
 version = "$major.$minor"
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion "26.0.2"
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
   defaultConfig {
     minSdkVersion 21
-    targetSdkVersion 26
+    targetSdkVersion 28
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -122,8 +125,6 @@ bintray {
 }
 
 dependencies {
-  // compile "org.roylance:yaorm:$org_roylance_yaorm"
-  compile "com.squareup.retrofit2:retrofit:$yaclib_retrofit"
   compile "org.roylance:roylance.common:$yaclib_roylance_common"
   testCompile 'junit:junit:4.12'
 }

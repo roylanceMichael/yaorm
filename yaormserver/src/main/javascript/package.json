@@ -1,6 +1,6 @@
 {
   "name": "org.roylance.yaorm",
-  "version": "18.3.25.15.0",
+  "version": "18.9.30.2.0",
   "description": "base template for org.roylance.yaorm",
   "author": "roylance.michael@gmail.com",
   "license": "MIT",
@@ -28,6 +28,6 @@
     "jquery": "^3.0.0",
     "protobufjs": "5.0.1",
     "webpack-stream": "^3.2.0",
-    "org.roylance.yaorm": "18.3.25.15.0"
+    "org.roylance.yaorm": "18.9.30.2.0"
   }
 }

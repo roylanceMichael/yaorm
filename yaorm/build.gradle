@@ -10,7 +10,7 @@ buildscript {
   }
   dependencies {
     classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
-    classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
+    classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.6"
     classpath "org.roylance:yaclib.core:${yaclib_version}"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${yaclib_kotlin}"
   }
@@ -29,7 +29,7 @@ apply plugin: YaclibPlugin
 
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:3.4.0"
+    artifact = "com.google.protobuf:protoc:3.6.0"
   }
 }
 
